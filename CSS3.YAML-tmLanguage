@@ -153,10 +153,11 @@ repository:
     match: '!important\b'
 
 # TODO
-#   complete adding missing properties to property_list.txt, property_values.txt, and #property-name-legal
-#   get symbol indexing working with selectors
-#   get it working with with just align-content
-#     get completions working
+#   test symbol indexing with classes and ids when you add support for those selectors
+#   fill in several more property values in property_values.txt and #value
+#       don't get carried away. work a little on each major component (completions,
+#       language def, selectors, values, indexing) to make sure everything keeps
+#       working
 #   can a selector start with an uppercase letter? custom elements can't
 
 ...

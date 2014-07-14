@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>name</key>
+    <string>Symbol List: Selector</string>
+    <key>scope</key>
+    <string>source.css meta.selector</string>
+    <key>settings</key>
+    <dict>
+        <key>showInSymbolList</key>
+        <integer>1</integer>
+        <key>symbolTransformation</key>
+        <string>s/^\s*/CSS3: /; s/\s+/ /g</string>
+    </dict>
+    <key>uuid</key>
+    <string>F2ADEC99-6167-4A50-9E26-18824A40B8D9</string>
+</dict>
+<dict>
+    <key>scope</key>
+    <string>source.css entity.other.attribute-name.class, source.css entity.other.attribute-name.id</string>
+    <key>settings</key>
+    <dict>
+        <key>showInIndexedSymbolList</key>
+        <string>1</string>
+        <key>symbolIndexTransformation</key>
+        <string>/[#.]([A-Za-z0-9_~]+)/$1/;</string>
+    </dict>
+</dict>
+</plist>
