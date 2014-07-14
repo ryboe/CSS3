@@ -1,0 +1,161 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+---
+name: CSS6
+scopeName: source.css
+fileTypes: [css]
+uuid: 6618b147-dda0-4ff3-af33-8200c89d88e7
+
+patterns:
+- include: '#comment-block'
+- include: '#property-list'
+- include: '#selector'
+
+repository:
+
+  comment-block:
+    name: comment.block.css
+    begin: /\*
+    beginCaptures:
+      '0': {name: punctuation.definition.comment.css}
+    end: \*/
+    endCaptures:
+      '0': {name: punctuation.definition.comment.css}
+
+  identifier:
+    # This rule is a simplified version of the official <ident> token in the CSS
+    # Syntax Level 3 spec. In practice, it is almost identical to the official
+    # grammar, while being much simpler. Simplifying it was important because it
+    # appears in so many places in the spec and in this language definition.
+    # This rule does not scope escape characters like '\n'. Regexes are not able
+    # to repeatedly capture groups, which makes highlighting escapes very
+    # fragile. For this reason, they've been left out.
+    name: string.unquoted.identifier.css
+    match: -?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*
+
+  property-list:
+    name: meta.property-list.css
+    begin: \{
+    beginCaptures:
+      '0': {name: punctuation.section.property-list.css}
+    patterns:
+    - include: '#comment-block'
+    - include: '#property-name'
+    - include: '#value'
+    end: \}
+    endCaptures:
+      '0': {name: punctuation.section.property-list.css}
+
+  property-name:
+    name: meta.property-name.css
+    begin: (?=[-a-z])
+    patterns:
+    - include: '#comment-block'
+    - include: '#property-name-illegal'
+    - include: '#property-name-illegal-epub'
+    - include: '#property-name-illegal-moz'
+    - include: '#property-name-illegal-ms'
+    - include: '#property-name-illegal-webkit'
+    - include: '#property-name-legal'
+    - include: '#property-name-custom'
+    end: (?=:)
+
+  property-name-custom:
+    name: support.type.property-name.custom.css
+    match: --[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*
+
+  property-name-illegal:
+    name: invalid.illegal.css
+    match: \b(?:behavior|filter|zoom)\b
+
+  property-name-illegal-epub:
+    name: invalid.illegal.css
+    match: -epub-(?:text-orientation|text-emphasis-style|text-emphasis-color|text-emphasis|text-combine)\b
+
+  property-name-illegal-moz:
+    name: invalid.illegal.css
+    match: -moz-(?:window-shadow|user-select|user-modify|user-input|user-focus|stack-sizing|script-size-multiplier|script-min-size|script-level|padding-start|padding-end|outline-radius-topright|outline-radius-topleft|outline-radius-bottomright|outline-radius-bottomleft|outline-radius|orient|margin-start|margin-end|image-region|force-broken-image-icon|float-edge|box-pack|box-orient|box-ordinal-group|box-flex|box-direction|box-align|border-top-colors|border-start-width|border-start-style|border-start-color|border-start|border-right-colors|border-left-colors|border-end-width|border-end-style|border-end-color|border-end|border-bottom-colors|binding|appearance)\b
+
+  property-name-illegal-ms:
+    name: invalid.illegal.css
+    match: -ms-(?:user-select|interpolation-mode|background-position-[xy])\b
+
+  property-name-illegal-webkit:
+    name: invalid.illegal.css
+    match: -webkit-(?:touch-callout|text-stroke-width|text-stroke-color|text-stroke|text-size-adjust|text-security|text-fill-color|text-emphasis-position|text-decorations-in-effect|tap-highlight-color|svg-shadow|shape-outside|shape-inside|rtl-ordering|region-break-inside|region-break-before|region-break-after|print-color-adjust|perspective-origin-y|perspective-origin-x|padding-start|padding-end|padding-before|padding-after|overflow-scrolling|nbsp-mode|min-logical-width|min-logical-height|max-logical-width|max-logical-height|match-nearest-mail-blockquote-color|mask-size|mask-repeat-y|mask-repeat-x|mask-repeat|mask-position-y|mask-position-x|mask-position|mask-origin|mask-image|mask-composite|mask-clip|mask-box-image-width|mask-box-image-source|mask-box-image-slice|mask-box-image-repeat|mask-box-image-outset|mask-box-image|mask-attachment|mask|marquee-style|marquee-speed|marquee-repetition|marquee-increment|marquee-direction|marquee|margin-top-collapse|margin-start|margin-end|margin-collapse|margin-bottom-collapse|margin-before-collapse|margin-before|margin-after-collapse|margin-after|logical-width|logical-height|locale|line-snap|line-grid|line-clamp|line-break|line-box-contain|line-align|hyphenate-limit-lines|hyphenate-limit-before|hyphenate-limit-after|hyphenate-charset|highlight|font-smoothing|filter|dashboard-region|column-break-inside|column-break-before|column-break-after|column-axis|box-shadow|box-reflect|box-pack|box-orient|box-ordinal-groups|box-lines|box-flex-group|box-flex|box-direction|box-align|border-vertical-spacing|border-start-width|border-start-style|border-start-color|border-start|border-horizontal-spacing|border-fit|border-end-width|border-end-style|border-end-color|border-end|border-before-width|border-before-style|border-before-color|border-before|border-after-width|border-after-style|border-after-color|border-after|background-composite|aspect-ratio|appearance)\b
+
+  property-name-legal:
+    name: support.type.property-name.css
+    match: (-webkit-transition-timing-function|-webkit-transition-property|-webkit-transition-duration|-webkit-transition-delay|-webkit-transition|-webkit-transform-style|-webkit-transform-origin|-webkit-transform|-webkit-region-fragment|-webkit-perspective-origin|-webkit-perspective|-webkit-hyphens|-webkit-grid-rows|-webkit-grid-row|-webkit-grid-columns|-webkit-grid-column|-webkit-font-variant-ligatures|-webkit-font-size-delta|-webkit-font-kerning|-webkit-font-feature-settings|-webkit-columns|-webkit-column-width|-webkit-column-span|-webkit-column-rule-width|-webkit-column-rule-style|-webkit-column-rule-color|-webkit-column-rule|-webkit-column-gap|-webkit-column-count|-webkit-border-image|-webkit-backface-visibility|-webkit-animation-timing-function|-webkit-animation-play-state|-webkit-animation-name|-webkit-animation-iteration-count|-webkit-animation-fill-mode|-webkit-animation-duration|-webkit-animation-direction|-webkit-animation-delay|-webkit-animation|-ms-writing-mode|-ms-wrap-through|-ms-wrap-flow|-ms-word-wrap|-ms-text-justify|-ms-text-combine-horizontal|-ms-text-align-last|-ms-overflow-y|-ms-overflow-x|-ms-overflow-style|-ms-hyphens|-ms-grid-rows|-ms-grid-row-span|-ms-grid-row-align|-ms-grid-row|-ms-grid-columns|-ms-grid-column-span|-ms-grid-column-align|-ms-grid-column|-ms-flow-into|-ms-flow-from|-moz-text-decoration-style|-moz-text-decoration-line|-moz-text-decoration-color|-moz-text-align-last|-moz-hyphens|-moz-font-language-override|-moz-font-feature-settings|-moz-column-width|-moz-column-rule-width|-moz-column-rule-style|-moz-column-rule-color|-moz-column-rule|-moz-column-gap|-moz-column-fill|-moz-column-count|-moz-box-sizing)\b|\b(zoom|z-index|writing-mode|wrap-through|wrap-flow|word-wrap|word-spacing|word-break|will-change|width|widows|white-space|voice-volume|voice-stress|voice-rate|voice-range|voice-pitch|voice-family|voice-duration|voice-balance|visibility|vertical-align|user-zoom|unicode-range|unicode-bidi|transition-timing-function|transition-property|transition-duration|transition-delay|transition|transform-style|transform-origin|transform|top|text-underline-position|text-transform|text-shadow|text-overflow|text-orientation|text-justify|text-indent|text-height|text-emphasis-style|text-emphasis-position|text-emphasis-color|text-emphasis|text-decoration-style|text-decoration-skip|text-decoration-line|text-decoration-color|text-decoration|text-combine-upright|text-align-last|text-align|target-position|target-new|target-name|target|table-layout|tab-size|system|symbols|suffix|string-set|src|speak-as|speak|size|shape-outside|shape-margin|shape-image-threshold|running|ruby-position|ruby-merge|ruby-align|rotation-point|rotation|right|rest-before|rest-after|rest|resolution|resize|region-fragment|range|quotes|presentation-level|prefix|position|pointer-events|perspective-origin|perspective|pause-before|pause-after|pause|page-policy|page-break-inside|page-break-before|page-break-after|page|padding-top|padding-right|padding-left|padding-bottom|padding|pad|overflow-y|overflow-x|overflow-wrap|overflow-style|overflow|outline-width|outline-style|outline-offset|outline-color|outline|orphans|orientation|order|opacity|offset-start|offset-end|offset-before|offset-after|object-position|object-fit|negative|nav-up|nav-right|nav-left|nav-index|nav-down|move-to|min-zoom|min-width|min-height|max-zoom|max-width|max-lines|max-height|mask-type|mask-size|mask-repeat|mask-position|mask-origin|mask-mode|mask-image|mask-composite|mask-clip|mask-border-width|mask-border-source|mask-border-slice|mask-border-repeat|mask-border-outset|mask-border|mask|marquee-style|marquee-speed|marquee-play-count|marquee-direction|marks|marker-side|margin-top|margin-right|margin-left|margin-bottom|margin|list-style-type|list-style-position|list-style-image|list-style|line-stacking-strategy|line-stacking-shift|line-stacking-ruby|line-stacking|line-snap|line-slack|line-height|line-grid|line-break|line-box-contain|lighting-color|letter-spacing|left|justify-self|justify-items|justify-content|inline-box-align|initial-letters|indent-edge-reset|ime-mode|image-resolution|image-rendering|image-orientation|icon|hyphens|height|hanging-punctuation|grid-template-rows|grid-template-columns|grid-template-areas|grid-template|grid-row-start|grid-row-end|grid-row|grid-column-start|grid-column-end|grid-column|grid-auto-rows|grid-auto-flow|grid-auto-columns|grid-area|grid|footnote-policy|footnote-display|font-weight|font-variant-position|font-variant-numeric|font-variant-ligatures|font-variant-east-asian|font-variant-caps|font-variant-alternates|font-variant|font-synthesis|font-style|font-stretch|font-size-adjust|font-size|font-language-override|font-kerning|font-feature-settings|font-family|font|flow-into|flow-from|flow|flood-opacity|flood-color|float-wrap|float-offset|float-displace|float-defer-page|float-defer-column|float|flex-wrap|flex-shrink|flex-grow|flex-flow|flex-direction|flex-basis|flex|filter|fallback|empty-cells|dominant-baseline|display-outside|display-inside|display-extras|display-box|display|direction|cursor|cue-before|cue-after|cue|crop|counter-set|counter-reset|counter-increment|corners|corner-shape|content|contain|columns|column-width|column-span|column-rule-width|column-rule-style|column-rule-color|column-rule|column-gap|column-fill|column-count|color-interpolation-filters|color-correction|color|clip-rule|clip-path|clear-side|clear-after|clear|child-align|chains|caption-side|break-inside|break-before|break-after|box-snap|box-sizing|box-shadow|box-decoration-break|bottom|border-width|border-top-width|border-top-style|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-style|border-spacing|border-right-width|border-right-style|border-right-color|border-right|border-radius|border-limit|border-left-width|border-left-style|border-left-color|border-left|border-image-width|border-image-source|border-image-slice|border-image-repeat|border-image-outset|border-image|border-color|border-collapse|border-clip-top|border-clip-right|border-clip-left|border-clip-bottom|border-clip|border-bottom-width|border-bottom-style|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border|bookmark-state|bookmark-level|bookmark-label|bleed|baseline-shift|background-size|background-repeat|background-position|background-origin|background-image|background-color|background-clip|background-attachment|background|backface-visibility|animation-timing-function|animation-play-state|animation-name|animation-iteration-count|animation-fill-mode|animation-duration|animation-direction|animation-delay|animation|anchor-point|all|alignment-baseline|alignment-adjust|alignment|align-self|align-items|align-content|additive-symbols)\b
+
+  selector:
+    # Selectors can start with a lowercase letter, digit (100%), hyphen (-moz-),
+    # colon (:not()), period (.banner), hash (#intro), bracket ([value="1"]),
+    # or the wildcard (*). The W3C is currently deciding whether the parent
+    # selector will be determined by prepending or appending an exclamation mark
+    # (!ol li vs ol! li). The exclamation mark may have to be added later.
+
+    # TODO: are uppercase letters permitted?
+    name: meta.selector.css
+    begin: (?=[\d:.#*\p{Ll}\[-])
+    patterns:
+    - include: '#comment-block'
+    - include: '#selector-combinator'
+    - include: '#selector-element-deprecated'
+    # TODO: #selector-element should be given a low precedence, because it contains an <ident>
+    - include: '#selector-element'
+    end: (?={)
+
+  selector-combinator:
+    name: keyword.operator.selector-combinator.css
+    match: \|\||[+~>]|/-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*/
+
+  selector-element:
+    # The custom element capture group matches a non-uppercase, non-titlecase
+    # letter, optionally followed by letters, digits, combining marks, periods,
+    # underscores, or hyphens.
+    match: ((?:-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*|\*)\s*\|)?\s*(?:(?<![:-])\b(abbr|address|area|article|aside|audio|a|base|bdi|bdo|blockquote|body|br|button|b|canvas|caption|cite|code|colgroup|col|datalist|data|dd|del|details|dfn|dialog|div|dl|dt|embed|em|fieldset|figcaption|figure|footer|form|h[1-6]|header|head|hr|html|iframe|i|img|input|ins|kbd|keygen|label|legend|link|li|main|map|mark|math|menuitem|menu|meta|meter|nav|noscript|object|ol|optgroup|option|output|param|pre|progress|p|q|rb|rp|rtc?|ruby|samp|script|section|select|small|source|span|strong|style|sub|summary|sup|svg|s|table|tbody|td|template|textarea|tfoot|thead|th|time|title|track|tr|ul?|var|video|wbr)\b|([-\p{Ll}\p{Lm}\p{Lo}][-\p{Ll}\p{Lm}\p{Lo}\d._\p{M}]*)|(\*))(?!-)
+    captures:
+      '1': {name: entity.other.namespace.css}
+      '2': {name: entity.name.tag.css}
+      # Capture 3 is the custom element scope, e.g. <polymer-widget>.
+      '3': {name: entity.name.tag.custom.css}
+      '4': {name: entity.name.tag.wildcard.css}
+
+  selector-element-deprecated:
+    name: invalid.deprecated.css
+    match: (?<![-:\[])\b(acronym|applet|basefont|bgsound|big|blink|center|dir|font|frameset|frame|hgroup|isindex|listing|marquee|multicol|nextid|nobr|noembed|noframes|plaintext|spacer|strike|tt|xmp)\b(?!-)
+
+  value:
+    # The Google HTML/CSS Style Guide recommends that no space be permitted
+    # between the property name and the colon, and that every property statement
+    # end with a semicolon. This is enforced by the value rules here.
+    name: meta.value.css
+    begin: ':'
+    beginCaptures:
+      '0': {name: punctuation.terminator.rule.css}
+    patterns:
+    - include: '#comment-block'
+    - include: '#value-important'
+    - include: '#value-align-content'
+    end: ;
+    endCaptures:
+      '0': {name: punctuation.terminator.rule.css}
+
+  value-align-content:
+    match: (?<=align-content:)\s*\b(unset|stretch|space-between|space-around|initial|inherit|flex-start|flex-end|center)\b
+    captures:
+      '1': {name: support.constant.property-value.css}
+      '2': {name: keyword.other.important.css}
+      '3': {name: punctuation.terminator.rule.css}
+
+  value-important:
+    name: keyword.other.important.css
+    match: '!important\b'
+
+# TODO
+#   redesign so that only completions are offered for properties and values
+#   get it working with with just align-content
+#     get completions working
+#   can a selector start with an uppercase letter? custom elements can't
+
+...
