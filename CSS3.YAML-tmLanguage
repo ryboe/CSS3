@@ -27,8 +27,8 @@ repository:
     # grammar, while being much simpler. Simplifying it was important because it
     # appears in so many places in the spec and in this language definition.
     # This rule does not scope escape characters like '\n'. Regexes are not able
-    # to repeatedly capture groups, which makes highlighting escapes very
-    # fragile. For this reason, they've been left out.
+    # to repeatedly capture groups, which makes highlighting escapes fragile.
+    # For this reason, they've been left out.
     name: string.unquoted.identifier.css
     match: -?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*
 
@@ -153,11 +153,13 @@ repository:
     match: '!important\b'
 
 # TODO
-#   test symbol indexing with classes and ids when you add support for those selectors
 #   fill in several more property values in property_values.txt and #value
 #       don't get carried away. work a little on each major component (completions,
 #       language def, selectors, values, indexing) to make sure everything keeps
 #       working
+#   add more selectors
+#   test symbol indexing with classes and ids when you add support for those selectors
+#   edit symbol index pattern for matching classes and ids so it handles identifiers
 #   can a selector start with an uppercase letter? custom elements can't
 
 ...

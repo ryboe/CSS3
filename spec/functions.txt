@@ -1,0 +1,169 @@
+<angle>
+    calc()
+
+<color>
+    hsl()
+    hsla()
+    rgb()
+    rgba()
+
+<frequency>
+    calc()
+
+<image>
+    conic-gradient()
+    cross-fade()
+    element()
+    filter()
+    image()
+    image-set()
+    linear-gradient()
+    radial-gradient()
+    repeating-conic-gradient()
+    repeating-linear-gradient()
+    repeating-radial-gradient()
+    url()
+
+<integer>
+    calc()
+
+<length>
+    calc()
+
+<number>
+    calc()
+
+<time>
+    calc()
+
+<track-size>
+grid-template-columns:
+grid-template-rows:
+    minmax()
+
+<transform-function>
+    matrix()
+    matrix3d()
+    perspective()
+    rotate()
+    rotate3d()
+    rotateX()
+    rotateY()
+    rotateZ()
+    scale()
+    scale3d()
+    scaleX()
+    scaleY()
+    scaleZ()
+    skew()
+    skewX()
+    skewY()
+    translate()
+    translate3d()
+    translateX()
+    translateY()
+    translateZ()
+
+all:
+    attr()
+    toggle()
+    var()
+
+filter:
+    blur()
+    brightness()
+    contrast()
+    drop-shadow()
+    grayscale()
+    hue-rotate()
+    invert()
+    opacity()
+    saturate()
+    sepia()
+    url()
+
+font-variant:,
+font-variant-alternates:
+    annotation()
+    character-variant()
+    ornaments()
+    styleset()
+    stylistic()
+    swash()
+
+shape-outside:
+    circle()
+    ellipse()
+    inset()
+    polygon()
+
+transition-timing-function:
+    cubic-bezier()
+    steps()
+
+annotation(<feature-value-name>)                                        // font-variant: font-variant-alternates:
+attr(attribute-name)                                                    // can be used with any property
+blur(<length>)                                                          // filter: property, no negative lengths, no percentages
+brightness(<number>|<percentage>)                                       // filter: property, no negatives, percentages over 100 ok
+calc()                                                                  // <length>, <frequency>, <angle>, <time>, <number>, or <integer>
+character-variant(<feature-value-name>#)                                // font-variant: font-variant-alternates:
+circle([<shape-radius>]?[at <position>]?)                               // shape-outside:
+conic-gradient([at <position> ,]?<angular-color-stop-list>)             // <image>
+contrast(<number>|<percentage>)                                         // filter: property, no negatives, percentages over 100 ok
+cross-fade([<percentage>?&&<image>][,<image>|<color>]?)                 // <image> 0 to 100%
+cubic-bezier(<number>, <number>, <number>, <number>)                    // transition-timing-function:
+cycle()                                                                 // ???? has this been renamed toggle?
+drop-shadow(<length>{2,3} <color>?)                                     // filter: property
+element(#<id-selector>)                                                 // any that takes an <image>
+ellipse([<shape-radius>{2}]?[at <position>]?)                           // shape-outside:
+filter([ <image> | <string> ], <filter-function-list>)                  // <image>
+grayscale(<number>|<percentage>)                                        // filter: property, no negatives, no percentages over 100
+hsl()                                                                   // <color>
+hsla()                                                                  // <color>
+hue-rotate(<angle>)                                                     // filter: property
+image(<image-tags>? [ <image-src> , ]* [ <image-src> | <color> ])       // <image>
+image-set([ <image-set-decl>, ]* [ <image-set-decl> | <color>])         // <image>
+inset(<shape-arg>{1,4}[round <border-radius>]?)                         // shape-outside:
+invert(<number>|<percentage>)                                           // filter: property
+linear-gradient([[<angle>|to <side-or-corner>],]?<color-stop-list>)     // <image>
+matrix(<number> [, <number> ]{5,5})                                     // transform: <transform-function>
+matrix3d(<number> [, <number> ]{15,15})                                 // transform: <transform-function>
+minmax()                                                                // grid-template-columns: grid-template-rows: <track-size>
+opacity(<number>|<percentage>)                                          // filter: property, no neg
+ornaments(<feature-value-name>)                                         // font-variant: font-variant-alternates:
+perspective(<length>)                                                   // transform: <transform-function>
+polygon([<fill-rule>,]?[<shape-arg> <shape-arg>]#)                      // shape-outside:
+radial-gradient([[<ending-shape>||<size>][at<position>]?,|at <position>,]?<color-stop-list>) // <image>
+repeat()                                                                // ??? only mention is on MDN
+repeating-conic-gradient([at <position> ,]?<angular-color-stop-list>)   // <image>, same vals as conic-gradient()
+repeating-linear-gradient([[<angle>|to <side-or-corner>],]?<color-stop-list>) // <image>, same vals as linear-gradient()
+repeating-radial-gradient([[<ending-shape>||<size>][at<position>]?,|at <position>,]?<color-stop-list>) // <image>, same vals as radial-gradient()
+rgb()                                                                   // <color>
+rgba()                                                                  // <color>
+rotate(<angle>)                                                         // transform: <transform-function>
+rotate3d(<number>, <number>, <number>, <angle>)                         // transform: <transform-function>
+rotateX(<angle>)                                                        // transform: <transform-function>
+rotateY(<angle>)                                                        // transform: <transform-function>
+rotateZ(<angle>)                                                        // transform: <transform-function>
+saturate(<number>|<percentage>)                                         // filter: no neg
+scale(<number> [, <number> ]?)                                          // transform: <transform-function>
+scale3d(<number> , <number>, <number>)                                  // transform: <transform-function>
+scaleX(<number>)                                                        // transform: <transform-function>
+scaleY(<number>)                                                        // transform: <transform-function>
+scaleZ(<number>)                                                        // transform: <transform-function>
+sepia(<number>|<percentage>)                                            // filter: no neg
+skew(<angle> [, <angle> ]?)                                             // transform: <transform-function>
+skewX(<angle>)                                                          // transform: <transform-function>
+skewY(<angle>)                                                          // transform: <transform-function>
+steps(<integer>[,[start|end]]?)                                         // transition-timing-function:
+styleset(<feature-value-name>#)                                         // font-variant: font-variant-alternates:
+stylistic(<feature-value-name>)                                         // font-variant: font-variant-alternates:
+swash(<feature-value-name>)                                             // font-variant: font-variant-alternates:
+toggle()                                                                // all:
+translate(<length> [, <length> ]?)                                      // transform: <transform-function>
+translate3d(<length>, <length>, <length>)                               // transform: <transform-function>
+translateX(<length>)                                                    // transform: <transform-function>
+translateY(<length>)                                                    // transform: <transform-function>
+translateZ(<length>)                                                    // transform: <transform-function>
+url()                                                                   // filter: property, and others
+var(<custom-property-name> [, <any-value> ]?)

@@ -6,8 +6,13 @@
     auto
     <integer>
 -moz-column-fill
+    auto
+    balance
 -moz-column-gap
+    <length>
+    normal
 -moz-column-rule
+
 -moz-column-rule-color
 -moz-column-rule-style
 -moz-column-rule-width
@@ -24,11 +29,7 @@
 -ms-flow-from
 -ms-flow-into
 -ms-grid-column
--ms-grid-column-align
--ms-grid-column-span
 -ms-grid-row
--ms-grid-row-align
--ms-grid-row-span
 -ms-hyphens
 -ms-ime-mode
 -ms-overflow-style
@@ -224,6 +225,18 @@ dominant-baseline
 empty-cells
 fallback
 filter
+    none
+    blur(<length>)
+    brightness(<number>|<percentage>)
+    contrast(<number>|<percentage>)
+    drop-shadow(<length>{2,3} <color>?)
+    grayscale(<number>|<percentage>)
+    hue-rotate(<angle>)
+    invert(<number>|<percentage>)
+    opacity(<number>|<percentage>)
+    saturate(<number>|<percentage>)
+    sepia(<number>|<percentage>)
+    url()
 flex
 flex-basis
 flex-direction
