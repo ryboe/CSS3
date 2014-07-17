@@ -40,6 +40,7 @@
 grid-template-columns:
 grid-template-rows:
     minmax()
+    repeat()
 
 <transform-function>
     matrix()
@@ -134,7 +135,7 @@ ornaments(<feature-value-name>)                                         // font-
 perspective(<length>)                                                   // transform: <transform-function>
 polygon([<fill-rule>,]?[<shape-arg> <shape-arg>]#)                      // shape-outside:
 radial-gradient([[<ending-shape>||<size>][at<position>]?,|at <position>,]?<color-stop-list>) // <image>
-repeat()                                                                // ??? only mention is on MDN
+repeat()                                                                // grid-template-rows: grid-template-columns: <track-list> <line-name-list>
 repeating-conic-gradient([at <position> ,]?<angular-color-stop-list>)   // <image>, same vals as conic-gradient()
 repeating-linear-gradient([[<angle>|to <side-or-corner>],]?<color-stop-list>) // <image>, same vals as linear-gradient()
 repeating-radial-gradient([[<ending-shape>||<size>][at<position>]?,|at <position>,]?<color-stop-list>) // <image>, same vals as radial-gradient()

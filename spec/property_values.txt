@@ -82,7 +82,6 @@
 -webkit-flow-into
 -webkit-font-feature-settings
 -webkit-font-kerning
--webkit-font-size-delta
 -webkit-font-variant-ligatures
 -webkit-grid-column
 -webkit-grid-row
