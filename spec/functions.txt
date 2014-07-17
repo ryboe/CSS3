@@ -70,6 +70,12 @@ all:
     toggle()
     var()
 
+bookmark-label:
+<content-list>
+    counter()
+    counters()
+    content()
+
 filter:
     blur()
     brightness()

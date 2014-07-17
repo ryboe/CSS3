@@ -109,7 +109,6 @@ alignment
 alignment-adjust
 alignment-baseline
 all
-anchor-point
 animation
 animation-delay
 animation-direction
@@ -191,6 +190,7 @@ clip-path
 clip-rule
 color
 color-correction
+color-interpolation
 color-interpolation-filters
 column-count
 column-fill
@@ -202,14 +202,12 @@ column-rule-width
 column-span
 column-width
 columns
-contain
 content
 corner-shape
 corners
 counter-increment
 counter-reset
 counter-set
-crop
 cue
 cue-after
 cue-before
