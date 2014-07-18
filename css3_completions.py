@@ -1,4 +1,3 @@
-from pprint import pprint
 import re
 import sublime
 import sublime_plugin
@@ -30,98 +29,6 @@ class CSS6Completions(sublime_plugin.EventListener):
 
 
 property_names = [
-    ("-moz-box-sizing", "-moz-box-sizing: ${0};"),
-    ("-moz-column-count", "-moz-column-count: ${0};"),
-    ("-moz-column-fill", "-moz-column-fill: ${0};"),
-    ("-moz-column-gap", "-moz-column-gap: ${0};"),
-    ("-moz-column-rule", "-moz-column-rule: ${0};"),
-    ("-moz-column-rule-color", "-moz-column-rule-color: ${0};"),
-    ("-moz-column-rule-style", "-moz-column-rule-style: ${0};"),
-    ("-moz-column-rule-width", "-moz-column-rule-width: ${0};"),
-    ("-moz-column-span", "-moz-column-span: ${0};"),
-    ("-moz-column-width", "-moz-column-width: ${0};"),
-    ("-moz-columns", "-moz-columns: ${0};"),
-    ("-moz-font-feature-settings", "-moz-font-feature-settings: ${0};"),
-    ("-moz-font-language-override", "-moz-font-language-override: ${0};"),
-    ("-moz-hyphens", "-moz-hyphens: ${0};"),
-    ("-moz-text-align-last", "-moz-text-align-last: ${0};"),
-    ("-moz-text-decoration-color", "-moz-text-decoration-color: ${0};"),
-    ("-moz-text-decoration-line", "-moz-text-decoration-line: ${0};"),
-    ("-moz-text-decoration-style", "-moz-text-decoration-style: ${0};"),
-    ("-ms-flow-from", "-ms-flow-from: ${0};"),
-    ("-ms-flow-into", "-ms-flow-into: ${0};"),
-    ("-ms-grid-column", "-ms-grid-column: ${0};"),
-    ("-ms-grid-row", "-ms-grid-row: ${0};"),
-    ("-ms-hyphens", "-ms-hyphens: ${0};"),
-    ("-ms-ime-mode", "-ms-ime-mode: ${0};"),
-    ("-ms-overflow-style", "-ms-overflow-style: ${0};"),
-    ("-ms-overflow-x", "-ms-overflow-x: ${0};"),
-    ("-ms-overflow-y", "-ms-overflow-y: ${0};"),
-    ("-ms-text-align-last", "-ms-text-align-last: ${0};"),
-    ("-ms-text-justify", "-ms-text-justify: ${0};"),
-    ("-ms-transform", "-ms-transform: ${0};"),
-    ("-ms-transform-origin", "-ms-transform-origin: ${0};"),
-    ("-ms-transform-style", "-ms-transform-style: ${0};"),
-    ("-ms-word-wrap", "-ms-word-wrap: ${0};"),
-    ("-ms-wrap-flow", "-ms-wrap-flow: ${0};"),
-    ("-ms-wrap-through", "-ms-wrap-through: ${0};"),
-    ("-ms-writing-mode", "-ms-writing-mode: ${0};"),
-    ("-webkit-align-content", "-webkit-align-content: ${0};"),
-    ("-webkit-align-items", "-webkit-align-items: ${0};"),
-    ("-webkit-align-self", "-webkit-align-self: ${0};"),
-    ("-webkit-animation", "-webkit-animation: ${0};"),
-    ("-webkit-animation-delay", "-webkit-animation-delay: ${0};"),
-    ("-webkit-animation-direction", "-webkit-animation-direction: ${0};"),
-    ("-webkit-animation-duration", "-webkit-animation-duration: ${0};"),
-    ("-webkit-animation-fill-mode", "-webkit-animation-fill-mode: ${0};"),
-    ("-webkit-animation-iteration-count", "-webkit-animation-iteration-count: ${0};"),
-    ("-webkit-animation-name", "-webkit-animation-name: ${0};"),
-    ("-webkit-animation-play-state", "-webkit-animation-play-state: ${0};"),
-    ("-webkit-animation-timing-function", "-webkit-animation-timing-function: ${0};"),
-    ("-webkit-backface-visibility", "-webkit-backface-visibility: ${0};"),
-    ("-webkit-border-image", "-webkit-border-image: ${0};"),
-    ("-webkit-break-after", "-webkit-break-after: ${0};"),
-    ("-webkit-break-before", "-webkit-break-before: ${0};"),
-    ("-webkit-break-inside", "-webkit-break-inside: ${0};"),
-    ("-webkit-column-count", "-webkit-column-count: ${0};"),
-    ("-webkit-column-fill", "-webkit-column-fill: ${0};"),
-    ("-webkit-column-gap", "-webkit-column-gap: ${0};"),
-    ("-webkit-column-rule", "-webkit-column-rule: ${0};"),
-    ("-webkit-column-rule-color", "-webkit-column-rule-color: ${0};"),
-    ("-webkit-column-rule-style", "-webkit-column-rule-style: ${0};"),
-    ("-webkit-column-rule-width", "-webkit-column-rule-width: ${0};"),
-    ("-webkit-column-span", "-webkit-column-span: ${0};"),
-    ("-webkit-column-width", "-webkit-column-width: ${0};"),
-    ("-webkit-columns", "-webkit-columns: ${0};"),
-    ("-webkit-flex", "-webkit-flex: ${0};"),
-    ("-webkit-flex-basis", "-webkit-flex-basis: ${0};"),
-    ("-webkit-flex-direction", "-webkit-flex-direction: ${0};"),
-    ("-webkit-flex-flow", "-webkit-flex-flow: ${0};"),
-    ("-webkit-flex-grow", "-webkit-flex-grow: ${0};"),
-    ("-webkit-flex-shrink", "-webkit-flex-shrink: ${0};"),
-    ("-webkit-flex-wrap", "-webkit-flex-wrap: ${0};"),
-    ("-webkit-flow-from", "-webkit-flow-from: ${0};"),
-    ("-webkit-flow-into", "-webkit-flow-into: ${0};"),
-    ("-webkit-font-feature-settings", "-webkit-font-feature-settings: ${0};"),
-    ("-webkit-font-kerning", "-webkit-font-kerning: ${0};"),
-    ("-webkit-font-size-delta", "-webkit-font-size-delta: ${0};"),
-    ("-webkit-font-variant-ligatures", "-webkit-font-variant-ligatures: ${0};"),
-    ("-webkit-grid-column", "-webkit-grid-column: ${0};"),
-    ("-webkit-grid-row", "-webkit-grid-row: ${0};"),
-    ("-webkit-hyphens", "-webkit-hyphens: ${0};"),
-    ("-webkit-justify-content", "-webkit-justify-content: ${0};"),
-    ("-webkit-order", "-webkit-order: ${0};"),
-    ("-webkit-perspective", "-webkit-perspective: ${0};"),
-    ("-webkit-perspective-origin", "-webkit-perspective-origin: ${0};"),
-    ("-webkit-region-fragment", "-webkit-region-fragment: ${0};"),
-    ("-webkit-transform", "-webkit-transform: ${0};"),
-    ("-webkit-transform-origin", "-webkit-transform-origin: ${0};"),
-    ("-webkit-transform-style", "-webkit-transform-style: ${0};"),
-    ("-webkit-transition", "-webkit-transition: ${0};"),
-    ("-webkit-transition-delay", "-webkit-transition-delay: ${0};"),
-    ("-webkit-transition-duration", "-webkit-transition-duration: ${0};"),
-    ("-webkit-transition-property", "-webkit-transition-property: ${0};"),
-    ("-webkit-transition-timing-function", "-webkit-transition-timing-function: ${0};"),
     ("additive-symbols", "additive-symbols: ${0};"),
     ("align-content", "align-content: ${0};"),
     ("align-items", "align-items: ${0};"),
@@ -130,7 +37,6 @@ property_names = [
     ("alignment-adjust", "alignment-adjust: ${0};"),
     ("alignment-baseline", "alignment-baseline: ${0};"),
     ("all", "all: ${0};"),
-    ("anchor-point", "anchor-point: ${0};"),
     ("animation", "animation: ${0};"),
     ("animation-delay", "animation-delay: ${0};"),
     ("animation-direction", "animation-direction: ${0};"),
@@ -212,6 +118,7 @@ property_names = [
     ("clip-rule", "clip-rule: ${0};"),
     ("color", "color: ${0};"),
     ("color-correction", "color-correction: ${0};"),
+    ("color-interpolation", "color-interpolation: ${0};"),
     ("color-interpolation-filters", "color-interpolation-filters: ${0};"),
     ("column-count", "column-count: ${0};"),
     ("column-fill", "column-fill: ${0};"),
@@ -230,7 +137,6 @@ property_names = [
     ("counter-increment", "counter-increment: ${0};"),
     ("counter-reset", "counter-reset: ${0};"),
     ("counter-set", "counter-set: ${0};"),
-    ("crop", "crop: ${0};"),
     ("cue", "cue: ${0};"),
     ("cue-after", "cue-after: ${0};"),
     ("cue-before", "cue-before: ${0};"),
@@ -495,20 +401,172 @@ property_names = [
     ("wrap-through", "wrap-through: ${0};"),
     ("writing-mode", "writing-mode: ${0};"),
     ("z-index", "z-index: ${0};"),
-    ("zoom", "zoom: ${0}; ")
+    ("zoom", "zoom: ${0}; "),
+    ("-moz-box-sizing", "-moz-box-sizing: ${0};"),
+    ("-moz-column-count", "-moz-column-count: ${0};"),
+    ("-moz-column-fill", "-moz-column-fill: ${0};"),
+    ("-moz-column-gap", "-moz-column-gap: ${0};"),
+    ("-moz-column-rule", "-moz-column-rule: ${0};"),
+    ("-moz-column-rule-color", "-moz-column-rule-color: ${0};"),
+    ("-moz-column-rule-style", "-moz-column-rule-style: ${0};"),
+    ("-moz-column-rule-width", "-moz-column-rule-width: ${0};"),
+    ("-moz-column-span", "-moz-column-span: ${0};"),
+    ("-moz-column-width", "-moz-column-width: ${0};"),
+    ("-moz-columns", "-moz-columns: ${0};"),
+    ("-moz-font-feature-settings", "-moz-font-feature-settings: ${0};"),
+    ("-moz-font-language-override", "-moz-font-language-override: ${0};"),
+    ("-moz-hyphens", "-moz-hyphens: ${0};"),
+    ("-moz-text-align-last", "-moz-text-align-last: ${0};"),
+    ("-moz-text-decoration-color", "-moz-text-decoration-color: ${0};"),
+    ("-moz-text-decoration-line", "-moz-text-decoration-line: ${0};"),
+    ("-moz-text-decoration-style", "-moz-text-decoration-style: ${0};"),
+    ("-ms-flow-from", "-ms-flow-from: ${0};"),
+    ("-ms-flow-into", "-ms-flow-into: ${0};"),
+    ("-ms-grid-column", "-ms-grid-column: ${0};"),
+    ("-ms-grid-row", "-ms-grid-row: ${0};"),
+    ("-ms-hyphens", "-ms-hyphens: ${0};"),
+    ("-ms-ime-mode", "-ms-ime-mode: ${0};"),
+    ("-ms-overflow-style", "-ms-overflow-style: ${0};"),
+    ("-ms-overflow-x", "-ms-overflow-x: ${0};"),
+    ("-ms-overflow-y", "-ms-overflow-y: ${0};"),
+    ("-ms-text-align-last", "-ms-text-align-last: ${0};"),
+    ("-ms-text-justify", "-ms-text-justify: ${0};"),
+    ("-ms-transform", "-ms-transform: ${0};"),
+    ("-ms-transform-origin", "-ms-transform-origin: ${0};"),
+    ("-ms-transform-style", "-ms-transform-style: ${0};"),
+    ("-ms-word-wrap", "-ms-word-wrap: ${0};"),
+    ("-ms-wrap-flow", "-ms-wrap-flow: ${0};"),
+    ("-ms-wrap-through", "-ms-wrap-through: ${0};"),
+    ("-ms-writing-mode", "-ms-writing-mode: ${0};"),
+    ("-webkit-align-content", "-webkit-align-content: ${0};"),
+    ("-webkit-align-items", "-webkit-align-items: ${0};"),
+    ("-webkit-align-self", "-webkit-align-self: ${0};"),
+    ("-webkit-animation", "-webkit-animation: ${0};"),
+    ("-webkit-animation-delay", "-webkit-animation-delay: ${0};"),
+    ("-webkit-animation-direction", "-webkit-animation-direction: ${0};"),
+    ("-webkit-animation-duration", "-webkit-animation-duration: ${0};"),
+    ("-webkit-animation-fill-mode", "-webkit-animation-fill-mode: ${0};"),
+    ("-webkit-animation-iteration-count", "-webkit-animation-iteration-count: ${0};"),
+    ("-webkit-animation-name", "-webkit-animation-name: ${0};"),
+    ("-webkit-animation-play-state", "-webkit-animation-play-state: ${0};"),
+    ("-webkit-animation-timing-function", "-webkit-animation-timing-function: ${0};"),
+    ("-webkit-backface-visibility", "-webkit-backface-visibility: ${0};"),
+    ("-webkit-border-image", "-webkit-border-image: ${0};"),
+    ("-webkit-break-after", "-webkit-break-after: ${0};"),
+    ("-webkit-break-before", "-webkit-break-before: ${0};"),
+    ("-webkit-break-inside", "-webkit-break-inside: ${0};"),
+    ("-webkit-column-count", "-webkit-column-count: ${0};"),
+    ("-webkit-column-fill", "-webkit-column-fill: ${0};"),
+    ("-webkit-column-gap", "-webkit-column-gap: ${0};"),
+    ("-webkit-column-rule", "-webkit-column-rule: ${0};"),
+    ("-webkit-column-rule-color", "-webkit-column-rule-color: ${0};"),
+    ("-webkit-column-rule-style", "-webkit-column-rule-style: ${0};"),
+    ("-webkit-column-rule-width", "-webkit-column-rule-width: ${0};"),
+    ("-webkit-column-span", "-webkit-column-span: ${0};"),
+    ("-webkit-column-width", "-webkit-column-width: ${0};"),
+    ("-webkit-columns", "-webkit-columns: ${0};"),
+    ("-webkit-flex", "-webkit-flex: ${0};"),
+    ("-webkit-flex-basis", "-webkit-flex-basis: ${0};"),
+    ("-webkit-flex-direction", "-webkit-flex-direction: ${0};"),
+    ("-webkit-flex-flow", "-webkit-flex-flow: ${0};"),
+    ("-webkit-flex-grow", "-webkit-flex-grow: ${0};"),
+    ("-webkit-flex-shrink", "-webkit-flex-shrink: ${0};"),
+    ("-webkit-flex-wrap", "-webkit-flex-wrap: ${0};"),
+    ("-webkit-flow-from", "-webkit-flow-from: ${0};"),
+    ("-webkit-flow-into", "-webkit-flow-into: ${0};"),
+    ("-webkit-font-feature-settings", "-webkit-font-feature-settings: ${0};"),
+    ("-webkit-font-kerning", "-webkit-font-kerning: ${0};"),
+    ("-webkit-font-variant-ligatures", "-webkit-font-variant-ligatures: ${0};"),
+    ("-webkit-grid-column", "-webkit-grid-column: ${0};"),
+    ("-webkit-grid-row", "-webkit-grid-row: ${0};"),
+    ("-webkit-hyphens", "-webkit-hyphens: ${0};"),
+    ("-webkit-justify-content", "-webkit-justify-content: ${0};"),
+    ("-webkit-order", "-webkit-order: ${0};"),
+    ("-webkit-perspective", "-webkit-perspective: ${0};"),
+    ("-webkit-perspective-origin", "-webkit-perspective-origin: ${0};"),
+    ("-webkit-region-fragment", "-webkit-region-fragment: ${0};"),
+    ("-webkit-transform", "-webkit-transform: ${0};"),
+    ("-webkit-transform-origin", "-webkit-transform-origin: ${0};"),
+    ("-webkit-transform-style", "-webkit-transform-style: ${0};"),
+    ("-webkit-transition", "-webkit-transition: ${0};"),
+    ("-webkit-transition-delay", "-webkit-transition-delay: ${0};"),
+    ("-webkit-transition-duration", "-webkit-transition-duration: ${0};"),
+    ("-webkit-transition-property", "-webkit-transition-property: ${0};"),
+    ("-webkit-transition-timing-function", "-webkit-transition-timing-function: ${0};")
 ]
 
-
-all_values = [
-    ("inherit",),
-    ("initial",),
-    ("unset",),
-    ("attr()", "attr(${1:attribute-name})"),
-    ("toggle()", "toggle(${1})"),
-    ("var()", "var(--${1:custom-name}, ${2:value})")
-]
-box_sizing = [("border-box",), ("content-box",), ("padding-box",)]
+auto = ("auto",)
 calc = ("calc()", "calc(${1:expression})")
+content = ("content()", "content(${1})")
+counter = ("counter()", "counter(${1:<identifier>}${2:, ${3:<list-style-type>}})")
+counters = ("counters()", "counters(${1:<identifier>}, \"${2:<string>}\"${3:, ${4:<list-style-type>}})")
+decibel = ("<decibel>", "${1:0}dB")
+flex = ("<flex>", "${1:0}fr")
+ident = ("<ident>", "${1:<ident>}")
+integer = ("<integer>", "${1:<integer>}")
+length = ("<length>", "${1:<length>}")
+matrix = ("matrix()", "matrix(${1:0}, ${2:0}, ${3:0}, ${4:0}, ${5:0}, ${6:0})")
+matrix3d = ("matrix3d()", "matrix3d(${1:0}, ${2:0}, ${3:0}, ${4:0}, ${5:0}, ${6:0}, ${7:0}, ${8:0}, ${9:0}, ${10:0}, ${11:0}, ${12:0}, ${13:0}, ${14:0}, ${15:0}, ${16:0})")
+minmax = ("minmax()", "minmax(${1:<track-breadth>}, ${2:<track-breadth>})")
+none = ("none",)
+number = ("<number>", "${1:<number>}")
+percentage = ("<percentage>", "${1:0}%")
+perspective = ("perspective()", "perspective(${1:<length>})")
+repeat = ("repeat()", "repeat(${1})")
+rotate = ("rotate()", "rotate(${1:<angle>})")
+rotate3d = ("rotate3d()", "rotate3d(${1:0}, ${2:0}, ${3:0}, ${4:<angle>})")
+rotateX = ("rotateX()", "rotateX(${1:<angle>})")
+rotateY = ("rotateY()", "rotateY(${1:<angle>})")
+rotateZ = ("rotateZ()", "rotateZ(${1:<angle>})")
+scale = ("scale()", "scale(${1:0}${2:, ${3:0}})")
+scale3d = ("scale3d()", "scale3d(${1:0}, ${2:0}, ${3:0})")
+scaleX = ("scaleX()", "scaleX(${1:0})")
+scaleY = ("scaleY()", "scaleY(${1:0})")
+scaleZ = ("scaleZ()", "scaleZ(${1:0})")
+skew = ("skew()", "skew(${1:<angle>}${2:, ${3:<angle>}})")
+skewX = ("skewX()", "skewX(${1:<angle>})")
+skewY = ("skewY()", "skewY(${1:<angle>})")
+string = ("<string>", "\"${1}\"")
+time = ("<time>", "${1:<time>}")
+url = ("url()", "url(${1})")
+align_content = [("center",), ("flex-end",), ("flex-start",), ("space-around",), ("space-between",), ("stretch",)]
+align_items = [("baseline",), ("center",), ("flex-end",), ("flex-start",), ("stretch",)]
+align_self = [auto, ("baseline",), ("center",), ("flex-end",), ("flex-start",), ("stretch",)]
+all_values = [("inherit",), ("initial",), ("unset",), ("attr()", "attr(${1:attribute-name})"), ("toggle()", "toggle(${1})"), ("var()", "var(--${1:custom-name}, ${2:value})") ]
+single_transition_timing_function = [
+    ("cubic-bezier()", "cubic-bezier(${1:0}, ${2:0}, ${3:0}, ${4:0})"),
+    ("ease",),
+    ("ease-in",),
+    ("ease-in-out",),
+    ("ease-out",),
+    ("linear",),
+    ("step-end",),
+    ("step-start",),
+    ("steps()", "steps(${1})")
+]
+animation_direction = [("alternate",), ("alternate-reverse",), ("normal",), ("reverse",)]
+animation_fill_mode = [("backwards",), ("both",), ("forwards",), none]
+animation_delay = [calc, time]
+animation_duration = animation_delay
+animation_iteration_count = [calc, ("infinite",), number]
+animation_name = [ident, none]
+animation_play_state = [("paused",), ("running",)]
+animation = sorted([time, calc] + animation_direction + animation_fill_mode + animation_iteration_count + [ident] + animation_play_state + single_transition_timing_function)
+backface_visibility = [("hidden",), ("visible",)]
+image = [
+    ("conic-gradient()", "conic-gradient(${1})"),
+    ("cross-fade()", "cross-fade(${1})"),
+    ("element()", "element(#${1})"),
+    ("filter()", "filter(${1})"),
+    ("image()", "image(${1})"),
+    ("image-set()", "image-set(${1})"),
+    ("linear-gradient()", "linear-gradient(${1})"),
+    ("radial-gradient()", "radial-gradient(${1})"),
+    ("repeating-conic-gradient()", "repeating-conic-gradient(${1})"),
+    ("repeating-linear-gradient()", "repeating-linear-gradient(${1})"),
+    ("repeating-radial-gradient()", "repeating-radial-gradient(${1})"),
+    url
+]
 color = [
     ("aliceblue",),
     ("antiquewhite",),
@@ -570,8 +628,8 @@ color = [
     ("grey",),
     ("honeydew",),
     ("hotpink",),
-    ("hsl()", "hsl(${1:0}, ${2:0}, ${3:0})"),
-    ("hsla()", "hsl(${1:0}, ${2:0}, ${3:0}, ${4:0.0})"),
+    ("hsl()", "hsl(${1:0}, ${2:0}%, ${3:0}%)"),
+    ("hsla()", "hsla(${1:0}, ${2:0}%, ${3:0}%, ${4:0.0})"),
     ("indianred",),
     ("indigo",),
     ("ivory",),
@@ -635,7 +693,7 @@ color = [
     ("rebeccapurple",),
     ("red",),
     ("rgb()", "rgb(${1:0}, ${2:0}, ${3:0})"),
-    ("rgba()", "rgb(${1:0}, ${2:0}, ${3:0}, ${4:0.0})"),
+    ("rgba()", "rgba(${1:0}, ${2:0}, ${3:0}, ${4:0.0})"),
     ("rosybrown",),
     ("royalblue",),
     ("saddlebrown",),
@@ -665,62 +723,92 @@ color = [
     ("yellow",),
     ("yellowgreen",),
 ]
-columns = [("auto",), calc, integer, length, ("medium",), ("thick",), ("thin",)]
-column_count = [("auto",), calc, integer]
-column_fill = [("auto",), ("balance",)]
+counter_set = [calc, ident, integer, none]
+cue = [decibel, none, url]
+line_style = [("dashed",), ("dotted",), ("double",), ("groove",), ("hidden",), ("inset",), none, ("outset",), ("ridge",), ("solid",),]
+line_width = [calc, length, ("medium",), ("thick",), ("thin", )]
+background_attachment = [("fixed",), ("local",), ("scroll",)]
+background_clip = [("border-box",), ("content-box",), ("padding-box",)]
+background_image = sorted([none] + image)
+background_repeat = [("no-repeat",), ("repeat",), ("repeat-x",), ("repeat-y",), ("round",), ("space",)]
+background_size = [auto, ("contain",), ("cover",), length, percentage]
+border = sorted(color + line_style + line_width)
+border_clip = [calc, ("<fraction>", "${1:1}/${2:1}"), length, ("normal",), percentage]
+border_image_outset = [calc, length, number]
+border_image_repeat = [("repeat",), ("round",), ("space",), ("stretch",)]
+border_image_slice = [calc, ("fill",), number, percentage]
+border_image_source = sorted([none] + image)
+border_image_width = [auto, calc, length, number, percentage]
+border_image = sorted([auto, calc, length, none, number, percentage] + border_image_repeat + image)
+border_radius = [calc, length, percentage]
+box_offset = [auto, length, percentage]
+box_sizing = [("border-box",), ("content-box",), ("padding-box",)]
+break_after = [("always",), ("any",), auto, ("avoid",), ("avoid-column",), ("avoid-page",), ("avoid-region",), ("column",), ("left",), ("page",), ("recto",), ("region",), ("right",), ("verso",)]
+break_before = break_after
+break_inside = [auto, ("avoid",), ("avoid-column",), ("avoid-page",), ("avoid-region",)]
+color_interpolation = [auto, ("linearRGB",), ("sRGB",)]
+columns = [auto, calc, integer, length, ("medium",), ("thick",), ("thin",)]
+column_count = [auto, calc, integer]
+column_fill = [auto, ("balance",)]
 column_gap = [calc, length, ("normal",)]
 # Sorting is necessary because the list of colors is mixed in.
-column_rule = list(sorted([calc, length, ("dashed",), ("dotted",), ("double",), ("groove",), ("hidden",), ("inset",), ("medium",), ("none",), ("outset",), ("ridge",), ("solid",), ("thick",), ("thin",)] + color))
-column_rule_style = [("dashed",), ("dotted",), ("double",), ("groove",), ("hidden",), ("inset",), ("none",), ("outset",), ("ridge",), ("solid",)]
+column_rule = sorted([calc, length, ("dashed",), ("dotted",), ("double",), ("groove",), ("hidden",), ("inset",), ("medium",), none, ("outset",), ("ridge",), ("solid",), ("thick",), ("thin",)] + color)
+column_rule_style = [("dashed",), ("dotted",), ("double",), ("groove",), ("hidden",), ("inset",), none, ("outset",), ("ridge",), ("solid",)]
 column_rule_width = [calc, length, ("medium",), ("thick",), ("thin",)]
-column_span = [("all",), ("none",)]
-column_width = [("auto",), calc, length]
-flow_from = [("content",), ("element",), ("<ident>",), ("none",)]
-flow_into = [("<ident>",), ("none",)]
-font_feature_settings = [calc, ("<integer>",), ("off",), ("on",), ("normal",), ("<string>", '"${1:aaaa}"')]
+column_span = [("all",), none]
+column_width = [auto, calc, length]
+corner_shape = [("bevel",), ("notch",), ("round",), ("scoop",)]
+flex_basis = [auto, calc, length, ("main-size",), percentage]
+flex_property = sorted([calc, none, number] + flex_basis)
+flex_direction = [("column",), ("column-reverse",), ("row",), ("row-reverse",)]
+flex_wrap = [("nowrap",), ("wrap",), ("wrap-reverse",)]
+flex_flow = sorted(flex_direction + flex_wrap)
+flex_grow = [calc, number]
+flex_shrink = flex_grow
+flow_from = [("content",), ("element",), ident, none]
+flow_into = [ident, none]
+font_feature_settings = [calc, integer, ("off",), ("on",), ("normal",), ("<string>", '"${1:aaaa}"')]
+font_kerning = [auto, none, ("normal",)]
 font_language_override = [("normal",), ("<string>", '"${1:aaa}"')]
-grid_column = grid_row = [("auto",), ident, integer, ("span",)]
-hyphens = [("auto",), ("manual",), ("none",)]
-ime_mode = [("active",), ("auto",), ("disabled",), ("inactive",), ("inherit",), ("normal",)]
-integer = ("<integer>", "${1:<integer>}")
-ident = ("<ident>", "${1:<ident>}")
-length = ("<length>", "${1:<length>}")
-matrix      = ("matrix()", "matrix(${1:0}, ${2:0}, ${3:0}, ${4:0}, ${5:0}, ${6:0})")
-matrix3d    = ("matrix3d()", "matrix3d(${1:0}, ${2:0}, ${3:0}, ${4:0}, ${5:0}, ${6:0}, ${7:0}, ${8:0}, ${9:0}, ${10:0}, ${11:0}, ${12:0}, ${13:0}, ${14:0}, ${15:0}, ${16:0})")
-overflow_style = [("auto",), ("marquee-block",), ("marquee-line",)]
-overflow_x = overflow_y = [("auto",), ("fragments",), ("hidden",), ("paged-x",), ("paged-x-controls",), ("paged-y",), ("paged-y-controls",), ("scroll",), ("visible",)]
-percentage = ("<percentage>", "${1:0}%")
-perspective = ("perspective()", "perspective(${1:<length>})")
-rotate      = ("rotate()", "rotate(${1:<angle>})")
-rotate3d    = ("rotate3d()", "rotate3d(${1:0}, ${2:0}, ${3:0}, ${4:<angle>})")
-rotateX     = ("rotateX()", "rotateX(${1:<angle>})")
-rotateY     = ("rotateY()", "rotateY(${1:<angle>})")
-rotateZ     = ("rotateZ()", "rotateZ(${1:<angle>})")
-scale       = ("scale()", "scale(${1:0}${2:, ${3:0}})")
-scale3d     = ("scale3d()", "scale3d(${1:0}, ${2:0}, ${3:0})")
-scaleX      = ("scaleX()", "scaleX(${1:0})")
-scaleY      = ("scaleY()", "scaleY(${1:0})")
-scaleZ      = ("scaleZ()", "scaleZ(${1:0})")
-skew        = ("skew()", "skew(${1:<angle>}${2:, ${3:<angle>}})")
-skewX       = ("skewX()", "skewX(${1:<angle>})")
-skewY       = ("skewY()", "skewY(${1:<angle>})")
-text_align_last = [("auto",), ("center",), ("end",), ("justify",), ("left",), ("right",), ("start",)]
-text_justify = [("auto",), ("distribute",), ("inter-word",), ("none",)]
-text_decoration_line = [("line-through blink",), ("none",), ("overline",), ("underline",)]
+font_variant_ligatures = [("common-ligatures",), ("contextual",), ("discretionary-ligatures",), ("historical-ligatures",), ("no-common-ligatures",), ("no-contextual",), ("no-discretionary-ligatures",), ("no-historical-ligatures",), none, ("normal",)]
+grid_column = [auto, calc, ident, integer, ("span",)]
+grid_row = grid_column
+subgrid = ("subgrid", "subgrid ${1:<line-name-list>}")
+grid_template_columns = [auto, calc, flex, ident, length, ("max-content",), ("min-content",), minmax, percentage, subgrid]
+grid_template_rows = grid_template_columns
+hyphens = [auto, ("manual",), none]
+ime_mode = [("active",), auto, ("disabled",), ("inactive",), ("inherit",), ("normal",)]
+justify_content = [("center",), ("flex-end",), ("flex-start",), ("space-around",), ("space-between",)]
+line_stacking_ruby = [("exclude-ruby",), ("include-ruby",)]
+line_stacking_shift = [("consider-shifts",), ("disregard-shifts",)]
+line_stacking_strategy = [("block-line-height",), ("grid-height",), ("inline-line-height",), ("max-height",)]
+order = [calc, integer]
+overflow_style = [auto, ("marquee-block",), ("marquee-line",)]
+overflow_x = [auto, ("fragments",), ("hidden",), ("paged-x",), ("paged-x-controls",), ("paged-y",), ("paged-y-controls",), ("scroll",), ("visible",)]
+overflow_y = overflow_x
+perspective_property = [calc, length, none]
+position = [("bottom",), calc, ("center",), ("left",), length, percentage, ("right",), ("top",)]
+perspective_origin = position
+region_fragment = [auto, ("break",)]
+shadow = sorted([calc, ("inset",), length] + color)
+text_align_last = [auto, ("center",), ("end",), ("justify",), ("left",), ("right",), ("start",)]
+text_justify = [auto, ("distribute",), ("inter-word",), none]
+text_decoration_line = [("line-through blink",), none, ("overline",), ("underline",)]
 text_decoration_style = [("dashed",), ("dotted",), ("double",), ("solid",), ("wavy",)]
-transform = [matrix, matrix3d, perspective, rotate, rotate3d, rotateX, rotateY, rotateZ, scale, scale3d, scaleX, scaleY, scaleZ, skew, skewX, skewY, translate, translate3d, translateX, translateY, translateZ]
-transform_origin = [("bottom",), ("center",), ("left",), length, percentage, ("right",), ("top",)]
-transform_style = [("flat",), ("preserve-3d",)]
 translate   = ("translate()", "translate(${1:<length>}${2:, ${3:<length>}})")
 translate3d = ("translate3d()", "translate3d(${1:<length>}, ${2:<length>}, ${3:<length>})")
 translateX  = ("translateX()", "translateX(${1:<length>})")
 translateY  = ("translateY()", "translateY(${1:<length>})")
 translateZ  = ("translateZ()", "translateX(${1:<length>})")
+transform = [matrix, matrix3d, perspective, rotate, rotate3d, rotateX, rotateY, rotateZ, scale, scale3d, scaleX, scaleY, scaleZ, skew, skewX, skewY, translate, translate3d, translateX, translateY, translateZ]
+transform_origin = perspective_origin
+transform_style = [("flat",), ("preserve-3d",)]
+transition_property = [("all",), ident, none]
+transition = sorted(animation_delay + single_transition_timing_function + transition_property)
 word_wrap = [("break-word",), ("normal",)]
-wrap_flow = [("auto",), ("both",), ("clear",), ("end",), ("maximum",), ("minimum",), ("start",)]
-wrap_through = [("none",), ("wrap",)]
+wrap_flow = [auto, ("both",), ("clear",), ("end",), ("maximum",), ("minimum",), ("start",)]
+wrap_through = [none, ("wrap",)]
 writing_mode = [("horizontal-tb",), ("vertical-lr",), ("vertical-rl",)]
-
 
 
 property_values = {
@@ -760,23 +848,23 @@ property_values = {
     "-ms-wrap-flow": wrap_flow,
     "-ms-wrap-through": wrap_through,
     "-ms-writing-mode": writing_mode,
-    "-webkit-align-content": [],
-    "-webkit-align-items": [],
-    "-webkit-align-self": [],
-    "-webkit-animation": [],
-    "-webkit-animation-delay": [],
-    "-webkit-animation-direction": [],
-    "-webkit-animation-duration": [],
-    "-webkit-animation-fill-mode": [],
-    "-webkit-animation-iteration-count": [],
-    "-webkit-animation-name": [],
-    "-webkit-animation-play-state": [],
-    "-webkit-animation-timing-function": [],
-    "-webkit-backface-visibility": [],
-    "-webkit-border-image": [],
-    "-webkit-break-after": [],
-    "-webkit-break-before": [],
-    "-webkit-break-inside": [],
+    "-webkit-align-content": align_content,
+    "-webkit-align-items": align_items,
+    "-webkit-align-self": align_self,
+    "-webkit-animation": animation,
+    "-webkit-animation-delay": animation_delay,
+    "-webkit-animation-direction": animation_direction,
+    "-webkit-animation-duration": animation_duration,
+    "-webkit-animation-fill-mode": animation_fill_mode,
+    "-webkit-animation-iteration-count": animation_iteration_count,
+    "-webkit-animation-name": animation_name,
+    "-webkit-animation-play-state": animation_play_state,
+    "-webkit-animation-timing-function": single_transition_timing_function,
+    "-webkit-backface-visibility": backface_visibility,
+    "-webkit-border-image": border_image,
+    "-webkit-break-after": break_after,
+    "-webkit-break-before": break_before,
+    "-webkit-break-inside": break_inside,
     "-webkit-column-count": column_count,
     "-webkit-column-fill": column_fill,
     "-webkit-column-gap": column_gap,
@@ -787,126 +875,125 @@ property_values = {
     "-webkit-column-span": column_span,
     "-webkit-column-width": column_width,
     "-webkit-columns": columns,
-    "-webkit-flex": [],
-    "-webkit-flex-basis": [],
-    "-webkit-flex-direction": [],
-    "-webkit-flex-flow": [],
-    "-webkit-flex-grow": [],
-    "-webkit-flex-shrink": [],
-    "-webkit-flex-wrap": [],
+    "-webkit-flex": flex_property,
+    "-webkit-flex-basis": flex_basis,
+    "-webkit-flex-direction": flex_direction,
+    "-webkit-flex-flow": flex_flow,
+    "-webkit-flex-grow": flex_grow,
+    "-webkit-flex-shrink": flex_shrink,
+    "-webkit-flex-wrap": flex_wrap,
     "-webkit-flow-from": flow_from,
     "-webkit-flow-into": flow_into,
     "-webkit-font-feature-settings": font_feature_settings,
-    "-webkit-font-kerning": [],
-    "-webkit-font-size-delta": [],
-    "-webkit-font-variant-ligatures": [],
-    "-webkit-grid-column": [],
-    "-webkit-grid-row": [],
+    "-webkit-font-kerning": font_kerning,
+    "-webkit-font-variant-ligatures": font_variant_ligatures,
+    "-webkit-grid-column": grid_column,
+    "-webkit-grid-row": grid_row,
     "-webkit-hyphens": hyphens,
-    "-webkit-justify-content": [],
-    "-webkit-order": [],
-    "-webkit-perspective": [],
-    "-webkit-perspective-origin": [],
-    "-webkit-region-fragment": [],
+    "-webkit-justify-content": justify_content,
+    "-webkit-order": order,
+    "-webkit-perspective": perspective_property,
+    "-webkit-perspective-origin": perspective_origin,
+    "-webkit-region-fragment": region_fragment,
     "-webkit-transform": transform,
     "-webkit-transform-origin": transform_origin,
     "-webkit-transform-style": transform_style,
-    "-webkit-transition": [],
-    "-webkit-transition-delay": [],
-    "-webkit-transition-duration": [],
-    "-webkit-transition-property": [],
-    "-webkit-transition-timing-function": [],
-    "additive-symbols": [],
-    "align-content": [],
-    "align-items": [],
-    "align-self": [],
-    "alignment": [],
-    "alignment-adjust": [],
-    "alignment-baseline": [],
-    "all": [],
-    "anchor-point": [],
-    "animation": [],
-    "animation-delay": [],
-    "animation-direction": [],
-    "animation-duration": [],
-    "animation-fill-mode": [],
-    "animation-iteration-count": [],
-    "animation-name": [],
-    "animation-play-state": [],
-    "animation-timing-function": [],
-    "backface-visibility": [],
-    "background": [],
-    "background-attachment": [],
-    "background-clip": [],
-    "background-color": [],
-    "background-image": [],
-    "background-origin": [],
-    "background-position": [],
-    "background-repeat": [],
-    "background-size": [],
-    "baseline-shift": [],
-    "bleed": [],
-    "bookmark-label": [],
-    "bookmark-level": [],
-    "bookmark-state": [],
-    "border": [],
-    "border-bottom": [],
-    "border-bottom-color": [],
-    "border-bottom-left-radius": [],
-    "border-bottom-right-radius": [],
-    "border-bottom-style": [],
-    "border-bottom-width": [],
-    "border-clip": [],
-    "border-clip-bottom": [],
-    "border-clip-left": [],
-    "border-clip-right": [],
-    "border-clip-top": [],
-    "border-collapse": [],
-    "border-color": [],
-    "border-image": [],
-    "border-image-outset": [],
-    "border-image-repeat": [],
-    "border-image-slice": [],
-    "border-image-source": [],
-    "border-image-width": [],
-    "border-left": [],
-    "border-left-color": [],
-    "border-left-style": [],
-    "border-left-width": [],
-    "border-limit": [],
-    "border-radius": [],
-    "border-right": [],
-    "border-right-color": [],
-    "border-right-style": [],
-    "border-right-width": [],
-    "border-spacing": [],
-    "border-style": [],
-    "border-top": [],
-    "border-top-color": [],
-    "border-top-left-radius": [],
-    "border-top-right-radius": [],
-    "border-top-style": [],
-    "border-top-width": [],
-    "border-width": [],
-    "bottom": [],
-    "box-decoration-break": [],
-    "box-shadow": [],
+    "-webkit-transition": transition,
+    "-webkit-transition-delay": animation_delay,
+    "-webkit-transition-duration": animation_duration,
+    "-webkit-transition-property": transition_property,
+    "-webkit-transition-timing-function": single_transition_timing_function,
+    "additive-symbols": sorted(image + [calc, ident, integer, string]),
+    "align-content": align_content,
+    "align-items": align_items,
+    "align-self": align_self,
+    "alignment": [("bottom",), ("center",), ("left",), ("right",), ("top",)],
+    "alignment-adjust": [("alphabetic",), auto, ("baseline",), calc, ("central",), ("hanging",), ("ideographic",), length, ("mathematical",), ("middle",), ("over-edge",), percentage, ("text-over-edge",), ("text-under-edge",), ("under-edge",)],
+    "alignment-baseline": [("alphabetic",), ("baseline",), ("central",), ("hanging",), ("ideographic",), ("mathematical",), ("middle",), ("over-edge",), ("text-over-edge",), ("text-under-edge",), ("under-edge",), ("use-script",)],
+    "all": all_values,
+    "animation": animation,
+    "animation-delay": animation_delay,
+    "animation-direction": animation_direction,
+    "animation-duration": animation_duration,
+    "animation-fill-mode": animation_fill_mode,
+    "animation-iteration-count": animation_iteration_count,
+    "animation-name": animation_name,
+    "animation-play-state": animation_play_state,
+    "animation-timing-function": single_transition_timing_function,
+    "backface-visibility": backface_visibility,
+    "background": sorted(background_image + position + background_size + background_repeat + background_attachment + background_clip + color),
+    "background-attachment": background_attachment,
+    "background-clip": background_clip,
+    "background-color": color,
+    "background-image": background_image,
+    "background-origin": background_clip,
+    "background-position": position,
+    "background-repeat": background_repeat,
+    "background-size": background_size,
+    "baseline-shift": [("baseline",), length, percentage, ("sub",), ("super",)],
+    "bleed": [auto, calc, length],
+    "bookmark-label": [calc, integer, none],
+    "bookmark-level": [content, counter, counters, ("<string>", "\"${1:<string>}\"")],
+    "bookmark-state": [("closed",), ("open",)],
+    "border": border,
+    "border-bottom": border,
+    "border-bottom-color": color,
+    "border-bottom-left-radius": border_radius,
+    "border-bottom-right-radius": border_radius,
+    "border-bottom-style": line_style,
+    "border-bottom-width": line_width,
+    "border-clip": border_clip,
+    "border-clip-bottom": border_clip,
+    "border-clip-left": border_clip,
+    "border-clip-right": border_clip,
+    "border-clip-top": border_clip,
+    "border-collapse": [("collapse",), ("separate",)],
+    "border-color": color,
+    "border-image": border_image,
+    "border-image-outset": border_image_outset,
+    "border-image-repeat": border_image_repeat,
+    "border-image-slice": border_image_slice,
+    "border-image-source": border_image_source,
+    "border-image-width": border_image_width,
+    "border-left": border,
+    "border-left-color": color,
+    "border-left-style": line_style,
+    "border-left-width": line_width,
+    "border-limit": [("all",), ("bottom",), calc, ("corners",), ("left",), length, percentage, ("right",), ("sides",), ("top",)],
+    "border-radius": border_radius,
+    "border-right": border,
+    "border-right-color": color,
+    "border-right-style": line_style,
+    "border-right-width": line_width,
+    "border-spacing": [calc, length],
+    "border-style": line_style,
+    "border-top": border,
+    "border-top-color": color,
+    "border-top-left-radius": border_radius,
+    "border-top-right-radius": border_radius,
+    "border-top-style": line_style,
+    "border-top-width": line_width,
+    "border-width": line_width,
+    "bottom": box_offset,
+    "box-decoration-break": [("clone",), ("slice",)],
+    "box-shadow": shadow,
     "box-sizing": box_sizing,
-    "box-snap": [],
-    "break-after": [],
-    "break-before": [],
-    "break-inside": [],
-    "caption-side": [],
-    "chains": [],
-    "child-align": [],
-    "clear": [],
-    "clear-after": [],
-    "clear-side": [],
-    "clip-path": [],
-    "clip-rule": [],
-    "color": [],
-    "color-correction": [],
-    "color-interpolation-filters": [],
+    "box-snap": [("after",), ("before",), ("center",), ("first-baseline",), ("last-baseline",), none],
+    "break-after": break_after,
+    "break-before": break_before,
+    "break-inside": break_inside,
+    "caption-side": [("bottom",), ("top",)],
+    "chains": [ident, none],
+    "child-align": [auto, ("bottom",), ("left",), ("middle",), ("right",), ("top",)],
+    "clear": [("both",), ("left",), none, ("right",)],
+    "clear-after": [("both",), ("bottom",), ("descendants",), ("end",), ("inside",), ("left",), none, ("outside",), ("right",), ("start",), ("top",)],
+    "clear-side": [auto, ("both",)],
+    "clip-path": [("border-box",), ("content-box",), ("fill-box",), ("margin-box",), ("padding-box",), ("stroke-box",), url, ("view-box",)],
+    "clip-rule": [("evenodd",), ("nonzero",)],
+    "color": color,
+    "color-correction": [auto, ("sRGB",)],
+    "color-interpolation": color_interpolation,
+    "color-interpolation-filters": color_interpolation,
     "column-count": column_count,
     "column-fill": column_fill,
     "column-gap": column_gap,
@@ -916,36 +1003,34 @@ property_values = {
     "column-rule-width": column_rule_width,     # TODO: can this be replaced by border_width?
     "column-span": column_span,
     "column-width": column_width,
-    "columns": [],
-    "contain": [],
-    "content": [],
-    "corner-shape": [],
-    "corners": [],
-    "counter-increment": [],
-    "counter-reset": [],
-    "counter-set": [],
-    "crop": [],
-    "cue": [],
-    "cue-after": [],
-    "cue-before": [],
-    "cursor": [],
+    "columns": [auto, calc, integer, length],
+    "content": [],                              # TODO: write this when spec is finished
+    "corner-shape": corner_shape,
+    "corners": sorted(border_radius + corner_shape),
+    "counter-increment": counter_set,
+    "counter-reset": counter_set,
+    "counter-set": counter_set,
+    "cue": cue,
+    "cue-after": cue,
+    "cue-before": cue,
+    "cursor": [("alias",), ("all-scroll",), ("auto",), ("cell",), ("col-resize",), ("context-menu",), ("copy",), ("crosshair",), ("default",), ("e-resize",), ("ew-resize",), ("help",), ("move",), ("n-resize",), ("ne-resize",), ("nesw-resize",), ("no-drop",), ("none",), ("not-allowed",), ("ns-resize",), number, ("nw-resize",), ("nwse-resize",), ("pointer",), ("progress",), ("row-resize",), ("s-resize",), ("se-resize",), ("sw-resize",), ("text",), url, ("vertical-text",), ("w-resize",), ("wait",), ("zoom-in",), ("zoom-out",)],
     "direction": [],
     "display": [],
     "display-box": [],
     "display-extras": [],
     "display-inside": [],
     "display-outside": [],
-    "dominant-baseline": [],
+    "dominant-baseline": [("alphabetic",), auto, ("central",), ("hanging",), ("ideographic",), ("mathematical",), ("middle",), ("no-change",), ("reset-size",), ("text-over-edge",), ("text-under-edge",), ("use-script",)],
     "empty-cells": [],
     "fallback": [],
     "filter": [],
-    "flex": [],
-    "flex-basis": [],
-    "flex-direction": [],
-    "flex-flow": [],
-    "flex-grow": [],
-    "flex-shrink": [],
-    "flex-wrap": [],
+    "flex": flex_property,
+    "flex-basis": flex_basis,
+    "flex-direction": flex_direction,
+    "flex-flow": flex_flow,
+    "flex-grow": [calc, number],
+    "flex-shrink": [calc, number],
+    "flex-wrap": flex_wrap,
     "float": [],
     "float-defer-column": [],
     "float-defer-page": [],
@@ -971,7 +1056,7 @@ property_values = {
     "font-variant-alternates": [],
     "font-variant-caps": [],
     "font-variant-east-asian": [],
-    "font-variant-ligatures": [],
+    "font-variant-ligatures": font_variant_ligatures,
     "font-variant-numeric": [],
     "font-variant-position": [],
     "font-weight": [],
@@ -990,8 +1075,8 @@ property_values = {
     "grid-row-start": [],
     "grid-template": [],
     "grid-template-areas": [],
-    "grid-template-columns": [],
-    "grid-template-rows": [],
+    "grid-template-columns": grid_template_columns,
+    "grid-template-rows": grid_template_rows,
     "hanging-punctuation": [],
     "height": [],
     "hyphens": hyphens,
@@ -1001,24 +1086,24 @@ property_values = {
     "image-resolution": [],
     "ime-mode": ime_mode,
     "indent-edge-reset": [],
-    "initial-letters": [],
-    "inline-box-align": [],
-    "justify-content": [],
+    "initial-letters": [calc, integer],
+    "inline-box-align": [calc, integer, ("last",)],
+    "justify-content": justify_content,
     "justify-items": [],
     "justify-self": [],
-    "left": [],
+    "left": box_offset,
     "letter-spacing": [],
     "lighting-color": [],
-    "line-box-contain": [],
+    "line-box-contain": [("block",), ("font",), ("glyphs",), ("inline",), ("inline-box",), none, ("replaced",)],
     "line-break": [],
     "line-grid": [],
-    "line-height": [],
+    "line-height": [calc, length, none, ("normal",), number, percentage],
     "line-slack": [],
     "line-snap": [],
-    "line-stacking": [],
-    "line-stacking-ruby": [],
-    "line-stacking-shift": [],
-    "line-stacking-strategy": [],
+    "line-stacking": sorted(line_stacking_ruby + line_stacking_shift + line_stacking_strategy),
+    "line-stacking-ruby": line_stacking_ruby,
+    "line-stacking-shift": line_stacking_shift,
+    "line-stacking-strategy": line_stacking_strategy,
     "list-style": [],
     "list-style-image": [],
     "list-style-position": [],
@@ -1071,7 +1156,7 @@ property_values = {
     "offset-end": [],
     "offset-start": [],
     "opacity": [],
-    "order": [],
+    "order": order,
     "orientation": [],
     "orphans": [],
     "outline": [],
@@ -1098,21 +1183,21 @@ property_values = {
     "pause": [],
     "pause-after": [],
     "pause-before": [],
-    "perspective": [],
-    "perspective-origin": [],
+    "perspective": perspective_property,
+    "perspective-origin": perspective_origin,
     "pointer-events": [],
     "position": [],
     "prefix": [],
     "presentation-level": [],
     "quotes": [],
     "range": [],
-    "region-fragment": [],
+    "region-fragment": region_fragment,
     "resize": [],
     "resolution": [],
     "rest": [],
     "rest-after": [],
     "rest-before": [],
-    "right": [],
+    "right": box_offset,
     "rotation": [],
     "rotation-point": [],
     "ruby-align": [],
@@ -1148,7 +1233,7 @@ property_values = {
     "text-emphasis-color": [],
     "text-emphasis-position": [],
     "text-emphasis-style": [],
-    "text-height": [],
+    "text-height": [auto, calc, ("font-size",), ("max-size",), number, ("text-size",)],
     "text-indent": [],
     "text-justify": text_justify,
     "text-orientation": [],
@@ -1156,19 +1241,19 @@ property_values = {
     "text-shadow": [],
     "text-transform": [],
     "text-underline-position": [],
-    "top": [],
+    "top": box_offset,
     "transform": transform,
     "transform-origin": transform_origin,
     "transform-style": transform_style,
-    "transition": [],
-    "transition-delay": [],
-    "transition-duration": [],
-    "transition-property": [],
-    "transition-timing-function": [],
+    "transition": transition,
+    "transition-delay": animation_delay,
+    "transition-duration": animation_duration,
+    "transition-property": transition_property,
+    "transition-timing-function": single_transition_timing_function,
     "unicode-bidi": [],
     "unicode-range": [],
     "user-zoom": [],
-    "vertical-align": [],
+    "vertical-align": [auto, ("baseline",), ("bottom",), ("bottom",), calc, ("central",), length, percentage, ("middle",), ("sub",), ("super",), ("text-bottom",), ("text-top",), ("top",), ("top",)],
     "visibility": [],
     "voice-balance": [],
     "voice-duration": [],
@@ -1190,8 +1275,9 @@ property_values = {
     "writing-mode": writing_mode,
     "z-index": [],
     "zoom": []
+
 }
 
 # TODO
-#   add property values for all prefixed props
 #   break properties and values into different files and import them
+#   add completions for the scopes inside of functions

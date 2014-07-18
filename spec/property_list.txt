@@ -95,7 +95,7 @@
 -webkit-transition-timing-function
 
 
-additive-symbols    // TODO: write this
+additive-symbols    // TODO: write regex for this
 align-content
 align-items
 align-self
