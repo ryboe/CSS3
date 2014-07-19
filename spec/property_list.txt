@@ -95,7 +95,7 @@
 -webkit-transition-timing-function
 
 
-additive-symbols    // TODO: write regex for this
+additive-symbols                 // TODO: write regex for this
 align-content
 align-items
 align-self
@@ -214,7 +214,7 @@ display-inside
 display-outside
 dominant-baseline
 empty-cells
-fallback
+fallback                        // TODO: write this
 filter
 flex
 flex-basis

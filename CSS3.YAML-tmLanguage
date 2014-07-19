@@ -189,14 +189,14 @@ repository:
       '6': {name: punctuation.section.function.css}
 
   type-function-brightness-contrast-grayscale-invert-opacity-saturate-sepia:
-    match: \b(brightness|contrast|grayscale|invert|opacity|saturate|sepia)(\()\s*(?:(\+?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?)(r?em|ex|ch|vw|vh|vmin|vmax|cm|mm|q|in|pc|pt|px|%)\b|\b(0)\b)\s*(\))
+    # match: \b(brightness|contrast|grayscale|invert|opacity|saturate|sepia)(\()\s*(?:(\+?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?)(r?em|ex|ch|vw|vh|vmin|vmax|cm|mm|q|in|pc|pt|px|%)\b|\b(0)\b)\s*(\))
+    match: \b(brightness|contrast|grayscale|invert|opacity|saturate|sepia)(\()\s*(\+?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?)(%)?\s*(\))
     captures:
       '1': {name: support.function.brightness.css}
       '2': {name: punctuation.section.function.css}
       '3': {name: constant.numeric.css}
       '4': {name: keyword.other.unit.css}
-      '5': {name: constant.numeric.css}
-      '6': {name: punctuation.section.function.css}
+      '5': {name: punctuation.section.function.css}
 
   type-function-calc:
     begin: \b(calc)(\()
@@ -408,7 +408,7 @@ repository:
       '11': {name: punctuation.section.function.css}
 
   type-function-hue-rotate:
-    match: \b(hue-rotate)(\()\s*(?:([+-]?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?)(turn|rad|grad|deg)|\b0)\s*(\))
+    match: \b(hue-rotate)(\()\s*(?:([+-]?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?)(turn|rad|grad|deg)|\b(0)\b)\s*(\))
     captures:
       '1': {name: support.function.hue-rotate.css}
       '2': {name: punctuation.section.function.css}
@@ -852,7 +852,21 @@ repository:
     - include: '#value-counter-increment-counter-reset-counter-set'
     - include: '#value-cue'
     - include: '#value-cursor'
+    - include: '#value-flex-direction'
+    - include: '#value-direction'
     - include: '#value-display'
+    - include: '#value-display-box'
+    - include: '#value-display-extras'
+    - include: '#value-display-inside'
+    - include: '#value-display-outside'
+    - include: '#value-dominant-baseline'
+    - include: '#value-empty-cells'
+    - include: '#value-filter'
+    - include: '#value-flex-basis'
+    - include: '#value-flex-flow'
+    - include: '#value-flex-grow-flex-shrink'
+    - include: '#value-flex-wrap'
+    - include: '#value-flex'
     - include: '#value-justify-items'
     - include: '#value-padding'
     end: ;
@@ -1099,6 +1113,7 @@ repository:
       - include: '#type-function-hsl'
       - include: '#type-function-rgba'
       - include: '#type-function-rgb'
+      - include: '#type-function-calc'
       - include: '#type-color-hex'
       - include: '#type-percentage-non-negative'
       - include: '#type-length-non-negative'
@@ -1190,6 +1205,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(top|right|left|center|bottom)\b
+    - include: '#type-function-calc'
     - include: '#type-percentage'
     - include: '#type-length'
     end: (?=;)
@@ -1217,6 +1233,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:cover|contain|auto)\b
+    - include: '#type-function-calc'
     - include: '#type-percentage-non-negative'
     - include: '#type-length-non-negative'
     end: (?=;)
@@ -1232,6 +1249,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:super|sub|baseline)\b
+    - include: '#type-function-calc'
     - include: '#type-percentage'
     - include: '#type-length'
     end: (?=;)
@@ -1247,6 +1265,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \bauto\b
+    - include: '#type-function-calc'
     - include: '#type-length'
     end: (?=;)
 
@@ -1279,6 +1298,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \bnone\b
+    - include: '#type-function-calc'
     - include: '#type-integer-positive'
     end: (?=;)
 
@@ -1313,6 +1333,7 @@ repository:
     - include: '#type-function-hsl'
     - include: '#type-function-rgba'
     - include: '#type-function-rgb'
+    - include: '#type-function-calc'
     - include: '#type-length-non-negative'
     end: (?=;)
 
@@ -1327,6 +1348,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \bnormal\b
+    - include: '#type-function-calc'
     - include: '#type-percentage'
     - include: '#type-length'
     # TODO: include <fraction> here? the spec is unsure about supporting <fraction>
@@ -1382,6 +1404,7 @@ repository:
     - include: '#type-function-linear-gradient'
     - include: '#type-function-radial-gradient'
     - include: '#type-function-url'
+    - include: '#type-function-calc'
     - include: '#type-percentage-non-negative'
     - include: '#type-length-non-negative'
     - include: '#type-number-non-negative'
@@ -1396,6 +1419,7 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
+    - include: '#type-function-calc'
     - include: '#type-length-non-negative'
     - include: '#type-number-non-negative'
     end: (?=;)
@@ -1424,6 +1448,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \bfill\b
+    - include: '#type-function-calc'
     - include: '#type-percentage-non-negative'
     - include: '#type-number-non-negative'
     end: (?=;)
@@ -1461,6 +1486,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \bauto\b
+    - include: '#type-function-calc'
     - include: '#type-percentage-non-negative'
     - include: '#type-length-non-negative'
     - include: '#type-number-non-negative'
@@ -1477,6 +1503,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:top|sides|right|left |corners|bottom|all)\b
+    - include: '#type-function-calc'
     - include: '#type-length'
     - include: '#type-percentage'
     end: (?=;)
@@ -1490,6 +1517,7 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
+    - include: '#type-function-calc'
     - include: '#type-percentage-non-negative'
     - include: '#type-length-non-negative'
     end: (?=;)
@@ -1503,6 +1531,7 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
+    - include: '#type-function-calc'
     - include: '#type-length-non-negative'
     end: (?=;)
 
@@ -1529,6 +1558,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:thin|thick|medium)\b
+    - include: '#type-function-calc'
     - include: '#type-length-non-negative'
     end: (?=;)
 
@@ -1543,6 +1573,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \bauto\b
+    - include: '#type-function-calc'
     - include: '#type-percentage'
     - include: '#type-length'
     end: (?=;)
@@ -1577,6 +1608,7 @@ repository:
     - include: '#type-function-rgb'
     - include: '#type-function-rgba'
     - include: '#type-color-hex'
+    - include: '#type-function-calc'
     - include: '#type-length'
     end: (?=;)
 
@@ -1795,6 +1827,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \bauto\b
+    - include: '#type-function-calc'
     - include: '#type-integer-positive'
     end: (?=;)
 
@@ -1822,6 +1855,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \bnormal\b
+    - include: '#type-function-calc'
     - include: '#type-length-non-negative'
     end: (?=;)
 
@@ -1842,6 +1876,7 @@ repository:
     - include: '#type-color-hex'
     - name: support.constant.property-value.css
       match: \b(?:thick|thin|solid|ridge|outset|none|medium|inset|hidden|groove|double|dotted|dashed)\b
+    - include: '#type-function-calc'
     - include: '#type-length-non-negative'
     end: (?=;)
 
@@ -1886,6 +1921,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:thin|thick|medium)\b
+    - include: '#type-function-calc'
     - include: '#type-length-non-negative'
     end: (?=;)
 
@@ -1913,6 +1949,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \bauto\b
+    - include: '#type-function-calc'
     - include: '#type-length-positive'
     end: (?=;)
 
@@ -1927,6 +1964,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \bauto\b
+    - include: '#type-function-calc'
     - include: '#type-length-positive'
     - include: '#type-integer-positive'
     end: (?=;)
@@ -1977,6 +2015,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:scoop|round|notch|bevel)\b
+    - include: '#type-function-calc'
     - include: '#type-percentage-non-negative'
     - include: '#type-length-non-negative'
     end: (?=;)
@@ -1992,6 +2031,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \bnone\b
+    - include: '#type-function-calc'
     - include: '#type-integer'
     - include: '#identifier'
     end: (?=;)
@@ -2023,7 +2063,21 @@ repository:
     - name: support.constant.property-value.css
       match: \b(?:zoom-out|zoom-in|wait|w-resize|vertical-text|text|sw-resize|se-resize|s-resize|row-resize|progress|pointer|nwse-resize|nw-resize|ns-resize|not-allowed|none|no-drop|nesw-resize|ne-resize|n-resize|move|help|ew-resize|e-resize|default|crosshair|copy|context-menu|col-resize|cell|auto|all-scroll|alias)\b
     - include: '#type-function-url'
+    - include: '#type-function-calc'
     - include: '#type-number'
+    end: (?=;)
+
+  value-direction:
+    begin: (?<=direction:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:rtl|ltr)\b
     end: (?=;)
 
   value-display:
@@ -2036,7 +2090,188 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - name: support.constant.property-value.css
-      match: \b(?:table-row-group|table-row|table-header-group|table-footer-group|table-column-group|table-column|table-cell|table-caption|table|run-in|ruby-text-group|ruby-text|ruby-base-group|ruby-base|ruby|none|list-item|inline-table|inline-flex|inline-block|inline|flex|container|compact|block)\b
+      match: \b(?:table-row-group|table-row|table-header-group|table-footer-group|table-column-group|table-column|table-cell|table-caption|table|run-in|ruby-text-container|ruby-text|ruby-base-container|ruby-base|ruby|none|list-item|inline-table|inline-list-item|inline-level|inline-grid|inline-flex|inline-block|inline|grid|flex|contents|block-level|block|auto)\b
+    end: (?=;)
+
+  value-display-box:
+    begin: (?<=display-box:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:normal|none)\b
+    end: (?=;)
+
+  value-display-extras:
+    begin: (?<=display-extras:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:none|list-item)\b
+    end: (?=;)
+
+  value-display-inside:
+    begin: (?<=display-inside:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:table|ruby|grid|flex|block|auto)\b
+    end: (?=;)
+
+  value-display-outside:
+    begin: (?<=display-outside:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:table-row-group|table-row|table-header-group|table-footer-group|table-column-group|table-column|table-cell|table-caption|run-in|ruby-text-container|ruby-text|ruby-base-container|ruby-base|none|inline-level|contents|block-level)\b
+    end: (?=;)
+
+  value-dominant-baseline:
+    begin: (?<=dominant-baseline:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:use-script|text-under-edge|text-over-edge|reset-size|no-change|middle|mathematical|ideographic|hanging|central|auto|alphabetic)\b
+    end: (?=;)
+
+  value-empty-cells:
+    begin: (?<=empty-cells:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:show|hide)\b
+    end: (?=;)
+
+  value-filter:
+    begin: (?<=filter:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bnone\b
+    - include: '#type-function-blur'
+    - include: '#type-function-brightness-contrast-grayscale-invert-opacity-saturate-sepia'
+    - include: '#type-function-drop-shadow'
+    - include: '#type-function-hue-rotate'
+    - include: '#type-function-url'
+    end: (?=;)
+
+  value-flex:
+    begin: (?<=flex:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:none|main-size|auto)\b
+    - include: '#type-function-calc'
+    - include: '#type-percentage-non-negative'
+    - include: '#type-length-non-negative'
+    - include: '#type-number-non-negative'
+    end: (?=;)
+
+  value-flex-basis:
+    begin: (?<=flex-basis:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:main-size|auto)\b
+    - include: '#type-function-calc'
+    - include: '#type-percentage-non-negative'
+    - include: '#type-length-non-negative'
+    end: (?=;)
+
+  value-flex-direction:
+    begin: (?<=flex-direction:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:row-reverse|row|column-reverse|column)\b
+    end: (?=;)
+
+  value-flex-flow:
+    begin: (?<=flex-flow:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:wrap-reverse|wrap|row-reverse|row|nowrap|column-reverse|column)\b
+    end: (?=;)
+
+  value-flex-grow-flex-shrink:
+    begin: (?<=flex-grow:|flex-shrink:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-function-calc'
+    - include: '#type-number-non-negative'
+    end: (?=;)
+
+  value-flex-wrap:
+    begin: (?<=flex-wrap:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:wrap-reverse|wrap|nowrap)\b
     end: (?=;)
 
   value-justify-items:
@@ -2063,14 +2298,14 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \bauto\b
+    - include: '#type-function-calc'
     - include: '#type-percentage'
     - include: '#type-length'
-    - include: '#type-function-calc'
     end: (?=;)
 
 
 # TODO
-#   length, length-positive, length-non-negative, absolute-length, relative-length
+#   complete properties through F
 #   fill in several more property values in property_values.txt and #value
 #       don't get carried away. work a little on each major component (completions,
 #       language def, selectors, values, indexing) to make sure everything keeps

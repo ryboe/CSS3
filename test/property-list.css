@@ -1645,6 +1645,10 @@
     display:-moz-inline-table;
     display: -moz-inline-block;
 
+    display-box: normal;
+    display-extras: list-item;
+    display-inside: ruby;
+    display-outside: block-level;
 
     dominant-baseline: initial;
     dominant-baseline: inherit;
