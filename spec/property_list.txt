@@ -184,7 +184,7 @@ clip-path
 clip-rule
 color
 color-correction
-color-interpolation
+color-interpolation             // TODO: write this
 color-interpolation-filters
 column-count
 column-fill

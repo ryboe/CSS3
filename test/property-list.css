@@ -752,6 +752,8 @@
     border-image-slice: 100 fill 10% fill 15% fill 100%;
     border-image-slice: 100 fill 10%;
 
+    border-image-source: element(#asdfasd);
+    border-image-source: filter(asdf asdfads asdf);
     border-image-source: initial;
     border-image-source: inherit;
     border-image-source: unset;
@@ -936,7 +938,6 @@
     box-snap: inherit;
     box-snap: unset;
     box-snap: none;
-    box-snap: margin-box margin-box border-box half-border / up to four idents;
 
     break-after: initial;
     break-after: inherit;
@@ -985,6 +986,10 @@
     chains: a b c d e f;
     chains: a b;
 
+    child-align: initial;
+    child-align: auto;
+    child-align: top;
+
     clear: initial;
     clear: inherit;
     clear: unset;
@@ -992,10 +997,6 @@
     clear: left;
     clear: right;
     clear: both;
-    clear: top;
-    clear: bottom;
-    clear: column;
-    clear: page;
 
     clear-side: initial;
     clear-side: inherit;
@@ -1488,7 +1489,6 @@
     column-width: unset;
     column-width: 12em;
     column-width: 45px;
-    column-width: 0;
     column-width: 12em;
     column-width: auto;
     column-width: 8em;
@@ -1497,12 +1497,6 @@
     column-width: 0.3vw;
     -moz-column-width: 0.3vw;
     -webkit-column-width: 0.3vw;
-
-    contain: initial;
-    contain: inherit;
-    contain: unset;
-    contain: none;
-    contain: strict;
 
     content: initial;
     content: inherit;
@@ -1530,8 +1524,8 @@
     counter-increment: section;
     counter-increment: count2;
     counter-increment: list-item;
-    counter-increment: h1; counter-reset: h2 h3;
-    counter-increment: h2; counter-reset:    h3;
+    counter-increment: h1;
+    counter-increment: h2;
     counter-increment: h3;
     counter-increment: list-item;
     counter-increment: list-item -1;
@@ -1555,12 +1549,15 @@
     counter-reset: list-item attr(start integer, **magic**);
     /* Where **magic** is the number of child <li> elements. */
     counter-reset: chapter section 1 page;
+    counter-reset: h2 h3;
+    counter-reset:    h3;
 
     counter-set: initial;
     counter-set: inherit;
     counter-set: unset;
     counter-set: list-item attr(value integer, 1);
 
+    /* CSS Generated Content Level 3 is being rewritten */
     crop: initial;
     crop: inherit;
     crop: unset;

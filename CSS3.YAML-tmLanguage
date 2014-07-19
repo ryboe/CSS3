@@ -136,12 +136,6 @@ repository:
       '1': {name: constant.numeric.css}
       '2': {name: keyword.other.unit.css}
 
-  type-animation-name:
-    match: \b(?:(none)|())\b
-    captures:
-      '1': {name: support.constant.property-value.css}
-      '2': {name: string.unquoted.identifier.css}
-
   type-attachment:
     name: support.constant.property-value.css
     match: \b(?:scroll|local|fixed)\b
@@ -164,6 +158,12 @@ repository:
     name: support.constant.property-value.css
     match: \b(?:yemsa|wolaita|upper-ukrainian-full|upper-ukrainian|upper-serbo-croatian|upper-russian-full|upper-russian|upper-roman|upper-oromo-qubee|upper-macedonian|upper-latin|upper-hexadecimal|upper-bulgarian|upper-belorussian|upper-armenian|upper-alpha-symbolic|upper-alpha|trad-chinese-informal|trad-chinese-formal|tigre|tibetan|thai-alphabetic|thai|telugu|tamil|super-decimal|square|simple-upper-roman|simple-lower-roman|simp-chinese-informal|simp-chinese-formal|silti|sidama|shan|saho|persian-alphabetic|persian-abjad|persian|parenthesized-lower-latin|parenthesized-ideograph|parenthesized-hangul-syllable|parenthesized-hangul-consonant|parenthesized-decimal|oromo|oriya|octal|none|new-base-60|myanmar|mongolian|meen|malayalam|lower-ukrainian-full|lower-ukrainian|lower-serbo-croatian|lower-russian-full|lower-russian|lower-roman|lower-oromo-qubee|lower-macedonian|lower-latin|lower-hexadecimal|lower-greek|lower-bulgarian|lower-belorussian|lower-armenian|lower-alpha-symbolic|lower-alpha|lepcha|lao|kunama|korean-syllable|korean-hanja-informal|korean-hanja-formal|korean-hangul-formal|korean-consonant|konso|khmer-consonant|khmer|kembata|kebena|katakana-iroha|katakana|kannada|kaffa|japanese-informal|japanese-formal|hiragana-iroha|hiragana|hindi|hebrew-extended|hebrew|harari|hadiyya|gurmukhi|gumuz|gujarati|greek|georgian|gedeo|fullwidth-upper-roman|fullwidth-upper-alpha|fullwidth-lower-roman|fullwidth-lower-alpha|fullwidth-decimal|filled-circled-decimal|ethiopic-numeric|double-circled-decimal|dotted-decimal|dizi|disclosure-open|disclosure-closed|disc|devanagari|decimal-leading-zero|decimal|cjk-ideographic|cjk-heavenly-stem|cjk-earthly-branch|cjk-decimal|circled-upper-latin|circled-lower-latin|circled-korean-syllable|circled-korean-consonant|circled-katakana|circled-ideograph|circled-decimal|circle|cambodian-consonant|cambodian|blin|binary|bengali|armenian|ari|arabic-indic|ancient-tamil|agaw|afar)\b
 
+  type-decibel:
+    match: ([+-]?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?)(dB)
+    captures:
+      '1': {name: constant.numeric.css}
+      '2': {name: keyword.other.unit.css}
+
   type-function-attr:
     begin: \b(attr)(\()
     beginCaptures:
@@ -178,6 +178,26 @@ repository:
     endCaptures:
       '0': {name: punctuation.section.function.css}
 
+  type-function-blur:
+    match: \b(blur)(\()\s*(?:(\+?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?)(r?em|ex|ch|vw|vh|vmin|vmax|cm|mm|q|in|pc|pt|px)\b|\b(0)\b)\s*(\))
+    captures:
+      '1': {name: support.function.blur.css}
+      '2': {name: punctuation.section.function.css}
+      '3': {name: constant.numeric.css}
+      '4': {name: keyword.other.unit.css}
+      '5': {name: constant.numeric.css}
+      '6': {name: punctuation.section.function.css}
+
+  type-function-brightness-contrast-grayscale-invert-opacity-saturate-sepia:
+    match: \b(brightness|contrast|grayscale|invert|opacity|saturate|sepia)(\()\s*(?:(\+?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?)(r?em|ex|ch|vw|vh|vmin|vmax|cm|mm|q|in|pc|pt|px|%)\b|\b(0)\b)\s*(\))
+    captures:
+      '1': {name: support.function.brightness.css}
+      '2': {name: punctuation.section.function.css}
+      '3': {name: constant.numeric.css}
+      '4': {name: keyword.other.unit.css}
+      '5': {name: constant.numeric.css}
+      '6': {name: punctuation.section.function.css}
+
   type-function-calc:
     begin: \b(calc)(\()
     beginCaptures:
@@ -187,6 +207,22 @@ repository:
     patterns:
     - include: '#comment-block'
     # TODO: match calc parameters (can be any value)
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
+  type-function-circle-ellipse:
+    begin: \b(circle|ellipse)(\()
+    beginCaptures:
+      '1': {name: support.function.circle-ellipse.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.circle-ellipse.css
+    patterns:
+    - include: '#comment-block'
+    - name: support.constant.property-value.css
+      match: \b(top|right|left|farthest-side|closest-side|center|bottom|at)\b
+    - include: '#type-percentage'
+    - include: '#type-length'
     end: \)
     endCaptures:
       '0': {name: punctuation.section.function.css}
@@ -287,15 +323,33 @@ repository:
       '5': {name: constant.numeric.css}
       '6': {name: constant.numeric.css}
 
+  type-function-drop-shadow:
+    begin: \b(drop-shadow)(\()
+    beginCaptures:
+      '1': {name: support.function.drop-shadow.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.drop-shadow.css
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-color-named'
+    - include: '#type-function-hsla'
+    - include: '#type-function-hsl'
+    - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
+    - include: '#type-length'
+    - include: '#type-color-hex'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
   type-function-element:
-    match: \b(element)(\()\s*(#)(-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*)\s*(\))
+    match: \b(element)(\()\s*((#)(?:-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*))\s*(\))
     captures:
       '1': {name: support.function.element.css}
       '2': {name: punctuation.section.function.css}
-      '3': {name: punctuation.definition.entity.css}
-      '4': {name: entity.other.attribute-name.id.css}
-      # '5': {name: punctuation.section.function.css}
-      '5': {name: invalid.deprecated.css}
+      '3': {name: entity.other.attribute-name.id.css}
+      '4': {name: punctuation.definition.entity.css}
+      '5': {name: punctuation.section.function.css}
 
   type-function-filter:
     begin: \b(filter)(\()
@@ -313,17 +367,10 @@ repository:
     - include: '#type-function-conic-gradient'
     - include: '#type-function-linear-gradient'
     - include: '#type-function-radial-gradient'
-    # TODO: enable these when finished
-    # - include: '#type-function-blur'
-    # - include: '#type-function-brightness'
-    # - include: '#type-function-contrast'
-    # - include: '#type-function-drop-shadow'
-    # - include: '#type-function-grayscale'
-    # - include: '#type-function-hue-rotate'
-    # - include: '#type-function-invert'
-    # - include: '#type-function-opacity'
-    # - include: '#type-function-sepia'
-    # - include: '#type-function-saturate'
+    - include: '#type-function-blur'
+    - include: '#type-function-brightness-contrast-grayscale-invert-opacity-saturate-sepia'
+    - include: '#type-function-drop-shadow'
+    - include: '#type-function-hue-rotate'
     - include: '#type-function-url'
     - include: '#type-string-double'
     - include: '#type-string-single'
@@ -359,6 +406,16 @@ repository:
       '9': {name: keyword.other.unit.css}
       '10': {name: constant.numeric.alphavalue.css}
       '11': {name: punctuation.section.function.css}
+
+  type-function-hue-rotate:
+    match: \b(hue-rotate)(\()\s*(?:([+-]?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?)(turn|rad|grad|deg)|\b0)\s*(\))
+    captures:
+      '1': {name: support.function.hue-rotate.css}
+      '2': {name: punctuation.section.function.css}
+      '3': {name: constant.numeric.css}
+      '4': {name: keyword.other.unit.css}
+      '5': {name: constant.numeric.css}
+      '6': {name: punctuation.section.function.css}
 
   type-function-image:
     begin: \b(image)(\()
@@ -413,6 +470,22 @@ repository:
     endCaptures:
       '0': {name: punctuation.section.function.css}
 
+  type-function-inset:
+    begin: \b(inset)(\()
+    beginCaptures:
+      '1': {name: support.function.inset.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.inset.css
+    patterns:
+    - include: '#comment-block'
+    - name: support.constant.property-value.css
+      match: \bround\b
+    - include: '#type-percentage'
+    - include: '#type-length'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
   type-function-linear-gradient:
     begin: \b((?:repeating-)?linear-gradient)(\()
     beginCaptures:
@@ -432,6 +505,22 @@ repository:
     - include: '#type-angle'
     - include: '#type-length'
     - include: '#type-color-hex'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
+  type-function-polygon:
+    begin: \b(polygon)(\()
+    beginCaptures:
+      '1': {name: support.function.polygon.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.polygon.css
+    patterns:
+    - include: '#comment-block'
+    - name: support.constant.property-value.css
+      match: \b(?:nonzero|evenodd)\b
+    - include: '#type-percentage'
+    - include: '#type-length'
     end: \)
     endCaptures:
       '0': {name: punctuation.section.function.css}
@@ -591,6 +680,14 @@ repository:
       '2': {name: keyword.other.unit.css}
       '3': {name: constant.numeric.css}
 
+  # TODO: test this
+  type-length-positive:
+    match: (\+?(?:[0-9]+\.[0-9]*[1-9][0-9]*|\.[0-9]*[1-9][0-9]*|[1-9][0-9]*)(?:[eE][+-]?[0-9]+)?)(r?em|ex|ch|vw|vh|vmin|vmax|cm|mm|q|in|pc|pt|px)
+    captures:
+      '1': {name: constant.numeric.css}
+      '2': {name: keyword.other.unit.css}
+      '3': {name: constant.numeric.css}
+
   type-line-style:
     name: support.constant.property-value.css
     match: \b(?:solid|ridge|outset|none|inset|hidden|groove|double|dotted|dashed)\b
@@ -707,7 +804,6 @@ repository:
     - include: '#value-bookmark-level'
     - include: '#value-bookmark-state'
     - include: '#value-border'
-    - include: '#value-border-bottom'
     - include: '#value-border-clip'
     - include: '#value-border-collapse'
     - include: '#value-border-color'
@@ -717,9 +813,45 @@ repository:
     - include: '#value-border-image-source'
     - include: '#value-border-image-width'
     - include: '#value-border-image'
+    - include: '#value-border-limit'
     - include: '#value-border-radius'
+    - include: '#value-border-spacing'
     - include: '#value-border-style'
     - include: '#value-border-width'
+    - include: '#value-bottom-left-right-top'
+    - include: '#value-box-decoration-break'
+    - include: '#value-box-shadow'
+    - include: '#value-box-sizing'
+    - include: '#value-box-snap'
+    - include: '#value-break-after-break-before'
+    - include: '#value-break-inside'
+    - include: '#value-caption-side'
+    - include: '#value-chains'
+    - include: '#value-child-align'
+    - include: '#value-clear'
+    - include: '#value-clear-after'
+    - include: '#value-clear-side'
+    - include: '#value-clip-path'
+    - include: '#value-clip-rule'
+    - include: '#value-color'
+    - include: '#value-color-correction'
+    - include: '#value-color-interpolation-filters'
+    - include: '#value-column-count'
+    - include: '#value-column-fill'
+    - include: '#value-column-gap'
+    - include: '#value-column-rule'
+    - include: '#value-column-rule-color'
+    - include: '#value-column-rule-style'
+    - include: '#value-column-rule-width'
+    - include: '#value-column-span'
+    - include: '#value-column-width'
+    - include: '#value-columns'
+    - include: '#value-content'
+    - include: '#value-corner-shape'
+    - include: '#value-corners'
+    - include: '#value-counter-increment-counter-reset-counter-set'
+    - include: '#value-cue'
+    - include: '#value-cursor'
     - include: '#value-display'
     - include: '#value-justify-items'
     - include: '#value-padding'
@@ -728,7 +860,7 @@ repository:
       '0': {name: punctuation.terminator.rule.css}
 
   value-align-content-justify-content:
-    begin: (?<=(?:align-content:|justify-content:))
+    begin: (?<=align-content:|justify-content:)
     patterns:
     - include: '#comment-block'
     - include: '#type-important'
@@ -741,7 +873,7 @@ repository:
     end: (?=;)
 
   value-align-items-align-self-justify-self:
-    begin: (?<=(?:align-items:|align-self:|justify-self:))
+    begin: (?<=align-items:|align-self:|justify-self:)
     patterns:
     - include: '#comment-block'
     - include: '#type-important'
@@ -839,7 +971,7 @@ repository:
     end: (?=;)
 
   value-animation-delay-animation-duration:
-    begin: (?<=(?:animation-delay:|animation-duration:))
+    begin: (?<=animation-delay:|animation-duration:)
     patterns:
     - include: '#comment-block'
     - include: '#type-important'
@@ -1163,34 +1295,29 @@ repository:
       match: \b(?:open|closed)\b
     end: (?=;)
 
-  # # TODO: write this
-  # value-border:
-  #   begin: (?<=border:)
-  #   patterns:
-  #   - include: '#comment-block'
-  #   - include: '#type-important'
-  #   - include: '#type-all'
-  #   - include: '#type-function-attr'
-  #   - include: '#type-function-toggle'
-  #   - include: '#type-function-var'
-  #   -
-  #   end: (?=;)
-
-  # # TODO: write this
-  # value-border-bottom:
-  #   begin: (?<=border-bottom:)
-  #   patterns:
-  #   - include: '#comment-block'
-  #   - include: '#type-important'
-  #   - include: '#type-all'
-  #   - include: '#type-function-attr'
-  #   - include: '#type-function-toggle'
-  #   - include: '#type-function-var'
-  #   -
-  #   end: (?=;)
+  value-border:
+    begin: (?<=border:|border-bottom:|border-left:|border-right:|border-top:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:thin|thick|medium)\b
+    - include: '#type-line-style'
+    - include: '#type-color-named'
+    - include: '#type-color-hex'
+    - include: '#type-function-hsla'
+    - include: '#type-function-hsl'
+    - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
+    - include: '#type-length-non-negative'
+    end: (?=;)
 
   value-border-clip:
-    begin: (?<=(?:border-clip:|border-clip-bottom:|border-clip-left:|border-clip-right:|border-clip-top:))
+    begin: (?<=border-clip:|border-clip-bottom:|border-clip-left:|border-clip-right:|border-clip-top:)
     patterns:
     - include: '#comment-block'
     - include: '#type-important'
@@ -1219,7 +1346,7 @@ repository:
     end: (?=;)
 
   value-border-color:
-    begin: (?<=(?:border-color:|border-bottom-color:|border-left-color:|border-right-color:|border-top-color:))
+    begin: (?<=border-color:|border-bottom-color:|border-left-color:|border-right-color:|border-top-color:)
     patterns:
     - include: '#comment-block'
     - include: '#type-important'
@@ -1339,8 +1466,23 @@ repository:
     - include: '#type-number-non-negative'
     end: (?=;)
 
+  value-border-limit:
+    begin: (?<=border-limit:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:top|sides|right|left |corners|bottom|all)\b
+    - include: '#type-length'
+    - include: '#type-percentage'
+    end: (?=;)
+
   value-border-radius:
-    begin: (?<=(?:border-radius:|border-bottom-left-radius:|border-bottom-right-radius:|border-top-left-radius:|border-top-right-radius:))
+    begin: (?<=border-radius:|border-bottom-left-radius:|border-bottom-right-radius:|border-top-left-radius:|border-top-right-radius:)
     patterns:
     - include: '#comment-block'
     - include: '#type-important'
@@ -1352,8 +1494,20 @@ repository:
     - include: '#type-length-non-negative'
     end: (?=;)
 
+  value-border-spacing:
+    begin: (?<=border-spacing:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-length-non-negative'
+    end: (?=;)
+
   value-border-style:
-    begin: (?<=(?:border-style:|border-bottom-left-style:|border-bottom-right-style:|border-top-left-style:|border-bottom-right-style:))
+    begin: (?<=border-style:|border-left-style:|border-right-style:|border-top-style:|border-bottom-style:)
     patterns:
     - include: '#comment-block'
     - include: '#type-important'
@@ -1365,7 +1519,7 @@ repository:
     end: (?=;)
 
   value-border-width:
-    begin: (?<=(?:border-width:|border-bottom-width:|border-left-width:|border-right-width:|border-top-width:))
+    begin: (?<=border-width:|border-bottom-width:|border-left-width:|border-right-width:|border-top-width:)
     patterns:
     - include: '#comment-block'
     - include: '#type-important'
@@ -1376,6 +1530,500 @@ repository:
     - name: support.constant.property-value.css
       match: \b(?:thin|thick|medium)\b
     - include: '#type-length-non-negative'
+    end: (?=;)
+
+  value-bottom-left-right-top:
+    begin: (?<=bottom:|left:|right:|top:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bauto\b
+    - include: '#type-percentage'
+    - include: '#type-length'
+    end: (?=;)
+
+  value-box-decoration-break:
+    begin: (?<=box-decoration-break:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:slice|clone)\b
+    end: (?=;)
+
+  value-box-shadow:
+    begin: (?<=box-shadow:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:none|inset)\b
+    - include: '#type-color-named'
+    - include: '#type-function-hsl'
+    - include: '#type-function-hsla'
+    - include: '#type-function-rgb'
+    - include: '#type-function-rgba'
+    - include: '#type-color-hex'
+    - include: '#type-length'
+    end: (?=;)
+
+  value-box-sizing:
+    begin: (?<=box-sizing:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-box'
+    end: (?=;)
+
+  value-box-snap:
+    begin: (?<=box-snap:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:none|last-baseline|first-baseline|center|before|after)\b
+    end: (?=;)
+
+  value-break-after-break-before:
+    begin: (?<=break-after:|break-before:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:verso|right|region|recto|page|left|column|avoid-region|avoid-page|avoid-column|avoid|auto|any|always)\b
+    end: (?=;)
+
+  value-break-inside:
+    begin: (?<=break-inside:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:avoid-region|avoid-page|avoid-column|avoid|auto)\b
+    end: (?=;)
+
+  value-caption-side:
+    begin: (?<=caption-side:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:top|bottom)\b
+    end: (?=;)
+
+  value-chains:
+    begin: (?<=chains:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bnone\b
+    - include: '#identifier'
+    end: (?=;)
+
+  value-child-align:
+    begin: (?<=child-align:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:top|right|middle|left|bottom|auto)\b
+    end: (?=;)
+
+  value-clear:
+    begin: (?<=clear:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:both|left|none|right)\b
+    end: (?=;)
+
+  value-clear-after:
+    begin: (?<=clear-after:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:top|start|right|outside|none|left|inside|end|descendants|bottom|both)\b
+    end: (?=;)
+
+  value-clear-side:
+    begin: (?<=clear-side:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:both|auto)\b
+    end: (?=;)
+
+  value-clip-path:
+    begin: (?<=clip-path:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:view-box|stroke-box|none|margin-box|fill-box)\b
+    - include: '#type-box'
+    - include: '#type-function-circle-ellipse'
+    - include: '#type-function-inset'
+    - include: '#type-function-polygon'
+    - include: '#type-function-url'
+    end: (?=;)
+
+  value-clip-rule:
+    begin: (?<=clip-rule:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:nonzero|evenodd)\b
+    end: (?=;)
+
+  value-color:
+    begin: (?<=color:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-color-named'
+    - include: '#type-function-hsla'
+    - include: '#type-function-hsl'
+    - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
+    - include: '#type-color-hex'
+    end: (?=;)
+
+  value-color-correction:
+    begin: (?<=color-correction:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:sRGB|auto)\b
+    end: (?=;)
+
+  value-color-interpolation-filters:
+    begin: (?<=color-interpolation-filters:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:sRGB|linearRGB|auto)
+    end: (?=;)
+
+  value-column-count:
+    begin: (?<=column-count:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bauto\b
+    - include: '#type-integer-positive'
+    end: (?=;)
+
+  value-column-fill:
+    begin: (?<=column-fill:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:balance-all|balance|auto)\b
+    end: (?=;)
+
+  value-column-gap:
+    begin: (?<=column-gap:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bnormal\b
+    - include: '#type-length-non-negative'
+    end: (?=;)
+
+  value-column-rule:
+    begin: (?<=column-rule:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-color-named'
+    - include: '#type-function-hsla'
+    - include: '#type-function-hsl'
+    - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
+    - include: '#type-color-hex'
+    - name: support.constant.property-value.css
+      match: \b(?:thick|thin|solid|ridge|outset|none|medium|inset|hidden|groove|double|dotted|dashed)\b
+    - include: '#type-length-non-negative'
+    end: (?=;)
+
+  value-column-rule-color:
+    begin: (?<=column-rule-color:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-color-named'
+    - include: '#type-function-hsla'
+    - include: '#type-function-hsl'
+    - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
+    - include: '#type-color-hex'
+    end: (?=;)
+
+  value-column-rule-style:
+    begin: (?<=column-rule-style:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:solid|ridge|outset|none|inset|hidden|groove|double|dotted|dashed)\b
+    end: (?=;)
+
+  value-column-rule-width:
+    begin: (?<=column-rule-width:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:thin|thick|medium)\b
+    - include: '#type-length-non-negative'
+    end: (?=;)
+
+  value-column-span:
+    begin: (?<=column-span:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:none|all)\b
+    end: (?=;)
+
+  value-column-width:
+    begin: (?<=column-width:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bauto\b
+    - include: '#type-length-positive'
+    end: (?=;)
+
+  value-columns:
+    begin: (?<=columns:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bauto\b
+    - include: '#type-length-positive'
+    - include: '#type-integer-positive'
+    end: (?=;)
+
+  # The <content-list> value type in this rule is different from the
+  # <content-list> type in #value-bookmark-label due to inconsistencies in the
+  # spec. This will be resolved when CSS Generated Content Level 3 is rewritten.
+  value-content:
+    begin: (?<=content:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:open-quote|normal|no-open-quote|no-close-quote|none|inhibit|icon|close-quote)\b
+    - include: '#type-function-content'
+    # The rule for counter() also covers counters()
+    - include: '#type-function-counter'
+    - include: '#type-string-double'
+    - include: '#type-string-single'
+    - include: '#type-function-url'
+    end: (?=;)
+
+  value-corner-shape:
+    begin: (?<=corner-shape:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:scoop|round|notch|bevel)\b
+    end: (?=;)
+
+  value-corners:
+    begin: (?<=corners:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:scoop|round|notch|bevel)\b
+    - include: '#type-percentage-non-negative'
+    - include: '#type-length-non-negative'
+    end: (?=;)
+
+  value-counter-increment-counter-reset-counter-set:
+    begin: (?<=counter-increment:|counter-reset:|counter-set:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bnone\b
+    - include: '#type-integer'
+    - include: '#identifier'
+    end: (?=;)
+
+  value-cue:
+    begin: (?<=cue-after:|cue-before:|cue:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bnone\b
+    - include: '#type-decibel'
+    - include: '#type-function-url'
+    end: (?=;)
+
+  value-cursor:
+    begin: (?<=cursor:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:zoom-out|zoom-in|wait|w-resize|vertical-text|text|sw-resize|se-resize|s-resize|row-resize|progress|pointer|nwse-resize|nw-resize|ns-resize|not-allowed|none|no-drop|nesw-resize|ne-resize|n-resize|move|help|ew-resize|e-resize|default|crosshair|copy|context-menu|col-resize|cell|auto|all-scroll|alias)\b
+    - include: '#type-function-url'
+    - include: '#type-number'
     end: (?=;)
 
   value-display:
