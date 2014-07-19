@@ -189,7 +189,6 @@ repository:
       '6': {name: punctuation.section.function.css}
 
   type-function-brightness-contrast-grayscale-invert-opacity-saturate-sepia:
-    # match: \b(brightness|contrast|grayscale|invert|opacity|saturate|sepia)(\()\s*(?:(\+?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?)(r?em|ex|ch|vw|vh|vmin|vmax|cm|mm|q|in|pc|pt|px|%)\b|\b(0)\b)\s*(\))
     match: \b(brightness|contrast|grayscale|invert|opacity|saturate|sepia)(\()\s*(\+?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?)(%)?\s*(\))
     captures:
       '1': {name: support.function.brightness.css}
@@ -417,6 +416,23 @@ repository:
       '5': {name: constant.numeric.css}
       '6': {name: punctuation.section.function.css}
 
+  type-function-icc-color:
+    begin: \b(icc-color)(\()
+    beginCaptures:
+      '1': {name: support.function.icc-color.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.icc-color.css
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-function-calc'
+    - include: '#type-number'
+    # This matches icc color names
+    - name: string.unquoted.identifier.css
+      match: '[^,()\s]+'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
   type-function-image:
     begin: \b(image)(\()
     beginCaptures:
@@ -586,11 +602,28 @@ repository:
       '15': {name: constant.numeric.alphavalue.css}
       '16': {name: punctuation.section.function.css}
 
+  type-function-snap:
+    begin: \b(snap)(\()
+    beginCaptures:
+      '1': {name: support.function.snap.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.snap.css
+    patterns:
+    - include: '#comment-block'
+    - name: support.constant.property-value.css
+      match: \b(?:top|near|bottom)\b
+    - include: '#type-function-calc'
+    - include: '#type-length'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
   type-function-steps:
     begin: \b(steps)(\()
     beginCaptures:
       '1': {name: support.function.steps.css}
       '2': {name: punctuation.section.function.css}
+    contentName: meta.function.steps.css
     patterns:
     - include: '#comment-block'
     - name: support.constant.property-value.css
@@ -605,6 +638,7 @@ repository:
     beginCaptures:
       '1': {name: support.function.symbols.css}
       '2': {name: punctuation.section.function.css}
+    contentName: meta.function.symbols.css
     patterns:
     - include: '#comment-block'
     - name: support.constant.property-value.css
@@ -771,7 +805,7 @@ repository:
     name: meta.value.css
     begin: ':'
     beginCaptures:
-      '0': {name: punctuation.terminator.rule.css}
+      '0': {name: punctuation.separator.key-value.css}
     patterns:
     - include: '#comment-block'
     - include: '#value-align-content-justify-content'
@@ -833,6 +867,7 @@ repository:
     - include: '#value-clear-side'
     - include: '#value-clip-path'
     - include: '#value-clip-rule'
+    - include: '#value-flood-color'
     - include: '#value-color'
     - include: '#value-color-correction'
     - include: '#value-color-interpolation-filters'
@@ -867,6 +902,15 @@ repository:
     - include: '#value-flex-grow-flex-shrink'
     - include: '#value-flex-wrap'
     - include: '#value-flex'
+    - include: '#value-float'
+    - include: '#value-float-defer-column-defer-page'
+    - include: '#value-float-displace'
+    - include: '#value-float-offset'
+    - include: '#value-float-wrap'
+    - include: '#value-flood-opacity'
+    - include: '#value-flow'
+    - include: '#value-flow-from'
+    - include: '#value-flow-into'
     - include: '#value-justify-items'
     - include: '#value-padding'
     end: ;
@@ -2272,6 +2316,151 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:wrap-reverse|wrap|nowrap)\b
+    end: (?=;)
+
+  value-float:
+    begin: (?<=float:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-function-snap'
+    - name: support.constant.property-value.css
+      match: \b(?:top|start|snap|right|outside|none|left|inside|end|contour|bottom)\b
+    end: (?=;)
+
+  value-float-defer-column-defer-page:
+    begin: (?<=float-defer-column:|float-defer-page:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:none|last)\b
+    - include: '#type-function-calc'
+    - include: '#type-integer'
+    end: (?=;)
+
+  value-float-displace:
+    begin: (?<=float-displace:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:line|indent|block-within-page|block)\b
+    end: (?=;)
+
+  value-float-offset:
+    begin: (?<=float-offset:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-function-calc'
+    - include: '#type-percentage'
+    - include: '#type-length'
+    end: (?=;)
+
+  value-float-wrap:
+    begin: (?<=float-wrap:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:wrap|none)\b
+    end: (?=;)
+
+  value-flood-color:
+    begin: (?<=flood-color:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-function-icc-color'
+    - include: '#type-color-named'
+    - include: '#type-function-hsla'
+    - include: '#type-function-hsl'
+    - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
+    - include: '#type-color-hex'
+    end: (?=;)
+
+  value-flood-opacity:
+    begin: (?<=flood-opacity:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-function-calc'
+    - include: '#type-percentage'
+    - include: '#type-number'
+    end: (?=;)
+
+  value-flow:
+    begin: (?<=flow:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:same|auto|\*)\b
+    - include: '#type-string-double'
+    - include: '#type-string-single'
+    - include: '#identifier'
+    end: (?=;)
+
+  value-flow-from:
+    begin: (?<=flow-from:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bnone\b
+    - include: '#identifier'
+    end: (?=;)
+
+  value-flow-into:
+    begin: (?<=flow-into:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:none|element|content)\b
+    - include: '#identifier'
     end: (?=;)
 
   value-justify-items:

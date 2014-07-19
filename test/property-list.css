@@ -1949,6 +1949,7 @@
     float: top;
     float: snap;
     float: bottom;
+    float: inside;
     float: outside;
     float: right;
     float: left;
@@ -1998,6 +1999,7 @@
     flood-color: initial;
     flood-color: unset;
     flood-color: black icc-color(hello, 25, 125, 125,1 , 1012, -3.14);
+    flood-color: icc-color();
 
     flood-opacity: inherit;
     flood-opacity: initial;
