@@ -130,6 +130,12 @@ repository:
     name: support.constant.property-value.css
     match: \b(?:unset|initial|inherit)\b
 
+  type-angle:
+    match: ([+-]?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?)(turn|rad|grad|deg)\b
+    captures:
+      '1': {name: constant.numeric.css}
+      '2': {name: keyword.other.unit.css}
+
   type-animation-name:
     match: \b(?:(none)|())\b
     captures:
@@ -185,6 +191,29 @@ repository:
     endCaptures:
       '0': {name: punctuation.section.function.css}
 
+  type-function-conic-gradient:
+    begin: \b((?:repeating-)?conic-gradient)(\()
+    beginCaptures:
+      '1': {name: support.function.conic-gradient.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.conic-gradient.css
+    patterns:
+    - include: '#comment-block'
+    - name: support.constant.property-value.css
+      match: \b(top|right|left|center|bottom|at)\b
+    - include: '#type-color-named'
+    - include: '#type-function-hsla'
+    - include: '#type-function-hsl'
+    - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
+    - include: '#type-angle'
+    - include: '#type-percentage'
+    - include: '#type-length'
+    - include: '#type-color-hex'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
   type-function-content:
     begin: \b(content)(\()
     beginCaptures:
@@ -220,6 +249,34 @@ repository:
     endCaptures:
       '0': {name: punctuation.section.function.css}
 
+  type-function-cross-fade:
+    begin: \b(cross-fade)(\()
+    beginCaptures:
+      '1': {name: support.function.cross-fade.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.cross-fade.css
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-color-named'
+    - include: '#type-function-hsla'
+    - include: '#type-function-hsl'
+    - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
+    - include: '#type-function-cross-fade'
+    - include: '#type-function-element'
+    - include: '#type-function-filter'
+    - include: '#type-function-image'
+    - include: '#type-function-image-set'
+    - include: '#type-function-conic-gradient'
+    - include: '#type-function-linear-gradient'
+    - include: '#type-function-radial-gradient'
+    - include: '#type-function-url'
+    - include: '#type-color-hex'
+    - include: '#type-percentage-non-negative'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
   type-function-cubic-bezier:
     match: \b(cubic-bezier)(\()\s*(0?\.\d+|1(?:\.0+)?|0)\s*,\s*([+-]?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?)\s*,\s*(0?\.\d+|1(?:\.0+)?|0)\s*,\s*([+-]?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?)\s*(\))
     captures:
@@ -229,6 +286,50 @@ repository:
       '4': {name: constant.numeric.css}
       '5': {name: constant.numeric.css}
       '6': {name: constant.numeric.css}
+
+  type-function-element:
+    match: \b(element)(\()\s*(#)(-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*)\s*(\))
+    captures:
+      '1': {name: support.function.element.css}
+      '2': {name: punctuation.section.function.css}
+      '3': {name: punctuation.definition.entity.css}
+      '4': {name: entity.other.attribute-name.id.css}
+      # '5': {name: punctuation.section.function.css}
+      '5': {name: invalid.deprecated.css}
+
+  type-function-filter:
+    begin: \b(filter)(\()
+    beginCaptures:
+      '1': {name: support.function.filter.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.filter.css
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-function-cross-fade'
+    - include: '#type-function-element'
+    - include: '#type-function-filter'
+    - include: '#type-function-image'
+    - include: '#type-function-image-set'
+    - include: '#type-function-conic-gradient'
+    - include: '#type-function-linear-gradient'
+    - include: '#type-function-radial-gradient'
+    # TODO: enable these when finished
+    # - include: '#type-function-blur'
+    # - include: '#type-function-brightness'
+    # - include: '#type-function-contrast'
+    # - include: '#type-function-drop-shadow'
+    # - include: '#type-function-grayscale'
+    # - include: '#type-function-hue-rotate'
+    # - include: '#type-function-invert'
+    # - include: '#type-function-opacity'
+    # - include: '#type-function-sepia'
+    # - include: '#type-function-saturate'
+    - include: '#type-function-url'
+    - include: '#type-string-double'
+    - include: '#type-string-single'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
 
   type-function-hsl:
     match: \b(hsl)(\()\s*(360|3[0-5]\d|[12]\d\d|\d\d|\d)\s*,\s*(((?:\d\d|\d)(?:\.\d+)?|100(?:\.0+)?|\.\d+)(%))\s*,\s*((?:(\d\d|\d)(?:\.\d+)?|100(?:\.0+)?|\.\d+)(%))\s*(\))
@@ -258,6 +359,104 @@ repository:
       '9': {name: keyword.other.unit.css}
       '10': {name: constant.numeric.alphavalue.css}
       '11': {name: punctuation.section.function.css}
+
+  type-function-image:
+    begin: \b(image)(\()
+    beginCaptures:
+      '1': {name: support.function.image.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.image.css
+    patterns:
+    - include: '#comment-block'
+    - name: support.constant.property-value.css
+      match: \b(?:rtl|ltr)\b
+    - include: '#type-color-named'
+    - include: '#type-function-hsla'
+    - include: '#type-function-hsl'
+    - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
+    - include: '#type-function-url'
+    - include: '#type-color-hex'
+    - include: '#type-string-double'
+    - include: '#type-string-single'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
+  type-function-image-set:
+    begin: \b(image-set)(\()
+    beginCaptures:
+      '1': {name: support.function.image-set.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.image-set.css
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-color-named'
+    - include: '#type-function-cross-fade'
+    - include: '#type-function-element'
+    - include: '#type-function-filter'
+    - include: '#type-function-image'
+    - include: '#type-function-hsla'
+    - include: '#type-function-hsl'
+    - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
+    - include: '#type-function-image-set'
+    - include: '#type-function-conic-gradient'
+    - include: '#type-function-linear-gradient'
+    - include: '#type-function-radial-gradient'
+    - include: '#type-function-url'
+    - include: '#type-color-hex'
+    - include: '#type-resolution'
+    - include: '#type-string-double'
+    - include: '#type-string-single'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
+  type-function-linear-gradient:
+    begin: \b((?:repeating-)?linear-gradient)(\()
+    beginCaptures:
+      '1': {name: support.function.linear-gradient.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.linear-gradient.css
+    patterns:
+    - include: '#comment-block'
+    - name: support.constant.property-value.css
+      match: \b(?:top|to|right|left|bottom)\b
+    - include: '#type-color-named'
+    - include: '#type-function-hsla'
+    - include: '#type-function-hsl'
+    - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
+    - include: '#type-percentage'
+    - include: '#type-angle'
+    - include: '#type-length'
+    - include: '#type-color-hex'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
+  type-function-radial-gradient:
+    begin: \b((?:repeating-)?radial-gradient)(\()
+    beginCaptures:
+      '1': {name: support.function.radial-gradient.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.radial-gradient.css
+    patterns:
+    - include: '#comment-block'
+    - name: support.constant.property-value.css
+      match: \b(top|right|left|farthest-side|farthest-corner|ellipse|closest-side|closest-corner|circle|center|bottom|at)\b
+    - include: '#type-color-named'
+    - include: '#type-function-hsla'
+    - include: '#type-function-hsl'
+    - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
+    - include: '#type-percentage'
+    - include: '#type-length'
+    - include: '#type-color-hex'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
 
   type-function-rgb:
     match: \b(rgb)(\()\s*(?:(2[0-5][0-5]|1\d\d|\d\d|\d)\s*,\s*(2[0-5][0-5]|1\d\d|\d\d|\d)\s*,\s*(2[0-5][0-5]|1\d\d|\d\d|\d)|(((?:\d\d|\d)(?:\.\d+)?|100(?:\.0+)?|\.\d+)(%))\s*,\s*(((?:\d\d|\d)(?:\.\d+)?|100(?:\.0+)?|\.\d+)(%))\s*,\s*(((?:\d\d|\d)(?:\.\d+)?|100(?:\.0+)?|\.\d+)(%)))\s*(\))
@@ -376,7 +575,7 @@ repository:
 
   type-integer-positive:
     name: constant.numeric.css
-    match: \+?(?:[1-9]|[1-9]\d+)
+    match: \+?(?:[1-9]\d+|[1-9])
 
   type-length:
     match: (?:([+-]?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?)(r?em|ex|ch|vw|vh|vmin|vmax|cm|mm|q|in|pc|pt|px)\b|\b(0)\b)
@@ -391,6 +590,10 @@ repository:
       '1': {name: constant.numeric.css}
       '2': {name: keyword.other.unit.css}
       '3': {name: constant.numeric.css}
+
+  type-line-style:
+    name: support.constant.property-value.css
+    match: \b(?:solid|ridge|outset|none|inset|hidden|groove|double|dotted|dashed)\b
 
   type-number:
     name: constant.numeric.css
@@ -427,6 +630,12 @@ repository:
   type-repeat-style:
     name: support.constant.property-value.css
     match: \b(?:space|round|repeat-y|repeat-x|repeat|no-repeat)\b
+
+  type-resolution:
+    match: (\+?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?)(dppx|dpcm|dpi)\b
+    captures:
+      '1': {name: constant.numeric.css}
+      '2': {name: keyword.other.unit.css}
 
   type-string-double:
     name: string.quoted.double.css
@@ -495,6 +704,22 @@ repository:
     - include: '#value-baseline-shift'
     - include: '#value-bleed'
     - include: '#value-bookmark-label'
+    - include: '#value-bookmark-level'
+    - include: '#value-bookmark-state'
+    - include: '#value-border'
+    - include: '#value-border-bottom'
+    - include: '#value-border-clip'
+    - include: '#value-border-collapse'
+    - include: '#value-border-color'
+    - include: '#value-border-image-outset'
+    - include: '#value-border-image-repeat'
+    - include: '#value-border-image-slice'
+    - include: '#value-border-image-source'
+    - include: '#value-border-image-width'
+    - include: '#value-border-image'
+    - include: '#value-border-radius'
+    - include: '#value-border-style'
+    - include: '#value-border-width'
     - include: '#value-display'
     - include: '#value-justify-items'
     - include: '#value-padding'
@@ -557,8 +782,8 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:under-edge|text-under-edge|text-over-edge|over-edge|middle|mathematical|ideographic|hanging|central|baseline|auto|alphabetic)\b
-    - include: '#type-length'
     - include: '#type-percentage'
+    - include: '#type-length'
     - include: '#type-function-calc'
     end: (?=;)
 
@@ -586,7 +811,6 @@ repository:
     - include: '#type-function-var'
     end: (?=;)
 
-  # TODO: finish this
   value-animation:
     begin: (?<=animation:)
     patterns:
@@ -606,8 +830,6 @@ repository:
       match: \b(?:running|paused)\b
     - name: support.constant.property-value.css
       match: \binfinite\b
-    - name: support.constant.property-value.css
-      match: \bnone\b
     - include: '#type-number-non-negative'
     - include: '#type-time'
     - include: '#type-function-calc'
@@ -746,8 +968,8 @@ repository:
       - include: '#type-function-rgba'
       - include: '#type-function-rgb'
       - include: '#type-color-hex'
-      - include: '#type-length-non-negative'
       - include: '#type-percentage-non-negative'
+      - include: '#type-length-non-negative'
       end: (?=;)
 
   value-background-attachment:
@@ -802,6 +1024,14 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \bnone\b
+    - include: '#type-function-cross-fade'
+    - include: '#type-function-element'
+    - include: '#type-function-filter'
+    - include: '#type-function-image'
+    - include: '#type-function-image-set'
+    - include: '#type-function-conic-gradient'
+    - include: '#type-function-linear-gradient'
+    - include: '#type-function-radial-gradient'
     - include: '#type-function-url'
     end: (?=;)
 
@@ -828,8 +1058,8 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(top|right|left|center|bottom)\b
-    - include: '#type-length'
     - include: '#type-percentage'
+    - include: '#type-length'
     end: (?=;)
 
   value-background-repeat:
@@ -855,8 +1085,8 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:cover|contain|auto)\b
-    - include: '#type-length-non-negative'
     - include: '#type-percentage-non-negative'
+    - include: '#type-length-non-negative'
     end: (?=;)
 
   value-baseline-shift:
@@ -870,8 +1100,8 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:super|sub|baseline)\b
-    - include: '#type-length'
     - include: '#type-percentage'
+    - include: '#type-length'
     end: (?=;)
 
   value-bleed:
@@ -899,12 +1129,253 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \bnone\b
-    # TODO: write these functions
     - include: '#type-function-content'
     # The rule for counter() also covers counters()
     - include: '#type-function-counter'
     - include: '#type-string-double'
     - include: '#type-string-single'
+    end: (?=;)
+
+  value-bookmark-level:
+    begin: (?<=bookmark-level:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bnone\b
+    - include: '#type-integer-positive'
+    end: (?=;)
+
+  value-bookmark-state:
+    begin: (?<=bookmark-state:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:open|closed)\b
+    end: (?=;)
+
+  # # TODO: write this
+  # value-border:
+  #   begin: (?<=border:)
+  #   patterns:
+  #   - include: '#comment-block'
+  #   - include: '#type-important'
+  #   - include: '#type-all'
+  #   - include: '#type-function-attr'
+  #   - include: '#type-function-toggle'
+  #   - include: '#type-function-var'
+  #   -
+  #   end: (?=;)
+
+  # # TODO: write this
+  # value-border-bottom:
+  #   begin: (?<=border-bottom:)
+  #   patterns:
+  #   - include: '#comment-block'
+  #   - include: '#type-important'
+  #   - include: '#type-all'
+  #   - include: '#type-function-attr'
+  #   - include: '#type-function-toggle'
+  #   - include: '#type-function-var'
+  #   -
+  #   end: (?=;)
+
+  value-border-clip:
+    begin: (?<=(?:border-clip:|border-clip-bottom:|border-clip-left:|border-clip-right:|border-clip-top:))
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bnormal\b
+    - include: '#type-percentage'
+    - include: '#type-length'
+    # TODO: include <fraction> here? the spec is unsure about supporting <fraction>
+    end: (?=;)
+
+  value-border-collapse:
+    begin: (?<=border-collapse:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:separate|collapse)\b
+    end: (?=;)
+
+  value-border-color:
+    begin: (?<=(?:border-color:|border-bottom-color:|border-left-color:|border-right-color:|border-top-color:))
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-color-named'
+    - include: '#type-function-hsl'
+    - include: '#type-function-hsla'
+    - include: '#type-function-rgb'
+    - include: '#type-function-rgba'
+    - include: '#type-color-hex'
+    end: (?=;)
+
+  value-border-image:
+    begin: (?<=border-image:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:stretch|space|round|repeat|none|fill|auto)\b
+    - include: '#type-function-cross-fade'
+    - include: '#type-function-element'
+    - include: '#type-function-filter'
+    - include: '#type-function-image'
+    - include: '#type-function-image-set'
+    - include: '#type-function-conic-gradient'
+    - include: '#type-function-linear-gradient'
+    - include: '#type-function-radial-gradient'
+    - include: '#type-function-url'
+    - include: '#type-percentage-non-negative'
+    - include: '#type-length-non-negative'
+    - include: '#type-number-non-negative'
+    end: (?=;)
+
+  value-border-image-outset:
+    begin: (?<=border-image-outset:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-length-non-negative'
+    - include: '#type-number-non-negative'
+    end: (?=;)
+
+  value-border-image-repeat:
+    begin: (?<=border-image-repeat:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:stretch|space|round|repeat)\b
+    end: (?=;)
+
+  value-border-image-slice:
+    begin: (?<=border-image-slice:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bfill\b
+    - include: '#type-percentage-non-negative'
+    - include: '#type-number-non-negative'
+    end: (?=;)
+
+  value-border-image-source:
+    begin: (?<=border-image-source:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bnone\b
+    - include: '#type-function-cross-fade'
+    - include: '#type-function-element'
+    - include: '#type-function-filter'
+    - include: '#type-function-image'
+    - include: '#type-function-image-set'
+    - include: '#type-function-conic-gradient'
+    - include: '#type-function-linear-gradient'
+    - include: '#type-function-radial-gradient'
+    - include: '#type-function-url'
+    end: (?=;)
+
+  value-border-image-width:
+    begin: (?<=border-image-width:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bauto\b
+    - include: '#type-percentage-non-negative'
+    - include: '#type-length-non-negative'
+    - include: '#type-number-non-negative'
+    end: (?=;)
+
+  value-border-radius:
+    begin: (?<=(?:border-radius:|border-bottom-left-radius:|border-bottom-right-radius:|border-top-left-radius:|border-top-right-radius:))
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-percentage-non-negative'
+    - include: '#type-length-non-negative'
+    end: (?=;)
+
+  value-border-style:
+    begin: (?<=(?:border-style:|border-bottom-left-style:|border-bottom-right-style:|border-top-left-style:|border-bottom-right-style:))
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-line-style'
+    end: (?=;)
+
+  value-border-width:
+    begin: (?<=(?:border-width:|border-bottom-width:|border-left-width:|border-right-width:|border-top-width:))
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:thin|thick|medium)\b
+    - include: '#type-length-non-negative'
     end: (?=;)
 
   value-display:
@@ -944,8 +1415,8 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \bauto\b
-    - include: '#type-length'
     - include: '#type-percentage'
+    - include: '#type-length'
     - include: '#type-function-calc'
     end: (?=;)
 
