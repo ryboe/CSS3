@@ -71,20 +71,17 @@ repository:
     - include: '#media-feature-property-scan'
     - include: '#media-feature-property-scripting'
     - include: '#media-feature-property-update-frequency'
-    # TODO: write these
-    # - include: '#media-feature-range-aspect-ratio'
-    # - include: '#media-feature-range-color'
-    # - include: '#media-feature-range-color-index'
-    # - include: '#media-feature-range-height'
-    # - include: '#media-feature-range-resolution'
-    # - include: '#media-feature-range-monochrome'
-    # - include: '#media-feature-range-width'
+    - include: '#media-feature-range-operator'
+    - include: '#type-ratio'
+    - include: '#type-resolution'
+    - include: '#type-length-non-negative'
+    - include: '#type-integer-non-negative'
     end: \)
     endCaptures:
       '0': {name: punctuation.section.media-feature.css}
 
   media-feature-name:
-    match: (?<=\()\s*(width|update-frequency|scripting|scan|resolution|pointer|overflow-inline|overflow-block|orientation|monochrome|min-width|min-resolution|min-monochrome|min-height|min-device-width|min-device-height|min-device-aspect-ratio|min-color-index|min-color|min-aspect-ratio|max-width|max-resolution|max-monochrome|max-height|max-device-width|max-device-height|max-device-aspect-ratio|max-color-index|max-color|max-aspect-ratio|light-level|hover|height|grid|device-width|device-height|device-aspect-ratio|color-index|color|aspect-ratio|any-pointer|any-hover)\s*(?=[><=):])
+    match: (?<=[><=(])\s*(width|update-frequency|scripting|scan|resolution|pointer|overflow-inline|overflow-block|orientation|monochrome|min-width|min-resolution|min-monochrome|min-height|min-device-width|min-device-height|min-device-aspect-ratio|min-color-index|min-color|min-aspect-ratio|max-width|max-resolution|max-monochrome|max-height|max-device-width|max-device-height|max-device-aspect-ratio|max-color-index|max-color|max-aspect-ratio|light-level|hover|height|grid|device-width|device-height|device-aspect-ratio|color-index|color|aspect-ratio|any-pointer|any-hover)\s*(?=[><=):])
     captures:
       '1': {name: support.constant.property-value.css}
 
@@ -171,6 +168,11 @@ repository:
     match: (?<=update-frequency:)\s*(normal|none|slow)\s*(?=\))
     captures:
       '1': {name: support.constant.property-value.css}
+
+  media-feature-range-operator:
+    match: '(?<=[\s\w])([<>]=?|=)(?=[\s\w])'
+    captures:
+      '1': {name: keyword.operator.arithmetic.css}
 
   media-type:
     match: (?:(only|not)\s+)?(speech|screen|print|all)
@@ -1175,6 +1177,12 @@ repository:
   #     '2': {name: punctuation.separator.namespace.css}
   #     '3': {name: entity.other.attribute-name.css}
   #     '4': {name: entity.other.attribute-name.wildcard.css}
+
+  type-ratio:
+    match: (\+?(?:[1-9]\d+|[1-9]))\s*\/\s*(\+?(?:[1-9]\d+|[1-9]))
+    captures:
+      '1': {name: constant.numeric.css}
+      '2': {name: constant.numeric.css}
 
   type-repeat-style:
     name: support.constant.property-value.css

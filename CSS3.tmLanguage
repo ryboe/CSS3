@@ -206,6 +206,26 @@
 					<key>include</key>
 					<string>#media-feature-property-update-frequency</string>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>#media-feature-range-operator</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-ratio</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-resolution</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-length-non-negative</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-integer-non-negative</string>
+				</dict>
 			</array>
 		</dict>
 		<key>media-feature-name</key>
@@ -219,7 +239,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(?&lt;=\()\s*(width|update-frequency|scripting|scan|resolution|pointer|overflow-inline|overflow-block|orientation|monochrome|min-width|min-resolution|min-monochrome|min-height|min-device-width|min-device-height|min-device-aspect-ratio|min-color-index|min-color|min-aspect-ratio|max-width|max-resolution|max-monochrome|max-height|max-device-width|max-device-height|max-device-aspect-ratio|max-color-index|max-color|max-aspect-ratio|light-level|hover|height|grid|device-width|device-height|device-aspect-ratio|color-index|color|aspect-ratio|any-pointer|any-hover)\s*(?=[&gt;&lt;=):])</string>
+			<string>(?&lt;=[&gt;&lt;=(])\s*(width|update-frequency|scripting|scan|resolution|pointer|overflow-inline|overflow-block|orientation|monochrome|min-width|min-resolution|min-monochrome|min-height|min-device-width|min-device-height|min-device-aspect-ratio|min-color-index|min-color|min-aspect-ratio|max-width|max-resolution|max-monochrome|max-height|max-device-width|max-device-height|max-device-aspect-ratio|max-color-index|max-color|max-aspect-ratio|light-level|hover|height|grid|device-width|device-height|device-aspect-ratio|color-index|color|aspect-ratio|any-pointer|any-hover)\s*(?=[&gt;&lt;=):])</string>
 		</dict>
 		<key>media-feature-property-grid</key>
 		<dict>
@@ -438,6 +458,19 @@
 			</dict>
 			<key>match</key>
 			<string>(?&lt;=update-frequency:)\s*(normal|none|slow)\s*(?=\))</string>
+		</dict>
+		<key>media-feature-range-operator</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.arithmetic.css</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?&lt;=[\s\w])([&lt;&gt;]=?|=)(?=[\s\w])</string>
 		</dict>
 		<key>media-type</key>
 		<dict>
@@ -3548,6 +3581,24 @@
 			</dict>
 			<key>match</key>
 			<string>(?:(\+?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?)(%)|\b(0)\b)</string>
+		</dict>
+		<key>type-ratio</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>constant.numeric.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>constant.numeric.css</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(\+?(?:[1-9]\d+|[1-9]))\s*\/\s*(\+?(?:[1-9]\d+|[1-9]))</string>
 		</dict>
 		<key>type-repeat-style</key>
 		<dict>
