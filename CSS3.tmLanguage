@@ -65,12 +65,22 @@
 					<string>#comment-block</string>
 				</dict>
 				<dict>
+					<key>match</key>
+					<string>\band\b</string>
+					<key>name</key>
+					<string>keyword.oeprator.logic.media.css</string>
+				</dict>
+				<dict>
 					<key>include</key>
 					<string>#media-type-deprecated</string>
 				</dict>
 				<dict>
 					<key>include</key>
 					<string>#media-type</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#media-feature</string>
 				</dict>
 			</array>
 		</dict>
@@ -106,6 +116,329 @@
 			<key>name</key>
 			<string>string.unquoted.identifier.css</string>
 		</dict>
+		<key>media-feature</key>
+		<dict>
+			<key>begin</key>
+			<string>\(</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.media-feature.css</string>
+				</dict>
+			</dict>
+			<key>contentName</key>
+			<string>meta.media-feature.css</string>
+			<key>end</key>
+			<string>\)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.media-feature.css</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#media-feature-name</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#media-feature-property-grid</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#media-feature-property-hover</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#media-feature-property-integer</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#media-feature-property-length</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#media-feature-property-light-level</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#media-feature-property-orientation</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#media-feature-property-overflow-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#media-feature-property-overflow-inline</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#media-feature-property-pointer</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#media-feature-property-ratio</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#media-feature-property-resolution</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#media-feature-property-scan</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#media-feature-property-scripting</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#media-feature-property-update-frequency</string>
+				</dict>
+			</array>
+		</dict>
+		<key>media-feature-name</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?&lt;=\()\s*(width|update-frequency|scripting|scan|resolution|pointer|overflow-inline|overflow-block|orientation|monochrome|min-width|min-resolution|min-monochrome|min-height|min-device-width|min-device-height|min-device-aspect-ratio|min-color-index|min-color|min-aspect-ratio|max-width|max-resolution|max-monochrome|max-height|max-device-width|max-device-height|max-device-aspect-ratio|max-color-index|max-color|max-aspect-ratio|light-level|hover|height|grid|device-width|device-height|device-aspect-ratio|color-index|color|aspect-ratio|any-pointer|any-hover)\s*(?=[&gt;&lt;=):])</string>
+		</dict>
+		<key>media-feature-property-grid</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?&lt;=grid:)\s*(1|0)\s*(?=\))</string>
+		</dict>
+		<key>media-feature-property-hover</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?&lt;=hover:|any-hover:)\s*(on-demand|none|hover)\s*(?=\))</string>
+		</dict>
+		<key>media-feature-property-integer</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=monochrome:|min-monochrome:|min-color-index:|min-color:|max-monochrome:|max-color-index:|max-color:|color-index:|color:)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>constant.numeric.css</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(?=\))</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-integer-non-negative</string>
+				</dict>
+			</array>
+		</dict>
+		<key>media-feature-property-length</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=width:|min-width:|min-height:|min-device-width:|min-device-height:|max-width:|max-height:|max-device-width:|max-device-height:|height:|device-width:|device-height:)</string>
+			<key>end</key>
+			<string>(?=\))</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-length-non-negative</string>
+				</dict>
+			</array>
+		</dict>
+		<key>media-feature-property-light-level</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?&lt;=light-level:)\s*(washed|normal|dim)\s*(?=\))</string>
+		</dict>
+		<key>media-feature-property-orientation</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?&lt;=orientation:)\s*(portrait|landscape)\s*(?=\))</string>
+		</dict>
+		<key>media-feature-property-overflow-block</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?&lt;=overflow-block:)\s*(scroll|paged|optional-paged|none)\s*(?=\))</string>
+		</dict>
+		<key>media-feature-property-overflow-inline</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?&lt;=overflow-inline:)\s*(scroll|none)\s*(?=\))</string>
+		</dict>
+		<key>media-feature-property-pointer</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?&lt;=pointer:|any-pointer:)\s*(none|fine|coarse)\s*(?=\))</string>
+		</dict>
+		<key>media-feature-property-ratio</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>constant.numeric.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>constant.numeric.css</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?&lt;=min-device-aspect-ratio:|min-aspect-ratio:|max-device-aspect-ratio:|max-aspect-ratio:|device-aspect-ratio:|aspect-ratio:)\s*(\+?(?:[1-9]\d+|[1-9]))\s*\/\s*(\+?(?:[1-9]\d+|[1-9]))\s*(?=\))</string>
+		</dict>
+		<key>media-feature-property-resolution</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>constant.numeric.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.other.unit.css</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?&lt;=max-resolution:|min-resolution:|resolution:)\s*(\+?(?:[1-9]\d+|[1-9]))(dppx|dpi|dpcm)\s*(?=\))</string>
+		</dict>
+		<key>media-feature-property-scan</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?&lt;=scan:)\s*(progressive|interlace)\s*(?=\))</string>
+		</dict>
+		<key>media-feature-property-scripting</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?&lt;=scripting:)\s*(none|initial-only|enabled)\s*(?=\))</string>
+		</dict>
+		<key>media-feature-property-update-frequency</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?&lt;=update-frequency:)\s*(normal|none|slow)\s*(?=\))</string>
+		</dict>
 		<key>media-type</key>
 		<dict>
 			<key>captures</key>
@@ -122,12 +455,12 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(?:(not|only)\s+)?(all|print|screen|speech)</string>
+			<string>(?:(only|not)\s+)?(speech|screen|print|all)</string>
 		</dict>
 		<key>media-type-deprecated</key>
 		<dict>
 			<key>match</key>
-			<string>\b(?:aural|braille|embossed|handheld|projection|tty|tv)\b</string>
+			<string>\b(?:tv|tty|projection|handheld|embossed|braille|aural)\b</string>
 			<key>name</key>
 			<string>invalid.deprecated.css</string>
 		</dict>
@@ -160,6 +493,22 @@
 				<dict>
 					<key>include</key>
 					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#at-font-face</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#at-keyframes</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#at-media</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#at-page</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -3047,6 +3396,13 @@
 		<dict>
 			<key>match</key>
 			<string>[+-]?\d+</string>
+			<key>name</key>
+			<string>constant.numeric.css</string>
+		</dict>
+		<key>type-integer-non-negative</key>
+		<dict>
+			<key>match</key>
+			<string>\+?\d+</string>
 			<key>name</key>
 			<string>constant.numeric.css</string>
 		</dict>

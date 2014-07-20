@@ -20,8 +20,11 @@ repository:
       '2': {name: punctuation.definition.keyword.css}
     patterns:
     - include: '#comment-block'
+    - name: keyword.oeprator.logic.media.css
+      match: \band\b
     - include: '#media-type-deprecated'
     - include: '#media-type'
+    - include: '#media-feature'
     end: \{
     endCaptures:
       '0': {name: punctuation.section.rule-list.css}
@@ -46,15 +49,138 @@ repository:
     name: string.unquoted.identifier.css
     match: -?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*
 
+  media-feature:
+    begin: \(
+    beginCaptures:
+      '0': {name: punctuation.section.media-feature.css}
+    contentName: meta.media-feature.css
+    patterns:
+    - include: '#comment-block'
+    - include: '#media-feature-name'
+    - include: '#media-feature-property-grid'
+    - include: '#media-feature-property-hover'
+    - include: '#media-feature-property-integer'
+    - include: '#media-feature-property-length'
+    - include: '#media-feature-property-light-level'
+    - include: '#media-feature-property-orientation'
+    - include: '#media-feature-property-overflow-block'
+    - include: '#media-feature-property-overflow-inline'
+    - include: '#media-feature-property-pointer'
+    - include: '#media-feature-property-ratio'
+    - include: '#media-feature-property-resolution'
+    - include: '#media-feature-property-scan'
+    - include: '#media-feature-property-scripting'
+    - include: '#media-feature-property-update-frequency'
+    # TODO: write these
+    # - include: '#media-feature-range-aspect-ratio'
+    # - include: '#media-feature-range-color'
+    # - include: '#media-feature-range-color-index'
+    # - include: '#media-feature-range-height'
+    # - include: '#media-feature-range-resolution'
+    # - include: '#media-feature-range-monochrome'
+    # - include: '#media-feature-range-width'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.media-feature.css}
+
+  media-feature-name:
+    match: (?<=\()\s*(width|update-frequency|scripting|scan|resolution|pointer|overflow-inline|overflow-block|orientation|monochrome|min-width|min-resolution|min-monochrome|min-height|min-device-width|min-device-height|min-device-aspect-ratio|min-color-index|min-color|min-aspect-ratio|max-width|max-resolution|max-monochrome|max-height|max-device-width|max-device-height|max-device-aspect-ratio|max-color-index|max-color|max-aspect-ratio|light-level|hover|height|grid|device-width|device-height|device-aspect-ratio|color-index|color|aspect-ratio|any-pointer|any-hover)\s*(?=[><=):])
+    captures:
+      '1': {name: support.constant.property-value.css}
+
+  media-feature-property-grid:
+    match: (?<=grid:)\s*(1|0)\s*(?=\))
+    captures:
+      '1': {name: support.constant.property-value.css}
+
+  media-feature-property-hover:
+    match: (?<=hover:|any-hover:)\s*(on-demand|none|hover)\s*(?=\))
+    captures:
+      '1': {name: support.constant.property-value.css}
+
+  # (min-color: 1)
+  media-feature-property-integer:
+    begin: (?<=monochrome:|min-monochrome:|min-color-index:|min-color:|max-monochrome:|max-color-index:|max-color:|color-index:|color:)
+    beginCaptures:
+      '1': {name: constant.numeric.css}
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-function-calc'
+    - include: '#type-integer-non-negative'
+    end: (?=\))
+
+  # (width: 600px)
+  media-feature-property-length:
+    begin: (?<=width:|min-width:|min-height:|min-device-width:|min-device-height:|max-width:|max-height:|max-device-width:|max-device-height:|height:|device-width:|device-height:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-function-calc'
+    - include: '#type-length-non-negative'
+    end: (?=\))
+
+  media-feature-property-light-level:
+    match: (?<=light-level:)\s*(washed|normal|dim)\s*(?=\))
+    captures:
+      '1': {name: support.constant.property-value.css}
+
+  media-feature-property-orientation:
+    match: (?<=orientation:)\s*(portrait|landscape)\s*(?=\))
+    captures:
+      '1': {name: support.constant.property-value.css}
+
+  media-feature-property-overflow-block:
+    match: (?<=overflow-block:)\s*(scroll|paged|optional-paged|none)\s*(?=\))
+    captures:
+      '1': {name: support.constant.property-value.css}
+
+  media-feature-property-overflow-inline:
+    match: (?<=overflow-inline:)\s*(scroll|none)\s*(?=\))
+    captures:
+      '1': {name: support.constant.property-value.css}
+
+  media-feature-property-pointer:
+    match: (?<=pointer:|any-pointer:)\s*(none|fine|coarse)\s*(?=\))
+    captures:
+      '1': {name: support.constant.property-value.css}
+
+  # (aspect-ratio: 16/9)
+  media-feature-property-ratio:
+    match: (?<=min-device-aspect-ratio:|min-aspect-ratio:|max-device-aspect-ratio:|max-aspect-ratio:|device-aspect-ratio:|aspect-ratio:)\s*(\+?(?:[1-9]\d+|[1-9]))\s*\/\s*(\+?(?:[1-9]\d+|[1-9]))\s*(?=\))
+    captures:
+      '1': {name: constant.numeric.css}
+      '2': {name: constant.numeric.css}
+
+  # (min-resolution: 300dpi)
+  media-feature-property-resolution:
+    match: (?<=max-resolution:|min-resolution:|resolution:)\s*(\+?(?:[1-9]\d+|[1-9]))(dppx|dpi|dpcm)\s*(?=\))
+    captures:
+      '1': {name: constant.numeric.css}
+      '2': {name: keyword.other.unit.css}
+
+  media-feature-property-scan:
+    match: (?<=scan:)\s*(progressive|interlace)\s*(?=\))
+    captures:
+      '1': {name: support.constant.property-value.css}
+
+  media-feature-property-scripting:
+    match: (?<=scripting:)\s*(none|initial-only|enabled)\s*(?=\))
+    captures:
+      '1': {name: support.constant.property-value.css}
+
+  media-feature-property-update-frequency:
+    match: (?<=update-frequency:)\s*(normal|none|slow)\s*(?=\))
+    captures:
+      '1': {name: support.constant.property-value.css}
+
   media-type:
-    match: (?:(not|only)\s+)?(all|print|screen|speech)
+    match: (?:(only|not)\s+)?(speech|screen|print|all)
     captures:
       '1': {name: keyword.operator.logic.media.css}
       '2': {name: support.constant.media.css}
 
   media-type-deprecated:
     name: invalid.deprecated.css
-    match: \b(?:aural|braille|embossed|handheld|projection|tty|tv)\b
+    match: \b(?:tv|tty|projection|handheld|embossed|braille|aural)\b
 
   property-list:
     name: meta.property-list.css
@@ -63,6 +189,11 @@ repository:
       '0': {name: punctuation.section.property-list.css}
     patterns:
     - include: '#comment-block'
+    - include: '#at-font-face'
+    - include: '#at-keyframes'
+    - include: '#at-media'
+    - include: '#at-page'
+    # TODO: add more at-rules. do not add @charset, @namespace, or @import
     - include: '#property-name'
     - include: '#value'
     end: \}
@@ -979,6 +1110,10 @@ repository:
     name: constant.numeric.css
     match: '[+-]?\d+'
 
+  type-integer-non-negative:
+    name: constant.numeric.css
+    match: '\+?\d+'
+
   type-integer-positive:
     name: constant.numeric.css
     match: \+?(?:[1-9]\d+|[1-9])
@@ -997,7 +1132,7 @@ repository:
       '2': {name: keyword.other.unit.css}
       '3': {name: constant.numeric.css}
 
-  # TODO: test this
+  # TODO: rewrite this. this is wrong.
   type-length-positive:
     match: (\+?(?:[0-9]+\.[0-9]*[1-9][0-9]*|\.[0-9]*[1-9][0-9]*|[1-9][0-9]*)(?:[eE][+-]?[0-9]+)?)(r?em|ex|ch|vw|vh|vmin|vmax|cm|mm|q|in|pc|pt|px)
     captures:

@@ -283,6 +283,64 @@ media features
 @media (10pt < min-device-height) {}
 @media (10px < min-device-height) {}
 
+@media (width: 100px) {}
+@media (min-width: 100px) {}
+@media (max-width: 100px) {}
+@media (height: 100px) {}
+@media (min-height: 100px) {}
+@media (max-height: 100px) {}
+@media (device-width: 100px) {}
+@media (min-device-width: 100px) {}
+@media (max-device-width: 100px) {}
+@media (device-height: 100px) {}
+@media (min-device-height: 100px) {}
+@media (max-device-height: 100px) {}
+@media (orientation: portrait) {}
+@media (orientation: landscape) {}
+@media (aspect-ratio: 16/9) {}
+@media (device-aspect-ratio: 16/9) {}
+@media (resolution: 100dpi) {}
+@media (resolution: 10dpcm) {}
+@media (resolution: 100dppx) {}
+@media (scan: interlace) {}
+@media (scan: progressive) {}
+@media (update-frequency: none) {}
+@media (update-frequency: slow) {}
+@media (update-frequency: normal) {}
+@media (overflow-block: none) {}
+@media (overflow-block: scroll) {}
+@media (overflow-block: optional-paged) {}
+@media (overflow-block: paged) {}
+@media (overflow-inline: none) {}
+@media (overflow-inline: scroll) {}
+@media (color: 1) {}
+@media (min-color: 1) {}
+@media (max-color: 1) {}
+@media (color-index: 1) {}
+@media (min-color-index: 1) {}
+@media (max-color-index: 1) {}
+@media (monochrome: 1) {}
+@media (min-monochrome: 1) {}
+@media (max-monochrome: 1) {}
+@media (pointer: none) {}
+@media (pointer: coarse) {}
+@media (pointer: fine) {}
+@media (any-pointer: none) {}
+@media (any-pointer: coarse) {}
+@media (any-pointer: fine) {}
+@media (hover: none) {}
+@media (hover: on-demand) {}
+@media (hover: hover) {}
+@media (any-hover: none) {}
+@media (any-hover: on-demand) {}
+@media (any-hover: hover) {}
+@media (light-level: dim) {}
+@media (light-level: normal) {}
+@media (light-level: washed) {}
+@media (scripting: none) {}
+@media (scripting: initial-only) {}
+@media (scripting: enabled) {}
+
 @media (color) {}
 @media (grid) {}
 @media (hover) {}
