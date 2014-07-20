@@ -1,0 +1,369 @@
+/* valid */
+
+/*
+logic operators
+    and
+    not
+    only
+    ,     // logical or
+
+media features
+    3 types
+        discrete (width: 400px)
+            orientation
+                portrait|landscape
+            scan
+                interlace|progressive
+            light-level
+                dim | normal | washed
+            overflow-block
+                none | scroll | optional-paged | paged
+            hover
+                none | on-demand | hover
+            scripting
+                none | initial-only | enabled
+            overflow-inline
+                none | scroll
+            pointer
+                none | coarse | fine
+            update-frequency
+                none | slow | normal
+            grid
+                <mq-boolean> '0' or '1'
+        boolean
+            color(-index)
+            grid
+            hover
+            monochrome
+            pointer
+            scripting
+        range    (400px < width < 700px)  // min/max on these properties only
+            resolution
+                <resolution>
+            color(-index)?
+                <color>
+            monochrome
+                <integer>  // non-negative
+            device-aspect-ratio
+                <ratio>
+            aspect-ratio
+                <ratio>
+            device-height
+                <length>
+            device-width
+                <length>
+            height
+                <length>
+            width
+                <length>
+
+(r?em|ex|ch|vw|vh|vmin|vmax|cm|mm|q|in|pc|pt|px)
+*/
+
+/* vendor prefixes
+
+    MEDIA FEATURES
+    -ms-high-contrast
+    -moz-images-in-menus
+    -moz-mac-graphite-theme
+    -moz-maemo-classic
+    -moz-device-pixel-ratio
+    -moz-scrollbar-end-backward
+    -moz-scrollbar-end-forward
+    -moz-scrollbar-start-backward
+    -moz-scrollbar-start-forward
+    -moz-scrollbar-thumb-proportional
+    -moz-touch-enabled
+    -moz-windows-classic
+    -moz-windows-compositor
+    -moz-windows-default-theme
+    -moz-windows-theme
+
+*/
+
+/* test nesting */
+
+@media {
+
+}
+
+@media {
+    @media {
+        @media {
+
+        }
+    }
+}
+
+@media screen {
+    #something {
+        float: left;
+        color: blue;
+    }
+    #else {
+        position: absolute;
+    }
+    @media (max-width: 100px) {
+        @media (scripting) {
+
+        }
+
+        .something-else {
+            color: red;
+        }
+    }
+}
+
+@media print { // rule (1)
+  /* hide navigation controls when printing */
+  #navigation {
+    display: none;
+  }
+  @media (min-width: 1cm) { // rule (2)
+      @media (max-width: 12cm) { // rule (3)
+        /* keep notes in flow when printing to narrow pages */
+        .note { float: none; }
+
+      }
+
+  }
+}
+
+@media print { // rule (1)
+  /* hide navigation controls when printing */
+  #navigation { display: none; }
+  @media (max-width: 12cm) { // rule (2)
+    /* keep notes in flow when printing to narrow pages */
+    .note { float: none; }
+  }
+}
+
+@media screen and (min-width: 35em),
+       print and (min-width: 40em) {
+  #section_navigation { float: left; width: 10em; }
+
+}
+
+@media print {
+  /* hide navigation controls when printing */
+  #navigation { display: none; }
+}
+
+/* test media types */
+
+@media all {}
+@media not all {}
+@media only all {}
+@media not print {}
+@media only screen {}
+@media not speech {}
+@media only speech {}
+
+@media print {
+  body { font-size: 10pt; }
+}
+@media screen {
+  body { font-size: 13px; }
+}
+@media screen, print {
+  body { line-height: 1.2; }
+}
+
+@media screen {
+  * { font-family: sans-serif; }
+}
+
+/* test media features */
+
+@media (100dppx <= resolution < 1000dppx) {}
+@media (100dppx <= min-resolution < 0) {}
+@media (0 <= max-resolution < 1000dppx) {}
+@media (0 > min-resolution>100dpi) {}
+@media (1000dpi > resolution > 0) {}
+@media (min-resolution = 100dpcm ) {}
+@media (min-resolution = 0 ) {}
+@media (min-resolution:300dpi) {}
+@media (10dpi < min-resolution) {}
+@media (0 < min-resolution) {}
+
+@media (100 <= color < 1000) {}
+@media (100 <= min-color < 1000) {}
+@media (100 <= max-color < 1000) {}
+@media (1000 > min-color>100) {}
+@media (1000 > color > 100) {}
+@media (min-color = 100) {}
+@media (min-color = 0) {}
+@media (min-color:300) {}
+@media (10 < min-color) {}
+
+@media (100 <= color-index < 1000) {}
+@media (100 <= min-color-index < 1000) {}
+@media (100 <= max-color-index < 1000) {}
+@media (1000 > min-color-index>100) {}
+@media (1000 > color-index > 100) {}
+@media (min-color-index = 100) {}
+@media (min-color-index:300) {}
+@media (10 < min-color-index) {}
+@media (0 < min-color-index) {}
+
+@media (100 <= monochrome < 1000) {}
+@media (100 <= min-monochrome < 1000) {}
+@media (100 <= max-monochrome < 1000) {}
+@media (1000 > min-monochrome>100) {}
+@media (1000 > monochrome > 100) {}
+@media (min-monochrome = 100) {}
+@media (min-monochrome:300) {}
+@media (10 < min-monochrome) {}
+@media (0 < min-monochrome) {}
+
+@media (16/9 <= aspect-ratio < 2560/1440) {}
+@media (16/9 <= min-aspect-ratio < 2560/1440) {}
+@media (16/9 <= max-aspect-ratio < 2560/1440) {}
+@media (2560/1440 > min-aspect-ratio>16/9) {}
+@media (2560/1440 > aspect-ratio > 16/9) {}
+@media (min-aspect-ratio = 16/9) {}
+@media (min-aspect-ratio:16/9) {}
+@media (16/9 < min-aspect-ratio) {}
+@media (0/0 < min-aspect-ratio) {}
+
+@media (16/9 <= device-aspect-ratio < 2560/1440) {}
+@media (16/9 <= min-device-aspect-ratio < 2560/1440) {}
+@media (16/9 <= max-device-aspect-ratio < 2560/1440) {}
+@media (2560/1440 > min-device-aspect-ratio>16/9) {}
+@media (2560/1440 > device-aspect-ratio > 16/9) {}
+@media (min-device-aspect-ratio = 16/9) {}
+@media (min-device-aspect-ratio:16/9) {}
+@media (16/9 < min-device-aspect-ratio) {}
+
+@media (100.01rem <= width < 1000em) {}
+@media (100ex <= min-width < 1000ch) {}
+@media (0 <= max-width < 0) {}
+@media (1000vmin > min-width>100vmax) {}
+@media (1000cm > width > 100mm) {}
+@media (min-width = 100q) {}
+@media (min-width:300in) {}
+@media (10pc < min-width) {}
+@media (10pt < min-width) {}
+@media (10px < min-width) {}
+
+@media (100rem <= device-width < 1000em) {}
+@media (100ex <= min-device-width < 1000ch) {}
+@media (100vw <= max-device-width < 1000vh) {}
+@media (1000vmin > min-device-width>100vmax) {}
+@media (0 > device-width > 100mm) {}
+@media (0 > device-width > 0) {}
+@media (min-device-width = 100q) {}
+@media (min-device-width:300in) {}
+@media (min-device-width:0) {}
+@media (10pc < min-device-width) {}
+@media (10pt < min-device-width) {}
+@media (10px < min-device-width) {}
+
+@media (100rem <= height < 1000em) {}
+@media (100ex <= min-height < 1000ch) {}
+@media (100vw <= max-height < 0) {}
+@media (1000vmin > min-height>100vmax) {}
+@media (1000cm > height > 100mm) {}
+@media (1000cm > height > 0) {}
+@media (min-height = 100q) {}
+@media (min-height = 0) {}
+@media (min-height:300in) {}
+@media (10pc < min-height) {}
+@media (0 < min-height) {}
+@media (10px < min-height) {}
+
+@media (100rem <= device-height < 1000em) {}
+@media (100ex <= min-device-height < 1000ch) {}
+@media (100vw <= max-device-height < 1000vh) {}
+@media (1000vmin > min-device-height>100vmax) {}
+@media (1000cm > device-height > 100mm) {}
+@media (min-device-height = 100q) {}
+@media (min-device-height:300in) {}
+@media (10pc < min-device-height) {}
+@media (10pt < min-device-height) {}
+@media (10px < min-device-height) {}
+
+@media (color) {}
+@media (grid) {}
+@media (hover) {}
+@media (pointer) {}
+@media (scripting) {}
+
+
+@media speech and (min-width: 20em),
+  screen and (min-width: 20em) {}
+@media all and (min-width:500px) {}
+@media (min-width:500px) {}
+@media (orientation: portrait) {}
+@media all and (orientation: portrait) {}
+@media screen and (color), print and (color) {}
+@media all {}
+@media {}
+@media all { body { background:lime; } }
+@media (min-width: 100px) {}
+@media screen and (min-width: 400px) and (max-width: 700px) {
+}
+@media screen and (device-width: 800px) {}
+@media all and (orientation:portrait) {}
+@media all and (orientation:landscape) {}
+@media screen and (device-aspect-ratio: 16/9) {}
+@media screen and (device-aspect-ratio: 32/18) {}
+@media screen and (device-aspect-ratio: 1280/720) {}
+@media screen and (device-aspect-ratio: 2560/1440) {}
+@media all and (color) {}
+@media all and (min-color: 1) {}
+@media all and (min-color: 2) {}
+@media all and (color-index) {}
+@media all and (min-color-index: 1) {}
+@media all and (monochrome) {}
+@media all and (min-monochrome: 1) {}
+@media all and (min-monochrome: 2) {}
+@media print and (min-resolution: 300dpi) {}
+@media print and (min-resolution: 118dpcm) {}
+@media (min-width: 700px) {}
+@media (min-width: 700px) and (orientation: landscape) {}
+@media (min-width: 700px), screen and (orientation: landscape) {}
+@media not all and (monochrome) {}
+@media not screen and (color), print and (color) {}
+@media screen and (scan: progressive) {}
+@media print and (grid) and (max-width: 15em) {}
+@media print and (grid) and (max-device-height: 7em) {}
+@media screen and (min-width: 700px) and (orientation: landscape) {}
+@media (scripting) {}
+@media screen and (color) {}
+@media (width >= 600px) {}
+@media (min-width>=600px) {}
+@media (color) and (min-width: 600px) {}
+@media (400px < width < 1000px) {}
+@media (400px<width) {}
+
+/* invalid */
+
+@media(400px<width<1000px) {}  /* no space after "@media". not sure if this is valid */
+
+@media tv and (scan: progressive) {}         /* deprecated media types*/
+@media handheld and (grid) and (max-width: 15em) {}
+@media handheld and (grid) and (max-device-height: 7em) {}
+@media tv and (min-width: 700px) and (orientation: landscape) {}
+@media handheld and (min-width: 20em),
+  screen and (min-width: 20em) {}
+
+@media example { body { background:red; } }   /* example media type doesn't exist */
+@media (example, all,), speech {}
+@media &test, screen {}
+@media all and(color) {}                     /* no space after "and" */
+@media test;,all { body { background:lime; }} /* semicolon terminates the media rule */
+
+/* invalid, but impossible to enforce using syntax highlighter */
+
+@media print {
+    @charset 'UTF-8';                        /* @charset can't be nested. must be at top-level */
+}
+
+@media screen {
+    @import ;                                /* @import can't be nested. must be at top-level */
+}
+
+@media screen {
+  @namespace svg url(http://example.com);    /* @namespace can't be nested. must be at top-level */
+}

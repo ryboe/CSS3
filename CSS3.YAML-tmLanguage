@@ -7,10 +7,24 @@ uuid: 6618b147-dda0-4ff3-af33-8200c89d88e7
 
 patterns:
 - include: '#comment-block'
+- include: '#at-media'
 - include: '#property-list'
 - include: '#selector'
 
 repository:
+  at-media:
+    name: meta.at-rule.media.css
+    begin: ((@)media)\s
+    beginCaptures:
+      '1': {name: keyword.control.at-rule.media.css}
+      '2': {name: punctuation.definition.keyword.css}
+    patterns:
+    - include: '#comment-block'
+    - include: '#media-type-deprecated'
+    - include: '#media-type'
+    end: \{
+    endCaptures:
+      '0': {name: punctuation.section.rule-list.css}
 
   comment-block:
     name: comment.block.css
@@ -31,6 +45,16 @@ repository:
     # For this reason, they've been left out.
     name: string.unquoted.identifier.css
     match: -?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*
+
+  media-type:
+    match: (?:(not|only)\s+)?(all|print|screen|speech)
+    captures:
+      '1': {name: keyword.operator.logic.media.css}
+      '2': {name: support.constant.media.css}
+
+  media-type-deprecated:
+    name: invalid.deprecated.css
+    match: \b(?:aural|braille|embossed|handheld|projection|tty|tv)\b
 
   property-list:
     name: meta.property-list.css
@@ -100,35 +124,294 @@ repository:
     begin: (?=[\d:.#*\p{Ll}\[-])
     patterns:
     - include: '#comment-block'
-    - include: '#selector-combinator'
+    - include: '#selector-pseudo-element-webkit'
+    - include: '#selector-pseudo-element-moz'
+    - include: '#selector-pseudo-element'
     - include: '#selector-element-deprecated'
-    # selector-element is given a low precedence, because it contains an <ident>
+    - include: '#selector-pseudo-class-deprecated'
+    - include: '#selector-pseudo-class-function-dir'
+    - include: '#selector-pseudo-class-function-lang'
+    - include: '#selector-pseudo-class-function-locale-dir'
+    - include: '#selector-pseudo-class-function-system-metric'
+    - include: '#selector-pseudo-class-function-tree'
+    - include: '#selector-pseudo-class-moz'
+    - include: '#selector-pseudo-class-ms'
+    - include: '#selector-pseudo-class-webkit'
+    - include: '#selector-pseudo-class-function-drop'
+    - include: '#selector-pseudo-class-function-an-plus-b'
+    - include: '#selector-pseudo-class-function-selector-list'
+    - include: '#selector-pseudo-class'
     - include: '#selector-element'
+    - include: '#selector-id'
+    - include: '#selector-class'
+    - include: '#selector-keyframes'
+    - include: '#selector-attribute'
+    - include: '#selector-combinator'
+    # TODO: enable this. right now it's matching **everything** because of the <ident>
+    # - include: '#selector-custom-element'
     end: (?={)
+
+  selector-attribute:
+    begin: \[
+    beginCaptures:
+      '0': {name: punctuation.section.attribute.css}
+    patterns:
+    - include: '#comment-block'
+    - name: keyword.operator.attribute.css
+      match: '[~^$*|]?='
+    - include: '#selector-attribute-name'
+    - include: '#type-string-double'
+    - include: '#type-string-single'
+    - name: string.unquoted.attribute-value.css
+      match: -?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*
+    end: \]
+    endCaptures:
+      '0': {name: punctuation.section.attribute.css}
+
+  selector-attribute-name:
+    match: (?<=\[)\s*(?:(?:(-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*)|(\*))?\s*(\|))?\s*(?:(-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*)|(\*))\s*(?=[~^$*=|\]])
+    captures:
+      '1': {name: entity.other.attribute-name.namespace.css}
+      '2': {name: entity.other.attribute-name.namespace.wildcard.css}
+      '3': {name: punctuation.separator.namespace.css}
+      '4': {name: entity.other.attribute-name.css}
+      '5': {name: entity.other.attribute-name.wildcard.css}
+
+  selector-class:
+    name: entity.other.attribute-name.class.css
+    match: (\.)-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*
+    captures:
+      '1': {name: punctuation.definition.entity.css}
 
   selector-combinator:
     name: keyword.operator.selector-combinator.css
     match: \|\||[+~>]|/-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*/
 
+  # TODO: enable this rule
+  # This rule matches custom elements, e.g. <polymer-widget>.
+  selector-custom-element:
+    # This rule matches non-uppercase, non-titlecase letter, optionally followed
+    # by letters, digits, combining marks, periods, underscores, or hyphens.
+    name: entity.name.tag.custom.css
+    match: '[-\p{Ll}\p{Lm}\p{Lo}][-\p{Ll}\p{Lm}\p{Lo}\d._\p{M}]*'
+
   selector-element:
-    # The custom element capture group matches a non-uppercase, non-titlecase
-    # letter, optionally followed by letters, digits, combining marks, periods,
-    # underscores, or hyphens.
-    match: ((?:-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*|\*)\s*\|)?\s*(?:(?<![:-])\b(abbr|address|area|article|aside|audio|a|base|bdi|bdo|blockquote|body|br|button|b|canvas|caption|cite|code|colgroup|col|datalist|data|dd|del|details|dfn|dialog|div|dl|dt|embed|em|fieldset|figcaption|figure|footer|form|h[1-6]|header|head|hr|html|iframe|i|img|input|ins|kbd|keygen|label|legend|link|li|main|map|mark|math|menuitem|menu|meta|meter|nav|noscript|object|ol|optgroup|option|output|param|pre|progress|p|q|rb|rp|rtc?|ruby|samp|script|section|select|small|source|span|strong|style|sub|summary|sup|svg|s|table|tbody|td|template|textarea|tfoot|thead|th|time|title|track|tr|ul?|var|video|wbr)\b|([-\p{Ll}\p{Lm}\p{Lo}][-\p{Ll}\p{Lm}\p{Lo}\d._\p{M}]*)|(\*))(?!-)
+    match: ((?:-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*|\*)\s*(\|))?\s*(?:(?<![:-])\b(abbr|address|area|article|aside|audio|a|base|bdi|bdo|blockquote|body|br|button|b|canvas|caption|cite|code|colgroup|col|datalist|data|dd|del|details|dfn|dialog|div|dl|dt|embed|em|fieldset|figcaption|figure|footer|form|h[1-6]|header|head|hr|html|iframe|i|img|input|ins|kbd|keygen|label|legend|link|li|main|map|mark|math|menuitem|menu|meta|meter|nav|noscript|object|ol|optgroup|option|output|param|pre|progress|p|q|rb|rp|rtc?|ruby|samp|script|section|select|small|source|span|strong|style|sub|summary|sup|svg|s|table|tbody|td|template|textarea|tfoot|thead|th|time|title|track|tr|ul?|var|video|wbr)\b|(\*))(?!-)
     captures:
-      '1': {name: entity.other.namespace.css}
-      '2': {name: entity.name.tag.css}
-      # Capture 3 is the custom element scope, e.g. <polymer-widget>.
-      '3': {name: entity.name.tag.custom.css}
+      '1': {name: string.unquoted.namespace.css}
+      '2': {name: punctuation.separator.namespace.css}
+      '3': {name: entity.name.tag.css}
       '4': {name: entity.name.tag.wildcard.css}
+
+  selector-id:
+    name: entity.other.attribute-name.id.css
+    match: (#)-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*
+    captures:
+      '1': {name: punctuation.definition.entity.css}
+
+  selector-keyframes:
+    match: (?:\b(from|to)\b|(100|\d\d?)(%))\s*(?={)
+    captures:
+      '1': {name: entity.other.attribute-name.keyframes-selector.css}
+      '2': {name: constant.numeric.css}
+      '3': {name: keyword.other.unit.css}
+
+  selector-pseudo-class:
+    name: entity.other.attribute-name.pseudo-class.css
+    match: (:)(?:visited|valid|user-error|target|scope|root|required|read-write|read-only|placeholder-shown|past|out-of-range|optional|only-of-type|only-child|link|last-of-type|last-child|invalid|indeterminate|in-range|hover|future|focus|first-of-type|first-child|enabled|empty|drop|disabled|default|current|checked|blank|any-link|active)\b
+    captures:
+      '1': {name: punctuation.definition.entity.css}
+
+  # This catches you if you try to use :after with a single colon
+  selector-pseudo-class-deprecated:
+    name: invalid.deprecated.css
+    match: (:)(?:first-line|first-letter|bound-element|before|after)\b
+    captures:
+      '1': {name: punctuation.definition.entity.css}
+
+  selector-pseudo-class-function-an-plus-b:
+    # TODO: delete this
+    # match: ((:)nth-(?:last-)?(?:column|of-type))(\()\s*(even|odd|[+-](?:[0-9]+n|n)(?:\s*[+-]\s*[0-9]+)?|[0-9]*n(?:\s*[+-]\s*[0-9]+)?|[+-]?[0-9]+)?\s*(\))
+    begin: ((:)(?:nth-of-type|nth-last-of-type|nth-last-column|nth-column))(\()
+    beginCaptures:
+      '1': {name: entity.other.attribute-name.pseudo-class.css}
+      '2': {name: punctuation.definition.entity.css}
+      '3': {name: punctuation.section.function.css}
+    contentName: meta.function.nth.css
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-an-plus-b'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
+  selector-pseudo-class-function-dir:
+    match: ((:)dir)(\()\s*(rtl|ltr|auto)\s*(\))
+    captures:
+      '1': {name: entity.other.attribute-name.pseudo-class.css}
+      '2': {name: punctuation.definition.entity.css}
+      '3': {name: punctuation.section.function.css}
+      '4': {name: support.constant.property-value.css}
+      '5': {name: punctuation.section.function.css}
+
+  selector-pseudo-class-function-drop:
+    begin: ((:)drop)(\()
+    beginCaptures:
+      '1': {name: entity.other.attribute-name.pseudo-class.css}
+      '2': {name: punctuation.definition.entity.css}
+      '3': {name: punctuation.section.function.css}
+    contentName: meta.function.drop.css
+    patterns:
+    - include: '#comment-block'
+    - name: support.constant.property-value.css
+      match: \b(?:valid|invalid|active)\b
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
+  selector-pseudo-class-function-lang:
+    begin: ((:)lang)(\()
+    beginCaptures:
+      '1': {name: entity.other.attribute-name.pseudo-class.css}
+      '2': {name: punctuation.definition.entity.css}
+      '3': {name: punctuation.section.function.css}
+    patterns:
+    - include: '#comment-block'
+    # TODO: match BCP 47 language codes here. regex from stack overflow doesn't work.
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
+  selector-pseudo-class-function-locale-dir:
+    begin: ((:)(?:-moz-)?locale-dir)(\()
+    beginCaptures:
+      '1': {name: entity.other.attribute-name.pseudo-class.css}
+      '2': {name: punctuation.definition.entity.css}
+      '3': {name: punctuation.section.function.css}
+    contentName: meta.function.locale-dir.css
+    patterns:
+    - include: '#comment-block'
+    - name: support.constant.property-value.css
+      match: \b(?:rtl|ltr)\b
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
+  # These pseudo-classes take selector lists as parameters.
+  selector-pseudo-class-function-selector-list:
+    begin: ((:)(?:nth-last-child|nth-child|not|matches|has))(\()
+    beginCaptures:
+      '1': {name: entity.other.attribute-name.pseudo-class.css}
+      '2': {name: punctuation.definition.entity.css}
+      '3': {name: punctuation.section.function.css}
+    patterns:
+    - include: '#comment-block'
+    - include: '#selector-pseudo-element-webkit'
+    - include: '#selector-pseudo-element-moz'
+    - include: '#selector-pseudo-element'
+    - include: '#selector-element-deprecated'
+    - include: '#selector-pseudo-class-deprecated'
+    - include: '#selector-pseudo-class-function-dir'
+    - include: '#selector-pseudo-class-function-lang'
+    - include: '#selector-pseudo-class-function-locale-dir'
+    - include: '#selector-pseudo-class-function-system-metric'
+    - include: '#selector-pseudo-class-function-tree'
+    - include: '#selector-pseudo-class-moz'
+    - include: '#selector-pseudo-class-ms'
+    - include: '#selector-pseudo-class-webkit'
+    - include: '#selector-pseudo-class-function-drop'
+    - include: '#selector-pseudo-class-function-an-plus-b'
+    - include: '#selector-pseudo-class-function-selector-list'
+    - include: '#selector-pseudo-class'
+    - include: '#selector-element'
+    - include: '#selector-id'
+    - include: '#selector-class'
+    - include: '#selector-keyframes'
+    - include: '#selector-attribute'
+    - include: '#selector-combinator'
+    # TODO: enable this. right now it's matching **everything** because of the <ident>
+    # - include: '#selector-custom-element'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
+  selector-pseudo-class-function-system-metric:
+    begin: ((:)(?:-moz-)?system-metric)(\()
+    beginCaptures:
+      '1': {name: entity.other.attribute-name.pseudo-class.css}
+      '2': {name: punctuation.definition.entity.css}
+      '3': {name: punctuation.section.function.css}
+    contentName: meta.function.system-metric.css
+    patterns:
+    - include: '#comment-block'
+    - name: support.type.property-name.media.css
+      match: (?:-moz-)?(?:windows-theme|windows-glass|windows-default-theme|windows-compositor|windows-classic|touch-enabled|scrollbar-thumb-proportional|scrollbar-start-forward|scrollbar-start-backward|scrollbar-end-forward|scrollbar-end-backward|maemo-classic|mac-graphite-theme|images-in-menus|device-pixel-ratio)\b
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
+  selector-pseudo-class-function-tree:
+    match: ((:)(?:-moz-)?(?:tree-row|tree-cell-text))(\()\s*(hover)\s*(\))
+    captures:
+      '1': {name: entity.other.attribute-name.pseudo-class.css}
+      '2': {name: punctuation.definition.entity.css}
+      '3': {name: punctuation.section.function.css}
+      '4': {name: support.constant.property-value.css}
+      '5': {name: punctuation.section.function.css}
+
+  selector-pseudo-class-moz:
+    name: entity.other.attribute-name.pseudo-class.css
+    match: (:)(-moz-)(?:window-inactive|user-disabled|ui-valid|ui-invalid|tree-twisty|tree-separator|tree-row|tree-progressmeter|tree-line|tree-indentation|tree-image|tree-drop-feedback|tree-column|tree-checkbox|tree-cell-text|tree-cell|suppressed|submit-invalid|read-write|read-only|only-whitespace|lwtheme-darktext|lwtheme-brighttext|lwtheme|loading|list-number|list-bullet|last-node|handler-disabled|handler-crashed|handler-blocked|full-screen-ancestor|full-screen|focusring|first-node|drag-over|broken|bound-element|any-link|any)\b
+    captures:
+      '1': {name: punctuation.definition.entity.css}
+      '2': {name: entity.other.attribute-name.pseudo-class.prefix.moz.css}
+
+  selector-pseudo-class-ms:
+    name: entity.other.attribute-name.pseudo-class.css
+    match: (:)(-ms-)(?:keyboard-active|input-placeholder)\b
+    captures:
+      '1': {name: punctuation.definition.entity.css}
+      '2': {name: entity.other.attribute-name.pseudo-class.prefix.ms.css}
+
+  selector-pseudo-class-webkit:
+    name: entity.other.attribute-name.pseudo-class.css
+    # TODO: need more webkit pseudo-classes
+    match: (:)(-webkit-)(?:full-screen|any)\b
+    captures:
+      '1': {name: punctuation.definition.entity.css}
+      '2': {name: entity.other.attribute-name.pseudo-class.prefix.webkit.css}
 
   selector-element-deprecated:
     name: invalid.deprecated.css
     match: (?<![-:\[])\b(acronym|applet|basefont|bgsound|big|blink|center|dir|font|frameset|frame|hgroup|isindex|listing|marquee|multicol|nextid|nobr|noembed|noframes|plaintext|spacer|strike|tt|xmp)\b(?!-)
 
+  selector-pseudo-element:
+    name: entity.other.attribute-name.pseudo-element.css
+    match: (::)(?:after|before|choices|content|first-letter|first-line|repeat-index|repeat-item|selection|shadow|value)\b
+    captures:
+      '1': {name: punctuation.definition.entity.css}
+
+  selector-pseudo-element-moz:
+    name: entity.other.attribute-name.pseudo-element.css
+    match: (::)(-moz-)(?:xul-anonymous-block|viewport-scroll|viewport|table-row-group|table-row|table-outer|table-column-group|table-column|table-cell|table|svg-foreign-content|selection|scrolled-page-sequence|scrolled-content|scrolled-canvas|range-track|range-thumb|progress-bar|placeholder|pagecontent|pagebreak|page-sequence|page|math-stretchy|inline-table|full-screen|focus-outer|focus-inner|cell-content|canvas|anonymous-positioned-block|anonymous-block)\b
+    captures:
+      '1': {name: punctuation.definition.entity.css}
+      '2': {name: entity.other.attribute-name.pseudo-element.prefix.moz.css}
+
+  selector-pseudo-element-webkit:
+    name: entity.other.attribute-name.pseudo-element.css
+    match: (::)(-webkit-)(?:validation-bubble-message|validation-bubble-arrow-clipper|validation-bubble-arrow|validation-bubble|slider-thumb|search-results-decoration|search-results-button|search-decoration|search-cancel-button|scrollbar-track-piece|scrollbar-track|scrollbar-thumb|scrollbar-corner|scrollbar-button|scrollbar|progress-value|progress-bar|outer-spin-button|meter-suboptimum-value|meter-optimum-value|meter-even-less-good-value|media-controls-volume-slider-container|media-controls-volume-slider|media-controls-toggle-closed-captions-button|media-controls-timeline-container|media-controls-timeline|media-controls-time-remaining-display|media-controls-seek-forward-button|media-controls-seek-back-button|media-controls-rewind-button|media-controls-return-to-realtime-button|media-controls-play-button|media-controls-panel|media-controls-mute-button|media-controls-fullscreen-button|media-controls-current-time-display|inner-spin-button|full-page-media|file-upload-button)\b
+    captures:
+      '1': {name: punctuation.definition.entity.css}
+      '2': {name: entity.other.attribute-name.pseudo-element.prefix.webkit.css}
+
   type-all:
     name: support.constant.property-value.css
     match: \b(?:unset|initial|inherit)\b
+
+  type-an-plus-b:
+    name: constant.other.an-plus-b.css
+    match: odd|even|[+-](?:[0-9]+n|n)(?:\s*[+-]\s*[0-9]+)?|[0-9]*n(?:\s*[+-]\s*[0-9]+)?|[+-]?[0-9]+
 
   type-angle:
     match: ([+-]?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?)(turn|rad|grad|deg)\b
@@ -2494,18 +2777,23 @@ repository:
 
 
 # TODO
-#   complete properties through F
+#   add more selectors
+#   add @media
 #   fill in several more property values in property_values.txt and #value
 #       don't get carried away. work a little on each major component (completions,
 #       language def, selectors, values, indexing) to make sure everything keeps
 #       working
-#   add more selectors
 #   test symbol indexing with classes and ids when you add support for those selectors
 #   edit symbol index pattern for matching classes and ids so it handles identifiers
 #   can a selector start with an uppercase letter? custom elements can't
+#   updated HTML doctor HTML5 reset
 
 # FINAL CHECK
 #   all #value rules have valall
 #   #type-function-calc is included in all rules that take an <integer>, <frequency>, <time>, etc.
-
+#   search for misspellings of punctuation, etc.
+#   check functions and add meta rules where missing
+#   search through all the NOTE, DEBUG, FIXME, TODO
+#   copy entire #selector list into #selector-pseudo-class-function-selector-list
+#   check for unused rule in startup messages
 ...

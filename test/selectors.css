@@ -59,6 +59,7 @@ div:first-line {}
 
 /* -moz- prefixed pseudo-classes */
 
+:-moz-locale-dir() {}
 :-moz-locale-dir(ltr) {}
 :-moz-locale-dir(rtl) {}
 :-moz-system-metric(images-in-menus) {}
@@ -174,8 +175,10 @@ div:first-line {}
 
 /* pseudo-classes */
 
-:dir() {}               /* ltr|rtl - add (-moz-locale)?*/
+:dir(ltr) {}
+:dir(auto) {}
 :drop() {}              /* (active\s+)?(valid\s+)?(invalid+)? */
+:drop(valid) {}              /* (active\s+)?(valid\s+)?(invalid+)? */
 :drop(valid active invalid) {}
 :matches() {}          /* these pseudo-classes take selector lists as arguments */
 :matches(:matches()) {}
@@ -198,9 +201,43 @@ li.important:nth-child(-n+3) {}
 :nth-last-child() {}
 tr:nth-last-child(-n+2)  {}  /* represents the two last rows of an HTML table */
 foo:nth-last-child(odd) {}
-:lang() {}              /* comma-separated list of language ranges */
-:lang(de-DE) {}         /* language range is a BCP 47 identifier. don't validate the BCP 47 */
+
+:lang(de-DE) {}         /* language range is a BCP 47 identifier */
 :lang(*-DE) {}
+:lang(az-Arab-x-AZE-derbend) {}
+:lang(cmn-Hans-CN) {}
+:lang(de) {}
+:lang(de-CH-1901) {}
+:lang(de-CH-x-phonebk) {}
+:lang(de-DE) {}
+:lang(de-Qaaa) {}
+:lang(en-a-myext-b-another) {}
+:lang(en-US) {}
+:lang(en-US-u-islamcal) {}
+:lang(es-419) {}
+:lang(fr) {}
+:lang(hy-Latn-IT-arevela) {}
+:lang(i-enochian) {}
+:lang(ja) {}
+:lang(qaa-Qaaa-QM-x-southern) {}
+:lang(sl-IT-nedis) {}
+:lang(sl-nedis) {}
+:lang(sl-rozaj) {}
+:lang(sl-rozaj-biske) {}
+:lang(sr-Cyrl) {}
+:lang(sr-Latn) {}
+:lang(sr-Latn-QM) {}
+:lang(sr-Latn-RS) {}
+:lang(sr-Qaaa-RS) {}
+:lang(x-whatever) {}
+:lang(yue-HK) {}
+:lang(zh-cmn-Hans-CN) {}
+:lang(zh-CN-a-myext-x-private) {}
+:lang(zh-Hans) {}
+:lang(zh-Hans-CN) {}
+:lang(zh-Hant) {}
+:lang(zh-yue-HK) {}
+
 
 :nth-of-type() {}            /* (An+B) - can be implemented without begin-end match. just copy an+b rule into this rule*/
 img:nth-of-type(2n+1) { float: right; }
@@ -462,6 +499,13 @@ p[title*="hello" "hi" hi there 'sup'] {}
 [*|*] { color: green; }
 [*] { color: green; }
 [ns|*] { color: green; }
+[attr] {}
+[attr=value] {}
+[attr~=value] {}
+[attr|=value] {}
+[attr^=value] {}
+[attr$=value] {}
+[attr*=value] {}
 
 /* :dir() pseudo-class */
 
@@ -492,8 +536,8 @@ div:visited {}
 /* :target pseudo-class */
 
 p.note:target {}
-*:target { color : red; }
-*:target::before { content : url(target.png); }
+*:target { color: red; }
+*:target::before { content: url(target.png); }
 
 /* :scope pseudo-class */
 
@@ -643,11 +687,6 @@ div:nth-column(2n+1) {}
 :nth-column(2n) {}
 div:nth-last-column(2n+1) {}
 :nth-last-column(2n) {}
-
-/* attribute-node selector */
-
-div::attr(namespace|name) {}
-abbr::attr(title) {}
 
 /* deprecated tags */
 
