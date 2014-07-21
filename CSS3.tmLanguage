@@ -56,6 +56,10 @@
 		</dict>
 		<dict>
 			<key>include</key>
+			<string>#at-viewport</string>
+		</dict>
+		<dict>
+			<key>include</key>
 			<string>#property-list</string>
 		</dict>
 		<dict>
@@ -490,6 +494,26 @@
 					<string>#value-supports-condition</string>
 				</dict>
 			</array>
+		</dict>
+		<key>at-viewport</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.at-rule.viewport.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.keyword.css</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>((@)viewport)\s*(?={)</string>
+			<key>name</key>
+			<string>meta.at-rule.viewport.css</string>
 		</dict>
 		<key>comment-block</key>
 		<dict>
@@ -952,6 +976,14 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#at-supports</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#at-viewport</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#property-name</string>
 				</dict>
 				<dict>
@@ -1018,7 +1050,7 @@
 		<key>property-name-illegal</key>
 		<dict>
 			<key>match</key>
-			<string>\b(?:behavior|zoom)\b</string>
+			<string>\bbehavior\b</string>
 			<key>name</key>
 			<string>invalid.illegal.css</string>
 		</dict>

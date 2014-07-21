@@ -17,6 +17,7 @@ patterns:
 - include: '#at-namespace'
 - include: '#at-page'
 - include: '#at-supports'
+- include: '#at-viewport'
 - include: '#property-list'
 - include: '#selector'
 
@@ -152,6 +153,13 @@ repository:
     - include: '#property-name-supports-condition'
     - include: '#value-supports-condition'
     end: (?={)
+
+  at-viewport:
+    name: meta.at-rule.viewport.css
+    match: ((@)viewport)\s*(?={)
+    captures:
+      '1': {name: keyword.control.at-rule.viewport.css}
+      '2': {name: punctuation.definition.keyword.css}
 
   comment-block:
     name: comment.block.css
@@ -319,6 +327,8 @@ repository:
     - include: '#at-keyframes'
     - include: '#at-media'
     - include: '#at-page'
+    - include: '#at-supports'
+    - include: '#at-viewport'
     # TODO: add more at-rules. do not add @charset, @namespace, or @import, since
     # they can't be nested
     - include: '#property-name'
@@ -349,7 +359,7 @@ repository:
 
   property-name-illegal:
     name: invalid.illegal.css
-    match: \b(?:behavior|zoom)\b
+    match: \bbehavior\b
 
   property-name-illegal-epub:
     name: invalid.illegal.css
@@ -3197,7 +3207,6 @@ repository:
 
 # TODO
 #   @font-feature-values <ident>: properties, aka feature value definitions, e.g. leo-B: 2 1;
-#   @viewport
 #   fill in several more property values in property_values.txt and #value
 #       don't get carried away. work a little on each major component (completions,
 #       language def, selectors, values, indexing) to make sure everything keeps
@@ -3206,6 +3215,9 @@ repository:
 #   edit symbol index pattern for matching classes and ids so it handles identifiers
 #   can a selector start with an uppercase letter? custom elements can't
 #   updated HTML doctor HTML5 reset
+
+# LOW PRIORITY
+#   @document
 
 # FINAL CHECK
 #   all #value rules have valall
