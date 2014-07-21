@@ -8,6 +8,7 @@ uuid: 6618b147-dda0-4ff3-af33-8200c89d88e7
 patterns:
 - include: '#comment-block'
 - include: '#at-font-face'
+- include: '#at-font-feature-values'
 - include: '#at-keyframes'
 - include: '#at-media'
 - include: '#property-list'
@@ -21,12 +22,26 @@ repository:
       '2': {name: punctuation.definition.keyword.css}
       '3': {name: punctuation.section.property-list.css}
 
+  at-font-feature-values:
+    name: meta.at-rule.font-feature-values.css
+    begin: ((@)font-feature-values)\s
+    beginCaptures:
+      '1': {name: keyword.control.at-rule.font-feature-values.css}
+      '2': {name: punctuation.definition.keyword.css}
+    patterns:
+    - include: '#comment-block'
+    - include: '#identifier'
+    end: \{
+    endCaptures:
+      '0': {name: punctuation.section.rule-list.css}
+
   at-keyframes:
-    match: ((@)keyframes)\s*(-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*)\s*(?=\{)
+    match: ((@)keyframes)\s*(-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*)\s*(\{)
     captures:
       '1': {name: keyword.control.at-rule.keyframes.css}
       '2': {name: punctuation.definition.keyword.css}
       '3': {name: string.unquoted.identifier.css}
+      '4': {name: punctuation.section.property-list.css}
 
   at-media:
     name: meta.at-rule.media.css
@@ -209,7 +224,7 @@ repository:
     - include: '#comment-block'
     - include: '#at-font-face'
     - include: '#at-keyframes'
-    - include: '#selector-keyframes'
+    # - include: '#selector-keyframes'
     - include: '#at-media'
     - include: '#at-page'
     # TODO: add more at-rules. do not add @charset, @namespace, or @import, since
@@ -272,7 +287,7 @@ repository:
 
     # TODO: are uppercase letters permitted?
     name: meta.selector.css
-    begin: (?=[\d:.#*\p{Ll}\[-])
+    begin: (?=[@\d:.#*\p{Ll}\[-])
     patterns:
     - include: '#comment-block'
     - include: '#selector-pseudo-element-webkit'
@@ -298,6 +313,8 @@ repository:
     - include: '#selector-keyframes'
     - include: '#selector-attribute'
     - include: '#selector-combinator'
+    # The at-keyword selector matches keyframe animation types like @swash
+    - include: '#selector-at-keyword'
     # TODO: enable this. right now it's matching **everything** because of the <ident>
     # - include: '#selector-custom-element'
     end: (?={)
@@ -327,6 +344,12 @@ repository:
       '3': {name: punctuation.separator.namespace.css}
       '4': {name: entity.other.attribute-name.css}
       '5': {name: entity.other.attribute-name.wildcard.css}
+
+  selector-at-keyword:
+    name: keyword.control.at-keyword.css
+    match: (@)-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*
+    captures:
+      '1': {name: punctuation.definition.keyword.css}
 
   selector-class:
     name: entity.other.attribute-name.class.css

@@ -20,6 +20,10 @@
 		</dict>
 		<dict>
 			<key>include</key>
+			<string>#at-font-feature-values</string>
+		</dict>
+		<dict>
+			<key>include</key>
 			<string>#at-keyframes</string>
 		</dict>
 		<dict>
@@ -60,6 +64,47 @@
 			<key>match</key>
 			<string>((@)font-face)\s*(?=\{)</string>
 		</dict>
+		<key>at-font-feature-values</key>
+		<dict>
+			<key>begin</key>
+			<string>((@)font-feature-values)\s</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.at-rule.font-feature-values.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.keyword.css</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\{</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.rule-list.css</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>meta.at-rule.font-feature-values.css</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#identifier</string>
+				</dict>
+			</array>
+		</dict>
 		<key>at-keyframes</key>
 		<dict>
 			<key>captures</key>
@@ -79,9 +124,14 @@
 					<key>name</key>
 					<string>string.unquoted.identifier.css</string>
 				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.property-list.css</string>
+				</dict>
 			</dict>
 			<key>match</key>
-			<string>((@)keyframes)\s*(-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*)\s*(?=\{)</string>
+			<string>((@)keyframes)\s*(-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*)\s*(\{)</string>
 		</dict>
 		<key>at-media</key>
 		<dict>
@@ -591,10 +641,6 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#selector-keyframes</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#at-media</string>
 				</dict>
 				<dict>
@@ -707,7 +753,7 @@
 		<key>selector</key>
 		<dict>
 			<key>begin</key>
-			<string>(?=[\d:.#*\p{Ll}\[-])</string>
+			<string>(?=[@\d:.#*\p{Ll}\[-])</string>
 			<key>end</key>
 			<string>(?={)</string>
 			<key>name</key>
@@ -810,7 +856,26 @@
 					<key>include</key>
 					<string>#selector-combinator</string>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-at-keyword</string>
+				</dict>
 			</array>
+		</dict>
+		<key>selector-at-keyword</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.keyword.css</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(@)-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*</string>
+			<key>name</key>
+			<string>keyword.control.at-keyword.css</string>
 		</dict>
 		<key>selector-attribute</key>
 		<dict>
