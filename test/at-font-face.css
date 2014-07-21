@@ -145,9 +145,8 @@
   @swash { double-loops: 1; flowing: -1; } /* negative value */
   @ornaments ; /* incomplete definition */
   @styleset { double-W: 14; sharp-terminals: 16 1 } /* missing ; */
-  redrum  {} /* random editing mistake */
+  @redrum  {} /* random editing mistake */
 }
-
 
 @font-feature-values Bongo {
   @swash { ornate: 1; }

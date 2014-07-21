@@ -11,12 +11,13 @@ patterns:
 - include: '#at-font-feature-values'
 - include: '#at-keyframes'
 - include: '#at-media'
+- include: '#at-page'
 - include: '#property-list'
 - include: '#selector'
 
 repository:
   at-font-face:
-    match: ((@)font-face)\s*(?=\{)
+    match: ((@)font-face)\s*(?={)
     captures:
       '1': {name: keyword.control.at-rule.font-face.css}
       '2': {name: punctuation.definition.keyword.css}
@@ -31,12 +32,12 @@ repository:
     patterns:
     - include: '#comment-block'
     - include: '#identifier'
-    end: \{
+    end: (?={)
     endCaptures:
       '0': {name: punctuation.section.rule-list.css}
 
   at-keyframes:
-    match: ((@)keyframes)\s*(-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*)\s*(\{)
+    match: ((@)keyframes)\s+(-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*)\s*(?={)
     captures:
       '1': {name: keyword.control.at-rule.keyframes.css}
       '2': {name: punctuation.definition.keyword.css}
@@ -56,7 +57,23 @@ repository:
     - include: '#media-type-deprecated'
     - include: '#media-type'
     - include: '#media-feature'
-    end: \{
+    end: (?={)
+    endCaptures:
+      '0': {name: punctuation.section.rule-list.css}
+
+  at-page:
+    name: meta.at-rule.page.css
+    begin: ((@)page)\s
+    beginCaptures:
+      '1': {name: keyword.control.at-rule.page.css}
+      '2': {name: punctuation.definition.keyword.css}
+    patterns:
+    - include: '#comment-block'
+    # pseudo pages
+    - name: entity.other.attribute-name.pseudo-page.css
+      match: (:(?:right|left|first|blank))\b
+    - include: '#identifier'
+    end: (?={)
     endCaptures:
       '0': {name: punctuation.section.rule-list.css}
 
@@ -224,13 +241,13 @@ repository:
     - include: '#comment-block'
     - include: '#at-font-face'
     - include: '#at-keyframes'
-    # - include: '#selector-keyframes'
     - include: '#at-media'
     - include: '#at-page'
     # TODO: add more at-rules. do not add @charset, @namespace, or @import, since
     # they can't be nested
     - include: '#property-name'
     - include: '#value'
+    - include: '#selector'
     end: \}
     endCaptures:
       '0': {name: punctuation.section.property-list.css}
@@ -313,6 +330,7 @@ repository:
     - include: '#selector-keyframes'
     - include: '#selector-attribute'
     - include: '#selector-combinator'
+    - include: '#selector-page-margin'
     # The at-keyword selector matches keyframe animation types like @swash
     - include: '#selector-at-keyword'
     # TODO: enable this. right now it's matching **everything** because of the <ident>
@@ -389,6 +407,12 @@ repository:
       '1': {name: entity.other.attribute-name.keyframes-selector.css}
       '2': {name: constant.numeric.css}
       '3': {name: keyword.other.unit.css}
+
+  selector-page-margin:
+    match: ((@)(?:top-right-corner|top-right|top-left-corner|top-left|top-center|right-top|right-middle|right-bottom|left-top|left-middle|left-bottom|bottom-right-corner|bottom-right|bottom-left-corner|bottom-left|bottom-center))\s*(?={)
+    captures:
+      '1': {name: keyword.control.page-margin.css}
+      '2': {name: punctuation.definition.keyword.css}
 
   selector-pseudo-class:
     name: entity.other.attribute-name.pseudo-class.css

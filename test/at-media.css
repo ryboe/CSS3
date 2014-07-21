@@ -84,7 +84,16 @@ media features
 /* test nesting */
 
 @media {
+    display: none;
+}
 
+@media {
+    #something {
+        display: none;
+    }
+}
+
+@media print {
 }
 
 @media {
@@ -114,14 +123,17 @@ media features
     }
 }
 
-@media print { // rule (1)
+@media print {
   /* hide navigation controls when printing */
+  div p {
+    margin: auto;
+  }
   #navigation {
     display: none;
   }
-  @media (min-width: 1cm) { // rule (2)
+  @media (min-width: 1cm) {
       #dummy {}
-      @media (max-width: 12cm) { // rule (3)
+      @media (max-width: 12cm) {
         /* keep notes in flow when printing to narrow pages */
         .note { float: none; }
 
@@ -130,10 +142,10 @@ media features
   }
 }
 
-@media print { // rule (1)
+@media print {
   /* hide navigation controls when printing */
   #navigation { display: none; }
-  @media (max-width: 12cm) { // rule (2)
+  @media (max-width: 12cm) {
     /* keep notes in flow when printing to narrow pages */
     .note { float: none; }
   }
