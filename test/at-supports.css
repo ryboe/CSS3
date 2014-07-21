@@ -1,0 +1,64 @@
+/* valid */
+
+@supports ( display: flex ) {
+  body, #navigation, #content { display: flex; }
+  #navigation { background: blue; color: white; }
+  #article { background: white; color: black; }
+}
+
+@supports not ( display: flex ) {
+  body { width: 100%; height: 100%; background: white; color: black; }
+  #navigation { width: 25%; }
+  #article { width: 75%; }
+}
+
+@supports ( box-shadow: 0 0 2px black inset; ) or
+          ( -moz-box-shadow: 0 0 2px black inset; ) or
+          ( -webkit-box-shadow: 0 0 2px black inset; ) or
+          ( -o-box-shadow: 0 0 2px black inset; ) {
+  .noticebox {
+    -moz-box-shadow: 0 0 2px black inset;
+    -webkit-box-shadow: 0 0 2px black inset;
+    -o-box-shadow: 0 0 2px black inset;
+    box-shadow: 0 0 2px black inset; /* unprefixed last */
+    /* override the rule above the @supports rule */
+    border: none;
+    padding: 2px;
+  }
+}
+
+@supports (transition-property: color;) or
+          (animation-name: foo;) and
+          (transform: rotate(10deg);) {
+  // ...
+}
+
+@supports ((transition-property: color) or
+           (animation-name: foo)) and
+          (transform: rotate(10deg)) {
+  // ...
+}
+
+@supports (transition-property: color) or
+          ((animation-name: foo) and
+           (transform: rotate(10deg))) {
+  // ...
+}
+
+@supports (display: flex) {
+  // ...
+}
+
+@supports ((display: flex)) {
+  // ...
+}
+
+@supports (display: flex !important) {
+  // ...
+}
+
+/* invalid */
+
+@supports display: flex {  /* not parenthesized */
+  // ...
+}

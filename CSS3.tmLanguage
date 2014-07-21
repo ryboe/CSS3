@@ -16,6 +16,14 @@
 		</dict>
 		<dict>
 			<key>include</key>
+			<string>#at-font-face</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#at-keyframes</string>
+		</dict>
+		<dict>
+			<key>include</key>
 			<string>#at-media</string>
 		</dict>
 		<dict>
@@ -29,6 +37,52 @@
 	</array>
 	<key>repository</key>
 	<dict>
+		<key>at-font-face</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.at-rule.font-face.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.keyword.css</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.property-list.css</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>((@)font-face)\s*(?=\{)</string>
+		</dict>
+		<key>at-keyframes</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.at-rule.keyframes.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.keyword.css</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>string.unquoted.identifier.css</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>((@)keyframes)\s*(-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*)\s*(?=\{)</string>
+		</dict>
 		<key>at-media</key>
 		<dict>
 			<key>begin</key>
@@ -534,6 +588,10 @@
 				<dict>
 					<key>include</key>
 					<string>#at-keyframes</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-keyframes</string>
 				</dict>
 				<dict>
 					<key>include</key>

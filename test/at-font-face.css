@@ -1,0 +1,216 @@
+/* valid */
+
+@font-face {
+  font-family: Gentium;
+  src: url(http://example.com/fonts/Gentium.woff);
+}
+
+@font-face {
+  font-family: bodytext;
+  src: url(ideal-sans-serif.woff) format("woff"),
+       url(basic-sans-serif.ttf) format("opentype");
+}
+
+@font-face {
+  font-family: MyGentium;
+  src: local(Gentium),    /* use locally available Gentium */
+       url(Gentium.woff); /* otherwise, download it */
+}
+
+@font-face {
+  font-family: MyGentium;
+  src: local(Gentium Bold),    /* full font name */
+       local(Gentium-Bold),    /* Postscript name */
+       url(GentiumBold.woff);  /* otherwise, download it */
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: Headline;
+  src: local(Futura-Medium),
+       url(fonts.svg#MyGeometricModern) format("svg");
+}
+
+@font-face {
+  font-family: jpgothic;
+  src: local(HiraKakuPro-W3), local(Meiryo), local(IPAPGothic);
+}
+
+@font-face {
+  font-family: Hoefler Text Ornaments;
+  /* has the same font properties as Hoefler Text Regular */
+  src: local(HoeflerText-Ornaments);
+}
+
+@font-face {
+  font-family: SectionHeader;
+  src: local("Arial Lihavoitu");  /* Finnish fullname for Arial Bold, should fail */
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: MainText;
+  src: url(gentium.eot);                     /* for use with older user agents */
+  src: local("Gentium"), url(gentium.woff);  /* Overrides src definition */
+}
+
+
+@font-face {
+  font-family: BaskervilleSimple;
+  src: url(baskerville-regular.woff);
+}
+
+@font-face {
+  font-family: BaskervilleFull;
+  src: url(baskerville-regular.woff);
+}
+
+@font-face {
+  font-family: BaskervilleFull;
+  src: url(baskerville-italic.woff);
+  font-style: italic;
+}
+
+@font-face {
+  font-family: BBCBengali;
+  src: url(fonts/BBCBengali.woff) format("woff");
+  unicode-range: U+00-FF, U+980-9FF;
+}
+
+@font-face {
+  font-family: STIXGeneral;
+  src: local(STIXGeneral), url(/stixfonts/STIXGeneral.otf);
+  unicode-range: U+000-49F, U+2000-27FF, U+2900-2BFF, U+1D400-1D7FF;
+}
+
+@font-face {
+  font-family: JapaneseWithGentium;
+  src: local(MSMincho);
+  /* no range specified, defaults to entire range */
+}
+
+@font-face {
+  font-family: JapaneseWithGentium;
+  src: url(../fonts/Gentium.woff);
+  unicode-range: U+0-2FF;
+}
+
+@font-face {
+  font-family: DroidSans;
+  src: url(DroidSansFallback.woff);
+  /* no range specified, defaults to entire range */
+}
+
+/* Japanese glyphs - size: 1.2MB */
+@font-face {
+  font-family: DroidSans;
+  src: url(DroidSansJapanese.woff);
+  unicode-range: U+3000-9FFF, U+ff??;
+}
+
+/* Latin, Greek, Cyrillic along with some
+   punctuation and symbols - size: 190KB */
+@font-face {
+  font-family: DroidSans;
+  src: url(DroidSans.woff);
+  unicode-range: U+000-5FF, U+1e00-1fff, U+2000-2300;
+}
+
+@font-face {
+  font-family: GeometricModern;
+  src: url(font.woff);
+}
+
+@media screen {
+  @font-face {
+    font-family: something;
+    src: url(something.woff);
+  }
+}
+
+/* @font-feature-values */
+
+@font-feature-values Jupiter Sans {
+  @swash {
+    delicate: 1;
+    flowing: 2;
+  }
+}
+
+/* has invalid and valid parts */
+
+@font-feature-values Bongo {
+  @swash { ornate: 1; }
+  annotation { boxed: 4; } /* should be @annotation! */
+  @swash { double-loops: 1; flowing: -1; } /* negative value */
+  @ornaments ; /* incomplete definition */
+  @styleset { double-W: 14; sharp-terminals: 16 1 } /* missing ; */
+  redrum  {} /* random editing mistake */
+}
+
+
+@font-feature-values Bongo {
+  @swash { ornate: 1; }
+  @swash { double-loops: 1; }
+  @styleset { double-W: 14; sharp-terminals: 16 1; }
+}
+
+@font-feature-values Mercury Serif {
+    @styleset {
+      stacked-g: 3; /* "two-storey" versions of g, a */
+      stacked-a: 4;
+    }
+}
+
+@font-feature-values Mercury Serif {
+    @styleset {
+        geometric-m: 7; /* alternate version of m */
+    }
+}
+
+@font-feature-values Taisho Gothic {
+  @annotation { boxed: 1; circled: 4; }
+}
+
+@font-feature-values Otaru Kisa {
+  @annotation { circled: 1; black-boxed: 3; }
+}
+
+@font-feature-values 'Mars Serif' {
+  @styleset {
+    alt-g: 1;        /* implies ss01 = 1 */
+    curly-quotes: 3; /* implies ss03 = 1 */
+    code: 4 5;       /* implies ss04 = 1, ss05 = 1 */
+  }
+
+  @styleset {
+    dumb: 125;        /* >99, ignored */
+  }
+
+  @swash {
+    swishy: 3 5;     /* more than 1 value for swash, syntax error */
+  }
+}
+
+@font-feature-values "MM" Greek {
+  @character-variant { alpha-2: 1 2; }   /* implies cv01 = 2 */
+  @character-variant { beta-3: 2 3; }    /* implies cv02 = 3 */
+  @character-variant { epsilon: 5 3 6; } /* more than 2 values, syntax error, definition ignored */
+  @character-variant { gamma: 12; }      /* implies cv12 = 1 */
+  @character-variant { zeta:   20 3; }   /* implies cv20 = 3 */
+  @character-variant { zeta-2: 20 2; }   /* implies cv20 = 2 */
+  @character-variant { silly: 105; }     /* >99, ignored */
+  @character-variant { dumb: 323 3; }    /* >99, ignored */
+}
+
+@font-feature-values Athena Ruby {
+  @character-variant {
+    leo-B: 2 1;
+    leo-M: 13 3;
+    leo-alt-N: 14 1;
+    leo-N: 14 2;
+    leo-T: 20 1;
+    leo-U: 21 2;
+    leo-alt-U: 21 4;
+  }
+}

@@ -1,0 +1,21 @@
+/* valid */
+
+@charset "UTF-8";
+@charset "utf-8";
+@charset 'UTF-8';
+@charset 'utf-8';
+@charset   "UTF-8";
+@charset   'UTF-8';
+@charset   "UTF-8"   ;
+@charset   'UTF-8'   ;
+
+/* invalid */
+
+ @charset "UTF-8";        /* leading whitespace */
+@charset "UtF-8";         /* inconsistent caps */
+@charset "windows-1252";  /* heretical encoding */
+@charset 'utf8';          /* missing dash */
+@charset 'UTF8';          /* missing dash */
+@charset 'UTF-8'          /* missing semicolon */
+@charset 'UTF\            /* multiline string */
+-8';

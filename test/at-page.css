@@ -1,0 +1,201 @@
+/* valid */
+
+@page :left {
+margin-left: 3cm;
+margin-right: 4cm;
+}
+
+@page :right {
+margin-left: 4cm;
+margin-right: 3cm;
+}
+
+@page { margin: 2cm; } /* All margins set to 2cm */
+
+@page :first {
+margin-top: 10cm; /* Top margin on first page 10cm */
+}
+
+@page :blank {
+  @top-center { content: "This page is intentionally left blank"; }
+}
+
+@page :blank {
+  @top-center { content: none; }
+}
+
+@page :right {
+  @top-center { content: "Preliminary edition"; }
+  @bottom-center { content: counter(page); }
+}
+
+@page { ... }
+@page :left { ... }
+@page :right { ... }
+@page \aaaaadsfasd\aaadscapeTable { ... }
+@page CompanyLetterHead:first { ... } /*  identifier and pseudo page. */
+@page:first { ... }
+@page toc, index { ... }
+@page :blank:first { ... }
+
+@page {
+ @top-left { ... /* document name */ }
+ @bottom-center { ... /* page number */}
+}
+@page :left { @left-middle { ... /* page number in left margin */ }}
+@page :right{ @right-middle { ... /* page number in right margins of right pages */}}
+
+@page :left { @bottom-left-corner { ... /* left page numbers */ }}
+@page :right { @bottom-right-corner { ... /* right page numbers */ }}
+@page :first { @bottom-left-corner { ... /* empty footer on 1st page */ }
+             @bottom-right-corner { ... /* empty footer */ } }
+
+@page { } /* specificity = (0,0,0) */
+@page :left { } /* specificity = (0,0,1) */
+@page :first { } /* specificity = (0,1,0) */
+@page :blank:left { } /* specificity = (0,1,1) */
+@page artsy{ } /* specificity = (1,0,0) */
+@page artsy:left { } /* specificity = (1,0,1) */
+@page artsy:  first { } /* specificity = (1,1,0) */
+
+@page :left {
+  margin-left: 4cm;
+}
+
+@page {
+  margin-left: 3cm;
+}
+
+@page :first {
+  color: green;
+
+  @top-left {
+    content: "foo";
+    color: blue;
+  }
+  @top-right {
+    content: "bar";
+  }
+}
+
+@page { color: red;
+  @top-center {
+    content: "Page " counter(page);
+  }
+}
+
+@page { margin: 25mm;}
+@page { font-size: 14pt;}
+
+@page {
+  size: 8.5in 11in;
+  margin: 10%;
+
+  @top-left {
+    content: "Hamlet";
+  }
+  @top-right {
+    content: "Page " counter(page);
+  }
+}
+
+@page {
+  @top-left-corner { content: " "; border: solid green; }
+  @top-right-corner { content: url(foo.png); border: solid green; }
+  @bottom-right-corner { content: counter(page); border: solid green; }
+  @bottom-left-corner { content: normal; border: solid green; }
+}
+
+@page {
+@top-left { content: "Header in Left Cell (top-left)"; }
+}
+
+@page {
+  margin: 10%;
+
+  @top-center {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 2em;
+    content: counter(page);
+  }
+}
+
+@page {
+  counter-increment: page 2;
+}
+
+@page {
+    margin: 10%;
+    @top-center { content: "Chapter" counter(chapter); }
+}
+
+@page {
+  size: 4in 6in;
+}
+
+@media (max-width: 6in) {
+  @page {
+    size: letter;
+  }
+}
+
+@page {
+    size: A4 landscape;
+}
+
+@page {
+    size: auto;/* auto is the initial value */
+    margin: 10%;
+}
+
+@page {
+    size: 8.5in 11in;/* width height */
+}
+
+ /* style sheet for "A4" printing */
+ @media print and (width: 21cm) and (height: 29.7cm)
+    , screen and (color) {
+    @page {
+       margin: 3cm;
+    }
+ }
+
+ /* style sheet for "letter" printing */
+ @media print and (width: 8.5in) and (height: 11in) {
+    @page {
+        margin: 1in;
+    }
+ }
+
+@page { marks: crop cross; }
+
+@page narrow { size: 9cm 18cm; }
+@page rotated { size: landscape; }
+div { page: narrow; }
+table { page: rotated; }
+@page       { margin: auto;    /* center kihon hanmen on page */
+            width:  40rem; } /* 1.6 × 25 lines        */
+@page main  { height: 61rem; } /* 2 × 30 chars + 1 × gap */
+@page index { height: 62rem; } /* 3 × 20 chars + 2 × gap */
+
+@page {
+    @top-left-corner {
+
+    }
+    @top-left {}
+    @top-center {}
+    @top-right {}
+    @top-right-corner {}
+    @right-top {}
+    @right-middle {}
+    @right-bottom {}
+    @bottom-right-corner {}
+    @bottom-right {}
+    @bottom-center {}
+    @bottom-left {}
+    @bottom-left-corner {}
+    @left-bottom {}
+    @left-middle {}
+    @left-top {}
+}

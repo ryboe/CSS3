@@ -1,0 +1,94 @@
+/* valid */
+
+@keyframes diagonal-slide {
+
+  from {
+    left: 0;
+    top: 0;
+  }
+
+  to {
+    left: 100px;
+    top: 100px;
+  }
+}
+
+@keyframes slide-right {
+
+  from {
+    margin-left: 0px;
+  }
+
+  50% {
+    margin-left: 110px;
+    opacity: 1;
+  }
+
+  50% {
+     opacity: 0.9;
+  }
+
+  to {
+    margin-left: 200px;
+  }
+
+}
+
+@-webkit-keyframes \aaslide-rig\aaaht {
+
+  50% {
+    margin-left: 110px;
+    opacity: 0.9;
+  }
+
+  to {
+    margin-left: 200px;
+  }
+
+}
+
+@keyframes wobble {
+  0% {
+    left: 100px;
+  }
+
+  40% {
+    left: 150px;
+  }
+
+  60% {
+    left: 75px;
+  }
+
+  100% {
+    left: 100px;
+  }
+}
+
+@keyframes bounce {
+
+  from {
+    top: 100px;
+    animation-timing-function: ease-out;
+  }
+
+  25% {
+    top: 50px;
+    animation-timing-function: ease-in;
+  }
+
+  50% {
+    top: 100px;
+    animation-timing-function: ease-out;
+  }
+
+  75% {
+    top: 75px;
+    animation-timing-function: ease-in;
+  }
+
+  to {
+    top: 100px;
+  }
+
+}

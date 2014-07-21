@@ -7,11 +7,27 @@ uuid: 6618b147-dda0-4ff3-af33-8200c89d88e7
 
 patterns:
 - include: '#comment-block'
+- include: '#at-font-face'
+- include: '#at-keyframes'
 - include: '#at-media'
 - include: '#property-list'
 - include: '#selector'
 
 repository:
+  at-font-face:
+    match: ((@)font-face)\s*(?=\{)
+    captures:
+      '1': {name: keyword.control.at-rule.font-face.css}
+      '2': {name: punctuation.definition.keyword.css}
+      '3': {name: punctuation.section.property-list.css}
+
+  at-keyframes:
+    match: ((@)keyframes)\s*(-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*)\s*(?=\{)
+    captures:
+      '1': {name: keyword.control.at-rule.keyframes.css}
+      '2': {name: punctuation.definition.keyword.css}
+      '3': {name: string.unquoted.identifier.css}
+
   at-media:
     name: meta.at-rule.media.css
     begin: ((@)media)\s
@@ -193,9 +209,11 @@ repository:
     - include: '#comment-block'
     - include: '#at-font-face'
     - include: '#at-keyframes'
+    - include: '#selector-keyframes'
     - include: '#at-media'
     - include: '#at-page'
-    # TODO: add more at-rules. do not add @charset, @namespace, or @import
+    # TODO: add more at-rules. do not add @charset, @namespace, or @import, since
+    # they can't be nested
     - include: '#property-name'
     - include: '#value'
     end: \}
@@ -2920,8 +2938,13 @@ repository:
 
 
 # TODO
+#   @font-feature-values
+#   @character-variant
+#   @page
+#   @import
+#   @charset
+#   @namespace
 #   add more selectors
-#   add @media
 #   fill in several more property values in property_values.txt and #value
 #       don't get carried away. work a little on each major component (completions,
 #       language def, selectors, values, indexing) to make sure everything keeps

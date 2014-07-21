@@ -120,6 +120,7 @@ media features
     display: none;
   }
   @media (min-width: 1cm) { // rule (2)
+      #dummy {}
       @media (max-width: 12cm) { // rule (3)
         /* keep notes in flow when printing to narrow pages */
         .note { float: none; }
