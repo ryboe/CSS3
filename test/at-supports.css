@@ -1,7 +1,11 @@
 /* valid */
 
+@supports (align-content: space-around) {
+
+}
+
 @supports ( display: flex ) {
-  body, #navigation, #content { display: flex; }
+  #navigation, body, #content { display: flex; }
   #navigation { background: blue; color: white; }
   #article { background: white; color: black; }
 }
@@ -12,10 +16,10 @@
   #article { width: 75%; }
 }
 
-@supports ( box-shadow: 0 0 2px black inset; ) or
-          ( -moz-box-shadow: 0 0 2px black inset; ) or
-          ( -webkit-box-shadow: 0 0 2px black inset; ) or
-          ( -o-box-shadow: 0 0 2px black inset; ) {
+@supports ( box-shadow: 0 0 2px black inset ) or
+          ( -moz-box-shadow: 0 0 2px black inset ) or
+          ( -webkit-box-shadow: 0 0 2px black inset ) or
+          ( -o-box-shadow: 0 0 2px black inset ) {
   .noticebox {
     -moz-box-shadow: 0 0 2px black inset;
     -webkit-box-shadow: 0 0 2px black inset;
@@ -27,34 +31,28 @@
   }
 }
 
-@supports (transition-property: color;) or
-          (animation-name: foo;) and
+@supports (transition-property: color) or
+          (animation-name: foo) and
           (transform: rotate(10deg);) {
-  // ...
 }
 
 @supports ((transition-property: color) or
            (animation-name: foo)) and
           (transform: rotate(10deg)) {
-  // ...
 }
 
 @supports (transition-property: color) or
-          ((animation-name: foo) and
+          ((animation-name: foo;) and
            (transform: rotate(10deg))) {
-  // ...
 }
 
 @supports (display: flex) {
-  // ...
 }
 
 @supports ((display: flex)) {
-  // ...
 }
 
 @supports (display: flex !important) {
-  // ...
 }
 
 /* invalid */

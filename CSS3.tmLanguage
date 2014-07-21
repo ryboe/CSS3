@@ -20,6 +20,10 @@
 		</dict>
 		<dict>
 			<key>include</key>
+			<string>#at-counter-style</string>
+		</dict>
+		<dict>
+			<key>include</key>
 			<string>#at-font-face</string>
 		</dict>
 		<dict>
@@ -45,6 +49,10 @@
 		<dict>
 			<key>include</key>
 			<string>#at-page</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#at-supports</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -89,6 +97,39 @@
 			</dict>
 			<key>match</key>
 			<string>^((@)charset)\s+(?:(\"(?:UTF-8|utf-8)\")|(\'(?:UTF-8|utf-8)\'))\s*(;)</string>
+		</dict>
+		<key>at-counter-style</key>
+		<dict>
+			<key>begin</key>
+			<string>((@)counter-style)\s</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.at-rule.counter-style.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.keyword.css</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(?={)</string>
+			<key>name</key>
+			<string>meta.at-rule.counter-style.css</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#identifier</string>
+				</dict>
+			</array>
 		</dict>
 		<key>at-font-face</key>
 		<dict>
@@ -404,6 +445,49 @@
 				<dict>
 					<key>include</key>
 					<string>#identifier</string>
+				</dict>
+			</array>
+		</dict>
+		<key>at-supports</key>
+		<dict>
+			<key>begin</key>
+			<string>((@)supports)\s</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.at-rule.supports.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.keyword.css</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(?={)</string>
+			<key>name</key>
+			<string>meta.at-rule.supports.css</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:or|not|and)\b</string>
+					<key>name</key>
+					<string>keyword.operator.logic.supports.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#property-name-supports-condition</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-supports-condition</string>
 				</dict>
 			</array>
 		</dict>
@@ -972,6 +1056,58 @@
 			<string>(-webkit-transition-timing-function|-webkit-transition-property|-webkit-transition-duration|-webkit-transition-delay|-webkit-transition|-webkit-transform-style|-webkit-transform-origin|-webkit-transform|-webkit-region-fragment|-webkit-perspective-origin|-webkit-perspective|-webkit-order|-webkit-mask-size|-webkit-mask-repeat|-webkit-mask-position|-webkit-mask-origin|-webkit-mask-image|-webkit-composite|-webkit-mask-clip|-webkit-mask|-webkit-justify-content|-webkit-hyphens|-webkit-grid-row|-webkit-grid-column|-webkit-font-variant-ligatures|-webkit-font-size-delta|-webkit-font-kerning|-webkit-font-feature-settings|-webkit-flow-into|-webkit-flow-from|-webkit-flex-wrap|-webkit-flex-shrink|-webkit-flex-grow|-webkit-flex-flow|-webkit-flex-direction|-webkit-flex-basis|-webkit-flex|-webkit-columns|-webkit-column-width|-webkit-column-span|-webkit-column-rule-width|-webkit-column-rule-style|-webkit-column-rule-color|-webkit-column-rule|-webkit-column-gap|-webkit-column-fill|-webkit-column-count|-webkit-break-inside|-webkit-break-before|-webkit-break-after|-webkit-border-image|-webkit-backface-visibility|-webkit-animation-timing-function|-webkit-animation-play-state|-webkit-animation-name|-webkit-animation-iteration-count|-webkit-animation-fill-mode|-webkit-animation-duration|-webkit-animation-direction|-webkit-animation-delay|-webkit-animation|-webkit-align-self|-webkit-align-items|-webkit-align-content|-ms-writing-mode|-ms-wrap-through|-ms-wrap-flow|-ms-word-wrap|-ms-transform-style|-ms-transform-origin|-ms-transform|-ms-text-justify|-ms-text-align-last|-ms-overflow-y|-ms-overflow-x|-ms-overflow-style|-ms-ime-mode|-ms-hyphens|-ms-grid-row-span|-ms-grid-row-align|-ms-grid-row|-ms-grid-column-span|-ms-grid-column-align|-ms-grid-column|-ms-flow-into|-ms-flow-from|-moz-text-decoration-style|-moz-text-decoration-line|-moz-text-decoration-color|-moz-text-align-last|-moz-hyphens|-moz-font-language-override|-moz-font-feature-settings|-moz-columns|-moz-column-width|-moz-column-span|-moz-column-rule-width|-moz-column-rule-style|-moz-column-rule-color|-moz-column-rule|-moz-column-gap|-moz-column-fill|-moz-column-count|-moz-box-sizing)\b|\b(zoom|z-index|writing-mode|wrap-through|wrap-flow|word-wrap|word-spacing|word-break|will-change|width|widows|white-space|voice-volume|voice-stress|voice-rate|voice-range|voice-pitch|voice-family|voice-duration|voice-balance|visibility|vertical-align|user-zoom|unicode-range|unicode-bidi|transition-timing-function|transition-property|transition-duration|transition-delay|transition|transform-style|transform-origin|transform|top|text-underline-position|text-transform|text-shadow|text-overflow|text-orientation|text-justify|text-indent|text-height|text-emphasis-style|text-emphasis-position|text-emphasis-color|text-emphasis|text-decoration-style|text-decoration-skip|text-decoration-line|text-decoration-color|text-decoration|text-combine-upright|text-align-last|text-align|target-position|target-new|target-name|target|table-layout|tab-size|system|symbols|suffix|string-set|src|speak-as|speak|size|shape-outside|shape-margin|shape-image-threshold|running|ruby-position|ruby-merge|ruby-align|rotation-point|rotation|right|rest-before|rest-after|rest|resolution|resize|region-fragment|range|quotes|presentation-level|prefix|position|pointer-events|perspective-origin|perspective|pause-before|pause-after|pause|page-policy|page-break-inside|page-break-before|page-break-after|page|padding-top|padding-right|padding-left|padding-bottom|padding|pad|overflow-y|overflow-x|overflow-wrap|overflow-style|overflow|outline-width|outline-style|outline-offset|outline-color|outline|orphans|orientation|order|opacity|offset-start|offset-end|offset-before|offset-after|object-position|object-fit|negative|nav-up|nav-right|nav-left|nav-index|nav-down|move-to|min-zoom|min-width|min-height|max-zoom|max-width|max-lines|max-height|mask-type|mask-size|mask-repeat|mask-position|mask-origin|mask-mode|mask-image|mask-composite|mask-clip|mask-border-width|mask-border-source|mask-border-slice|mask-border-repeat|mask-border-outset|mask-border|mask|marquee-style|marquee-speed|marquee-play-count|marquee-direction|marks|marker-side|margin-top|margin-right|margin-left|margin-bottom|margin|list-style-type|list-style-position|list-style-image|list-style|line-stacking-strategy|line-stacking-shift|line-stacking-ruby|line-stacking|line-snap|line-slack|line-height|line-grid|line-break|line-box-contain|lighting-color|letter-spacing|left|justify-self|justify-items|justify-content|inline-box-align|initial-letters|indent-edge-reset|ime-mode|image-resolution|image-rendering|image-orientation|icon|hyphens|height|hanging-punctuation|grid-template-rows|grid-template-columns|grid-template-areas|grid-template|grid-row-start|grid-row-end|grid-row|grid-column-start|grid-column-end|grid-column|grid-auto-rows|grid-auto-flow|grid-auto-columns|grid-area|grid|footnote-policy|footnote-display|font-weight|font-variant-position|font-variant-numeric|font-variant-ligatures|font-variant-east-asian|font-variant-caps|font-variant-alternates|font-variant|font-synthesis|font-style|font-stretch|font-size-adjust|font-size|font-language-override|font-kerning|font-feature-settings|font-family|font|flow-into|flow-from|flow|flood-opacity|flood-color|float-wrap|float-offset|float-displace|float-defer-page|float-defer-column|float|flex-wrap|flex-shrink|flex-grow|flex-flow|flex-direction|flex-basis|flex|filter|fallback|empty-cells|dominant-baseline|display-outside|display-inside|display-extras|display-box|display|direction|cursor|cue-before|cue-after|cue|counter-set|counter-reset|counter-increment|corners|corner-shape|content|columns|column-width|column-span|column-rule-width|column-rule-style|column-rule-color|column-rule|column-gap|column-fill|column-count|color-interpolation-filters|color-interpolation|color-correction|color|clip-rule|clip-path|clear-side|clear-after|clear|child-align|chains|caption-side|break-inside|break-before|break-after|box-snap|box-sizing|box-shadow|box-decoration-break|bottom|border-width|border-top-width|border-top-style|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-style|border-spacing|border-right-width|border-right-style|border-right-color|border-right|border-radius|border-limit|border-left-width|border-left-style|border-left-color|border-left|border-image-width|border-image-source|border-image-slice|border-image-repeat|border-image-outset|border-image|border-color|border-collapse|border-clip-top|border-clip-right|border-clip-left|border-clip-bottom|border-clip|border-bottom-width|border-bottom-style|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border|bookmark-state|bookmark-level|bookmark-label|bleed|baseline-shift|background-size|background-repeat|background-position|background-origin|background-image|background-color|background-clip|background-attachment|background|backface-visibility|animation-timing-function|animation-play-state|animation-name|animation-iteration-count|animation-fill-mode|animation-duration|animation-direction|animation-delay|animation|all|alignment-baseline|alignment-adjust|alignment|align-self|align-items|align-content|additive-symbols)\b</string>
 			<key>name</key>
 			<string>support.type.property-name.css</string>
+		</dict>
+		<key>property-name-supports-condition</key>
+		<dict>
+			<key>begin</key>
+			<string>\(</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctation.section.supports-condition.css</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(?=:)</string>
+			<key>name</key>
+			<string>meta.supports-condition-property-name.css</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#property-name-illegal</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#property-name-illegal-epub</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#property-name-illegal-moz</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#property-name-illegal-ms</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#property-name-illegal-webkit</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#property-name-legal</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#property-name-custom</string>
+				</dict>
+			</array>
 		</dict>
 		<key>selector</key>
 		<dict>
@@ -4100,7 +4236,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>;</string>
+			<string>(?:;|(?=\)))</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
@@ -4544,7 +4680,7 @@
 			<key>begin</key>
 			<string>(?&lt;=align-content:|justify-content:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -4584,7 +4720,7 @@
 			<key>begin</key>
 			<string>(?&lt;=align-items:|align-self:|justify-self:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -4650,7 +4786,7 @@
 			<key>begin</key>
 			<string>(?&lt;=alignment:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -4690,7 +4826,7 @@
 			<key>begin</key>
 			<string>(?&lt;=alignment-adjust:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -4742,7 +4878,7 @@
 			<key>begin</key>
 			<string>(?&lt;=alignment-baseline:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -4782,7 +4918,7 @@
 			<key>begin</key>
 			<string>(?&lt;=all:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -4816,7 +4952,7 @@
 			<key>begin</key>
 			<string>(?&lt;=animation:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -4904,7 +5040,7 @@
 			<key>begin</key>
 			<string>(?&lt;=animation-delay:|animation-duration:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -4946,7 +5082,7 @@
 			<key>begin</key>
 			<string>(?&lt;=animation-direction:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -4986,7 +5122,7 @@
 			<key>begin</key>
 			<string>(?&lt;=animation-fill-mode:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -5026,7 +5162,7 @@
 			<key>begin</key>
 			<string>(?&lt;=animation-iteration-count:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -5074,7 +5210,7 @@
 			<key>begin</key>
 			<string>(?&lt;=animation-name:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -5118,7 +5254,7 @@
 			<key>begin</key>
 			<string>(?&lt;=animation-play-state:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -5158,7 +5294,7 @@
 			<key>begin</key>
 			<string>(?&lt;=animation-timing-function:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -5206,7 +5342,7 @@
 			<key>begin</key>
 			<string>(?&lt;=backface-visibility:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -5246,7 +5382,7 @@
 			<key>begin</key>
 			<string>(?&lt;=background:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -5338,7 +5474,7 @@
 			<key>begin</key>
 			<string>(?&lt;=background-attachment:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -5376,7 +5512,7 @@
 			<key>begin</key>
 			<string>(?&lt;=background-clip:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -5414,7 +5550,7 @@
 			<key>begin</key>
 			<string>(?&lt;=background-color:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -5472,7 +5608,7 @@
 			<key>begin</key>
 			<string>(?&lt;=background-image:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -5548,7 +5684,7 @@
 			<key>begin</key>
 			<string>(?&lt;=background-origin:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -5586,7 +5722,7 @@
 			<key>begin</key>
 			<string>(?&lt;=background-position:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -5638,7 +5774,7 @@
 			<key>begin</key>
 			<string>(?&lt;=background-repeat:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -5676,7 +5812,7 @@
 			<key>begin</key>
 			<string>(?&lt;=background-size:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -5728,7 +5864,7 @@
 			<key>begin</key>
 			<string>(?&lt;=baseline-shift:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -5780,7 +5916,7 @@
 			<key>begin</key>
 			<string>(?&lt;=bleed:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -5828,7 +5964,7 @@
 			<key>begin</key>
 			<string>(?&lt;=bookmark-label:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -5884,7 +6020,7 @@
 			<key>begin</key>
 			<string>(?&lt;=bookmark-level:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -5932,7 +6068,7 @@
 			<key>begin</key>
 			<string>(?&lt;=bookmark-state:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -5972,7 +6108,7 @@
 			<key>begin</key>
 			<string>(?&lt;=border:|border-bottom:|border-left:|border-right:|border-top:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -6048,7 +6184,7 @@
 			<key>begin</key>
 			<string>(?&lt;=border-clip:|border-clip-bottom:|border-clip-left:|border-clip-right:|border-clip-top:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -6100,7 +6236,7 @@
 			<key>begin</key>
 			<string>(?&lt;=border-collapse:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -6140,7 +6276,7 @@
 			<key>begin</key>
 			<string>(?&lt;=border-color:|border-bottom-color:|border-left-color:|border-right-color:|border-top-color:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -6198,7 +6334,7 @@
 			<key>begin</key>
 			<string>(?&lt;=border-image:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -6290,7 +6426,7 @@
 			<key>begin</key>
 			<string>(?&lt;=border-image-outset:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -6336,7 +6472,7 @@
 			<key>begin</key>
 			<string>(?&lt;=border-image-repeat:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -6376,7 +6512,7 @@
 			<key>begin</key>
 			<string>(?&lt;=border-image-slice:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -6428,7 +6564,7 @@
 			<key>begin</key>
 			<string>(?&lt;=border-image-source:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -6504,7 +6640,7 @@
 			<key>begin</key>
 			<string>(?&lt;=border-image-width:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -6560,7 +6696,7 @@
 			<key>begin</key>
 			<string>(?&lt;=border-limit:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -6612,7 +6748,7 @@
 			<key>begin</key>
 			<string>(?&lt;=border-radius:|border-bottom-left-radius:|border-bottom-right-radius:|border-top-left-radius:|border-top-right-radius:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -6658,7 +6794,7 @@
 			<key>begin</key>
 			<string>(?&lt;=border-spacing:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -6700,7 +6836,7 @@
 			<key>begin</key>
 			<string>(?&lt;=border-style:|border-left-style:|border-right-style:|border-top-style:|border-bottom-style:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -6738,7 +6874,7 @@
 			<key>begin</key>
 			<string>(?&lt;=border-width:|border-bottom-width:|border-left-width:|border-right-width:|border-top-width:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -6786,7 +6922,7 @@
 			<key>begin</key>
 			<string>(?&lt;=bottom:|left:|right:|top:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -6838,7 +6974,7 @@
 			<key>begin</key>
 			<string>(?&lt;=box-decoration-break:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -6878,7 +7014,7 @@
 			<key>begin</key>
 			<string>(?&lt;=box-shadow:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -6950,7 +7086,7 @@
 			<key>begin</key>
 			<string>(?&lt;=box-sizing:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -6988,7 +7124,7 @@
 			<key>begin</key>
 			<string>(?&lt;=box-snap:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -7028,7 +7164,7 @@
 			<key>begin</key>
 			<string>(?&lt;=break-after:|break-before:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -7068,7 +7204,7 @@
 			<key>begin</key>
 			<string>(?&lt;=break-inside:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -7108,7 +7244,7 @@
 			<key>begin</key>
 			<string>(?&lt;=caption-side:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -7148,7 +7284,7 @@
 			<key>begin</key>
 			<string>(?&lt;=chains:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -7192,7 +7328,7 @@
 			<key>begin</key>
 			<string>(?&lt;=child-align:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -7232,7 +7368,7 @@
 			<key>begin</key>
 			<string>(?&lt;=clear:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -7272,7 +7408,7 @@
 			<key>begin</key>
 			<string>(?&lt;=clear-after:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -7312,7 +7448,7 @@
 			<key>begin</key>
 			<string>(?&lt;=clear-side:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -7352,7 +7488,7 @@
 			<key>begin</key>
 			<string>(?&lt;=clip-path:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -7412,7 +7548,7 @@
 			<key>begin</key>
 			<string>(?&lt;=clip-rule:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -7452,7 +7588,7 @@
 			<key>begin</key>
 			<string>(?&lt;=color:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -7510,7 +7646,7 @@
 			<key>begin</key>
 			<string>(?&lt;=color-correction:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -7550,7 +7686,7 @@
 			<key>begin</key>
 			<string>(?&lt;=color-interpolation-filters:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -7590,7 +7726,7 @@
 			<key>begin</key>
 			<string>(?&lt;=column-count:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -7638,7 +7774,7 @@
 			<key>begin</key>
 			<string>(?&lt;=column-fill:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -7678,7 +7814,7 @@
 			<key>begin</key>
 			<string>(?&lt;=column-gap:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -7726,7 +7862,7 @@
 			<key>begin</key>
 			<string>(?&lt;=column-rule:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -7798,7 +7934,7 @@
 			<key>begin</key>
 			<string>(?&lt;=column-rule-color:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -7856,7 +7992,7 @@
 			<key>begin</key>
 			<string>(?&lt;=column-rule-style:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -7896,7 +8032,7 @@
 			<key>begin</key>
 			<string>(?&lt;=column-rule-width:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -7944,7 +8080,7 @@
 			<key>begin</key>
 			<string>(?&lt;=column-span:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -7984,7 +8120,7 @@
 			<key>begin</key>
 			<string>(?&lt;=column-width:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -8032,7 +8168,7 @@
 			<key>begin</key>
 			<string>(?&lt;=columns:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -8084,7 +8220,7 @@
 			<key>begin</key>
 			<string>(?&lt;=content:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -8144,7 +8280,7 @@
 			<key>begin</key>
 			<string>(?&lt;=corner-shape:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -8184,7 +8320,7 @@
 			<key>begin</key>
 			<string>(?&lt;=corners:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -8236,7 +8372,7 @@
 			<key>begin</key>
 			<string>(?&lt;=counter-increment:|counter-reset:|counter-set:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -8288,7 +8424,7 @@
 			<key>begin</key>
 			<string>(?&lt;=cue-after:|cue-before:|cue:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -8336,7 +8472,7 @@
 			<key>begin</key>
 			<string>(?&lt;=cursor:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -8388,7 +8524,7 @@
 			<key>begin</key>
 			<string>(?&lt;=direction:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -8428,7 +8564,7 @@
 			<key>begin</key>
 			<string>(?&lt;=display:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -8468,7 +8604,7 @@
 			<key>begin</key>
 			<string>(?&lt;=display-box:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -8508,7 +8644,7 @@
 			<key>begin</key>
 			<string>(?&lt;=display-extras:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -8548,7 +8684,7 @@
 			<key>begin</key>
 			<string>(?&lt;=display-inside:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -8588,7 +8724,7 @@
 			<key>begin</key>
 			<string>(?&lt;=display-outside:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -8628,7 +8764,7 @@
 			<key>begin</key>
 			<string>(?&lt;=dominant-baseline:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -8668,7 +8804,7 @@
 			<key>begin</key>
 			<string>(?&lt;=empty-cells:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -8708,7 +8844,7 @@
 			<key>begin</key>
 			<string>(?&lt;=filter:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -8768,7 +8904,7 @@
 			<key>begin</key>
 			<string>(?&lt;=flex:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -8824,7 +8960,7 @@
 			<key>begin</key>
 			<string>(?&lt;=flex-basis:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -8876,7 +9012,7 @@
 			<key>begin</key>
 			<string>(?&lt;=flex-direction:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -8916,7 +9052,7 @@
 			<key>begin</key>
 			<string>(?&lt;=flex-flow:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -8956,7 +9092,7 @@
 			<key>begin</key>
 			<string>(?&lt;=flex-grow:|flex-shrink:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -8998,7 +9134,7 @@
 			<key>begin</key>
 			<string>(?&lt;=flex-wrap:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -9038,7 +9174,7 @@
 			<key>begin</key>
 			<string>(?&lt;=float:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -9082,7 +9218,7 @@
 			<key>begin</key>
 			<string>(?&lt;=float-defer-column:|float-defer-page:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -9130,7 +9266,7 @@
 			<key>begin</key>
 			<string>(?&lt;=float-displace:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -9170,7 +9306,7 @@
 			<key>begin</key>
 			<string>(?&lt;=float-offset:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -9216,7 +9352,7 @@
 			<key>begin</key>
 			<string>(?&lt;=float-wrap:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -9256,7 +9392,7 @@
 			<key>begin</key>
 			<string>(?&lt;=flood-color:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -9318,7 +9454,7 @@
 			<key>begin</key>
 			<string>(?&lt;=flood-opacity:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -9364,7 +9500,7 @@
 			<key>begin</key>
 			<string>(?&lt;=flow:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -9416,7 +9552,7 @@
 			<key>begin</key>
 			<string>(?&lt;=flow-from:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -9460,7 +9596,7 @@
 			<key>begin</key>
 			<string>(?&lt;=flow-into:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -9504,7 +9640,7 @@
 			<key>begin</key>
 			<string>(?&lt;=justify-items:)</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -9544,7 +9680,7 @@
 			<key>begin</key>
 			<string>(?&lt;=(?:padding-top:|padding-right:|padding-left:|padding-bottom:|padding:))</string>
 			<key>end</key>
-			<string>(?=;)</string>
+			<string>(?=[;)])</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -9588,6 +9724,458 @@
 				<dict>
 					<key>include</key>
 					<string>#type-length</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-supports-condition</key>
+		<dict>
+			<key>begin</key>
+			<string>:</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.separator.key-value.css</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctation.section.supports-condition.css</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>meta.supports-condition-value.css</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-align-content-justify-content</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-align-items-align-self-justify-self</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-alignment</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-alignment-adjust</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-alignment-baseline</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-animation-delay-animation-duration</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-animation-direction</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-animation-fill-mode</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-animation-iteration-count</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-animation-name</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-animation-play-state</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-animation-timing-function</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-animation</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-backface-visibility</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-background-attachment</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-background-clip</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-background-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-background-image</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-background-origin</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-background-position</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-background-repeat</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-background-size</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-background</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-baseline-shift</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-bleed</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-bookmark-label</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-bookmark-level</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-bookmark-state</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-border</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-border-clip</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-border-collapse</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-border-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-border-image-outset</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-border-image-repeat</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-border-image-slice</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-border-image-source</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-border-image-width</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-border-image</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-border-limit</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-border-radius</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-border-spacing</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-border-style</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-border-width</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-bottom-left-right-top</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-box-decoration-break</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-box-shadow</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-box-sizing</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-box-snap</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-break-after-break-before</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-break-inside</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-caption-side</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-chains</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-child-align</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-clear</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-clear-after</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-clear-side</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-clip-path</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-clip-rule</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-flood-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-color-correction</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-color-interpolation-filters</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-column-count</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-column-fill</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-column-gap</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-column-rule</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-column-rule-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-column-rule-style</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-column-rule-width</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-column-span</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-column-width</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-columns</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-content</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-corner-shape</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-corners</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-counter-increment-counter-reset-counter-set</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-cue</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-cursor</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-flex-direction</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-direction</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-display</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-display-box</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-display-extras</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-display-inside</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-display-outside</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-dominant-baseline</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-empty-cells</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-filter</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-flex-basis</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-flex-flow</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-flex-grow-flex-shrink</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-flex-wrap</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-flex</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-float</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-float-defer-column-defer-page</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-float-displace</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-float-offset</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-float-wrap</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-flood-opacity</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-flow</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-flow-from</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-flow-into</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-justify-items</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-padding</string>
 				</dict>
 			</array>
 		</dict>

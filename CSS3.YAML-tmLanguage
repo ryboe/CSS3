@@ -8,6 +8,7 @@ uuid: 6618b147-dda0-4ff3-af33-8200c89d88e7
 patterns:
 - include: '#comment-block'
 - include: '#at-charset'
+- include: '#at-counter-style'
 - include: '#at-font-face'
 - include: '#at-font-feature-values'
 - include: '#at-import'
@@ -15,6 +16,7 @@ patterns:
 - include: '#at-media'
 - include: '#at-namespace'
 - include: '#at-page'
+- include: '#at-supports'
 - include: '#property-list'
 - include: '#selector'
 
@@ -27,6 +29,17 @@ repository:
       '3': {name: string.quoted.double.css}
       '4': {name: string.quoted.single.css}
       '5': {name: punctuation.terminator.rule.css}
+
+  at-counter-style:
+    name: meta.at-rule.counter-style.css
+    begin: ((@)counter-style)\s
+    beginCaptures:
+      '1': {name: keyword.control.at-rule.counter-style.css}
+      '2': {name: punctuation.definition.keyword.css}
+    patterns:
+    - include: '#comment-block'
+    - include: '#identifier'
+    end: (?={)
 
   at-font-face:
     match: ((@)font-face)\s*(?={)
@@ -125,6 +138,20 @@ repository:
     end: (?={)
     endCaptures:
       '0': {name: punctuation.section.rule-list.css}
+
+  at-supports:
+    name: meta.at-rule.supports.css
+    begin: ((@)supports)\s
+    beginCaptures:
+      '1': {name: keyword.control.at-rule.supports.css}
+      '2': {name: punctuation.definition.keyword.css}
+    patterns:
+    - include: '#comment-block'
+    - name: keyword.operator.logic.supports.css
+      match: \b(?:or|not|and)\b
+    - include: '#property-name-supports-condition'
+    - include: '#value-supports-condition'
+    end: (?={)
 
   comment-block:
     name: comment.block.css
@@ -343,6 +370,22 @@ repository:
   property-name-legal:
     name: support.type.property-name.css
     match: (-webkit-transition-timing-function|-webkit-transition-property|-webkit-transition-duration|-webkit-transition-delay|-webkit-transition|-webkit-transform-style|-webkit-transform-origin|-webkit-transform|-webkit-region-fragment|-webkit-perspective-origin|-webkit-perspective|-webkit-order|-webkit-mask-size|-webkit-mask-repeat|-webkit-mask-position|-webkit-mask-origin|-webkit-mask-image|-webkit-composite|-webkit-mask-clip|-webkit-mask|-webkit-justify-content|-webkit-hyphens|-webkit-grid-row|-webkit-grid-column|-webkit-font-variant-ligatures|-webkit-font-size-delta|-webkit-font-kerning|-webkit-font-feature-settings|-webkit-flow-into|-webkit-flow-from|-webkit-flex-wrap|-webkit-flex-shrink|-webkit-flex-grow|-webkit-flex-flow|-webkit-flex-direction|-webkit-flex-basis|-webkit-flex|-webkit-columns|-webkit-column-width|-webkit-column-span|-webkit-column-rule-width|-webkit-column-rule-style|-webkit-column-rule-color|-webkit-column-rule|-webkit-column-gap|-webkit-column-fill|-webkit-column-count|-webkit-break-inside|-webkit-break-before|-webkit-break-after|-webkit-border-image|-webkit-backface-visibility|-webkit-animation-timing-function|-webkit-animation-play-state|-webkit-animation-name|-webkit-animation-iteration-count|-webkit-animation-fill-mode|-webkit-animation-duration|-webkit-animation-direction|-webkit-animation-delay|-webkit-animation|-webkit-align-self|-webkit-align-items|-webkit-align-content|-ms-writing-mode|-ms-wrap-through|-ms-wrap-flow|-ms-word-wrap|-ms-transform-style|-ms-transform-origin|-ms-transform|-ms-text-justify|-ms-text-align-last|-ms-overflow-y|-ms-overflow-x|-ms-overflow-style|-ms-ime-mode|-ms-hyphens|-ms-grid-row-span|-ms-grid-row-align|-ms-grid-row|-ms-grid-column-span|-ms-grid-column-align|-ms-grid-column|-ms-flow-into|-ms-flow-from|-moz-text-decoration-style|-moz-text-decoration-line|-moz-text-decoration-color|-moz-text-align-last|-moz-hyphens|-moz-font-language-override|-moz-font-feature-settings|-moz-columns|-moz-column-width|-moz-column-span|-moz-column-rule-width|-moz-column-rule-style|-moz-column-rule-color|-moz-column-rule|-moz-column-gap|-moz-column-fill|-moz-column-count|-moz-box-sizing)\b|\b(zoom|z-index|writing-mode|wrap-through|wrap-flow|word-wrap|word-spacing|word-break|will-change|width|widows|white-space|voice-volume|voice-stress|voice-rate|voice-range|voice-pitch|voice-family|voice-duration|voice-balance|visibility|vertical-align|user-zoom|unicode-range|unicode-bidi|transition-timing-function|transition-property|transition-duration|transition-delay|transition|transform-style|transform-origin|transform|top|text-underline-position|text-transform|text-shadow|text-overflow|text-orientation|text-justify|text-indent|text-height|text-emphasis-style|text-emphasis-position|text-emphasis-color|text-emphasis|text-decoration-style|text-decoration-skip|text-decoration-line|text-decoration-color|text-decoration|text-combine-upright|text-align-last|text-align|target-position|target-new|target-name|target|table-layout|tab-size|system|symbols|suffix|string-set|src|speak-as|speak|size|shape-outside|shape-margin|shape-image-threshold|running|ruby-position|ruby-merge|ruby-align|rotation-point|rotation|right|rest-before|rest-after|rest|resolution|resize|region-fragment|range|quotes|presentation-level|prefix|position|pointer-events|perspective-origin|perspective|pause-before|pause-after|pause|page-policy|page-break-inside|page-break-before|page-break-after|page|padding-top|padding-right|padding-left|padding-bottom|padding|pad|overflow-y|overflow-x|overflow-wrap|overflow-style|overflow|outline-width|outline-style|outline-offset|outline-color|outline|orphans|orientation|order|opacity|offset-start|offset-end|offset-before|offset-after|object-position|object-fit|negative|nav-up|nav-right|nav-left|nav-index|nav-down|move-to|min-zoom|min-width|min-height|max-zoom|max-width|max-lines|max-height|mask-type|mask-size|mask-repeat|mask-position|mask-origin|mask-mode|mask-image|mask-composite|mask-clip|mask-border-width|mask-border-source|mask-border-slice|mask-border-repeat|mask-border-outset|mask-border|mask|marquee-style|marquee-speed|marquee-play-count|marquee-direction|marks|marker-side|margin-top|margin-right|margin-left|margin-bottom|margin|list-style-type|list-style-position|list-style-image|list-style|line-stacking-strategy|line-stacking-shift|line-stacking-ruby|line-stacking|line-snap|line-slack|line-height|line-grid|line-break|line-box-contain|lighting-color|letter-spacing|left|justify-self|justify-items|justify-content|inline-box-align|initial-letters|indent-edge-reset|ime-mode|image-resolution|image-rendering|image-orientation|icon|hyphens|height|hanging-punctuation|grid-template-rows|grid-template-columns|grid-template-areas|grid-template|grid-row-start|grid-row-end|grid-row|grid-column-start|grid-column-end|grid-column|grid-auto-rows|grid-auto-flow|grid-auto-columns|grid-area|grid|footnote-policy|footnote-display|font-weight|font-variant-position|font-variant-numeric|font-variant-ligatures|font-variant-east-asian|font-variant-caps|font-variant-alternates|font-variant|font-synthesis|font-style|font-stretch|font-size-adjust|font-size|font-language-override|font-kerning|font-feature-settings|font-family|font|flow-into|flow-from|flow|flood-opacity|flood-color|float-wrap|float-offset|float-displace|float-defer-page|float-defer-column|float|flex-wrap|flex-shrink|flex-grow|flex-flow|flex-direction|flex-basis|flex|filter|fallback|empty-cells|dominant-baseline|display-outside|display-inside|display-extras|display-box|display|direction|cursor|cue-before|cue-after|cue|counter-set|counter-reset|counter-increment|corners|corner-shape|content|columns|column-width|column-span|column-rule-width|column-rule-style|column-rule-color|column-rule|column-gap|column-fill|column-count|color-interpolation-filters|color-interpolation|color-correction|color|clip-rule|clip-path|clear-side|clear-after|clear|child-align|chains|caption-side|break-inside|break-before|break-after|box-snap|box-sizing|box-shadow|box-decoration-break|bottom|border-width|border-top-width|border-top-style|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-style|border-spacing|border-right-width|border-right-style|border-right-color|border-right|border-radius|border-limit|border-left-width|border-left-style|border-left-color|border-left|border-image-width|border-image-source|border-image-slice|border-image-repeat|border-image-outset|border-image|border-color|border-collapse|border-clip-top|border-clip-right|border-clip-left|border-clip-bottom|border-clip|border-bottom-width|border-bottom-style|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border|bookmark-state|bookmark-level|bookmark-label|bleed|baseline-shift|background-size|background-repeat|background-position|background-origin|background-image|background-color|background-clip|background-attachment|background|backface-visibility|animation-timing-function|animation-play-state|animation-name|animation-iteration-count|animation-fill-mode|animation-duration|animation-direction|animation-delay|animation|all|alignment-baseline|alignment-adjust|alignment|align-self|align-items|align-content|additive-symbols)\b
+
+  property-name-supports-condition:
+    name: meta.supports-condition-property-name.css
+    begin: \(
+    beginCaptures:
+      '0': {name: punctation.section.supports-condition.css}
+    patterns:
+    - include: '#comment-block'
+    - include: '#property-name-illegal'
+    - include: '#property-name-illegal-epub'
+    - include: '#property-name-illegal-moz'
+    - include: '#property-name-illegal-ms'
+    - include: '#property-name-illegal-webkit'
+    - include: '#property-name-legal'
+    - include: '#property-name-custom'
+    end: (?=:)
 
   selector:
     # Selectors can start with a lowercase letter, digit (100%), hyphen (-moz-),
@@ -1453,7 +1496,7 @@ repository:
     - include: '#value-flow-into'
     - include: '#value-justify-items'
     - include: '#value-padding'
-    end: ;
+    end: (?:;|(?=\)))
     endCaptures:
       '0': {name: punctuation.terminator.rule.css}
 
@@ -1468,7 +1511,9 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:stretch|space-between|space-around|flex-start|flex-end|center)\b
-    end: (?=;)
+    # Ending before a closing paren makes these rules usable inside an @supports
+    # condition.
+    end: (?=[;)])
 
   value-align-items-align-self-justify-self:
     begin: (?<=align-items:|align-self:|justify-self:)
@@ -1486,7 +1531,7 @@ repository:
         '3': {name: support.constant.property-value.css}
         '4': {name: support.constant.property-value.css}
         '5': {name: support.constant.property-value.css}
-    end: (?=;)
+    end: (?=[;)])
 
   value-alignment:
     begin: (?<=alignment:)
@@ -1499,7 +1544,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:top|right|left|center|bottom)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-alignment-adjust:
     begin: (?<=alignment-adjust:)
@@ -1515,7 +1560,7 @@ repository:
     - include: '#type-percentage'
     - include: '#type-length'
     - include: '#type-function-calc'
-    end: (?=;)
+    end: (?=[;)])
 
   value-alignment-baseline:
     begin: (?<=alignment-baseline:)
@@ -1528,7 +1573,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:use-script|under-edge|text-under-edge|text-over-edge|over-edge|middle|mathematical|ideographic|hanging|central|baseline|alphabetic)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-all:
     begin: (?<=all:)
@@ -1539,7 +1584,7 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
-    end: (?=;)
+    end: (?=[;)])
 
   value-animation:
     begin: (?<=animation:)
@@ -1566,7 +1611,7 @@ repository:
     - include: '#type-function-cubic-bezier'
     - include: '#type-function-steps'
     - include: '#identifier'
-    end: (?=;)
+    end: (?=[;)])
 
   value-animation-delay-animation-duration:
     begin: (?<=animation-delay:|animation-duration:)
@@ -1579,7 +1624,7 @@ repository:
     - include: '#type-function-var'
     - include: '#type-time'
     - include: '#type-function-calc'
-    end: (?=;)
+    end: (?=[;)])
 
   value-animation-direction:
     begin: (?<=animation-direction:)
@@ -1592,7 +1637,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:reverse|normal|alternate-reverse|alternate)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-animation-fill-mode:
     begin: (?<=animation-fill-mode:)
@@ -1605,7 +1650,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:none|forwards|both|backwards)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-animation-iteration-count:
     begin: (?<=animation-iteration-count:)
@@ -1620,7 +1665,7 @@ repository:
       match: \binfinite\b
     - include: '#type-number-non-negative'
     - include: '#type-function-calc'
-    end: (?=;)
+    end: (?=[;)])
 
   value-animation-name:
     begin: (?<=animation-name:)
@@ -1634,7 +1679,7 @@ repository:
     - name: support.constant.property-value.css
       match: \bnone\b
     - include: '#identifier'
-    end: (?=;)
+    end: (?=[;)])
 
   value-animation-play-state:
     begin: (?<=animation-play-state:)
@@ -1647,7 +1692,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:running|paused)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-animation-timing-function:
     begin: (?<=animation-timing-function:)
@@ -1662,7 +1707,7 @@ repository:
       match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
     - include: '#type-function-cubic-bezier'
     - include: '#type-function-steps'
-    end: (?=;)
+    end: (?=[;)])
 
   value-backface-visibility:
     begin: (?<=backface-visibility:)
@@ -1675,7 +1720,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:visible|hidden)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-background:
       begin: (?<=background:)
@@ -1701,7 +1746,7 @@ repository:
       - include: '#type-color-hex'
       - include: '#type-percentage-non-negative'
       - include: '#type-length-non-negative'
-      end: (?=;)
+      end: (?=[;)])
 
   value-background-attachment:
     begin: (?<=background-attachment:)
@@ -1713,7 +1758,7 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - include: '#type-attachment'
-    end: (?=;)
+    end: (?=[;)])
 
   value-background-clip:
     begin: (?<=background-clip:)
@@ -1725,7 +1770,7 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - include: '#type-box'
-    end: (?=;)
+    end: (?=[;)])
 
   value-background-color:
     begin: (?<=background-color:)
@@ -1742,7 +1787,7 @@ repository:
     - include: '#type-function-rgba'
     - include: '#type-function-rgb'
     - include: '#type-color-hex'
-    end: (?=;)
+    end: (?=[;)])
 
   value-background-image:
     begin: (?<=background-image:)
@@ -1764,7 +1809,7 @@ repository:
     - include: '#type-function-linear-gradient'
     - include: '#type-function-radial-gradient'
     - include: '#type-function-url'
-    end: (?=;)
+    end: (?=[;)])
 
   value-background-origin:
     begin: (?<=background-origin:)
@@ -1776,7 +1821,7 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - include: '#type-box'
-    end: (?=;)
+    end: (?=[;)])
 
   value-background-position:
     begin: (?<=background-position:)
@@ -1792,7 +1837,7 @@ repository:
     - include: '#type-function-calc'
     - include: '#type-percentage'
     - include: '#type-length'
-    end: (?=;)
+    end: (?=[;)])
 
   value-background-repeat:
     begin: (?<=background-repeat:)
@@ -1804,7 +1849,7 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - include: '#type-repeat-style'
-    end: (?=;)
+    end: (?=[;)])
 
   value-background-size:
     begin: (?<=background-size:)
@@ -1820,7 +1865,7 @@ repository:
     - include: '#type-function-calc'
     - include: '#type-percentage-non-negative'
     - include: '#type-length-non-negative'
-    end: (?=;)
+    end: (?=[;)])
 
   value-baseline-shift:
     begin: (?<=baseline-shift:)
@@ -1836,7 +1881,7 @@ repository:
     - include: '#type-function-calc'
     - include: '#type-percentage'
     - include: '#type-length'
-    end: (?=;)
+    end: (?=[;)])
 
   value-bleed:
     begin: (?<=bleed:)
@@ -1851,7 +1896,7 @@ repository:
       match: \bauto\b
     - include: '#type-function-calc'
     - include: '#type-length'
-    end: (?=;)
+    end: (?=[;)])
 
   value-bookmark-label:
     begin: (?<=bookmark-label:)
@@ -1869,7 +1914,7 @@ repository:
     - include: '#type-function-counter'
     - include: '#type-string-double'
     - include: '#type-string-single'
-    end: (?=;)
+    end: (?=[;)])
 
   value-bookmark-level:
     begin: (?<=bookmark-level:)
@@ -1884,7 +1929,7 @@ repository:
       match: \bnone\b
     - include: '#type-function-calc'
     - include: '#type-integer-positive'
-    end: (?=;)
+    end: (?=[;)])
 
   value-bookmark-state:
     begin: (?<=bookmark-state:)
@@ -1897,7 +1942,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:open|closed)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-border:
     begin: (?<=border:|border-bottom:|border-left:|border-right:|border-top:)
@@ -1919,7 +1964,7 @@ repository:
     - include: '#type-function-rgb'
     - include: '#type-function-calc'
     - include: '#type-length-non-negative'
-    end: (?=;)
+    end: (?=[;)])
 
   value-border-clip:
     begin: (?<=border-clip:|border-clip-bottom:|border-clip-left:|border-clip-right:|border-clip-top:)
@@ -1936,7 +1981,7 @@ repository:
     - include: '#type-percentage'
     - include: '#type-length'
     # TODO: include <fraction> here? the spec is unsure about supporting <fraction>
-    end: (?=;)
+    end: (?=[;)])
 
   value-border-collapse:
     begin: (?<=border-collapse:)
@@ -1949,7 +1994,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:separate|collapse)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-border-color:
     begin: (?<=border-color:|border-bottom-color:|border-left-color:|border-right-color:|border-top-color:)
@@ -1966,7 +2011,7 @@ repository:
     - include: '#type-function-rgb'
     - include: '#type-function-rgba'
     - include: '#type-color-hex'
-    end: (?=;)
+    end: (?=[;)])
 
   value-border-image:
     begin: (?<=border-image:)
@@ -1992,7 +2037,7 @@ repository:
     - include: '#type-percentage-non-negative'
     - include: '#type-length-non-negative'
     - include: '#type-number-non-negative'
-    end: (?=;)
+    end: (?=[;)])
 
   value-border-image-outset:
     begin: (?<=border-image-outset:)
@@ -2006,7 +2051,7 @@ repository:
     - include: '#type-function-calc'
     - include: '#type-length-non-negative'
     - include: '#type-number-non-negative'
-    end: (?=;)
+    end: (?=[;)])
 
   value-border-image-repeat:
     begin: (?<=border-image-repeat:)
@@ -2019,7 +2064,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:stretch|space|round|repeat)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-border-image-slice:
     begin: (?<=border-image-slice:)
@@ -2035,7 +2080,7 @@ repository:
     - include: '#type-function-calc'
     - include: '#type-percentage-non-negative'
     - include: '#type-number-non-negative'
-    end: (?=;)
+    end: (?=[;)])
 
   value-border-image-source:
     begin: (?<=border-image-source:)
@@ -2057,7 +2102,7 @@ repository:
     - include: '#type-function-linear-gradient'
     - include: '#type-function-radial-gradient'
     - include: '#type-function-url'
-    end: (?=;)
+    end: (?=[;)])
 
   value-border-image-width:
     begin: (?<=border-image-width:)
@@ -2074,7 +2119,7 @@ repository:
     - include: '#type-percentage-non-negative'
     - include: '#type-length-non-negative'
     - include: '#type-number-non-negative'
-    end: (?=;)
+    end: (?=[;)])
 
   value-border-limit:
     begin: (?<=border-limit:)
@@ -2090,7 +2135,7 @@ repository:
     - include: '#type-function-calc'
     - include: '#type-length'
     - include: '#type-percentage'
-    end: (?=;)
+    end: (?=[;)])
 
   value-border-radius:
     begin: (?<=border-radius:|border-bottom-left-radius:|border-bottom-right-radius:|border-top-left-radius:|border-top-right-radius:)
@@ -2104,7 +2149,7 @@ repository:
     - include: '#type-function-calc'
     - include: '#type-percentage-non-negative'
     - include: '#type-length-non-negative'
-    end: (?=;)
+    end: (?=[;)])
 
   value-border-spacing:
     begin: (?<=border-spacing:)
@@ -2117,7 +2162,7 @@ repository:
     - include: '#type-function-var'
     - include: '#type-function-calc'
     - include: '#type-length-non-negative'
-    end: (?=;)
+    end: (?=[;)])
 
   value-border-style:
     begin: (?<=border-style:|border-left-style:|border-right-style:|border-top-style:|border-bottom-style:)
@@ -2129,7 +2174,7 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - include: '#type-line-style'
-    end: (?=;)
+    end: (?=[;)])
 
   value-border-width:
     begin: (?<=border-width:|border-bottom-width:|border-left-width:|border-right-width:|border-top-width:)
@@ -2144,7 +2189,7 @@ repository:
       match: \b(?:thin|thick|medium)\b
     - include: '#type-function-calc'
     - include: '#type-length-non-negative'
-    end: (?=;)
+    end: (?=[;)])
 
   value-bottom-left-right-top:
     begin: (?<=bottom:|left:|right:|top:)
@@ -2160,7 +2205,7 @@ repository:
     - include: '#type-function-calc'
     - include: '#type-percentage'
     - include: '#type-length'
-    end: (?=;)
+    end: (?=[;)])
 
   value-box-decoration-break:
     begin: (?<=box-decoration-break:)
@@ -2173,7 +2218,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:slice|clone)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-box-shadow:
     begin: (?<=box-shadow:)
@@ -2194,7 +2239,7 @@ repository:
     - include: '#type-color-hex'
     - include: '#type-function-calc'
     - include: '#type-length'
-    end: (?=;)
+    end: (?=[;)])
 
   value-box-sizing:
     begin: (?<=box-sizing:)
@@ -2206,7 +2251,7 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - include: '#type-box'
-    end: (?=;)
+    end: (?=[;)])
 
   value-box-snap:
     begin: (?<=box-snap:)
@@ -2219,7 +2264,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:none|last-baseline|first-baseline|center|before|after)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-break-after-break-before:
     begin: (?<=break-after:|break-before:)
@@ -2232,7 +2277,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:verso|right|region|recto|page|left|column|avoid-region|avoid-page|avoid-column|avoid|auto|any|always)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-break-inside:
     begin: (?<=break-inside:)
@@ -2245,7 +2290,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:avoid-region|avoid-page|avoid-column|avoid|auto)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-caption-side:
     begin: (?<=caption-side:)
@@ -2258,7 +2303,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:top|bottom)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-chains:
     begin: (?<=chains:)
@@ -2272,7 +2317,7 @@ repository:
     - name: support.constant.property-value.css
       match: \bnone\b
     - include: '#identifier'
-    end: (?=;)
+    end: (?=[;)])
 
   value-child-align:
     begin: (?<=child-align:)
@@ -2285,7 +2330,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:top|right|middle|left|bottom|auto)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-clear:
     begin: (?<=clear:)
@@ -2298,7 +2343,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:both|left|none|right)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-clear-after:
     begin: (?<=clear-after:)
@@ -2311,7 +2356,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:top|start|right|outside|none|left|inside|end|descendants|bottom|both)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-clear-side:
     begin: (?<=clear-side:)
@@ -2324,7 +2369,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:both|auto)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-clip-path:
     begin: (?<=clip-path:)
@@ -2342,7 +2387,7 @@ repository:
     - include: '#type-function-inset'
     - include: '#type-function-polygon'
     - include: '#type-function-url'
-    end: (?=;)
+    end: (?=[;)])
 
   value-clip-rule:
     begin: (?<=clip-rule:)
@@ -2355,7 +2400,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:nonzero|evenodd)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-color:
     begin: (?<=color:)
@@ -2372,7 +2417,7 @@ repository:
     - include: '#type-function-rgba'
     - include: '#type-function-rgb'
     - include: '#type-color-hex'
-    end: (?=;)
+    end: (?=[;)])
 
   value-color-correction:
     begin: (?<=color-correction:)
@@ -2385,7 +2430,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:sRGB|auto)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-color-interpolation-filters:
     begin: (?<=color-interpolation-filters:)
@@ -2398,7 +2443,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:sRGB|linearRGB|auto)
-    end: (?=;)
+    end: (?=[;)])
 
   value-column-count:
     begin: (?<=column-count:)
@@ -2413,7 +2458,7 @@ repository:
       match: \bauto\b
     - include: '#type-function-calc'
     - include: '#type-integer-positive'
-    end: (?=;)
+    end: (?=[;)])
 
   value-column-fill:
     begin: (?<=column-fill:)
@@ -2426,7 +2471,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:balance-all|balance|auto)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-column-gap:
     begin: (?<=column-gap:)
@@ -2441,7 +2486,7 @@ repository:
       match: \bnormal\b
     - include: '#type-function-calc'
     - include: '#type-length-non-negative'
-    end: (?=;)
+    end: (?=[;)])
 
   value-column-rule:
     begin: (?<=column-rule:)
@@ -2462,7 +2507,7 @@ repository:
       match: \b(?:thick|thin|solid|ridge|outset|none|medium|inset|hidden|groove|double|dotted|dashed)\b
     - include: '#type-function-calc'
     - include: '#type-length-non-negative'
-    end: (?=;)
+    end: (?=[;)])
 
   value-column-rule-color:
     begin: (?<=column-rule-color:)
@@ -2479,7 +2524,7 @@ repository:
     - include: '#type-function-rgba'
     - include: '#type-function-rgb'
     - include: '#type-color-hex'
-    end: (?=;)
+    end: (?=[;)])
 
   value-column-rule-style:
     begin: (?<=column-rule-style:)
@@ -2492,7 +2537,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:solid|ridge|outset|none|inset|hidden|groove|double|dotted|dashed)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-column-rule-width:
     begin: (?<=column-rule-width:)
@@ -2507,7 +2552,7 @@ repository:
       match: \b(?:thin|thick|medium)\b
     - include: '#type-function-calc'
     - include: '#type-length-non-negative'
-    end: (?=;)
+    end: (?=[;)])
 
   value-column-span:
     begin: (?<=column-span:)
@@ -2520,7 +2565,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:none|all)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-column-width:
     begin: (?<=column-width:)
@@ -2535,7 +2580,7 @@ repository:
       match: \bauto\b
     - include: '#type-function-calc'
     - include: '#type-length-positive'
-    end: (?=;)
+    end: (?=[;)])
 
   value-columns:
     begin: (?<=columns:)
@@ -2551,7 +2596,7 @@ repository:
     - include: '#type-function-calc'
     - include: '#type-length-positive'
     - include: '#type-integer-positive'
-    end: (?=;)
+    end: (?=[;)])
 
   # The <content-list> value type in this rule is different from the
   # <content-list> type in #value-bookmark-label due to inconsistencies in the
@@ -2573,7 +2618,7 @@ repository:
     - include: '#type-string-double'
     - include: '#type-string-single'
     - include: '#type-function-url'
-    end: (?=;)
+    end: (?=[;)])
 
   value-corner-shape:
     begin: (?<=corner-shape:)
@@ -2586,7 +2631,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:scoop|round|notch|bevel)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-corners:
     begin: (?<=corners:)
@@ -2602,7 +2647,7 @@ repository:
     - include: '#type-function-calc'
     - include: '#type-percentage-non-negative'
     - include: '#type-length-non-negative'
-    end: (?=;)
+    end: (?=[;)])
 
   value-counter-increment-counter-reset-counter-set:
     begin: (?<=counter-increment:|counter-reset:|counter-set:)
@@ -2618,7 +2663,7 @@ repository:
     - include: '#type-function-calc'
     - include: '#type-integer'
     - include: '#identifier'
-    end: (?=;)
+    end: (?=[;)])
 
   value-cue:
     begin: (?<=cue-after:|cue-before:|cue:)
@@ -2633,7 +2678,7 @@ repository:
       match: \bnone\b
     - include: '#type-decibel'
     - include: '#type-function-url'
-    end: (?=;)
+    end: (?=[;)])
 
   value-cursor:
     begin: (?<=cursor:)
@@ -2649,7 +2694,7 @@ repository:
     - include: '#type-function-url'
     - include: '#type-function-calc'
     - include: '#type-number'
-    end: (?=;)
+    end: (?=[;)])
 
   value-direction:
     begin: (?<=direction:)
@@ -2662,7 +2707,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:rtl|ltr)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-display:
     begin: (?<=display:)
@@ -2675,7 +2720,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:table-row-group|table-row|table-header-group|table-footer-group|table-column-group|table-column|table-cell|table-caption|table|run-in|ruby-text-container|ruby-text|ruby-base-container|ruby-base|ruby|none|list-item|inline-table|inline-list-item|inline-level|inline-grid|inline-flex|inline-block|inline|grid|flex|contents|block-level|block|auto)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-display-box:
     begin: (?<=display-box:)
@@ -2688,7 +2733,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:normal|none)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-display-extras:
     begin: (?<=display-extras:)
@@ -2701,7 +2746,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:none|list-item)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-display-inside:
     begin: (?<=display-inside:)
@@ -2714,7 +2759,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:table|ruby|grid|flex|block|auto)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-display-outside:
     begin: (?<=display-outside:)
@@ -2727,7 +2772,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:table-row-group|table-row|table-header-group|table-footer-group|table-column-group|table-column|table-cell|table-caption|run-in|ruby-text-container|ruby-text|ruby-base-container|ruby-base|none|inline-level|contents|block-level)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-dominant-baseline:
     begin: (?<=dominant-baseline:)
@@ -2740,7 +2785,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:use-script|text-under-edge|text-over-edge|reset-size|no-change|middle|mathematical|ideographic|hanging|central|auto|alphabetic)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-empty-cells:
     begin: (?<=empty-cells:)
@@ -2753,7 +2798,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:show|hide)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-filter:
     begin: (?<=filter:)
@@ -2771,7 +2816,7 @@ repository:
     - include: '#type-function-drop-shadow'
     - include: '#type-function-hue-rotate'
     - include: '#type-function-url'
-    end: (?=;)
+    end: (?=[;)])
 
   value-flex:
     begin: (?<=flex:)
@@ -2788,7 +2833,7 @@ repository:
     - include: '#type-percentage-non-negative'
     - include: '#type-length-non-negative'
     - include: '#type-number-non-negative'
-    end: (?=;)
+    end: (?=[;)])
 
   value-flex-basis:
     begin: (?<=flex-basis:)
@@ -2804,7 +2849,7 @@ repository:
     - include: '#type-function-calc'
     - include: '#type-percentage-non-negative'
     - include: '#type-length-non-negative'
-    end: (?=;)
+    end: (?=[;)])
 
   value-flex-direction:
     begin: (?<=flex-direction:)
@@ -2817,7 +2862,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:row-reverse|row|column-reverse|column)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-flex-flow:
     begin: (?<=flex-flow:)
@@ -2830,7 +2875,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:wrap-reverse|wrap|row-reverse|row|nowrap|column-reverse|column)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-flex-grow-flex-shrink:
     begin: (?<=flex-grow:|flex-shrink:)
@@ -2843,7 +2888,7 @@ repository:
     - include: '#type-function-var'
     - include: '#type-function-calc'
     - include: '#type-number-non-negative'
-    end: (?=;)
+    end: (?=[;)])
 
   value-flex-wrap:
     begin: (?<=flex-wrap:)
@@ -2856,7 +2901,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:wrap-reverse|wrap|nowrap)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-float:
     begin: (?<=float:)
@@ -2870,7 +2915,7 @@ repository:
     - include: '#type-function-snap'
     - name: support.constant.property-value.css
       match: \b(?:top|start|snap|right|outside|none|left|inside|end|contour|bottom)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-float-defer-column-defer-page:
     begin: (?<=float-defer-column:|float-defer-page:)
@@ -2885,7 +2930,7 @@ repository:
       match: \b(?:none|last)\b
     - include: '#type-function-calc'
     - include: '#type-integer'
-    end: (?=;)
+    end: (?=[;)])
 
   value-float-displace:
     begin: (?<=float-displace:)
@@ -2898,7 +2943,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:line|indent|block-within-page|block)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-float-offset:
     begin: (?<=float-offset:)
@@ -2912,7 +2957,7 @@ repository:
     - include: '#type-function-calc'
     - include: '#type-percentage'
     - include: '#type-length'
-    end: (?=;)
+    end: (?=[;)])
 
   value-float-wrap:
     begin: (?<=float-wrap:)
@@ -2925,7 +2970,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:wrap|none)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-flood-color:
     begin: (?<=flood-color:)
@@ -2943,7 +2988,7 @@ repository:
     - include: '#type-function-rgba'
     - include: '#type-function-rgb'
     - include: '#type-color-hex'
-    end: (?=;)
+    end: (?=[;)])
 
   value-flood-opacity:
     begin: (?<=flood-opacity:)
@@ -2957,7 +3002,7 @@ repository:
     - include: '#type-function-calc'
     - include: '#type-percentage'
     - include: '#type-number'
-    end: (?=;)
+    end: (?=[;)])
 
   value-flow:
     begin: (?<=flow:)
@@ -2973,7 +3018,7 @@ repository:
     - include: '#type-string-double'
     - include: '#type-string-single'
     - include: '#identifier'
-    end: (?=;)
+    end: (?=[;)])
 
   value-flow-from:
     begin: (?<=flow-from:)
@@ -2987,7 +3032,7 @@ repository:
     - name: support.constant.property-value.css
       match: \bnone\b
     - include: '#identifier'
-    end: (?=;)
+    end: (?=[;)])
 
   value-flow-into:
     begin: (?<=flow-into:)
@@ -3001,7 +3046,7 @@ repository:
     - name: support.constant.property-value.css
       match: \b(?:none|element|content)\b
     - include: '#identifier'
-    end: (?=;)
+    end: (?=[;)])
 
   value-justify-items:
     begin: (?<=justify-items:)
@@ -3014,7 +3059,7 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:true|stretch|start|self-start|self-end|safe|right|legacy|left|last-baseline|flex-start|flex-end|end|center|baseline|auto)\b
-    end: (?=;)
+    end: (?=[;)])
 
   value-padding:
     begin: (?<=(?:padding-top:|padding-right:|padding-left:|padding-bottom:|padding:))
@@ -3030,13 +3075,129 @@ repository:
     - include: '#type-function-calc'
     - include: '#type-percentage'
     - include: '#type-length'
-    end: (?=;)
+    end: (?=[;)])
+
+  value-supports-condition:
+    name: meta.supports-condition-value.css
+    begin: ':'
+    beginCaptures:
+      '0': {name: punctuation.separator.key-value.css}
+    patterns:
+    # TODO: make sure this list matches #value
+    - include: '#comment-block'
+    - include: '#value-align-content-justify-content'
+    - include: '#value-align-items-align-self-justify-self'
+    - include: '#value-alignment'
+    - include: '#value-alignment-adjust'
+    - include: '#value-alignment-baseline'
+    - include: '#value-all'
+    - include: '#value-animation-delay-animation-duration'
+    - include: '#value-animation-direction'
+    - include: '#value-animation-fill-mode'
+    - include: '#value-animation-iteration-count'
+    - include: '#value-animation-name'
+    - include: '#value-animation-play-state'
+    - include: '#value-animation-timing-function'
+    - include: '#value-animation'
+    - include: '#value-backface-visibility'
+    - include: '#value-background-attachment'
+    - include: '#value-background-clip'
+    - include: '#value-background-color'
+    - include: '#value-background-image'
+    - include: '#value-background-origin'
+    - include: '#value-background-position'
+    - include: '#value-background-repeat'
+    - include: '#value-background-size'
+    - include: '#value-background'
+    - include: '#value-baseline-shift'
+    - include: '#value-bleed'
+    - include: '#value-bookmark-label'
+    - include: '#value-bookmark-level'
+    - include: '#value-bookmark-state'
+    - include: '#value-border'
+    - include: '#value-border-clip'
+    - include: '#value-border-collapse'
+    - include: '#value-border-color'
+    - include: '#value-border-image-outset'
+    - include: '#value-border-image-repeat'
+    - include: '#value-border-image-slice'
+    - include: '#value-border-image-source'
+    - include: '#value-border-image-width'
+    - include: '#value-border-image'
+    - include: '#value-border-limit'
+    - include: '#value-border-radius'
+    - include: '#value-border-spacing'
+    - include: '#value-border-style'
+    - include: '#value-border-width'
+    - include: '#value-bottom-left-right-top'
+    - include: '#value-box-decoration-break'
+    - include: '#value-box-shadow'
+    - include: '#value-box-sizing'
+    - include: '#value-box-snap'
+    - include: '#value-break-after-break-before'
+    - include: '#value-break-inside'
+    - include: '#value-caption-side'
+    - include: '#value-chains'
+    - include: '#value-child-align'
+    - include: '#value-clear'
+    - include: '#value-clear-after'
+    - include: '#value-clear-side'
+    - include: '#value-clip-path'
+    - include: '#value-clip-rule'
+    - include: '#value-flood-color'
+    - include: '#value-color'
+    - include: '#value-color-correction'
+    - include: '#value-color-interpolation-filters'
+    - include: '#value-column-count'
+    - include: '#value-column-fill'
+    - include: '#value-column-gap'
+    - include: '#value-column-rule'
+    - include: '#value-column-rule-color'
+    - include: '#value-column-rule-style'
+    - include: '#value-column-rule-width'
+    - include: '#value-column-span'
+    - include: '#value-column-width'
+    - include: '#value-columns'
+    - include: '#value-content'
+    - include: '#value-corner-shape'
+    - include: '#value-corners'
+    - include: '#value-counter-increment-counter-reset-counter-set'
+    - include: '#value-cue'
+    - include: '#value-cursor'
+    - include: '#value-flex-direction'
+    - include: '#value-direction'
+    - include: '#value-display'
+    - include: '#value-display-box'
+    - include: '#value-display-extras'
+    - include: '#value-display-inside'
+    - include: '#value-display-outside'
+    - include: '#value-dominant-baseline'
+    - include: '#value-empty-cells'
+    - include: '#value-filter'
+    - include: '#value-flex-basis'
+    - include: '#value-flex-flow'
+    - include: '#value-flex-grow-flex-shrink'
+    - include: '#value-flex-wrap'
+    - include: '#value-flex'
+    - include: '#value-float'
+    - include: '#value-float-defer-column-defer-page'
+    - include: '#value-float-displace'
+    - include: '#value-float-offset'
+    - include: '#value-float-wrap'
+    - include: '#value-flood-opacity'
+    - include: '#value-flow'
+    - include: '#value-flow-from'
+    - include: '#value-flow-into'
+    - include: '#value-justify-items'
+    - include: '#value-padding'
+    end: \)
+    endCaptures:
+      '0': {name: punctation.section.supports-condition.css}
 
 
 # TODO
 #   @font-feature-values <ident>: properties, aka feature value definitions, e.g. leo-B: 2 1;
-#   @counter-style
-#   @supports
+#   @viewport
 #   fill in several more property values in property_values.txt and #value
 #       don't get carried away. work a little on each major component (completions,
 #       language def, selectors, values, indexing) to make sure everything keeps
