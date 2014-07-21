@@ -1,0 +1,86 @@
+
+/* @font-feature-values */
+
+@font-feature-values Jupiter Sans {
+  @swash {
+    delicate: 1;
+    flowing: 2;
+  }
+}
+
+/* has invalid and valid parts */
+
+@font-feature-values Bongo {
+  @swash { ornate: 1; }
+  annotation { boxed: 4; } /* should be @annotation! */
+  @swash { double-loops: 1; flowing: -1; } /* negative value */
+  @ornaments ; /* incomplete definition */
+  @styleset { double-W: 14; sharp-terminals: 16 1 } /* missing ; */
+  @redrum  {} /* random editing mistake */
+}
+
+@font-feature-values Bongo {
+  @swash { ornate: 1; }
+  @swash { double-loops: 1; }
+  @styleset { double-W: 14; sharp-terminals: 16 1; }
+}
+
+@font-feature-values Mercury Serif {
+    @styleset {
+      stacked-g: 3; /* "two-storey" versions of g, a */
+      stacked-a: 4;
+    }
+}
+
+@font-feature-values Mercury Serif {
+    @styleset {
+        geometric-m: 7; /* alternate version of m */
+    }
+}
+
+@font-feature-values Taisho Gothic {
+  @annotation { boxed: 1; circled: 4; }
+}
+
+@font-feature-values Otaru Kisa {
+  @annotation { circled: 1; black-boxed: 3; }
+}
+
+@font-feature-values 'Mars Serif' {
+  @styleset {
+    alt-g: 1;        /* implies ss01 = 1 */
+    curly-quotes: 3; /* implies ss03 = 1 */
+    code: 4 5;       /* implies ss04 = 1, ss05 = 1 */
+  }
+
+  @styleset {
+    dumb: 125;        /* >99, ignored */
+  }
+
+  @swash {
+    swishy: 3 5;     /* more than 1 value for swash, syntax error */
+  }
+}
+
+@font-feature-values "MM" Greek {
+  @character-variant { alpha-2: 1 2; }   /* implies cv01 = 2 */
+  @character-variant { beta-3: 2 3; }    /* implies cv02 = 3 */
+  @character-variant { epsilon: 5 3 6; } /* more than 2 values, syntax error, definition ignored */
+  @character-variant { gamma: 12; }      /* implies cv12 = 1 */
+  @character-variant { zeta:   20 3; }   /* implies cv20 = 3 */
+  @character-variant { zeta-2: 20 2; }   /* implies cv20 = 2 */
+  @character-variant { silly: 105; }     /* >99, ignored */
+  @character-variant { dumb: 323 3; }    /* >99, ignored */
+}
+
+@font-feature-values Athena Ruby {
+  @character-variant {
+    leo-B: 2 1;
+    leo-M: 13 3;
+    leo-alt-N: 14 1;
+    leo-N: 14 2;
+    leo-T: 20 1;
+    leo-U: 21 2;
+    leo-alt-U: 21 4;
+  }
+}

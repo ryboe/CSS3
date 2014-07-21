@@ -7,15 +7,27 @@ uuid: 6618b147-dda0-4ff3-af33-8200c89d88e7
 
 patterns:
 - include: '#comment-block'
+- include: '#at-charset'
 - include: '#at-font-face'
 - include: '#at-font-feature-values'
+- include: '#at-import'
 - include: '#at-keyframes'
 - include: '#at-media'
+- include: '#at-namespace'
 - include: '#at-page'
 - include: '#property-list'
 - include: '#selector'
 
 repository:
+  at-charset:
+    match: ^((@)charset)\s+(?:(\"(?:UTF-8|utf-8)\")|(\'(?:UTF-8|utf-8)\'))\s*(;)
+    captures:
+      '1': {name: keyword.control.at-rule.charset.css}
+      '2': {name: punctuation.definition.keyword.css}
+      '3': {name: string.quoted.double.css}
+      '4': {name: string.quoted.single.css}
+      '5': {name: punctuation.terminator.rule.css}
+
   at-font-face:
     match: ((@)font-face)\s*(?={)
     captures:
@@ -31,10 +43,32 @@ repository:
       '2': {name: punctuation.definition.keyword.css}
     patterns:
     - include: '#comment-block'
+    - include: '#type-string-double'
+    - include: '#type-string-single'
     - include: '#identifier'
     end: (?={)
     endCaptures:
       '0': {name: punctuation.section.rule-list.css}
+
+  at-import:
+    name: meta.at-rule.import.css
+    begin: ((@)import)\s
+    beginCaptures:
+      '1': {name: keyword.control.at-rule.import.css}
+      '2': {name: punctuation.definition.keyword.css}
+    patterns:
+    - include: '#comment-block'
+    - name: keyword.oeprator.logic.media.css
+      match: \band\b
+    - include: '#type-function-url'
+    - include: '#media-type-deprecated'
+    - include: '#media-type'
+    - include: '#media-feature'
+    - include: '#type-string-double'
+    - include: '#type-string-single'
+    end: ;
+    endCaptures:
+      '0': {name: punctuation.terminator.rule.css}
 
   at-keyframes:
     match: ((@)keyframes)\s+(-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*)\s*(?={)
@@ -60,6 +94,21 @@ repository:
     end: (?={)
     endCaptures:
       '0': {name: punctuation.section.rule-list.css}
+
+  at-namespace:
+    name: meta.at-rule.namespace.css
+    begin: ((@)namespace)\b
+    beginCaptures:
+      '1': {name: keyword.contro.at-rule.namespace.css}
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-function-url'
+    - include: '#type-string-double'
+    - include: '#type-string-single'
+    - include: '#identifier'
+    end: ;
+    endCaptures:
+      '1': {name: punctuation.terminator.rule.css}
 
   at-page:
     name: meta.at-rule.page.css
@@ -2985,13 +3034,9 @@ repository:
 
 
 # TODO
-#   @font-feature-values
-#   @character-variant
-#   @page
-#   @import
-#   @charset
-#   @namespace
-#   add more selectors
+#   @font-feature-values <ident>: properties, aka feature value definitions, e.g. leo-B: 2 1;
+#   @counter-style
+#   @supports
 #   fill in several more property values in property_values.txt and #value
 #       don't get carried away. work a little on each major component (completions,
 #       language def, selectors, values, indexing) to make sure everything keeps

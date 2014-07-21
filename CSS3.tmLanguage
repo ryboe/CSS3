@@ -16,6 +16,10 @@
 		</dict>
 		<dict>
 			<key>include</key>
+			<string>#at-charset</string>
+		</dict>
+		<dict>
+			<key>include</key>
 			<string>#at-font-face</string>
 		</dict>
 		<dict>
@@ -24,11 +28,19 @@
 		</dict>
 		<dict>
 			<key>include</key>
+			<string>#at-import</string>
+		</dict>
+		<dict>
+			<key>include</key>
 			<string>#at-keyframes</string>
 		</dict>
 		<dict>
 			<key>include</key>
 			<string>#at-media</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#at-namespace</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -45,6 +57,39 @@
 	</array>
 	<key>repository</key>
 	<dict>
+		<key>at-charset</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.at-rule.charset.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.keyword.css</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>string.quoted.double.css</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>string.quoted.single.css</string>
+				</dict>
+				<key>5</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.terminator.rule.css</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>^((@)charset)\s+(?:(\"(?:UTF-8|utf-8)\")|(\'(?:UTF-8|utf-8)\'))\s*(;)</string>
+		</dict>
 		<key>at-font-face</key>
 		<dict>
 			<key>captures</key>
@@ -105,7 +150,82 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#type-string-double</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-string-single</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#identifier</string>
+				</dict>
+			</array>
+		</dict>
+		<key>at-import</key>
+		<dict>
+			<key>begin</key>
+			<string>((@)import)\s</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.at-rule.import.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.keyword.css</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>;</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.terminator.rule.css</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>meta.at-rule.import.css</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\band\b</string>
+					<key>name</key>
+					<string>keyword.oeprator.logic.media.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-url</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#media-type-deprecated</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#media-type</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#media-feature</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-string-double</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-string-single</string>
 				</dict>
 			</array>
 		</dict>
@@ -189,6 +309,54 @@
 				<dict>
 					<key>include</key>
 					<string>#media-feature</string>
+				</dict>
+			</array>
+		</dict>
+		<key>at-namespace</key>
+		<dict>
+			<key>begin</key>
+			<string>((@)namespace)\b</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.contro.at-rule.namespace.css</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>;</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.terminator.rule.css</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>meta.at-rule.namespace.css</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-url</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-string-double</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-string-single</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#identifier</string>
 				</dict>
 			</array>
 		</dict>
