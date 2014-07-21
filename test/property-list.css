@@ -1,5 +1,17 @@
 
 * {
+    direction: rtl;
+    direction: ltr;
+
+    display-box: none;
+    display-box: normal;
+
+    display-extras: list-item;
+    display-extras: none;
+    display-extras: toggle();
+    display-inside: block;
+    display-inside: table;
+
     align-content: initial;
     align-content: inherit;`
     align-content: unset;
@@ -2049,6 +2061,8 @@
     font: 600 9pt Charcoal;
     font: 900 14pt/16pt "Heisei Mincho W9", serif;
     font: 800 14pt/16.5pt "Li Sung", serif;
+
+    /* TODO: add these properties. they're currently matching idents, which is wrong */
     font: -moz-button;
     font: -moz-info;
     font: -moz-desktop;

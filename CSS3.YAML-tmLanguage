@@ -323,14 +323,14 @@ repository:
       '0': {name: punctuation.section.property-list.css}
     patterns:
     - include: '#comment-block'
+    # TODO: can @counter-style and @font-feature-values be nested? if so, they
+    # should be included here.
     - include: '#at-font-face'
     - include: '#at-keyframes'
     - include: '#at-media'
     - include: '#at-page'
     - include: '#at-supports'
     - include: '#at-viewport'
-    # TODO: add more at-rules. do not add @charset, @namespace, or @import, since
-    # they can't be nested
     - include: '#property-name'
     - include: '#value'
     - include: '#selector'
@@ -404,7 +404,6 @@ repository:
     # selector will be determined by prepending or appending an exclamation mark
     # (!ol li vs ol! li). The exclamation mark may have to be added later.
 
-    # TODO: are uppercase letters permitted?
     name: meta.selector.css
     begin: (?=[@\d:.#*\p{Ll}\[-])
     patterns:
@@ -530,8 +529,6 @@ repository:
       '1': {name: punctuation.definition.entity.css}
 
   selector-pseudo-class-function-an-plus-b:
-    # TODO: delete this
-    # match: ((:)nth-(?:last-)?(?:column|of-type))(\()\s*(even|odd|[+-](?:[0-9]+n|n)(?:\s*[+-]\s*[0-9]+)?|[0-9]*n(?:\s*[+-]\s*[0-9]+)?|[+-]?[0-9]+)?\s*(\))
     begin: ((:)(?:nth-of-type|nth-last-of-type|nth-last-column|nth-column))(\()
     beginCaptures:
       '1': {name: entity.other.attribute-name.pseudo-class.css}
@@ -960,6 +957,19 @@ repository:
     endCaptures:
       '0': {name: punctuation.section.function.css}
 
+  type-function-font-variant:
+    begin: \b(swash|stylistic|styleset|ornaments|character-variant|annotation)(\()
+    beginCaptures:
+      '1': {name: support.function.font-variant.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.font-variant.css
+    patterns:
+    - include: '#comment-block'
+    - include: '#identifier'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
   type-function-hsl:
     match: \b(hsl)(\()\s*(360|3[0-5]\d|[12]\d\d|\d\d|\d)\s*,\s*(((?:\d\d|\d)(?:\.\d+)?|100(?:\.0+)?|\.\d+)(%))\s*,\s*((?:(\d\d|\d)(?:\.\d+)?|100(?:\.0+)?|\.\d+)(%))\s*(\))
     captures:
@@ -1301,7 +1311,6 @@ repository:
       '2': {name: keyword.other.unit.css}
       '3': {name: constant.numeric.css}
 
-  # TODO: rewrite this. this is wrong.
   type-length-positive:
     match: (\+?(?:[0-9]+\.[0-9]*[1-9][0-9]*|\.[0-9]*[1-9][0-9]*|[1-9][0-9]*)(?:[eE][+-]?[0-9]+)?)(r?em|ex|ch|vw|vh|vmin|vmax|cm|mm|q|in|pc|pt|px)
     captures:
@@ -1504,6 +1513,24 @@ repository:
     - include: '#value-flow'
     - include: '#value-flow-from'
     - include: '#value-flow-into'
+    - include: '#value-font'
+    - include: '#value-font-family'
+    - include: '#value-font-feature-settings'
+    - include: '#value-font-kerning'
+    - include: '#value-font-language-override'
+    - include: '#value-font-size'
+    - include: '#value-font-size-adjust'
+    - include: '#value-font-stretch'
+    - include: '#value-font-style'
+    - include: '#value-font-synthesis'
+    - include: '#value-font-variant-alternates'
+    - include: '#value-font-variant-caps'
+    - include: '#value-font-variant-east-asian'
+    - include: '#value-font-variant-ligatures'
+    - include: '#value-font-variant-numeric'
+    - include: '#value-font-variant-position'
+    - include: '#value-font-variant'
+    - include: '#value-font-weight'
     - include: '#value-justify-items'
     - include: '#value-padding'
     end: (?:;|(?=\)))
@@ -3058,6 +3085,262 @@ repository:
     - include: '#identifier'
     end: (?=[;)])
 
+  value-font:
+    begin: (?<=font:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:xx-small|xx-large|x-small|x-large|ultra-expanded|ultra-condensed|status-bar|smaller|small-caption|small-caps|small|serif|semi-expanded|semi-condensed|sans-serif|oblique|normal|monospace|message-box|menu|medium|lighter|larger|large|italic|icon|fantasy|extra-expanded|extra-condensed|expanded|cursive|condensed|caption|bolder|bold|900|800|700|600|500|400|300|200|100)\b
+    - include: '#type-string-double'
+    - include: '#type-string-single'
+    - include: '#type-percentage-non-negative'
+    - include: '#type-length-non-negative'
+    - include: '#type-number-non-negative'
+    - include: '#identifier'
+    end: (?=[;)])
+
+  value-font-family:
+    begin: (?<=font-family:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: string.unquoted.generic-font-family.css
+      match: \b(?:serif|sans-serif|monospace|fantasy|cursive)\b
+    - include: '#type-string-double'
+    - include: '#type-string-single'
+    - include: '#identifier'
+    end: (?=[;)])
+
+  value-font-feature-settings:
+    begin: (?<=font-feature-settings:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:on|off|normal)\b
+    - include: '#type-string-double'
+    - include: '#type-string-single'
+    - include: '#type-integer-non-negative'
+    end: (?=[;)])
+
+  value-font-kerning:
+    begin: (?<=font-kerning:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:normal|none|auto)\b
+    end: (?=[;)])
+
+  value-font-language-override:
+    begin: (?<=font-language-override:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bnormal\b
+    - include: '#type-string-double'
+    - include: '#type-string-single'
+    end: (?=[;)])
+
+  value-font-size:
+    begin: (?<=font-size:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:xx-small|xx-large|x-small|x-large|smaller|small|medium|larger|large)\b
+    - include: '#type-percentage-non-negative'
+    - include: '#type-length-non-negative'
+    end: (?=[;)])
+
+  value-font-size-adjust:
+    begin: (?<=font-size-adjust:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bnone\b
+    - include: '#type-number'
+    end: (?=[;)])
+
+  value-font-stretch:
+    begin: (?<=font-stretch:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:ultra-expanded|ultra-condensed|semi-expanded|semi-condensed|normal|extra-expanded|extra-condensed|expanded|condensed)\b
+    end: (?=[;)])
+
+  value-font-style:
+    begin: (?<=font-style:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:oblique|normal|italic)\b
+    end: (?=[;)])
+
+  value-font-synthesis:
+    begin: (?<=font-synthesis:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:weight|style|none)\b
+    end: (?=[;)])
+
+  value-font-variant:
+    begin: (?<=font-variant:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:unicase|traditional|titling-caps|tabular-nums|super|sub|stacked-fractions|small-caps|slashed-zero|simplified|ruby|proportional-width|proportional-nums|petite-caps|ordinal|oldstyle-nums|normal|none|no-historical-ligatures|no-discretionary-ligatures|no-contextual|no-common-ligatures|lining-nums|jis90|jis83|jis78|jis04|historical-ligatures|historical-forms|full-width|discretionary-ligatures|diagonal-fractions|contextual|common-ligatures|all-small-caps|all-petite-caps)\b
+    - include: '#type-function-font-variant'
+    end: (?=[;)])
+
+  value-font-variant-alternates:
+    begin: (?<=font-variant-alternates:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:normal|historical-forms)\b
+    - include: '#type-function-font-variant'
+    end: (?=[;)])
+
+  value-font-variant-caps:
+    begin: (?<=font-variant-caps:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:unicase|titling-caps|small-caps|petite-caps|normal|all-small-caps|all-petite-caps)\b
+    end: (?=[;)])
+
+  value-font-variant-east-asian:
+    begin: (?<=font-variant-east-asian:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:traditional|simplified|ruby|proportional-width|normal|jis90|jis83|jis78|jis04|full-width)\b
+    end: (?=[;)])
+
+  value-font-variant-ligatures:
+    begin: (?<=font-variant-ligatures:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:normal|none|no-historical-ligatures|no-discretionary-ligatures|no-contextual|no-common-ligatures|historical-ligatures|discretionary-ligatures|contextual|common-ligatures)\b
+    end: (?=[;)])
+
+  value-font-variant-numeric:
+    begin: (?<=font-variant-numeric:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:tabular-nums|stacked-fractions|slashed-zero|proportional-nums|ordinal|oldstyle-nums|normal|lining-nums|diagonal-fractions)\b
+    end: (?=[;)])
+
+  value-font-variant-position:
+    begin: (?<=font-variant-position:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:super|sub|normal)\b
+    end: (?=[;)])
+
+  # This is both a property and a descriptor. The descriptor is identical to the
+  # property, except that it does not accept the values 'bolder' and 'lighter'.
+  # This is not important enough to write a separate rule.
+  value-font-weight:
+    begin: (?<=font-weight:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:normal|lighter|bolder|bold|900|800|700|600|500|400|300|200|100)\b
+    end: (?=[;)])
+
   value-justify-items:
     begin: (?<=justify-items:)
     patterns:
@@ -3206,18 +3489,21 @@ repository:
 
 
 # TODO
+#   left off highlight at grid:
+#   completions through F
 #   @font-feature-values <ident>: properties, aka feature value definitions, e.g. leo-B: 2 1;
 #   fill in several more property values in property_values.txt and #value
 #       don't get carried away. work a little on each major component (completions,
 #       language def, selectors, values, indexing) to make sure everything keeps
 #       working
-#   test symbol indexing with classes and ids when you add support for those selectors
-#   edit symbol index pattern for matching classes and ids so it handles identifiers
-#   can a selector start with an uppercase letter? custom elements can't
 #   updated HTML doctor HTML5 reset
+#   add -webkit- etc. prefixes to at-rules
+#   sync up the two value lists (#value and #value-supports-condition)
 
 # LOW PRIORITY
 #   @document
+#   can selectors start with an uppercase letter?
+#   custom elements (the <ident> portion matches everything)
 
 # FINAL CHECK
 #   all #value rules have valall
