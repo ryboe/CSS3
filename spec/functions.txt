@@ -174,3 +174,40 @@ translateY(<length>)                                                    // trans
 translateZ(<length>)                                                    // transform: <transform-function>
 url()                                                                   // filter: property, and others
 var(<custom-property-name> [, <any-value> ]?)
+
+string(<ident>[, [first | start | last | first-except]]?)               // content:
+running(<ident>)                                                        // content:
+target-counter(<url> , <custom-ident> [ , <counter-style> ]?)           // content:
+target-counters(<url> , <custom-ident> , <string> [ , <counter-style> ]?)  // content:
+target-text(<url> [ , [ content | before | after | first-letter] ]?)    // content:
+leader([dotted | solid | space] | <string>)                             // content:
+
+hwb(<hue>, <percentage>, <percentage> [, <alpha-value> ]?)              // <color>
+gray()                                                                  // <color>
+device-cmyk()                                                           // <color>
+color()                                                                 // <color>
+blend(<color> <percentage> [rgb | hsl | hwb]? )                         // <color>
+blenda(<color> <percentage> [rgb | hsl | hwb]?)                         // <color>
+tint(<percentage>)                                                      // <color>
+shade(<percentage>)                                                     // <color>
+hue()                                                                   // <color>
+h()                                                                     // <color>
+saturation(| s(] ['+' | '-' | *]? <percentage>)                         // <color>
+s()                                                                     // <color>
+lightness()                                                             // <color>
+l()                                                                     // <color>
+whiteness()                                                             // <color>
+w()                                                                     // <color>
+blackness()                                                             // <color>
+b()                                                                     // <color>
+red()                                                                   // <color>
+green()                                                                 // <color>
+blue()                                                                  // <color>
+alpha()                                                                 // <color>
+a()                                                                     // <color>
+reddish(<percentage>)                                                   // <color>
+orangish(<percentage>)                                                  // <color>
+yellowish(<percentage>)                                                 // <color>
+greenish(<percentage>)                                                  // <color>
+blueish(<percentage>)                                                   // <color>
+purplish(<percentage>)                                                  // <color>

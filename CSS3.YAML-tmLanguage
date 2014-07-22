@@ -379,7 +379,7 @@ repository:
 
   property-name-legal:
     name: support.type.property-name.css
-    match: (-webkit-transition-timing-function|-webkit-transition-property|-webkit-transition-duration|-webkit-transition-delay|-webkit-transition|-webkit-transform-style|-webkit-transform-origin|-webkit-transform|-webkit-region-fragment|-webkit-perspective-origin|-webkit-perspective|-webkit-order|-webkit-mask-size|-webkit-mask-repeat|-webkit-mask-position|-webkit-mask-origin|-webkit-mask-image|-webkit-composite|-webkit-mask-clip|-webkit-mask|-webkit-justify-content|-webkit-hyphens|-webkit-grid-row|-webkit-grid-column|-webkit-font-variant-ligatures|-webkit-font-size-delta|-webkit-font-kerning|-webkit-font-feature-settings|-webkit-flow-into|-webkit-flow-from|-webkit-flex-wrap|-webkit-flex-shrink|-webkit-flex-grow|-webkit-flex-flow|-webkit-flex-direction|-webkit-flex-basis|-webkit-flex|-webkit-columns|-webkit-column-width|-webkit-column-span|-webkit-column-rule-width|-webkit-column-rule-style|-webkit-column-rule-color|-webkit-column-rule|-webkit-column-gap|-webkit-column-fill|-webkit-column-count|-webkit-break-inside|-webkit-break-before|-webkit-break-after|-webkit-border-image|-webkit-backface-visibility|-webkit-animation-timing-function|-webkit-animation-play-state|-webkit-animation-name|-webkit-animation-iteration-count|-webkit-animation-fill-mode|-webkit-animation-duration|-webkit-animation-direction|-webkit-animation-delay|-webkit-animation|-webkit-align-self|-webkit-align-items|-webkit-align-content|-ms-writing-mode|-ms-wrap-through|-ms-wrap-flow|-ms-word-wrap|-ms-transform-style|-ms-transform-origin|-ms-transform|-ms-text-justify|-ms-text-align-last|-ms-overflow-y|-ms-overflow-x|-ms-overflow-style|-ms-ime-mode|-ms-hyphens|-ms-grid-row-span|-ms-grid-row-align|-ms-grid-row|-ms-grid-column-span|-ms-grid-column-align|-ms-grid-column|-ms-flow-into|-ms-flow-from|-moz-text-decoration-style|-moz-text-decoration-line|-moz-text-decoration-color|-moz-text-align-last|-moz-hyphens|-moz-font-language-override|-moz-font-feature-settings|-moz-columns|-moz-column-width|-moz-column-span|-moz-column-rule-width|-moz-column-rule-style|-moz-column-rule-color|-moz-column-rule|-moz-column-gap|-moz-column-fill|-moz-column-count|-moz-box-sizing)\b|\b(zoom|z-index|writing-mode|wrap-through|wrap-flow|word-wrap|word-spacing|word-break|will-change|width|widows|white-space|voice-volume|voice-stress|voice-rate|voice-range|voice-pitch|voice-family|voice-duration|voice-balance|visibility|vertical-align|user-zoom|unicode-range|unicode-bidi|transition-timing-function|transition-property|transition-duration|transition-delay|transition|transform-style|transform-origin|transform|top|text-underline-position|text-transform|text-shadow|text-overflow|text-orientation|text-justify|text-indent|text-height|text-emphasis-style|text-emphasis-position|text-emphasis-color|text-emphasis|text-decoration-style|text-decoration-skip|text-decoration-line|text-decoration-color|text-decoration|text-combine-upright|text-align-last|text-align|target-position|target-new|target-name|target|table-layout|tab-size|system|symbols|suffix|string-set|src|speak-as|speak|size|shape-outside|shape-margin|shape-image-threshold|running|ruby-position|ruby-merge|ruby-align|rotation-point|rotation|right|rest-before|rest-after|rest|resolution|resize|region-fragment|range|quotes|presentation-level|prefix|position|pointer-events|perspective-origin|perspective|pause-before|pause-after|pause|page-policy|page-break-inside|page-break-before|page-break-after|page|padding-top|padding-right|padding-left|padding-bottom|padding|pad|overflow-y|overflow-x|overflow-wrap|overflow-style|overflow|outline-width|outline-style|outline-offset|outline-color|outline|orphans|orientation|order|opacity|offset-start|offset-end|offset-before|offset-after|object-position|object-fit|negative|nav-up|nav-right|nav-left|nav-index|nav-down|move-to|min-zoom|min-width|min-height|max-zoom|max-width|max-lines|max-height|mask-type|mask-size|mask-repeat|mask-position|mask-origin|mask-mode|mask-image|mask-composite|mask-clip|mask-border-width|mask-border-source|mask-border-slice|mask-border-repeat|mask-border-outset|mask-border|mask|marquee-style|marquee-speed|marquee-play-count|marquee-direction|marks|marker-side|margin-top|margin-right|margin-left|margin-bottom|margin|list-style-type|list-style-position|list-style-image|list-style|line-stacking-strategy|line-stacking-shift|line-stacking-ruby|line-stacking|line-snap|line-slack|line-height|line-grid|line-break|line-box-contain|lighting-color|letter-spacing|left|justify-self|justify-items|justify-content|inline-box-align|initial-letters|indent-edge-reset|ime-mode|image-resolution|image-rendering|image-orientation|icon|hyphens|height|hanging-punctuation|grid-template-rows|grid-template-columns|grid-template-areas|grid-template|grid-row-start|grid-row-end|grid-row|grid-column-start|grid-column-end|grid-column|grid-auto-rows|grid-auto-flow|grid-auto-columns|grid-area|grid|footnote-policy|footnote-display|font-weight|font-variant-position|font-variant-numeric|font-variant-ligatures|font-variant-east-asian|font-variant-caps|font-variant-alternates|font-variant|font-synthesis|font-style|font-stretch|font-size-adjust|font-size|font-language-override|font-kerning|font-feature-settings|font-family|font|flow-into|flow-from|flow|flood-opacity|flood-color|float-wrap|float-offset|float-displace|float-defer-page|float-defer-column|float|flex-wrap|flex-shrink|flex-grow|flex-flow|flex-direction|flex-basis|flex|filter|fallback|empty-cells|dominant-baseline|display-outside|display-inside|display-extras|display-box|display|direction|cursor|cue-before|cue-after|cue|counter-set|counter-reset|counter-increment|corners|corner-shape|content|columns|column-width|column-span|column-rule-width|column-rule-style|column-rule-color|column-rule|column-gap|column-fill|column-count|color-interpolation-filters|color-interpolation|color-correction|color|clip-rule|clip-path|clear-side|clear-after|clear|child-align|chains|caption-side|break-inside|break-before|break-after|box-snap|box-sizing|box-shadow|box-decoration-break|bottom|border-width|border-top-width|border-top-style|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-style|border-spacing|border-right-width|border-right-style|border-right-color|border-right|border-radius|border-limit|border-left-width|border-left-style|border-left-color|border-left|border-image-width|border-image-source|border-image-slice|border-image-repeat|border-image-outset|border-image|border-color|border-collapse|border-clip-top|border-clip-right|border-clip-left|border-clip-bottom|border-clip|border-bottom-width|border-bottom-style|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border|bookmark-state|bookmark-level|bookmark-label|bleed|baseline-shift|background-size|background-repeat|background-position|background-origin|background-image|background-color|background-clip|background-attachment|background|backface-visibility|animation-timing-function|animation-play-state|animation-name|animation-iteration-count|animation-fill-mode|animation-duration|animation-direction|animation-delay|animation|all|alignment-baseline|alignment-adjust|alignment|align-self|align-items|align-content|additive-symbols)\b
+    match: (-webkit-transition-timing-function|-webkit-transition-property|-webkit-transition-duration|-webkit-transition-delay|-webkit-transition|-webkit-transform-style|-webkit-transform-origin|-webkit-transform|-webkit-region-fragment|-webkit-perspective-origin|-webkit-perspective|-webkit-order|-webkit-mask-size|-webkit-mask-repeat|-webkit-mask-position|-webkit-mask-origin|-webkit-mask-image|-webkit-composite|-webkit-mask-clip|-webkit-mask|-webkit-justify-content|-webkit-hyphens|-webkit-grid-row|-webkit-grid-column|-webkit-font-variant-ligatures|-webkit-font-size-delta|-webkit-font-kerning|-webkit-font-feature-settings|-webkit-flow-into|-webkit-flow-from|-webkit-flex-wrap|-webkit-flex-shrink|-webkit-flex-grow|-webkit-flex-flow|-webkit-flex-direction|-webkit-flex-basis|-webkit-flex|-webkit-columns|-webkit-column-width|-webkit-column-span|-webkit-column-rule-width|-webkit-column-rule-style|-webkit-column-rule-color|-webkit-column-rule|-webkit-column-gap|-webkit-column-fill|-webkit-column-count|-webkit-break-inside|-webkit-break-before|-webkit-break-after|-webkit-border-image|-webkit-backface-visibility|-webkit-animation-timing-function|-webkit-animation-play-state|-webkit-animation-name|-webkit-animation-iteration-count|-webkit-animation-fill-mode|-webkit-animation-duration|-webkit-animation-direction|-webkit-animation-delay|-webkit-animation|-webkit-align-self|-webkit-align-items|-webkit-align-content|-ms-writing-mode|-ms-wrap-through|-ms-wrap-flow|-ms-word-wrap|-ms-transform-style|-ms-transform-origin|-ms-transform|-ms-text-justify|-ms-text-align-last|-ms-overflow-y|-ms-overflow-x|-ms-overflow-style|-ms-ime-mode|-ms-hyphens|-ms-grid-row-span|-ms-grid-row-align|-ms-grid-row|-ms-grid-column-span|-ms-grid-column-align|-ms-grid-column|-ms-flow-into|-ms-flow-from|-moz-text-decoration-style|-moz-text-decoration-line|-moz-text-decoration-color|-moz-text-align-last|-moz-hyphens|-moz-font-language-override|-moz-font-feature-settings|-moz-columns|-moz-column-width|-moz-column-span|-moz-column-rule-width|-moz-column-rule-style|-moz-column-rule-color|-moz-column-rule|-moz-column-gap|-moz-column-fill|-moz-column-count|-moz-box-sizing)\b|\b(zoom|z-index|writing-mode|wrap-through|wrap-flow|word-wrap|word-spacing|word-break|will-change|width|widows|white-space|voice-volume|voice-stress|voice-rate|voice-range|voice-pitch|voice-family|voice-duration|voice-balance|visibility|vertical-align|user-zoom|unicode-range|unicode-bidi|transition-timing-function|transition-property|transition-duration|transition-delay|transition|transform-style|transform-origin|transform|top|text-underline-position|text-transform|text-shadow|text-overflow|text-orientation|text-justify|text-indent|text-height|text-emphasis-style|text-emphasis-position|text-emphasis-color|text-emphasis|text-decoration-style|text-decoration-skip|text-decoration-line|text-decoration-color|text-decoration|text-combine-upright|text-align-last|text-align|target-position|target-new|target-name|target|table-layout|tab-size|system|symbols|suffix|string-set|src|speak-as|speak|size|shape-outside|shape-margin|shape-image-threshold|running|ruby-position|ruby-merge|ruby-align|rotation-point|rotation|right|rest-before|rest-after|rest|resolution|resize|region-fragment|range|quotes|presentation-level|prefix|position|pointer-events|perspective-origin|perspective|pause-before|pause-after|pause|page-policy|page-break-inside|page-break-before|page-break-after|page|padding-top|padding-right|padding-left|padding-bottom|padding|pad|overflow-y|overflow-x|overflow-wrap|overflow-style|overflow|outline-width|outline-style|outline-offset|outline-color|outline|orphans|orientation|order|opacity|offset-start|offset-end|offset-before|offset-after|object-position|object-fit|negative|nav-up|nav-right|nav-left|nav-index|nav-down|move-to|min-zoom|min-width|min-height|max-zoom|max-width|max-lines|max-height|mask-type|mask-size|mask-repeat|mask-position|mask-origin|mask-mode|mask-image|mask-composite|mask-clip|mask-border-width|mask-border-source|mask-border-slice|mask-border-repeat|mask-border-outset|mask-border|mask|marquee-style|marquee-speed|marquee-play-count|marquee-direction|marks|marker-side|margin-top|margin-right|margin-left|margin-bottom|margin|list-style-type|list-style-position|list-style-image|list-style|line-stacking-strategy|line-stacking-shift|line-stacking-ruby|line-stacking|line-snap|line-slack|line-height|line-grid|line-break|line-box-contain|lighting-color|letter-spacing|left|justify-self|justify-items|justify-content|inline-box-align|initial-letters|indent-edge-reset|ime-mode|image-resolution|image-rendering|image-orientation|icon|hyphens|height|hanging-punctuation|grid-template-rows|grid-template-columns|grid-template-areas|grid-template|grid-row-start|grid-row-end|grid-row|grid-column-start|grid-column-end|grid-column|grid-auto-rows|grid-auto-flow|grid-auto-columns|grid-area|grid|footnote-policy|footnote-display|font-weight|font-variant-position|font-variant-numeric|font-variant-ligatures|font-variant-east-asian|font-variant-caps|font-variant-alternates|font-variant|font-synthesis|font-style|font-stretch|font-size-adjust|font-size|font-language-override|font-kerning|font-feature-settings|font-family|font|flow-into|flow-from|flow|flood-opacity|flood-color|float-wrap|float-offset|float-displace|float-defer-page|float-defer-column|float|flex-wrap|flex-shrink|flex-grow|flex-flow|flex-direction|flex-basis|flex|filter|fallback|empty-cells|dominant-baseline|display-outside|display-inside|display-extras|display-box|display|direction|cursor|cue-before|cue-after|cue|counter-set|counter-reset|counter-increment|corners|corner-shape|content|columns|column-width|column-span|column-rule-width|column-rule-style|column-rule-color|column-rule|column-gap|column-fill|column-count|color-interpolation-filters|color-interpolation|color-correction|color-adjust|color|clip-rule|clip-path|clear-side|clear-after|clear|child-align|chains|caption-side|break-inside|break-before|break-after|box-snap|box-sizing|box-shadow|box-decoration-break|bottom|border-width|border-top-width|border-top-style|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-style|border-spacing|border-right-width|border-right-style|border-right-color|border-right|border-radius|border-limit|border-left-width|border-left-style|border-left-color|border-left|border-image-width|border-image-source|border-image-slice|border-image-repeat|border-image-outset|border-image|border-color|border-collapse|border-clip-top|border-clip-right|border-clip-left|border-clip-bottom|border-clip|border-bottom-width|border-bottom-style|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border|bookmark-state|bookmark-level|bookmark-label|bleed|baseline-shift|background-size|background-repeat|background-position|background-origin|background-image|background-color|background-clip|background-attachment|background|backface-visibility|animation-timing-function|animation-play-state|animation-name|animation-iteration-count|animation-fill-mode|animation-duration|animation-direction|animation-delay|animation|all|alignment-baseline|alignment-adjust|alignment|align-self|align-items|align-content|additive-symbols)\b
 
   property-name-supports-condition:
     name: meta.supports-condition-property-name.css
@@ -423,6 +423,7 @@ repository:
     - include: '#selector-pseudo-class-webkit'
     - include: '#selector-pseudo-class-function-drop'
     - include: '#selector-pseudo-class-function-an-plus-b'
+    - include: '#selector-pseudo-class-function-nth'
     - include: '#selector-pseudo-class-function-selector-list'
     - include: '#selector-pseudo-class'
     - include: '#selector-element'
@@ -594,6 +595,21 @@ repository:
     endCaptures:
       '0': {name: punctuation.section.function.css}
 
+  selector-pseudo-class-function-nth:
+    begin: ((:)nth)(\()
+    beginCaptures:
+      '1': {name: entity.other.attribute-name.pseudo-class.css}
+      '2': {name: punctuation.definition.entity.css}
+      '3': {name: punctuation.section.function.css}
+    patterns:
+    - include: '#comment-block'
+    - name: support.constant.property-value.css
+      match: \bof\b
+    - include: '#identifier'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
   # These pseudo-classes take selector lists as parameters.
   selector-pseudo-class-function-selector-list:
     begin: ((:)(?:nth-last-child|nth-child|not|matches|has))(\()
@@ -618,6 +634,7 @@ repository:
     - include: '#selector-pseudo-class-webkit'
     - include: '#selector-pseudo-class-function-drop'
     - include: '#selector-pseudo-class-function-an-plus-b'
+    - include: '#selector-pseudo-class-function-nth'
     - include: '#selector-pseudo-class-function-selector-list'
     - include: '#selector-pseudo-class'
     - include: '#selector-element'
@@ -626,6 +643,9 @@ repository:
     - include: '#selector-keyframes'
     - include: '#selector-attribute'
     - include: '#selector-combinator'
+    - include: '#selector-page-margin'
+    # The at-keyword selector matches keyframe animation types like @swash
+    - include: '#selector-at-keyword'
     # TODO: enable this. right now it's matching **everything** because of the <ident>
     # - include: '#selector-custom-element'
     end: \)
@@ -727,6 +747,10 @@ repository:
   type-color-named:
     name: support.constant.color.css
     match: \b(?:yellowgreen|yellow|whitesmoke|white|wheat|violet|turquoise|transparent|tomato|thistle|teal|tan|steelblue|springgreen|snow|slategrey|slategray|slateblue|skyblue|silver|sienna|seashell|seagreen|sandybrown|salmon|saddlebrown|royalblue|rosybrown|red|rebeccapurple|purple|powderblue|plum|pink|peru|peachpuff|papayawhip|palevioletred|paleturquoise|palegreen|palegoldenrod|orchid|orangered|orange|olivedrab|olive|oldlace|navy|navajowhite|moccasin|mistyrose|mintcream|midnightblue|mediumvioletred|mediumturquoise|mediumspringgreen|mediumslateblue|mediumseagreen|mediumpurple|mediumorchid|mediumblue|mediumaquamarine|maroon|magenta|linen|limegreen|lime|lightyellow|lightsteelblue|lightslategrey|lightslategray|lightskyblue|lightseagreen|lightsalmon|lightpink|lightgrey|lightgreen|lightgray|lightgoldenrodyellow|lightcyan|lightcoral|lightblue|lemonchiffon|lawngreen|lavenderblush|lavender|khaki|ivory|indigo|indianred|hotpink|honeydew|grey|greenyellow|green|gray|goldenrod|gold|ghostwhite|gainsboro|fuchsia|forestgreen|floralwhite|firebrick|dodgerblue|dimgrey|dimgray|deepskyblue|deeppink|darkviolet|darkturquoise|darkslategrey|darkslategray|darkslateblue|darkseagreen|darksalmon|darkred|darkorchid|darkorange|darkolivegreen|darkmagenta|darkkhaki|darkgrey|darkgreen|darkgray|darkgoldenrod|darkcyan|darkblue|cyan|currentColor|crimson|cornsilk|cornflowerblue|coral|chocolate|chartreuse|cadetblue|burlywood|brown|blueviolet|blue|blanchedalmond|black|bisque|beige|azure|aquamarine|aqua|antiquewhite|aliceblue)\b
+
+  type-color-named-deprecated:
+    name: invalid.deprecated.css
+    match: \b(?:WindowText|WindowFrame|Window|ThreeDShadow|ThreeDLightShadow|ThreeDHighlight|ThreeDFace|ThreeDDarkShadow|Scrollbar|MenuText|Menu|InfoText|InfoBackground|InactiveCaptionText|InactiveCaption|InactiveBorder|HighlightText|Highlight|GrayText|CaptionText|ButtonText|ButtonShadow|ButtonHighlight|ButtonFace|Background|AppWorkspace|ActiveCaption|ActiveBorder)\b
 
   type-color-hex:
     name: constant.other.color.rgb-value.css
@@ -1095,6 +1119,22 @@ repository:
     endCaptures:
       '0': {name: punctuation.section.function.css}
 
+  type-function-leader:
+    begin: \b(leader)(\()
+    beginCaptures:
+      '1': {name: support.function.leader.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.leader.css
+    patterns:
+    - include: '#comment-block'
+    - name: support.constant.property-value.css
+      match: \b(?:space|solid|dotted)\b
+    - include: '#type-string-double'
+    - include: '#type-string-single'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
   type-function-linear-gradient:
     begin: \b((?:repeating-)?linear-gradient)(\()
     beginCaptures:
@@ -1195,6 +1235,19 @@ repository:
       '15': {name: constant.numeric.alphavalue.css}
       '16': {name: punctuation.section.function.css}
 
+  type-function-running:
+    begin: \b(running)(\()
+    beginCaptures:
+      '1': {name: support.function.running.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.running.css
+    patterns:
+    - include: '#comment-block'
+    - include: '#identifier'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
   type-function-snap:
     begin: \b(snap)(\()
     beginCaptures:
@@ -1226,6 +1279,21 @@ repository:
     endCaptures:
       '0': {name: punctuation.section.function.css}
 
+  type-function-string:
+    begin: \b(string)(\()
+    beginCaptures:
+      '1': {name: support.function.string.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.string.css
+    patterns:
+    - include: '#comment-block'
+    - name: support.constant.property-value.css
+      match: \b(?:start|last|first-except|first)\b
+    - include: '#identifier'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
   type-function-symbols:
     begin: \b(symbols)(\()
     beginCaptures:
@@ -1252,6 +1320,55 @@ repository:
     patterns:
     - include: '#comment-block'
     # TODO: match toggle parameters (can be any value)
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
+  type-function-target-counter:
+    begin: \b(target-counter)(\()
+    beginCaptures:
+      '1': {name: support.function.target-counter.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.target-counter.css
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-counter-style-predefined'
+    - include: '#type-function-symbols'
+    - include: '#type-function-url'
+    - include: '#identifier'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
+  type-function-target-counters:
+    begin: \b(target-counters)(\()
+    beginCaptures:
+      '1': {name: support.function.target-counters.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.target-counters.css
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-counter-style-predefined'
+    - include: '#type-function-symbols'
+    - include: '#type-function-url'
+    - include: '#type-string-double'
+    - include: '#type-string-single'
+    - include: '#identifier'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
+  type-function-target-text:
+    begin: \b(target-text)(\()
+    beginCaptures:
+      '1': {name: support.function.target-text.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.target-text.css
+    patterns:
+    - include: '#comment-block'
+    - name: support.constant.property-value.css
+      match: \b(?:first-letter|content|before|after)\b
+    - include: '#type-function-url'
     end: \)
     endCaptures:
       '0': {name: punctuation.section.function.css}
@@ -1471,6 +1588,7 @@ repository:
     - include: '#value-clip-rule'
     - include: '#value-flood-color'
     - include: '#value-color'
+    - include: '#value-color-adjust'
     - include: '#value-color-correction'
     - include: '#value-color-interpolation-filters'
     - include: '#value-column-count'
@@ -2448,12 +2566,26 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
+    - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-function-hsla'
     - include: '#type-function-hsl'
     - include: '#type-function-rgba'
     - include: '#type-function-rgb'
     - include: '#type-color-hex'
+    end: (?=[;)])
+
+  value-color-adjust:
+    begin: (?<=color-adjust:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:exact|economy)\b
     end: (?=[;)])
 
   value-color-correction:
@@ -2652,6 +2784,12 @@ repository:
     - include: '#type-function-content'
     # The rule for counter() also covers counters()
     - include: '#type-function-counter'
+    - include: '#type-function-leader'
+    - include: '#type-function-running'
+    - include: '#type-function-string'
+    - include: '#type-function-target-counter'
+    - include: '#type-function-target-counters'
+    - include: '#type-function-target-text'
     - include: '#type-string-double'
     - include: '#type-string-single'
     - include: '#type-function-url'
@@ -3489,7 +3627,8 @@ repository:
 
 
 # TODO
-#   left off highlight at grid:
+#   finish highlighting rules
+#       left off highlight at grid:
 #   completions through F
 #   @font-feature-values <ident>: properties, aka feature value definitions, e.g. leo-B: 2 1;
 #   fill in several more property values in property_values.txt and #value
@@ -3499,6 +3638,7 @@ repository:
 #   updated HTML doctor HTML5 reset
 #   add -webkit- etc. prefixes to at-rules
 #   sync up the two value lists (#value and #value-supports-condition)
+#   symbol indexing is picking up one huge selector in property-list.css
 
 # LOW PRIORITY
 #   @document

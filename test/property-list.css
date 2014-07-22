@@ -1,19 +1,12 @@
+div {
+
+
+
+}
 
 * {
-    direction: rtl;
-    direction: ltr;
-
-    display-box: none;
-    display-box: normal;
-
-    display-extras: list-item;
-    display-extras: none;
-    display-extras: toggle();
-    display-inside: block;
-    display-inside: table;
-
     align-content: initial;
-    align-content: inherit;`
+    align-content: inherit;
     align-content: unset;
     align-content: stretch;
     align-content: flex-start;
@@ -1220,6 +1213,20 @@
     color: hsla(1, 0%, 99%, 1.0);
     color: hsla(1, 0%, 25%, 1.0);
 
+    color-adjust: inherit;
+    color-adjust: initial;
+    color-adjust: unset;
+    color-adjust: economy;
+    color-adjust: exact;
+
+    /* TODO: write this */
+    color-interpolation: ;
+    color-interpolation: ;
+    color-interpolation: ;
+    color-interpolation: ;
+    color-interpolation: ;
+    color-interpolation: ;
+
     color-interpolation-filters: initial;
     color-interpolation-filters: inherit;
     color-interpolation-filters: unset;
@@ -1529,6 +1536,12 @@
     content: "Chapter ";
     content: "[" counter(slideNum) "]";
     content: "Section " counter(section) ": ";
+    content: string(hello first);
+    content: running(hello);
+    content: target-counter(url(hello.com), yemsa);
+    content: target-counters("hello", yemsa, url(sup.com) "hello");
+    content: target-text(url(hello.com), a);
+    content: leader(dotted "hello");
 
     counter-increment: initial;
     counter-increment: inherit;

@@ -183,6 +183,7 @@ clear-side
 clip-path
 clip-rule
 color
+color-adjust
 color-correction
 color-interpolation             // TODO: write this
 color-interpolation-filters
