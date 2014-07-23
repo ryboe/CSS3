@@ -339,7 +339,6 @@ nav-index
 nav-left
 nav-right
 nav-up
-negative
 object-fit
 object-position
 offset-after

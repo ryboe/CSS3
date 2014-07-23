@@ -4926,14 +4926,6 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-alignment</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#value-all</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#value-animation-delay-animation-duration</string>
 				</dict>
 				<dict>
@@ -4959,10 +4951,6 @@
 				<dict>
 					<key>include</key>
 					<string>#value-animation-timing-function</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#value-animation</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -5002,15 +4990,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-background</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#value-baseline-shift</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#value-bleed</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -5038,6 +5018,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-border-image-mask-border</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-border-image-outset-mask-border-outset</string>
 				</dict>
 				<dict>
@@ -5058,10 +5042,6 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-border-image-mask-border</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#value-border-limit</string>
 				</dict>
 				<dict>
@@ -5079,18 +5059,6 @@
 				<dict>
 					<key>include</key>
 					<string>#value-border-width</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#value-border</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#value-margin</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#value-bottom-left-right-top</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -5122,15 +5090,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-chains</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#value-child-align</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#value-clear</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -5147,14 +5107,6 @@
 				<dict>
 					<key>include</key>
 					<string>#value-clip-rule</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#value-flood-color-lighting-color</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#value-color</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -5206,55 +5158,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-grid-auto-columns-grid-auto-rows</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#value-grid-template-columns-grid-template-rows</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#value-columns</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#value-content</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#value-corner-shape</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-corners</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#value-counter-increment-counter-reset-counter-set</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#value-cue</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#value-cursor</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#value-marquee-direction</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#value-flex-direction</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#value-direction</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#value-display</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -5282,15 +5190,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-fallback</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#value-filter</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#value-flex-basis</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-flex-direction</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -5303,14 +5207,6 @@
 				<dict>
 					<key>include</key>
 					<string>#value-flex-wrap</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#value-flex</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#value-float</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -5330,11 +5226,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-flood-opacity</string>
+					<string>#value-flood-color-lighting-color</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-flow</string>
+					<string>#value-flood-opacity</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -5343,10 +5239,6 @@
 				<dict>
 					<key>include</key>
 					<string>#value-flow-into</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#value-font</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -5386,6 +5278,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-font-variant</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-font-variant-alternates</string>
 				</dict>
 				<dict>
@@ -5410,19 +5306,15 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-font-variant</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#value-font-weight</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-grid</string>
+					<string>#value-grid-area-grid-row-grid-column</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-grid-area-grid-row-grid-column</string>
+					<string>#value-grid-auto-columns-grid-auto-rows</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -5438,19 +5330,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-grid-template-columns-grid-template-rows</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-hanging-punctuation</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#value-height</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#value-hyphens</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#value-icon</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -5506,6 +5390,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-line-stacking</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-line-stacking-ruby</string>
 				</dict>
 				<dict>
@@ -5518,7 +5406,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-line-stacking</string>
+					<string>#value-list-style</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -5530,15 +5418,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-list-style</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#value-marker-side</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-marks</string>
+					<string>#value-marquee-direction</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -5574,10 +5458,6 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-mask</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#value-max-lines</string>
 				</dict>
 				<dict>
@@ -5586,11 +5466,139 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-nav-index</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-alignment</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-animation</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-background</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-bleed</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-border</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-chains</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-clear</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-columns</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-content</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-corners</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-cue</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-cursor</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-direction</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-display</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-fallback</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-filter</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-flex</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-float</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-flow</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-font</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-grid</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-height</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-hyphens</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-icon</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-margin</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-marks</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-mask</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-nav</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-padding</string>
 				</dict>
 				<dict>
 					<key>include</key>
 					<string>#value-width</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-bottom-left-right-top</string>
 				</dict>
 			</array>
 		</dict>
@@ -13727,6 +13735,106 @@
 				<dict>
 					<key>include</key>
 					<string>#type-percentage-positive</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-number-non-negative</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-nav</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=nav-down:|nav-left:|nav-right:|nav-up:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:root|current|auto)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-id</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-string-double</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-string-single</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-nav-index</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=nav-index:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\bauto\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
 				</dict>
 				<dict>
 					<key>include</key>

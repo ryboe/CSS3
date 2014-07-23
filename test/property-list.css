@@ -1255,7 +1255,6 @@ div {
     columns:3;
     columns: 12em;
     columns: auto 100;
-    columns: 0;
     columns: 2 auto;
     columns: auto;
     columns: auto auto;
@@ -3119,7 +3118,7 @@ div {
     nav-index: 2;
     nav-index: 3;
     nav-index: 4;
-    nav-index:attr(tabindex,number);  /* need to implement attr() */
+    nav-index:attr(tabindex,number);
 
     object-fit: initial;
     object-fit: inherit;

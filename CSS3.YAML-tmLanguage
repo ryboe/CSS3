@@ -1589,14 +1589,13 @@ repository:
     beginCaptures:
       '0': {name: punctuation.separator.key-value.css}
     patterns:
+
     - include: '#comment-block'
     - include: '#value-additive-symbols'
     - include: '#value-align-content-justify-content'
     - include: '#value-align-items-align-self-justify-self'
     - include: '#value-alignment-adjust'
     - include: '#value-alignment-baseline'
-    - include: '#value-alignment'
-    - include: '#value-all'
     - include: '#value-animation-delay-animation-duration'
     - include: '#value-animation-direction'
     - include: '#value-animation-fill-mode'
@@ -1604,7 +1603,6 @@ repository:
     - include: '#value-animation-name'
     - include: '#value-animation-play-state'
     - include: '#value-animation-timing-function'
-    - include: '#value-animation'
     - include: '#value-backface-visibility'
     - include: '#value-background-attachment'
     - include: '#value-background-clip'
@@ -1614,29 +1612,24 @@ repository:
     - include: '#value-background-position-mask-position'
     - include: '#value-background-repeat-mask-repeat'
     - include: '#value-background-size-mask-size'
-    - include: '#value-background'
     - include: '#value-baseline-shift'
-    - include: '#value-bleed'
     - include: '#value-bookmark-label'
     - include: '#value-bookmark-level'
     - include: '#value-bookmark-state'
     - include: '#value-border-clip'
     - include: '#value-border-collapse'
     - include: '#value-border-color'
+    - include: '#value-border-image-mask-border'
     - include: '#value-border-image-outset-mask-border-outset'
     - include: '#value-border-image-repeat-mask-border-repeat'
     - include: '#value-border-image-slice-mask-border-slice'
     - include: '#value-border-image-source-mask-border-source'
     - include: '#value-border-image-width-mask-border-width'
-    - include: '#value-border-image-mask-border'
     - include: '#value-border-limit'
     - include: '#value-border-radius'
     - include: '#value-border-spacing'
     - include: '#value-border-style'
     - include: '#value-border-width'
-    - include: '#value-border'
-    - include: '#value-margin'
-    - include: '#value-bottom-left-right-top'
     - include: '#value-box-decoration-break'
     - include: '#value-box-shadow'
     - include: '#value-box-sizing'
@@ -1644,15 +1637,11 @@ repository:
     - include: '#value-break-after-break-before'
     - include: '#value-break-inside'
     - include: '#value-caption-side'
-    - include: '#value-chains'
     - include: '#value-child-align'
-    - include: '#value-clear'
     - include: '#value-clear-after'
     - include: '#value-clear-side'
     - include: '#value-clip-path'
     - include: '#value-clip-rule'
-    - include: '#value-flood-color-lighting-color'
-    - include: '#value-color'
     - include: '#value-color-adjust'
     - include: '#value-color-correction'
     - include: '#value-color-interpolation-filters'
@@ -1665,42 +1654,27 @@ repository:
     - include: '#value-column-rule-width'
     - include: '#value-column-span'
     - include: '#value-column-width'
-    - include: '#value-grid-auto-columns-grid-auto-rows'
-    - include: '#value-grid-template-columns-grid-template-rows'
-    - include: '#value-columns'
-    - include: '#value-content'
     - include: '#value-corner-shape'
-    - include: '#value-corners'
     - include: '#value-counter-increment-counter-reset-counter-set'
-    - include: '#value-cue'
-    - include: '#value-cursor'
-    - include: '#value-marquee-direction'
-    - include: '#value-flex-direction'
-    - include: '#value-direction'
-    - include: '#value-display'
     - include: '#value-display-box'
     - include: '#value-display-extras'
     - include: '#value-display-inside'
     - include: '#value-display-outside'
     - include: '#value-dominant-baseline'
     - include: '#value-empty-cells'
-    - include: '#value-fallback'
-    - include: '#value-filter'
     - include: '#value-flex-basis'
+    - include: '#value-flex-direction'
     - include: '#value-flex-flow'
     - include: '#value-flex-grow-flex-shrink'
     - include: '#value-flex-wrap'
-    - include: '#value-flex'
-    - include: '#value-float'
     - include: '#value-float-defer-column-defer-page'
     - include: '#value-float-displace'
     - include: '#value-float-offset'
     - include: '#value-float-wrap'
+    - include: '#value-flood-color-lighting-color'
     - include: '#value-flood-opacity'
-    - include: '#value-flow'
     - include: '#value-flow-from'
     - include: '#value-flow-into'
-    - include: '#value-font'
     - include: '#value-font-family'
     - include: '#value-font-feature-settings'
     - include: '#value-font-kerning'
@@ -1710,23 +1684,21 @@ repository:
     - include: '#value-font-stretch'
     - include: '#value-font-style'
     - include: '#value-font-synthesis'
+    - include: '#value-font-variant'
     - include: '#value-font-variant-alternates'
     - include: '#value-font-variant-caps'
     - include: '#value-font-variant-east-asian'
     - include: '#value-font-variant-ligatures'
     - include: '#value-font-variant-numeric'
     - include: '#value-font-variant-position'
-    - include: '#value-font-variant'
     - include: '#value-font-weight'
-    - include: '#value-grid'
     - include: '#value-grid-area-grid-row-grid-column'
+    - include: '#value-grid-auto-columns-grid-auto-rows'
     - include: '#value-grid-auto-flow'
     - include: '#value-grid-template'
     - include: '#value-grid-template-areas'
+    - include: '#value-grid-template-columns-grid-template-rows'
     - include: '#value-hanging-punctuation'
-    - include: '#value-height'
-    - include: '#value-hyphens'
-    - include: '#value-icon'
     - include: '#value-image-orientation'
     - include: '#value-image-resolution'
     - include: '#value-ime-mode'
@@ -1740,15 +1712,15 @@ repository:
     - include: '#value-line-grid'
     - include: '#value-line-height'
     - include: '#value-line-snap'
+    - include: '#value-line-stacking'
     - include: '#value-line-stacking-ruby'
     - include: '#value-line-stacking-shift'
     - include: '#value-line-stacking-strategy'
-    - include: '#value-line-stacking'
+    - include: '#value-list-style'
     - include: '#value-list-style-position'
     - include: '#value-list-style-type'
-    - include: '#value-list-style'
     - include: '#value-marker-side'
-    - include: '#value-marks'
+    - include: '#value-marquee-direction'
     - include: '#value-marquee-play-count'
     - include: '#value-marquee-speed'
     - include: '#value-marquee-style'
@@ -1757,11 +1729,46 @@ repository:
     - include: '#value-mask-mode'
     - include: '#value-mask-origin'
     - include: '#value-mask-type'
-    - include: '#value-mask'
     - include: '#value-max-lines'
     - include: '#value-max-zoom-min-zoom'
+    - include: '#value-nav-index'
+    # Single word rules are at the bottom to void mistakenly matching the end
+    # of a rule above, e.g. matching #value-all instead of #value-text-align-all.
+    # This doesn't guarantee that collisions won't happen, but it makes them
+    # less likely
+    - include: '#value-alignment'
+    - include: '#value-all'
+    - include: '#value-animation'
+    - include: '#value-background'
+    - include: '#value-bleed'
+    - include: '#value-border'
+    - include: '#value-chains'
+    - include: '#value-clear'
+    - include: '#value-color'
+    - include: '#value-columns'
+    - include: '#value-content'
+    - include: '#value-corners'
+    - include: '#value-cue'
+    - include: '#value-cursor'
+    - include: '#value-direction'
+    - include: '#value-display'
+    - include: '#value-fallback'
+    - include: '#value-filter'
+    - include: '#value-flex'
+    - include: '#value-float'
+    - include: '#value-flow'
+    - include: '#value-font'
+    - include: '#value-grid'
+    - include: '#value-height'
+    - include: '#value-hyphens'
+    - include: '#value-icon'
+    - include: '#value-margin'
+    - include: '#value-marks'
+    - include: '#value-mask'
+    - include: '#value-nav'
     - include: '#value-padding'
     - include: '#value-width'
+    - include: '#value-bottom-left-right-top'
     end: (?:;|(?=\)))
     endCaptures:
       '0': {name: punctuation.terminator.rule.css}
@@ -4319,6 +4326,38 @@ repository:
     - include: '#type-number-non-negative'
     end: (?=[;)])
 
+  value-nav:
+    begin: (?<=nav-down:|nav-left:|nav-right:|nav-up:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:root|current|auto)\b
+    - include: '#selector-id'
+    - include: '#type-string-double'
+    - include: '#type-string-single'
+    end: (?=[;)])
+
+  value-nav-index:
+    begin: (?<=nav-index:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bauto\b
+    - include: '#type-function-calc'
+    - include: '#type-number-non-negative'
+    end: (?=[;)])
+
+
   value-padding:
     begin: (?<=(?:padding-top:|padding-right:|padding-left:|padding-bottom:|padding:))
     patterns:
@@ -4543,8 +4582,10 @@ repository:
 #   @font-feature-values <ident>: properties, aka feature value definitions, e.g. leo-B: 2 1;
 #   updated HTML doctor HTML5 reset
 #   add -webkit-, -moz-, -ms- prefixes to at-rules that need them
-#   delete property_values.txt?
-
+#       mask properties need -webkit- prefix
+#   delete property_values.txt? you haven't been filling in the values.
+#      it's better to read them from the web because it's up to date
+#      plus, it's not up to date with property_list.txt
 # LOW PRIORITY
 #   @document
 #   can selectors start with an uppercase letter?
@@ -4552,6 +4593,7 @@ repository:
 #   ridiculous new color functions (see bottom of /spec/functions.txt)
 
 # FINAL CHECK
+#   separate and sort the single and multi-word values in #value
 #   scan for unknown includes in the console when the highlighter is loaded
 #   check that all val rules are in #value
 #   sync up the two value lists (#value and #value-supports-condition)
