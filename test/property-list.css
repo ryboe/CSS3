@@ -2601,8 +2601,19 @@ div {
     justify-items: legacy left;
     justify-items: right legacy;
 
-    letter-spacing: initial;
+    justify-self: inherit;
+    justify-self: initial;
+    justify-self: unset;
+    justify-self: auto;
+    justify-self: last-baseline;
+
+    left: inherit;
+    left: initial;
+    left: 10px;
+    left: 20%;
+
     letter-spacing: inherit;
+    letter-spacing: initial;
     letter-spacing: unset;
     letter-spacing: normal;
     letter-spacing: 100px;
@@ -2641,12 +2652,6 @@ div {
     line-height: 0;
     line-height: 100%;
     line-height: 100px;
-
-    line-slack: initial;
-    line-slack: inherit;
-    line-slack: unset;
-    line-slack: 1;
-    line-slack: 99;
 
     line-snap: initial;
     line-snap: inherit;
@@ -2709,7 +2714,7 @@ div {
     list-style-image: none  ;
     list-style-image:  url(image.jpg);                        /* the image.jpg is used as image */
     list-style-image:  linear-gradient(to top, red, yellow);  /* a gradient is used as image */
-    list-style-image:  radial-gradient(to top, red, yellow);
+    list-style-image:  radial-gradient(at top, red, yellow);
 
     list-style-position: initial;
     list-style-position: inherit;

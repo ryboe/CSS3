@@ -308,7 +308,6 @@ line-box-contain
 line-break
 line-grid
 line-height
-line-slack
 line-snap
 line-stacking
 line-stacking-ruby
