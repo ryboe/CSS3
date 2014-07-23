@@ -310,7 +310,7 @@ marquee-direction
 marquee-play-count
 marquee-speed
 marquee-style
-mask
+mask                 // TODO: WRITE THIS
 mask-border
 mask-border-outset
 mask-border-repeat

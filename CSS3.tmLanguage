@@ -1085,7 +1085,7 @@
 		<key>property-name-legal</key>
 		<dict>
 			<key>match</key>
-			<string>(-webkit-transition-timing-function|-webkit-transition-property|-webkit-transition-duration|-webkit-transition-delay|-webkit-transition|-webkit-transform-style|-webkit-transform-origin|-webkit-transform|-webkit-region-fragment|-webkit-perspective-origin|-webkit-perspective|-webkit-order|-webkit-mask-size|-webkit-mask-repeat|-webkit-mask-position|-webkit-mask-origin|-webkit-mask-image|-webkit-composite|-webkit-mask-clip|-webkit-mask|-webkit-justify-content|-webkit-hyphens|-webkit-grid-row|-webkit-grid-column|-webkit-font-variant-ligatures|-webkit-font-size-delta|-webkit-font-kerning|-webkit-font-feature-settings|-webkit-flow-into|-webkit-flow-from|-webkit-flex-wrap|-webkit-flex-shrink|-webkit-flex-grow|-webkit-flex-flow|-webkit-flex-direction|-webkit-flex-basis|-webkit-flex|-webkit-columns|-webkit-column-width|-webkit-column-span|-webkit-column-rule-width|-webkit-column-rule-style|-webkit-column-rule-color|-webkit-column-rule|-webkit-column-gap|-webkit-column-fill|-webkit-column-count|-webkit-break-inside|-webkit-break-before|-webkit-break-after|-webkit-border-image|-webkit-backface-visibility|-webkit-animation-timing-function|-webkit-animation-play-state|-webkit-animation-name|-webkit-animation-iteration-count|-webkit-animation-fill-mode|-webkit-animation-duration|-webkit-animation-direction|-webkit-animation-delay|-webkit-animation|-webkit-align-self|-webkit-align-items|-webkit-align-content|-ms-writing-mode|-ms-wrap-through|-ms-wrap-flow|-ms-word-wrap|-ms-transform-style|-ms-transform-origin|-ms-transform|-ms-text-justify|-ms-text-align-last|-ms-overflow-y|-ms-overflow-x|-ms-overflow-style|-ms-ime-mode|-ms-hyphens|-ms-grid-row-span|-ms-grid-row-align|-ms-grid-row|-ms-grid-column-span|-ms-grid-column-align|-ms-grid-column|-ms-flow-into|-ms-flow-from|-moz-text-decoration-style|-moz-text-decoration-line|-moz-text-decoration-color|-moz-text-align-last|-moz-hyphens|-moz-font-language-override|-moz-font-feature-settings|-moz-columns|-moz-column-width|-moz-column-span|-moz-column-rule-width|-moz-column-rule-style|-moz-column-rule-color|-moz-column-rule|-moz-column-gap|-moz-column-fill|-moz-column-count|-moz-box-sizing)\b|\b(zoom|z-index|writing-mode|wrap-through|wrap-flow|word-wrap|word-spacing|word-break|will-change|width|widows|white-space|voice-volume|voice-stress|voice-rate|voice-range|voice-pitch|voice-family|voice-duration|voice-balance|visibility|vertical-align|user-zoom|unicode-range|unicode-bidi|transition-timing-function|transition-property|transition-duration|transition-delay|transition|transform-style|transform-origin|transform|top|text-underline-position|text-transform|text-shadow|text-overflow|text-orientation|text-justify|text-indent|text-height|text-emphasis-style|text-emphasis-position|text-emphasis-color|text-emphasis|text-decoration-style|text-decoration-skip|text-decoration-line|text-decoration-color|text-decoration|text-combine-upright|text-align-last|text-align|target-position|target-new|target-name|target|table-layout|tab-size|system|symbols|suffix|string-set|src|speak-as|speak|size|shape-outside|shape-margin|shape-image-threshold|running|ruby-position|ruby-merge|ruby-align|rotation-point|rotation|right|rest-before|rest-after|rest|resolution|resize|region-fragment|range|quotes|presentation-level|prefix|position|pointer-events|perspective-origin|perspective|pause-before|pause-after|pause|page-policy|page-break-inside|page-break-before|page-break-after|page|padding-top|padding-right|padding-left|padding-bottom|padding|pad|overflow-y|overflow-x|overflow-wrap|overflow-style|overflow|outline-width|outline-style|outline-offset|outline-color|outline|orphans|orientation|order|opacity|offset-start|offset-end|offset-before|offset-after|object-position|object-fit|negative|nav-up|nav-right|nav-left|nav-index|nav-down|move-to|min-zoom|min-width|min-height|max-zoom|max-width|max-lines|max-height|mask-type|mask-size|mask-repeat|mask-position|mask-origin|mask-mode|mask-image|mask-composite|mask-clip|mask-border-width|mask-border-source|mask-border-slice|mask-border-repeat|mask-border-outset|mask-border|mask|marquee-style|marquee-speed|marquee-play-count|marquee-direction|marks|marker-side|margin-top|margin-right|margin-left|margin-bottom|margin|list-style-type|list-style-position|list-style-image|list-style|line-stacking-strategy|line-stacking-shift|line-stacking-ruby|line-stacking|line-snap|line-height|line-grid|line-break|line-box-contain|lighting-color|letter-spacing|left|justify-self|justify-items|justify-content|inline-box-align|initial-letters|indent-edge-reset|ime-mode|image-resolution|image-rendering|image-orientation|icon|hyphens|height|hanging-punctuation|grid-template-rows|grid-template-columns|grid-template-areas|grid-template|grid-row-start|grid-row-end|grid-row|grid-column-start|grid-column-end|grid-column|grid-auto-rows|grid-auto-flow|grid-auto-columns|grid-area|grid|footnote-policy|footnote-display|font-weight|font-variant-position|font-variant-numeric|font-variant-ligatures|font-variant-east-asian|font-variant-caps|font-variant-alternates|font-variant|font-synthesis|font-style|font-stretch|font-size-adjust|font-size|font-language-override|font-kerning|font-feature-settings|font-family|font|flow-into|flow-from|flow|flood-opacity|flood-color|float-wrap|float-offset|float-displace|float-defer-page|float-defer-column|float|flex-wrap|flex-shrink|flex-grow|flex-flow|flex-direction|flex-basis|flex|filter|fallback|empty-cells|dominant-baseline|display-outside|display-inside|display-extras|display-box|display|direction|cursor|cue-before|cue-after|cue|counter-set|counter-reset|counter-increment|corners|corner-shape|content|columns|column-width|column-span|column-rule-width|column-rule-style|column-rule-color|column-rule|column-gap|column-fill|column-count|color-interpolation-filters|color-interpolation|color-correction|color-adjust|color|clip-rule|clip-path|clear-side|clear-after|clear|child-align|chains|caption-side|break-inside|break-before|break-after|box-snap|box-sizing|box-shadow|box-decoration-break|bottom|border-width|border-top-width|border-top-style|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-style|border-spacing|border-right-width|border-right-style|border-right-color|border-right|border-radius|border-limit|border-left-width|border-left-style|border-left-color|border-left|border-image-width|border-image-source|border-image-slice|border-image-repeat|border-image-outset|border-image|border-color|border-collapse|border-clip-top|border-clip-right|border-clip-left|border-clip-bottom|border-clip|border-bottom-width|border-bottom-style|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border|bookmark-state|bookmark-level|bookmark-label|bleed|baseline-shift|background-size|background-repeat|background-position|background-origin|background-image|background-color|background-clip|background-attachment|background|backface-visibility|animation-timing-function|animation-play-state|animation-name|animation-iteration-count|animation-fill-mode|animation-duration|animation-direction|animation-delay|animation|all|alignment-baseline|alignment-adjust|alignment|align-self|align-items|align-content|additive-symbols)\b</string>
+			<string>(-webkit-transition-timing-function|-webkit-transition-property|-webkit-transition-duration|-webkit-transition-delay|-webkit-transition|-webkit-transform-style|-webkit-transform-origin|-webkit-transform|-webkit-region-fragment|-webkit-perspective-origin|-webkit-perspective|-webkit-order|-webkit-mask-size|-webkit-mask-repeat|-webkit-mask-position|-webkit-mask-origin|-webkit-mask-image|-webkit-composite|-webkit-mask-clip|-webkit-mask|-webkit-justify-content|-webkit-hyphens|-webkit-grid-row|-webkit-grid-column|-webkit-font-variant-ligatures|-webkit-font-size-delta|-webkit-font-kerning|-webkit-font-feature-settings|-webkit-flow-into|-webkit-flow-from|-webkit-flex-wrap|-webkit-flex-shrink|-webkit-flex-grow|-webkit-flex-flow|-webkit-flex-direction|-webkit-flex-basis|-webkit-flex|-webkit-columns|-webkit-column-width|-webkit-column-span|-webkit-column-rule-width|-webkit-column-rule-style|-webkit-column-rule-color|-webkit-column-rule|-webkit-column-gap|-webkit-column-fill|-webkit-column-count|-webkit-break-inside|-webkit-break-before|-webkit-break-after|-webkit-border-image|-webkit-backface-visibility|-webkit-animation-timing-function|-webkit-animation-play-state|-webkit-animation-name|-webkit-animation-iteration-count|-webkit-animation-fill-mode|-webkit-animation-duration|-webkit-animation-direction|-webkit-animation-delay|-webkit-animation|-webkit-align-self|-webkit-align-items|-webkit-align-content|-ms-writing-mode|-ms-wrap-through|-ms-wrap-flow|-ms-word-wrap|-ms-transform-style|-ms-transform-origin|-ms-transform|-ms-text-justify|-ms-text-align-last|-ms-overflow-y|-ms-overflow-x|-ms-overflow-style|-ms-ime-mode|-ms-hyphens|-ms-grid-row-span|-ms-grid-row-align|-ms-grid-row|-ms-grid-column-span|-ms-grid-column-align|-ms-grid-column|-ms-flow-into|-ms-flow-from|-moz-text-decoration-style|-moz-text-decoration-line|-moz-text-decoration-color|-moz-text-align-last|-moz-hyphens|-moz-font-language-override|-moz-font-feature-settings|-moz-columns|-moz-column-width|-moz-column-span|-moz-column-rule-width|-moz-column-rule-style|-moz-column-rule-color|-moz-column-rule|-moz-column-gap|-moz-column-fill|-moz-column-count|-moz-box-sizing)\b|\b(zoom|z-index|writing-mode|wrap-through|wrap-flow|word-wrap|word-spacing|word-break|will-change|width|widows|white-space|voice-volume|voice-stress|voice-rate|voice-range|voice-pitch|voice-family|voice-duration|voice-balance|visibility|vertical-align|user-zoom|unicode-range|unicode-bidi|transition-timing-function|transition-property|transition-duration|transition-delay|transition|transform-style|transform-origin|transform|top|text-underline-position|text-transform|text-shadow|text-overflow|text-orientation|text-justify|text-indent|text-height|text-emphasis-style|text-emphasis-position|text-emphasis-color|text-emphasis|text-decoration-style|text-decoration-skip|text-decoration-line|text-decoration-color|text-decoration|text-combine-upright|text-align-last|text-align|target-position|target-new|target-name|target|table-layout|tab-size|system|symbols|suffix|string-set|src|speak-as|speak|size|shape-outside|shape-margin|shape-image-threshold|running|ruby-position|ruby-merge|ruby-align|rotation-point|rotation|right|rest-before|rest-after|rest|resolution|resize|region-fragment|range|quotes|presentation-level|prefix|position|pointer-events|perspective-origin|perspective|pause-before|pause-after|pause|page-policy|page-break-inside|page-break-before|page-break-after|page|padding-top|padding-right|padding-left|padding-bottom|padding|pad|overflow-y|overflow-x|overflow-wrap|overflow-style|overflow|outline-width|outline-style|outline-offset|outline-color|outline|orphans|orientation|order|opacity|offset-start|offset-end|offset-before|offset-after|object-position|object-fit|negative|nav-up|nav-right|nav-left|nav-index|nav-down|min-zoom|min-width|min-height|max-zoom|max-width|max-lines|max-height|mask-type|mask-size|mask-repeat|mask-position|mask-origin|mask-mode|mask-image|mask-composite|mask-clip|mask-border-width|mask-border-source|mask-border-slice|mask-border-repeat|mask-border-outset|mask-border|mask|marquee-style|marquee-speed|marquee-play-count|marquee-direction|marks|marker-side|margin-top|margin-right|margin-left|margin-bottom|margin|list-style-type|list-style-position|list-style-image|list-style|line-stacking-strategy|line-stacking-shift|line-stacking-ruby|line-stacking|line-snap|line-height|line-grid|line-break|line-box-contain|lighting-color|letter-spacing|left|justify-self|justify-items|justify-content|inline-box-align|initial-letters|indent-edge-reset|ime-mode|image-resolution|image-rendering|image-orientation|icon|hyphens|height|hanging-punctuation|grid-template-rows|grid-template-columns|grid-template-areas|grid-template|grid-row-start|grid-row-end|grid-row|grid-column-start|grid-column-end|grid-column|grid-auto-rows|grid-auto-flow|grid-auto-columns|grid-area|grid|footnote-policy|footnote-display|font-weight|font-variant-position|font-variant-numeric|font-variant-ligatures|font-variant-east-asian|font-variant-caps|font-variant-alternates|font-variant|font-synthesis|font-style|font-stretch|font-size-adjust|font-size|font-language-override|font-kerning|font-feature-settings|font-family|font|flow-into|flow-from|flow|flood-opacity|flood-color|float-wrap|float-offset|float-displace|float-defer-page|float-defer-column|float|flex-wrap|flex-shrink|flex-grow|flex-flow|flex-direction|flex-basis|flex|filter|fallback|empty-cells|dominant-baseline|display-outside|display-inside|display-extras|display-box|display|direction|cursor|cue-before|cue-after|cue|counter-set|counter-reset|counter-increment|corners|corner-shape|content|columns|column-width|column-span|column-rule-width|column-rule-style|column-rule-color|column-rule|column-gap|column-fill|column-count|color-interpolation-filters|color-interpolation|color-correction|color-adjust|color|clip-rule|clip-path|clear-side|clear-after|clear|child-align|chains|caption-side|break-inside|break-before|break-after|box-snap|box-sizing|box-shadow|box-decoration-break|bottom|border-width|border-top-width|border-top-style|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-style|border-spacing|border-right-width|border-right-style|border-right-color|border-right|border-radius|border-limit|border-left-width|border-left-style|border-left-color|border-left|border-image-width|border-image-source|border-image-slice|border-image-repeat|border-image-outset|border-image|border-color|border-collapse|border-clip-top|border-clip-right|border-clip-left|border-clip-bottom|border-clip|border-bottom-width|border-bottom-style|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border|bookmark-state|bookmark-level|bookmark-label|bleed|baseline-shift|background-size|background-repeat|background-position|background-origin|background-image|background-color|background-clip|background-attachment|background|backface-visibility|animation-timing-function|animation-play-state|animation-name|animation-iteration-count|animation-fill-mode|animation-duration|animation-direction|animation-delay|animation|all|alignment-baseline|alignment-adjust|alignment|align-self|align-items|align-content|additive-symbols)\b</string>
 			<key>name</key>
 			<string>support.type.property-name.css</string>
 		</dict>
@@ -4719,6 +4719,24 @@
 			<key>match</key>
 			<string>(?:(\+?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?)(%)|\b(0)\b)</string>
 		</dict>
+		<key>type-percentage-positive</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>constant.numeric.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.other.unit.css</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(\+?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?)(%)</string>
+		</dict>
 		<key>type-ratio</key>
 		<dict>
 			<key>captures</key>
@@ -4900,15 +4918,15 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-alignment</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#value-alignment-adjust</string>
 				</dict>
 				<dict>
 					<key>include</key>
 					<string>#value-alignment-baseline</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-alignment</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -4964,7 +4982,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-background-image-list-style-image</string>
+					<string>#value-background-image-list-style-image-mask-image</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -4972,15 +4990,15 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-background-position</string>
+					<string>#value-background-position-mask-position</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-background-repeat</string>
+					<string>#value-background-repeat-mask-repeat</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-background-size</string>
+					<string>#value-background-size-mask-size</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -5008,10 +5026,6 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-border</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#value-border-clip</string>
 				</dict>
 				<dict>
@@ -5024,27 +5038,27 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-border-image-outset</string>
+					<string>#value-border-image-outset-mask-border-outset</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-border-image-repeat</string>
+					<string>#value-border-image-repeat-mask-border-repeat</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-border-image-slice</string>
+					<string>#value-border-image-slice-mask-border-slice</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-border-image-source</string>
+					<string>#value-border-image-source-mask-border-source</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-border-image-width</string>
+					<string>#value-border-image-width-mask-border-width</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-border-image</string>
+					<string>#value-border-image-mask-border</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -5065,6 +5079,14 @@
 				<dict>
 					<key>include</key>
 					<string>#value-border-width</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-border</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-margin</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -5217,6 +5239,10 @@
 				<dict>
 					<key>include</key>
 					<string>#value-cursor</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-marquee-direction</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -5508,7 +5534,63 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-marker-side</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-marks</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-marquee-play-count</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-marquee-speed</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-marquee-style</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-mask-clip</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-mask-composite</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-mask-mode</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-mask-origin</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-mask-type</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-mask</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-max-lines</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-max-zoom-min-zoom</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-padding</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-width</string>
 				</dict>
 			</array>
 		</dict>
@@ -6530,10 +6612,10 @@
 				</dict>
 			</array>
 		</dict>
-		<key>value-background-image-list-style-image</key>
+		<key>value-background-image-list-style-image-mask-image</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;=background-image:|list-style-image:)</string>
+			<string>(?&lt;=background-image:|list-style-image:|mask-image:)</string>
 			<key>end</key>
 			<string>(?=[;)])</string>
 			<key>patterns</key>
@@ -6644,10 +6726,10 @@
 				</dict>
 			</array>
 		</dict>
-		<key>value-background-position</key>
+		<key>value-background-position-mask-position</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;=background-position:)</string>
+			<string>(?&lt;=background-position:|mask-position:)</string>
 			<key>end</key>
 			<string>(?=[;)])</string>
 			<key>patterns</key>
@@ -6678,7 +6760,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(top|right|left|center|bottom)\b</string>
+					<string>\b(?:top|right|left|center|bottom)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>
@@ -6696,10 +6778,10 @@
 				</dict>
 			</array>
 		</dict>
-		<key>value-background-repeat</key>
+		<key>value-background-repeat-mask-repeat</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;=background-repeat:)</string>
+			<string>(?&lt;=background-repeat:|mask-repeat:)</string>
 			<key>end</key>
 			<string>(?=[;)])</string>
 			<key>patterns</key>
@@ -6734,10 +6816,10 @@
 				</dict>
 			</array>
 		</dict>
-		<key>value-background-size</key>
+		<key>value-background-size-mask-size</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;=background-size:)</string>
+			<string>(?&lt;=background-size:|mask-size:)</string>
 			<key>end</key>
 			<string>(?=[;)])</string>
 			<key>patterns</key>
@@ -7256,10 +7338,10 @@
 				</dict>
 			</array>
 		</dict>
-		<key>value-border-image</key>
+		<key>value-border-image-mask-border</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;=border-image:)</string>
+			<string>(?&lt;=border-image:|mask-border:)</string>
 			<key>end</key>
 			<string>(?=[;)])</string>
 			<key>patterns</key>
@@ -7348,10 +7430,10 @@
 				</dict>
 			</array>
 		</dict>
-		<key>value-border-image-outset</key>
+		<key>value-border-image-outset-mask-border-outset</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;=border-image-outset:)</string>
+			<string>(?&lt;=border-image-outset:|mask-border-outset:)</string>
 			<key>end</key>
 			<string>(?=[;)])</string>
 			<key>patterns</key>
@@ -7394,10 +7476,10 @@
 				</dict>
 			</array>
 		</dict>
-		<key>value-border-image-repeat</key>
+		<key>value-border-image-repeat-mask-border-repeat</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;=border-image-repeat:)</string>
+			<string>(?&lt;=border-image-repeat:|mask-border-repeat:)</string>
 			<key>end</key>
 			<string>(?=[;)])</string>
 			<key>patterns</key>
@@ -7434,10 +7516,10 @@
 				</dict>
 			</array>
 		</dict>
-		<key>value-border-image-slice</key>
+		<key>value-border-image-slice-mask-border-slice</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;=border-image-slice:)</string>
+			<string>(?&lt;=border-image-slice:|mask-border-slice:)</string>
 			<key>end</key>
 			<string>(?=[;)])</string>
 			<key>patterns</key>
@@ -7486,10 +7568,10 @@
 				</dict>
 			</array>
 		</dict>
-		<key>value-border-image-source</key>
+		<key>value-border-image-source-mask-border-source</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;=border-image-source:)</string>
+			<string>(?&lt;=border-image-source:|mask-border-source:)</string>
 			<key>end</key>
 			<string>(?=[;)])</string>
 			<key>patterns</key>
@@ -7562,10 +7644,10 @@
 				</dict>
 			</array>
 		</dict>
-		<key>value-border-image-width</key>
+		<key>value-border-image-width-mask-border-width</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;=border-image-width:)</string>
+			<string>(?&lt;=border-image-width:|mask-border-width:)</string>
 			<key>end</key>
 			<string>(?=[;)])</string>
 			<key>patterns</key>
@@ -11931,7 +12013,7 @@
 		<key>value-height</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;=height:)</string>
+			<string>(?&lt;=height:|max-height:|min-height:)</string>
 			<key>end</key>
 			<string>(?=[;)])</string>
 			<key>patterns</key>
@@ -11962,7 +12044,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:min-content|max-content|fit-content|content-box|complex|border-box|available|auto)\b</string>
+					<string>\b(?:none|min-content|max-content|fit-content|content-box|complex|border-box|available|auto)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>
@@ -12968,6 +13050,690 @@
 				</dict>
 			</array>
 		</dict>
+		<key>value-margin</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=margin:|margin-bottom:|margin-left:|margin-right:|margin-top:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:fill|auto)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-percentage</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-length</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-marker-side</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=marker-side:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:list-item|list-container)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-marks</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=marks:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:none|cross|crop)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-marquee-direction</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=marquee-direction:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:reverse|forward)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-marquee-play-count</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=marquee-play-count:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\binfinite\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-integer-non-negative</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-marquee-speed</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=marquee-speed:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:slow|normal|fast)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-marquee-style</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=marquee-style:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:slide|scroll|alternate)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-mask</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=mask:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:view-box|top|subtract|stroke-box|space|round|right|repeat-y|repeat-x|repeat|padding-box|none|no-repeat|no-clip|margin-box|luminance|left|intersect|fill-box|exclude|cover|content-box|contain|center|bottom|border-box|auto|alpha|add)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-cross-fade</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-element</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-filter</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-image</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-image-set</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-conic-gradient</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-linear-gradient</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-radial-gradient</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-url</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-percentage</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-length</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-mask-clip</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=mask-clip:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:view-box|stroke-box|padding-box|no-clip|margin-box|fill-box|content-box|border-box)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-mask-composite</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=mask-composite:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:subtract|intersect|exclude|add)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-mask-mode</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=mask-mode:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:luminance|auto|alpha)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-mask-origin</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=mask-origin:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:view-box|stroke-box|padding-box|margin-box|fill-box|content-box|border-box)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-mask-type</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=mask-type:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:luminance|alpha)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-max-lines</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=max-lines:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\bnone\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-integer-positive</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-max-zoom-min-zoom</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=max-zoom:|min-zoom:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\bauto\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-percentage-positive</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-number-non-negative</string>
+				</dict>
+			</array>
+		</dict>
 		<key>value-padding</key>
 		<dict>
 			<key>begin</key>
@@ -13052,6 +13818,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-additive-symbols</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-align-content-justify-content</string>
 				</dict>
 				<dict>
@@ -13060,15 +13830,15 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-alignment</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#value-alignment-adjust</string>
 				</dict>
 				<dict>
 					<key>include</key>
 					<string>#value-alignment-baseline</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-alignment</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -13124,7 +13894,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-background-image</string>
+					<string>#value-background-image-list-style-image-mask-image</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -13132,15 +13902,15 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-background-position</string>
+					<string>#value-background-position-mask-position</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-background-repeat</string>
+					<string>#value-background-repeat-mask-repeat</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-background-size</string>
+					<string>#value-background-size-mask-size</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -13168,10 +13938,6 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-border</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#value-border-clip</string>
 				</dict>
 				<dict>
@@ -13184,27 +13950,27 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-border-image-outset</string>
+					<string>#value-border-image-outset-mask-border-outset</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-border-image-repeat</string>
+					<string>#value-border-image-repeat-mask-border-repeat</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-border-image-slice</string>
+					<string>#value-border-image-slice-mask-border-slice</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-border-image-source</string>
+					<string>#value-border-image-source-mask-border-source</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-border-image-width</string>
+					<string>#value-border-image-width-mask-border-width</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-border-image</string>
+					<string>#value-border-image-mask-border</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -13225,6 +13991,14 @@
 				<dict>
 					<key>include</key>
 					<string>#value-border-width</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-border</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-margin</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -13296,6 +14070,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-color-adjust</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-color-correction</string>
 				</dict>
 				<dict>
@@ -13340,6 +14118,14 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-grid-auto-columns-grid-auto-rows</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-grid-template-columns-grid-template-rows</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-columns</string>
 				</dict>
 				<dict>
@@ -13365,6 +14151,10 @@
 				<dict>
 					<key>include</key>
 					<string>#value-cursor</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-marquee-direction</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -13401,6 +14191,10 @@
 				<dict>
 					<key>include</key>
 					<string>#value-empty-cells</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-fallback</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -13464,6 +14258,138 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-font</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-font-family</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-font-feature-settings</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-font-kerning</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-font-language-override</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-font-size</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-font-size-adjust</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-font-stretch</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-font-style</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-font-synthesis</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-font-variant-alternates</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-font-variant-caps</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-font-variant-east-asian</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-font-variant-ligatures</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-font-variant-numeric</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-font-variant-position</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-font-variant</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-font-weight</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-grid</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-grid-area-grid-row-grid-column</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-grid-auto-flow</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-grid-template</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-grid-template-areas</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-hanging-punctuation</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-height</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-hyphens</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-icon</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-image-orientation</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-image-resolution</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-ime-mode</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-indent-edge-reset</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-initial-letters</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-inline-box-align</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-justify-items</string>
 				</dict>
 				<dict>
@@ -13472,7 +14398,163 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-line-box-contain</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-line-break</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-line-grid</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-line-height</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-line-snap</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-line-stacking-ruby</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-line-stacking-shift</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-line-stacking-strategy</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-line-stacking</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-list-style-position</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-list-style-type</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-list-style</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-marker-side</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-marks</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-marquee-play-count</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-marquee-speed</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-marquee-style</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-mask-clip</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-mask-composite</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-mask-mode</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-mask-origin</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-mask-type</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-mask</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-max-lines</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-max-zoom-min-zoom</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-padding</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-width</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-width</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=width:|max-width:|min-width:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:min-content|max-content|fit-content|content-box|border-box|available|auto)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-percentage-non-negative</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-length-non-negative</string>
 				</dict>
 			</array>
 		</dict>

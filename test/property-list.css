@@ -2843,6 +2843,33 @@ div {
     marks: crop cross;
     marks: cross crop;
 
+    marquee-direction: inherit;
+    marquee-direction: initial;
+    marquee-direction: unset;
+    marquee-direction: forward;
+    marquee-direction: reverse;
+
+    marquee-play-count: inherit;
+    marquee-play-count: initial;
+    marquee-play-count: unset;
+    marquee-play-count: infinite;
+    marquee-play-count: 100;
+    marquee-play-count: calc();
+
+    marquee-speed: inherit;
+    marquee-speed: initial;
+    marquee-speed: unset;
+    marquee-speed: slow;
+    marquee-speed: normal;
+    marquee-speed: fast;
+
+    marquee-style: inherit;
+    marquee-style: initial;
+    marquee-style: unset    ;
+    marquee-style: slide;
+    marquee-style: scroll;
+    marquee-style: alternate;
+
     mask: initial;
     mask: inherit;
     mask: unset;
@@ -2893,7 +2920,7 @@ div {
     mask-border-source:none  ;
     mask-border-source: url(image.jpg);                        /* the image.jpg is used as image */
     mask-border-source: linear-gradient(to top, red, yellow);  /* a gradient is used as image */
-    mask-border-source: radial-gradient(to top, red, yellow);
+    mask-border-source: radial-gradient(at top, red, yellow);
 
     mask-border-width: initial;
     mask-border-width: inherit;
@@ -2924,7 +2951,7 @@ div {
     mask-image: inherit;
     mask-image: unset;
     mask-image: url(#mask);
-    mask-image: linear-gradient(black 0%, transparent 100%); // using percentages here may be a mistake in the spec;
+    mask-image: linear-gradient(black 0%, transparent 100%); /* using percentages here may be a mistake in the spec; */
     mask-image: none;
     mask-image: url(resources.svg#mask2);
     mask-image: url(#SVGMask);
@@ -3044,13 +3071,6 @@ div {
     min-width: 0px;
     min-width: 100em;
     min-width: 100.01mm;
-
-    move-to: initial;
-    move-to: inherit;
-    move-to: unset;
-    move-to: normal;
-    move-to: here;
-    move-to: hello;
 
     nav-up: initial;
     nav-up: inherit;
