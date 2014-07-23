@@ -366,9 +366,6 @@ padding-left
 padding-right
 padding-top
 page
-page-break-after
-page-break-before
-page-break-inside
 page-policy
 pause
 pause-after
@@ -378,7 +375,6 @@ perspective-origin
 pointer-events
 position
 prefix
-presentation-level
 quotes
 range
 region-fragment
