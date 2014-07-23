@@ -3145,11 +3145,27 @@ div {
     object-position: left      top 15px;   /*  0px, 15px */
     object-position: left 10px top     ;   /* 10px,  0px */
 
+    offset-after: inherit;
+    offset-after: initial;
+    offset-after: unset;
+
+    offset-before: inherit;
+    offset-before: initial;
+    offset-before: unset;
+
+    offset-start: inherit;
+    offset-start: initial;
+    offset-start: unset;
+
+    offset-end: inherit;
+    offset-end: initial;
+    offset-end: unset;
+
     opacity: initial;
     opacity: inherit;
     opacity: unset;
     opacity: 0;
-    opacity: 0.0;
+    opacity: 0.1;
     opacity: .0;
     opacity: .123;
     opacity: 1.000;
@@ -3164,6 +3180,13 @@ div {
     order: 2;
     order: 3;
     -webkit-order: 3;
+
+    orientation: inherit;
+    orientation: initial;
+    orientation: unset;
+    orientation: portrait;
+    orientation: landscape;
+    orientation: auto;
 
     orphans: initial;
     orphans: inherit;

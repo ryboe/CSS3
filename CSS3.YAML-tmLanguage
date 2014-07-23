@@ -1609,7 +1609,7 @@ repository:
     - include: '#value-background-color'
     - include: '#value-background-image-list-style-image-mask-image'
     - include: '#value-background-origin'
-    - include: '#value-background-position-mask-position'
+    - include: '#value-background-position-mask-position-object-position'
     - include: '#value-background-repeat-mask-repeat'
     - include: '#value-background-size-mask-size'
     - include: '#value-baseline-shift'
@@ -1629,7 +1629,7 @@ repository:
     - include: '#value-border-radius'
     - include: '#value-border-spacing'
     - include: '#value-border-style'
-    - include: '#value-border-width'
+    - include: '#value-border-width-outline-width'
     - include: '#value-box-decoration-break'
     - include: '#value-box-shadow'
     - include: '#value-box-sizing'
@@ -1732,11 +1732,20 @@ repository:
     - include: '#value-max-lines'
     - include: '#value-max-zoom-min-zoom'
     - include: '#value-nav-index'
+    - include: '#value-object-fit'
+    - include: '#value-outline-color'
+    - include: '#value-outline-offset'
+    - include: '#value-outline-style'
+    - include: '#value-overflow-style'
+    - include: '#value-overflow-wrap-word-wrap'
+    - include: '#value-overflow'
     # Single word rules are at the bottom to void mistakenly matching the end
     # of a rule above, e.g. matching #value-all instead of #value-text-align-all.
     # This doesn't guarantee that collisions won't happen, but it makes them
     # less likely
     - include: '#value-alignment'
+    - include: '#value-offset'
+    - include: '#value-opacity'
     - include: '#value-all'
     - include: '#value-animation'
     - include: '#value-background'
@@ -1756,6 +1765,9 @@ repository:
     - include: '#value-filter'
     - include: '#value-flex'
     - include: '#value-float'
+    - include: '#value-order'
+    - include: '#value-orientation'
+    - include: '#value-orphans-widows'
     - include: '#value-flow'
     - include: '#value-font'
     - include: '#value-grid'
@@ -1766,6 +1778,7 @@ repository:
     - include: '#value-marks'
     - include: '#value-mask'
     - include: '#value-nav'
+    - include: '#value-outline'
     - include: '#value-padding'
     - include: '#value-width'
     - include: '#value-bottom-left-right-top'
@@ -2124,8 +2137,8 @@ repository:
     - include: '#type-box'
     end: (?=[;)])
 
-  value-background-position-mask-position:
-    begin: (?<=background-position:|mask-position:)
+  value-background-position-mask-position-object-position:
+    begin: (?<=background-position:|mask-position:|object-position:)
     patterns:
     - include: '#comment-block'
     - include: '#type-important'
@@ -2477,8 +2490,8 @@ repository:
     - include: '#type-line-style'
     end: (?=[;)])
 
-  value-border-width:
-    begin: (?<=border-width:|border-bottom-width:|border-left-width:|border-right-width:|border-top-width:)
+  value-border-width-outline-width:
+    begin: (?<=border-width:|border-bottom-width:|border-left-width:|border-right-width:|border-top-width:|outline-width:)
     patterns:
     - include: '#comment-block'
     - include: '#type-important'
@@ -4357,9 +4370,197 @@ repository:
     - include: '#type-number-non-negative'
     end: (?=[;)])
 
+  value-object-fit:
+    begin: (?<=object-fit:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:scale-down|none|fill|cover|contain)\b
+    end: (?=[;)])
+
+  value-offset:
+    begin: (?<=offset-after:|offset-before:|offset-end:|offset-start:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bauto\b
+    - include: '#type-function-calc'
+    - include: '#type-percentage'
+    - include: '#type-length'
+    end: (?=[;)])
+
+  value-opacity:
+    begin: (?<=opacity:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: constant.numeric.css
+      match: '[01]?\.0+|0?\.\d*[1-9]\d*|[01]'
+    end: (?=[;)])
+
+  value-order:
+    begin: (?<=order:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-function-calc'
+    - include: '#type-integer'
+    end: (?=[;)])
+
+  value-orientation:
+    begin: (?<=orientation:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:portrait|landscape|auto)\b
+    end: (?=[;)])
+
+  value-orphans-widows:
+    begin: (?<=orphans:|widows:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-function-calc'
+    - include: '#type-integer-positive'
+    end: (?=[;)])
+
+  value-outline:
+    begin: (?<=outline:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:thin|thick|medium|invert)\b
+    - include: '#type-line-style'
+    - include: '#type-color-named'
+    - include: '#type-function-hsla'
+    - include: '#type-function-hsl'
+    - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
+    - include: '#type-function-calc'
+    - include: '#type-color-hex'
+    - include: '#type-length-non-negative'
+    end: (?=[;)])
+
+  value-outline-color:
+    begin: (?<=outline-color:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \binvert\b
+    - include: '#type-color-named'
+    - include: '#type-function-hsla'
+    - include: '#type-function-hsl'
+    - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
+    - include: '#type-color-hex'
+    end: (?=[;)])
+
+  value-outline-offset:
+    begin: (?<=outline-offset:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-function-calc'
+    - include: '#type-length'
+    end: (?=[;)])
+
+  value-outline-style:
+    begin: (?<=outline-style:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bauto\b
+    - include: '#type-line-style'
+    end: (?=[;)])
+
+  value-overflow:
+    begin: (?<=overflow:|overflow-x:|overflow-y:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:visible|scroll|paged-y-controls|paged-y|paged-x-controls|paged-x|hidden|fragments|auto)\b
+    end: (?=[;)])
+
+  # This property may be dropped in the near future.
+  value-overflow-style:
+    begin: (?<=overflow-style:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:marquee-line|marquee-block|auto)\b
+    end: (?=[;)])
+
+  value-overflow-wrap-word-wrap:
+    begin: (?<=overflow-wrap:|word-wrap:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:normal|break-word)\b
+    end: (?=[;)])
 
   value-padding:
-    begin: (?<=(?:padding-top:|padding-right:|padding-left:|padding-bottom:|padding:))
+    begin: (?<=padding-top:|padding-right:|padding-left:|padding-bottom:|padding:)
     patterns:
     - include: '#comment-block'
     - include: '#type-important'
