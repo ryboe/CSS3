@@ -512,7 +512,10 @@ value_for_name = {
     "-ms-wrap-flow": [("auto",), ("both",), ("clear",), ("end",), ("maximum",), ("minimum",), ("start",)],
     "-ms-wrap-through": [("none",), ("wrap",)],
     "-ms-writing-mode": [("horizontal-tb",), ("vertical-lr",), ("vertical-rl",)],
-    "-webkit-align-content": [("auto",), ("baseline",), ("center",), ("end",), ("flex-end",), ("flex-start",), ("last-baseline",), ("left",), ("right",), ("safe",), ("self-end",), ("self-start",), ("start",), ("true",)],
+    # FIXME: there are **two** align-content properties in the CSS spec, one in
+    # Flexible Box Layout Module Level 1 and one in Box Alignment Module Level 3.
+    # Only the flexbox property is supported here.
+    "-webkit-align-content": [("center",), ("flex-end",), ("flex-start",), ("space-around",), ("space-between",), ("stretch",)],
     "-webkit-align-items": [("auto",), ("baseline",), ("center",), ("end",), ("flex-end",), ("flex-start",), ("last-baseline",), ("left",), ("right",), ("safe",), ("self-end",), ("self-start",), ("start",), ("stretch",), ("true",)],
     "-webkit-align-self": [("auto",), ("baseline",), ("center",), ("end",), ("flex-end",), ("flex-start",), ("last-baseline",), ("left",), ("right",), ("self-end",), ("self-start",), ("start",), ("stretch",)],
     "-webkit-animation": [("alternate",), ("alternate-reverse",), ("backwards",), ("both",), ("forwards",), ("infinite",), ("none",), ("normal",), ("paused",), ("reverse",), ("running",), v.ident, v.number, v.time, v.calc],

@@ -95,7 +95,7 @@
 -webkit-transition-timing-function
 
 
-additive-symbols                 // TODO: write regex for this
+additive-symbols
 align-content
 align-items
 align-self
@@ -185,7 +185,7 @@ clip-rule
 color
 color-adjust
 color-correction
-color-interpolation             // TODO: write this
+color-interpolation
 color-interpolation-filters
 column-count
 column-fill
@@ -215,7 +215,7 @@ display-inside
 display-outside
 dominant-baseline
 empty-cells
-fallback                        // TODO: write this
+fallback
 filter
 flex
 flex-basis

@@ -768,6 +768,12 @@ repository:
       '1': {name: constant.numeric.css}
       '2': {name: keyword.other.unit.css}
 
+  type-flex-non-negative:
+    match: (\+?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?)(fr)\b
+    captures:
+      '1': {name: constant.numeric.css}
+      '2': {name: keyword.other.unit.css}
+
   type-function-attr:
     begin: \b(attr)(\()
     beginCaptures:
@@ -1158,6 +1164,24 @@ repository:
     endCaptures:
       '0': {name: punctuation.section.function.css}
 
+  type-function-minmax:
+    begin: \b(minmax)(\()
+    beginCaptures:
+      '1': {name: support.function.minmax.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.minmax.css
+    patterns:
+    - include: '#comment-block'
+    - name: support.constant.property-value.css
+      match: \b(?:min-content|max-content)\b
+    - include: '#type-function-calc'
+    - include: '#type-percentage'
+    - include: '#type-flex-non-negative'
+    - include: '#type-length'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
   type-function-polygon:
     begin: \b(polygon)(\()
     beginCaptures:
@@ -1192,6 +1216,27 @@ repository:
     - include: '#type-percentage'
     - include: '#type-length'
     - include: '#type-color-hex'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
+  type-function-repeat:
+    begin: \b(repeat)(\()
+    beginCaptures:
+      '1': {name: support.function.repeat.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.repeat.css
+    patterns:
+    - include: '#comment-block'
+    - name: support.constant.property-value.css
+      match: \b(?:min-content|max-content|auto)\b
+    - include: '#type-function-minmax'
+    - include: '#type-function-calc'
+    - include: '#type-percentage-non-negative'
+    - include: '#type-flex-non-negative'
+    - include: '#type-length-non-negative'
+    - include: '#type-integer-non-negative'
+    - include: '#type-line-name'
     end: \)
     endCaptures:
       '0': {name: punctuation.section.function.css}
@@ -1435,6 +1480,17 @@ repository:
       '2': {name: keyword.other.unit.css}
       '3': {name: constant.numeric.css}
 
+  type-line-name:
+    begin: \(
+    beginCaptures:
+      '0': {name: punctuation.section.line-name.css}
+    patterns:
+    - include: '#comment-block'
+    - include: '#identifier'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.line-name.css}
+
   type-line-style:
     name: support.constant.property-value.css
     match: \b(?:solid|ridge|outset|none|inset|hidden|groove|double|dotted|dashed)\b
@@ -1527,6 +1583,7 @@ repository:
       '0': {name: punctuation.separator.key-value.css}
     patterns:
     - include: '#comment-block'
+    - include: '#value-additive-symbols'
     - include: '#value-align-content-justify-content'
     - include: '#value-align-items-align-self-justify-self'
     - include: '#value-alignment'
@@ -1600,6 +1657,8 @@ repository:
     - include: '#value-column-rule-width'
     - include: '#value-column-span'
     - include: '#value-column-width'
+    - include: '#value-grid-auto-columns-grid-auto-rows'
+    - include: '#value-grid-template-columns-grid-template-rows'
     - include: '#value-columns'
     - include: '#value-content'
     - include: '#value-corner-shape'
@@ -1616,6 +1675,7 @@ repository:
     - include: '#value-display-outside'
     - include: '#value-dominant-baseline'
     - include: '#value-empty-cells'
+    - include: '#value-fallback'
     - include: '#value-filter'
     - include: '#value-flex-basis'
     - include: '#value-flex-flow'
@@ -1649,12 +1709,45 @@ repository:
     - include: '#value-font-variant-position'
     - include: '#value-font-variant'
     - include: '#value-font-weight'
+    - include: '#value-grid'
+    - include: '#value-grid-area-grid-row-grid-column'
+    - include: '#value-grid-auto-flow'
+    - include: '#value-grid-template'
+    - include: '#value-grid-template-areas'
     - include: '#value-justify-items'
     - include: '#value-padding'
     end: (?:;|(?=\)))
     endCaptures:
       '0': {name: punctuation.terminator.rule.css}
 
+  value-additive-symbols:
+    begin: (?<=additive-symbols:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-function-cross-fade'
+    - include: '#type-function-element'
+    - include: '#type-function-filter'
+    - include: '#type-function-image'
+    - include: '#type-function-image-set'
+    - include: '#type-function-conic-gradient'
+    - include: '#type-function-linear-gradient'
+    - include: '#type-function-radial-gradient'
+    - include: '#type-function-url'
+    - include: '#type-function-calc'
+    - include: '#type-integer'
+    - include: '#type-string-double'
+    - include: '#type-string-single'
+    - include: '#identifier'
+    end: (?=[;)])
+
+  # FIXME: there are **two** align-content properties in the CSS spec, one in
+  # Flexible Box Layout Module Level 1 and one in Box Alignment Module Level 3.
+  # Only the flexbox property is supported here.
   value-align-content-justify-content:
     begin: (?<=align-content:|justify-content:)
     patterns:
@@ -2602,7 +2695,7 @@ repository:
     end: (?=[;)])
 
   value-color-interpolation-filters:
-    begin: (?<=color-interpolation-filters:)
+    begin: (?<=color-interpolation-filters:|color-interpolation:)
     patterns:
     - include: '#comment-block'
     - include: '#type-important'
@@ -2973,6 +3066,19 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:show|hide)\b
+    end: (?=[;)])
+
+  value-fallback:
+    begin: (?<=fallback:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-counter-style-predefined'
+    - include: '#identifier'
     end: (?=[;)])
 
   value-filter:
@@ -3477,6 +3583,132 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:normal|lighter|bolder|bold|900|800|700|600|500|400|300|200|100)\b
+    end: (?=[;)])
+
+  value-grid:
+    begin: (?<=grid:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:subgrid|stack|row|none|min-content|max-content|dense|column|auto)\b
+    - include: '#type-function-minmax'
+    - include: '#type-function-repeat'
+    - include: '#type-function-calc'
+    - include: '#type-percentage-non-negative'
+    - include: '#type-flex-non-negative'
+    - include: '#type-length-non-negative'
+    - include: '#type-string-double'
+    - include: '#type-string-single'
+    - include: '#type-line-name'
+    end: (?=[;)])
+
+  value-grid-area-grid-row-grid-column:
+    begin: (?<=grid-area:|grid-column-end:|grid-column-start:|grid-column:|grid-row-end:|grid-row-start:|grid-row:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:span|auto)\b
+    - include: '#type-function-calc'
+    - include: '#type-integer'
+    - include: '#identifier'
+    end: (?=[;)])
+
+  value-grid-auto-columns-grid-auto-rows:
+    begin: (?<=grid-auto-columns:|grid-auto-rows:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:min-content|max-content|auto)\b
+    - include: '#type-function-minmax'
+    - include: '#type-function-calc'
+    - include: '#type-percentage-non-negative'
+    - include: '#type-flex-non-negative'
+    - include: '#type-length-non-negative'
+    end: (?=[;)])
+
+  value-grid-auto-flow:
+    begin: (?<=grid-auto-flow:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:stack|row|dense|column)\b
+    end: (?=[;)])
+
+  value-grid-template:
+    begin: (?<=grid-template:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:subgrid|none|min-content|max-content|auto)\b
+    - include: '#type-function-minmax'
+    - include: '#type-function-repeat'
+    - include: '#type-function-calc'
+    - include: '#type-percentage-non-negative'
+    - include: '#type-flex-non-negative'
+    - include: '#type-length-non-negative'
+    - include: '#type-string-double'
+    - include: '#type-string-single'
+    - include: '#type-line-name'
+    end: (?=[;)])
+
+  value-grid-template-areas:
+    begin: (?<=grid-template-areas:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bnone\b
+    - include: '#type-string-double'
+    - include: '#type-string-single'
+    end: (?=[;)])
+
+  value-grid-template-columns-grid-template-rows:
+    begin: (?<=grid-template-columns:|grid-template-rows:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:subgrid|none|min-content|max-content|auto)\b
+    - include: '#type-function-minmax'
+    - include: '#type-function-calc'
+    - include: '#type-function-repeat'
+    - include: '#type-percentage-non-negative'
+    - include: '#type-flex-non-negative'
+    - include: '#type-length-non-negative'
+    - include: '#type-line-name'
     end: (?=[;)])
 
   value-justify-items:
