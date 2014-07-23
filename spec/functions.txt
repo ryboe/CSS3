@@ -182,6 +182,7 @@ target-counters(<url> , <custom-ident> , <string> [ , <counter-style> ]?)  // co
 target-text(<url> [ , [ content | before | after | first-letter] ]?)    // content:
 leader([dotted | solid | space] | <string>)                             // content:
 
+// TODO: write these
 hwb(<hue>, <percentage>, <percentage> [, <alpha-value> ]?)              // <color>
 gray()                                                                  // <color>
 device-cmyk()                                                           // <color>

@@ -3627,6 +3627,7 @@ repository:
 
 
 # TODO
+#   add completions through C properties
 #   finish highlighting rules
 #       left off highlight at grid:
 #   completions through F
@@ -3644,6 +3645,7 @@ repository:
 #   @document
 #   can selectors start with an uppercase letter?
 #   custom elements (the <ident> portion matches everything)
+#   ridiculous new color functions (see bottom of /spec/functions.txt)
 
 # FINAL CHECK
 #   all #value rules have valall
