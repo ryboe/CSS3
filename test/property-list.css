@@ -2554,14 +2554,6 @@ div {
     image-resolution: 300dpi snap;
     image-resolution: snap from-image;
 
-    image-rendering: initial;
-    image-rendering: inherit;
-    image-rendering: unset;
-    image-rendering: auto;
-    image-rendering: crisp-edges;
-    image-rendering: pixelated;
-    image-rendering: -moz-crisp-edges;
-
     ime-mode: initial;
     ime-mode: inherit;
     ime-mode: unset;

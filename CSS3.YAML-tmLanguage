@@ -731,10 +731,11 @@ repository:
     match: odd|even|[+-](?:[0-9]+n|n)(?:\s*[+-]\s*[0-9]+)?|[0-9]*n(?:\s*[+-]\s*[0-9]+)?|[+-]?[0-9]+
 
   type-angle:
-    match: ([+-]?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?)(turn|rad|grad|deg)\b
+    match: (?:([+-]?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?)(turn|rad|grad|deg)\b|\b(0)\b)
     captures:
       '1': {name: constant.numeric.css}
       '2': {name: keyword.other.unit.css}
+      '3': {name: constant.numeric.css}
 
   type-attachment:
     name: support.constant.property-value.css
@@ -1714,6 +1715,16 @@ repository:
     - include: '#value-grid-auto-flow'
     - include: '#value-grid-template'
     - include: '#value-grid-template-areas'
+    - include: '#value-hanging-punctuation'
+    - include: '#value-height'
+    - include: '#value-hyphens'
+    - include: '#value-icon'
+    - include: '#value-image-orientation'
+    - include: '#value-image-resolution'
+    - include: '#value-ime-mode'
+    - include: '#value-indent-edge-reset'
+    - include: '#value-initial-letters'
+    - include: '#value-inline-box-align'
     - include: '#value-justify-items'
     - include: '#value-padding'
     end: (?:;|(?=\)))
@@ -3709,6 +3720,142 @@ repository:
     - include: '#type-flex-non-negative'
     - include: '#type-length-non-negative'
     - include: '#type-line-name'
+    end: (?=[;)])
+
+  value-hanging-punctuation:
+    begin: (?<=hanging-punctuation:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:none|last|force-end|first|allow-end)\b
+    end: (?=[;)])
+
+  value-height:
+    begin: (?<=height:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:min-content|max-content|fit-content|content-box|complex|border-box|available|auto)\b
+    - include: '#type-function-calc'
+    - include: '#type-percentage-non-negative'
+    - include: '#type-length-non-negative'
+    end: (?=[;)])
+
+  value-hyphens:
+    begin: (?<=hyphens:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:none|manual|auto)\b
+    end: (?=[;)])
+
+  value-icon:
+    begin: (?<=icon:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bauto\b
+    - include: '#type-function-url'
+    end: (?=[;)])
+
+  value-image-orientation:
+    begin: (?<=image-orientation:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-function-calc'
+    - include: '#type-angle'
+    end: (?=[;)])
+
+  value-image-resolution:
+    begin: (?<=image-resolution:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:snap|from-image)\b
+    - include: '#type-resolution'
+    end: (?=[;)])
+
+  value-ime-mode:
+    begin: (?<=ime-mode:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:normal|inherit|inactive|disabled|auto|active)\b
+    end: (?=[;)])
+
+  value-indent-edge-reset:
+    begin: (?<=indent-edge-reset:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:padding-edge|none|margin-edge|content-edge|border-edge)\b
+    end: (?=[;)])
+
+  value-initial-letters:
+    begin: (?<=initial-letters:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-function-calc'
+    - include: '#type-integer-positive'
+    end: (?=[;)])
+
+  value-inline-box-align:
+    begin: (?<=inline-box-align:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \blast\b
+    - include: '#type-integer'
     end: (?=[;)])
 
   value-justify-items:
