@@ -310,7 +310,7 @@ marquee-direction
 marquee-play-count
 marquee-speed
 marquee-style
-mask                 // TODO: WRITE THIS
+mask
 mask-border
 mask-border-outset
 mask-border-repeat
@@ -339,6 +339,7 @@ nav-index
 nav-left
 nav-right
 nav-up
+negative
 object-fit
 object-position
 offset-after
@@ -375,6 +376,7 @@ perspective-origin
 pointer-events
 position
 prefix
+quotes
 range
 region-fragment
 resize

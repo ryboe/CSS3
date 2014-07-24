@@ -2334,6 +2334,20 @@ div {
     font-weight: lighter;
     font-weight: normal;
 
+    footnote-display: inherit;
+    footnote-display: initial;
+    footnote-display: unset;
+    footnote-display: inline;
+    footnote-display: compact;
+    footnote-display: block;
+
+    footnote-policy: inherit;
+    footnote-policy: initial;
+    footnote-policy: unset;
+    footnote-policy: line;
+    footnote-policy: block;
+    footnote-policy: auto;
+
     grid: initial;
     grid: inherit;
     grid: unset;
@@ -2523,6 +2537,7 @@ div {
     height: 100em;
     height: 100%;
     height: 0;
+    height: extend-to-zoom;
 
     hyphens: initial;
     hyphens: inherit;
@@ -4531,6 +4546,7 @@ div {
     width: 0;
     width: 0%;
     width: 123%;
+    width: extend-to-zoom;
 
     widows: initial;
     widows: inherit;
@@ -4612,4 +4628,11 @@ div {
     z-index: 0  ;      /* <integer> value */
     z-index: 3 ;
     z-index: 289 ;
+
+    zoom: inherit;
+    zoom: initial;
+    zoom: unset;
+    zoom: 0.5;
+    zoom: 1.0;
+    zoom: 2.0;
 }

@@ -1098,7 +1098,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>punctation.section.supports-condition.css</string>
+					<string>punctuation.section.supports-condition.css</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -1144,7 +1144,7 @@
 		<key>selector</key>
 		<dict>
 			<key>begin</key>
-			<string>(?=[@\d:.#*\p{Ll}\[-])</string>
+			<string>(?=[@\d:.#*\p{L}\[-])</string>
 			<key>end</key>
 			<string>(?={)</string>
 			<key>name</key>
@@ -1214,6 +1214,10 @@
 				<dict>
 					<key>include</key>
 					<string>#selector-pseudo-class-function-an-plus-b</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-pseudo-class-function-logic</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -1728,60 +1732,10 @@
 				</dict>
 			</array>
 		</dict>
-		<key>selector-pseudo-class-function-nth</key>
+		<key>selector-pseudo-class-function-logic</key>
 		<dict>
 			<key>begin</key>
-			<string>((:)nth)(\()</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>entity.other.attribute-name.pseudo-class.css</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.entity.css</string>
-				</dict>
-				<key>3</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.section.function.css</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>\)</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.section.function.css</string>
-				</dict>
-			</dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#comment-block</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\bof\b</string>
-					<key>name</key>
-					<string>support.constant.property-value.css</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#identifier</string>
-				</dict>
-			</array>
-		</dict>
-		<key>selector-pseudo-class-function-selector-list</key>
-		<dict>
-			<key>begin</key>
-			<string>((:)(?:nth-last-child|nth-child|not|matches|has))(\()</string>
+			<string>((:)(?:not|matches|has))(\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1875,6 +1829,218 @@
 				<dict>
 					<key>include</key>
 					<string>#selector-pseudo-class-function-an-plus-b</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-pseudo-class-function-logic</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-pseudo-class-function-nth</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-pseudo-class-function-selector-list</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-pseudo-class</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-element</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-id</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-class</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-keyframes</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-attribute</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-combinator</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-page-margin</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-at-keyword</string>
+				</dict>
+			</array>
+		</dict>
+		<key>selector-pseudo-class-function-nth</key>
+		<dict>
+			<key>begin</key>
+			<string>((:)nth)(\()</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.other.attribute-name.pseudo-class.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.entity.css</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\bof\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#identifier</string>
+				</dict>
+			</array>
+		</dict>
+		<key>selector-pseudo-class-function-selector-list</key>
+		<dict>
+			<key>begin</key>
+			<string>((:)(?:nth-last-child|nth-child))(\()</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.other.attribute-name.pseudo-class.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.entity.css</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\bof\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-an-plus-b</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-pseudo-element-webkit</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-pseudo-element-moz</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-pseudo-element</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-element-deprecated</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-pseudo-class-deprecated</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-pseudo-class-function-dir</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-pseudo-class-function-lang</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-pseudo-class-function-locale-dir</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-pseudo-class-function-system-metric</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-pseudo-class-function-tree</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-pseudo-class-moz</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-pseudo-class-ms</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-pseudo-class-webkit</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-pseudo-class-function-drop</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-pseudo-class-function-an-plus-b</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-pseudo-class-function-logic</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -4313,7 +4479,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>support.function.rotate.css</string>
+					<string>support.function.rotate3d.css</string>
 				</dict>
 				<key>2</key>
 				<dict>
@@ -4322,7 +4488,7 @@
 				</dict>
 			</dict>
 			<key>contentName</key>
-			<string>meta.function.rotate.css</string>
+			<string>meta.function.rotate3d.css</string>
 			<key>end</key>
 			<string>\)</string>
 			<key>endCaptures</key>
@@ -5740,7 +5906,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-float-defer-column-defer-page</string>
+					<string>#value-float-defer-column-float-defer-page</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -5837,6 +6003,14 @@
 				<dict>
 					<key>include</key>
 					<string>#value-font-weight</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-footnote-display</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-footnote-policy</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -6373,6 +6547,10 @@
 				<dict>
 					<key>include</key>
 					<string>#value-nav</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-negative</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -11274,7 +11452,7 @@
 				</dict>
 			</array>
 		</dict>
-		<key>value-float-defer-column-defer-page</key>
+		<key>value-float-defer-column-float-defer-page</key>
 		<dict>
 			<key>begin</key>
 			<string>(?&lt;=float-defer-column:|float-defer-page:)</string>
@@ -12496,6 +12674,86 @@
 				</dict>
 			</array>
 		</dict>
+		<key>value-footnote-display</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=footnote-display:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:inline|compact|block)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-footnote-policy</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=footnote-policy:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:line|block|auto)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</array>
+		</dict>
 		<key>value-grid</key>
 		<dict>
 			<key>begin</key>
@@ -12990,7 +13248,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:none|min-content|max-content|fit-content|content-box|complex|border-box|available|auto)\b</string>
+					<string>\b(?:none|min-content|max-content|fit-content|extend-to-zoom|content-box|complex|border-box|available|auto)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>
@@ -14777,6 +15035,88 @@
 				<dict>
 					<key>include</key>
 					<string>#type-number-non-negative</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-negative</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=negative:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-cross-fade</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-element</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-filter</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-image</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-image-set</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-conic-gradient</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-linear-gradient</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-radial-gradient</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-url</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-string-double</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-string-single</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#identifier</string>
 				</dict>
 			</array>
 		</dict>
@@ -16959,7 +17299,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>punctation.section.supports-condition.css</string>
+					<string>punctuation.section.supports-condition.css</string>
 				</dict>
 			</dict>
 			<key>name</key>
@@ -17276,7 +17616,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-float-defer-column-defer-page</string>
+					<string>#value-float-defer-column-float-defer-page</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -17373,6 +17713,14 @@
 				<dict>
 					<key>include</key>
 					<string>#value-font-weight</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-footnote-display</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-footnote-policy</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -17912,6 +18260,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-negative</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-offset</string>
 				</dict>
 				<dict>
@@ -17965,6 +18317,10 @@
 				<dict>
 					<key>include</key>
 					<string>#value-prefix</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-quotes</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -20171,7 +20527,7 @@
 		<key>value-width</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;=width:)</string>
+			<string>(?&lt;=width:|max-width:|min-width:)</string>
 			<key>end</key>
 			<string>(?=[;)])</string>
 			<key>patterns</key>
@@ -20202,7 +20558,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:min-content|max-content|fit-content|content-box|border-box|available|auto)\b</string>
+					<string>\b(?:min-content|max-content|fit-content|extend-to-zoom|content-box|border-box|available|auto)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>
@@ -20568,11 +20924,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-percentage-non-negative</string>
+					<string>#type-percentage-positive</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-length-non-negative</string>
+					<string>#type-number</string>
 				</dict>
 			</array>
 		</dict>

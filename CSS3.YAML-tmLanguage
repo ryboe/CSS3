@@ -385,7 +385,7 @@ repository:
     name: meta.supports-condition-property-name.css
     begin: \(
     beginCaptures:
-      '0': {name: punctation.section.supports-condition.css}
+      '0': {name: punctuation.section.supports-condition.css}
     patterns:
     - include: '#comment-block'
     - include: '#property-name-illegal'
@@ -405,7 +405,7 @@ repository:
     # (!ol li vs ol! li). The exclamation mark may have to be added later.
 
     name: meta.selector.css
-    begin: (?=[@\d:.#*\p{Ll}\[-])
+    begin: (?=[@\d:.#*\p{L}\[-])
     patterns:
     - include: '#comment-block'
     - include: '#selector-pseudo-element-webkit'
@@ -423,6 +423,7 @@ repository:
     - include: '#selector-pseudo-class-webkit'
     - include: '#selector-pseudo-class-function-drop'
     - include: '#selector-pseudo-class-function-an-plus-b'
+    - include: '#selector-pseudo-class-function-logic'
     - include: '#selector-pseudo-class-function-nth'
     - include: '#selector-pseudo-class-function-selector-list'
     - include: '#selector-pseudo-class'
@@ -595,24 +596,9 @@ repository:
     endCaptures:
       '0': {name: punctuation.section.function.css}
 
-  selector-pseudo-class-function-nth:
-    begin: ((:)nth)(\()
-    beginCaptures:
-      '1': {name: entity.other.attribute-name.pseudo-class.css}
-      '2': {name: punctuation.definition.entity.css}
-      '3': {name: punctuation.section.function.css}
-    patterns:
-    - include: '#comment-block'
-    - name: support.constant.property-value.css
-      match: \bof\b
-    - include: '#identifier'
-    end: \)
-    endCaptures:
-      '0': {name: punctuation.section.function.css}
-
   # These pseudo-classes take selector lists as parameters.
-  selector-pseudo-class-function-selector-list:
-    begin: ((:)(?:nth-last-child|nth-child|not|matches|has))(\()
+  selector-pseudo-class-function-logic:
+    begin: ((:)(?:not|matches|has))(\()
     beginCaptures:
       '1': {name: entity.other.attribute-name.pseudo-class.css}
       '2': {name: punctuation.definition.entity.css}
@@ -634,6 +620,68 @@ repository:
     - include: '#selector-pseudo-class-webkit'
     - include: '#selector-pseudo-class-function-drop'
     - include: '#selector-pseudo-class-function-an-plus-b'
+    - include: '#selector-pseudo-class-function-logic'
+    - include: '#selector-pseudo-class-function-nth'
+    - include: '#selector-pseudo-class-function-selector-list'
+    - include: '#selector-pseudo-class'
+    - include: '#selector-element'
+    - include: '#selector-id'
+    - include: '#selector-class'
+    - include: '#selector-keyframes'
+    - include: '#selector-attribute'
+    - include: '#selector-combinator'
+    - include: '#selector-page-margin'
+    # The at-keyword selector matches keyframe animation types like @swash
+    - include: '#selector-at-keyword'
+    # TODO: enable this. right now it's matching **everything** because of the <ident>
+    # - include: '#selector-custom-element'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
+  selector-pseudo-class-function-nth:
+    begin: ((:)nth)(\()
+    beginCaptures:
+      '1': {name: entity.other.attribute-name.pseudo-class.css}
+      '2': {name: punctuation.definition.entity.css}
+      '3': {name: punctuation.section.function.css}
+    patterns:
+    - include: '#comment-block'
+    - name: support.constant.property-value.css
+      match: \bof\b
+    - include: '#identifier'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
+  # These pseudo-classes take An+B values and selector lists as parameters.
+  selector-pseudo-class-function-selector-list:
+    begin: ((:)(?:nth-last-child|nth-child))(\()
+    beginCaptures:
+      '1': {name: entity.other.attribute-name.pseudo-class.css}
+      '2': {name: punctuation.definition.entity.css}
+      '3': {name: punctuation.section.function.css}
+    patterns:
+    - include: '#comment-block'
+    - name: support.constant.property-value.css
+      match: \bof\b
+    - include: '#type-an-plus-b'
+    - include: '#selector-pseudo-element-webkit'
+    - include: '#selector-pseudo-element-moz'
+    - include: '#selector-pseudo-element'
+    - include: '#selector-element-deprecated'
+    - include: '#selector-pseudo-class-deprecated'
+    - include: '#selector-pseudo-class-function-dir'
+    - include: '#selector-pseudo-class-function-lang'
+    - include: '#selector-pseudo-class-function-locale-dir'
+    - include: '#selector-pseudo-class-function-system-metric'
+    - include: '#selector-pseudo-class-function-tree'
+    - include: '#selector-pseudo-class-moz'
+    - include: '#selector-pseudo-class-ms'
+    - include: '#selector-pseudo-class-webkit'
+    - include: '#selector-pseudo-class-function-drop'
+    - include: '#selector-pseudo-class-function-an-plus-b'
+    - include: '#selector-pseudo-class-function-logic'
     - include: '#selector-pseudo-class-function-nth'
     - include: '#selector-pseudo-class-function-selector-list'
     - include: '#selector-pseudo-class'
@@ -1399,9 +1447,9 @@ repository:
   type-function-rotate3d:
     begin: \b(rotate3d)(\()
     beginCaptures:
-      '1': {name: support.function.rotate.css}
+      '1': {name: support.function.rotate3d.css}
       '2': {name: punctuation.section.function.css}
-    contentName: meta.function.rotate.css
+    contentName: meta.function.rotate3d.css
     patterns:
     - include: '#comment-block'
     - include: '#type-function-calc'
@@ -1776,7 +1824,6 @@ repository:
     beginCaptures:
       '0': {name: punctuation.separator.key-value.css}
     patterns:
-
     - include: '#comment-block'
     - include: '#value-additive-symbols'
     - include: '#value-align-content-justify-content'
@@ -1854,7 +1901,7 @@ repository:
     - include: '#value-flex-flow'
     - include: '#value-flex-grow-flex-shrink'
     - include: '#value-flex-wrap'
-    - include: '#value-float-defer-column-defer-page'
+    - include: '#value-float-defer-column-float-defer-page'
     - include: '#value-float-displace'
     - include: '#value-float-offset'
     - include: '#value-float-wrap'
@@ -1879,6 +1926,8 @@ repository:
     - include: '#value-font-variant-numeric'
     - include: '#value-font-variant-position'
     - include: '#value-font-weight'
+    - include: '#value-footnote-display'
+    - include: '#value-footnote-policy'
     - include: '#value-grid-area-grid-row-grid-column'
     - include: '#value-grid-auto-columns-grid-auto-rows'
     - include: '#value-grid-auto-flow'
@@ -2051,7 +2100,6 @@ repository:
     - include: '#value-width'
     - include: '#value-zoom'
     - include: '#value-bottom-left-right-top'
-
     end: (?:;|(?=\)))
     endCaptures:
       '0': {name: punctuation.terminator.rule.css}
@@ -3541,7 +3589,7 @@ repository:
       match: \b(?:top|start|snap|right|outside|none|left|inside|end|contour|bottom)\b
     end: (?=[;)])
 
-  value-float-defer-column-defer-page:
+  value-float-defer-column-float-defer-page:
     begin: (?<=float-defer-column:|float-defer-page:)
     patterns:
     - include: '#comment-block'
@@ -3929,6 +3977,32 @@ repository:
       match: \b(?:normal|lighter|bolder|bold|900|800|700|600|500|400|300|200|100)\b
     end: (?=[;)])
 
+  value-footnote-display:
+    begin: (?<=footnote-display:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:inline|compact|block)\b
+    end: (?=[;)])
+
+  value-footnote-policy:
+    begin: (?<=footnote-policy:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:line|block|auto)\b
+    end: (?=[;)])
+
   value-grid:
     begin: (?<=grid:)
     patterns:
@@ -4078,9 +4152,11 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     # none is technically a value of max-height, not min-height, but it's not
-    # worth writing a separate rule
+    # worth writing a separate rule. Also, the extend-to-zoom attribute is only
+    # for when width: is used as a @viewport descriptor, but is included here
+    # for completeness. Do not use extend-to-zoom outside of an @viewport rule.
     - name: support.constant.property-value.css
-      match: \b(?:none|min-content|max-content|fit-content|content-box|complex|border-box|available|auto)\b
+      match: \b(?:none|min-content|max-content|fit-content|extend-to-zoom|content-box|complex|border-box|available|auto)\b
     - include: '#type-function-calc'
     - include: '#type-percentage-non-negative'
     - include: '#type-length-non-negative'
@@ -5345,7 +5421,6 @@ repository:
     beginCaptures:
       '0': {name: punctuation.separator.key-value.css}
     patterns:
-    # TODO: make sure this list matches #value
     - include: '#comment-block'
     - include: '#value-additive-symbols'
     - include: '#value-align-content-justify-content'
@@ -5423,7 +5498,7 @@ repository:
     - include: '#value-flex-flow'
     - include: '#value-flex-grow-flex-shrink'
     - include: '#value-flex-wrap'
-    - include: '#value-float-defer-column-defer-page'
+    - include: '#value-float-defer-column-float-defer-page'
     - include: '#value-float-displace'
     - include: '#value-float-offset'
     - include: '#value-float-wrap'
@@ -5448,6 +5523,8 @@ repository:
     - include: '#value-font-variant-numeric'
     - include: '#value-font-variant-position'
     - include: '#value-font-weight'
+    - include: '#value-footnote-display'
+    - include: '#value-footnote-policy'
     - include: '#value-grid-area-grid-row-grid-column'
     - include: '#value-grid-auto-columns-grid-auto-rows'
     - include: '#value-grid-auto-flow'
@@ -5586,6 +5663,7 @@ repository:
     - include: '#value-marks'
     - include: '#value-mask'
     - include: '#value-nav'
+    - include: '#value-negative'
     - include: '#value-offset'
     - include: '#value-opacity'
     - include: '#value-order'
@@ -5600,6 +5678,7 @@ repository:
     - include: '#value-perspective'
     - include: '#value-position'
     - include: '#value-prefix'
+    - include: '#value-quotes'
     - include: '#value-range'
     - include: '#value-resize'
     - include: '#value-resolution'
@@ -5618,10 +5697,9 @@ repository:
     - include: '#value-width'
     - include: '#value-zoom'
     - include: '#value-bottom-left-right-top'
-
     end: \)
     endCaptures:
-      '0': {name: punctation.section.supports-condition.css}
+      '0': {name: punctuation.section.supports-condition.css}
 
   value-symbols:
     begin: (?<=symbols:)
@@ -6284,7 +6362,7 @@ repository:
     end: (?=[;)])
 
   value-width:
-    begin: (?<=width:)
+    begin: (?<=width:|max-width:|min-width:)
     patterns:
     - include: '#comment-block'
     - include: '#type-important'
@@ -6292,8 +6370,11 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
+    # The extend-to-zoom attribute is only for when width: is used as a @viewport
+    # descriptor, but is included here for completeness. Do not use extend-to-zoom
+    # outside of an @viewport rule.
     - name: support.constant.property-value.css
-      match: \b(?:min-content|max-content|fit-content|content-box|border-box|available|auto)\b
+      match: \b(?:min-content|max-content|fit-content|extend-to-zoom|content-box|border-box|available|auto)\b
     - include: '#type-function-calc'
     - include: '#type-percentage-non-negative'
     - include: '#type-length-non-negative'
@@ -6408,19 +6489,16 @@ repository:
     - name: support.constant.property-value.css
       match: \bauto\b
     - include: '#type-function-calc'
-    - include: '#type-percentage-non-negative'
-    - include: '#type-length-non-negative'
+    - include: '#type-percentage-positive'
+    - include: '#type-number'
     end: (?=[;)])
 
 # TODO
-#   finish completions
 #   @font-feature-values <ident>: properties, aka feature value definitions, e.g. leo-B: 2 1;
 #   add -webkit-, -moz-, -ms- prefixes to at-rules that need them
 #       mask properties need -webkit- prefix
 #   add -webkit-, -moz-, -ms- values
-#   delete property_values.txt? you haven't been filling in the values.
-#      it's better to read them from the web because it's up to date
-#      plus, it's not up to date with property_list.txt
+#   add more -webkit- pseudo-classes
 
 # LOW PRIORITY
 #   match parameters of calc(), var(), and attr()
@@ -6430,20 +6508,12 @@ repository:
 #   ridiculous new color functions (see bottom of /spec/functions.txt)
 
 # FINAL CHECK
-#   search for names that don't end in .css
-#   separate and sort the single and multi-word values in #value
-#   scan for unknown includes in the console when the highlighter is loaded
+#   all #value rules have valall
 #   check that all val rules are in #value
 #       write a python script to compare regex searches for `value-.*:` to the `#value-.*`
 #       rules in #value
 #   compare all properties in property-list.css with property_list.txt
 #       make sure you didn't forget to test any of the properties in property_list.txt
-#   sync up the two value lists (#value and #value-supports-condition)
-#   all #value rules have valall
 #   #type-function-calc is included in all rules that take an <integer>, <frequency>, <time>, etc.
-#   search for misspellings of punctuation, etc.
-#   check functions and add meta rules where missing
-#   search through all the NOTE, DEBUG, FIXME, TODO
-#   copy entire #selector list into #selector-pseudo-class-function-selector-list
-#   check for unused rule in startup messages
+#   scan for unknown includes in the console when the highlighter is loaded
 ...

@@ -182,6 +182,13 @@ target-counters(<url> , <custom-ident> , <string> [ , <counter-style> ]?)  // co
 target-text(<url> [ , [ content | before | after | first-letter] ]?)    // content:
 leader([dotted | solid | space] | <string>)                             // content:
 
+reddish(<percentage>)                                                   // <color>
+orangish(<percentage>)                                                  // <color>
+yellowish(<percentage>)                                                 // <color>
+greenish(<percentage>)                                                  // <color>
+blueish(<percentage>)                                                   // <color>
+purplish(<percentage>)                                                  // <color>
+
 // TODO: write these
 hwb(<hue>, <percentage>, <percentage> [, <alpha-value> ]?)              // <color>
 gray()                                                                  // <color>
@@ -206,9 +213,3 @@ green()                                                                 // <colo
 blue()                                                                  // <color>
 alpha()                                                                 // <color>
 a()                                                                     // <color>
-reddish(<percentage>)                                                   // <color>
-orangish(<percentage>)                                                  // <color>
-yellowish(<percentage>)                                                 // <color>
-greenish(<percentage>)                                                  // <color>
-blueish(<percentage>)                                                   // <color>
-purplish(<percentage>)                                                  // <color>
