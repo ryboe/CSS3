@@ -3464,12 +3464,6 @@ div {
     position: static;
     position: sticky;
 
-    quotes: initial;
-    quotes: inherit;
-    quotes: unset;
-    quotes: '"' '"' "'" "'";
-    quotes: "«" "»" '"' '"';
-
     region-fragment: initial;
     region-fragment: inherit;
     region-fragment: unset;
@@ -3563,6 +3557,11 @@ div {
     ruby-position: unset;
     ruby-position: over right;
     ruby-position: left inter-character;
+
+    running: inherit;
+    running: initial;
+    running: unset;
+    running: hello;
 
     shape-image-threshold: initial;
     shape-image-threshold: inherit;

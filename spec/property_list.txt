@@ -375,7 +375,6 @@ perspective-origin
 pointer-events
 position
 prefix
-quotes
 range
 region-fragment
 resize

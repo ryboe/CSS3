@@ -1742,6 +1742,11 @@ repository:
     - include: '#value-page-policy'
     - include: '#value-perspective-origin'
     - include: '#value-pointer-events'
+    - include: '#value-region-fragment'
+    - include: '#value-rotation-point'
+    - include: '#value-ruby-align'
+    - include: '#value-ruby-merge'
+    - include: '#value-ruby-position'
 
     # Single word rules are at the bottom to void mistakenly matching the end
     # of a rule above, e.g. matching #value-all instead of #value-text-align-all.
@@ -1791,6 +1796,12 @@ repository:
     - include: '#value-perspective'
     - include: '#value-position'
     - include: '#value-prefix'
+    - include: '#value-range'
+    - include: '#value-resize'
+    - include: '#value-resolution'
+    - include: '#value-rest'
+    - include: '#value-rotation'
+    - include: '#value-running'
     - include: '#value-width'
     - include: '#value-bottom-left-right-top'
     end: (?:;|(?=\)))
@@ -4733,6 +4744,155 @@ repository:
     - include: '#identifier'
     end: (?=[;)])
 
+  value-range:
+    begin: (?<=range:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:infinite|auto)\b
+    - include: '#type-function-calc'
+    - include: '#type-integer'
+    end: (?=[;)])
+
+  value-region-fragment:
+    begin: (?<=region-fragment:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:break|auto)\b
+    end: (?=[;)])
+
+  value-resize:
+    begin: (?<=resize:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:vertical|none|inherit|horizontal|both)\b
+    end: (?=[;)])
+
+  value-resolution:
+    begin: (?<=resolution:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:device|auto)\b
+    - include: '#type-resolution'
+    end: (?=[;)])
+
+  value-rest:
+    begin: (?<=rest:|rest-after:|rest-before:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:x-weak|x-strong|weak|strong|none|medium)\b
+    - include: '#type-function-calc'
+    - include: '#type-time'
+    end: (?=[;)])
+
+  value-rotation:
+    begin: (?<=rotation:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-function-calc'
+    - include: '#type-angle'
+    end: (?=[;)])
+
+  value-rotation-point:
+    begin: (?<=rotation-point:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:top|right|left|center|bottom)\b
+    - include: '#type-function-calc'
+    - include: '#type-percentage'
+    - include: '#type-length'
+    end: (?=[;)])
+
+  value-ruby-align:
+    begin: (?<=ruby-align:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:start|space-between|space-around|center)\b
+    end: (?=[;)])
+
+  value-ruby-merge:
+    begin: (?<=ruby-merge:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:separate|collapse|auto)\b
+    end: (?=[;)])
+
+  value-ruby-position:
+    begin: (?<=ruby-position:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match:  \b(?:under|right|over|left|inter-character)\b
+    end: (?=[;)])
+
+  value-running:
+    begin: (?<=running:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#identifier'
+    end: (?=[;)])
 
   value-supports-condition:
     name: meta.supports-condition-value.css
