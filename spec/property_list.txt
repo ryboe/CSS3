@@ -402,10 +402,6 @@ symbols
 system
 tab-size
 table-layout
-target
-target-name
-target-new
-target-position
 text-align
 text-align-last
 text-combine-upright

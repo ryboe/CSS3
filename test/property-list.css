@@ -3698,17 +3698,6 @@ div {
     text-align: -moz-center;
     text-align: -moz-right;
 
-    text-align-all: initial;
-    text-align-all: inherit;
-    text-align-all: unset;
-    text-align-all: center;
-    text-align-all: end;
-    text-align-all: justify;
-    text-align-all: left;
-    text-align-all: match-parent;
-    text-align-all: right;
-    text-align-all: start;
-
     text-align-last: initial;
     text-align-last: inherit;
     text-align-last: unset;
@@ -4380,6 +4369,20 @@ div {
     unicode-bidi: isolate-override;
     unicode-bidi: normal;
     unicode-bidi: plaintext;
+
+    unicode-range: inherit;
+    unicode-range: initial;
+    unicode-range: unset;
+    unicode-range: U+A5;
+    unicode-range: U+0-7F;
+    unicode-range: U+590-5ff;
+    unicode-range: U+A5, U+4E00-9FFF, U+30??, U+FF00-FF9F;
+
+    user-zoom: inherit;
+    user-zoom: initial;
+    user-zoom: unset;
+    user-zoom: zoom;
+    user-zoom: fixed;
 
     vertical-align: initial;
     vertical-align: inherit;
