@@ -700,11 +700,11 @@ repository:
 
   selector-element-deprecated:
     name: invalid.deprecated.css
-    match: (?<![-:\[])\b(acronym|applet|basefont|bgsound|big|blink|center|dir|font|frameset|frame|hgroup|isindex|listing|marquee|multicol|nextid|nobr|noembed|noframes|plaintext|spacer|strike|tt|xmp)\b(?!-)
+    match: (?<![-:\[])\b(?:xmp|tt|strike|spacer|plaintext|noframes|noembed|nobr|nextid|multicol|marquee|listing|isindex|hgroup|frameset|frame|font|dir|center|blink|big|bgsound|basefont|applet|acronym)\b(?!-)
 
   selector-pseudo-element:
     name: entity.other.attribute-name.pseudo-element.css
-    match: (::)(?:after|before|choices|content|first-letter|first-line|repeat-index|repeat-item|selection|shadow|value)\b
+    match: (::)(?:value|shadow|selection|repeat-item|repeat-index|marker|first-line|first-letter|content|choices|before|after)\b
     captures:
       '1': {name: punctuation.definition.entity.css}
 
@@ -2017,6 +2017,7 @@ repository:
     - include: '#value-marks'
     - include: '#value-mask'
     - include: '#value-nav'
+    - include: '#value-negative'
     - include: '#value-offset'
     - include: '#value-opacity'
     - include: '#value-order'
@@ -4647,6 +4648,29 @@ repository:
     - include: '#type-number-non-negative'
     end: (?=[;)])
 
+  value-negative:
+    begin: (?<=negative:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-function-cross-fade'
+    - include: '#type-function-element'
+    - include: '#type-function-filter'
+    - include: '#type-function-image'
+    - include: '#type-function-image-set'
+    - include: '#type-function-conic-gradient'
+    - include: '#type-function-linear-gradient'
+    - include: '#type-function-radial-gradient'
+    - include: '#type-function-url'
+    - include: '#type-string-double'
+    - include: '#type-string-single'
+    - include: '#identifier'
+    end: (?=[;)])
+
   value-object-fit:
     begin: (?<=object-fit:)
     patterns:
@@ -6389,10 +6413,7 @@ repository:
     end: (?=[;)])
 
 # TODO
-#   rewrite certain type-function rules as begin-end rules with calc() included
 #   finish completions
-#       left off at grid:
-#   symbol indexing is picking up one huge selector in property-list.css
 #   @font-feature-values <ident>: properties, aka feature value definitions, e.g. leo-B: 2 1;
 #   add -webkit-, -moz-, -ms- prefixes to at-rules that need them
 #       mask properties need -webkit- prefix

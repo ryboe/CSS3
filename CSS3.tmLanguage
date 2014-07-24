@@ -1423,7 +1423,7 @@
 		<key>selector-element-deprecated</key>
 		<dict>
 			<key>match</key>
-			<string>(?&lt;![-:\[])\b(acronym|applet|basefont|bgsound|big|blink|center|dir|font|frameset|frame|hgroup|isindex|listing|marquee|multicol|nextid|nobr|noembed|noframes|plaintext|spacer|strike|tt|xmp)\b(?!-)</string>
+			<string>(?&lt;![-:\[])\b(?:xmp|tt|strike|spacer|plaintext|noframes|noembed|nobr|nextid|multicol|marquee|listing|isindex|hgroup|frameset|frame|font|dir|center|blink|big|bgsound|basefont|applet|acronym)\b(?!-)</string>
 			<key>name</key>
 			<string>invalid.deprecated.css</string>
 		</dict>
@@ -2074,7 +2074,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(::)(?:after|before|choices|content|first-letter|first-line|repeat-index|repeat-item|selection|shadow|value)\b</string>
+			<string>(::)(?:value|shadow|selection|repeat-item|repeat-index|marker|first-line|first-letter|content|choices|before|after)\b</string>
 			<key>name</key>
 			<string>entity.other.attribute-name.pseudo-element.css</string>
 		</dict>

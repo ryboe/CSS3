@@ -5,7 +5,8 @@ div {
     -ms-flow-into: element;
     -webkit-animation: infinite;
     -webkit-animation-name: asdfasd;
-
+    grid-auto-columns: 1fr;
+    z-index: auto;
 
 }
 
