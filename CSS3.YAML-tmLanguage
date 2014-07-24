@@ -1001,6 +1001,20 @@ repository:
     endCaptures:
       '0': {name: punctuation.section.function.css}
 
+  type-function-format:
+    begin: \b(format)(\()
+    beginCaptures:
+      '1': {name: support.function.format.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.format.css
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-string-double'
+    - include: '#type-string-single'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
   type-function-hsl:
     match: \b(hsl)(\()\s*(360|3[0-5]\d|[12]\d\d|\d\d|\d)\s*,\s*(((?:\d\d|\d)(?:\.\d+)?|100(?:\.0+)?|\.\d+)(%))\s*,\s*((?:(\d\d|\d)(?:\.\d+)?|100(?:\.0+)?|\.\d+)(%))\s*(\))
     captures:
@@ -1161,6 +1175,21 @@ repository:
     - include: '#type-angle'
     - include: '#type-length'
     - include: '#type-color-hex'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
+  type-function-local:
+    begin: \b(local)(\()
+    beginCaptures:
+      '1': {name: support.function.local.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.local.css
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-string-double'
+    - include: '#type-string-single'
+    - include: '#identifier'
     end: \)
     endCaptures:
       '0': {name: punctuation.section.function.css}
@@ -1747,6 +1776,11 @@ repository:
     - include: '#value-ruby-align'
     - include: '#value-ruby-merge'
     - include: '#value-ruby-position'
+    - include: '#value-shape-image-threshold'
+    - include: '#value-shape-margin'
+    - include: '#value-shape-outside'
+    - include: '#value-speak-as'
+    - include: '#value-string-set'
 
     # Single word rules are at the bottom to void mistakenly matching the end
     # of a rule above, e.g. matching #value-all instead of #value-text-align-all.
@@ -1802,6 +1836,12 @@ repository:
     - include: '#value-rest'
     - include: '#value-rotation'
     - include: '#value-running'
+    - include: '#value-size'
+    - include: '#value-speak'
+    - include: '#value-src'
+    - include: '#value-suffix'
+    - include: '#value-symbols'
+    - include: '#value-system'
     - include: '#value-width'
     - include: '#value-bottom-left-right-top'
     end: (?:;|(?=\)))
@@ -4894,6 +4934,155 @@ repository:
     - include: '#identifier'
     end: (?=[;)])
 
+  value-shape-image-threshold:
+    begin: (?<=shape-image-threshold:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-function-calc'
+    - name: constant.numeric.css
+      match: '[01]?\.0+|0?\.\d*[1-9]\d*|[01]'
+    end: (?=[;)])
+
+  value-shape-margin:
+    begin: (?<=shape-margin:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-function-calc'
+    - include: '#type-percentage'
+    - include: '#type-length'
+    end: (?=[;)])
+
+  value-shape-outside:
+    begin: (?<=shape-outside:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:padding-box|none|margin-box|content-box|border-box)\b
+    - include: '#type-function-inset'
+    - include: '#type-function-circle-ellipse'
+    - include: '#type-function-polygon'
+    - include: '#type-function-cross-fade'
+    - include: '#type-function-element'
+    - include: '#type-function-filter'
+    - include: '#type-function-image'
+    - include: '#type-function-image-set'
+    - include: '#type-function-conic-gradient'
+    - include: '#type-function-linear-gradient'
+    - include: '#type-function-radial-gradient'
+    - include: '#type-function-url'
+    end: (?=[;)])
+
+  value-size:
+    begin: (?<=size:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:portrait|letter|legal|ledger|landscape|auto|B5|B4|A5|A4|A3)\b
+    - include: '#type-function-calc'
+    - include: '#type-length-non-negative'
+    end: (?=[;)])
+
+  value-speak:
+    begin: (?<=speak:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:normal|none|auto)\b
+    end: (?=[;)])
+
+  value-speak-as:
+    begin: (?<=speak-as:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:spell-out|normal|no-punctuation|literal-punctuation|digits)\b
+    end: (?=[;)])
+
+  value-src:
+    begin: (?<=src:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-function-format'
+    - include: '#type-function-local'
+    - include: '#type-function-url'
+    end: (?=[;)])
+
+  value-string-set:
+    begin: (?<=string-set:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bnone\b
+    - include: '#type-function-counter'
+    - include: '#type-function-content'
+    - include: '#type-string-double'
+    - include: '#type-string-single'
+    - include: '#identifier'
+    end: (?=[;)])
+
+  value-suffix:
+    begin: (?<=suffix:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-function-cross-fade'
+    - include: '#type-function-element'
+    - include: '#type-function-filter'
+    - include: '#type-function-image'
+    - include: '#type-function-image-set'
+    - include: '#type-function-conic-gradient'
+    - include: '#type-function-linear-gradient'
+    - include: '#type-function-radial-gradient'
+    - include: '#type-function-url'
+    - include: '#type-string-double'
+    - include: '#type-string-single'
+    - include: '#identifier'
+    end: (?=[;)])
+
   value-supports-condition:
     name: meta.supports-condition-value.css
     begin: ':'
@@ -5077,6 +5266,46 @@ repository:
     end: \)
     endCaptures:
       '0': {name: punctation.section.supports-condition.css}
+
+  value-symbols:
+    begin: (?<=symbols:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-function-cross-fade'
+    - include: '#type-function-element'
+    - include: '#type-function-filter'
+    - include: '#type-function-image'
+    - include: '#type-function-image-set'
+    - include: '#type-function-conic-gradient'
+    - include: '#type-function-linear-gradient'
+    - include: '#type-function-radial-gradient'
+    - include: '#type-function-url'
+    - include: '#type-string-double'
+    - include: '#type-string-single'
+    - include: '#identifier'
+    end: (?=[;)])
+
+  value-system:
+    begin: (?<=system:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:symbolic|override|numeric|fixed|cyclic|alphabetic|additive)\b
+    - include: '#type-counter-style-predefined'
+    - include: '#type-function-calc'
+    - include: '#type-integer'
+    - include: '#identifier'
+    end: (?=[;)])
 
   value-width:
     begin: (?<=width:|max-width:|min-width:)
