@@ -3300,6 +3300,7 @@
     negative: inherit;
     negative: unset;
     negative: conic-gradient();
+    negative: ;
 
     object-fit: initial;
     object-fit: inherit;
@@ -3509,6 +3510,14 @@
     -ms-overflow-y: scroll;
     -ms-overflow-y: visible;
 
+    pad: inherit;
+    pad: initial;
+    pad: unset;
+    pad: element(#ads);
+    pad: url(ahasfdas);
+    pad: repeating-conic-gradient();
+    pad: linear-gradient();
+
     padding: initial;
     padding: inherit;
     padding: unset;
@@ -3647,6 +3656,25 @@
     position: static;
     position: sticky;
 
+    prefix: inherit;
+    prefix: initial;
+    prefix: unset;
+    prefix: conic-gradient(asfsadf);
+    prefix: "hello";
+
+    quotes: inherit;
+    quotes: initial;
+    quotes: unset;
+    quotes: none;
+    quotes: "asdfasd";
+
+    range: inherit;
+    range: initial;
+    range: unset;
+    range: infinite;
+    range: auto;
+    range: 12412;
+
     region-fragment: initial;
     region-fragment: inherit;
     region-fragment: unset;
@@ -3661,6 +3689,15 @@
     resize: horizontal;
     resize: none;
     resize: vertical;
+
+    resolution: initial;
+    resolution: inherit;
+    resolution: unset;
+    resolution: device;
+    resolution: auto    ;
+    resolution: 100dpi;
+    resolution: 100dppx;
+    resolution: 100dpcm;
 
     rest: initial;
     rest: inherit;
@@ -3843,16 +3880,38 @@
     src: local("HiraMaruPro-W4");
     src: url(fonts/ffmeta.woff) format("woff");
 
-    string-set: initial;
     string-set: inherit;
+    string-set: initial;
     string-set: unset;
     string-set: none;
     string-set: header content(before) ':' content(text);
     string-set: header attr(title);
     string-set: heading ;
 
-    tab-size: initial;
+    suffix: inherit;
+    suffix: initial;
+    suffix: unset;
+    suffix: radial-gradient();
+    suffix: filter();
+    suffix: repeating-conic-gradient()();
+
+    symbols: inherit;
+    symbols: initial;
+    symbols: unset;
+    symbols: image();
+    symbols: image-set();
+    symbols: repeating-conic-gradient();
+
+    system: inherit;
+    system: initial;
+    system: unset;
+    system: numeric;
+    system: fixed;
+    system: alphabetic;
+    system: 12412;
+
     tab-size: inherit;
+    tab-size: initial;
     tab-size: unset;
     tab-size: 4;
     tab-size: 0;

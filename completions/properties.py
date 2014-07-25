@@ -680,7 +680,7 @@ value_for_name = {
     "dominant-baseline": [("alphabetic",), ("auto",), ("central",), ("hanging",), ("ideographic",), ("mathematical",), ("middle",), ("no-change",), ("reset-size",), ("text-over-edge",), ("text-under-edge",), ("use-script",)],
     "empty-cells": [("hide",), ("show",)],
     "fallback": [v.ident] + v.counter_style,
-    "filter": [("none",), v.url] + v.filter_func,
+    "filter": [("none",), v.url] + v.filters,
     "flex": [("auto",), ("main-size",), ("none",), v.length, v.number, v.percentage, v.calc],
     "flex-basis": [("auto",), ("main-size",), v.length, v.percentage, v.calc],
     "flex-direction": [("column",), ("column-reverse",), ("row",), ("row-reverse",)],

@@ -6497,16 +6497,6 @@ repository:
     end: (?=[;)])
 
 # TODO
-#   add tests to property-list.css for the following:
-#       pad
-#       prefix
-#       quotes
-#       range
-#       resolution
-#       suffix
-#       symbols
-#       system
-#   completions on negative: don't work right
 #   @font-feature-values <ident>: properties, aka feature value definitions, e.g. leo-B: 2 1;
 #   add prefixes
 #       @-rules that need them
