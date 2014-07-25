@@ -50,7 +50,7 @@ better :)
     * Open a .css file.
     * View → Syntax → Open all with current extension as... → CSS3
 
-    ![setting CSS3 as default](screenshots/set_default.gif)
+    ![setting CSS3 as default](https://github.com/y0ssar1an/CSS3/raw/dev/screenshots/set_default.gif)
 
     *Warning: may break other CSS plugins*
 
