@@ -1,15 +1,4 @@
 
-div {
-    -webkit-align-content: flex-end;
-    -ms-flow-from: asfdas;
-    -ms-flow-into: element;
-    -webkit-animation: infinite;
-    -webkit-animation-name: asdfasd;
-    grid-auto-columns: 1fr;
-    z-index: auto;
-
-}
-
 * {
     additive-symbols: 6 ⚅, 5 ⚄, 4 ⚃, 3 ⚂, 2 ⚁, 1 ⚀;
     additive-symbols: 1000 m, 900 cm, 500 d, 400 cd, 100 c, 90 xc, 50 l, 40 xl, 10 x, 9 ix, 5 v, 4 iv, 1 i;
@@ -617,6 +606,46 @@ div {
     border: 1px solid black;
     border: 1px dashed black;
 
+    border-clip: initial;
+    border-clip: inherit;
+    border-clip: unset;
+    border-clip: normal;
+    border-clip: 123%;
+    border-clip: 123px;
+    border-clip: 0;
+
+    border-clip-bottom: initial;
+    border-clip-bottom: inherit;
+    border-clip-bottom: unset;
+    border-clip-bottom: normal;
+    border-clip-bottom: 123%;
+    border-clip-bottom: 123px;
+    border-clip-bottom: 0;
+
+    border-clip-left: initial;
+    border-clip-left: inherit;
+    border-clip-left: unset;
+    border-clip-left: normal;
+    border-clip-left: 123%;
+    border-clip-left: 123px;
+    border-clip-left: 0;
+
+    border-clip-right: initial;
+    border-clip-right: inherit;
+    border-clip-right: unset;
+    border-clip-right: normal;
+    border-clip-right: 123%;
+    border-clip-right: 123px;
+    border-clip-right: 0;
+
+    border-clip-top: initial;
+    border-clip-top: inherit;
+    border-clip-top: unset;
+    border-clip-top: normal;
+    border-clip-top: 123%;
+    border-clip-top: 123px;
+    border-clip-top: 0;
+
     border-color: initial;
     border-color: inherit;
     border-color: unset;
@@ -643,6 +672,39 @@ div {
     border-left-color: lightyellow;
     border-left-color: lime;
     border-left-color: limegreen;
+
+    border-left-style: inherit ;
+    border-left-style: initial;
+    border-left-style: unset;
+    border-left-style: hidden;
+    border-left-style: outset;
+    border-left-style: inset;
+    border-left-style: ridge;
+
+    border-right-style: inherit ;
+    border-right-style: initial;
+    border-right-style: unset;
+    border-right-style: hidden;
+    border-right-style: outset;
+    border-right-style: inset;
+    border-right-style: ridge;
+
+    border-top-style: inherit ;
+    border-top-style: initial;
+    border-top-style: unset;
+    border-top-style: hidden;
+    border-top-style: outset;
+    border-top-style: inset;
+    border-top-style: ridge;
+
+    border-limit: inherit;
+    border-limit: initial;
+    border-limit: unset;
+    border-limit: sides;
+    border-limit: top   ;
+    border-limit: calc();
+    border-limit: 100%;
+    border-limit: 100em;
 
     border-bottom-color: linen;
     border-bottom-color: magenta;
@@ -1022,6 +1084,13 @@ div {
     clear: right;
     clear: both;
 
+    clear-after: initial;
+    clear-after: inherit;
+    clear-after: unset;
+    clear-after: outside;
+    clear-after: inside;
+    clear-after: start;
+
     clear-side: initial;
     clear-side: inherit;
     clear-side: unset;
@@ -1237,13 +1306,18 @@ div {
     color-adjust: economy;
     color-adjust: exact;
 
-    /* TODO: write this */
-    color-interpolation: ;
-    color-interpolation: ;
-    color-interpolation: ;
-    color-interpolation: ;
-    color-interpolation: ;
-    color-interpolation: ;
+    color-correction: inherit;
+    color-correction: initial;
+    color-correction: unset;
+    color-correction: sRGB;
+    color-correction: auto;
+
+    color-interpolation: inherit;
+    color-interpolation: initial;
+    color-interpolation: unset;
+    color-interpolation: linearRGB;
+    color-interpolation: sRGB;
+    color-interpolation: auto;
 
     color-interpolation-filters: initial;
     color-interpolation-filters: inherit;
@@ -1560,6 +1634,23 @@ div {
     content: target-text(url(hello.com), a);
     content: leader(dotted "hello");
 
+    corner-shape: inherit;
+    corner-shape: initial;
+    corner-shape: unset;
+    corner-shape: bevel;
+    corner-shape: notch;
+    corner-shape: scoop;
+    corner-shape: round;
+
+    corners: inherit;
+    corners: initial;
+    corners: unset;
+    corners: bevel;
+    corners: notch;
+    corners: round  ;
+    corners: 100%  ;
+    corners: 100pt  ;
+
     counter-increment: initial;
     counter-increment: inherit;
     counter-increment: unset;
@@ -1599,14 +1690,6 @@ div {
     counter-set: inherit;
     counter-set: unset;
     counter-set: list-item attr(value integer, 1);
-
-    /* CSS Generated Content Level 3 is being rewritten */
-    crop: initial;
-    crop: inherit;
-    crop: unset;
-    crop: rect(0, 0, 0px, 0px);
-    crop: auto;
-    crop: rect(100px, 200em, 300vmin, 0);
 
     cue-before: initial;
     cue-before: inherit;
@@ -1714,6 +1797,14 @@ div {
     empty-cells: unset;
     empty-cells: hide;
     empty-cells: show;
+
+    fallback: inherit;
+    fallback: initial;
+    fallback: unset;
+    fallback: afar;
+    fallback: silti;
+    fallback: devanagari;
+    fallback: something;
 
     filter: initial;
     filter: inherit;
@@ -1918,6 +2009,12 @@ div {
     filter: blur(20px) grayscale(20%);
     filter: none;
 
+    float-displace: inherit;
+    float-displace: initial;
+    float-displace: unset;
+    float-displace: block;
+    float-displace: block-within-page;
+
     flex: initial;
     flex: inherit auto;
     flex: unset;
@@ -2050,6 +2147,14 @@ div {
     flood-opacity: 1;
     flood-opacity: 0;
     flood-opacity: 100%;
+
+    flow: initial;
+    flow: inherit;
+    flow: unset;
+    flow: auto;
+    flow: *;
+    flow: "hello";
+    flow: "howdy";
 
     flow-from: initial;
     flow-from: inherit;
@@ -2441,6 +2546,24 @@ div {
     -ms-grid-row: text 5 / span text 2;
     -webkit-grid-row: text 5 / span text 2;
 
+    grid-row-end: inherit;
+    grid-row-end: initial;
+    grid-row-end: unset;
+    grid-row-end: span;
+    grid-row-end: auto;
+    grid-row-end: -100;
+    grid-row-end: 100;
+    grid-row-end: hello;
+
+    grid-row-start: inherit;
+    grid-row-start: initial;
+    grid-row-start: unset;
+    grid-row-start: span;
+    grid-row-start: auto;
+    grid-row-start: -100;
+    grid-row-start: 100;
+    grid-row-start: hello;
+
     grid-template: initial;
     grid-template: inherit;
     grid-template: unset;
@@ -2580,6 +2703,15 @@ div {
     ime-mode: inactive;
     ime-mode: normal;
     -ms-ime-mode: normal;
+
+    indent-edge-reset: initial;
+    indent-edge-reset: inherit;
+    indent-edge-reset: unset;
+    indent-edge-reset: border-edge;
+    indent-edge-reset: content-edge;
+    indent-edge-reset: none;
+    indent-edge-reset: margin-edge;
+    indent-edge-reset: padding-edge;
 
     initial-letters: initial;
     initial-letters: inherit;
@@ -2903,6 +3035,7 @@ div {
     mask-border: url(my-image.gif) 25% 30% 10% 20% repeat;
     mask-border: url(my-image.gif) 25 30 10 20 repeat;
     mask-border: 100 fill 10% fill 15% fill 100%;
+    -webkit-mask-border: 100 fill 10% fill 15% fill 100%;
 
     mask-border-outset: initial;
     mask-border-outset: inherit;
@@ -2916,18 +3049,21 @@ div {
     mask-border-outset: 100px 200em 300mm 400cm;
     mask-border-outset: 100px 200em 300mm 0;
     mask-border-outset: 100px 0 300mm 0;
+    -webkit-mask-border-outset: 100px 0 300mm 0;
 
     mask-border-repeat: initial;
     mask-border-repeat: inherit;
     mask-border-repeat: unset;
     mask-border-repeat: stretch;
     mask-border-repeat: stretch stretch;
+    -webkit-mask-border-repeat: stretch stretch;
 
     mask-border-slice: initial;
     mask-border-slice: inherit;
     mask-border-slice: unset;
     mask-border-slice: 100 fill 10% fill 15% fill 100%;
     mask-border-slice: 100 fill 10%;
+    -webkit-mask-border-slice: 100 fill 10%;
 
     mask-border-source: initial;
     mask-border-source: inherit;
@@ -2938,6 +3074,7 @@ div {
     mask-border-source: url(image.jpg);                        /* the image.jpg is used as image */
     mask-border-source: linear-gradient(to top, red, yellow);  /* a gradient is used as image */
     mask-border-source: radial-gradient(at top, red, yellow);
+    -webkit-mask-border-source: radial-gradient(at top, red, yellow);
 
     mask-border-width: initial;
     mask-border-width: inherit;
@@ -2945,6 +3082,7 @@ div {
     mask-border-width: 1;
     mask-border-width: 10px;
     mask-border-width: 10%;
+    -webkit-mask-border-width: 10%;
 
     mask-clip: initial;
     mask-clip: inherit;
@@ -2984,6 +3122,7 @@ div {
     mask-mode: auto;
     mask-mode: auto auto luminance;
     mask-mode: auto auto luminance alpha;
+    -webkit-mask-mode: auto auto luminance alpha;
 
     mask-origin: initial;
     mask-origin: inherit;
@@ -3050,6 +3189,7 @@ div {
     mask-type: unset;
     mask-type: alpha;
     mask-type: luminance;
+    -webkit-mask-type: luminance;
 
     max-height: initial;
     max-height: inherit;
@@ -3081,6 +3221,15 @@ div {
     max-width: 100em;
     max-width: 100.01mm;
 
+    max-zoom: inherit;
+    max-zoom: initial;
+    max-zoom: unset;
+    max-zoom: auto;
+    max-zoom: 100;
+    max-zoom: 100.1242;
+    max-zoom: 100.1242;
+    max-zoom: 1235.35%;
+
     min-width: initial;
     min-width: inherit;
     min-width: unset;
@@ -3088,6 +3237,15 @@ div {
     min-width: 0px;
     min-width: 100em;
     min-width: 100.01mm;
+
+    min-zoom: inherit;
+    min-zoom: initial;
+    min-zoom: unset;
+    min-zoom: auto;
+    min-zoom: 100;
+    min-zoom: 100.1242;
+    min-zoom: 100.1242;
+    min-zoom: 1235.35%;
 
     nav-up: initial;
     nav-up: inherit;
@@ -3137,6 +3295,11 @@ div {
     nav-index: 3;
     nav-index: 4;
     nav-index:attr(tabindex,number);
+
+    negative: initial;
+    negative: inherit;
+    negative: unset;
+    negative: conic-gradient();
 
     object-fit: initial;
     object-fit: inherit;
@@ -3444,6 +3607,7 @@ div {
     perspective: 100px;
     perspective: 123em;
     perspective: 123.4mm  ;
+    -webkit-perspective: 123.4mm  ;
 
     perspective-origin: initial;
     perspective-origin: inherit;
@@ -3457,6 +3621,7 @@ div {
     perspective-origin: bottom left;
     perspective-origin: bottom;
     perspective-origin: bottom right;
+    -webkit-perspective-origin: bottom right;
 
     pointer-events: initial;
     pointer-events: inherit;
@@ -4210,6 +4375,8 @@ div {
     text-justify: none;
     text-justify: inter-word;
     text-justify: distribute;
+    -ms-text-justify: inter-word;
+    -ms-text-justify: distribute;
 
     text-orientation: inherit;
     text-orientation: initial;
