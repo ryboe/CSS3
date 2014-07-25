@@ -18,7 +18,8 @@ The most complete CSS support for Sublime Text 3.
 
 ## Before & After
 
-![before and after](https://github.com/y0ssar1an/CSS3/raw/dev/screenshots/before_and_after.png)
+![before and after 1](screenshots/before_and_after1.png)
+![before and after 2](screenshots/before_and_after2.png)
 
 ## Installation
 
@@ -38,9 +39,9 @@ better :)
 
     | Platform | Disable Command                                                      |
     | -------- | -------------------------------------------------------------------- |
-    | Mac      | `cmd+shift+p`&nbsp;&nbsp; → Package Control: Disable Package → CSS3  |
-    | Linux    | `ctrl+shift+p` → Package Control: Disable Package → CSS3             |
-    | Windows  | `ctrl+shift+p` → Package Control: Disable Package → CSS3             |
+    | Mac      | `cmd+shift+p`&nbsp;&nbsp; → Package Control: Disable Package → CSS   |
+    | Linux    | `ctrl+shift+p` → Package Control: Disable Package → CSS              |
+    | Windows  | `ctrl+shift+p` → Package Control: Disable Package → CSS              |
 
     ![disabling the default CSS package](https://github.com/y0ssar1an/CSS3/raw/dev/screenshots/disable_default.gif)
 
@@ -63,16 +64,16 @@ better :)
 1. __Within nested code blocks, like inside a @media query, if the first
 selector starts with a letter, it will not be highlighted.__
 
-![nested selector bug and workarounds](https://github.com/y0ssar1an/CSS3/raw/dev/screenshots/nested_selector_bug.png)
+![nested selector bug and workarounds](screenshots/nested_selector_bug.png)
 
 This is an annoying limitation of the Sublime Text syntax highlighting
 system. It can't recursively match curly braces across multiple lines. In
 this case, the first nested selector is mistaken for a property, which
-doesn't match. I went through three or four rewrites trying to fix this before I
-arrived at the current design, which is the least fragile and most predictable
-that I know. Other CSS highlighters, including my previous CSS3_Syntax and
-the Default CSS bundle, have the same problem, but are much easier to break. If
-this bugs you like it bugs me, two simple workarounds are shown above.
+doesn't match. I went through three or four rewrites before I arrived at the
+current design, which is the least fragile and most predictable that I know.
+Other CSS highlighters, including my previous CSS3_Syntax and the Default CSS
+bundle, have the same problem, but are much easier to break. If this bugs you
+like it bugs me, two simple workarounds are shown above.
 
 ## Help Me Out!
 

@@ -19,7 +19,6 @@ class CSS3Completions(sublime_plugin.EventListener):
         if view.match_selector(trigger_start, "meta.property-name.css"):
             completions = properties.names
         elif view.match_selector(trigger_start, "meta.value.css"):
-            trigger_start = locations[0] - len(prefix)
             line = view.substr(view.line(trigger_start)).strip()
             matches = property_name_rx.search(line)
             if matches is not None:
@@ -31,4 +30,4 @@ class CSS3Completions(sublime_plugin.EventListener):
 
 
 # TODO
-#   add completions for the scopes inside of functions
+#   add completions for the scopes inside functions
