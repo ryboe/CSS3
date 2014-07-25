@@ -2008,6 +2008,7 @@
     filter: blur(20px);
     filter: blur(20px) grayscale(20%);
     filter: none;
+    -webkit-filter: none;
 
     float-displace: inherit;
     float-displace: initial;

@@ -1,0 +1,144 @@
+
+@charset 'UTF-8';
+
+.hello #hi .there {
+
+}
+
+
+
+#helllo .there #hi html {
+
+}
+
+@media screen {
+    /* block comment */
+    @media screen and (max-width: 719px) {
+        body, html:nth-child(2n+1), :active, .my-class, #my-id {
+            font-size: 100%;
+            margin: 0 auto;
+            width: 93%;
+            word-wrap: break-word;
+        }
+
+        p{
+            line-height: 1.5em;
+        }
+
+        ul, ol{
+            margin: 1.5em 0;
+        }
+
+        li{
+            margin: .5em 0;
+        }
+
+        table{
+
+            padding: .5em;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+}
+
+@media screen and (min-width: 720px){
+
+    body{
+        font-size: 110%;
+        margin: 0 auto;
+        width: 720px;
+    }
+
+    p{
+        line-height: 2em;
+    }
+}
+
+body{
+
+    background-color: #fcfcfc;
+    color: #030303;
+    font-family: 'Open Sans', sans-serif;
+}
+
+a{
+    border-bottom: 1px #808080 dotted;
+    color: #808080;
+    text-decoration: none;
+    transition: color ease .25s;
+
+}
+
+a:hover{
+    color: #fc0303;
+}
+
+ul, ol{
+    margin: 1.25em 0;
+}
+
+li{
+    margin: .25em 0;
+}
+
+.apple{
+    list-style-type: none;
+    padding-left: 1em;
+}
+
+.apple li{
+    background-image: url('http://cs.csub.edu/~jpina/mac-users/apple_logo.svg');
+    background-repeat: no-repeat;
+    background-position: 0px 50%;
+    background-size: 1em;
+    padding-left: 2em;
+}
+
+code{
+    font-family: 'Source Code Pro', monospace;
+    font-size: .95em;
+}
+
+pre{
+    overflow: auto;
+    white-space: pre;
+    word-wrap: normal;
+}
+
+pre.prettyprint{
+    border: 0;
+    padding: 0;
+}
+
+pre,
+pre.prettyprinted{
+    background-color: #e8e8e8;
+    border-radius: 8px;
+    font-family: 'Source Code Pro', monospace;
+    font-size: .95em;
+    padding: 1em 0 0 1em;
+}
+
+figure > img{
+    display: block;
+    margin: 0 auto;
+}
+
+figcaption{
+    font-size: .9em;
+    font-style: italic;
+    text-align: center;
+}
+
+table{
+    margin: 2em auto;
+}
+
+td{
+    border: 1px solid #808080;
+    padding: .75em;
+}

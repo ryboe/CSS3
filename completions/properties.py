@@ -68,6 +68,7 @@ names = [
     ("-webkit-column-span", "-webkit-column-span: ${0};"),
     ("-webkit-column-width", "-webkit-column-width: ${0};"),
     ("-webkit-columns", "-webkit-columns: ${0};"),
+    ("-webkit-filter", "-webkit-filter: ${0};"),
     ("-webkit-flex", "-webkit-flex: ${0};"),
     ("-webkit-flex-basis", "-webkit-flex-basis: ${0};"),
     ("-webkit-flex-direction", "-webkit-flex-direction: ${0};"),

@@ -65,6 +65,7 @@
 -webkit-column-span
 -webkit-column-width
 -webkit-columns
+-webkit-filter
 -webkit-flex
 -webkit-flex-basis
 -webkit-flex-direction

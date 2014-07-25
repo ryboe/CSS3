@@ -105,7 +105,7 @@
 		<key>at-counter-style</key>
 		<dict>
 			<key>begin</key>
-			<string>((@)counter-style)\s</string>
+			<string>((@)(?:-webkit-|-ms-|-moz-)?counter-style)\s</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -161,7 +161,7 @@
 		<key>at-font-feature-values</key>
 		<dict>
 			<key>begin</key>
-			<string>((@)font-feature-values)\s</string>
+			<string>((@)(?:-webkit-|-ms-|-moz-)?font-feature-values)\s</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -276,7 +276,9 @@
 		</dict>
 		<key>at-keyframes</key>
 		<dict>
-			<key>captures</key>
+			<key>begin</key>
+			<string>((@)(?:-webkit-)?keyframes)\s</string>
+			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
@@ -288,19 +290,30 @@
 					<key>name</key>
 					<string>punctuation.definition.keyword.css</string>
 				</dict>
-				<key>3</key>
+			</dict>
+			<key>end</key>
+			<string>(?={)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>string.unquoted.identifier.css</string>
-				</dict>
-				<key>4</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.section.property-list.css</string>
+					<string>punctuation.section.rule-list.css</string>
 				</dict>
 			</dict>
-			<key>match</key>
-			<string>((@)keyframes)\s+(-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*)\s*(?={)</string>
+			<key>name</key>
+			<string>meta.at-rule.keyframes.css</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#identifier</string>
+				</dict>
+			</array>
 		</dict>
 		<key>at-media</key>
 		<dict>
@@ -400,6 +413,18 @@
 					<string>#type-string-single</string>
 				</dict>
 				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>string.unquoted.identifier.css</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>\s(--)\s</string>
+				</dict>
+				<dict>
 					<key>include</key>
 					<string>#identifier</string>
 				</dict>
@@ -408,7 +433,7 @@
 		<key>at-page</key>
 		<dict>
 			<key>begin</key>
-			<string>((@)page)\s</string>
+			<string>((@)(?:-webkit-)?page)\s</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -455,7 +480,7 @@
 		<key>at-supports</key>
 		<dict>
 			<key>begin</key>
-			<string>((@)supports)\s</string>
+			<string>((@)(?:-webkit-|-ms-|-moz-)?supports)\s</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -511,7 +536,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>((@)viewport)\s*(?={)</string>
+			<string>((@)(?:-ms-)?viewport)\s*(?={)</string>
 			<key>name</key>
 			<string>meta.at-rule.viewport.css</string>
 		</dict>
@@ -1082,14 +1107,14 @@
 		<key>property-name-illegal-webkit</key>
 		<dict>
 			<key>match</key>
-			<string>-webkit-(?:touch-callout|text-stroke-width|text-stroke-color|text-stroke|text-size-adjust|text-security|text-fill-color|text-emphasis-position|text-decorations-in-effect|tap-highlight-color|svg-shadow|shape-outside|shape-inside|rtl-ordering|region-break-inside|region-break-before|region-break-after|print-color-adjust|perspective-origin-y|perspective-origin-x|padding-start|padding-end|padding-before|padding-after|overflow-scrolling|nbsp-mode|min-logical-width|min-logical-height|max-logical-width|max-logical-height|match-nearest-mail-blockquote-color|mask-repeat-y|mask-repeat-x|mask-position-y|mask-position-x|mask-box-image-width|mask-box-image-source|mask-box-image-slice|mask-box-image-repeat|mask-box-image-outset|mask-box-image|mask-attachment|marquee-style|marquee-speed|marquee-repetition|marquee-increment|marquee-direction|marquee|margin-top-collapse|margin-start|margin-end|margin-collapse|margin-bottom-collapse|margin-before-collapse|margin-before|margin-after-collapse|margin-after|logical-width|logical-height|locale|line-snap|line-grid|line-clamp|line-break|line-box-contain|line-align|hyphenate-limit-lines|hyphenate-limit-before|hyphenate-limit-after|hyphenate-charset|highlight|font-smoothing|filter|dashboard-region|column-break-inside|column-break-before|column-break-after|column-axis|box-shadow|box-reflect|box-pack|box-orient|box-ordinal-groups|box-lines|box-flex-group|box-flex|box-direction|box-align|border-vertical-spacing|border-start-width|border-start-style|border-start-color|border-start|border-horizontal-spacing|border-fit|border-end-width|border-end-style|border-end-color|border-end|border-before-width|border-before-style|border-before-color|border-before|border-after-width|border-after-style|border-after-color|border-after|background-composite|aspect-ratio|appearance)\b</string>
+			<string>-webkit-(?:touch-callout|text-stroke-width|text-stroke-color|text-stroke|text-size-adjust|text-security|text-fill-color|text-emphasis-position|text-decorations-in-effect|tap-highlight-color|svg-shadow|shape-outside|shape-inside|rtl-ordering|region-break-inside|region-break-before|region-break-after|print-color-adjust|perspective-origin-y|perspective-origin-x|padding-start|padding-end|padding-before|padding-after|overflow-scrolling|nbsp-mode|min-logical-width|min-logical-height|max-logical-width|max-logical-height|match-nearest-mail-blockquote-color|mask-repeat-y|mask-repeat-x|mask-position-y|mask-position-x|mask-box-image-width|mask-box-image-source|mask-box-image-slice|mask-box-image-repeat|mask-box-image-outset|mask-box-image|mask-attachment|marquee-style|marquee-speed|marquee-repetition|marquee-increment|marquee-direction|marquee|margin-top-collapse|margin-start|margin-end|margin-collapse|margin-bottom-collapse|margin-before-collapse|margin-before|margin-after-collapse|margin-after|logical-width|logical-height|locale|line-snap|line-grid|line-clamp|line-break|line-box-contain|line-align|hyphenate-limit-lines|hyphenate-limit-before|hyphenate-limit-after|hyphenate-charset|highlight|font-smoothing|dashboard-region|column-break-inside|column-break-before|column-break-after|column-axis|box-shadow|box-reflect|box-pack|box-orient|box-ordinal-groups|box-lines|box-flex-group|box-flex|box-direction|box-align|border-vertical-spacing|border-start-width|border-start-style|border-start-color|border-start|border-horizontal-spacing|border-fit|border-end-width|border-end-style|border-end-color|border-end|border-before-width|border-before-style|border-before-color|border-before|border-after-width|border-after-style|border-after-color|border-after|background-composite|aspect-ratio|appearance)\b</string>
 			<key>name</key>
 			<string>invalid.illegal.css</string>
 		</dict>
 		<key>property-name-legal</key>
 		<dict>
 			<key>match</key>
-			<string>(-webkit-transition-timing-function|-webkit-transition-property|-webkit-transition-duration|-webkit-transition-delay|-webkit-transition|-webkit-transform-style|-webkit-transform-origin|-webkit-transform|-webkit-region-fragment|-webkit-perspective-origin|-webkit-perspective|-webkit-order|-webkit-mask-type|-webkit-mask-size|-webkit-mask-repeat|-webkit-mask-position|-webkit-mask-origin|-webkit-mask-mode|-webkit-mask-image|-webkit-mask-composite|-webkit-mask-clip|-webkit-mask-border-width|-webkit-mask-border-source|-webkit-mask-border-slice|-webkit-mask-border-repeat|-webkit-mask-border-outset|-webkit-mask-border|-webkit-mask|-webkit-justify-content|-webkit-hyphens|-webkit-grid-row|-webkit-grid-column|-webkit-font-variant-ligatures|-webkit-font-size-delta|-webkit-font-kerning|-webkit-font-feature-settings|-webkit-flow-into|-webkit-flow-from|-webkit-flex-wrap|-webkit-flex-shrink|-webkit-flex-grow|-webkit-flex-flow|-webkit-flex-direction|-webkit-flex-basis|-webkit-flex|-webkit-columns|-webkit-column-width|-webkit-column-span|-webkit-column-rule-width|-webkit-column-rule-style|-webkit-column-rule-color|-webkit-column-rule|-webkit-column-gap|-webkit-column-fill|-webkit-column-count|-webkit-break-inside|-webkit-break-before|-webkit-break-after|-webkit-border-image|-webkit-backface-visibility|-webkit-animation-timing-function|-webkit-animation-play-state|-webkit-animation-name|-webkit-animation-iteration-count|-webkit-animation-fill-mode|-webkit-animation-duration|-webkit-animation-direction|-webkit-animation-delay|-webkit-animation|-webkit-align-self|-webkit-align-items|-webkit-align-content|-ms-writing-mode|-ms-wrap-through|-ms-wrap-flow|-ms-word-wrap|-ms-transform-style|-ms-transform-origin|-ms-transform|-ms-text-justify|-ms-text-align-last|-ms-overflow-y|-ms-overflow-x|-ms-overflow-style|-ms-ime-mode|-ms-hyphens|-ms-grid-row-span|-ms-grid-row-align|-ms-grid-row|-ms-grid-column-span|-ms-grid-column-align|-ms-grid-column|-ms-flow-into|-ms-flow-from|-moz-text-decoration-style|-moz-text-decoration-line|-moz-text-decoration-color|-moz-text-align-last|-moz-hyphens|-moz-font-language-override|-moz-font-feature-settings|-moz-columns|-moz-column-width|-moz-column-span|-moz-column-rule-width|-moz-column-rule-style|-moz-column-rule-color|-moz-column-rule|-moz-column-gap|-moz-column-fill|-moz-column-count|-moz-box-sizing)\b|\b(zoom|z-index|writing-mode|wrap-through|wrap-flow|word-wrap|word-spacing|word-break|will-change|width|widows|white-space|voice-volume|voice-stress|voice-rate|voice-range|voice-pitch|voice-family|voice-duration|voice-balance|visibility|vertical-align|user-zoom|unicode-range|unicode-bidi|transition-timing-function|transition-property|transition-duration|transition-delay|transition|transform-style|transform-origin|transform|top|text-underline-position|text-transform|text-shadow|text-overflow|text-orientation|text-justify|text-indent|text-height|text-emphasis-style|text-emphasis-position|text-emphasis-color|text-emphasis|text-decoration-style|text-decoration-skip|text-decoration-line|text-decoration-color|text-decoration|text-combine-upright|text-align-last|text-align|target-position|target-new|target-name|target|table-layout|tab-size|system|symbols|suffix|string-set|src|speak-as|speak|size|shape-outside|shape-margin|shape-image-threshold|running|ruby-position|ruby-merge|ruby-align|rotation-point|rotation|right|rest-before|rest-after|rest|resolution|resize|region-fragment|range|quotes|presentation-level|prefix|position|pointer-events|perspective-origin|perspective|pause-before|pause-after|pause|page-policy|page|padding-top|padding-right|padding-left|padding-bottom|padding|pad|overflow-y|overflow-x|overflow-wrap|overflow-style|overflow|outline-width|outline-style|outline-offset|outline-color|outline|orphans|orientation|order|opacity|offset-start|offset-end|offset-before|offset-after|object-position|object-fit|negative|nav-up|nav-right|nav-left|nav-index|nav-down|min-zoom|min-width|min-height|max-zoom|max-width|max-lines|max-height|mask-type|mask-size|mask-repeat|mask-position|mask-origin|mask-mode|mask-image|mask-composite|mask-clip|mask-border-width|mask-border-source|mask-border-slice|mask-border-repeat|mask-border-outset|mask-border|mask|marquee-style|marquee-speed|marquee-play-count|marquee-direction|marks|marker-side|margin-top|margin-right|margin-left|margin-bottom|margin|list-style-type|list-style-position|list-style-image|list-style|line-stacking-strategy|line-stacking-shift|line-stacking-ruby|line-stacking|line-snap|line-height|line-grid|line-break|line-box-contain|lighting-color|letter-spacing|left|justify-self|justify-items|justify-content|inline-box-align|initial-letters|indent-edge-reset|ime-mode|image-resolution|image-rendering|image-orientation|icon|hyphens|height|hanging-punctuation|grid-template-rows|grid-template-columns|grid-template-areas|grid-template|grid-row-start|grid-row-end|grid-row|grid-column-start|grid-column-end|grid-column|grid-auto-rows|grid-auto-flow|grid-auto-columns|grid-area|grid|footnote-policy|footnote-display|font-weight|font-variant-position|font-variant-numeric|font-variant-ligatures|font-variant-east-asian|font-variant-caps|font-variant-alternates|font-variant|font-synthesis|font-style|font-stretch|font-size-adjust|font-size|font-language-override|font-kerning|font-feature-settings|font-family|font|flow-into|flow-from|flow|flood-opacity|flood-color|float-wrap|float-offset|float-displace|float-defer-page|float-defer-column|float|flex-wrap|flex-shrink|flex-grow|flex-flow|flex-direction|flex-basis|flex|filter|fallback|empty-cells|dominant-baseline|display-outside|display-inside|display-extras|display-box|display|direction|cursor|cue-before|cue-after|cue|counter-set|counter-reset|counter-increment|corners|corner-shape|content|columns|column-width|column-span|column-rule-width|column-rule-style|column-rule-color|column-rule|column-gap|column-fill|column-count|color-interpolation-filters|color-interpolation|color-correction|color-adjust|color|clip-rule|clip-path|clear-side|clear-after|clear|child-align|chains|caption-side|break-inside|break-before|break-after|box-snap|box-sizing|box-shadow|box-decoration-break|bottom|border-width|border-top-width|border-top-style|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-style|border-spacing|border-right-width|border-right-style|border-right-color|border-right|border-radius|border-limit|border-left-width|border-left-style|border-left-color|border-left|border-image-width|border-image-source|border-image-slice|border-image-repeat|border-image-outset|border-image|border-color|border-collapse|border-clip-top|border-clip-right|border-clip-left|border-clip-bottom|border-clip|border-bottom-width|border-bottom-style|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border|bookmark-state|bookmark-level|bookmark-label|bleed|baseline-shift|background-size|background-repeat|background-position|background-origin|background-image|background-color|background-clip|background-attachment|background|backface-visibility|animation-timing-function|animation-play-state|animation-name|animation-iteration-count|animation-fill-mode|animation-duration|animation-direction|animation-delay|animation|all|alignment-baseline|alignment-adjust|alignment|align-self|align-items|align-content|additive-symbols)\b</string>
+			<string>(-webkit-transition-timing-function|-webkit-transition-property|-webkit-transition-duration|-webkit-transition-delay|-webkit-transition|-webkit-transform-style|-webkit-transform-origin|-webkit-transform|-webkit-region-fragment|-webkit-perspective-origin|-webkit-perspective|-webkit-order|-webkit-mask-type|-webkit-mask-size|-webkit-mask-repeat|-webkit-mask-position|-webkit-mask-origin|-webkit-mask-mode|-webkit-mask-image|-webkit-mask-composite|-webkit-mask-clip|-webkit-mask-border-width|-webkit-mask-border-source|-webkit-mask-border-slice|-webkit-mask-border-repeat|-webkit-mask-border-outset|-webkit-mask-border|-webkit-mask|-webkit-justify-content|-webkit-hyphens|-webkit-grid-row|-webkit-grid-column|-webkit-filter|-webkit-font-variant-ligatures|-webkit-font-size-delta|-webkit-font-kerning|-webkit-font-feature-settings|-webkit-flow-into|-webkit-flow-from|-webkit-flex-wrap|-webkit-flex-shrink|-webkit-flex-grow|-webkit-flex-flow|-webkit-flex-direction|-webkit-flex-basis|-webkit-flex|-webkit-columns|-webkit-column-width|-webkit-column-span|-webkit-column-rule-width|-webkit-column-rule-style|-webkit-column-rule-color|-webkit-column-rule|-webkit-column-gap|-webkit-column-fill|-webkit-column-count|-webkit-break-inside|-webkit-break-before|-webkit-break-after|-webkit-border-image|-webkit-backface-visibility|-webkit-animation-timing-function|-webkit-animation-play-state|-webkit-animation-name|-webkit-animation-iteration-count|-webkit-animation-fill-mode|-webkit-animation-duration|-webkit-animation-direction|-webkit-animation-delay|-webkit-animation|-webkit-align-self|-webkit-align-items|-webkit-align-content|-ms-writing-mode|-ms-wrap-through|-ms-wrap-flow|-ms-word-wrap|-ms-transform-style|-ms-transform-origin|-ms-transform|-ms-text-justify|-ms-text-align-last|-ms-overflow-y|-ms-overflow-x|-ms-overflow-style|-ms-ime-mode|-ms-hyphens|-ms-grid-row-span|-ms-grid-row-align|-ms-grid-row|-ms-grid-column-span|-ms-grid-column-align|-ms-grid-column|-ms-flow-into|-ms-flow-from|-moz-text-decoration-style|-moz-text-decoration-line|-moz-text-decoration-color|-moz-text-align-last|-moz-hyphens|-moz-font-language-override|-moz-font-feature-settings|-moz-columns|-moz-column-width|-moz-column-span|-moz-column-rule-width|-moz-column-rule-style|-moz-column-rule-color|-moz-column-rule|-moz-column-gap|-moz-column-fill|-moz-column-count|-moz-box-sizing)\b|\b(zoom|z-index|writing-mode|wrap-through|wrap-flow|word-wrap|word-spacing|word-break|will-change|width|widows|white-space|voice-volume|voice-stress|voice-rate|voice-range|voice-pitch|voice-family|voice-duration|voice-balance|visibility|vertical-align|user-zoom|unicode-range|unicode-bidi|transition-timing-function|transition-property|transition-duration|transition-delay|transition|transform-style|transform-origin|transform|top|text-underline-position|text-transform|text-shadow|text-overflow|text-orientation|text-justify|text-indent|text-height|text-emphasis-style|text-emphasis-position|text-emphasis-color|text-emphasis|text-decoration-style|text-decoration-skip|text-decoration-line|text-decoration-color|text-decoration|text-combine-upright|text-align-last|text-align|target-position|target-new|target-name|target|table-layout|tab-size|system|symbols|suffix|string-set|src|speak-as|speak|size|shape-outside|shape-margin|shape-image-threshold|running|ruby-position|ruby-merge|ruby-align|rotation-point|rotation|right|rest-before|rest-after|rest|resolution|resize|region-fragment|range|quotes|presentation-level|prefix|position|pointer-events|perspective-origin|perspective|pause-before|pause-after|pause|page-policy|page|padding-top|padding-right|padding-left|padding-bottom|padding|pad|overflow-y|overflow-x|overflow-wrap|overflow-style|overflow|outline-width|outline-style|outline-offset|outline-color|outline|orphans|orientation|order|opacity|offset-start|offset-end|offset-before|offset-after|object-position|object-fit|negative|nav-up|nav-right|nav-left|nav-index|nav-down|min-zoom|min-width|min-height|max-zoom|max-width|max-lines|max-height|mask-type|mask-size|mask-repeat|mask-position|mask-origin|mask-mode|mask-image|mask-composite|mask-clip|mask-border-width|mask-border-source|mask-border-slice|mask-border-repeat|mask-border-outset|mask-border|mask|marquee-style|marquee-speed|marquee-play-count|marquee-direction|marks|marker-side|margin-top|margin-right|margin-left|margin-bottom|margin|list-style-type|list-style-position|list-style-image|list-style|line-stacking-strategy|line-stacking-shift|line-stacking-ruby|line-stacking|line-snap|line-height|line-grid|line-break|line-box-contain|lighting-color|letter-spacing|left|justify-self|justify-items|justify-content|inline-box-align|initial-letters|indent-edge-reset|ime-mode|image-resolution|image-rendering|image-orientation|icon|hyphens|height|hanging-punctuation|grid-template-rows|grid-template-columns|grid-template-areas|grid-template|grid-row-start|grid-row-end|grid-row|grid-column-start|grid-column-end|grid-column|grid-auto-rows|grid-auto-flow|grid-auto-columns|grid-area|grid|footnote-policy|footnote-display|font-weight|font-variant-position|font-variant-numeric|font-variant-ligatures|font-variant-east-asian|font-variant-caps|font-variant-alternates|font-variant|font-synthesis|font-style|font-stretch|font-size-adjust|font-size|font-language-override|font-kerning|font-feature-settings|font-family|font|flow-into|flow-from|flow|flood-opacity|flood-color|float-wrap|float-offset|float-displace|float-defer-page|float-defer-column|float|flex-wrap|flex-shrink|flex-grow|flex-flow|flex-direction|flex-basis|flex|filter|fallback|empty-cells|dominant-baseline|display-outside|display-inside|display-extras|display-box|display|direction|cursor|cue-before|cue-after|cue|counter-set|counter-reset|counter-increment|corners|corner-shape|content|columns|column-width|column-span|column-rule-width|column-rule-style|column-rule-color|column-rule|column-gap|column-fill|column-count|color-interpolation-filters|color-interpolation|color-correction|color-adjust|color|clip-rule|clip-path|clear-side|clear-after|clear|child-align|chains|caption-side|break-inside|break-before|break-after|box-snap|box-sizing|box-shadow|box-decoration-break|bottom|border-width|border-top-width|border-top-style|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-style|border-spacing|border-right-width|border-right-style|border-right-color|border-right|border-radius|border-limit|border-left-width|border-left-style|border-left-color|border-left|border-image-width|border-image-source|border-image-slice|border-image-repeat|border-image-outset|border-image|border-color|border-collapse|border-clip-top|border-clip-right|border-clip-left|border-clip-bottom|border-clip|border-bottom-width|border-bottom-style|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border|bookmark-state|bookmark-level|bookmark-label|bleed|baseline-shift|background-size|background-repeat|background-position|background-origin|background-image|background-color|background-clip|background-attachment|background|backface-visibility|animation-timing-function|animation-play-state|animation-name|animation-iteration-count|animation-fill-mode|animation-duration|animation-direction|animation-delay|animation|all|alignment-baseline|alignment-adjust|alignment|align-self|align-items|align-content|additive-symbols)\b</string>
 			<key>name</key>
 			<string>support.type.property-name.css</string>
 		</dict>
