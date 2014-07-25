@@ -33,7 +33,7 @@ repository:
 
   at-counter-style:
     name: meta.at-rule.counter-style.css
-    begin: ((@)counter-style)\s
+    begin: ((@)(?:-webkit-|-ms-|-moz-)?counter-style)\s
     beginCaptures:
       '1': {name: keyword.control.at-rule.counter-style.css}
       '2': {name: punctuation.definition.keyword.css}
@@ -51,7 +51,7 @@ repository:
 
   at-font-feature-values:
     name: meta.at-rule.font-feature-values.css
-    begin: ((@)font-feature-values)\s
+    begin: ((@)(?:-webkit-|-ms-|-moz-)?font-feature-values)\s
     beginCaptures:
       '1': {name: keyword.control.at-rule.font-feature-values.css}
       '2': {name: punctuation.definition.keyword.css}
@@ -85,7 +85,7 @@ repository:
       '0': {name: punctuation.terminator.rule.css}
 
   at-keyframes:
-    match: ((@)keyframes)\s+(-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*)\s*(?={)
+    match: ((@)(?:-webkit-)?keyframes)\s+(-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*)\s*(?={)
     captures:
       '1': {name: keyword.control.at-rule.keyframes.css}
       '2': {name: punctuation.definition.keyword.css}
@@ -126,7 +126,7 @@ repository:
 
   at-page:
     name: meta.at-rule.page.css
-    begin: ((@)page)\s
+    begin: ((@)(?:-webkit-)?page)\s
     beginCaptures:
       '1': {name: keyword.control.at-rule.page.css}
       '2': {name: punctuation.definition.keyword.css}
@@ -142,7 +142,7 @@ repository:
 
   at-supports:
     name: meta.at-rule.supports.css
-    begin: ((@)supports)\s
+    begin: ((@)(?:-webkit-|-ms-|-moz-)?supports)\s
     beginCaptures:
       '1': {name: keyword.control.at-rule.supports.css}
       '2': {name: punctuation.definition.keyword.css}
@@ -156,7 +156,7 @@ repository:
 
   at-viewport:
     name: meta.at-rule.viewport.css
-    match: ((@)viewport)\s*(?={)
+    match: ((@)(?:-ms-)?viewport)\s*(?={)
     captures:
       '1': {name: keyword.control.at-rule.viewport.css}
       '2': {name: punctuation.definition.keyword.css}
@@ -6497,22 +6497,22 @@ repository:
     end: (?=[;)])
 
 # TODO
-#   @font-feature-values <ident>: properties, aka feature value definitions, e.g. leo-B: 2 1;
 #   add prefixes
-#       @-rules that need them
 #       properties
 #       values
 #   add more -webkit- pseudo-classes
 #   make a good README
 
 # LOW PRIORITY
-#   match parameters of calc(), var(), and attr()
-#   @document
-#   custom elements (the <ident> portion matches everything)
 #   ridiculous new color functions (see bottom of /spec/functions.txt)
+#   match parameters of calc(), var(), and attr()
+#   unimplemented @-rules
+#       @document
+#       @filter
+#       @phonetic-alphabet
+#       @font-feature-values <ident>: properties, aka feature value definitions, e.g. leo-B: 2 1;
+#   custom elements (the <ident> portion matches everything)
 
 # FINAL CHECK
-#   compare all properties in property-list.css with property_list.txt
-#       make sure you didn't forget to test any of the properties in property_list.txt
 #   scan for unknown includes in the console when the highlighter is loaded
 ...
