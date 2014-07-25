@@ -43,14 +43,14 @@ better :)
     | Linux    | `ctrl+shift+p` → Package Control: Disable Package → CSS              |
     | Windows  | `ctrl+shift+p` → Package Control: Disable Package → CSS              |
 
-    ![disabling the default CSS package](https://github.com/y0ssar1an/CSS3/raw/dev/screenshots/disable_default.gif)
+    ![disabling the default CSS package](screenshots/disable_default.gif)
 
     *Warning: may break other CSS plugins*
 4. (Optional) Set CSS3 as the default language for .css files
     * Open a .css file.
     * View → Syntax → Open all with current extension as... → CSS3
 
-    ![setting CSS3 as default](https://github.com/y0ssar1an/CSS3/raw/dev/screenshots/set_default.gif)
+    ![setting CSS3 as default](screenshots/set_default.gif)
 
     *Warning: may break other CSS plugins*
 
