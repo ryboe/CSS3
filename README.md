@@ -18,8 +18,8 @@ The most complete CSS support for Sublime Text 3.
 
 ## Before & After
 
-![before and after 1](screenshots/before_and_after1.png)
-![before and after 2](screenshots/before_and_after2.png)
+![before and after 1](https://github.com/y0ssar1an/CSS3/raw/dev/screenshots/before_and_after1.png)
+![before and after 2](https://github.com/y0ssar1an/CSS3/raw/dev/screenshots/before_and_after2.png)
 
 ## Installation
 
@@ -43,7 +43,7 @@ better :)
     | Linux    | `ctrl+shift+p` → Package Control: Disable Package → CSS              |
     | Windows  | `ctrl+shift+p` → Package Control: Disable Package → CSS              |
 
-    ![disabling the default CSS package](screenshots/disable_default.gif)
+    ![disabling the default CSS package](https://github.com/y0ssar1an/CSS3/raw/dev/screenshots/disable_default.gif)
 
     *Warning: may break other CSS plugins*
 4. (Optional) Set CSS3 as the default language for .css files
@@ -64,7 +64,7 @@ better :)
 1. __Within nested code blocks, like inside a @media query, if the first
 selector starts with a letter, it will not be highlighted.__
 
-![nested selector bug and workarounds](screenshots/nested_selector_bug.png)
+![nested selector bug and workarounds](https://github.com/y0ssar1an/CSS3/raw/dev/screenshots/nested_selector_bug.png)
 
 This is an annoying limitation of the Sublime Text syntax highlighting
 system. It can't recursively match curly braces across multiple lines. In
