@@ -11993,7 +11993,7 @@
 					<key>match</key>
 					<string>\b(?:serif|sans-serif|monospace|fantasy|cursive)\b</string>
 					<key>name</key>
-					<string>string.unquoted.generic-font-family.css</string>
+					<string>support.constant.property-value.css</string>
 				</dict>
 				<dict>
 					<key>include</key>

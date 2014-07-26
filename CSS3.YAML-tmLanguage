@@ -3753,7 +3753,7 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
-    - name: string.unquoted.generic-font-family.css
+    - name: support.constant.property-value.css
       match: \b(?:serif|sans-serif|monospace|fantasy|cursive)\b
     - include: '#type-string-double'
     - include: '#type-string-single'
