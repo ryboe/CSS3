@@ -6539,6 +6539,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-overflow</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-flow</string>
 				</dict>
 				<dict>
@@ -6604,10 +6608,6 @@
 				<dict>
 					<key>include</key>
 					<string>#value-outline</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#value-overflow</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -11993,7 +11993,7 @@
 					<key>match</key>
 					<string>\b(?:serif|sans-serif|monospace|fantasy|cursive)\b</string>
 					<key>name</key>
-					<string>string.unquoted.generic-font-family.css</string>
+					<string>support.constant.property-value.css</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -18255,6 +18255,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-overflow</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-flow</string>
 				</dict>
 				<dict>
@@ -18320,10 +18324,6 @@
 				<dict>
 					<key>include</key>
 					<string>#value-outline</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#value-overflow</string>
 				</dict>
 				<dict>
 					<key>include</key>
