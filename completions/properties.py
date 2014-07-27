@@ -819,7 +819,7 @@ value_for_name = {
     "outline-offset": [v.length, v.calc],
     "outline-style": [("dashed",), ("dotted",), ("double",), ("groove",), ("hidden",), ("inset",), ("none",), ("outset",), ("ridge",), ("solid",)],
     "outline-width": [("medium",), ("thick",), ("thin",), v.length, v.calc],
-    "overflow": [("auto",), ("hidden",), ("no-content",), ("no-display",), ("scroll",), ("visible",)],
+    "overflow": [("auto",), ("fragments",), ("hidden",), ("paged-x",), ("paged-x-controls",), ("paged-y",), ("paged-y-controls",), ("scroll",), ("visible",)],
     "overflow-style": [("auto",), ("marquee-block",), ("marquee-line",)],
     "overflow-wrap": [("break-word",), ("normal",)],
     "overflow-x": [("auto",), ("fragments",), ("hidden",), ("paged-x",), ("paged-x-controls",), ("paged-y",), ("paged-y-controls",), ("scroll",), ("visible",)],
