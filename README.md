@@ -46,7 +46,16 @@ better :)
     ![disabling the default CSS package](https://github.com/y0ssar1an/CSS3/raw/dev/screenshots/disable_default.gif)
 
     *Warning: may break other CSS plugins*
-4. (Optional) Set CSS3 as the default language for .css files
+
+4. (Strongly Recommended) Disable Emmet
+
+    I know. I like cool HTML tricks too, but Emmet is way behind the times. The
+    code it inserts is frequently garbage. There are a zillion Emmet completions
+    and they completely drown out the carefully researched, standards-based
+    completions offered by this plugin. You're better off disabling them. Trust
+    me. The Web will thank you.
+
+5. (Optional) Set CSS3 as the default language for .css files
     * Open a .css file.
     * View → Syntax → Open all with current extension as... → CSS3
 
