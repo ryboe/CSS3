@@ -47,13 +47,14 @@ better :)
 
     *Warning: may break other CSS plugins*
 
-4. (Strongly Recommended) Disable Emmet
+4. (Recommended) Disable Emmet
 
-    I know. I like cool HTML tricks too, but Emmet is way behind the times. The
-    code it inserts is frequently garbage. There are a zillion Emmet completions
-    and they completely drown out the carefully researched, standards-based
-    completions offered by this plugin. You're better off disabling them. Trust
-    me. The Web will thank you.
+    If you have Emmet installed, its completions will appear alongside the
+    carefully researched, standards-based completions included in this plugin.
+    There are so many Emmet completions that they completely drown out the CSS3
+    completions. This wouldn't necessarily be a problem, except that Emmet is
+    behind the times. The code it inserts is frequently bad. You're better of
+    disabling it altogether. The Web will thank you.
 
 5. (Optional) Set CSS3 as the default language for .css files
     * Open a .css file.
