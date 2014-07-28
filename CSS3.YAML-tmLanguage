@@ -852,6 +852,38 @@ repository:
     - include: '#type-color-hex'
     end: (?=[;,])
 
+  transition-value-background-image:
+    begin: (?<=background-image)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:top|right|left|center|bottom)\b
+    - name: support.constant.property-value.css
+      match: \b(?:stretch|space|round|repeat|none|fill|auto)\b
+    - include: '#type-function-cross-fade'
+    - include: '#type-function-element'
+    - include: '#type-function-filter'
+    - include: '#type-function-image'
+    - include: '#type-function-image-set'
+    - include: '#type-function-conic-gradient'
+    - include: '#type-function-linear-gradient'
+    - include: '#type-function-radial-gradient'
+    - include: '#type-function-url'
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-time'
+    - include: '#type-percentage'
+    - include: '#type-length'
+    end: (?=[;,])
+
   transition-value-background-position:
     begin: (?<=background-position)\s+
     patterns:
@@ -1686,8 +1718,6 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:padding-box|none|margin-box|content-box|border-box)\b
-    - name: support.constant.property-value.css
-      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
     - include: '#type-function-inset'
     - include: '#type-function-circle-ellipse'
     - include: '#type-function-polygon'
@@ -1700,6 +1730,8 @@ repository:
     - include: '#type-function-linear-gradient'
     - include: '#type-function-radial-gradient'
     - include: '#type-function-url'
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
     - include: '#type-function-calc'
     - include: '#type-function-cubic-bezier'
     - include: '#type-function-steps'
@@ -7290,54 +7322,55 @@ repository:
     # according to MDN. Visit https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties
     # for the full list, or see /spec/transition_properties.txt.
     - name: support.type.property-name.css
-      match: \b(?:z-index|word-spacing|width|visibility|vertical-align|transform-origin|transform|top|text-shadow|text-indent|text-decoration-color|text-decoration|shape-outside|shape-margin|shape-image-threshold|right|perspective-origin|perspective|padding-top|padding-right|padding-left|padding-bottom|padding|outline-width|outline-offset|outline-color|outline|order|opacity|min-width|min-height|max-width|max-height|margin-top|margin-right|margin-left|margin-bottom|margin|line-height|letter-spacing|left|height|font-weight|font-stretch|font-size-adjust|font-size|font|flex-shrink|flex-grow|flex-basis|flex|columns|column-width|column-rule-width|column-rule-color|column-rule|column-gap|column-count|color|clip|box-shadow|bottom|border-width|border-top-width|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-right-width|border-right-color|border-right|border-radius|border-left-width|border-left-color|border-left|border-color|border-bottom-width|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border|background-size|background-position|background-color|background|all)\b
+      match: \b(?:z-index|word-spacing|width|visibility|vertical-align|transform-origin|transform|top|text-shadow|text-indent|text-decoration-color|text-decoration|shape-outside|shape-margin|shape-image-threshold|right|perspective-origin|perspective|padding-top|padding-right|padding-left|padding-bottom|padding|outline-width|outline-offset|outline-color|outline|order|opacity|min-width|min-height|max-width|max-height|margin-top|margin-right|margin-left|margin-bottom|margin|line-height|letter-spacing|left|height|font-weight|font-stretch|font-size-adjust|font-size|font|flex-shrink|flex-grow|flex-basis|flex|columns|column-width|column-rule-width|column-rule-color|column-rule|column-gap|column-count|color|clip|box-shadow|bottom|border-width|border-top-width|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-right-width|border-right-color|border-right|border-radius|border-left-width|border-left-color|border-left|border-color|border-bottom-width|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border|background-size|background-position|background-image|background-color|background|all)\b
     - include: '#transition-value-all'
-    - include: '#transition-value-background'
     - include: '#transition-value-background-color'
+    - include: '#transition-value-background-image'
     - include: '#transition-value-background-position'
     - include: '#transition-value-background-size'
-    - include: '#transition-value-border'
+    - include: '#transition-value-background'
     - include: '#transition-value-border-color'
     - include: '#transition-value-border-radius'
     - include: '#transition-value-border-width-outline-width'
+    - include: '#transition-value-border'
     - include: '#transition-value-bottom-left-right-top'
     - include: '#transition-value-box-shadow'
     - include: '#transition-value-color'
     - include: '#transition-value-column-count'
     - include: '#transition-value-column-gap'
-    - include: '#transition-value-column-rule'
     - include: '#transition-value-column-rule-color'
     - include: '#transition-value-column-rule-width'
+    - include: '#transition-value-column-rule'
     - include: '#transition-value-column-width'
     - include: '#transition-value-columns'
-    - include: '#transition-value-flex'
     - include: '#transition-value-flex-basis'
     - include: '#transition-value-flex-grow-flex-shrink'
+    - include: '#transition-value-flex'
     - include: '#transition-value-font'
-    - include: '#transition-value-font-size'
     - include: '#transition-value-font-size-adjust'
+    - include: '#transition-value-font-size'
     - include: '#transition-value-font-stretch'
     - include: '#transition-value-font-weight'
-    - include: '#transition-value-height'
     - include: '#transition-value-letter-spacing'
     - include: '#transition-value-line-height'
+    - include: '#transition-value-height'
     - include: '#transition-value-margin'
     - include: '#transition-value-opacity'
     - include: '#transition-value-order'
-    - include: '#transition-value-outline'
     - include: '#transition-value-outline-color'
     - include: '#transition-value-outline-offset'
+    - include: '#transition-value-outline'
     - include: '#transition-value-padding'
-    - include: '#transition-value-perspective'
     - include: '#transition-value-perspective-origin'
+    - include: '#transition-value-perspective'
     - include: '#transition-value-shape-image-threshold'
     - include: '#transition-value-shape-margin'
     - include: '#transition-value-shape-outside'
-    - include: '#transition-value-text-decoration'
     - include: '#transition-value-text-decoration-color-text-emphasis-color'
+    - include: '#transition-value-text-decoration'
     - include: '#transition-value-text-shadow'
-    - include: '#transition-value-transform'
     - include: '#transition-value-transform-origin'
+    - include: '#transition-value-transform'
     - include: '#transition-value-vertical-align'
     - include: '#transition-value-visibility'
     - include: '#transition-value-width'
