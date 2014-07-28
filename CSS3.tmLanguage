@@ -23685,22 +23685,6 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-function-calc</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#type-function-cubic-bezier</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#type-function-steps</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#type-time</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#transition-value-all</string>
 				</dict>
 				<dict>
