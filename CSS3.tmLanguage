@@ -2567,6 +2567,118 @@
 				</dict>
 			</array>
 		</dict>
+		<key>transition-value-background-image</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=background-image)\s+</string>
+			<key>end</key>
+			<string>(?=[;,])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:top|right|left|center|bottom)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:stretch|space|round|repeat|none|fill|auto)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-cross-fade</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-element</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-filter</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-image</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-image-set</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-conic-gradient</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-linear-gradient</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-radial-gradient</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-url</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-cubic-bezier</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-steps</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-time</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-percentage</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-length</string>
+				</dict>
+			</array>
+		</dict>
 		<key>transition-value-background-position</key>
 		<dict>
 			<key>begin</key>
@@ -5354,12 +5466,6 @@
 					<string>support.constant.property-value.css</string>
 				</dict>
 				<dict>
-					<key>match</key>
-					<string>\b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b</string>
-					<key>name</key>
-					<string>support.constant.property-value.css</string>
-				</dict>
-				<dict>
 					<key>include</key>
 					<string>#type-function-inset</string>
 				</dict>
@@ -5406,6 +5512,12 @@
 				<dict>
 					<key>include</key>
 					<string>#type-function-url</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -23679,7 +23791,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:z-index|word-spacing|width|visibility|vertical-align|transform-origin|transform|top|text-shadow|text-indent|text-decoration-color|text-decoration|shape-outside|shape-margin|shape-image-threshold|right|perspective-origin|perspective|padding-top|padding-right|padding-left|padding-bottom|padding|outline-width|outline-offset|outline-color|outline|order|opacity|min-width|min-height|max-width|max-height|margin-top|margin-right|margin-left|margin-bottom|margin|line-height|letter-spacing|left|height|font-weight|font-stretch|font-size-adjust|font-size|font|flex-shrink|flex-grow|flex-basis|flex|columns|column-width|column-rule-width|column-rule-color|column-rule|column-gap|column-count|color|clip|box-shadow|bottom|border-width|border-top-width|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-right-width|border-right-color|border-right|border-radius|border-left-width|border-left-color|border-left|border-color|border-bottom-width|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border|background-size|background-position|background-color|background|all)\b</string>
+					<string>\b(?:z-index|word-spacing|width|visibility|vertical-align|transform-origin|transform|top|text-shadow|text-indent|text-decoration-color|text-decoration|shape-outside|shape-margin|shape-image-threshold|right|perspective-origin|perspective|padding-top|padding-right|padding-left|padding-bottom|padding|outline-width|outline-offset|outline-color|outline|order|opacity|min-width|min-height|max-width|max-height|margin-top|margin-right|margin-left|margin-bottom|margin|line-height|letter-spacing|left|height|font-weight|font-stretch|font-size-adjust|font-size|font|flex-shrink|flex-grow|flex-basis|flex|columns|column-width|column-rule-width|column-rule-color|column-rule|column-gap|column-count|color|clip|box-shadow|bottom|border-width|border-top-width|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-right-width|border-right-color|border-right|border-radius|border-left-width|border-left-color|border-left|border-color|border-bottom-width|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border|background-size|background-position|background-image|background-color|background|all)\b</string>
 					<key>name</key>
 					<string>support.type.property-name.css</string>
 				</dict>
@@ -23689,11 +23801,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#transition-value-background</string>
+					<string>#transition-value-background-color</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#transition-value-background-color</string>
+					<string>#transition-value-background-image</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -23705,7 +23817,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#transition-value-border</string>
+					<string>#transition-value-background</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -23718,6 +23830,10 @@
 				<dict>
 					<key>include</key>
 					<string>#transition-value-border-width-outline-width</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#transition-value-border</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -23741,15 +23857,15 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#transition-value-column-rule</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#transition-value-column-rule-color</string>
 				</dict>
 				<dict>
 					<key>include</key>
 					<string>#transition-value-column-rule-width</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#transition-value-column-rule</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -23761,10 +23877,6 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#transition-value-flex</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#transition-value-flex-basis</string>
 				</dict>
 				<dict>
@@ -23773,15 +23885,19 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#transition-value-flex</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#transition-value-font</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#transition-value-font-size</string>
+					<string>#transition-value-font-size-adjust</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#transition-value-font-size-adjust</string>
+					<string>#transition-value-font-size</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -23793,15 +23909,15 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#transition-value-height</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#transition-value-letter-spacing</string>
 				</dict>
 				<dict>
 					<key>include</key>
 					<string>#transition-value-line-height</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#transition-value-height</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -23817,10 +23933,6 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#transition-value-outline</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#transition-value-outline-color</string>
 				</dict>
 				<dict>
@@ -23829,15 +23941,19 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#transition-value-outline</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#transition-value-padding</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#transition-value-perspective</string>
+					<string>#transition-value-perspective-origin</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#transition-value-perspective-origin</string>
+					<string>#transition-value-perspective</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -23853,11 +23969,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#transition-value-text-decoration</string>
+					<string>#transition-value-text-decoration-color-text-emphasis-color</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#transition-value-text-decoration-color-text-emphasis-color</string>
+					<string>#transition-value-text-decoration</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -23865,11 +23981,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#transition-value-transform</string>
+					<string>#transition-value-transform-origin</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#transition-value-transform-origin</string>
+					<string>#transition-value-transform</string>
 				</dict>
 				<dict>
 					<key>include</key>
