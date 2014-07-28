@@ -7291,11 +7291,6 @@ repository:
     # for the full list, or see /spec/transition_properties.txt.
     - name: support.type.property-name.css
       match: \b(?:z-index|word-spacing|width|visibility|vertical-align|transform-origin|transform|top|text-shadow|text-indent|text-decoration-color|text-decoration|shape-outside|shape-margin|shape-image-threshold|right|perspective-origin|perspective|padding-top|padding-right|padding-left|padding-bottom|padding|outline-width|outline-offset|outline-color|outline|order|opacity|min-width|min-height|max-width|max-height|margin-top|margin-right|margin-left|margin-bottom|margin|line-height|letter-spacing|left|height|font-weight|font-stretch|font-size-adjust|font-size|font|flex-shrink|flex-grow|flex-basis|flex|columns|column-width|column-rule-width|column-rule-color|column-rule|column-gap|column-count|color|clip|box-shadow|bottom|border-width|border-top-width|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-right-width|border-right-color|border-right|border-radius|border-left-width|border-left-color|border-left|border-color|border-bottom-width|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border|background-size|background-position|background-color|background|all)\b
-    - include: '#type-function-calc'
-    - include: '#type-function-cubic-bezier'
-    - include: '#type-function-steps'
-    - include: '#type-time'
-
     - include: '#transition-value-all'
     - include: '#transition-value-background'
     - include: '#transition-value-background-color'
@@ -7348,7 +7343,6 @@ repository:
     - include: '#transition-value-width'
     - include: '#transition-value-word-spacing'
     - include: '#transition-value-z-index'
-
     end: (?=[;)])
 
   value-transition-delay-transition-duration:
