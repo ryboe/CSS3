@@ -19797,6 +19797,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#property-name</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type-function-calc</string>
 				</dict>
 				<dict>
