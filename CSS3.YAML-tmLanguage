@@ -779,6 +779,1163 @@ repository:
       '1': {name: punctuation.definition.entity.css}
       '2': {name: entity.other.attribute-name.pseudo-element.prefix.webkit.css}
 
+  transition-value-all:
+    begin: (?<=all)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    end: (?=[;,])
+
+  transition-value-background:
+    begin: (?<=background)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:top|space|right|none|left|cover|contain|center|bottom|auto)\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-color-named-deprecated'
+    - include: '#type-color-named'
+    - include: '#type-repeat-style'
+    - include: '#type-box'
+    - include: '#type-attachment'
+    - include: '#type-function-url'
+    - include: '#type-function-hsla'
+    - include: '#type-function-hsl'
+    - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-color-hex'
+    - include: '#type-percentage-non-negative'
+    - include: '#type-length-non-negative'
+    end: (?=[;,])
+
+  transition-value-background-color:
+    begin: (?<=background-color)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-color-named-deprecated'
+    - include: '#type-color-named'
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-hsla'
+    - include: '#type-function-hsl'
+    - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-color-hex'
+    end: (?=[;,])
+
+  transition-value-background-position:
+    begin: (?<=background-position)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:top|right|left|center|bottom)\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-percentage'
+    - include: '#type-length'
+    end: (?=[;,])
+
+  transition-value-background-size:
+    begin: (?<=background-size)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:cover|contain|auto)\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-percentage-non-negative'
+    - include: '#type-length-non-negative'
+    end: (?=[;,])
+
+  transition-value-border:
+    begin: (?<=border-top|border-right|border-left|border-bottom|border)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:thin|thick|medium)\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-line-style'
+    - include: '#type-color-named-deprecated'
+    - include: '#type-color-named'
+    - include: '#type-color-hex'
+    - include: '#type-function-hsla'
+    - include: '#type-function-hsl'
+    - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-length-non-negative'
+    end: (?=[;,])
+
+  transition-value-border-color:
+    begin: (?<=border-top-color|border-right-color|border-left-color|border-color|border-bottom-color)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-color-named-deprecated'
+    - include: '#type-color-named'
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-hsl'
+    - include: '#type-function-hsla'
+    - include: '#type-function-rgb'
+    - include: '#type-function-rgba'
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-color-hex'
+    end: (?=[;,])
+
+  transition-value-border-radius:
+    begin: (?<=border-top-right-radius|border-top-left-radius|border-bottom-right-radius|border-bottom-left-radius|border-radius)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-time'
+    - include: '#type-percentage-non-negative'
+    - include: '#type-length-non-negative'
+    end: (?=[;,])
+
+  transition-value-border-width-outline-width:
+    begin: (?<=outline-width|border-width|border-top-width|border-right-width|border-left-width|border-bottom-width)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:thin|thick|medium)\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-length-non-negative'
+    end: (?=[;,])
+
+  transition-value-bottom-left-right-top:
+    begin: (?<=top|right|left|bottom)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bauto\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-percentage'
+    - include: '#type-length'
+    end: (?=[;,])
+
+  transition-value-box-shadow:
+    begin: (?<=box-shadow)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:none|inset)\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-color-named-deprecated'
+    - include: '#type-color-named'
+    - include: '#type-function-hsl'
+    - include: '#type-function-hsla'
+    - include: '#type-function-rgb'
+    - include: '#type-function-rgba'
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-color-hex'
+    - include: '#type-length'
+    end: (?=[;,])
+
+  transition-value-color:
+    begin: (?<=color)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-color-named-deprecated'
+    - include: '#type-color-named'
+    - include: '#type-function-hsla'
+    - include: '#type-function-hsl'
+    - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-color-hex'
+    end: (?=[;,])
+
+  transition-value-column-count:
+    begin: (?<=column-count)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bauto\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-integer-positive'
+    end: (?=[;,])
+
+  transition-value-column-gap:
+    begin: (?<=column-gap)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bnormal\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-length-non-negative'
+    end: (?=[;,])
+
+  transition-value-column-rule:
+    begin: (?<=column-rule)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:thick|thin|solid|ridge|outset|none|medium|inset|hidden|groove|double|dotted|dashed)\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-color-named-deprecated'
+    - include: '#type-color-named'
+    - include: '#type-function-hsla'
+    - include: '#type-function-hsl'
+    - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
+    - include: '#type-color-hex'
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-length-non-negative'
+    end: (?=[;,])
+
+  transition-value-column-rule-color:
+    begin: (?<=column-rule-color)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-color-named-deprecated'
+    - include: '#type-color-named'
+    - include: '#type-function-hsla'
+    - include: '#type-function-hsl'
+    - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-color-hex'
+    end: (?=[;,])
+
+  transition-value-column-rule-width:
+    begin: (?<=column-rule-width)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:thin|thick|medium)\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-length-non-negative'
+    end: (?=[;,])
+
+  transition-value-column-width:
+    begin: (?<=column-width)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bauto\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-length-positive'
+    end: (?=[;,])
+
+  transition-value-columns:
+    begin: (?<=columns)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bauto\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-length-positive'
+    - include: '#type-integer-positive'
+    end: (?=[;,])
+
+  transition-value-flex:
+    begin: (?<=flex)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:none|main-size|auto)\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-percentage-non-negative'
+    - include: '#type-length-non-negative'
+    - include: '#type-number-non-negative'
+    end: (?=[;,])
+
+  transition-value-flex-basis:
+    begin: (?<=flex-basis)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:main-size|auto)\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-percentage-non-negative'
+    - include: '#type-length-non-negative'
+    end: (?=[;,])
+
+  transition-value-flex-grow-flex-shrink:
+    begin: (?<=flex-shrink|flex-grow)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-number-non-negative'
+    end: (?=[;,])
+
+  transition-value-font:
+    begin: (?<=font)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:xx-small|xx-large|x-small|x-large|ultra-expanded|ultra-condensed|status-bar|smaller|small-caption|small-caps|small|serif|semi-expanded|semi-condensed|sans-serif|oblique|normal|monospace|message-box|menu|medium|lighter|larger|large|italic|icon|fantasy|extra-expanded|extra-condensed|expanded|cursive|condensed|caption|bolder|bold|900|800|700|600|500|400|300|200|100)\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-percentage-non-negative'
+    - include: '#type-length-non-negative'
+    - include: '#type-number-non-negative'
+    - include: '#type-string-double'
+    - include: '#type-string-single'
+    - include: '#identifier'
+    end: (?=[;,])
+
+  transition-value-font-size:
+    begin: (?<=font-size)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:xx-small|xx-large|x-small|x-large|smaller|small|medium|larger|large)\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-percentage-non-negative'
+    - include: '#type-length-non-negative'
+    end: (?=[;,])
+
+  transition-value-font-size-adjust:
+    begin: (?<=font-size-adjust)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bnone\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-number'
+    end: (?=[;,])
+
+  transition-value-font-stretch:
+    begin: (?<=font-stretch)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:ultra-expanded|ultra-condensed|semi-expanded|semi-condensed|normal|extra-expanded|extra-condensed|expanded|condensed)\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    end: (?=[;,])
+
+  # This is both a property and a descriptor. The descriptor is identical to the
+  # property, except that it does not accept the values 'bolder' and 'lighter'.
+  # This is not important enough to write a separate rule.
+  transition-value-font-weight:
+    begin: (?<=font-weight)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:normal|lighter|bolder|bold|900|800|700|600|500|400|300|200|100)\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    end: (?=[;,])
+
+  transition-value-height:
+    begin: (?<=min-height|max-height|height)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    # none is technically a value of max-height, not min-height, but it's not
+    # worth writing a separate rule. Also, the extend-to-zoom attribute is only
+    # for when width: is used as a @viewport descriptor, but is included here
+    # for completeness. Do not use extend-to-zoom outside of an @viewport rule.
+    - name: support.constant.property-value.css
+      match: \b(?:none|min-content|max-content|fit-content|extend-to-zoom|content-box|complex|border-box|available|auto)\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-percentage-non-negative'
+    - include: '#type-length-non-negative'
+    end: (?=[;,])
+
+  transition-value-letter-spacing:
+    begin: (?<=letter-spacing)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bnormal\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-length'
+    end: (?=[;,])
+
+  transition-value-line-height:
+    begin: (?<=line-height)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:normal|none)\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-percentage-non-negative'
+    - include: '#type-length-non-negative'
+    - include: '#type-number-non-negative'
+    end: (?=[;,])
+
+  transition-value-margin:
+    begin: (?<=margin-top|margin-right|margin-left|margin-bottom|margin)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:fill|auto)\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-percentage'
+    - include: '#type-length'
+    end: (?=[;,])
+
+  transition-value-opacity:
+    begin: (?<=opacity)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - name: constant.numeric.css
+      match: '[01]?\.0+|0?\.\d*[1-9]\d*|[01]'
+    end: (?=[;,])
+
+  transition-value-order:
+    begin: (?<=order)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-integer'
+    end: (?=[;,])
+
+  transition-value-outline:
+    begin: (?<=outline)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:thin|thick|medium|invert)\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-line-style'
+    - include: '#type-color-named-deprecated'
+    - include: '#type-color-named'
+    - include: '#type-function-hsla'
+    - include: '#type-function-hsl'
+    - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
+    - include: '#type-function-calc'
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-color-hex'
+    - include: '#type-length-non-negative'
+    end: (?=[;,])
+
+  transition-value-outline-color:
+    begin: (?<=outline-color)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \binvert\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-color-named-deprecated'
+    - include: '#type-color-named'
+    - include: '#type-function-hsla'
+    - include: '#type-function-hsl'
+    - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-color-hex'
+    - include: '#type-time'
+    end: (?=[;,])
+
+  transition-value-outline-offset:
+    begin: (?<=outline-offset)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-length'
+    end: (?=[;,])
+
+  transition-value-padding:
+    begin: (?<=padding-top|padding-right|padding-left|padding-bottom|padding)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bauto\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-percentage'
+    - include: '#type-length'
+    end: (?=[;,])
+
+  transition-value-perspective:
+    begin: (?<=perspective)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bnone\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-length-positive'
+    end: (?=[;,])
+
+  transition-value-perspective-origin:
+    begin: (?<=perspective-origin)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:top|right|left|center|bottom)\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-percentage'
+    - include: '#type-length'
+    end: (?=[;,])
+
+  transition-value-shape-image-threshold:
+    begin: (?<=shape-image-threshold)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-time'
+    - name: constant.numeric.css
+      match: '[01]?\.0+|0?\.\d*[1-9]\d*|[01]'
+    end: (?=[;,])
+
+  transition-value-shape-margin:
+    begin: (?<=shape-margin)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-percentage'
+    - include: '#type-length'
+    end: (?=[;,])
+
+  transition-value-shape-outside:
+    begin: (?<=shape-outside)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:padding-box|none|margin-box|content-box|border-box)\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-inset'
+    - include: '#type-function-circle-ellipse'
+    - include: '#type-function-polygon'
+    - include: '#type-function-cross-fade'
+    - include: '#type-function-element'
+    - include: '#type-function-filter'
+    - include: '#type-function-image'
+    - include: '#type-function-image-set'
+    - include: '#type-function-conic-gradient'
+    - include: '#type-function-linear-gradient'
+    - include: '#type-function-radial-gradient'
+    - include: '#type-function-url'
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    end: (?=[;,])
+
+  transition-value-text-decoration:
+    begin: (?<=text-decoration)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:wavy|underline|solid|overline|none|line-through|double|dotted|dashed|blink)\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-color-named-deprecated'
+    - include: '#type-color-named'
+    - include: '#type-function-hsla'
+    - include: '#type-function-hsl'
+    - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-color-hex'
+    end: (?=[;,])
+
+  transition-value-text-decoration-color-text-emphasis-color:
+    begin: (?<=text-decoration-color)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-color-named-deprecated'
+    - include: '#type-color-named'
+    - include: '#type-function-hsla'
+    - include: '#type-function-hsl'
+    - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-color-hex'
+    end: (?=[;,])
+
+  transition-value-text-shadow:
+    begin: (?<=text-shadow)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bnone\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-color-named-deprecated'
+    - include: '#type-color-named'
+    - include: '#type-function-calc'
+    - include: '#type-function-hsla'
+    - include: '#type-function-hsl'
+    - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-color-hex'
+    - include: '#type-length'
+    end: (?=[;,])
+
+  transition-value-transform:
+    begin: (?<=transform)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bnone\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-matrix'
+    - include: '#type-function-perspective'
+    - include: '#type-function-rotate'
+    - include: '#type-function-rotate3d'
+    - include: '#type-function-scale'
+    - include: '#type-function-skew'
+    - include: '#type-function-translate'
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    end: (?=[;,])
+
+  transition-value-transform-origin:
+    begin: (?<=transform-origin)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:top|right|left|center|bottom)\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-percentage'
+    - include: '#type-length'
+    end: (?=[;,])
+
+  transition-value-vertical-align:
+    begin: (?<=vertical-align)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:top|text-top|text-bottom|super|sub|middle|central|bottom|baseline|auto)\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-percentage'
+    - include: '#type-length'
+    end: (?=[;,])
+
+  transition-value-visibility:
+    begin: (?<=visibility)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:visible|hidden|collapse)\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    end: (?=[;,])
+
+  transition-value-width:
+    begin: (?<=min-width|max-width|width)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    # The extend-to-zoom attribute is only for when width: is used as a @viewport
+    # descriptor, but is included here for completeness. Do not use extend-to-zoom
+    # outside of an @viewport rule.
+    - name: support.constant.property-value.css
+      match: \b(?:min-content|max-content|fit-content|extend-to-zoom|content-box|border-box|available|auto)\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-percentage-non-negative'
+    - include: '#type-length-non-negative'
+    end: (?=[;,])
+
+  transition-value-word-spacing:
+    begin: (?<=word-spacing)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bnormal\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-percentage'
+    - include: '#type-length'
+    end: (?=[;,])
+
+  transition-value-z-index:
+    begin: (?<=z-index)\s+
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bauto\b
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-calc'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - include: '#type-time'
+    - include: '#type-integer'
+    end: (?=[;,])
+
   type-all:
     name: support.constant.property-value.css
     match: \b(?:unset|initial|inherit)\b
@@ -6134,11 +7291,64 @@ repository:
     # for the full list, or see /spec/transition_properties.txt.
     - name: support.type.property-name.css
       match: \b(?:z-index|word-spacing|width|visibility|vertical-align|transform-origin|transform|top|text-shadow|text-indent|text-decoration-color|text-decoration|shape-outside|shape-margin|shape-image-threshold|right|perspective-origin|perspective|padding-top|padding-right|padding-left|padding-bottom|padding|outline-width|outline-offset|outline-color|outline|order|opacity|min-width|min-height|max-width|max-height|margin-top|margin-right|margin-left|margin-bottom|margin|line-height|letter-spacing|left|height|font-weight|font-stretch|font-size-adjust|font-size|font|flex-shrink|flex-grow|flex-basis|flex|columns|column-width|column-rule-width|column-rule-color|column-rule|column-gap|column-count|color|clip|box-shadow|bottom|border-width|border-top-width|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-right-width|border-right-color|border-right|border-radius|border-left-width|border-left-color|border-left|border-color|border-bottom-width|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border|background-size|background-position|background-color|background|all)\b
-    # TRANSITION VALUES HERE
     - include: '#type-function-calc'
     - include: '#type-function-cubic-bezier'
     - include: '#type-function-steps'
     - include: '#type-time'
+
+    - include: '#transition-value-all'
+    - include: '#transition-value-background'
+    - include: '#transition-value-background-color'
+    - include: '#transition-value-background-position'
+    - include: '#transition-value-background-size'
+    - include: '#transition-value-border'
+    - include: '#transition-value-border-color'
+    - include: '#transition-value-border-radius'
+    - include: '#transition-value-border-width-outline-width'
+    - include: '#transition-value-bottom-left-right-top'
+    - include: '#transition-value-box-shadow'
+    - include: '#transition-value-color'
+    - include: '#transition-value-column-count'
+    - include: '#transition-value-column-gap'
+    - include: '#transition-value-column-rule'
+    - include: '#transition-value-column-rule-color'
+    - include: '#transition-value-column-rule-width'
+    - include: '#transition-value-column-width'
+    - include: '#transition-value-columns'
+    - include: '#transition-value-flex'
+    - include: '#transition-value-flex-basis'
+    - include: '#transition-value-flex-grow-flex-shrink'
+    - include: '#transition-value-font'
+    - include: '#transition-value-font-size'
+    - include: '#transition-value-font-size-adjust'
+    - include: '#transition-value-font-stretch'
+    - include: '#transition-value-font-weight'
+    - include: '#transition-value-height'
+    - include: '#transition-value-letter-spacing'
+    - include: '#transition-value-line-height'
+    - include: '#transition-value-margin'
+    - include: '#transition-value-opacity'
+    - include: '#transition-value-order'
+    - include: '#transition-value-outline'
+    - include: '#transition-value-outline-color'
+    - include: '#transition-value-outline-offset'
+    - include: '#transition-value-padding'
+    - include: '#transition-value-perspective'
+    - include: '#transition-value-perspective-origin'
+    - include: '#transition-value-shape-image-threshold'
+    - include: '#transition-value-shape-margin'
+    - include: '#transition-value-shape-outside'
+    - include: '#transition-value-text-decoration'
+    - include: '#transition-value-text-decoration-color-text-emphasis-color'
+    - include: '#transition-value-text-shadow'
+    - include: '#transition-value-transform'
+    - include: '#transition-value-transform-origin'
+    - include: '#transition-value-vertical-align'
+    - include: '#transition-value-visibility'
+    - include: '#transition-value-width'
+    - include: '#transition-value-word-spacing'
+    - include: '#transition-value-z-index'
+
     end: (?=[;)])
 
   value-transition-delay-transition-duration:

@@ -4550,7 +4550,33 @@
     transition: initial;
     transition: inherit;
     transition: unset;
-    transition: background-color linear 1s;
+    transition: background-color red 1s;
+    transition:width 2s, height 2s, background-color 2s, transform 2s;
+    transition:  all 1s;
+    transition: background-color 0.5s ease;
+    transition: all 0.5s ease;
+    transition: background 0.2s ease, padding 0.8s linear;
+    transition: background-color 500ms ease-out 1s;
+    transition: background red scroll fixed local;
+    transition: background inherit repeat-x repeat-y repeat no-repeat repeat no-repeat;
+    transition: background url("chess.png") 40% / 10em gray
+       round fixed border-box padding-box content-box scroll fixed local;
+    transition: background url("hello.com");
+    transition: background url('hello.com');
+    transition: background url(hel\nlo.com);
+    transition: background none;
+    transition: background #CCC  url('metal.jpg') top left / 100% auto no-repeat;
+    transition: background padding-box url(paper.jpg) white center ;
+    transition: background url(a.png) top left no-repeat,
+            url(b.png) center / 100% 100% 10em 100px 0 no-repeat,
+            url(c.png) white ;
+    transition: background rgb(0, 255, 0);
+    transition: background rgb(25, 0, 255);
+    transition: background rgb(255, 255, 255);
+    transition: background rgb(10%, 0%, 20%);
+    transition: background rgb(5%, 1%, 99%);
+    transition: background rgba(255, 255, 1, 1.0);
+    transition: background rgba(255, 255, 255, 0.12124) ease-out 1s;
     -webkit-transition: background-color linear 1s;
     -webkit-transition: unset;
 
