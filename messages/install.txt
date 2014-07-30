@@ -1,0 +1,15 @@
+Thank you for installing CSS3! It's strongly recommended that you disable the
+default CSS package, as its completions will interfere with the improved CSS3
+completions.
+
+Mac:           cmd+shift+p  -> Package Control: Disable Package -> CSS
+Linux/Windows: ctrl+shift+p -> Package Control: Disable Package -> CSS
+
+If you have CSS3_Syntax or Emmet installed, you should remove those as well.
+Removing Emmet breaks my heart, but the code it inserts is often quite outdated,
+and it's completions completely drown out the completions in this plugin.
+
+That's it. Enjoy the plugin. If you have any problems, please open an issue on
+Github and I'll fix it as soon as I can.
+
+https://github.com/y0ssar1an/CSS3/issues
