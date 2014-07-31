@@ -53,7 +53,7 @@ better :)
     carefully researched, standards-based completions included in this plugin.
     There are so many Emmet completions that they completely drown out the CSS3
     completions. This wouldn't necessarily be a problem, except that Emmet is
-    behind the times. The code it inserts is frequently bad. You're better of
+    behind the times. The code it inserts is frequently bad. You're better off
     disabling it altogether. The Web will thank you.
 
 5. (Optional) Set CSS3 as the default language for .css files
