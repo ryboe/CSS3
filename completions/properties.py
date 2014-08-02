@@ -739,7 +739,7 @@ value_for_name = {
     "indent-edge-reset": [("border-edge",), ("content-edge",), ("margin-edge",), ("none",), ("padding-edge",)],
     "initial-letters": [v.integer, v.calc],
     "inline-box-align": [("initial",), ("last",), v.integer, v.calc],
-    "justify-content": [("auto",), ("baseline",), ("center",), ("end",), ("flex-end",), ("flex-start",), ("last-baseline",), ("left",), ("right",), ("safe",), ("self-end",), ("self-start",), ("start",), ("true",)],
+    "justify-content": [("auto",), ("baseline",), ("center",), ("end",), ("flex-end",), ("flex-start",), ("last-baseline",), ("left",), ("right",), ("safe",), ("self-end",), ("self-start",), ("space-around",), ("space-between",), ("start",), ("true",)],
     "justify-items": [("auto",), ("baseline",), ("center",), ("end",), ("flex-end",), ("flex-start",), ("last-baseline",), ("left",), ("legacy",), ("right",), ("safe",), ("self-end",), ("self-start",), ("start",), ("stretch",), ("true",)],
     "justify-self":  [("auto",), ("baseline",), ("center",), ("end",), ("flex-end",), ("flex-start",), ("last-baseline",), ("left",), ("right",), ("safe",), ("self-end",), ("self-start",), ("start",), ("stretch",), ("true",)],
     "left": [("auto",), v.length, v.percentage, v.calc],
