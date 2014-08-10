@@ -11123,11 +11123,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-number-non-negative</string>
+					<string>#type-time</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-time</string>
+					<string>#type-number-non-negative</string>
 				</dict>
 				<dict>
 					<key>include</key>

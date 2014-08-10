@@ -3430,8 +3430,8 @@ repository:
     - include: '#type-function-calc'
     - include: '#type-function-cubic-bezier'
     - include: '#type-function-steps'
-    - include: '#type-number-non-negative'
     - include: '#type-time'
+    - include: '#type-number-non-negative'
     - include: '#identifier'
     end: (?=[;)])
 
