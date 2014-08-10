@@ -3554,7 +3554,7 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - name: support.constant.property-value.css
-      match: \b(?:top|space|right|none|left|cover|contain|center|bottom|auto)\b
+      match: \b(?:top|stretch|space|round|right|repeat|none|left|fill|cover|contain|center|bottom|auto)\b
     - include: '#type-repeat-style'
     - include: '#type-box'
     - include: '#type-attachment'
@@ -3565,10 +3565,23 @@ repository:
     - include: '#type-function-hsl'
     - include: '#type-function-rgba'
     - include: '#type-function-rgb'
+    - include: '#type-function-cross-fade'
+    - include: '#type-function-element'
+    - include: '#type-function-filter'
+    - include: '#type-function-image'
+    - include: '#type-function-image-set'
+    - include: '#type-function-conic-gradient'
+    - include: '#type-function-linear-gradient'
+    - include: '#type-function-radial-gradient'
+    - include: '#type-function-cubic-bezier'
+    - include: '#type-function-steps'
+    - name: support.constant.property-value.css
+      match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
     - include: '#type-function-calc'
+    - include: '#type-time'
+    - include: '#type-percentage'
+    - include: '#type-length'
     - include: '#type-color-hex'
-    - include: '#type-percentage-non-negative'
-    - include: '#type-length-non-negative'
     end: (?=[;)])
 
   value-background-attachment:
@@ -7748,9 +7761,10 @@ repository:
     end: (?=[;)])
 
 # TODO
-# fix transition property
-#     should highlight values based on the property name
-#         current values won't work because they match the colon at the end
+# add cmd+shift+p -> CSS3: import google web font
+#     inserts @font-face declarations based on the name of the font
+#     pops up bottom menu (a la AdvancedNewFile) and you can enter the font name
+# add menu options for reset and normalize.css (raises awareness)
 
 # TODO (LOW PRIORITY)
 # ridiculous new color functions (see bottom of /spec/functions.txt)
