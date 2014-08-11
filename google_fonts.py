@@ -1,7 +1,5 @@
 import sublime
 import sublime_plugin
-import threading
-import time
 import urllib
 
 
@@ -66,8 +64,3 @@ class GoogleFontInsertCommand(sublime_plugin.TextCommand):
 
 # TODO
 # add loading animation so the user knows it's working
-# add more detailed error message about what went wrong.
-#   invalid query is too vague
-#   font family not found?
-#   wrong weight?
-# delete the exception catch all in GoogleFontQuery()
