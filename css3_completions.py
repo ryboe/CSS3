@@ -17,16 +17,14 @@ class CSS3Completions(sublime_plugin.EventListener):
         # are only offered for properties and values.
         completions = []
         if view.match_selector(trigger_start, "meta.property-name.css"):
-            completions = properties.names
+            return properties.names, INHIBIT_DEFAULTS
         elif view.match_selector(trigger_start, "meta.value.css"):
             line = view.substr(view.line(trigger_start)).strip()
             matches = property_name_rx.search(line)
             if matches is not None:
                 prop_name = matches.group("prop_name")
                 if prop_name in properties.value_for_name:
-                    completions = properties.value_for_name[prop_name] + values.all_values
-
-        return completions, INHIBIT_DEFAULTS
+                    return properties.value_for_name[prop_name] + values.all_values, INHIBIT_DEFAULTS
 
 
 # TODO
