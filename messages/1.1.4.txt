@@ -1,0 +1,56 @@
+VERSION 1.1.4 CHANGES
+
+1) Fixed a few small bugs in the syntax highlighter.
+
+2) No more snippets. The snippets that inserted the HTML5 Doctor Reset and
+   normalize.css are gone. Most users probably didn't know they were there, if
+   they hadn't triggered them by accident.
+
+   Don't worry. They're not gone. They're just on the command palette now.
+     Mac:            cmd+shift+p → CSS3: Insert Reset
+     Linux/Windows: ctrl+shift+p → CSS3: Insert Reset
+
+     Mac:            cmd+shift+p → CSS3: Insert normalize.css
+     Linux/Windows: ctrl+shift+p → CSS3: Insert normalize.css
+
+3) Cool new feature! Magically import Google Fonts.
+
+   If you use Google Fonts, you're probably accustomed to including a <link>
+   tag like this in your HTML:
+
+     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,400i' rel='stylesheet' type='text/css'>
+
+   All this tag is doing is retrieving a small CSS file with @font-face
+   declarations. Why not save an HTTP request and include it directly in your
+   CSS source?
+
+     Mac:            cmd+shift+p → CSS3: Insert Google Font
+     Linux/Windows: ctrl+shift+p → CSS3: Insert Google Font
+
+   You'll be prompted to enter a font name and some font weights. Type in
+   something like this:
+
+     Open Sans:400,400i
+
+   ...and you'll get this:
+
+     @font-face {
+         font-family: 'Open Sans';
+         font-style: normal;
+         font-weight: 400;
+         src: local('Open Sans'), local('OpenSans'), url(http://themes.googleusercontent.com/static/fonts/opensans/v9/cJZKeOuBrn4kERxqtaUH3bO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+     }
+     @font-face {
+         font-family: 'Open Sans';
+         font-style: italic;
+         font-weight: 400;
+         src: local('Open Sans Italic'), local('OpenSans-Italic'), url(http://themes.googleusercontent.com/static/fonts/opensans/v9/xjAJXh38I15wypJXxuGMBrrIa-7acMAeDBVuclsi6Gc.woff) format('woff');
+     }
+
+   The fonts are all WOFF 2.0 for Chrome, and fall back gracefully to WOFF 1.0
+   for every other browser.
+
+   You should use this! It's faster than going to the Google Fonts page. You get
+   better performance by saving an HTTP request and using the most compressed
+   fonts. Your HTML will be a little cleaner. You get better separation of
+   markup and presentation. What's not to like?!

@@ -6596,6 +6596,10 @@
 					<key>include</key>
 					<string>#type-percentage-non-negative</string>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-number-non-negative</string>
+				</dict>
 			</array>
 		</dict>
 		<key>type-function-calc</key>
@@ -11123,11 +11127,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-number-non-negative</string>
+					<string>#type-time</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-time</string>
+					<string>#type-number-non-negative</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -11511,7 +11515,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:top|space|right|none|left|cover|contain|center|bottom|auto)\b</string>
+					<string>\b(?:top|stretch|space|round|right|repeat|none|left|fill|cover|contain|center|bottom|auto)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>
@@ -11557,19 +11561,69 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#type-function-cross-fade</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-element</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-filter</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-image</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-image-set</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-conic-gradient</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-linear-gradient</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-radial-gradient</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-cubic-bezier</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-steps</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type-function-calc</string>
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#type-time</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-percentage</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-length</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type-color-hex</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#type-percentage-non-negative</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#type-length-non-negative</string>
 				</dict>
 			</array>
 		</dict>
