@@ -6596,6 +6596,10 @@
 					<key>include</key>
 					<string>#type-percentage-non-negative</string>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-number-non-negative</string>
+				</dict>
 			</array>
 		</dict>
 		<key>type-function-calc</key>

@@ -2069,6 +2069,7 @@ repository:
     - include: '#comment-block'
     - include: '#type-function-calc'
     - include: '#type-percentage-non-negative'
+    - include: '#type-number-non-negative'
     end: \)
     endCaptures:
       '0': {name: punctuation.section.function.css}
