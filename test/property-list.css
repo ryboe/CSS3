@@ -221,6 +221,7 @@
     backface-visibility: unset;
     backface-visibility: visible;
     backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
 
     background: red scroll fixed local;
@@ -996,6 +997,7 @@
     box-decoration-break: unset;
     box-decoration-break: slice;
     box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
 
     box-shadow: initial;
     box-shadow: inherit;
@@ -1107,6 +1109,10 @@
     clip-path: polygon(nonzero, 100px 200em 300% 0);
     clip-path: polygon(evenodd, 100% 0 300em 0);
     clip-path: polygon(15px 99px, 30px 87px, 65px 99px, 85px 55px,
+                  122px 57px, 184px 73px, 198px 105px, 199px 150px,
+                  145px 159px, 155px 139px, 126px 120px, 112px 138px,
+                  80px 128px, 39px 126px, 24px 104px);
+    -webkit-clip-path: polygon(15px 99px, 30px 87px, 65px 99px, 85px 55px,
                   122px 57px, 184px 73px, 198px 105px, 199px 150px,
                   145px 159px, 155px 139px, 126px 120px, 112px 138px,
                   80px 128px, 39px 126px, 24px 104px);
@@ -2025,6 +2031,7 @@
     flex: 1;
     flex: 0 auto;
     flex: none;
+    -ms-flex: auto 100%;
     -webkit-flex: none;
 
     flex-basis: initial;
@@ -2044,6 +2051,7 @@
     flex-direction: column-reverse;
     flex-direction: row;
     flex-direction: row-reverse;
+    -ms-flex-direction: row-reverse;
     -webkit-flex-direction: row-reverse;
 
     flex-flow: initial;
@@ -2054,6 +2062,7 @@
     flex-flow: row-reverse wrap-reverse;
     flex-flow: row wrap;
     flex-flow: column;
+    -ms-flex-flow: column;
     -webkit-flex-flow: column;
 
     flex-grow: initial;
@@ -2081,6 +2090,7 @@
     flex-wrap: nowrap;
     flex-wrap: wrap;
     flex-wrap: wrap-reverse;
+    -ms-flex-wrap: wrap-reverse;
     -webkit-flex-wrap: wrap-reverse;
 
     float: initial;
@@ -2462,6 +2472,8 @@
     grid: 10rem 10rem 10rem 10rem / 1fr 1fr 1fr 1fr;
     grid: 12rem 12rem 12rem 12rem / 10rem 10rem 10rem 10rem;
     grid: subgrid;
+    -webkit-grid: subgrid;
+    -webkit-grid: 12rem 12rem 12rem 12rem / 10rem 10rem 10rem 10rem;
 
     grid-area: initial;
     grid-area: inherit;
@@ -2480,12 +2492,23 @@
     grid-area: 2 / 3;
     grid-area: auto;
     grid-area: span 2 / span 3;
-    grid-area: span 2 / span 3;
+    -webkit-grid-area: span 2 / span 3;
 
     grid-auto-columns: initial;
     grid-auto-columns: inherit;
     grid-auto-columns: unset;
     grid-auto-columns: 1fr;
+    -webkit-grid-auto-columns: 1fr;
+
+    grid-auto-flow: initial;
+    grid-auto-flow: inherit;
+    grid-auto-flow: unset;
+    grid-auto-flow: row;
+    grid-auto-flow: row dense;
+    grid-auto-flow: column dense;
+    grid-auto-flow: stack  column;
+    grid-auto-flow: stack  row;
+    -webkit-grid-auto-flow: stack  row;
 
     grid-auto-rows: initial;
     grid-auto-rows: inherit;
@@ -2496,15 +2519,7 @@
     grid-auto-rows: max-content;
     grid-auto-rows: 0;
     grid-auto-rows: auto;
-
-    grid-auto-flow: initial;
-    grid-auto-flow: inherit;
-    grid-auto-flow: unset;
-    grid-auto-flow: row;
-    grid-auto-flow: row dense;
-    grid-auto-flow: column dense;
-    grid-auto-flow: stack  column;
-    grid-auto-flow: stack  row;
+    -webkit-grid-auto-rows: auto;
 
     grid-column: 1;
     grid-column: 2;
@@ -2525,13 +2540,15 @@
     -ms-grid-column: span 2;
     -webkit-grid-column: span 2;
 
-    grid-column-start:initial;
-    grid-column-start: inherit;
-    grid-column-start: unset;
-
     grid-column-end:initial;
     grid-column-end: inherit;
     grid-column-end: unset;
+    -webkit-grid-column-end: unset;
+
+    grid-column-start:initial;
+    grid-column-start: inherit;
+    grid-column-start: unset;
+    -webkit-grid-column-start: unset;
 
     grid-row: 2;
     grid-row: 1;
@@ -2573,6 +2590,9 @@
     grid-template: auto 1fr auto /
     (header-top) "a   a   a"     (header-bottom)
       (main-top) "b   b   b" 1fr (main-bottom);
+    -webkit-grid-template: auto 1fr auto /
+    (header-top) "a   a   a"     (header-bottom)
+      (main-top) "b   b   b" 1fr (main-bottom);
 
     grid-template-areas: initial;
     grid-template-areas: inherit;
@@ -2593,6 +2613,9 @@
                          "stats board"
                          "score ctrls";
     grid-template-areas: ". a"
+                         "b a"
+                         ". a";
+    -webkit-grid-template-areas: ". a"
                          "b a"
                          ". a";
 
@@ -2630,6 +2653,7 @@
     grid-template-columns: (labels) auto (controls) auto (oversized) auto;
     grid-template-columns: repeat(5, 100px);
     grid-template-columns: 1fr 1fr;
+    -webkit-grid-template-columns: 1fr 1fr;
 
     grid-template-rows: initial;
     grid-template-rows: inherit;
@@ -2646,7 +2670,7 @@
     grid-template-rows: auto 1fr;
     grid-template-rows: (header-top) auto (header-bottom main-top) 1fr (main-bottom);
     grid-template-rows: 20px;
-    grid-template-rows: 1fr 1fr;
+    -webkit-grid-template-rows: 1fr 1fr;
 
     hanging-punctuation: initial;
     hanging-punctuation: inherit;
@@ -2756,6 +2780,7 @@
     justify-self: unset;
     justify-self: auto;
     justify-self: last-baseline;
+    -webkit-justify-self: last-baseline;
 
     left: inherit;
     left: initial;
@@ -3617,6 +3642,7 @@
     perspective: 100px;
     perspective: 123em;
     perspective: 123.4mm  ;
+    -ms-perspective: 123.4mm  ;
     -webkit-perspective: 123.4mm  ;
 
     perspective-origin: initial;
@@ -3631,6 +3657,7 @@
     perspective-origin: bottom left;
     perspective-origin: bottom;
     perspective-origin: bottom right;
+    -ms-perspective-origin: bottom right;
     -webkit-perspective-origin: bottom right;
 
     pointer-events: initial;
@@ -3778,6 +3805,7 @@
     ruby-position: unset;
     ruby-position: over right;
     ruby-position: left inter-character;
+    -webkit-ruby-position: left inter-character;
 
     running: inherit;
     running: initial;
@@ -3794,12 +3822,14 @@
     shape-image-threshold: +0.12345;
     shape-image-threshold: 0.12345;
     shape-image-threshold: 0.1;
+    -webkit-shape-image-threshold: 0.1;
 
     shape-margin: initial;
     shape-margin: inherit;
     shape-margin: unset;
     shape-margin: 10px;
     shape-margin: 35px;
+    -webkit-shape-margin: 35px;
 
     shape-outside: initial;
     shape-outside: inherit;
@@ -3813,6 +3843,7 @@
     shape-outside: polygon(50px 0px, 100px 100px, 0px 100px);
     shape-outside: polygon(0% 50%, 50% 100%, 0 100%);
     shape-outside: attr(src url);
+    -webkit-shape-outside: polygon(0% 50%, 50% 100%, 0 100%);
 
     size: initial;
     size: inherit;
@@ -3919,6 +3950,7 @@
     tab-size: 8;
     tab-size: 0px;
     tab-size: 100px;
+    -moz-tab-size: 100px;
 
     table-layout: initial;
     table-layout: inherit;
@@ -4172,6 +4204,7 @@
     text-decoration-color: hsla(1, 0%, 99%, 1.0);
     text-decoration-color: hsla(1, 0%, 25%, 1.0);
     -moz-text-decoration-color: hsla(1, 0%, 25%, 1.0);
+    -webkit-text-decoration-color: hsla(1, 0%, 25%, 1.0);
 
     text-decoration-line: initial;
     text-decoration-line: inherit;
@@ -4181,6 +4214,7 @@
     text-decoration-line: blink blink blink blink;
     text-decoration-line: underline overline underline overline;
     -moz-text-decoration-line: underline overline underline overline;
+    -webkit-text-decoration-line: underline overline underline overline;
 
     text-decoration-skip: initial;
     text-decoration-skip: inherit;
@@ -4188,6 +4222,8 @@
     text-decoration-skip: ink;
     text-decoration-skip: edges;
     text-decoration-skip: edges ink;
+    -moz-text-decoration-skip: edges ink;
+    -webkit-text-decoration-skip: edges ink;
 
     text-decoration-style: initial;
     text-decoration-style: inherit;
@@ -4198,6 +4234,7 @@
     text-decoration-style: solid;
     text-decoration-style: wavy;
     -moz-text-decoration-style: wavy;
+    -webkit-text-decoration-style: wavy;
 
     text-emphasis: initial;
     text-emphasis: inherit;
@@ -4205,6 +4242,7 @@
     text-emphasis: none;
     text-emphasis: dot;
     text-emphasis: open triangle #3366FF;
+    -webkit-text-emphasis: open triangle #3366FF;
 
     text-emphasis-color: initial;
     text-emphasis-color: inherit;
@@ -4385,6 +4423,7 @@
     text-emphasis-color: hsla(360, 0%, 25%, 1.0);
     text-emphasis-color: hsla(1, 0%, 99%, 1.0);
     text-emphasis-color: hsla(1, 0%, 25%, 1.0);
+    -webkit-text-emphasis-color: hsla(1, 0%, 25%, 1.0);
 
     text-emphasis-position: initial;
     text-emphasis-position: inherit;
@@ -4394,6 +4433,7 @@
     text-emphasis-position: over right;
     text-emphasis-position: over left;
     text-emphasis-position: right under;
+    -webkit-text-emphasis-position: right under;
 
     text-emphasis-style: initial;
     text-emphasis-style: inherit;
@@ -4409,6 +4449,7 @@
     text-emphasis-style: "hello";
     text-emphasis-style: 'hi';
     text-emphasis-style: triangle open;
+    -webkit-text-emphasis-style: triangle open;
 
     text-height: auto;
     text-height: font-size;
@@ -4447,6 +4488,7 @@
     text-orientation: sideways-right;
     text-orientation: upright;
     text-orientation: use-glyph-orientation;
+    -webkit-text-orientation: use-glyph-orientation;
 
     text-overflow: initial;
     text-overflow: inherit;
@@ -4873,6 +4915,7 @@
     -ms-writing-mode: horizontal-tb;
     -ms-writing-mode: vertical-lr;
     -ms-writing-mode: vertical-rl;
+    -webkit-writing-mode: vertical-rl;
 
     z-index: initial;
     z-index: inherit;
