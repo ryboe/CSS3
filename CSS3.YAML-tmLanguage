@@ -367,7 +367,7 @@ repository:
 
   property-name-illegal:
     name: invalid.illegal.css
-    match: \b(?:user-select|font-smooth|clip|behavior|accelerator)\b(?!=\-)
+    match: \b(?:user-select|font-smooth|clip|behavior|accelerator)\b(?!\-)
 
   property-name-illegal-moz:
     name: invalid.illegal.css
