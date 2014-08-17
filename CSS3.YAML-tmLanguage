@@ -355,8 +355,8 @@ repository:
     - include: '#property-name-illegal-webkit'
     - include: '#property-name-illegal-moz'
     - include: '#property-name-illegal-ms'
-    - include: '#property-name-legal'
     - include: '#property-name-illegal'
+    - include: '#property-name-legal'
     - include: '#property-name-custom'
     end: (?=:)
 
@@ -367,7 +367,7 @@ repository:
 
   property-name-illegal:
     name: invalid.illegal.css
-    match: \b(?:user-select|font-smooth|clip|behavior|accelerator)\b
+    match: \b(?:user-select|font-smooth|clip|behavior|accelerator)\b(?!=\-)
 
   property-name-illegal-moz:
     name: invalid.illegal.css
@@ -395,8 +395,8 @@ repository:
     - include: '#property-name-illegal-webkit'
     - include: '#property-name-illegal-moz'
     - include: '#property-name-illegal-ms'
-    - include: '#property-name-legal'
     - include: '#property-name-illegal'
+    - include: '#property-name-legal'
     - include: '#property-name-custom'
     end: (?=:)
 

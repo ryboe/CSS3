@@ -1053,11 +1053,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#property-name-legal</string>
+					<string>#property-name-illegal</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#property-name-illegal</string>
+					<string>#property-name-legal</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -1075,7 +1075,7 @@
 		<key>property-name-illegal</key>
 		<dict>
 			<key>match</key>
-			<string>\b(?:user-select|font-smooth|clip|behavior|accelerator)\b</string>
+			<string>\b(?:user-select|font-smooth|clip|behavior|accelerator)\b(?!=\-)</string>
 			<key>name</key>
 			<string>invalid.illegal.css</string>
 		</dict>
@@ -1143,11 +1143,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#property-name-legal</string>
+					<string>#property-name-illegal</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#property-name-illegal</string>
+					<string>#property-name-legal</string>
 				</dict>
 				<dict>
 					<key>include</key>
