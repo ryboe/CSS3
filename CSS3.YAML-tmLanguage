@@ -352,11 +352,11 @@ repository:
     begin: (?=[-a-z])
     patterns:
     - include: '#comment-block'
-    - include: '#property-name-illegal'
+    - include: '#property-name-illegal-webkit'
     - include: '#property-name-illegal-moz'
     - include: '#property-name-illegal-ms'
-    - include: '#property-name-illegal-webkit'
     - include: '#property-name-legal'
+    - include: '#property-name-illegal'
     - include: '#property-name-custom'
     end: (?=:)
 
@@ -367,19 +367,19 @@ repository:
 
   property-name-illegal:
     name: invalid.illegal.css
-    match: \bbehavior\b
+    match: \b(?:font-smooth|clip|behavior|accelerator)\b
 
   property-name-illegal-moz:
     name: invalid.illegal.css
-    match: -moz-(?:window-shadow|user-modify|user-input|user-focus|stack-sizing|script-size-multiplier|script-min-size|script-level|padding-start|padding-end|outline-radius-topright|outline-radius-topleft|outline-radius-bottomright|outline-radius-bottomleft|outline-radius|orient|margin-start|margin-end|image-region|force-broken-image-icon|float-edge|box-pack|box-orient|box-ordinal-group|box-flex|box-direction|box-align|border-top-colors|border-start-width|border-start-style|border-start-color|border-start|border-right-colors|border-left-colors|border-end-width|border-end-style|border-end-color|border-end|border-bottom-colors|binding|appearance)\b
+    match: -moz-(?:user-select|user-modify|user-input|user-focus|box-pack|box-orient|box-ordinal-group|box-lines|box-flex-group|box-flex|box-direction|box-align|binding|appearance)\b
 
   property-name-illegal-ms:
     name: invalid.illegal.css
-    match: -ms-(?:interpolation-mode|background-position-[xy])\b
+    match: -ms-(?:user-select|text-kashida-space|progress-appearance|layout-flow|interpolation-mode|filter|block-progression|behavior|accelerator)\b
 
   property-name-illegal-webkit:
     name: invalid.illegal.css
-    match: -webkit-(?:text-stroke-width|text-stroke-color|text-stroke|text-security|text-fill-color|text-decorations-in-effect|tap-highlight-color|svg-shadow|rtl-ordering|region-break-inside|region-break-before|region-break-after|print-color-adjust|perspective-origin-y|perspective-origin-x|padding-start|padding-end|padding-before|padding-after|overflow-scrolling|nbsp-mode|min-logical-width|min-logical-height|max-logical-width|max-logical-height|match-nearest-mail-blockquote-color|mask-repeat-y|mask-repeat-x|mask-position-y|mask-position-x|mask-box-image-width|mask-box-image-source|mask-box-image-slice|mask-box-image-repeat|mask-box-image-outset|mask-box-image|mask-attachment|marquee-style|marquee-speed|marquee-repetition|marquee-increment|marquee-direction|marquee|margin-top-collapse|margin-start|margin-end|margin-collapse|margin-bottom-collapse|margin-before-collapse|margin-before|margin-after-collapse|margin-after|logical-width|logical-height|locale|line-snap|line-grid|line-clamp|line-break|line-box-contain|line-align|hyphenate-limit-lines|hyphenate-limit-before|hyphenate-limit-after|hyphenate-charset|highlight|font-smoothing|dashboard-region|column-break-inside|column-break-before|column-break-after|column-axis|box-shadow|box-reflect|box-pack|box-orient|box-ordinal-groups|box-lines|box-flex-group|box-flex|box-direction|box-align|border-vertical-spacing|border-start-width|border-start-style|border-start-color|border-start|border-horizontal-spacing|border-fit|border-end-width|border-end-style|border-end-color|border-end|border-before-width|border-before-style|border-before-color|border-before|border-after-width|border-after-style|border-after-color|border-after|background-composite|aspect-ratio|appearance)\b
+    match: -webkit-(?:user-select|user-modify|user-input|user-focus|box-reflect|box-pack|box-orient|box-ordinal-group|box-lines|box-flex-group|box-flex|box-direction|box-align|appearance)\b
 
   property-name-legal:
     name: support.type.property-name.css
@@ -392,11 +392,11 @@ repository:
       '0': {name: punctuation.section.supports-condition.css}
     patterns:
     - include: '#comment-block'
-    - include: '#property-name-illegal'
+    - include: '#property-name-illegal-webkit'
     - include: '#property-name-illegal-moz'
     - include: '#property-name-illegal-ms'
-    - include: '#property-name-illegal-webkit'
     - include: '#property-name-legal'
+    - include: '#property-name-illegal'
     - include: '#property-name-custom'
     end: (?=:)
 
