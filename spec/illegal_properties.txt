@@ -235,6 +235,7 @@ ILLEGAL (these are properties that have been explicitly abandoned/dropped by the
     behavior                 // MS property introduced for IE8
     clip                     // deprecated in CSS Masking Module Level 1 spec. use clip-path instead
     font-smooth              // dropped from CSS3 Fonts after 2002
+    user-select              // in CSS3 UI draft from 2000. might return in CSS4
 
 ILLEGAL PREFIXES
     -apple-  // use -webkit-
