@@ -7756,10 +7756,7 @@ repository:
     end: (?=[;)])
 
 # TODO
-# add cmd+shift+p -> CSS3: import google web font
-#     inserts @font-face declarations based on the name of the font
-#     pops up bottom menu (a la AdvancedNewFile) and you can enter the font name
-# add menu options for reset and normalize.css (raises awareness)
+# add validator command
 
 # TODO (LOW PRIORITY)
 # ridiculous new color functions (see bottom of /spec/functions.txt)

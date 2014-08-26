@@ -3,7 +3,7 @@ import sublime_plugin
 import urllib
 
 
-class HexConvertCommand(sublime_plugin.TextCommand):
+class Css3HexConvertCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         window = self.view.window()
         window.show_input_panel("RGB:", "", self.validate_and_convert, None, None)
@@ -33,7 +33,7 @@ class HexConvertCommand(sublime_plugin.TextCommand):
 
         hex_string = self.convert(color_values)
 
-        self.view.run_command("hex_insert", {"hex": hex_string})
+        self.view.run_command("css3_hex_insert", {"hex": hex_string})
 
     def convert(self, rgb):
         if all(c % 17 == 0 for c in rgb):
@@ -42,7 +42,7 @@ class HexConvertCommand(sublime_plugin.TextCommand):
         return "#" + "".join("{:x}".format(c) for c in rgb)
 
 
-class HexInsertCommand(sublime_plugin.TextCommand):
+class Css3HexInsertCommand(sublime_plugin.TextCommand):
     def run(self, edit, **args):
         print("called")
         for region in self.view.sel():
