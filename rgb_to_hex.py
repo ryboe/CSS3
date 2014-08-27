@@ -40,7 +40,7 @@ class Css3HexConvertCommand(sublime_plugin.TextCommand):
         if all(c % 17 == 0 for c in rgb):
             # return the three character hex notation, ex: #abc instead of #aabbcc
             return "#" + "".join("{:x}".format(c)[0] for c in rgb)
-        return "#" + "".join("{:x}".format(c) for c in rgb)
+        return "#" + "".join("{:02x}".format(c) for c in rgb)
 
 
 class Css3HexInsertCommand(sublime_plugin.TextCommand):

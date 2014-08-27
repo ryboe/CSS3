@@ -1,0 +1,47 @@
+VERSION 1.2.0 CHANGES
+
+1)  Removed Google Font Insert permanently
+
+    IMPORTANT! If you've used the Quick Google Font Insert function to insert
+    @font-face blocks in your CSS, you should delete that code and go back to
+    using <link> tags like this:
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+    I'm terribly sorry about this! Google does not guarantee that the URLs in the
+    @font-face block will remain stable. Future changes to the URLs could break
+    your fonts! The only guaranteed stable URL is "fonts.googleapis.com" in the
+    <link> tag above.
+
+    Because of this, I've removed Google Font Insert entirely.
+
+As an apology, I've implemented...
+
+2)  W3C Validation (Beta)
+
+    Linux/Windows: ctrl+shift+p → CSS3: Validate
+    Mac:           cmd+shift+p  → CSS3: Validate
+
+    Make sure you're connected to the Internet. The entire CSS file will be
+    submitted to the W3C CSS Validation service. Lines with errors will be
+    marked in the gutter (the left part of the screen by the line numbers). To
+    see the error message, simple select the line containing the error. The
+    message will appear in the status bar (at the bottom).
+
+    For performance reasons, gutter marks will not be automatically removed
+    when the error is fixed. There are three ways to remove the gutter marks:
+       1. call CSS3: Validate again
+       2. CSS3: Clear Gutter Marks
+       3. save your file (this behavior can be changed in the settings)
+
+    Check the package settings for some tweaks to the validator's behavior.
+
+3)  RGB Color to Hex Converter
+
+    CSS3: Convert RGB Color To Hex
+
+    Enter a comma-separated list of three numbers (0 - 255). The hex equivalent
+    will be inserted in the current selection. Three-letter hex codes will be
+    used where possible, as recommended by the Google HTML/CSS Style Guide.
+
+    50, 100, 150 --> #326496
+    255,238,255  --> #eee

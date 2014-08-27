@@ -1,10 +1,10 @@
 [
     {
-        "caption": "CSS3: Convert RGB To Hex",
+        "caption": "CSS3: Convert RGB Color To Hex",
         "command": "css3_hex_convert",
     },
     {
-        "caption": "CSS3: Validate All (Beta)",
+        "caption": "CSS3: Validate (Beta)",
         "command": "css3_validate_all",
     },
     {
