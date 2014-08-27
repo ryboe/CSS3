@@ -45,7 +45,6 @@ class Css3HexConvertCommand(sublime_plugin.TextCommand):
 
 class Css3HexInsertCommand(sublime_plugin.TextCommand):
     def run(self, edit, **args):
-        print("called")
         for region in self.view.sel():
             self.view.replace(edit, region, "")
             insert_point = region.begin()
