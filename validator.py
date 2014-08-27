@@ -4,12 +4,7 @@ import sublime
 import sublime_plugin
 import urllib
 import threading
-import time
-
-# TODO: can i delete these now?
-# make sublime.Region hashable so regions can be stored in a set
-sublime.Region.__eq__   = lambda self, other: self.begin() == other.begin() and self.end() == other.end()
-sublime.Region.__hash__ = lambda self: hash((self.begin(), self.end()))
+import time    # DEBUG
 
 
 w3c_url     = "http://jigsaw.w3.org/css-validator/validator?"
@@ -18,18 +13,19 @@ bad_lines   = {}
 
 class Css3Validator(sublime_plugin.TextCommand):
     def validate(self, texts):
-        # TODO: user can set the timeout in the settings
-        # timeout = settings.get("timeout")
+        settings = sublime.load_settings("CSS3.sublime-settings")
+        timeout  = settings.get("validator_timeout", 10)
+
         threads = []
         for text in texts:
-            thread = W3cValidatorCall(text)
+            thread = W3cValidatorCall(text, timeout)
             threads.append(thread)
             thread.start()
 
         self.handle_threads(threads)
 
-    # code from github.com/wbond/sublime_prefixr
-    # the i and direction params are for the status bar animation
+    # based on MIT-licensed code from github.com/wbond/sublime_prefixr
+    # params i and direction are for the activity indicator in the status bar
     def handle_threads(self, threads, has_errors=False, i=0, direction=1):
         next_threads = []
         for thread in threads:
@@ -55,19 +51,11 @@ class Css3Validator(sublime_plugin.TextCommand):
 
                 # mark the gutters
                 self.view.add_regions("mark", bad_regions, "invalid.illegal.css", "dot",
-                                      sublime.PERSISTENT)
+                                      sublime.HIDDEN | sublime.PERSISTENT)
 
         if next_threads:
-            # This animates a little activity indicator in the status area
-            before = i % 8
-            after  = 7 - before
-            if after == 0:
-                direction = -1
-            elif before == 0:
-                direction = 1
-            i += direction
+            before, after, i, direction = self.activity_indicator(i, direction)
             self.view.set_status("Validator Running", "Validator [{}={}]".format(" " * before, " " * after))
-
             sublime.set_timeout(lambda: self.handle_threads(next_threads, has_errors, i, direction), 100)
             return
 
@@ -75,11 +63,24 @@ class Css3Validator(sublime_plugin.TextCommand):
 
         if not has_errors:
             self.view.erase_regions("mark")
-            window   = self.view.window()
-            panel    = window.create_output_panel("css3_validator")
-            congrats = "Congratulations! No Error Found."
-            panel.run_command("append", {"characters": congrats})
-            window.run_command("show_panel", {"panel": "output.css3_validator"})
+            self.show_congrats()
+
+    def activity_indicator(self, i, direction):
+        before = i % 8
+        after  = 7 - before
+        if after == 0:
+            direction = -1
+        elif before == 0:
+            direction = 1
+        i += direction
+        return before, after, i, direction
+
+    def show_congrats(self):
+        window   = self.view.window()
+        panel    = window.create_output_panel("css3_validator")
+        congrats = "Congratulations! No Error Found."
+        panel.run_command("append", {"characters": congrats})
+        window.run_command("show_panel", {"panel": "output.css3_validator"})
 
 
 class Css3ValidateAll(Css3Validator):
@@ -104,14 +105,7 @@ class W3cValidatorCall(threading.Thread):
         self.results = None
 
     def run(self):
-        params = {"text": self.text, "output": "json", "profile": "css3", "warning": "no"}
-        encoded_params = urllib.parse.urlencode(params)
-
-        # set the Accept-Charset header to UTF-8 just in case. below it is assumed
-        # the response is UTF-8
-        headers = {"Accept-Charset": "utf-8", "User-Agent": "Sublime Text CSS3 Package"}
-        req = urllib.request.Request(w3c_url + encoded_params, headers=headers, method="GET")
-
+        req = self.prepare_request()
         try:
             response = urllib.request.urlopen(req, timeout=self.timeout)
 
@@ -126,9 +120,20 @@ class W3cValidatorCall(threading.Thread):
             print(err)
             sublime.error_message("ERROR: failed to decode the response from the validation server")
 
+    def prepare_request(self):
+        """Return a GET request object with parameters encoded and headers set."""
+        params = {"text": self.text, "output": "json", "profile": "css3", "warning": "no"}
+        encoded_params = urllib.parse.urlencode(params)
+
+        # Set the Accept-Charset header to UTF-8 just in case. The response is
+        # assumed to be UTF-8.
+        headers = {"Accept-Charset": "utf-8", "User-Agent": "Sublime Text CSS3 Package"}
+        return urllib.request.Request(w3c_url + encoded_params, headers=headers, method="GET")
+
 
 class Css3ClearGutterMarks(sublime_plugin.TextCommand):
     def run(self, edit):
+        """Manually clear all validation errors from the gutter."""
         self.view.erase_regions("mark")
         self.view.erase_status("Validation Error")
         global bad_lines
@@ -136,17 +141,21 @@ class Css3ClearGutterMarks(sublime_plugin.TextCommand):
 
 
 class Css3ShowError(sublime_plugin.EventListener):
-    def on_modified_async(self, view):
-        unsaved = view.get_regions("unsaved")
-        for sel in view.sel():
-            unsaved.extend(view.lines(sel))
-        marked  = view.get_regions("mark")
-        # DEBUG
-        print("unsaved:", unsaved)
-        print("marked: ", marked)
+    def on_pre_save_async(self, view):
+        """Clear validation errors from the gutter when the user saves.
+
+        The user can disable this in the package settings.
+        """
+        settings = sublime.load_settings("CSS3.sublime-settings")
+        if settings.get("clear_errors_on_save", True):
+            view.run_command("css3_clear_gutter_marks")
 
     def on_selection_modified_async(self, view):
-        lines  = selection_to_lines(view, view.sel(), max_lines=3)
+        """Display validation error messages in the status bar.
+
+        The message is displayed when the line with the error is selected.
+        """
+        lines  = regions_to_lines(view, view.sel(), max_lines=3)
         errors = [bad_lines[line] for line in lines if line in bad_lines]
         if errors:
             messages = []
@@ -158,14 +167,12 @@ class Css3ShowError(sublime_plugin.EventListener):
         view.erase_status("Validation Error")
 
 
-def selection_to_lines(view, sel, max_lines=-1):
-    # pass a view objects so we can use its lines() and rowcol() methods
+def regions_to_lines(view, sel, max_lines=-1):
+    """Convert a set of regions to line numbers (which start at 1)."""
+    # Pass a view object so we can use its lines() and rowcol() methods.
     line_nums = []
     for reg in view.sel():
-        # get all the lines intersecting the region in the selection
         lines = view.lines(reg)
-
-        # convert the line regions to line numbers (ints)
         for line in lines:
             row, _ = view.rowcol(line.begin())
             line_nums.append(row + 1)
@@ -176,29 +183,25 @@ def selection_to_lines(view, sel, max_lines=-1):
 
 
 # TODO
-# css3_validate_selection command
+# remove assert
+# delete DEBUG stuff
+# refactor to move stuff to functions
+# refactor to split into separate modules
 # add docstrings to each function
-# restrict scope of CSS3 commands to just CSS and html files
-# test to see if async is necessary by putting time.sleep(5) everywhere
-# remove marks when the line is modified
-# rate limit requests
-#   mutex as static or class variable?
-#   context manager?
-# make gutter marks persistent
+# css3_validate_selection command
 # add language setting for error messages (currently can set lang param to en, fr, it, ko, ja, es, zh-cn, nl, de, it, pl)
 #   settings = sublime.load_settings("CSS3.sublime-settings")
 #   settings.get("language") or something like that
 #   let the user set the timeout for the validation call in the settings
-# show loading animation while it's working
-# validate selection only
-# refactor to move stuff to functions
-# refactor to split into separate modules
+# rate limit requests
+#   it's polite
+#   mutex as static or class variable?
+#   context manager?
 
-
-# on_selection
-#   bad_lines is a set of integers (line numbers)
-#   get line numbers of selection
-#   if line numbers of selection are in bad_lines
-#     view.set_status("Validation Error", "; ".join(errors))
-#   else
-#     view.erase_status("Validation Error")
+# LOW PRIORITY
+# restrict scope of CSS3 palette commands to just CSS and html files
+#   can't be done. sublime-commands files ignore the "context" argument
+#     would look like "context": [{"key": "selector", "operator": "equal", "operand": "source.css"}]
+# remove marks when the line is modified
+#   requires on_modified_async() which gets called almost every keystroke
+#   already using on_selection_modified_async

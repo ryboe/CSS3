@@ -30,6 +30,7 @@ class Css3HexConvertCommand(sublime_plugin.TextCommand):
                 color_values.append(color_value)
         except ValueError as rgb_err:
             sublime.error_message("ERROR: {} is outside the range 0-255".format(rgb_err))
+            return
 
         hex_string = self.convert(color_values)
 
