@@ -9,8 +9,8 @@ The most complete CSS support for Sublime Text 3.
   and supported everything. Some of this stuff won't be implemented in browsers
   for *years*. With a few exceptions, if it's in the spec, it's supported.
 * __Productive__: Full set of completions for every property, including many
-  prefixed properties. Easily insert the minified HTML5 Doctor Reset or
-  normalize.css. Lightning quick insert for Google Fonts ([see below](https://github.com/y0ssar1an/CSS3#quickly-insert-google-fonts)).
+  prefixed properties. W3C Validation. Easily insert the minified HTML5 Doctor
+  Reset or normalize.css.
 * __Modern__: Bad, old CSS is flagged. Unnecessarily prefixed properties aren't
   highlighted. Catches lots of mistakes.
 * __Faithful__: Follows the spec extremely closely, with minor deviations that
@@ -20,10 +20,6 @@ The most complete CSS support for Sublime Text 3.
 
 ![before and after 1](https://github.com/y0ssar1an/CSS3/raw/dev/screenshots/before_and_after1.png)
 ![before and after 2](https://github.com/y0ssar1an/CSS3/raw/dev/screenshots/before_and_after2.png)
-
-## Quickly Insert Google Fonts
-
-![demo of Google Font insert](https://github.com/y0ssar1an/CSS3/raw/dev/screenshots/google_font_insert.gif)
 
 ## Installation
 
