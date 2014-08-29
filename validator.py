@@ -22,8 +22,8 @@ semicolon_errors = {
 
 
 class Css3Validator(sublime_plugin.TextCommand):
-    """Abstract class contains the core functions for submitting CSS code to the
-    W3C validator and flagging errors with gutter marks.
+    """This abstract class contains the core functions for submitting CSS code
+    to the W3C validator and flagging errors with gutter marks.
     """
 
     def validate(self, texts):
@@ -41,7 +41,7 @@ class Css3Validator(sublime_plugin.TextCommand):
 
     # This is based on MIT-licensed code from github.com/wbond/sublime_prefixr
     def handle_threads(self, threads, has_errors=False, i=0, direction=1):
-        """Wait for a the API call(s) to finish and mark the lines with errors.
+        """Wait for a the API call(s) to finish and mark the bad lines.
 
         Keyword arguments:
         threads    -- list of threads (alive or dead)
@@ -60,13 +60,15 @@ class Css3Validator(sublime_plugin.TextCommand):
                 continue
 
             if not thread.results["validity"]:
-                has_errors  = True
+                has_errors = True
                 self.mark_errors(thread.results["errors"], lang, zoom)
 
         if next_threads:
             before, after, i, direction = self.activity_indicator(i, direction)
-            self.view.set_status("Validator Running", "Validator [{}={}]".format(" " * before, " " * after))
-            sublime.set_timeout(lambda: self.handle_threads(next_threads, has_errors, i, direction), 100)
+            indicator = "Validator [{}={}]".format(" " * before, " " * after)
+            self.view.set_status("Validator Running", indicator)
+            sublime.set_timeout(lambda: self.handle_threads(next_threads, has_errors, i, direction),
+                                                            100)
             return
 
         self.view.erase_status("Validator Running")
@@ -76,7 +78,7 @@ class Css3Validator(sublime_plugin.TextCommand):
             self.show_congrats()
 
     def mark_errors(self, errors, lang="en", zoom=False):
-        """Return a list of regions from the line numbers returned by the validator.
+        """Mark the line numbers returned by the validator.
 
         errors -- dictionary of errors returned by the validation server call
         lang   -- the language of the error messages (default "en")
@@ -84,18 +86,23 @@ class Css3Validator(sublime_plugin.TextCommand):
         """
         bad_regions = []
         for err in errors:
-            lineno = err["line"]
-            msg    = err["message"].rstrip(": ")
+            # DEBUG try/catch
+            try:
+                lineno = err["line"]
+            except KeyError as kerr:
+                print("errors:", errors)
+                print(kerr)
+            msg = err["message"].rstrip(": ")
             if msg.startswith(semicolon_errors[lang]):
-                # Missing semicolons are reported as an error on the
-                # following line.
+                # Missing semicolons are reported as an error on the # following
+                # line.
                 lineno -= 1
             bad_lines[lineno] = msg
 
-            # Skip the leading whitespace and mark the rest of the line
-            # as bad. This fixes a bug where inserting newlines in the
-            # leading whitespace causes the gutter mark to be on a
-            # different line than the text where the error actually is.
+            # Skip the leading whitespace and mark the rest of the line as bad.
+            # This fixes a bug where inserting newlines in the leading
+            # whitespace causes the gutter mark to be on a different line than
+            # the text where the error really is.
             line_start = self.view.text_point(lineno - 1, 0)
             err_region = self.view.find(r"\S.*$", line_start)
             bad_regions.append(err_region)
@@ -108,7 +115,11 @@ class Css3Validator(sublime_plugin.TextCommand):
             self.view.show(bad_regions[0], show_surrounds=True)
 
     def activity_indicator(self, i, direction):
-        """Show the user that the validator is working by animating the status bar."""
+        """Show that the validator is working by animating the status bar.
+
+        i         -- the previous position of the '=' indicator
+        direction -- the previous direction of the '=' indicator (left or right)
+        """
         before = i % 8
         after  = 7 - before
         if after == 0:
@@ -214,9 +225,7 @@ class Css3Events(sublime_plugin.EventListener):
         lines  = regions_to_lines(view, view.sel(), max_lines=3)
         errors = [bad_lines[line] for line in lines if line in bad_lines]
         if errors:
-            messages = []
-            for i, err in enumerate(errors, start=1):
-                messages.append("({0}) {1}".format(i, err))
+            messages = ("({0}) {1}".format(i, err) for i, err in enumerate(errors, start=1))
             view.set_status("Validation Error", " ".join(messages))
             return
 
@@ -253,4 +262,3 @@ def regions_to_lines(view, sel, max_lines=-1):
 #     would look like "context": [{"key": "selector", "operator": "equal", "operand": "source.css"}]
 # remove marks when the line is modified
 #   requires expensive on_modified_async() (called almost every keystroke)
-#   already using expensive on_selection_modified_async
