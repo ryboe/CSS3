@@ -1089,7 +1089,7 @@
 		<key>property-name-illegal-ms</key>
 		<dict>
 			<key>match</key>
-			<string>-ms-(?:user-select|text-kashida-space|progress-appearance|layout-flow|interpolation-mode|filter|block-progression|behavior|accelerator)\b</string>
+			<string>-ms-(?:user-select|text-kashida-space|progress-appearance|layout-flow|interpolation-mode|block-progression|behavior|accelerator)\b</string>
 			<key>name</key>
 			<string>invalid.illegal.css</string>
 		</dict>
