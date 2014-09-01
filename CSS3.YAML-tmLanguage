@@ -3321,7 +3321,7 @@ repository:
     - include: '#type-function-radial-gradient'
     - include: '#type-function-url'
     - include: '#type-function-calc'
-    - include: '#type-integer'
+    - include: '#type-integer-non-negative'
     - include: '#type-string-double'
     - include: '#type-string-single'
     - include: '#identifier'
@@ -4672,6 +4672,7 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - include: '#type-counter-style-predefined'
+    - include: '#identifier-counter-style-illegal'
     - include: '#identifier'
     end: (?=[;)])
 
@@ -6921,7 +6922,6 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
-    - include: '#type-counter-style-predefined'
     - include: '#type-function-cross-fade'
     - include: '#type-function-element'
     - include: '#type-function-filter'

@@ -10783,7 +10783,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-integer</string>
+					<string>#type-integer-non-negative</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -15120,6 +15120,10 @@
 				<dict>
 					<key>include</key>
 					<string>#type-counter-style-predefined</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#identifier-counter-style-illegal</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -22506,10 +22510,6 @@
 				<dict>
 					<key>include</key>
 					<string>#type-function-var</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#type-counter-style-predefined</string>
 				</dict>
 				<dict>
 					<key>include</key>
