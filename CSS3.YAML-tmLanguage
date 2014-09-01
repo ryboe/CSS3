@@ -6168,7 +6168,7 @@ repository:
     - include: '#type-function-radial-gradient'
     - include: '#type-function-url'
     - include: '#type-function-calc'
-    - include: '#type-integer'
+    - include: '#type-integer-non-negative'
     - include: '#type-string-double'
     - include: '#type-string-single'
     - include: '#identifier'
@@ -6946,7 +6946,7 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - name: support.constant.property-value.css
-      match: \b(?:symbolic|override|numeric|fixed|cyclic|alphabetic|additive)\b
+      match: \b(?:symbolic|override|numeric|fixed|extends|cyclic|alphabetic|additive)\b
     - include: '#type-counter-style-predefined'
     - include: '#type-function-calc'
     - include: '#type-integer'

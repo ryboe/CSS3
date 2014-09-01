@@ -19883,7 +19883,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-integer</string>
+					<string>#type-integer-non-negative</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -22595,7 +22595,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:symbolic|override|numeric|fixed|cyclic|alphabetic|additive)\b</string>
+					<string>\b(?:symbolic|override|numeric|fixed|extends|cyclic|alphabetic|additive)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>

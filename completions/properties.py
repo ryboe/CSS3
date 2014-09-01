@@ -939,7 +939,7 @@ value_for_name = {
     "string-set": [("none",), v.content, v.counter, v.counters, v.ident, v.string],
     "suffix": [v.ident, v.string] + v.image,
     "symbols": [v.ident, v.string] + v.image,
-    "system": [("additive",), ("alphabetic",), ("cyclic",), ("fixed",), ("numeric",), ("override",), ("symbolic",), v.integer, v.calc] + v.counter_style,
+    "system": [("additive",), ("alphabetic",), ("cyclic",), ("extends",), ("fixed",), ("numeric",), ("override",), ("symbolic",), v.integer, v.calc] + v.counter_style,
     "tab-size": [v.integer, v.length, v.calc],
     "table-layout": [("auto",), ("fixed",)],
     "text-align": [("center",), ("end",), ("justify",), ("justify-all",), ("left",), ("match-parent",), ("right",), ("start",)],
