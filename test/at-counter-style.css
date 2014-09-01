@@ -5,6 +5,19 @@
 @counter-style initial {}
 @counter-style unset {}
 
+@counter-style something {
+  system: cyclic;
+  system: numeric;
+  system: alphabetic;
+  system: symbolic;
+  system: additive;
+  system: fixed 0;
+  system: fixed -1;
+  system: fixed 1;
+  system: fixed 100;
+  system: extends ancient-tamil;
+}
+
 /* VALID COUNTER-STYLE RULES */
 @counter-style triangle {
   system: cyclic;

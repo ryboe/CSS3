@@ -39,7 +39,7 @@ repository:
       '2': {name: punctuation.definition.keyword.css}
     patterns:
     - include: '#comment-block'
-    - include: '#identifier-counter-style-illegal'
+    - include: '#type-counter-style-illegal'
     - include: '#identifier'
     end: (?={)
 
@@ -189,10 +189,6 @@ repository:
     # For this reason, they've been left out.
     name: string.unquoted.identifier.css
     match: -?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*
-
-  identifier-counter-style-illegal:
-    name: invalid.illegal.css
-    match: \b(?:unset|none|initial|inherit|decimal)\b(?!-)
 
   media-feature:
     begin: \(
@@ -2003,6 +1999,10 @@ repository:
     match: (#)(?:\h{6}|\h{3})
     captures:
       '1': {name: punctuation.definition.constant.css}
+
+  type-counter-style-illegal:
+    name: invalid.illegal.css
+    match: \b(?:unset|none|initial|inherit|decimal)\b(?!-)
 
   type-counter-style-predefined:
     name: support.constant.property-value.css
@@ -4672,7 +4672,6 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - include: '#type-counter-style-predefined'
-    - include: '#identifier-counter-style-illegal'
     - include: '#identifier'
     end: (?=[;)])
 
@@ -6569,7 +6568,9 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - name: support.constant.property-value.css
-      match: \b(?:spell-out|normal|no-punctuation|literal-punctuation|digits)\b
+      match: \b(?:words|spell-out|numbers|bullets|auto)\b
+    - include: '#type-counter-style-predefined'
+    - include: '#identifier'
     end: (?=[;)])
 
   value-src:
@@ -6946,7 +6947,7 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - name: support.constant.property-value.css
-      match: \b(?:symbolic|override|numeric|fixed|extends|cyclic|alphabetic|additive)\b
+      match: \b(?:symbolic|numeric|fixed|extends|cyclic|alphabetic|additive)\b
     - include: '#type-counter-style-predefined'
     - include: '#type-function-calc'
     - include: '#type-integer'

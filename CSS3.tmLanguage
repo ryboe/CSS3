@@ -131,7 +131,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#identifier-counter-style-illegal</string>
+					<string>#type-counter-style-illegal</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -575,13 +575,6 @@
 			<string>-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*</string>
 			<key>name</key>
 			<string>string.unquoted.identifier.css</string>
-		</dict>
-		<key>identifier-counter-style-illegal</key>
-		<dict>
-			<key>match</key>
-			<string>\b(?:unset|none|initial|inherit|decimal)\b(?!-)</string>
-			<key>name</key>
-			<string>invalid.illegal.css</string>
 		</dict>
 		<key>media-feature</key>
 		<dict>
@@ -6382,6 +6375,13 @@
 			<string>\b(?:WindowText|WindowFrame|Window|ThreeDShadow|ThreeDLightShadow|ThreeDHighlight|ThreeDFace|ThreeDDarkShadow|Scrollbar|MenuText|Menu|InfoText|InfoBackground|InactiveCaptionText|InactiveCaption|InactiveBorder|HighlightText|Highlight|GrayText|CaptionText|ButtonText|ButtonShadow|ButtonHighlight|ButtonFace|Background|AppWorkspace|ActiveCaption|ActiveBorder)\b</string>
 			<key>name</key>
 			<string>invalid.deprecated.css</string>
+		</dict>
+		<key>type-counter-style-illegal</key>
+		<dict>
+			<key>match</key>
+			<string>\b(?:unset|none|initial|inherit|decimal)\b(?!-)</string>
+			<key>name</key>
+			<string>invalid.illegal.css</string>
 		</dict>
 		<key>type-counter-style-predefined</key>
 		<dict>
@@ -15123,10 +15123,6 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#identifier-counter-style-illegal</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#identifier</string>
 				</dict>
 			</array>
@@ -21169,9 +21165,17 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:spell-out|normal|no-punctuation|literal-punctuation|digits)\b</string>
+					<string>\b(?:words|spell-out|numbers|bullets|auto)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-counter-style-predefined</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#identifier</string>
 				</dict>
 			</array>
 		</dict>
@@ -22595,7 +22599,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:symbolic|override|numeric|fixed|extends|cyclic|alphabetic|additive)\b</string>
+					<string>\b(?:symbolic|numeric|fixed|extends|cyclic|alphabetic|additive)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>
