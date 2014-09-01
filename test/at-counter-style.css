@@ -1,4 +1,11 @@
+/* ILLEGAL COUNTER-STYLE NAMES */
+@counter-style decimal {}
+@counter-style none {}
+@counter-style inherit {}
+@counter-style initial {}
+@counter-style unset {}
 
+/* VALID COUNTER-STYLE RULES */
 @counter-style triangle {
   system: cyclic;
   symbols: ‣;

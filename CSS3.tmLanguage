@@ -131,6 +131,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#identifier-counter-style-illegal</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#identifier</string>
 				</dict>
 			</array>
@@ -571,6 +575,13 @@
 			<string>-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*</string>
 			<key>name</key>
 			<string>string.unquoted.identifier.css</string>
+		</dict>
+		<key>identifier-counter-style-illegal</key>
+		<dict>
+			<key>match</key>
+			<string>\b(?:unset|none|initial|inherit|decimal)\b(?!-)</string>
+			<key>name</key>
+			<string>invalid.illegal.css</string>
 		</dict>
 		<key>media-feature</key>
 		<dict>
