@@ -92,6 +92,7 @@ class Css3Validator(sublime_plugin.TextCommand):
             except KeyError as kerr:
                 print("errors:", errors)
                 print(kerr)
+                continue
             msg = err["message"].rstrip(": ")
             if msg.startswith(semicolon_errors[lang]):
                 # Missing semicolons are reported as an error on the # following
