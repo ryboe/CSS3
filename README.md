@@ -45,6 +45,9 @@ better :)
 
     ![disabling the default CSS package](https://github.com/y0ssar1an/CSS3/raw/dev/screenshots/disable_default.gif)
 
+    Make sure you don't have any open files set to the default CSS syntax (bottom-right)
+    or you may get an error message.
+
     *Warning: may break other CSS plugins*
 
 4. (Recommended) Disable Emmet
@@ -56,8 +59,8 @@ better :)
     behind the times. The code it inserts is frequently bad. You're better off
     disabling it altogether. The Web will thank you.
 
-5. (Optional) Set CSS3 as the default language for .css files
-    * Open a .css file.
+5. (Recommended) Set CSS3 as the default language for `.css` files
+    * Open a `.css` file.
     * View → Syntax → Open all with current extension as... → CSS3
 
     ![setting CSS3 as default](https://github.com/y0ssar1an/CSS3/raw/dev/screenshots/set_default.gif)
