@@ -3239,7 +3239,7 @@ repository:
   type-percentage-hundred-max:
     # this rule enforces the constraint that the percentage must be 0-100%.
     # note: scientific notation is not supported.
-    match: (?:((?:100|\d\d|\d)(?:\.\d+)?)(%)|\b(0)\b)
+    match: (?:((?:100|\d\d|\d)(?:\.\d+)?|(?:\.\d+))(%)|\b(0)\b)
     captures:
       '1': {name: constant.numeric.css}
       '2': {name: keyword.other.unit.css}
