@@ -767,7 +767,7 @@ value_for_name = {
     "float-displace": [("auto",), ("block",), ("block-within-page",)],
     "float-offset": [v.length, v.calc],
     "float-wrap": [("none",), ("wrap",)],
-    "flood-color": [v.icc_color] + v.color,
+    "flood-color": v.color + [v.icc_color],
     "flood-opacity": [v.number, v.percentage, v.calc],
     "flow": [("auto",), ("same",), ("*",), v.ident, v.string],
     "flow-from": [("inherit",), ("none",), v.ident],
@@ -932,14 +932,13 @@ value_for_name = {
     "shape-outside": [("border-box",), ("content-box",), ("margin-box",), ("none",), ("padding-box",), v.circle, v.ellipse, v.inset, v.polygon] + v.image,
     "size": [("A3",), ("A4",), ("A5",), ("B4",), ("B5",), ("auto",), ("landscape",), ("ledger",), ("legal",), ("letter",), ("portrait",), v.length, v.calc],
     "speak": [("auto",), ("none",), ("normal",)],
-    # There is also a speak-as descriptor for @counter-style. Since properties and descriptors aren't
-    # distinguished by the language definition, the descriptor can't be supported.
-    "speak-as": [("digits",), ("literal-punctuation",), ("no-punctuation",), ("normal",), ("spell-out",)],
+    # there is also a speak-as descriptor for @counter-style. the values here are a mix of the two properties.
+    "speak-as": [("auto",), ("bullets",), ("digits",), ("literal-punctuation",), ("no-punctuation",), ("normal",), ("numbers",), ("spell-out",), ("words",)],
     "src": [v.format_func, v.local, v.url],
     "string-set": [("none",), v.content, v.counter, v.counters, v.ident, v.string],
     "suffix": [v.ident, v.string] + v.image,
     "symbols": [v.ident, v.string] + v.image,
-    "system": [("additive",), ("alphabetic",), ("cyclic",), ("extends",), ("fixed",), ("numeric",), ("override",), ("symbolic",), v.integer, v.calc] + v.counter_style,
+    "system": [("additive",), ("alphabetic",), ("cyclic",), ("extends",), ("fixed",), ("numeric",), ("symbolic",), v.integer, v.calc] + v.counter_style,
     "tab-size": [v.integer, v.length, v.calc],
     "table-layout": [("auto",), ("fixed",)],
     "text-align": [("center",), ("end",), ("justify",), ("justify-all",), ("left",), ("match-parent",), ("right",), ("start",)],

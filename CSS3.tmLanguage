@@ -2404,6 +2404,22 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type-color-named-deprecated</string>
 				</dict>
 				<dict>
@@ -2503,6 +2519,22 @@
 				<dict>
 					<key>include</key>
 					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -2858,6 +2890,22 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type-color-named-deprecated</string>
 				</dict>
 				<dict>
@@ -2937,6 +2985,22 @@
 				<dict>
 					<key>include</key>
 					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -3236,6 +3300,22 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type-color-named-deprecated</string>
 				</dict>
 				<dict>
@@ -3321,6 +3401,22 @@
 					<string>\b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -3546,6 +3642,22 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type-color-named-deprecated</string>
 				</dict>
 				<dict>
@@ -3631,6 +3743,22 @@
 					<string>\b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -4882,6 +5010,22 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type-color-named-deprecated</string>
 				</dict>
 				<dict>
@@ -4977,6 +5121,22 @@
 					<string>\b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -5572,6 +5732,22 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type-color-named-deprecated</string>
 				</dict>
 				<dict>
@@ -5653,6 +5829,22 @@
 					<string>\b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -5743,6 +5935,22 @@
 					<string>\b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -6358,14 +6566,14 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(#)(?:\h{6}|\h{3})</string>
+			<string>(#)(?:\h{8}|\h{6}|\h{3,4})</string>
 			<key>name</key>
 			<string>constant.other.color.rgb-value.css</string>
 		</dict>
 		<key>type-color-named</key>
 		<dict>
 			<key>match</key>
-			<string>\b(?:yellowgreen|yellow|whitesmoke|white|wheat|violet|turquoise|transparent|tomato|thistle|teal|tan|steelblue|springgreen|snow|slategrey|slategray|slateblue|skyblue|silver|sienna|seashell|seagreen|sandybrown|salmon|saddlebrown|royalblue|rosybrown|red|rebeccapurple|purple|powderblue|plum|pink|peru|peachpuff|papayawhip|palevioletred|paleturquoise|palegreen|palegoldenrod|orchid|orangered|orange|olivedrab|olive|oldlace|navy|navajowhite|moccasin|mistyrose|mintcream|midnightblue|mediumvioletred|mediumturquoise|mediumspringgreen|mediumslateblue|mediumseagreen|mediumpurple|mediumorchid|mediumblue|mediumaquamarine|maroon|magenta|linen|limegreen|lime|lightyellow|lightsteelblue|lightslategrey|lightslategray|lightskyblue|lightseagreen|lightsalmon|lightpink|lightgrey|lightgreen|lightgray|lightgoldenrodyellow|lightcyan|lightcoral|lightblue|lemonchiffon|lawngreen|lavenderblush|lavender|khaki|ivory|indigo|indianred|hotpink|honeydew|grey|greenyellow|green|gray|goldenrod|gold|ghostwhite|gainsboro|fuchsia|forestgreen|floralwhite|firebrick|dodgerblue|dimgrey|dimgray|deepskyblue|deeppink|darkviolet|darkturquoise|darkslategrey|darkslategray|darkslateblue|darkseagreen|darksalmon|darkred|darkorchid|darkorange|darkolivegreen|darkmagenta|darkkhaki|darkgrey|darkgreen|darkgray|darkgoldenrod|darkcyan|darkblue|cyan|currentColor|crimson|cornsilk|cornflowerblue|coral|chocolate|chartreuse|cadetblue|burlywood|brown|blueviolet|blue|blanchedalmond|black|bisque|beige|azure|aquamarine|aqua|antiquewhite|aliceblue)\b</string>
+			<string>\b(?:yellowgreen|yellow|whitesmoke|white|wheat|violet|turquoise|transparent|tomato|thistle|teal|tan|steelblue|springgreen|snow|slategrey|slategray|slateblue|skyblue|silver|sienna|seashell|seagreen|sandybrown|salmon|saddlebrown|royalblue|rosybrown|red|rebeccapurple|purple|powderblue|plum|pink|peru|peachpuff|papayawhip|palevioletred|paleturquoise|palegreen|palegoldenrod|orchid|orangered|orange|olivedrab|olive|oldlace|navy|navajowhite|moccasin|mistyrose|mintcream|midnightblue|mediumvioletred|mediumturquoise|mediumspringgreen|mediumslateblue|mediumseagreen|mediumpurple|mediumorchid|mediumblue|mediumaquamarine|maroon|magenta|linen|limegreen|lime|lightyellow|lightsteelblue|lightslategrey|lightslategray|lightskyblue|lightseagreen|lightsalmon|lightpink|lightgrey|lightgreen|lightgray|lightgoldenrodyellow|lightcyan|lightcoral|lightblue|lemonchiffon|lawngreen|lavenderblush|lavender|khaki|ivory|indigo|indianred|hotpink|honeydew|grey|greenyellow|green|gray|goldenrod|gold|ghostwhite|gainsboro|fuchsia|forestgreen|floralwhite|firebrick|dodgerblue|dimgrey|dimgray|deepskyblue|deeppink|darkviolet|darkturquoise|darkslategrey|darkslategray|darkslateblue|darkseagreen|darksalmon|darkred|darkorchid|darkorange|darkolivegreen|darkmagenta|darkkhaki|darkgrey|darkgreen|darkgray|darkgoldenrod|darkcyan|darkblue|cyan|currentColor|currentcolor|crimson|cornsilk|cornflowerblue|coral|chocolate|chartreuse|cadetblue|burlywood|brown|blueviolet|blue|blanchedalmond|black|bisque|beige|azure|aquamarine|aqua|antiquewhite|aliceblue)\b</string>
 			<key>name</key>
 			<string>support.constant.color.css</string>
 		</dict>
@@ -6690,6 +6898,406 @@
 				</dict>
 			</array>
 		</dict>
+		<key>type-function-color</key>
+		<dict>
+			<key>begin</key>
+			<string>\b(color)(\()</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.color.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>contentName</key>
+			<string>meta.function.color.css</string>
+			<key>end</key>
+			<string>\)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color-adjuster-blend</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color-adjuster-hsl</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color-adjuster-hue</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color-adjuster-rgba</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color-adjuster-tint-shade</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-contrast-adjuster</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-splash-hue</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-rgb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-rgba</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hsl</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hsla</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-color-named-deprecated</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-color-named</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:yellowish|yellow|reddish|red|purplish|purple|orangish|orange|greenish|green|bluish|blue)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-color-hex</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-angle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-number</string>
+				</dict>
+			</array>
+		</dict>
+		<key>type-function-color-adjuster-blend</key>
+		<dict>
+			<key>begin</key>
+			<string>\b(blenda?)(\()</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.color-adjuster.blend.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>contentName</key>
+			<string>meta.function.color-adjuster.blend.css</string>
+			<key>end</key>
+			<string>\)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:rgb|hwb|hsl)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-color-named-deprecated</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-color-named</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hsla</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hsl</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-rgba</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-rgb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-percentage</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-color-hex</string>
+				</dict>
+			</array>
+		</dict>
+		<key>type-function-color-adjuster-hsl</key>
+		<dict>
+			<key>begin</key>
+			<string>\b(whiteness|w|saturation|s|lightness|l|blackness|b)(\()</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.color-adjuster.hsl.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>contentName</key>
+			<string>meta.function.color-adjuster.hsl.css</string>
+			<key>end</key>
+			<string>\)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;=[\(\s])[\+\-\*]</string>
+					<key>name</key>
+					<string>keyword.operator.arithmetic.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-percentage</string>
+				</dict>
+			</array>
+		</dict>
+		<key>type-function-color-adjuster-hue</key>
+		<dict>
+			<key>begin</key>
+			<string>\b(hue|h)(\()</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.color-adjuster.hue.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>contentName</key>
+			<string>meta.function.color-adjuster.hue.css</string>
+			<key>end</key>
+			<string>\)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;=[\(\s])[\+\-\*]</string>
+					<key>name</key>
+					<string>keyword.operator.arithmetic.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-angle</string>
+				</dict>
+			</array>
+		</dict>
+		<key>type-function-color-adjuster-rgba</key>
+		<dict>
+			<key>begin</key>
+			<string>\b(red|green|blue|alpha|a)(\()</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.color-adjuster.rgba.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>contentName</key>
+			<string>meta.function.color-adjuster.rgba.css</string>
+			<key>end</key>
+			<string>\)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;=[\(\s])[\+\-\*]</string>
+					<key>name</key>
+					<string>keyword.operator.arithmetic.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-percentage</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-number</string>
+				</dict>
+			</array>
+		</dict>
+		<key>type-function-color-adjuster-tint-shade</key>
+		<dict>
+			<key>begin</key>
+			<string>\b(tint|shade)(\()</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.color-adjuster.tint-shade.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>contentName</key>
+			<string>meta.function.color-adjuster.tint-shade.css</string>
+			<key>end</key>
+			<string>\)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-percentage-hundred-max</string>
+				</dict>
+			</array>
+		</dict>
 		<key>type-function-conic-gradient</key>
 		<dict>
 			<key>begin</key>
@@ -6730,6 +7338,22 @@
 					<string>\b(top|right|left|center|bottom|at)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -6817,6 +7441,47 @@
 					<string>\b(?:text|first-letter|before|after)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
+				</dict>
+			</array>
+		</dict>
+		<key>type-function-contrast-adjuster</key>
+		<dict>
+			<key>begin</key>
+			<string>\b(contrast)(\()</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.contrast-adjuster.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>contentName</key>
+			<string>meta.function.contrast-adjuster.css</string>
+			<key>end</key>
+			<string>\)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-percentage-hundred-max</string>
 				</dict>
 			</array>
 		</dict>
@@ -6917,6 +7582,22 @@
 				<dict>
 					<key>include</key>
 					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -7037,6 +7718,95 @@
 				</dict>
 			</array>
 		</dict>
+		<key>type-function-device-cmyk</key>
+		<dict>
+			<key>begin</key>
+			<string>\b(device-cmyk)(\()</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.device-cmyk.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>contentName</key>
+			<string>meta.function.device-cmyk.css</string>
+			<key>end</key>
+			<string>\)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-rgb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-rgba</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hsl</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hsla</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-color-named-deprecated</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-color-named</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-color-hex</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-percentage-hundred-max</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-number-non-negative</string>
+				</dict>
+			</array>
+		</dict>
 		<key>type-function-drop-shadow</key>
 		<dict>
 			<key>begin</key>
@@ -7071,6 +7841,22 @@
 				<dict>
 					<key>include</key>
 					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -7326,6 +8112,51 @@
 				</dict>
 			</array>
 		</dict>
+		<key>type-function-gray</key>
+		<dict>
+			<key>begin</key>
+			<string>\b(gray)(\()</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.gray.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>contentName</key>
+			<string>meta.function.gray.css</string>
+			<key>end</key>
+			<string>\)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-percentage</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-number</string>
+				</dict>
+			</array>
+		</dict>
 		<key>type-function-hsl</key>
 		<dict>
 			<key>begin</key>
@@ -7362,6 +8193,10 @@
 					<string>#comment-block</string>
 				</dict>
 				<dict>
+					<key>include</key>
+					<string>#type-function-splash-hue</string>
+				</dict>
+				<dict>
 					<key>match</key>
 					<string>\b(?:yellowish|yellow|reddish|red|purplish|purple|orangish|orange|greenish|green|bluish|blue)\b</string>
 					<key>name</key>
@@ -7373,11 +8208,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-function-splash-hue</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#type-percentage</string>
+					<string>#type-percentage-hundred-max</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -7425,6 +8256,10 @@
 					<string>#comment-block</string>
 				</dict>
 				<dict>
+					<key>include</key>
+					<string>#type-function-splash-hue</string>
+				</dict>
+				<dict>
 					<key>match</key>
 					<string>\b(?:yellowish|yellow|reddish|red|purplish|purple|orangish|orange|greenish|green|bluish|blue)\b</string>
 					<key>name</key>
@@ -7436,11 +8271,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-function-splash-hue</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#type-percentage</string>
+					<string>#type-percentage-hundred-max</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -7494,6 +8325,69 @@
 				<dict>
 					<key>include</key>
 					<string>#type-angle</string>
+				</dict>
+			</array>
+		</dict>
+		<key>type-function-hwb</key>
+		<dict>
+			<key>begin</key>
+			<string>\b(hwb)(\()</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.hwb.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>contentName</key>
+			<string>meta.function.hwb.css</string>
+			<key>end</key>
+			<string>\)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-splash-hue</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:yellowish|yellow|reddish|red|purplish|purple|orangish|orange|greenish|green|bluish|blue)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-angle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-percentage-hundred-max</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-number</string>
 				</dict>
 			</array>
 		</dict>
@@ -7591,6 +8485,22 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type-color-named-deprecated</string>
 				</dict>
 				<dict>
@@ -7665,6 +8575,22 @@
 				<dict>
 					<key>include</key>
 					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -7890,6 +8816,22 @@
 					<string>\b(?:top|to|right|left|bottom)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -8233,6 +9175,22 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type-color-named-deprecated</string>
 				</dict>
 				<dict>
@@ -8384,12 +9342,22 @@
 					<string>#type-function-calc</string>
 				</dict>
 				<dict>
+					<key>match</key>
+					<string>(?&lt;=[\(\s])[\+\-\*]</string>
+					<key>name</key>
+					<string>keyword.operator.arithmetic.css</string>
+				</dict>
+				<dict>
 					<key>include</key>
 					<string>#type-percentage</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-integer-non-negative</string>
+					<string>#type-color-hex</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-number</string>
 				</dict>
 			</array>
 		</dict>
@@ -8765,7 +9733,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-percentage</string>
+					<string>#type-percentage-hundred-max</string>
 				</dict>
 			</array>
 		</dict>
@@ -8904,9 +9872,49 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:symbolic|numeric|none|fixed|cyclic|alphabetic)\b</string>
+					<string>\b(?:symbolic|numeric|fixed|cyclic|alphabetic)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-image</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-cross-fade</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-element</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-filter</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-image</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-image-set</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-conic-gradient</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-linear-gradient</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-radial-gradient</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-url</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -8915,10 +9923,6 @@
 				<dict>
 					<key>include</key>
 					<string>#type-string-single</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#type-function-url</string>
 				</dict>
 			</array>
 		</dict>
@@ -9414,6 +10418,29 @@
 			</dict>
 			<key>match</key>
 			<string>(?:([+-]?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?)(%)|\b(0)\b)</string>
+		</dict>
+		<key>type-percentage-hundred-max</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>constant.numeric.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.other.unit.css</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>constant.numeric.css</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?:((?:100|\d\d|\d)(?:\.\d+)?)(%)|\b(0)\b)</string>
 		</dict>
 		<key>type-percentage-non-negative</key>
 		<dict>
@@ -11510,14 +12537,14 @@
 					<string>#type-function-var</string>
 				</dict>
 				<dict>
+					<key>include</key>
+					<string>#type-repeat-style</string>
+				</dict>
+				<dict>
 					<key>match</key>
 					<string>\b(?:top|stretch|space|round|right|repeat|none|left|fill|cover|contain|center|bottom|auto)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#type-repeat-style</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -11530,6 +12557,22 @@
 				<dict>
 					<key>include</key>
 					<string>#type-function-url</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -11733,11 +12776,27 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#type-function-gray</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type-color-named-deprecated</string>
 				</dict>
 				<dict>
 					<key>include</key>
 					<string>#type-color-named</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -12305,15 +13364,27 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type-color-named-deprecated</string>
 				</dict>
 				<dict>
 					<key>include</key>
 					<string>#type-color-named</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#type-color-hex</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -12334,6 +13405,10 @@
 				<dict>
 					<key>include</key>
 					<string>#type-function-calc</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-color-hex</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -12464,6 +13539,22 @@
 				<dict>
 					<key>include</key>
 					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -13215,6 +14306,22 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type-color-named-deprecated</string>
 				</dict>
 				<dict>
@@ -13787,6 +14894,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#type-function-gray</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type-color-named-deprecated</string>
 				</dict>
 				<dict>
@@ -13808,6 +14919,18 @@
 				<dict>
 					<key>include</key>
 					<string>#type-function-rgb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -14105,6 +15228,22 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type-color-named-deprecated</string>
 				</dict>
 				<dict>
@@ -14178,6 +15317,22 @@
 				<dict>
 					<key>include</key>
 					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -14750,6 +15905,38 @@
 					<string>\b(?:zoom-out|zoom-in|wait|w-resize|vertical-text|text|sw-resize|se-resize|s-resize|row-resize|progress|pointer|nwse-resize|nw-resize|ns-resize|not-allowed|none|no-drop|nesw-resize|ne-resize|n-resize|move|help|ew-resize|e-resize|default|crosshair|copy|context-menu|col-resize|cell|auto|all-scroll|alias)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-cross-fade</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-element</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-filter</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-image</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-image-set</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-conic-gradient</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-linear-gradient</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-radial-gradient</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -15710,6 +16897,22 @@
 				<dict>
 					<key>include</key>
 					<string>#type-function-icc-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -19499,6 +20702,22 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type-color-named-deprecated</string>
 				</dict>
 				<dict>
@@ -19572,6 +20791,22 @@
 					<string>\binvert\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -21165,7 +22400,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:words|spell-out|numbers|bullets|auto)\b</string>
+					<string>\b(?:words|spell-out|numbers|normal|no-punctuation|literal-punctuation|digits|bullets|auto)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>
@@ -22873,6 +24108,22 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type-color-named-deprecated</string>
 				</dict>
 				<dict>
@@ -22932,6 +24183,22 @@
 				<dict>
 					<key>include</key>
 					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -23120,6 +24387,22 @@
 					<string>\b(?:triangle|sesame|open|none|filled|double-circle|dot|circle)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -23530,6 +24813,22 @@
 				<dict>
 					<key>include</key>
 					<string>#type-function-calc</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -24148,6 +25447,10 @@
 					<string>\b(?:z-index|word-spacing|width|visibility|vertical-align|transform-origin|transform|top|text-shadow|text-indent|text-decoration-color|text-decoration|shape-outside|shape-margin|shape-image-threshold|right|perspective-origin|perspective|padding-top|padding-right|padding-left|padding-bottom|padding|outline-width|outline-offset|outline-color|outline|order|opacity|min-width|min-height|max-width|max-height|margin-top|margin-right|margin-left|margin-bottom|margin|line-height|letter-spacing|left|height|font-weight|font-stretch|font-size-adjust|font-size|font|flex-shrink|flex-grow|flex-basis|flex|columns|column-width|column-rule-width|column-rule-color|column-rule|column-gap|column-count|color|clip|box-shadow|bottom|border-width|border-top-width|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-right-width|border-right-color|border-right|border-radius|border-left-width|border-left-color|border-left|border-color|border-bottom-width|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border|background-size|background-position|background-color|background|all)\b</string>
 					<key>name</key>
 					<string>support.type.property-name.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#identifier</string>
 				</dict>
 			</array>
 		</dict>

@@ -804,6 +804,10 @@ repository:
       match: \b(?:top|space|right|none|left|cover|contain|center|bottom|auto)\b
     - name: support.constant.property-value.css
       match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-repeat-style'
@@ -832,6 +836,10 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - name: support.constant.property-value.css
@@ -935,6 +943,10 @@ repository:
     - name: support.constant.property-value.css
       match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
     - include: '#type-line-style'
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-color-hex'
@@ -958,6 +970,10 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - name: support.constant.property-value.css
@@ -1046,6 +1062,10 @@ repository:
       match: \b(?:none|inset)\b
     - name: support.constant.property-value.css
       match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-function-hsl'
@@ -1071,6 +1091,10 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-function-hsla'
@@ -1137,6 +1161,10 @@ repository:
       match: \b(?:thick|thin|solid|ridge|outset|none|medium|inset|hidden|groove|double|dotted|dashed)\b
     - name: support.constant.property-value.css
       match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-function-hsla'
@@ -1162,6 +1190,10 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-function-hsla'
@@ -1543,6 +1575,10 @@ repository:
     - name: support.constant.property-value.css
       match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
     - include: '#type-line-style'
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-function-hsla'
@@ -1571,6 +1607,10 @@ repository:
       match: \binvert\b
     - name: support.constant.property-value.css
       match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-function-hsla'
@@ -1746,6 +1786,10 @@ repository:
       match: \b(?:wavy|underline|solid|overline|none|line-through|double|dotted|dashed|blink)\b
     - name: support.constant.property-value.css
       match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-function-hsla'
@@ -1770,6 +1814,10 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-function-hsla'
@@ -1796,6 +1844,10 @@ repository:
       match: \bnone\b
     - name: support.constant.property-value.css
       match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-function-calc'
@@ -1988,7 +2040,7 @@ repository:
 
   type-color-named:
     name: support.constant.color.css
-    match: \b(?:yellowgreen|yellow|whitesmoke|white|wheat|violet|turquoise|transparent|tomato|thistle|teal|tan|steelblue|springgreen|snow|slategrey|slategray|slateblue|skyblue|silver|sienna|seashell|seagreen|sandybrown|salmon|saddlebrown|royalblue|rosybrown|red|rebeccapurple|purple|powderblue|plum|pink|peru|peachpuff|papayawhip|palevioletred|paleturquoise|palegreen|palegoldenrod|orchid|orangered|orange|olivedrab|olive|oldlace|navy|navajowhite|moccasin|mistyrose|mintcream|midnightblue|mediumvioletred|mediumturquoise|mediumspringgreen|mediumslateblue|mediumseagreen|mediumpurple|mediumorchid|mediumblue|mediumaquamarine|maroon|magenta|linen|limegreen|lime|lightyellow|lightsteelblue|lightslategrey|lightslategray|lightskyblue|lightseagreen|lightsalmon|lightpink|lightgrey|lightgreen|lightgray|lightgoldenrodyellow|lightcyan|lightcoral|lightblue|lemonchiffon|lawngreen|lavenderblush|lavender|khaki|ivory|indigo|indianred|hotpink|honeydew|grey|greenyellow|green|gray|goldenrod|gold|ghostwhite|gainsboro|fuchsia|forestgreen|floralwhite|firebrick|dodgerblue|dimgrey|dimgray|deepskyblue|deeppink|darkviolet|darkturquoise|darkslategrey|darkslategray|darkslateblue|darkseagreen|darksalmon|darkred|darkorchid|darkorange|darkolivegreen|darkmagenta|darkkhaki|darkgrey|darkgreen|darkgray|darkgoldenrod|darkcyan|darkblue|cyan|currentColor|crimson|cornsilk|cornflowerblue|coral|chocolate|chartreuse|cadetblue|burlywood|brown|blueviolet|blue|blanchedalmond|black|bisque|beige|azure|aquamarine|aqua|antiquewhite|aliceblue)\b
+    match: \b(?:yellowgreen|yellow|whitesmoke|white|wheat|violet|turquoise|transparent|tomato|thistle|teal|tan|steelblue|springgreen|snow|slategrey|slategray|slateblue|skyblue|silver|sienna|seashell|seagreen|sandybrown|salmon|saddlebrown|royalblue|rosybrown|red|rebeccapurple|purple|powderblue|plum|pink|peru|peachpuff|papayawhip|palevioletred|paleturquoise|palegreen|palegoldenrod|orchid|orangered|orange|olivedrab|olive|oldlace|navy|navajowhite|moccasin|mistyrose|mintcream|midnightblue|mediumvioletred|mediumturquoise|mediumspringgreen|mediumslateblue|mediumseagreen|mediumpurple|mediumorchid|mediumblue|mediumaquamarine|maroon|magenta|linen|limegreen|lime|lightyellow|lightsteelblue|lightslategrey|lightslategray|lightskyblue|lightseagreen|lightsalmon|lightpink|lightgrey|lightgreen|lightgray|lightgoldenrodyellow|lightcyan|lightcoral|lightblue|lemonchiffon|lawngreen|lavenderblush|lavender|khaki|ivory|indigo|indianred|hotpink|honeydew|grey|greenyellow|green|gray|goldenrod|gold|ghostwhite|gainsboro|fuchsia|forestgreen|floralwhite|firebrick|dodgerblue|dimgrey|dimgray|deepskyblue|deeppink|darkviolet|darkturquoise|darkslategrey|darkslategray|darkslateblue|darkseagreen|darksalmon|darkred|darkorchid|darkorange|darkolivegreen|darkmagenta|darkkhaki|darkgrey|darkgreen|darkgray|darkgoldenrod|darkcyan|darkblue|cyan|currentColor|currentcolor|crimson|cornsilk|cornflowerblue|coral|chocolate|chartreuse|cadetblue|burlywood|brown|blueviolet|blue|blanchedalmond|black|bisque|beige|azure|aquamarine|aqua|antiquewhite|aliceblue)\b
 
   type-color-named-deprecated:
     name: invalid.deprecated.css
@@ -1996,7 +2048,7 @@ repository:
 
   type-color-hex:
     name: constant.other.color.rgb-value.css
-    match: (#)(?:\h{6}|\h{3})
+    match: (#)(?:\h{8}|\h{6}|\h{3,4})
     captures:
       '1': {name: punctuation.definition.constant.css}
 
@@ -2103,6 +2155,126 @@ repository:
     endCaptures:
       '0': {name: punctuation.section.function.css}
 
+  type-function-color:
+    begin: \b(color)(\()
+    beginCaptures:
+      '1': {name: support.function.color.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.color.css
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-function-hwb'
+    - include: '#type-function-gray'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-color-adjuster-blend'
+    - include: '#type-function-color-adjuster-hsl'
+    - include: '#type-function-color-adjuster-hue'
+    - include: '#type-function-color-adjuster-rgba'
+    - include: '#type-function-color-adjuster-tint-shade'
+    - include: '#type-function-contrast-adjuster'
+    - include: '#type-function-splash-hue'
+    # the normal rgb() rule is modified to also match the rgb() color adjuster
+    - include: '#type-function-rgb'
+    - include: '#type-function-rgba'
+    - include: '#type-function-hsl'
+    - include: '#type-function-hsla'
+    - include: '#type-color-named-deprecated'
+    - include: '#type-color-named'
+    - name: support.constant.property-value.css
+      match: \b(?:yellowish|yellow|reddish|red|purplish|purple|orangish|orange|greenish|green|bluish|blue)\b
+    - include: '#type-color-hex'
+    - include: '#type-angle'
+    - include: '#type-number'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
+  type-function-color-adjuster-blend:
+    begin: \b(blenda?)(\()
+    beginCaptures:
+      '1': {name: support.function.color-adjuster.blend.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.color-adjuster.blend.css
+    patterns:
+    - include: '#comment-block'
+    - name: support.constant.property-value.css
+      match: \b(?:rgb|hwb|hsl)\b
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
+    - include: '#type-color-named-deprecated'
+    - include: '#type-color-named'
+    - include: '#type-function-hsla'
+    - include: '#type-function-hsl'
+    - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
+    - include: '#type-percentage'
+    - include: '#type-color-hex'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
+  type-function-color-adjuster-hsl:
+    begin: \b(whiteness|w|saturation|s|lightness|l|blackness|b)(\()
+    beginCaptures:
+      '1': {name: support.function.color-adjuster.hsl.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.color-adjuster.hsl.css
+    patterns:
+    - include: '#comment-block'
+    - name: keyword.operator.arithmetic.css
+      match: (?<=[\(\s])[\+\-\*]
+    - include: '#type-percentage'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
+  type-function-color-adjuster-hue:
+    begin: \b(hue|h)(\()
+    beginCaptures:
+      '1': {name: support.function.color-adjuster.hue.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.color-adjuster.hue.css
+    patterns:
+    - include: '#comment-block'
+    - name: keyword.operator.arithmetic.css
+      match: (?<=[\(\s])[\+\-\*]
+    - include: '#type-angle'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
+  type-function-color-adjuster-rgba:
+    begin: \b(red|green|blue|alpha|a)(\()
+    beginCaptures:
+      '1': {name: support.function.color-adjuster.rgba.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.color-adjuster.rgba.css
+    patterns:
+    - include: '#comment-block'
+    - name: keyword.operator.arithmetic.css
+      match: (?<=[\(\s])[\+\-\*]
+    - include: '#type-percentage'
+    - include: '#type-number'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
+  type-function-color-adjuster-tint-shade:
+    begin: \b(tint|shade)(\()
+    beginCaptures:
+      '1': {name: support.function.color-adjuster.tint-shade.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.color-adjuster.tint-shade.css
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-percentage-hundred-max'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
   type-function-conic-gradient:
     begin: \b((?:repeating-)?conic-gradient)(\()
     beginCaptures:
@@ -2113,6 +2285,10 @@ repository:
     - include: '#comment-block'
     - name: support.constant.property-value.css
       match: \b(top|right|left|center|bottom|at)\b
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-function-hsla'
@@ -2138,6 +2314,19 @@ repository:
     - include: '#comment-block'
     - name: support.constant.property-value.css
       match: \b(?:text|first-letter|before|after)\b
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
+  type-function-contrast-adjuster:
+    begin: \b(contrast)(\()
+    beginCaptures:
+      '1': {name: support.function.contrast-adjuster.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.contrast-adjuster.css
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-percentage-hundred-max'
     end: \)
     endCaptures:
       '0': {name: punctuation.section.function.css}
@@ -2171,6 +2360,10 @@ repository:
     contentName: meta.function.cross-fade.css
     patterns:
     - include: '#comment-block'
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-function-hsla'
@@ -2207,6 +2400,32 @@ repository:
     endCaptures:
       '0': {name: punctuation.section.function.css}
 
+  type-function-device-cmyk:
+    begin: \b(device-cmyk)(\()
+    beginCaptures:
+      '1': {name: support.function.device-cmyk.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.device-cmyk.css
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-function-rgb'
+    - include: '#type-function-rgba'
+    - include: '#type-function-hsl'
+    - include: '#type-function-hsla'
+    - include: '#type-function-hwb'
+    - include: '#type-function-gray'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-color-named-deprecated'
+    - include: '#type-color-named'
+    - include: '#type-color-hex'
+    - include: '#type-percentage-hundred-max'
+    # TODO: restrict the number to between 0 and 255 (<alpha-value>)
+    - include: '#type-number-non-negative'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
   type-function-drop-shadow:
     begin: \b(drop-shadow)(\()
     beginCaptures:
@@ -2215,6 +2434,10 @@ repository:
     contentName: meta.function.drop-shadow.css
     patterns:
     - include: '#comment-block'
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-function-hsla'
@@ -2291,6 +2514,20 @@ repository:
     endCaptures:
       '0': {name: punctuation.section.function.css}
 
+  type-function-gray:
+    begin: \b(gray)(\()
+    beginCaptures:
+      '1': {name: support.function.gray.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.gray.css
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-percentage'
+    - include: '#type-number'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
   type-function-hsl:
     begin: \b(hsl)(\()
     beginCaptures:
@@ -2299,11 +2536,13 @@ repository:
     contentName: meta.function.hsl.css
     patterns:
     - include: '#comment-block'
+    # func has higher precedence because of collisions between funcs and
+    # keywords with the same name, e.g. reddish() and reddish
+    - include: '#type-function-splash-hue'
     - name: support.constant.property-value.css
       match: \b(?:yellowish|yellow|reddish|red|purplish|purple|orangish|orange|greenish|green|bluish|blue)\b
     - include: '#type-function-calc'
-    - include: '#type-function-splash-hue'
-    - include: '#type-percentage'
+    - include: '#type-percentage-hundred-max'
     - include: '#type-angle'
     - include: '#type-number'
     end: \)
@@ -2318,11 +2557,13 @@ repository:
     contentName: meta.function.hsla.css
     patterns:
     - include: '#comment-block'
+    # func has higher precedence because of collisions between funcs and
+    # keywords with the same name, e.g. reddish() and reddish
+    - include: '#type-function-splash-hue'
     - name: support.constant.property-value.css
       match: \b(?:yellowish|yellow|reddish|red|purplish|purple|orangish|orange|greenish|green|bluish|blue)\b
     - include: '#type-function-calc'
-    - include: '#type-function-splash-hue'
-    - include: '#type-percentage'
+    - include: '#type-percentage-hundred-max'
     - include: '#type-angle'
     - include: '#type-number'
     end: \)
@@ -2339,6 +2580,25 @@ repository:
     - include: '#comment-block'
     - include: '#type-function-calc'
     - include: '#type-angle'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
+  type-function-hwb:
+    begin: \b(hwb)(\()
+    beginCaptures:
+      '1': {name: support.function.hwb.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.hwb.css
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-function-splash-hue'
+    - name: support.constant.property-value.css
+      match: \b(?:yellowish|yellow|reddish|red|purplish|purple|orangish|orange|greenish|green|bluish|blue)\b
+    - include: '#type-function-calc'
+    - include: '#type-angle'
+    - include: '#type-percentage-hundred-max'
+    - include: '#type-number'
     end: \)
     endCaptures:
       '0': {name: punctuation.section.function.css}
@@ -2370,6 +2630,10 @@ repository:
     - include: '#comment-block'
     - name: support.constant.property-value.css
       match: \b(?:rtl|ltr)\b
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-function-hsla'
@@ -2392,6 +2656,10 @@ repository:
     contentName: meta.function.image-set.css
     patterns:
     - include: '#comment-block'
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-function-cross-fade'
@@ -2458,6 +2726,10 @@ repository:
     - include: '#comment-block'
     - name: support.constant.property-value.css
       match: \b(?:top|to|right|left|bottom)\b
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-function-hsla'
@@ -2561,6 +2833,10 @@ repository:
     - include: '#comment-block'
     - name: support.constant.property-value.css
       match: \b(top|right|left|farthest-side|farthest-corner|ellipse|closest-side|closest-corner|circle|center|bottom|at)\b
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-function-hsla'
@@ -2597,6 +2873,10 @@ repository:
       '0': {name: punctuation.section.function.css}
 
   type-function-rgb:
+    # this rule has been modified to match the rgb() color adjuster as well as
+    # the rgb() color function. matching both with one rule resolves the
+    # collision, but makes the rule less specific (less likely to catch
+    # mistakes)
     begin: \b(rgb)(\()
     beginCaptures:
       '1': {name: support.function.rgb.css}
@@ -2605,8 +2885,11 @@ repository:
     patterns:
     - include: '#comment-block'
     - include: '#type-function-calc'
+    - name: keyword.operator.arithmetic.css
+      match: (?<=[\(\s])[\+\-\*]
     - include: '#type-percentage'
-    - include: '#type-integer-non-negative'
+    - include: '#type-color-hex'
+    - include: '#type-number'
     end: \)
     endCaptures:
       '0': {name: punctuation.section.function.css}
@@ -2723,7 +3006,7 @@ repository:
     patterns:
     - include: '#comment-block'
     - include: '#type-function-calc'
-    - include: '#type-percentage'
+    - include: '#type-percentage-hundred-max'
     end: \)
     endCaptures:
       '0': {name: punctuation.section.function.css}
@@ -2768,10 +3051,19 @@ repository:
     patterns:
     - include: '#comment-block'
     - name: support.constant.property-value.css
-      match: \b(?:symbolic|numeric|none|fixed|cyclic|alphabetic)\b
+      match: \b(?:symbolic|numeric|fixed|cyclic|alphabetic)\b
+    - include: '#type-function-image'
+    - include: '#type-function-cross-fade'
+    - include: '#type-function-element'
+    - include: '#type-function-filter'
+    - include: '#type-function-image'
+    - include: '#type-function-image-set'
+    - include: '#type-function-conic-gradient'
+    - include: '#type-function-linear-gradient'
+    - include: '#type-function-radial-gradient'
+    - include: '#type-function-url'
     - include: '#type-string-double'
     - include: '#type-string-single'
-    - include: '#type-function-url'
     end: \)
     endCaptures:
       '0': {name: punctuation.section.function.css}
@@ -2944,6 +3236,15 @@ repository:
       '2': {name: keyword.other.unit.css}
       '3': {name: constant.numeric.css}
 
+  type-percentage-hundred-max:
+    # this rule enforces the constraint that the percentage must be 0-100%.
+    # note: scientific notation is not supported.
+    match: (?:((?:100|\d\d|\d)(?:\.\d+)?)(%)|\b(0)\b)
+    captures:
+      '1': {name: constant.numeric.css}
+      '2': {name: keyword.other.unit.css}
+      '3': {name: constant.numeric.css}
+
   type-percentage-non-negative:
     match: (?:(\+?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?)(%)|\b(0)\b)
     captures:
@@ -2956,16 +3257,6 @@ repository:
     captures:
       '1': {name: constant.numeric.css}
       '2': {name: keyword.other.unit.css}
-
-  # TODO: delete this rule if unused
-  # type-qualified-name:
-  #   match: (?:(-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*|\*)\s*(\|)\s*)?(?:(-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*)|(\*))
-  #   captures:
-  #     # TODO: should these be scoped as attribute names? so far i only know of this rules' use with attributes
-  #     '1': {name: entity.other.attribute-name.namespace.css}
-  #     '2': {name: punctuation.separator.namespace.css}
-  #     '3': {name: entity.other.attribute-name.css}
-  #     '4': {name: entity.other.attribute-name.wildcard.css}
 
   type-ratio:
     match: (\+?(?:[1-9]\d+|[1-9]))\s*\/\s*(\+?(?:[1-9]\d+|[1-9]))
@@ -3553,12 +3844,16 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
+    - include: '#type-repeat-style'
     - name: support.constant.property-value.css
       match: \b(?:top|stretch|space|round|right|repeat|none|left|fill|cover|contain|center|bottom|auto)\b
-    - include: '#type-repeat-style'
     - include: '#type-box'
     - include: '#type-attachment'
     - include: '#type-function-url'
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-function-hsla'
@@ -3617,8 +3912,12 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
     - include: '#type-function-hsla'
     - include: '#type-function-hsl'
     - include: '#type-function-rgba'
@@ -3793,14 +4092,18 @@ repository:
     - name: support.constant.property-value.css
       match: \b(?:thin|thick|medium)\b
     - include: '#type-line-style'
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
-    - include: '#type-color-hex'
     - include: '#type-function-hsla'
     - include: '#type-function-hsl'
     - include: '#type-function-rgba'
     - include: '#type-function-rgb'
     - include: '#type-function-calc'
+    - include: '#type-color-hex'
     - include: '#type-length-non-negative'
     end: (?=[;)])
 
@@ -3843,6 +4146,10 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-function-hsl'
@@ -4070,6 +4377,10 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:none|inset)\b
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-function-hsl'
@@ -4251,12 +4562,16 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-function-hsla'
     - include: '#type-function-hsl'
     - include: '#type-function-rgba'
     - include: '#type-function-rgb'
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
     - include: '#type-color-hex'
     end: (?=[;)])
 
@@ -4351,6 +4666,10 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-function-hsla'
@@ -4373,6 +4692,10 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-function-hsla'
@@ -4553,6 +4876,14 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:zoom-out|zoom-in|wait|w-resize|vertical-text|text|sw-resize|se-resize|s-resize|row-resize|progress|pointer|nwse-resize|nw-resize|ns-resize|not-allowed|none|no-drop|nesw-resize|ne-resize|n-resize|move|help|ew-resize|e-resize|default|crosshair|copy|context-menu|col-resize|cell|auto|all-scroll|alias)\b
+    - include: '#type-function-cross-fade'
+    - include: '#type-function-element'
+    - include: '#type-function-filter'
+    - include: '#type-function-image'
+    - include: '#type-function-image-set'
+    - include: '#type-function-conic-gradient'
+    - include: '#type-function-linear-gradient'
+    - include: '#type-function-radial-gradient'
     - include: '#type-function-url'
     - include: '#type-function-calc'
     - include: '#type-number'
@@ -4857,6 +5188,10 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - include: '#type-function-icc-color'
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-function-hsla'
@@ -6051,6 +6386,10 @@ repository:
     - name: support.constant.property-value.css
       match: \b(?:thin|thick|medium|invert)\b
     - include: '#type-line-style'
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-function-hsla'
@@ -6073,6 +6412,10 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \binvert\b
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-function-hsla'
@@ -6559,6 +6902,8 @@ repository:
     end: (?=[;)])
 
   value-speak-as:
+    # this rule matches both the speak-as property and speak-as descriptor. it's
+    # therefore necessarily less specific.
     begin: (?<=speak-as:)
     patterns:
     - include: '#comment-block'
@@ -6568,7 +6913,7 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - name: support.constant.property-value.css
-      match: \b(?:words|spell-out|numbers|bullets|auto)\b
+      match: \b(?:words|spell-out|numbers|normal|no-punctuation|literal-punctuation|digits|bullets|auto)\b
     - include: '#type-counter-style-predefined'
     - include: '#identifier'
     end: (?=[;)])
@@ -7033,6 +7378,10 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:wavy|underline|solid|overline|none|line-through|double|dotted|dashed|blink)\b
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-function-hsla'
@@ -7051,6 +7400,10 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-function-hsla'
@@ -7110,6 +7463,10 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:triangle|sesame|open|none|filled|double-circle|dot|circle)\b
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-function-hsla'
@@ -7236,6 +7593,10 @@ repository:
     - name: support.constant.property-value.css
       match: \bnone\b
     - include: '#type-function-calc'
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-function-hsla'
@@ -7418,6 +7779,7 @@ repository:
       match: \b(?:none|all)\b
     - name: support.type.property-name.css
       match: \b(?:z-index|word-spacing|width|visibility|vertical-align|transform-origin|transform|top|text-shadow|text-indent|text-decoration-color|text-decoration|shape-outside|shape-margin|shape-image-threshold|right|perspective-origin|perspective|padding-top|padding-right|padding-left|padding-bottom|padding|outline-width|outline-offset|outline-color|outline|order|opacity|min-width|min-height|max-width|max-height|margin-top|margin-right|margin-left|margin-bottom|margin|line-height|letter-spacing|left|height|font-weight|font-stretch|font-size-adjust|font-size|font|flex-shrink|flex-grow|flex-basis|flex|columns|column-width|column-rule-width|column-rule-color|column-rule|column-gap|column-count|color|clip|box-shadow|bottom|border-width|border-top-width|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-right-width|border-right-color|border-right|border-radius|border-left-width|border-left-color|border-left|border-color|border-bottom-width|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border|background-size|background-position|background-color|background|all)\b
+    - include: '#identifier'
     end: (?=[;)])
 
   value-transition-timing-function:
@@ -7762,11 +8124,10 @@ repository:
     end: (?=[;)])
 
 # TODO
-# add validator command
+# fix broken transition property (doesn't work with comma separated lists)
+# match parameters of calc(), var(), and attr()
 
 # TODO (LOW PRIORITY)
-# ridiculous new color functions (see bottom of /spec/functions.txt)
-# match parameters of calc(), var(), and attr()
 # unimplemented @-rules
 #     @document
 #     @filter
