@@ -10440,7 +10440,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(?:((?:100|\d\d|\d)(?:\.\d+)?)(%)|\b(0)\b)</string>
+			<string>(?:((?:100|\d\d|\d)(?:\.\d+)?|(?:\.\d+))(%)|\b(0)\b)</string>
 		</dict>
 		<key>type-percentage-non-negative</key>
 		<dict>
