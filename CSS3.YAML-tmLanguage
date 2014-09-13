@@ -3846,7 +3846,7 @@ repository:
     - include: '#type-function-var'
     - include: '#type-repeat-style'
     - name: support.constant.property-value.css
-      match: \b(?:top|stretch|space|round|right|repeat|none|left|fill|cover|contain|center|bottom|auto)\b
+      match: \b(?:top|stretch|space|round|right|none|left|fill|cover|contain|center|bottom|auto)\b
     - include: '#type-box'
     - include: '#type-attachment'
     - include: '#type-function-url'
@@ -4224,7 +4224,7 @@ repository:
     - name: support.constant.property-value.css
       match: \bfill\b
     - include: '#type-function-calc'
-    - include: '#type-percentage-non-negative'
+    - include: '#type-percentage-hundred-max'
     - include: '#type-number-non-negative'
     end: (?=[;)])
 
