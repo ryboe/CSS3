@@ -5,7 +5,6 @@ import urllib
 import threading
 
 
-w3c_url   = "http://jigsaw.w3.org/css-validator/validator?"
 bad_lines = {}
 semicolon_errors = {
     "en": "attempt to find a semi-colon",
@@ -194,7 +193,8 @@ class W3cValidatorCall(threading.Thread):
 
         # Set the Accept-Charset header to UTF-8 just in case. The response is
         # assumed to be UTF-8.
-        headers = {"Accept-Charset": "utf-8", "User-Agent": "Sublime Text CSS3 Package"}
+        headers = {"Accept-Charset": "utf-8", "User-Agent": "sublime text css3 package"}
+        w3c_url = "http://jigsaw.w3.org/css-validator/validator?"
         return urllib.request.Request(w3c_url + encoded_params, headers=headers, method="GET")
 
 
