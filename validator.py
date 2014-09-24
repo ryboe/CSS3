@@ -18,6 +18,7 @@ semicolon_errors = {
     "de": "Versuche ein Semikolon",
     "pl": "próba znalezienia rednika",
 }
+settings = {}
 
 
 class Css3Validator(sublime_plugin.TextCommand):
@@ -27,8 +28,9 @@ class Css3Validator(sublime_plugin.TextCommand):
 
     def validate(self, texts):
         """Submit the user's code to the W3C Validator."""
+        global settings
         settings = sublime.load_settings("CSS3.sublime-settings")
-        timeout  = settings.get("validator_timeout", 10)
+        timeout = settings.get("validator_timeout", 10)
 
         threads = []
         for text in texts:
@@ -64,8 +66,9 @@ class Css3Validator(sublime_plugin.TextCommand):
             before, after, i, direction = self.activity_indicator(i, direction)
             indicator = "Validator [{}={}]".format(" " * before, " " * after)
             self.view.set_status("Validator Running", indicator)
-            sublime.set_timeout(lambda: self.handle_threads(next_threads, has_errors, i, direction),
-                                                            100)
+            func = lambda: self.handle_threads(next_threads, has_errors, i,
+                                               direction)
+            sublime.set_timeout(func, 100)
             return
 
         self.view.erase_status("Validator Running")
@@ -79,11 +82,10 @@ class Css3Validator(sublime_plugin.TextCommand):
 
         errors -- dictionary of errors returned by the validation server call
         lang   -- the language of the error messages (default "en")
-        zoom   -- whether the viewport should be scrolled to the first error (default False)
+        zoom   -- scroll viewport to the first error (default False)
         """
         bad_regions = []
         for err in errors:
-            # DEBUG try/catch
             try:
                 lineno = err["line"]
             except KeyError as kerr:
@@ -119,7 +121,7 @@ class Css3Validator(sublime_plugin.TextCommand):
         direction -- the previous direction of the '=' indicator (left or right)
         """
         before = i % 8
-        after  = 7 - before
+        after = 7 - before
         if after == 0:
             direction = -1
         elif before == 0:
@@ -128,9 +130,11 @@ class Css3Validator(sublime_plugin.TextCommand):
         return before, after, i, direction
 
     def show_congrats(self):
-        """Open an output panel with a success message when there are no errors."""
-        window   = self.view.window()
-        panel    = window.create_output_panel("css3_validator")
+        """Open an output panel with a success message when there are no
+        errors.
+        """
+        window = self.view.window()
+        panel = window.create_output_panel("css3_validator")
         congrats = "Congratulations! No Error Found."
         panel.run_command("append", {"characters": congrats})
         window.run_command("show_panel", {"panel": "output.css3_validator"})
@@ -140,22 +144,26 @@ class Css3ValidateAll(Css3Validator):
     """Submit the entire file to the W3C Validator."""
 
     def run(self, edit):
-        region   = sublime.Region(0, self.view.size())
+        """A wrapper around the validate() call required by the Sublime API.
+        """
+        region = sublime.Region(0, self.view.size())
         full_css = self.view.substr(region)
-        self.validate((full_css,))  # validate() expects an iterable of texts from the selection
+        self.validate((full_css,))  # validate() expects an iterable of texts
+                                    # from the selection
 
 
 class W3cValidatorCall(threading.Thread):
     """A thread for making calls to the W3C validation service."""
 
     def __init__(self, text, timeout=10):
-        """Initialize the thread that will make the request to the W3C Validator.
+        """Initialize the thread that will make the request to the W3C
+        Validator.
 
         text    -- the code to validate
         timeout -- number of seconds before giving up (default 10)
         """
         super().__init__(self)
-        self.text    = text
+        self.text = text
         self.timeout = timeout
         self.results = None
 
@@ -174,10 +182,13 @@ class W3cValidatorCall(threading.Thread):
             sublime.error_message("ERROR: network connection failed")
         except (UnicodeError, ValueError) as err:
             print(err)
-            sublime.error_message("ERROR: failed to decode the response from the validation server")
+            sublime.error_message("ERROR: failed to decode the response from "
+                                  "the validation server")
 
     def prepare_request(self):
-        """Return a GET request object with parameters encoded and headers set."""
+        """Return a GET request object with parameters encoded and headers
+        set.
+        """
         settings = sublime.load_settings("CSS3.sublime-settings")
         lang = settings.get("validator_language", "en")
         params = {
@@ -191,9 +202,13 @@ class W3cValidatorCall(threading.Thread):
 
         # Set the Accept-Charset header to UTF-8 just in case. The response is
         # assumed to be UTF-8.
-        headers = {"Accept-Charset": "utf-8", "User-Agent": "sublime text css3 package"}
+        headers = {
+            "Accept-Charset": "utf-8",
+            "User-Agent": "sublime text css3 package"
+        }
         w3c_url = "http://jigsaw.w3.org/css-validator/validator?"
-        return urllib.request.Request(w3c_url + encoded_params, headers=headers, method="GET")
+        return urllib.request.Request(w3c_url + encoded_params,
+                                      headers=headers, method="GET")
 
 
 class Css3ClearGutterMarks(sublime_plugin.TextCommand):
@@ -212,6 +227,7 @@ class Css3Events(sublime_plugin.EventListener):
 
         The user can disable this in the package settings.
         """
+        global settings
         settings = sublime.load_settings("CSS3.sublime-settings")
         if settings.get("clear_errors_on_save", True):
             view.run_command("css3_clear_gutter_marks")
@@ -221,7 +237,7 @@ class Css3Events(sublime_plugin.EventListener):
 
         The message is displayed when the line with the error is selected.
         """
-        lines  = regions_to_lines(view, view.sel(), max_lines=3)
+        lines = regions_to_lines(view, view.sel(), max_lines=3)
         errors = [bad_lines[line] for line in lines if line in bad_lines]
         if errors:
             messages = ("({0}) {1}".format(i, err) for i, err in enumerate(errors, start=1))
