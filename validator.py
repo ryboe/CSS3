@@ -48,10 +48,6 @@ class Css3Validator(sublime_plugin.TextCommand):
         i          -- position of the activity indicator (default 0)
         direction  -- direction of the activity indicator (-1 left, 1 right)
         """
-        settings = sublime.load_settings("CSS3.sublime-settings")
-        lang = settings.get("validator_language", "en")
-        zoom = settings.get("zoom_to_error", False)
-
         next_threads = []
         for thread in threads:
             if thread.is_alive():
@@ -60,6 +56,8 @@ class Css3Validator(sublime_plugin.TextCommand):
 
             if not thread.results["validity"]:
                 has_errors = True
+                lang = settings.get("validator_language", "en")
+                zoom = settings.get("zoom_to_error", False)
                 self.mark_errors(thread.results["errors"], lang, zoom)
 
         if next_threads:
