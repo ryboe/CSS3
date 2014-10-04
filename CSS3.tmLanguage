@@ -11860,7 +11860,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:stretch|space-between|space-around|flex-start|flex-end|center)\b</string>
+					<string>\b(?:true|stretch|start|space-evenly|space-between|space-around|safe|right|left|last-baseline|flex-start|flex-end|end|center|baseline|auto)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>

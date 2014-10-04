@@ -3618,9 +3618,7 @@ repository:
     - include: '#identifier'
     end: (?=[;)])
 
-  # FIXME: there are **two** align-content properties in the CSS spec, one in
-  # Flexible Box Layout Module Level 1 and one in Box Alignment Module Level 3.
-  # Only the flexbox property is supported here.
+  # The CSS Box Alignment Module Level 3 spec supersedes the values listed in the Flexbox spec.
   value-align-content-justify-content:
     begin: (?<=align-content:|justify-content:)
     patterns:
@@ -3631,7 +3629,7 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - name: support.constant.property-value.css
-      match: \b(?:stretch|space-between|space-around|flex-start|flex-end|center)\b
+      match: \b(?:true|stretch|start|space-evenly|space-between|space-around|safe|right|left|last-baseline|flex-start|flex-end|end|center|baseline|auto)\b
     # Ending before a closing paren makes these rules usable inside an @supports
     # condition.
     end: (?=[;)])
