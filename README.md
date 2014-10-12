@@ -92,6 +92,6 @@ like it bugs me, two simple workarounds are shown above.
 
 If you think something's missing, make sure you're not asking for something
 on [this list of bad CSS properties](https://gist.github.com/y0ssar1an/bb95223148e486acbe7a#file-bad_css).
-If it's not on that list, open an issue and i'll investigate. I'll be monitoring
+If it's not on that list, open an issue and I'll investigate. I'll be monitoring
 the specs as they're updated on [the W3C feed](http://www.w3.org/Style/CSS/current-work.en.html),
 but I still need your help. Let's keep bad code out of the Web!
