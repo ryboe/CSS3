@@ -15,7 +15,6 @@ class CSS3Completions(sublime_plugin.EventListener):
 
         # Completions is a list of (<trigger>, <completion>) tuples. Completions
         # are only offered for properties and values.
-        completions = []
         if view.match_selector(trigger_start, "meta.property-name.css"):
             return properties.names, INHIBIT_DEFAULTS
         elif view.match_selector(trigger_start, "meta.value.css"):

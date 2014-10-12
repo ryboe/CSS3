@@ -1,6 +1,5 @@
 import sublime
 import sublime_plugin
-import urllib
 
 
 class Css3HexConvertCommand(sublime_plugin.TextCommand):
