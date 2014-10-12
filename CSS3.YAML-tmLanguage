@@ -4428,6 +4428,9 @@ repository:
       match: \b(?:show|hide|discard)\b
     end: (?=[;)])
 
+  # NOTE: break-before, break-after, and break-inside are described in 3 specs: CSS Regions Module
+  # Level 1, CSS Multi-column Layout Module, and CSS Fragmentation Module Level 3. The specs are
+  # similar but not identical. This rule is a superset that matches all three.
   value-break-after-break-before:
     begin: (?<=break-after:|break-before:)
     patterns:
@@ -4441,6 +4444,9 @@ repository:
       match: \b(?:verso|right|region|recto|page|left|column|avoid-region|avoid-page|avoid-column|avoid|auto|any|always)\b
     end: (?=[;)])
 
+  # NOTE: break-before, break-after, and break-inside are described in 3 specs: CSS Regions Module
+  # Level 1, CSS Multi-column Layout Module, and CSS Fragmentation Module Level 3. The specs are
+  # similar but not identical. This rule is a superset that matches all three.
   value-break-inside:
     begin: (?<=break-inside:)
     patterns:
