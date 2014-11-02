@@ -8137,7 +8137,7 @@ repository:
 
 # TODO
 # fix broken transition property (doesn't work with comma separated lists)
-# match parameters of var(), and attr()
+# match parameters of var(), toggle(), and attr()
 
 # TODO (LOW PRIORITY)
 # unimplemented @-rules
