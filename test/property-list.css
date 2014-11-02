@@ -86,7 +86,7 @@
     alignment-adjust: initial;
     alignment-adjust: inherit;
     alignment-adjust: unset;
-    alignment-adjust: calc(asdfasd);
+    alignment-adjust: calc(50px + 25%);
     alignment-adjust:auto;
     alignment-adjust:baseline;
     alignment-adjust:over-edge;
@@ -154,7 +154,7 @@
     animation-delay: 0;
     animation-delay: 4s;
     animation-delay: 2s;
-    animation-delay: calc(expression);
+    animation-delay: calc(2em + 20%);
     -webkit-animation-delay: 2s;
 
     animation-direction: initial;
@@ -178,7 +178,7 @@
     animation-duration: 3.0s;
     animation-duration: 0;
     animation-duration: 4s;
-    animation-duration: calc(expression);
+    animation-duration: calc(-1% / 10%);
     -webkit-animation-duration: 4s;
 
     animation-fill-mode: initial;
@@ -198,7 +198,7 @@
     animation-iteration-count: infinite;
     animation-iteration-count: 10;
     animation-iteration-count: 3;
-    animation-iteration-count: calc(adfds);
+    animation-iteration-count: calc(2em - 0.1em);
     animation-iteration-count: +2.3;
     animation-iteration-count: 2, 0, infinite;
     -webkit-animation-iteration-count: 2, 0, infinite;
@@ -820,6 +820,9 @@
     background-position:      10px top     ;   /* 10px,  0px */
     background-position: left      top 15px;   /*  0px, 15px */
     background-position: left 10px top     ;   /* 10px,  0px */
+    background-position: calc(50% + 20px) calc(50% + 20px), 50% 50%;
+    background-position: left calc(50% + 20px);
+
 
     background-repeat: initial;
     background-repeat: inherit;
@@ -4704,6 +4707,7 @@
     font-size: 0;
     font-size: smaller;
     font-size: 100%;
+    font-size: calc(100vw / 40);
 
     font-size-adjust: initial;
     font-size-adjust: inherit;
@@ -5807,6 +5811,7 @@
     margin: 1em 2em;
     margin: 2em 0 1em 0 ;
     margin: 2.5em 0;
+    margin: calc(1rem - 2px) calc(1rem - 1px);
 
     margin-top: initial;
     margin-top: inherit;
@@ -7994,6 +7999,9 @@
     width: 0%;
     width: 123%;
     width: extend-to-zoom;
+    width: calc(100%/3 - 2*1em - 2*1px);
+    width: calc(5px - 10px);
+    width: calc(50% - 2em);
 
     widows: initial;
     widows: inherit;

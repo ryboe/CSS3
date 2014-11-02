@@ -6841,6 +6841,40 @@
 					<key>include</key>
 					<string>#comment-block</string>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-length</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-frequency</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-angle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-time</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-percentage</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-number</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>[\+\-\*\/]</string>
+					<key>name</key>
+					<string>keyword.operator.arithmetic.css</string>
+				</dict>
 			</array>
 		</dict>
 		<key>type-function-circle-ellipse</key>

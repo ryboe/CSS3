@@ -2133,7 +2133,15 @@ repository:
     contentName: meta.function.calc.css
     patterns:
     - include: '#comment-block'
-    # TODO: match calc parameters (can be any value)
+    - include: '#type-function-calc'
+    - include: '#type-length'
+    - include: '#type-frequency'
+    - include: '#type-angle'
+    - include: '#type-time'
+    - include: '#type-percentage'
+    - include: '#type-number'
+    - name: keyword.operator.arithmetic.css
+      match: '[\+\-\*\/]'
     end: \)
     endCaptures:
       '0': {name: punctuation.section.function.css}
@@ -8129,7 +8137,7 @@ repository:
 
 # TODO
 # fix broken transition property (doesn't work with comma separated lists)
-# match parameters of calc(), var(), and attr()
+# match parameters of var(), and attr()
 
 # TODO (LOW PRIORITY)
 # unimplemented @-rules
