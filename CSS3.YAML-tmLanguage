@@ -442,7 +442,7 @@ repository:
     - include: '#selector-at-keyword'
     # TODO: enable this. right now it's matching **everything** because of the <ident>
     # - include: '#selector-custom-element'
-    end: (?={)
+    end: (?=[{;])
 
   selector-attribute:
     begin: \[

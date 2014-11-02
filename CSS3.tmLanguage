@@ -1164,7 +1164,7 @@
 			<key>begin</key>
 			<string>(?=[@\d:.#*\p{L}\[-])</string>
 			<key>end</key>
-			<string>(?={)</string>
+			<string>(?=[{;])</string>
 			<key>name</key>
 			<string>meta.selector.css</string>
 			<key>patterns</key>
