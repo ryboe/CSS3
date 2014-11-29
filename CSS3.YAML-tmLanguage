@@ -427,9 +427,9 @@ repository:
     - include: '#selector-pseudo-class-webkit'
     - include: '#selector-pseudo-class-function-drop'
     - include: '#selector-pseudo-class-function-an-plus-b'
-    - include: '#selector-pseudo-class-function-logic'
-    - include: '#selector-pseudo-class-function-nth'
     - include: '#selector-pseudo-class-function-selector-list'
+    - include: '#selector-pseudo-class-function-nth'
+    - include: '#selector-pseudo-class-function-selector-list-an-plus-b'
     - include: '#selector-pseudo-class'
     - include: '#selector-element'
     - include: '#selector-id'
@@ -523,7 +523,7 @@ repository:
 
   selector-pseudo-class:
     name: entity.other.attribute-name.pseudo-class.css
-    match: (:)(?:visited|valid|user-error|target|scope|root|required|read-write|read-only|placeholder-shown|past|out-of-range|optional|only-of-type|only-child|link|last-of-type|last-child|invalid|indeterminate|in-range|hover|future|focus|first-of-type|first-child|enabled|empty|drop|disabled|default|current|checked|blank|any-link|active)\b
+    match: (:)(?:visited|valid|user-error|target|scope|root|required|read-write|read-only|placeholder-shown|past|out-of-range|optional|only-of-type|only-child|link|last-of-type|last-child|invalid|indeterminate|in-range|hover|host|future|focus|first-of-type|first-child|enabled|empty|drop|disabled|default|current|checked|blank|any-link|active)\b
     captures:
       '1': {name: punctuation.definition.entity.css}
 
@@ -600,9 +600,25 @@ repository:
     endCaptures:
       '0': {name: punctuation.section.function.css}
 
+  selector-pseudo-class-function-nth:
+    begin: ((:)nth)(\()
+    beginCaptures:
+      '1': {name: entity.other.attribute-name.pseudo-class.css}
+      '2': {name: punctuation.definition.entity.css}
+      '3': {name: punctuation.section.function.css}
+    patterns:
+    - include: '#comment-block'
+    - name: support.constant.property-value.css
+      match: \bof\b
+    - include: '#identifier'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
+  # These pseudo-classes take An+B values and selector lists as parameters.
   # These pseudo-classes take selector lists as parameters.
-  selector-pseudo-class-function-logic:
-    begin: ((:)(?:not|matches|has))(\()
+  selector-pseudo-class-function-selector-list:
+    begin: ((:)(?:scope-context|not|matches|host-context|host|has))(\()
     beginCaptures:
       '1': {name: entity.other.attribute-name.pseudo-class.css}
       '2': {name: punctuation.definition.entity.css}
@@ -624,9 +640,9 @@ repository:
     - include: '#selector-pseudo-class-webkit'
     - include: '#selector-pseudo-class-function-drop'
     - include: '#selector-pseudo-class-function-an-plus-b'
-    - include: '#selector-pseudo-class-function-logic'
-    - include: '#selector-pseudo-class-function-nth'
     - include: '#selector-pseudo-class-function-selector-list'
+    - include: '#selector-pseudo-class-function-nth'
+    - include: '#selector-pseudo-class-function-selector-list-an-plus-b'
     - include: '#selector-pseudo-class'
     - include: '#selector-element'
     - include: '#selector-id'
@@ -643,23 +659,7 @@ repository:
     endCaptures:
       '0': {name: punctuation.section.function.css}
 
-  selector-pseudo-class-function-nth:
-    begin: ((:)nth)(\()
-    beginCaptures:
-      '1': {name: entity.other.attribute-name.pseudo-class.css}
-      '2': {name: punctuation.definition.entity.css}
-      '3': {name: punctuation.section.function.css}
-    patterns:
-    - include: '#comment-block'
-    - name: support.constant.property-value.css
-      match: \bof\b
-    - include: '#identifier'
-    end: \)
-    endCaptures:
-      '0': {name: punctuation.section.function.css}
-
-  # These pseudo-classes take An+B values and selector lists as parameters.
-  selector-pseudo-class-function-selector-list:
+  selector-pseudo-class-function-selector-list-an-plus-b:
     begin: ((:)(?:nth-last-child|nth-child))(\()
     beginCaptures:
       '1': {name: entity.other.attribute-name.pseudo-class.css}
@@ -685,9 +685,9 @@ repository:
     - include: '#selector-pseudo-class-webkit'
     - include: '#selector-pseudo-class-function-drop'
     - include: '#selector-pseudo-class-function-an-plus-b'
-    - include: '#selector-pseudo-class-function-logic'
-    - include: '#selector-pseudo-class-function-nth'
     - include: '#selector-pseudo-class-function-selector-list'
+    - include: '#selector-pseudo-class-function-nth'
+    - include: '#selector-pseudo-class-function-selector-list-an-plus-b'
     - include: '#selector-pseudo-class'
     - include: '#selector-element'
     - include: '#selector-id'
@@ -756,7 +756,7 @@ repository:
 
   selector-pseudo-element:
     name: entity.other.attribute-name.pseudo-element.css
-    match: (::)(?:value|shadow|selection|repeat-item|repeat-index|marker|first-line|first-letter|content|choices|before|after)\b
+    match: (::)(?:value|shadow|selection|repeat-item|repeat-index|region|marker|first-line|first-letter|content|choices|before|after)\b
     captures:
       '1': {name: punctuation.definition.entity.css}
 
