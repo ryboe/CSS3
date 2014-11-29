@@ -1235,7 +1235,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#selector-pseudo-class-function-logic</string>
+					<string>#selector-pseudo-class-function-selector-list</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -1243,7 +1243,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#selector-pseudo-class-function-selector-list</string>
+					<string>#selector-pseudo-class-function-selector-list-an-plus-b</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -1516,7 +1516,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(:)(?:visited|valid|user-error|target|scope|root|required|read-write|read-only|placeholder-shown|past|out-of-range|optional|only-of-type|only-child|link|last-of-type|last-child|invalid|indeterminate|in-range|hover|future|focus|first-of-type|first-child|enabled|empty|drop|disabled|default|current|checked|blank|any-link|active)\b</string>
+			<string>(:)(?:visited|valid|user-error|target|scope|root|required|read-write|read-only|placeholder-shown|past|out-of-range|optional|only-of-type|only-child|link|last-of-type|last-child|invalid|indeterminate|in-range|hover|host|future|focus|first-of-type|first-child|enabled|empty|drop|disabled|default|current|checked|blank|any-link|active)\b</string>
 			<key>name</key>
 			<string>entity.other.attribute-name.pseudo-class.css</string>
 		</dict>
@@ -1750,10 +1750,60 @@
 				</dict>
 			</array>
 		</dict>
-		<key>selector-pseudo-class-function-logic</key>
+		<key>selector-pseudo-class-function-nth</key>
 		<dict>
 			<key>begin</key>
-			<string>((:)(?:not|matches|has))(\()</string>
+			<string>((:)nth)(\()</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.other.attribute-name.pseudo-class.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.entity.css</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\bof\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#identifier</string>
+				</dict>
+			</array>
+		</dict>
+		<key>selector-pseudo-class-function-selector-list</key>
+		<dict>
+			<key>begin</key>
+			<string>((:)(?:scope-context|not|matches|host-context|host|has))(\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1850,7 +1900,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#selector-pseudo-class-function-logic</string>
+					<string>#selector-pseudo-class-function-selector-list</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -1858,7 +1908,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#selector-pseudo-class-function-selector-list</string>
+					<string>#selector-pseudo-class-function-selector-list-an-plus-b</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -1898,57 +1948,7 @@
 				</dict>
 			</array>
 		</dict>
-		<key>selector-pseudo-class-function-nth</key>
-		<dict>
-			<key>begin</key>
-			<string>((:)nth)(\()</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>entity.other.attribute-name.pseudo-class.css</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.entity.css</string>
-				</dict>
-				<key>3</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.section.function.css</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>\)</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.section.function.css</string>
-				</dict>
-			</dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#comment-block</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\bof\b</string>
-					<key>name</key>
-					<string>support.constant.property-value.css</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#identifier</string>
-				</dict>
-			</array>
-		</dict>
-		<key>selector-pseudo-class-function-selector-list</key>
+		<key>selector-pseudo-class-function-selector-list-an-plus-b</key>
 		<dict>
 			<key>begin</key>
 			<string>((:)(?:nth-last-child|nth-child))(\()</string>
@@ -2058,7 +2058,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#selector-pseudo-class-function-logic</string>
+					<string>#selector-pseudo-class-function-selector-list</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -2066,7 +2066,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#selector-pseudo-class-function-selector-list</string>
+					<string>#selector-pseudo-class-function-selector-list-an-plus-b</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -2258,7 +2258,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(::)(?:value|shadow|selection|repeat-item|repeat-index|marker|first-line|first-letter|content|choices|before|after)\b</string>
+			<string>(::)(?:value|shadow|selection|repeat-item|repeat-index|region|marker|first-line|first-letter|content|choices|before|after)\b</string>
 			<key>name</key>
 			<string>entity.other.attribute-name.pseudo-element.css</string>
 		</dict>
