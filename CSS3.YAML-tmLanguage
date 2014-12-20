@@ -3642,6 +3642,7 @@ repository:
     # condition.
     end: (?=[;)])
 
+  # The CSS Box Alignment Module Level 3 spec supersedes the values listed in the Flexbox spec.
   value-align-items-align-self-justify-self:
     begin: (?<=align-items:|align-self:|justify-self:)
     patterns:
@@ -5046,7 +5047,7 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - name: support.constant.property-value.css
-      match: \b(?:none|main-size|auto)\b
+      match: \b(?:none|content|auto)\b
     - include: '#type-function-calc'
     - include: '#type-percentage-non-negative'
     - include: '#type-length-non-negative'
@@ -5063,7 +5064,7 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - name: support.constant.property-value.css
-      match: \b(?:main-size|auto)\b
+      match: \b(?:content|auto)\b
     - include: '#type-function-calc'
     - include: '#type-percentage-non-negative'
     - include: '#type-length-non-negative'
