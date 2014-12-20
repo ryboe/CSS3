@@ -324,7 +324,7 @@ repository:
 
   media-type-deprecated:
     name: invalid.deprecated.css
-    match: \b(?:tv|tty|projection|handheld|embossed|braille|aural)\b
+    match: \b(?:tv|tty|reader|projection|handheld|embossed|braille|aural)\b
 
   property-list:
     name: meta.property-list.css
