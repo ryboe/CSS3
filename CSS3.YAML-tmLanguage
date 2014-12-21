@@ -6183,7 +6183,7 @@ repository:
     end: (?=[;)])
 
   value-mask-border-mode-mask-type:
-    begin: (?<=mask-border-mode-mask-type:)
+    begin: (?<=mask-border-mode:|mask-type:)
     patterns:
     - include: '#comment-block'
     - include: '#type-important'

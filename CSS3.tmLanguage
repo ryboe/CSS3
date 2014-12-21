@@ -19880,7 +19880,7 @@
 		<key>value-mask-border-mode-mask-type</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;=mask-border-mode-mask-type:)</string>
+			<string>(?&lt;=mask-border-mode:|mask-type:)</string>
 			<key>end</key>
 			<string>(?=[;)])</string>
 			<key>patterns</key>
