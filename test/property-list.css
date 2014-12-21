@@ -447,6 +447,26 @@
     background-attachment: scroll, fixed, local;
     background-attachment: inherit;
 
+    background-blend-mode: initial;
+    background-blend-mode: inherit;
+    background-blend-mode: unset;
+    background-blend-mode: color;
+    background-blend-mode: color-burn;
+    background-blend-mode: color-dodge;
+    background-blend-mode: darken;
+    background-blend-mode: difference;
+    background-blend-mode: exclusion;
+    background-blend-mode: hard-light;
+    background-blend-mode: hue;
+    background-blend-mode: lighten;
+    background-blend-mode: luminosity;
+    background-blend-mode: multiply;
+    background-blend-mode: normal;
+    background-blend-mode: overlay;
+    background-blend-mode: saturation;
+    background-blend-mode: screen;
+    background-blend-mode: soft-light;
+
     background-clip: initial;
     background-clip: inherit;
     background-clip: unset;
@@ -5142,12 +5162,20 @@
     indent-edge-reset: margin-edge;
     indent-edge-reset: padding-edge;
 
-    initial-letters: initial;
-    initial-letters: inherit;
-    initial-letters: unset;
-    initial-letters: 3 2;
-    initial-letters: 3 1;
-    initial-letters: 3;
+    initial-letter: initial;
+    initial-letter: inherit;
+    initial-letter: unset;
+    initial-letter: 3 2;
+    initial-letter: 3 1;
+    initial-letter: 3;
+
+    initial-letter-align: initial;
+    initial-letter-align: inherit;
+    initial-letter-align: unset;
+    initial-letter-align: ideographic;
+    initial-letter-align: hanging;
+    initial-letter-align: auto;
+    initial-letter-align: alphabetic;
 
     inline-box-align: initial;
     inline-box-align: inherit;
@@ -5156,6 +5184,12 @@
     inline-box-align: 0;
     inline-box-align: +0;
     inline-box-align: +100;
+
+    isolation: initial;
+    isolation: inherit;
+    isolation: unset;
+    isolation: auto;
+    isolation: isolate;
 
     justify-content: initial;
     justify-content: inherit;
@@ -5349,12 +5383,6 @@
     lighting-color: color(contrast(0));
     lighting-color: color(contrast(25%));
     lighting-color: color(contrast());
-
-    line-box-contain: initial;
-    line-box-contain: inherit;
-    line-box-contain: unset;
-    line-box-contain: none;
-    line-box-contain: block inline font glyphs replaced inline-box;
 
     line-break: initial;
     line-break: inherit;
@@ -5740,7 +5768,6 @@
     list-style-image: radial-gradient(at top, color(contrast(25%)), yellow);
     list-style-image: radial-gradient(at top, color(contrast()), yellow);
 
-
     list-style-position: initial;
     list-style-position: inherit;
     list-style-position: unset;
@@ -6102,6 +6129,26 @@
     min-zoom: 100.1242;
     min-zoom: 100.1242;
     min-zoom: 1235.35%;
+
+    mix-blend-mode: initial;
+    mix-blend-mode: inherit;
+    mix-blend-mode: unset;
+    mix-blend-mode: color;
+    mix-blend-mode: color-burn;
+    mix-blend-mode: color-dodge;
+    mix-blend-mode: darken;
+    mix-blend-mode: difference;
+    mix-blend-mode: exclusion;
+    mix-blend-mode: hard-light;
+    mix-blend-mode: hue;
+    mix-blend-mode: lighten;
+    mix-blend-mode: luminosity;
+    mix-blend-mode: multiply;
+    mix-blend-mode: normal;
+    mix-blend-mode: overlay;
+    mix-blend-mode: saturation;
+    mix-blend-mode: screen;
+    mix-blend-mode: soft-light;
 
     nav-up: initial;
     nav-up: inherit;
