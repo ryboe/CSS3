@@ -8112,6 +8112,7 @@ repository:
 
 # TODO
 # fix broken transition property (doesn't work with comma separated lists)
+# custom elements (the <ident> portion matches everything)
 # match parameters of var(), toggle(), and attr()
 
 # TODO (LOW PRIORITY)
@@ -8120,5 +8121,4 @@ repository:
 #     @filter
 #     @phonetic-alphabet
 #     @font-feature-values <ident>: properties, aka feature value definitions, e.g. leo-B: 2 1;
-# custom elements (the <ident> portion matches everything)
 ...
