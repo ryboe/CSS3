@@ -5869,33 +5869,6 @@
     marks: crop cross;
     marks: cross crop;
 
-    marquee-direction: inherit;
-    marquee-direction: initial;
-    marquee-direction: unset;
-    marquee-direction: forward;
-    marquee-direction: reverse;
-
-    marquee-play-count: inherit;
-    marquee-play-count: initial;
-    marquee-play-count: unset;
-    marquee-play-count: infinite;
-    marquee-play-count: 100;
-    marquee-play-count: calc();
-
-    marquee-speed: inherit;
-    marquee-speed: initial;
-    marquee-speed: unset;
-    marquee-speed: slow;
-    marquee-speed: normal;
-    marquee-speed: fast;
-
-    marquee-style: inherit;
-    marquee-style: initial;
-    marquee-style: unset    ;
-    marquee-style: slide;
-    marquee-style: scroll;
-    marquee-style: alternate;
-
     mask: initial;
     mask: inherit;
     mask: unset;
@@ -5913,6 +5886,12 @@
     mask-border: url(my-image.gif) 25 30 10 20 repeat;
     mask-border: 100 fill 10% fill 15% fill 100%;
     -webkit-mask-border: 100 fill 10% fill 15% fill 100%;
+
+    mask-type: initial;
+    mask-type: inherit;
+    mask-type: unset;
+    mask-type: alpha;
+    mask-type: luminance;
 
     mask-border-outset: initial;
     mask-border-outset: inherit;
