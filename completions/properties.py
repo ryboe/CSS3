@@ -814,7 +814,7 @@ value_for_name = {
     "indent-edge-reset": [("border-edge",), ("content-edge",), ("margin-edge",), ("none",), ("padding-edge",)],
     "initial-letter": [("normal",), v.integer, v.number, v.calc],
     "initial-letter-align": [("alphabetic",), ("auto",), ("hanging",), ("ideographic",)],
-    "isolation": [("auto",), ("isolation",)],
+    "isolation": [("auto",), ("isolate",)],
     "inline-box-align": [("initial",), ("last",), v.integer, v.calc],
     "justify-content": [("auto",), ("baseline",), ("center",), ("end",), ("flex-end",), ("flex-start",), ("last-baseline",), ("left",), ("right",), ("safe",), ("space-around",), ("space-between",), ("space-evenly",), ("start",), ("stretch",), ("true",)],
     "justify-items": [("auto",), ("baseline",), ("center",), ("end",), ("flex-end",), ("flex-start",), ("last-baseline",), ("left",), ("legacy",), ("right",), ("safe",), ("self-end",), ("self-start",), ("start",), ("stretch",), ("true",)],
