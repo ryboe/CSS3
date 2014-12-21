@@ -6655,14 +6655,6 @@
     overflow: -moz-hidden-unscrollable;
     overflow: -moz-scrollbars-none ;
 
-    overflow-style: inherit;
-    overflow-style: initial;
-    overflow-style: unset;
-    overflow-style:auto;
-    overflow-style: marquee-line;
-    overflow-style: marquee-block;
-    -ms-overflow-style: marquee-block;
-
     overflow-wrap: initial;
     overflow-wrap: inherit;
     overflow-wrap: unset;
