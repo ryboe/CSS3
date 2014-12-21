@@ -12744,7 +12744,7 @@
 		<key>value-background-blend-mode-mix-blend-mode</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;=background-blend-mode:|mix-blend-mode)</string>
+			<string>(?&lt;=background-blend-mode:|mix-blend-mode:)</string>
 			<key>end</key>
 			<string>(?=[;)])</string>
 			<key>patterns</key>

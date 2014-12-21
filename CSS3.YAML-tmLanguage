@@ -3902,7 +3902,7 @@ repository:
     end: (?=[;)])
 
   value-background-blend-mode-mix-blend-mode:
-    begin: (?<=background-blend-mode:|mix-blend-mode)
+    begin: (?<=background-blend-mode:|mix-blend-mode:)
     patterns:
     - include: '#comment-block'
     - include: '#type-important'
