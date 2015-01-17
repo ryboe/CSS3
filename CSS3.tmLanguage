@@ -2258,7 +2258,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(::)(?:value|shadow|selection|repeat-item|repeat-index|region|marker|first-line|first-letter|content|choices|before|after)\b</string>
+			<string>(::)(?:value|spelling-error|shadow|selection|repeat-item|repeat-index|region|placeholder|marker|grammar-error|first-line|first-letter|content|choices|before|after)\b</string>
 			<key>name</key>
 			<string>entity.other.attribute-name.pseudo-element.css</string>
 		</dict>
@@ -20174,6 +20174,44 @@
 				<dict>
 					<key>include</key>
 					<string>#type-number-non-negative</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-mix-blend-mode</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=mix-blend-mode:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-blend-mode</string>
 				</dict>
 			</array>
 		</dict>
