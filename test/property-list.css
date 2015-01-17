@@ -447,6 +447,26 @@
     background-attachment: scroll, fixed, local;
     background-attachment: inherit;
 
+    background-blend-mode: initial;
+    background-blend-mode: inherit;
+    background-blend-mode: unset;
+    background-blend-mode: color;
+    background-blend-mode: color-burn;
+    background-blend-mode: color-dodge;
+    background-blend-mode: darken;
+    background-blend-mode: difference;
+    background-blend-mode: exclusion;
+    background-blend-mode: hard-light;
+    background-blend-mode: hue;
+    background-blend-mode: lighten;
+    background-blend-mode: luminosity;
+    background-blend-mode: multiply;
+    background-blend-mode: normal;
+    background-blend-mode: overlay;
+    background-blend-mode: saturation;
+    background-blend-mode: screen;
+    background-blend-mode: soft-light;
+
     background-clip: initial;
     background-clip: inherit;
     background-clip: unset;
@@ -5142,12 +5162,20 @@
     indent-edge-reset: margin-edge;
     indent-edge-reset: padding-edge;
 
-    initial-letters: initial;
-    initial-letters: inherit;
-    initial-letters: unset;
-    initial-letters: 3 2;
-    initial-letters: 3 1;
-    initial-letters: 3;
+    initial-letter: initial;
+    initial-letter: inherit;
+    initial-letter: unset;
+    initial-letter: 3 2;
+    initial-letter: 3 1;
+    initial-letter: 3;
+
+    initial-letter-align: initial;
+    initial-letter-align: inherit;
+    initial-letter-align: unset;
+    initial-letter-align: ideographic;
+    initial-letter-align: hanging;
+    initial-letter-align: auto;
+    initial-letter-align: alphabetic;
 
     inline-box-align: initial;
     inline-box-align: inherit;
@@ -5156,6 +5184,12 @@
     inline-box-align: 0;
     inline-box-align: +0;
     inline-box-align: +100;
+
+    isolation: initial;
+    isolation: inherit;
+    isolation: unset;
+    isolation: auto;
+    isolation: isolate;
 
     justify-content: initial;
     justify-content: inherit;
@@ -5349,12 +5383,6 @@
     lighting-color: color(contrast(0));
     lighting-color: color(contrast(25%));
     lighting-color: color(contrast());
-
-    line-box-contain: initial;
-    line-box-contain: inherit;
-    line-box-contain: unset;
-    line-box-contain: none;
-    line-box-contain: block inline font glyphs replaced inline-box;
 
     line-break: initial;
     line-break: inherit;
@@ -5740,7 +5768,6 @@
     list-style-image: radial-gradient(at top, color(contrast(25%)), yellow);
     list-style-image: radial-gradient(at top, color(contrast()), yellow);
 
-
     list-style-position: initial;
     list-style-position: inherit;
     list-style-position: unset;
@@ -5869,33 +5896,6 @@
     marks: crop cross;
     marks: cross crop;
 
-    marquee-direction: inherit;
-    marquee-direction: initial;
-    marquee-direction: unset;
-    marquee-direction: forward;
-    marquee-direction: reverse;
-
-    marquee-play-count: inherit;
-    marquee-play-count: initial;
-    marquee-play-count: unset;
-    marquee-play-count: infinite;
-    marquee-play-count: 100;
-    marquee-play-count: calc();
-
-    marquee-speed: inherit;
-    marquee-speed: initial;
-    marquee-speed: unset;
-    marquee-speed: slow;
-    marquee-speed: normal;
-    marquee-speed: fast;
-
-    marquee-style: inherit;
-    marquee-style: initial;
-    marquee-style: unset    ;
-    marquee-style: slide;
-    marquee-style: scroll;
-    marquee-style: alternate;
-
     mask: initial;
     mask: inherit;
     mask: unset;
@@ -5913,6 +5913,12 @@
     mask-border: url(my-image.gif) 25 30 10 20 repeat;
     mask-border: 100 fill 10% fill 15% fill 100%;
     -webkit-mask-border: 100 fill 10% fill 15% fill 100%;
+
+    mask-type: initial;
+    mask-type: inherit;
+    mask-type: unset;
+    mask-type: alpha;
+    mask-type: luminance;
 
     mask-border-outset: initial;
     mask-border-outset: inherit;
@@ -6123,6 +6129,26 @@
     min-zoom: 100.1242;
     min-zoom: 100.1242;
     min-zoom: 1235.35%;
+
+    mix-blend-mode: initial;
+    mix-blend-mode: inherit;
+    mix-blend-mode: unset;
+    mix-blend-mode: color;
+    mix-blend-mode: color-burn;
+    mix-blend-mode: color-dodge;
+    mix-blend-mode: darken;
+    mix-blend-mode: difference;
+    mix-blend-mode: exclusion;
+    mix-blend-mode: hard-light;
+    mix-blend-mode: hue;
+    mix-blend-mode: lighten;
+    mix-blend-mode: luminosity;
+    mix-blend-mode: multiply;
+    mix-blend-mode: normal;
+    mix-blend-mode: overlay;
+    mix-blend-mode: saturation;
+    mix-blend-mode: screen;
+    mix-blend-mode: soft-light;
 
     nav-up: initial;
     nav-up: inherit;
@@ -6628,14 +6654,6 @@
     overflow: -moz-scrollbars-vertical ;
     overflow: -moz-hidden-unscrollable;
     overflow: -moz-scrollbars-none ;
-
-    overflow-style: inherit;
-    overflow-style: initial;
-    overflow-style: unset;
-    overflow-style:auto;
-    overflow-style: marquee-line;
-    overflow-style: marquee-block;
-    -ms-overflow-style: marquee-block;
 
     overflow-wrap: initial;
     overflow-wrap: inherit;

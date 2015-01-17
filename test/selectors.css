@@ -51,10 +51,13 @@ div:first-line {}
 ::content {}
 ::first-letter {}
 ::first-line:hover {}
+::grammar-error {}
+::placeholder {}
 ::repeat-index {}
 ::repeat-item {}
 ::selection {}
 ::shadow {}
+::spelling-error {}
 ::value {}
 
 /* -moz- prefixed pseudo-classes */
