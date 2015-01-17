@@ -756,7 +756,7 @@ repository:
 
   selector-pseudo-element:
     name: entity.other.attribute-name.pseudo-element.css
-    match: (::)(?:value|shadow|selection|repeat-item|repeat-index|region|marker|first-line|first-letter|content|choices|before|after)\b
+    match: (::)(?:value|spelling-error|shadow|selection|repeat-item|repeat-index|region|placeholder|marker|grammar-error|first-line|first-letter|content|choices|before|after)\b
     captures:
       '1': {name: punctuation.definition.entity.css}
 
