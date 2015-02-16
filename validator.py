@@ -1,8 +1,8 @@
 import json
 import sublime
 import sublime_plugin
-import urllib
 import threading
+import urllib
 
 
 bad_lines = {}
@@ -22,6 +22,7 @@ settings = {}
 
 
 class Css3Validator(sublime_plugin.TextCommand):
+
     """This abstract class contains the core functions for submitting CSS code
     to the W3C validator and flagging errors with gutter marks.
     """
@@ -141,6 +142,7 @@ class Css3Validator(sublime_plugin.TextCommand):
 
 
 class Css3ValidateAll(Css3Validator):
+
     """Submit the entire file to the W3C Validator."""
 
     def run(self, edit):
@@ -149,10 +151,11 @@ class Css3ValidateAll(Css3Validator):
         region = sublime.Region(0, self.view.size())
         full_css = self.view.substr(region)
         self.validate((full_css,))  # validate() expects an iterable of texts
-                                    # from the selection
+        # from the selection
 
 
 class W3cValidatorCall(threading.Thread):
+
     """A thread for making calls to the W3C validation service."""
 
     def __init__(self, text, timeout=10):
@@ -186,8 +189,8 @@ class W3cValidatorCall(threading.Thread):
                                   "the validation server")
 
     def prepare_request(self):
-        """Return a GET request object with parameters encoded and headers
-        set.
+        """Return a POST request with the CSS file encoded as
+        multipart/form-data
         """
         settings = sublime.load_settings("CSS3.sublime-settings")
         lang = settings.get("validator_language", "en")
@@ -212,6 +215,7 @@ class W3cValidatorCall(threading.Thread):
 
 
 class Css3ClearGutterMarks(sublime_plugin.TextCommand):
+
     """Manually clear all validation errors from the gutter."""
 
     def run(self, edit):
@@ -222,6 +226,7 @@ class Css3ClearGutterMarks(sublime_plugin.TextCommand):
 
 
 class Css3Events(sublime_plugin.EventListener):
+
     def on_pre_save_async(self, view):
         """Clear validation errors from the gutter when the user saves.
 
