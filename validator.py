@@ -1,8 +1,12 @@
 import json
+import random
+import string
+import requests
 import sublime
 import sublime_plugin
 import threading
-import urllib
+# TODO: delete this
+# import urllib
 
 
 bad_lines = {}
@@ -171,47 +175,95 @@ class W3cValidatorCall(threading.Thread):
         self.results = None
 
     def run(self):
-        """Submit the code to the W3C Validator and process the JSON response"""
-        req = self.prepare_request()
-        try:
-            response = urllib.request.urlopen(req, timeout=self.timeout)
-
-            # can't json.load(response) directly. must decode to string first.
-            data = json.loads(response.read().decode("UTF-8"), encoding="UTF-8")
-            self.results = data["cssvalidation"]
-            return
-        except urllib.error.URLError as url_err:
-            print(url_err)
-            sublime.error_message("ERROR: network connection failed")
-        except (UnicodeError, ValueError) as err:
-            print(err)
-            sublime.error_message("ERROR: failed to decode the response from "
-                                  "the validation server")
-
-    def prepare_request(self):
-        """Return a POST request with the CSS file encoded as
-        multipart/form-data
-        """
-        settings = sublime.load_settings("CSS3.sublime-settings")
-        lang = settings.get("validator_language", "en")
-        params = {
-            "text": self.text,
-            "lang": lang,
-            "output": "json",
-            "profile": "css3",
-            "warning": "no"
+        files = {
+            "file": (self.text, "text/css")
         }
-        encoded_params = urllib.parse.urlencode(params)
-
-        # Set the Accept-Charset header to UTF-8 just in case. The response is
-        # assumed to be UTF-8.
         headers = {
             "Accept-Charset": "utf-8",
             "User-Agent": "sublime text css3 package"
         }
-        w3c_url = "http://jigsaw.w3.org/css-validator/validator?"
-        return urllib.request.Request(w3c_url + encoded_params,
-                                      headers=headers, method="GET")
+        W3C_URL = "http://jigsaw.w3.org/css-validator/validator"
+        try:
+            resp = requests.post(W3C_URL, files=files, headers=headers)
+
+
+    # TODO: delete this
+    # def run(self):
+    #     """Submit the code to the W3C Validator and process the JSON response"""
+    #     req = self.prepare_request()
+    #     try:
+    #         response = urllib.request.urlopen(req, timeout=self.timeout)
+
+    #         # can't json.load(response) directly. must decode to string first.
+    #         data = json.loads(response.read().decode("UTF-8"), encoding="UTF-8")
+    #         self.results = data["cssvalidation"]
+    #         return
+    #     except urllib.error.URLError as url_err:
+    #         print(url_err)
+    #         sublime.error_message("ERROR: network connection failed")
+    #     except (UnicodeError, ValueError) as err:
+    #         print(err)
+    #         sublime.error_message("ERROR: failed to decode the response from "
+    #                               "the validation server")
+
+#     def prepare_request(self):
+#         """Return a POST request with the CSS file encoded as
+#         multipart/form-data
+#         """
+#         settings = sublime.load_settings("CSS3.sublime-settings")
+#         lang = settings.get("validator_language", "en")
+
+#         # build multipart/form-data request body by hand
+#         body = """\
+# --{boundary}
+# Content-Disposition: form-data; name="file"
+# Content-Type: text/css
+
+# {text}
+
+# --{boundary}
+# Content-Disposition: form-data; name="output"
+
+# json
+# --{boundary}--
+# """
+
+#         # boundary is random string
+#         charset = string.ascii_letters + string.digits
+#         rand_len = 16
+#         boundary = "".join(random.choice(charset) for _ in range(rand_len))
+
+#         data = body.format(boundary=boundary, text=self.text)
+#         headers = {
+#             "Accept-Charset": "utf-8",
+#             "Content-Length": len(data),
+#             "Content-Type": "multipart/form-data; boundary=--{}".format(boundary),
+#             "User-Agent": "sublime text css3 package"
+#         }
+
+#         w3c_url = "http://jigsaw.w3.org/css-validator/validator"
+#         return urllib.request.Request(w3c_url, method="POST", headers=headers, data=data)
+
+
+        # TODO: delete this
+        # params = {
+        #     "text": self.text,
+        #     "lang": lang,
+        #     "output": "json",
+        #     "profile": "css3",
+        #     "warning": "no"
+        # }
+        # encoded_params = urllib.parse.urlencode(params)
+
+        # # Set the Accept-Charset header to UTF-8 just in case. The response is
+        # # assumed to be UTF-8.
+        # headers = {
+        #     "Accept-Charset": "utf-8",
+        #     "User-Agent": "sublime text css3 package"
+        # }
+        # w3c_url = "http://jigsaw.w3.org/css-validator/validator?"
+        # return urllib.request.Request(w3c_url + encoded_params,
+        #                               headers=headers, method="GET")
 
 
 class Css3ClearGutterMarks(sublime_plugin.TextCommand):
