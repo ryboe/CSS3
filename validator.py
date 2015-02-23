@@ -22,8 +22,8 @@ settings = {}
 
 class Css3Validator(sublime_plugin.TextCommand):
 
-    """This abstract class contains the core functions for submitting CSS code
-    to the W3C validator and flagging errors with gutter marks.
+    """This abstract class contains the core functions for submitting
+    CSS code to the W3C validator and flagging errors with gutter marks.
     """
 
     def validate(self, texts):
@@ -46,9 +46,11 @@ class Css3Validator(sublime_plugin.TextCommand):
 
         Keyword arguments:
         threads    -- list of threads (alive or dead)
-        has_errors -- True if validator found at least one error (default False)
+        has_errors -- True if validator found at least one error
+                      (default False)
         i          -- position of the activity indicator (default 0)
-        direction  -- direction of the activity indicator (-1 left, 1 right)
+        direction  -- direction of the activity indicator
+                      (-1 left, 1 right)
         """
         next_threads = []
         for thread in threads:
@@ -80,7 +82,8 @@ class Css3Validator(sublime_plugin.TextCommand):
     def mark_errors(self, errors, lang="en", zoom=False):
         """Mark the line numbers returned by the validator.
 
-        errors -- dictionary of errors returned by the validation server call
+        errors -- dictionary of errors returned by the validation server
+                  call
         lang   -- the language of the error messages (default "en")
         zoom   -- scroll viewport to the first error (default False)
         """
@@ -115,10 +118,12 @@ class Css3Validator(sublime_plugin.TextCommand):
             self.view.show(bad_regions[0], show_surrounds=True)
 
     def activity_indicator(self, i, direction):
-        """Show that the validator is working by animating the status bar.
+        """Show that the validator is working by animating the status
+        bar.
 
         i         -- the previous position of the '=' indicator
-        direction -- the previous direction of the '=' indicator (left or right)
+        direction -- the previous direction of the '=' indicator
+                     (left or right)
         """
         before = i % 8
         after = 7 - before
@@ -145,7 +150,8 @@ class Css3ValidateAll(Css3Validator):
     """Submit the entire file to the W3C Validator."""
 
     def run(self, edit):
-        """A wrapper around the validate() call required by the Sublime API.
+        """A wrapper around the validate() call required by the Sublime
+        API.
         """
         region = sublime.Region(0, self.view.size())
         full_css = self.view.substr(region)
@@ -234,7 +240,8 @@ class Css3Events(sublime_plugin.EventListener):
     def on_selection_modified_async(self, view):
         """Display validation error messages in the status bar.
 
-        The message is displayed when the line with the error is selected.
+        The message is displayed when the line with the error is
+        selected.
         """
         lines = regions_to_lines(view, view.sel(), max_lines=3)
         errors = [bad_lines[line] for line in lines if line in bad_lines]
