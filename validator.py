@@ -1,7 +1,6 @@
-import json
+from CSS3 import requests
 import sublime
 import sublime_plugin
-import urllib
 import threading
 
 
@@ -22,8 +21,9 @@ settings = {}
 
 
 class Css3Validator(sublime_plugin.TextCommand):
-    """This abstract class contains the core functions for submitting CSS code
-    to the W3C validator and flagging errors with gutter marks.
+
+    """This abstract class contains the core functions for submitting
+    CSS code to the W3C validator and flagging errors with gutter marks.
     """
 
     def validate(self, texts):
@@ -46,9 +46,11 @@ class Css3Validator(sublime_plugin.TextCommand):
 
         Keyword arguments:
         threads    -- list of threads (alive or dead)
-        has_errors -- True if validator found at least one error (default False)
+        has_errors -- True if validator found at least one error
+                      (default False)
         i          -- position of the activity indicator (default 0)
-        direction  -- direction of the activity indicator (-1 left, 1 right)
+        direction  -- direction of the activity indicator
+                      (-1 left, 1 right)
         """
         next_threads = []
         for thread in threads:
@@ -80,7 +82,8 @@ class Css3Validator(sublime_plugin.TextCommand):
     def mark_errors(self, errors, lang="en", zoom=False):
         """Mark the line numbers returned by the validator.
 
-        errors -- dictionary of errors returned by the validation server call
+        errors -- dictionary of errors returned by the validation server
+                  call
         lang   -- the language of the error messages (default "en")
         zoom   -- scroll viewport to the first error (default False)
         """
@@ -115,10 +118,12 @@ class Css3Validator(sublime_plugin.TextCommand):
             self.view.show(bad_regions[0], show_surrounds=True)
 
     def activity_indicator(self, i, direction):
-        """Show that the validator is working by animating the status bar.
+        """Show that the validator is working by animating the status
+        bar.
 
         i         -- the previous position of the '=' indicator
-        direction -- the previous direction of the '=' indicator (left or right)
+        direction -- the previous direction of the '=' indicator
+                     (left or right)
         """
         before = i % 8
         after = 7 - before
@@ -141,18 +146,21 @@ class Css3Validator(sublime_plugin.TextCommand):
 
 
 class Css3ValidateAll(Css3Validator):
+
     """Submit the entire file to the W3C Validator."""
 
     def run(self, edit):
-        """A wrapper around the validate() call required by the Sublime API.
+        """A wrapper around the validate() call required by the Sublime
+        API.
         """
         region = sublime.Region(0, self.view.size())
         full_css = self.view.substr(region)
         self.validate((full_css,))  # validate() expects an iterable of texts
-                                    # from the selection
+        # from the selection
 
 
 class W3cValidatorCall(threading.Thread):
+
     """A thread for making calls to the W3C validation service."""
 
     def __init__(self, text, timeout=10):
@@ -168,50 +176,46 @@ class W3cValidatorCall(threading.Thread):
         self.results = None
 
     def run(self):
-        """Submit the code to the W3C Validator and process the JSON response"""
-        req = self.prepare_request()
-        try:
-            response = urllib.request.urlopen(req, timeout=self.timeout)
-
-            # can't json.load(response) directly. must decode to string first.
-            data = json.loads(response.read().decode("UTF-8"), encoding="UTF-8")
-            self.results = data["cssvalidation"]
-            return
-        except urllib.error.URLError as url_err:
-            print(url_err)
-            sublime.error_message("ERROR: network connection failed")
-        except (UnicodeError, ValueError) as err:
-            print(err)
-            sublime.error_message("ERROR: failed to decode the response from "
-                                  "the validation server")
-
-    def prepare_request(self):
-        """Return a GET request object with parameters encoded and headers
-        set.
-        """
-        settings = sublime.load_settings("CSS3.sublime-settings")
         lang = settings.get("validator_language", "en")
-        params = {
-            "text": self.text,
-            "lang": lang,
-            "output": "json",
-            "profile": "css3",
-            "warning": "no"
+        files = {
+            "text": (None, self.text, "text/css"),
+            "output": (None, "json"),
+            "profile": (None, "css3"),
+            "lang": (None, lang),
+            "warning": (None, "no"),
         }
-        encoded_params = urllib.parse.urlencode(params)
-
-        # Set the Accept-Charset header to UTF-8 just in case. The response is
-        # assumed to be UTF-8.
         headers = {
             "Accept-Charset": "utf-8",
             "User-Agent": "sublime text css3 package"
         }
-        w3c_url = "http://jigsaw.w3.org/css-validator/validator?"
-        return urllib.request.Request(w3c_url + encoded_params,
-                                      headers=headers, method="GET")
+
+        W3C_URL = "http://jigsaw.w3.org/css-validator/validator"
+        try:
+            resp = requests.post(W3C_URL, files=files, headers=headers, timeout=self.timeout)
+            results = resp.json(encoding="UTF-8")
+        except requests.exceptions.ConnectionError as conn_err:
+            print(conn_err)
+            sublime.error_message("ERROR: network connection failed")
+            return
+        except requests.exceptions.HTTPError as http_err:
+            print("W3C validation server returned an invalid HTTP response")
+            print(http_err)
+            sublime.error_message("ERROR: W3C Validation server returned an invalid response")
+            return
+        except requests.exceptions.Timeout as timeout_err:
+            print("connection to validation server timed out after {} seconds".format(self.timeout))
+            print(timeout_err)
+            sublime.error_message("ERROR: connection to W3C validation server timed out after {} "
+                                  "seconds. You can adjust the timeout in the package settings."
+                                  "".format(self.timeout))
+            return
+
+        self.results = results["cssvalidation"]
+        return
 
 
 class Css3ClearGutterMarks(sublime_plugin.TextCommand):
+
     """Manually clear all validation errors from the gutter."""
 
     def run(self, edit):
@@ -222,6 +226,7 @@ class Css3ClearGutterMarks(sublime_plugin.TextCommand):
 
 
 class Css3Events(sublime_plugin.EventListener):
+
     def on_pre_save_async(self, view):
         """Clear validation errors from the gutter when the user saves.
 
@@ -235,7 +240,8 @@ class Css3Events(sublime_plugin.EventListener):
     def on_selection_modified_async(self, view):
         """Display validation error messages in the status bar.
 
-        The message is displayed when the line with the error is selected.
+        The message is displayed when the line with the error is
+        selected.
         """
         lines = regions_to_lines(view, view.sel(), max_lines=3)
         errors = [bad_lines[line] for line in lines if line in bad_lines]
