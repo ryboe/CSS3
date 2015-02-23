@@ -193,25 +193,20 @@ class W3cValidatorCall(threading.Thread):
         try:
             resp = requests.post(W3C_URL, files=files, headers=headers, timeout=self.timeout)
             results = resp.json(encoding="UTF-8")
+            self.results = results["cssvalidation"]
         except requests.exceptions.ConnectionError as conn_err:
             print(conn_err)
             sublime.error_message("ERROR: network connection failed")
-            return
         except requests.exceptions.HTTPError as http_err:
             print("W3C validation server returned an invalid HTTP response")
             print(http_err)
             sublime.error_message("ERROR: W3C Validation server returned an invalid response")
-            return
         except requests.exceptions.Timeout as timeout_err:
             print("connection to validation server timed out after {} seconds".format(self.timeout))
             print(timeout_err)
             sublime.error_message("ERROR: connection to W3C validation server timed out after {} "
                                   "seconds. You can adjust the timeout in the package settings."
                                   "".format(self.timeout))
-            return
-
-        self.results = results["cssvalidation"]
-        return
 
 
 class Css3ClearGutterMarks(sublime_plugin.TextCommand):
