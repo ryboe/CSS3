@@ -376,7 +376,7 @@ repository:
 
   property-name-illegal-ms:
     name: invalid.illegal.css
-    match: -ms-(?:user-select|text-kashida-space|progress-appearance|layout-flow|interpolation-mode|block-progression|behavior|accelerator)\b
+    match: -ms-(?:user-select|text-kashida-space|progress-appearance|layout-flow|interpolation-mode|ime-mode|block-progression|behavior|accelerator)\b
 
   property-name-illegal-webkit:
     name: invalid.illegal.css
