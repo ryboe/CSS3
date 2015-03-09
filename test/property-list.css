@@ -5121,12 +5121,6 @@
     -ms-hyphens: none;
     -webkit-hyphens: none;
 
-    icon: initial;
-    icon: inherit;
-    icon: unset;
-    icon:url(imgicon.png);
-    icon:url(objicon.png) url(something.com);
-
     image-orientation: initial;
     image-orientation: inherit;
     image-orientation: unset;
