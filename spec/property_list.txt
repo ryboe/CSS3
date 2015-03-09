@@ -29,7 +29,6 @@
 -ms-grid-column
 -ms-grid-row
 -ms-hyphens
--ms-ime-mode
 -ms-overflow-style
 -ms-overflow-x
 -ms-overflow-y
@@ -330,7 +329,6 @@ hyphens
 icon
 image-orientation
 image-resolution
-ime-mode
 indent-edge-reset
 initial-letters
 inline-box-align
@@ -388,7 +386,6 @@ min-height
 min-width
 min-zoom
 nav-down
-nav-index
 nav-left
 nav-right
 nav-up

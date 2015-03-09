@@ -5143,16 +5143,6 @@
     image-resolution: 300dpi snap;
     image-resolution: snap from-image;
 
-    ime-mode: initial;
-    ime-mode: inherit;
-    ime-mode: unset;
-    ime-mode: active;
-    ime-mode: auto;
-    ime-mode: disabled;
-    ime-mode: inactive;
-    ime-mode: normal;
-    -ms-ime-mode: normal;
-
     indent-edge-reset: initial;
     indent-edge-reset: inherit;
     indent-edge-reset: unset;
@@ -6189,15 +6179,6 @@
     nav-left:#b2;
     nav-left:#b3;
     nav-left:#b4;
-
-    nav-index: initial;
-    nav-index: inherit;
-    nav-index: unset;
-    nav-index: 1;
-    nav-index: 2;
-    nav-index: 3;
-    nav-index: 4;
-    nav-index:attr(tabindex,number);
 
     negative: initial;
     negative: inherit;

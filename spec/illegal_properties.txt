@@ -57,7 +57,7 @@ DON'T HIGHLIGHT
     -ms-hyphenate-limit-zone
     -ms-hyphens
     -ms-ime-align
-    -ms-ime-mode                // no need to prefix
+    -ms-ime-mode                // officially deprecated
     -ms-layout-grid             // no need to previx
     -ms-layout-grid-char        // no need to previx
     -ms-layout-grid-line        // no need to previx
