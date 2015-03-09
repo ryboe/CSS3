@@ -1079,7 +1079,7 @@
 		<key>property-name-illegal</key>
 		<dict>
 			<key>match</key>
-			<string>\b(?:user-select|ime-mode|font-smooth|clip|behavior|accelerator)\b(?!\-)</string>
+			<string>\b(?:user-select|nav-index|ime-mode|font-smooth|clip|behavior|accelerator)\b(?!\-)</string>
 			<key>name</key>
 			<string>invalid.illegal.css</string>
 		</dict>
