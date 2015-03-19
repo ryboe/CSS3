@@ -5667,7 +5667,7 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - name: support.constant.property-value.css
-      match: \b(?:stack|row|dense|column)\b
+      match: \b(?:row|dense|column)\b
     end: (?=[;)])
 
   value-grid-template:
