@@ -2882,7 +2882,7 @@ repository:
     - include: '#type-percentage-non-negative'
     - include: '#type-flex-non-negative'
     - include: '#type-length-non-negative'
-    - include: '#type-integer-non-negative'
+    - include: '#type-integer-positive'
     - include: '#type-line-name'
     end: \)
     endCaptures:
