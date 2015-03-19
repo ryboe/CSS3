@@ -9335,7 +9335,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-integer-non-negative</string>
+					<string>#type-integer-positive</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -18401,7 +18401,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:stack|row|dense|column)\b</string>
+					<string>\b(?:row|dense|column)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>
