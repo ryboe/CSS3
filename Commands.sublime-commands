@@ -4,7 +4,7 @@
         "command": "css3_hex_convert",
     },
     {
-        "caption": "CSS3: Validate (Beta)",
+        "caption": "CSS3: Validate",
         "command": "css3_validate_all",
     },
     {
