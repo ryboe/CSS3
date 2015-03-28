@@ -2598,8 +2598,8 @@
     chains: initial;
     chains: inherit;
     chains: unset;
-    chains: @ a b c d e, f g h i j k;
-    chains: @ a b c d e f g;
+    chains: * a b c d e, f g h i j k;
+    chains: * a b c d e f g;
     chains: a b c d e f;
     chains: a b;
 
@@ -4930,9 +4930,9 @@
     grid-auto-flow: row;
     grid-auto-flow: row dense;
     grid-auto-flow: column dense;
-    grid-auto-flow: stack  column;
-    grid-auto-flow: stack  row;
-    -webkit-grid-auto-flow: stack  row;
+    grid-auto-flow:  column;
+    grid-auto-flow:  row;
+    -webkit-grid-auto-flow:  row;
 
     grid-auto-rows: initial;
     grid-auto-rows: inherit;
