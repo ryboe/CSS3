@@ -1,0 +1,29 @@
+VERSION 1.2.11 CHANGES
+
+1) Removed the "Insert Reset" and "Insert normalize.css" features
+
+    These were being inserted in minified form. I've been persuaded
+    that writing your source in minified form is a bad idea. They
+    were out of date anyway.
+
+2) Dropped the beta tag from the Validate call, since no issues have
+   been reported.
+
+3) Updated for recent changes to the CSS Grid Layout Module Level 1
+   and CSS Template Layout Module specs
+
+4) Support for these new Scroll Snap Points Module Level 1 properties.
+
+    scroll-snap-coordinate
+    scroll-snap-destination
+    scroll-snap-points-x
+    scroll-snap-points-y
+    scroll-snap-type
+
+   These are usable with the -ms- prefix, or unprefixed in Firefox 39
+   with the layout.css.scroll-snap.enabled flag.
+
+Lastly, if your favorite CSS property isn't being highlighted properly,
+or is missing a completion, please report it here:
+
+    https://github.com/y0ssar1an/CSS3/issues
