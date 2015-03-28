@@ -1183,6 +1183,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#selector-pseudo-element-function-blank-slot</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#selector-pseudo-element</string>
 				</dict>
 				<dict>
@@ -1848,6 +1852,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#selector-pseudo-element-function-blank-slot</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#selector-pseudo-element</string>
 				</dict>
 				<dict>
@@ -2003,6 +2011,10 @@
 				<dict>
 					<key>include</key>
 					<string>#selector-pseudo-element-moz</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#selector-pseudo-element-function-blank-slot</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -2261,6 +2273,54 @@
 			<string>(::)(?:spelling-error|shadow|selection|repeat-item|repeat-index|region|placeholder|marker|grammar-error|first-line|first-letter|content|before|after)\b</string>
 			<key>name</key>
 			<string>entity.other.attribute-name.pseudo-element.css</string>
+		</dict>
+		<key>selector-pseudo-element-function-blank-slot</key>
+		<dict>
+			<key>begin</key>
+			<string>((::)(?:blank|slot))(\()</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.other.attribute-name.pseudo-element.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.entity.css</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>contentName</key>
+			<string>meta.function.pseudo-element.css</string>
+			<key>end</key>
+			<string>\)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;=[\s\(])\*(?=[\s\)])</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#identifier</string>
+				</dict>
+			</array>
 		</dict>
 		<key>selector-pseudo-element-moz</key>
 		<dict>
@@ -14786,6 +14846,12 @@
 					<string>support.constant.property-value.css</string>
 				</dict>
 				<dict>
+					<key>match</key>
+					<string>(?&lt;=\s)\*(?=[\s\W])</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
 					<key>include</key>
 					<string>#identifier</string>
 				</dict>
@@ -15817,7 +15883,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:open-quote|normal|no-open-quote|no-close-quote|none|inhibit|close-quote)\b</string>
+					<string>\b(?:open-quote|normal|no-open-quote|no-close-quote|none|inhibit|contents|close-quote)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>
@@ -17181,7 +17247,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\*</string>
+					<string>(?&lt;=\s)\*(?=[\s\W])</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>
@@ -18213,7 +18279,13 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:subgrid|stack|row|none|min-content|max-content|dense|column|auto)\b</string>
+					<string>\b(?:subgrid|stack|row|none|min-content|max-content|fit-content|dense|column|auto)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;=\s)\*(?=[\s\W])</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>
@@ -18441,7 +18513,13 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:subgrid|none|min-content|max-content|auto)\b</string>
+					<string>\b(?:subgrid|none|min-content|max-content|fit-content|auto)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;=\s)\*(?=[\s\W])</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>
@@ -18565,7 +18643,13 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:subgrid|none|min-content|max-content|auto)\b</string>
+					<string>\b(?:subgrid|none|min-content|max-content|fit-content|auto)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;=\s)\*(?=[\s\W])</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>

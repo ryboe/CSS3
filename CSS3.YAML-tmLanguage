@@ -414,6 +414,7 @@ repository:
     - include: '#comment-block'
     - include: '#selector-pseudo-element-webkit'
     - include: '#selector-pseudo-element-moz'
+    - include: '#selector-pseudo-element-function-blank-slot'
     - include: '#selector-pseudo-element'
     - include: '#selector-element-deprecated'
     - include: '#selector-pseudo-class-deprecated'
@@ -615,7 +616,6 @@ repository:
     endCaptures:
       '0': {name: punctuation.section.function.css}
 
-  # These pseudo-classes take An+B values and selector lists as parameters.
   # These pseudo-classes take selector lists as parameters.
   selector-pseudo-class-function-selector-list:
     begin: ((:)(?:scope-context|not|matches|host-context|host|has))(\()
@@ -627,6 +627,7 @@ repository:
     - include: '#comment-block'
     - include: '#selector-pseudo-element-webkit'
     - include: '#selector-pseudo-element-moz'
+    - include: '#selector-pseudo-element-function-blank-slot'
     - include: '#selector-pseudo-element'
     - include: '#selector-element-deprecated'
     - include: '#selector-pseudo-class-deprecated'
@@ -659,6 +660,7 @@ repository:
     endCaptures:
       '0': {name: punctuation.section.function.css}
 
+  # These pseudo-classes take An+B values and selector lists as parameters.
   selector-pseudo-class-function-selector-list-an-plus-b:
     begin: ((:)(?:nth-last-child|nth-child))(\()
     beginCaptures:
@@ -672,6 +674,7 @@ repository:
     - include: '#type-an-plus-b'
     - include: '#selector-pseudo-element-webkit'
     - include: '#selector-pseudo-element-moz'
+    - include: '#selector-pseudo-element-function-blank-slot'
     - include: '#selector-pseudo-element'
     - include: '#selector-element-deprecated'
     - include: '#selector-pseudo-class-deprecated'
@@ -759,6 +762,21 @@ repository:
     match: (::)(?:spelling-error|shadow|selection|repeat-item|repeat-index|region|placeholder|marker|grammar-error|first-line|first-letter|content|before|after)\b
     captures:
       '1': {name: punctuation.definition.entity.css}
+
+  selector-pseudo-element-function-blank-slot:
+    begin: ((::)(?:blank|slot))(\()
+    beginCaptures:
+      '1': {name: entity.other.attribute-name.pseudo-element.css}
+      '2': {name: punctuation.definition.entity.css}
+      '3': {name: punctuation.section.function.css}
+    contentName: meta.function.pseudo-element.css
+    patterns:
+    - name: support.constant.property-value.css
+      match: (?<=[\s\(])\*(?=[\s\)])
+    - include: '#identifier'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
 
   selector-pseudo-element-moz:
     name: entity.other.attribute-name.pseudo-element.css
@@ -4534,6 +4552,8 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \bnone\b
+    - name: support.constant.property-value.css
+      match: (?<=\s)\*(?=[\s\W])
     - include: '#identifier'
     end: (?=[;)])
 
@@ -4857,7 +4877,7 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - name: support.constant.property-value.css
-      match: \b(?:open-quote|normal|no-open-quote|no-close-quote|none|inhibit|close-quote)\b
+      match: \b(?:open-quote|normal|no-open-quote|no-close-quote|none|inhibit|contents|close-quote)\b
     - include: '#type-function-content'
     # The rule for counter() also covers counters()
     - include: '#type-function-counter'
@@ -5281,7 +5301,7 @@ repository:
     - name: support.constant.property-value.css
       match: \b(?:same|auto)\b
     - name: support.constant.property-value.css
-      match: \*
+      match: (?<=\s)\*(?=[\s\W])
     - include: '#type-string-double'
     - include: '#type-string-single'
     - include: '#identifier'
@@ -5611,7 +5631,9 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - name: support.constant.property-value.css
-      match: \b(?:subgrid|stack|row|none|min-content|max-content|dense|column|auto)\b
+      match: \b(?:subgrid|stack|row|none|min-content|max-content|fit-content|dense|column|auto)\b
+    - name: support.constant.property-value.css
+      match: (?<=\s)\*(?=[\s\W])
     - include: '#type-function-minmax'
     - include: '#type-function-repeat'
     - include: '#type-function-calc'
@@ -5680,7 +5702,9 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - name: support.constant.property-value.css
-      match: \b(?:subgrid|none|min-content|max-content|auto)\b
+      match: \b(?:subgrid|none|min-content|max-content|fit-content|auto)\b
+    - name: support.constant.property-value.css
+      match: (?<=\s)\*(?=[\s\W])
     - include: '#type-function-minmax'
     - include: '#type-function-repeat'
     - include: '#type-function-calc'
@@ -5717,7 +5741,9 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - name: support.constant.property-value.css
-      match: \b(?:subgrid|none|min-content|max-content|auto)\b
+      match: \b(?:subgrid|none|min-content|max-content|fit-content|auto)\b
+    - name: support.constant.property-value.css
+      match: (?<=\s)\*(?=[\s\W])
     - include: '#type-function-minmax'
     - include: '#type-function-calc'
     - include: '#type-function-repeat'
