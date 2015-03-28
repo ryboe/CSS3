@@ -13,8 +13,8 @@ class CSS3Completions(sublime_plugin.EventListener):
     def on_query_completions(self, view, prefix, locations):
         trigger_start = locations[0] - len(prefix)
 
-        # Completions is a list of (<trigger>, <completion>) tuples. Completions
-        # are only offered for properties and values.
+        # Completions is a list of (<trigger>, <completion>) tuples.
+        # Completions are only offered for properties and values.
         if view.match_selector(trigger_start, "meta.property-name.css"):
             return properties.names, INHIBIT_DEFAULTS
         elif view.match_selector(trigger_start, "meta.value.css"):
