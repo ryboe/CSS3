@@ -1,7 +1,7 @@
 {
-    // Remove all the gutter marks when the file is saved. Gutter marks are not
-    // automatically removed because checking to see if you've fixed the error
-    // on every edit is too slow. If you set this to false, you will have to
+    // Remove all the gutter marks (from runing the validator) when the file is saved.
+    // Gutter marks are not automatically removed because checking to see if you've fixed
+    // the error on every edit is too slow. If you set this to false, you will have to
     // clear the gutter marks manually with this command:
     //     Command Palette --> CSS3: Clear Gutter Marks
     "clear_errors_on_save": true,
@@ -10,9 +10,10 @@
     // Supported languages: en, fr, it, ko, ja, es, zh-cn, nl, de, pl
     "validator_language": "en",
 
-    // The call to the W3C CSS Validator will timeout after X seconds.
+    // The call to the W3C CSS Validator will timeout after this number of seconds.
     "validator_timeout": 10,
 
-    // Scroll to the first reported error.
+    // Set this to true if you want to automatically scroll to the first reported
+    // error when running the validator.
     "zoom_to_error": false,
 }

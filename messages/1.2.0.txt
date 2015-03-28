@@ -24,7 +24,7 @@ As an apology, I've implemented...
     Make sure you're connected to the Internet. The entire CSS file will be
     submitted to the W3C CSS Validation service. Lines with errors will be
     marked in the gutter (the left part of the screen by the line numbers). To
-    see the error message, simple select the line containing the error. The
+    see the error message, simply select the line containing the error. The
     message will appear in the status bar (at the bottom).
 
     For performance reasons, gutter marks will not be automatically removed
@@ -44,4 +44,4 @@ As an apology, I've implemented...
     used where possible, as recommended by the Google HTML/CSS Style Guide.
 
     50, 100, 150 --> #326496
-    255,238,255  --> #eee
+    255,238,255  --> #fef
