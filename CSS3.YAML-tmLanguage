@@ -510,7 +510,7 @@ repository:
       '1': {name: punctuation.definition.entity.css}
 
   selector-keyframes:
-    match: (?:\b(from|to)\b|(100|\d\d?)(%))\s*(?={)
+    match: (?:\b(from|to)\b|((?:100|\d\d?)(?:\.\d+)?)(%))\s*(?={)
     captures:
       '1': {name: entity.other.attribute-name.keyframes-selector.css}
       '2': {name: constant.numeric.css}
