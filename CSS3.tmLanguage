@@ -1489,7 +1489,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(?:\b(from|to)\b|(100|\d\d?)(%))\s*(?={)</string>
+			<string>(?:\b(from|to)\b|((?:100|\d\d?)(?:\.\d+)?)(%))\s*(?={)</string>
 		</dict>
 		<key>selector-page-margin</key>
 		<dict>

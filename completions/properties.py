@@ -810,7 +810,7 @@ value_for_name = {
     "grid-row": [("auto",), ("span",), v.ident, v.integer, v.calc],
     "grid-row-end": [("auto",), ("span",), v.ident, v.integer, v.calc],
     "grid-row-start": [("auto",), ("span",), v.ident, v.integer, v.calc],
-    "grid-template": [("auto",), ("max-content",), ("min-content",), ("none",), ("subgrid",), v.flex, v.ident, v.length, v.percentage, v.string, v.calc, v.minmax, v.repeat],
+    "grid-template": [("auto",), ("fit-content",), ("max-content",), ("min-content",), ("none",), ("subgrid",), v.flex, v.ident, v.length, v.percentage, v.string, v.calc, v.minmax, v.repeat],
     "grid-template-areas": [("none",), v.string],
     "grid-template-columns": [("auto",), ("max-content",), ("min-content",), ("none",), ("subgrid",), v.flex, v.ident, v.length, v.percentage, v.calc, v.minmax, v.repeat],
     "grid-template-rows": [("auto",), ("max-content",), ("min-content",), ("none",), ("subgrid",), v.flex, v.ident, v.length, v.percentage, v.calc, v.minmax, v.repeat],
