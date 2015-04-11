@@ -6134,6 +6134,39 @@
     mix-blend-mode: screen;
     mix-blend-mode: soft-light;
 
+    motion: initial;
+    motion: inherit;
+    motion: unset;
+    motion: none;
+    motion: url("hello") 120% reverse;
+    motion: circle() 123mm auto;
+
+    motion-path: initial;
+    motion-path: inherit;
+    motion-path: unset;
+    motion-path: none;
+    motion-path: url("hello");
+    motion-path: circle();
+    motion-path: ellipse();
+    motion-path: inset();
+    motion-path: polygon();
+    motion-path: path(nonzero);
+    motion-path: path(evenodd);
+    motion-path: path("hello");
+
+    motion-offset: initial;
+    motion-offset: inherit;
+    motion-offset: unset;
+    motion-offset: 120mm;
+    motion-offset: 123.45%;
+
+    motion-rotation: initial;
+    motion-rotation: inherit;
+    motion-rotation: unset;
+    motion-rotation: auto;
+    motion-rotation: reverse;
+    motion-rotation: 120.1deg;
+
     nav-up: initial;
     nav-up: inherit;
     nav-up: unset;
