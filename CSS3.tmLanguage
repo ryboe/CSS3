@@ -20416,9 +20416,13 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:reverse|none|auto)\b</string>
+					<string>\b(?:view-box|stroke-box|reverse|none|margin-box|fill-box|auto)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-box</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -20534,9 +20538,13 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\bnone\b</string>
+					<string>\b(?:view-box|stroke-box|none|margin-box|fill-box)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-box</string>
 				</dict>
 				<dict>
 					<key>include</key>
