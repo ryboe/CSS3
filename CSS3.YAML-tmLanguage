@@ -6301,7 +6301,7 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - name: support.constant.property-value.css
-      match: \b(?:reverse|auto)\b
+      match: \b(?:reverse|none|auto)\b
     - include: '#type-function-circle-ellipse'
     - include: '#type-function-inset'
     - include: '#type-function-polygon'
@@ -6335,6 +6335,8 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bnone\b
     - include: '#type-function-circle-ellipse'
     - include: '#type-function-inset'
     - include: '#type-function-polygon'
