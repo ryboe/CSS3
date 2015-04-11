@@ -2826,6 +2826,23 @@ repository:
     endCaptures:
       '0': {name: punctuation.section.function.css}
 
+  type-function-path:
+    begin: \b(path)(\()
+    beginCaptures:
+      '1': {name: support.function.path.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.path.css
+    patterns:
+    - include: '#comment-block'
+    - name: support.constant.property-value.css
+      match: \b(?:nonzero|none|margin-box|evenodd)\b
+    - include: '#type-box'
+    - include: '#type-string-double'
+    - include: '#type-string-single'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
   type-function-perspective:
     begin: \b(perspective)(\()
     beginCaptures:
@@ -6268,6 +6285,22 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - include: '#type-blend-mode'
+    end: (?=[;)])
+
+  value-motion-path:
+    begin: (?<=motion-path:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-function-circle-ellipse'
+    - include: '#type-function-inset'
+    - include: '#type-function-polygon'
+    - include: '#type-function-path'
+    - include: '#type-function-url'
     end: (?=[;)])
 
   value-nav:
