@@ -6291,6 +6291,28 @@ repository:
     - include: '#type-blend-mode'
     end: (?=[;)])
 
+  value-motion:
+    begin: (?<=motion:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:reverse|auto)\b
+    - include: '#type-function-circle-ellipse'
+    - include: '#type-function-inset'
+    - include: '#type-function-polygon'
+    - include: '#type-function-path'
+    - include: '#type-function-url'
+    - include: '#type-angle'
+    - include: '#type-percentage'
+    - include: '#type-length'
+
+    end: (?=[;)])
+
   value-motion-offset:
     begin: (?<=motion-offset:)
     patterns:
@@ -6318,6 +6340,20 @@ repository:
     - include: '#type-function-polygon'
     - include: '#type-function-path'
     - include: '#type-function-url'
+    end: (?=[;)])
+
+  value-motion-rotation:
+    begin: (?<=motion-rotation:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:reverse|auto)\b
+    - include: '#type-angle'
     end: (?=[;)])
 
   value-nav:
