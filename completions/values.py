@@ -36,6 +36,7 @@ matrix3d     = ("matrix3d()", "matrix3d(${1:0}, ${2:0}, ${3:0}, ${4:0}, ${5:0}, 
 minmax       = ("minmax()", "minmax(${1}, ${2})")
 opacity      = ("opacity()", "opacity(${1})")
 ornaments    = ("ornaments()", "ornaments(${1})")
+path         = ("path()", "path(${1})")
 perspective  = ("perspective()", "perspective(${1:<length>})")
 polygon      = ("polygon()", "polygon(${1})")
 repeat       = ("repeat()", "repeat(${1})")
