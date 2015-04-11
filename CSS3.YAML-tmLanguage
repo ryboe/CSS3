@@ -6300,6 +6300,7 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
+    - include: '#type-function-calc'
     - name: support.constant.property-value.css
       match: \b(?:reverse|none|auto)\b
     - include: '#type-function-circle-ellipse'
@@ -6310,7 +6311,6 @@ repository:
     - include: '#type-angle'
     - include: '#type-percentage'
     - include: '#type-length'
-
     end: (?=[;)])
 
   value-motion-offset:
@@ -6322,6 +6322,7 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
+    - include: '#type-function-calc'
     - include: '#type-percentage'
     - include: '#type-length'
     end: (?=[;)])
@@ -6353,6 +6354,7 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
+    - include: '#type-function-calc'
     - name: support.constant.property-value.css
       match: \b(?:reverse|auto)\b
     - include: '#type-angle'

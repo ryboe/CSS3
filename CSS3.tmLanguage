@@ -20411,6 +20411,10 @@
 					<string>#type-function-var</string>
 				</dict>
 				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
+				</dict>
+				<dict>
 					<key>match</key>
 					<string>\b(?:reverse|none|auto)\b</string>
 					<key>name</key>
@@ -20481,6 +20485,10 @@
 				<dict>
 					<key>include</key>
 					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -20583,6 +20591,10 @@
 				<dict>
 					<key>include</key>
 					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
 				</dict>
 				<dict>
 					<key>match</key>
