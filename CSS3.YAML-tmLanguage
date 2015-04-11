@@ -6302,7 +6302,8 @@ repository:
     - include: '#type-function-var'
     - include: '#type-function-calc'
     - name: support.constant.property-value.css
-      match: \b(?:reverse|none|auto)\b
+      match: \b(?:view-box|stroke-box|reverse|none|margin-box|fill-box|auto)\b
+    - include: '#type-box'
     - include: '#type-function-circle-ellipse'
     - include: '#type-function-inset'
     - include: '#type-function-polygon'
@@ -6337,7 +6338,8 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - name: support.constant.property-value.css
-      match: \bnone\b
+      match: \b(?:view-box|stroke-box|none|margin-box|fill-box)\b
+    - include: '#type-box'
     - include: '#type-function-circle-ellipse'
     - include: '#type-function-inset'
     - include: '#type-function-polygon'
