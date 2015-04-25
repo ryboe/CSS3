@@ -6567,7 +6567,7 @@
 		<key>type-all</key>
 		<dict>
 			<key>match</key>
-			<string>\b(?:unset|initial|inherit)\b</string>
+			<string>\b(?:unset|initial|inherit|default)\b</string>
 			<key>name</key>
 			<string>support.constant.property-value.css</string>
 		</dict>
