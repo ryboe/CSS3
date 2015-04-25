@@ -2035,7 +2035,7 @@ repository:
 
   type-all:
     name: support.constant.property-value.css
-    match: \b(?:unset|initial|inherit)\b
+    match: \b(?:unset|initial|inherit|default)\b
 
   type-an-plus-b:
     name: constant.other.an-plus-b.css
