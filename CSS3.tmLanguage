@@ -26688,7 +26688,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:min-content|max-content|fit-content|extend-to-zoom|content-box|border-box|available|auto)\b</string>
+					<string>\b(?:none|min-content|max-content|fit-content|extend-to-zoom|content-box|border-box|available|auto)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>

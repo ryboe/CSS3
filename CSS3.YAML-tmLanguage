@@ -8170,7 +8170,7 @@ repository:
     # descriptor, but is included here for completeness. Do not use extend-to-zoom
     # outside of an @viewport rule.
     - name: support.constant.property-value.css
-      match: \b(?:min-content|max-content|fit-content|extend-to-zoom|content-box|border-box|available|auto)\b
+      match: \b(?:none|min-content|max-content|fit-content|extend-to-zoom|content-box|border-box|available|auto)\b
     - include: '#type-function-calc'
     - include: '#type-percentage-non-negative'
     - include: '#type-length-non-negative'
