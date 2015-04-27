@@ -1,4 +1,4 @@
-from CSS3 import requests
+import CSS3.requests as requests
 import sublime
 import sublime_plugin
 import threading
