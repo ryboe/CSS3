@@ -40,7 +40,7 @@ class Css3Validator(sublime_plugin.TextCommand):
 
         self.handle_threads(threads)
 
-    # This is based on MIT-licensed code from github.com/wbond/sublime_prefixr
+    # based on MIT-licensed code from github.com/wbond/sublime_prefixr
     def handle_threads(self, threads, has_errors=False, i=0, direction=1):
         """Wait for a the API call(s) to finish and mark the bad lines.
 
@@ -68,8 +68,7 @@ class Css3Validator(sublime_plugin.TextCommand):
             before, after, i, direction = self.activity_indicator(i, direction)
             indicator = "Validator [{}={}]".format(" " * before, " " * after)
             self.view.set_status("Validator Running", indicator)
-            func = lambda: self.handle_threads(next_threads, has_errors, i,
-                                               direction)
+            func = lambda: self.handle_threads(next_threads, has_errors, i, direction)
             sublime.set_timeout(func, 100)
             return
 
@@ -97,20 +96,19 @@ class Css3Validator(sublime_plugin.TextCommand):
                 continue
             msg = err["message"].rstrip(": ")
             if msg.startswith(semicolon_errors[lang]):
-                # Missing semicolons are reported as an error on the # following
-                # line.
+                # fix missing semicolon error reported on wrong line
                 lineno -= 1
             bad_lines[lineno] = msg
 
-            # Skip the leading whitespace and mark the rest of the line as bad.
-            # This fixes a bug where inserting newlines in the leading
-            # whitespace causes the gutter mark to be on a different line than
-            # the text where the error really is.
+            # skip leading whitespace. mark rest of line as bad. this
+            # fixes bug where inserting newlines in leading whitespace
+            # causes gutter mark to be on different line than text
+            # where error really is
             line_start = self.view.text_point(lineno - 1, 0)
             err_region = self.view.find(r"\S.*$", line_start)
             bad_regions.append(err_region)
 
-        # Mark the gutters.
+        # mark gutters
         self.view.add_regions("mark", bad_regions, "invalid.illegal.css", "dot",
                               sublime.HIDDEN | sublime.PERSISTENT)
 
@@ -120,6 +118,8 @@ class Css3Validator(sublime_plugin.TextCommand):
     def activity_indicator(self, i, direction):
         """Show that the validator is working by animating the status
         bar.
+
+        [   =]
 
         i         -- the previous position of the '=' indicator
         direction -- the previous direction of the '=' indicator
@@ -155,8 +155,8 @@ class Css3ValidateAll(Css3Validator):
         """
         region = sublime.Region(0, self.view.size())
         full_css = self.view.substr(region)
-        self.validate((full_css,))  # validate() expects an iterable of texts
-        # from the selection
+        # validate() expects iterable of texts from selection
+        self.validate((full_css,))
 
 
 class W3cValidatorCall(threading.Thread):
@@ -250,7 +250,7 @@ class Css3Events(sublime_plugin.EventListener):
 
 def regions_to_lines(view, sel, max_lines=-1):
     """Convert a set of regions to line numbers (which start at 1)."""
-    # Pass a view object so we can use its lines() and rowcol() methods.
+    # pass view object so we can use view.lines() and view.rowcol()
     line_nums = []
     for reg in view.sel():
         lines = view.lines(reg)
