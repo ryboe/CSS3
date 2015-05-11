@@ -10706,13 +10706,6 @@
 			</dict>
 			<key>name</key>
 			<string>string.quoted.double.css</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#comment-block</string>
-				</dict>
-			</array>
 		</dict>
 		<key>type-string-single</key>
 		<dict>
@@ -10738,13 +10731,6 @@
 			</dict>
 			<key>name</key>
 			<string>string.quoted.single.css</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#comment-block</string>
-				</dict>
-			</array>
 		</dict>
 		<key>type-time</key>
 		<dict>
