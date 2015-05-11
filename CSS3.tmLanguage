@@ -10709,8 +10709,10 @@
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>include</key>
-					<string>#comment-block</string>
+					<key>match</key>
+					<string>\\([\da-fA-F]{4}|.)</string>
+					<key>name</key>
+					<string>constant.character.escape.css</string>
 				</dict>
 			</array>
 		</dict>
@@ -10741,8 +10743,10 @@
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>include</key>
-					<string>#comment-block</string>
+					<key>match</key>
+					<string>\\([\da-fA-F]{4}|.)</string>
+					<key>name</key>
+					<string>constant.character.escape.css</string>
 				</dict>
 			</array>
 		</dict>
