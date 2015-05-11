@@ -10706,6 +10706,15 @@
 			</dict>
 			<key>name</key>
 			<string>string.quoted.double.css</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>\\([\da-fA-F]{4}|.)</string>
+					<key>name</key>
+					<string>constant.character.escape.css</string>
+				</dict>
+			</array>
 		</dict>
 		<key>type-string-single</key>
 		<dict>
@@ -10731,6 +10740,15 @@
 			</dict>
 			<key>name</key>
 			<string>string.quoted.single.css</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>\\([\da-fA-F]{4}|.)</string>
+					<key>name</key>
+					<string>constant.character.escape.css</string>
+				</dict>
+			</array>
 		</dict>
 		<key>type-time</key>
 		<dict>
