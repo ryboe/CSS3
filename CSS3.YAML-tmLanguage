@@ -3330,8 +3330,6 @@ repository:
     begin: \"
     beginCaptures:
       '0': {name: punctuation.definition.string.begin.css}
-    patterns:
-    - include: '#comment-block'
     end: \"
     endCaptures:
       '0': {name: punctuation.definition.string.begin.css}
@@ -3341,8 +3339,6 @@ repository:
     begin: \'
     beginCaptures:
       '0': {name: punctuation.definition.string.begin.css}
-    patterns:
-    - include: '#comment-block'
     end: \'
     endCaptures:
       '0': {name: punctuation.definition.string.begin.css}
