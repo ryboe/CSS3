@@ -1,0 +1,5 @@
+%YAML 1.2
+---
+name: CSS3
+file_extensions: [css]
+scope: source.css
