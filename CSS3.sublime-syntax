@@ -7,13 +7,18 @@ scope: source.css
 variables:
   # nc_name_char: '[\p{Ll,Lt,Lo,NI}\d._-]'
   # name_start: '--|-?'
+  angle_unit: turn|grad|rad|deg
+  integer: '[+-]?\d+'
+  integer_nonneg: \+?\d+
   integer_pos: '\+?(?:[1-9]\d+|[1-9])'
   length_unit: r?em|ex|ch|vw|vh|vmin|vmax|cm|mm|q|in|pc|pt|px
   number: '[+-]?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?'
   number_nonneg: '\+?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?'
   number_pos: '\+?(?:[0-9]+\.[0-9]*[1-9][0-9]*|\.[0-9]*[1-9][0-9]*|[1-9][0-9]*)(?:[eE][+-]?[0-9]+)?'
+  ratio: '({{integer_pos}})\s*\/\s*({{integer_pos}})'
   resolution_unit: dppx|dpi|dpcm
   whitespace: '[ \t\n]'
+  zero: \b0\b
 
 contexts:
   main:
@@ -39,7 +44,7 @@ contexts:
     # at rules
     # selectors
   angle:
-    - match: '({{number}})(turn|grad|rad|deg)\b|\b(0)\b'
+    - match: '({{number}})({{angle_unit}})\b|({{zero}})'
       captures:
         1: constant.numeric.css
         2: keyword.other.unit.css
@@ -55,7 +60,7 @@ contexts:
       scope: constant.character.escape.css
 
   frequency:
-    - match: '({{number}})(k?Hz)\b|\b(0)\b'
+    - match: '({{number}})(k?Hz)\b|({{zero}})'
       captures:
         1: constant.numeric.css
         2: keyword.other.unit.css
@@ -81,19 +86,27 @@ contexts:
     - match: \)
       scope: punctuation.section.function.css invalid.illegal.stray-closing-paren.css
 
+  integer:
+    - match: '{{integer}}'
+      scope: constant.numeric.css
+
   integer-non-negative:
-    - match: \+?\d+
+    - match: '{{integer_nonneg}}'
+      scope: constant.numeric.css
+
+  integer-positive:
+    - match: '{{integer_pos}}'
       scope: constant.numeric.css
 
   length:
-    - match: '(?:({{number}})({{length_unit}})\b|\b(0)\b)'
+    - match: '({{number}})({{length_unit}})\b|({{zero}})'
       captures:
         1: constant.numeric.css
         2: keyword.other.unit.css
         3: constant.numeric.css
 
   length-non-negative:
-    - match: '({{number_nonneg}})({{length_unit}})|\b(0)\b'
+    - match: '({{number_nonneg}})({{length_unit}})|({{zero}})'
       captures:
         1: constant.numeric.css
         2: keyword.other.unit.css
@@ -145,7 +158,7 @@ contexts:
     - match: (?<=pointer:|any-pointer:)\s*(none|fine|coarse)\s*(?=\))
       captures:
         1: support.constant.property-value.css
-    - match: '(?<=min-device-aspect-ratio:|min-aspect-ratio:|max-device-aspect-ratio:|max-aspect-ratio:|device-aspect-ratio:|aspect-ratio:)\s*({{integer_pos}})\s*\/\s*({{integer_pos}})\s*(?=\))'
+    - match: '(?<=min-device-aspect-ratio:|min-aspect-ratio:|max-device-aspect-ratio:|max-aspect-ratio:|device-aspect-ratio:|aspect-ratio:)\s*{{ratio}}\s*(?=\))'
       captures:
         1: constant.numeric.css
         2: constant.numeric.css
@@ -153,6 +166,23 @@ contexts:
       captures:
         1: constant.numeric.css
         2: keyword.other.unit.css
+    - match: (?<=scan:)\s*(progressive|interlace)\s*(?=\))
+      captures:
+        1: support.constant.property-value.css
+    - match: (?<=scripting:)\s*(none|initial-only|enabled)\s*(?=\))
+      captures:
+        1: support.constant.property-value.css
+    - match: (?<=update-frequency:)\s*(normal|none|slow)\s*(?=\))
+      captures:
+        1: support.constant.property-value.css
+    - match: '(?<=[\s\w])([<>]=?|=)(?=[\s\w])'
+      captures:
+        1: keyword.operator.arithmetic.css
+    - include: function-calc
+    - include: ratio
+    - include: resolution
+    - include: length-non-negative
+    - include: integer-non-negative
 
   media-query:
     - meta_scope: meta.media-query.css
@@ -175,11 +205,23 @@ contexts:
       scope: constant.numeric.css
 
   percentage:
-    - match: '({{number}})(%)|\b(0)\b'
+    - match: '({{number}})(%)|({{zero}})'
       captures:
         1: constant.numeric.css
         2: keyword.other.unit.css
         3: constant.numeric.css
+
+  ratio:
+    - match: '{{ratio}}'
+      captures:
+        1: constant.numeric.css
+        2: constant.numeric.css
+
+  resolution:
+    - match: '({{number_pos}})({{resolution_unit}})\b'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
 
   rule-list:
     - meta_scope: meta.rule-list.css
