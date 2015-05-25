@@ -22,27 +22,25 @@ variables:
 
 contexts:
   main:
-    - match: '"'
-      scope: punctuation.definition.string.begin.css
-      push: string-double
-    - match: \'
-      scope: punctuation.definition.string.begin.css
-      push: string-single
-    - match: /\*
-      push: comment
+    - include: string-double
+    - include: string-single
+    - include: comment
+    # for matched chars like braces and parens, the opening char will always
+    # push a different context. thus, it's not possible to define a generic
+    # "brace-start" context that works everywhere. the closing char, however,
+    # will always just "pop: true", so we can define "brace-end" and "paren-end"
     - match: '{'
       scope: punctuation.section.rule-list.css
       push: rule-list
-    - match: '}'
-      scope: punctuation.section.rule-list.css invalid.illegal.stray-closing-brace.css
+    - include: stray-brace-end
     - match: '(@)media(?=\s)'
       captures:
         1: punctuation.definition.keyword.css
       scope: meta.media-query.css keyword.control.at-rule.media.css
       push: [media-query, selector-media-query]
-
     # at rules
     # selectors
+
   angle:
     - match: '({{number}})({{angle_unit}})\b|({{zero}})'
       captures:
@@ -50,10 +48,17 @@ contexts:
         2: keyword.other.unit.css
         3: constant.numeric.css
 
-  comment:
-    - meta_scope: comment.block.css
-    - match: \*/
+  brace-end:
+    - match: '}'
+      scope: punctuation.section.rule-list.css
       pop: true
+
+  comment:
+    - match: /\*
+      push:
+      - meta_scope: comment.block.css
+      - match: \*/
+        pop: true
 
   escape:
     - match: '\\(?:[^\n\r\f\h]|\h{1,6}{{whitespace}}?)'
@@ -72,19 +77,17 @@ contexts:
         1: support.function.calc.css
         2: punctuation.section.function.css
       push:
-        - meta_content_scope: meta.function.calc.css
-        - match: \)
-          scope: punctuation.section.function.css
-          pop: true
-        - include: function-calc
-        - include: length
-        - include: frequency
-        - include: angle
-        - include: time
-        - include: percentage
-        - include: number
-    - match: \)
-      scope: punctuation.section.function.css invalid.illegal.stray-closing-paren.css
+      - meta_content_scope: meta.function.calc.css
+      - include: paren-end
+      - include: comment
+      - include: function-calc
+      - include: length
+      - include: frequency
+      - include: angle
+      - include: time
+      - include: percentage
+      - include: number
+    - include: stray-paren-end
 
   integer:
     - match: '{{integer}}'
@@ -133,16 +136,16 @@ contexts:
         1: support.constant.property-value.css
     - match: (?<=min-monochrome:|max-monochrome:|monochrome:|min-color-index:|max-color-index:|color-index:|min-color:|max-color:|color:)
       push:
-        - match: (?=\))
-          pop: true
-        - include: function-calc
-        - include: integer-non-negative
+      - match: (?=\))
+        pop: true
+      - include: function-calc
+      - include: integer-non-negative
     - match: (?<=width:|min-width:|min-height:|min-device-width:|min-device-height:|max-width:|max-height:|max-device-width:|max-device-height:|height:|device-width:|device-height:)
       push:
-        - match: (?=\))
-          pop: true
-        - include: function-calc
-        - include: length-non-negative
+      - match: (?=\))
+        pop: true
+      - include: function-calc
+      - include: length-non-negative
     - match: (?<=light-level:)\s*(washed|normal|dim)\s*(?=\))
       captures:
         1: support.constant.property-value.css
@@ -204,6 +207,11 @@ contexts:
     - match: '{{number}}'
       scope: constant.numeric.css
 
+  paren-end:
+    - match: \)
+      scope: punctuation.section.function.css
+      pop: true
+
   percentage:
     - match: '({{number}})(%)|({{zero}})'
       captures:
@@ -225,9 +233,7 @@ contexts:
 
   rule-list:
     - meta_scope: meta.rule-list.css
-    - match: '}'
-      scope: punctuation.section.rule-list.css
-      pop: true
+    - include: brace-end
     # at-rules that are only nested, e.g.@swash
     #   the rest of the at-rules are covered by including main
     # property names
@@ -243,22 +249,35 @@ contexts:
     - match: \(
       scope: punctuation.section.media-feature.css
       push: media-feature
+    - include: stray-paren-end
+
+  stray-brace-end:
+    - match: '}'
+      scope: punctuation.section.rule-list.css invalid.illegal.stray-brace-end.css
+
+  stray-paren-end:
     - match: \)
-      scope: invalid.illegal.stray-closing-paren.css
+      scope: punctuation.section.function.css invalid.illegal.stray-paren-end.css
 
   string-double:
-    - meta_scope: string.quoted.double.css
     - match: '"'
-      scope: punctuation.definition.string.end.css
-      pop: true
-    - include: escape
+      scope: punctuation.definition.string.begin.css
+      push:
+      - meta_scope: string.quoted.double.css
+      - match: '"'
+        scope: punctuation.definition.string.end.css
+        pop: true
+      - include: escape
 
   string-single:
-    - meta_scope: string.quoted.single.css
     - match: \'
-      scope: punctuation.definition.string.end.css
-      pop: true
-    - include: escape
+      scope: punctuation.definition.string.begin.css
+      push:
+      - meta_scope: string.quoted.single.css
+      - match: \'
+        scope: punctuation.definition.string.end.css
+        pop: true
+      - include: escape
 
   time:
     - match: '({{number}})(m?s)|\b(0)\b'
