@@ -3,3 +3,227 @@
 name: CSS3
 file_extensions: [css]
 scope: source.css
+
+variables:
+  # nc_name_char: '[\p{Ll,Lt,Lo,NI}\d._-]'
+  # name_start: '--|-?'
+  integer_pos: '\+?(?:[1-9]\d+|[1-9])'
+  length_unit: r?em|ex|ch|vw|vh|vmin|vmax|cm|mm|q|in|pc|pt|px
+  number: '[+-]?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?'
+  number_nonneg: '\+?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?'
+  number_pos: '\+?(?:[0-9]+\.[0-9]*[1-9][0-9]*|\.[0-9]*[1-9][0-9]*|[1-9][0-9]*)(?:[eE][+-]?[0-9]+)?'
+  resolution_unit: dppx|dpi|dpcm
+  whitespace: '[ \t\n]'
+
+contexts:
+  main:
+    - match: '"'
+      scope: punctuation.definition.string.begin.css
+      push: string-double
+    - match: \'
+      scope: punctuation.definition.string.begin.css
+      push: string-single
+    - match: /\*
+      push: comment
+    - match: '{'
+      scope: punctuation.section.rule-list.css
+      push: rule-list
+    - match: '}'
+      scope: punctuation.section.rule-list.css invalid.illegal.stray-closing-brace.css
+    - match: '(@)media(?=\s)'
+      captures:
+        1: punctuation.definition.keyword.css
+      scope: meta.media-query.css keyword.control.at-rule.media.css
+      push: [media-query, selector-media-query]
+
+    # at rules
+    # selectors
+  angle:
+    - match: '({{number}})(turn|grad|rad|deg)\b|\b(0)\b'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+        3: constant.numeric.css
+
+  comment:
+    - meta_scope: comment.block.css
+    - match: \*/
+      pop: true
+
+  escape:
+    - match: '\\(?:[^\n\r\f\h]|\h{1,6}{{whitespace}}?)'
+      scope: constant.character.escape.css
+
+  frequency:
+    - match: '({{number}})(k?Hz)\b|\b(0)\b'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+        3: constant.numeric.css
+
+  function-calc:
+    - match: \b(calc)(\()
+      captures:
+        1: support.function.calc.css
+        2: punctuation.section.function.css
+      push:
+        - meta_content_scope: meta.function.calc.css
+        - match: \)
+          scope: punctuation.section.function.css
+          pop: true
+        - include: function-calc
+        - include: length
+        - include: frequency
+        - include: angle
+        - include: time
+        - include: percentage
+        - include: number
+    - match: \)
+      scope: punctuation.section.function.css invalid.illegal.stray-closing-paren.css
+
+  integer-non-negative:
+    - match: \+?\d+
+      scope: constant.numeric.css
+
+  length:
+    - match: '(?:({{number}})({{length_unit}})\b|\b(0)\b)'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+        3: constant.numeric.css
+
+  length-non-negative:
+    - match: '({{number_nonneg}})({{length_unit}})|\b(0)\b'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+        3: constant.numeric.css
+
+  length-positive:
+    - match: '({{number_pos}})({{length_unit}})'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+
+  media-feature:
+    - match: \)
+      scope: punctuation.section.media-feature.css
+      pop: true
+    - match: '(?<=[><=(])\s*(width|update-frequency|scripting|scan|resolution|pointer|overflow-inline|overflow-block|orientation|monochrome|min-width|min-resolution|min-monochrome|min-height|min-device-width|min-device-height|min-device-aspect-ratio|min-color-index|min-color|min-aspect-ratio|max-width|max-resolution|max-monochrome|max-height|max-device-width|max-device-height|max-device-aspect-ratio|max-color-index|max-color|max-aspect-ratio|light-level|hover|height|grid|device-width|device-height|device-aspect-ratio|color-index|color|aspect-ratio|any-pointer|any-hover)\s*(?=[><=):])'
+      captures:
+        1: support.constant.property-value.css
+    - match: (?<=grid:)\s*(1|0)\s*(?=\))
+      captures:
+        1: support.constant.property-value.css
+    - match: (?<=hover:|any-hover:)\s*(on-demand|none|hover)\s*(?=\))
+      captures:
+        1: support.constant.property-value.css
+    - match: (?<=min-monochrome:|max-monochrome:|monochrome:|min-color-index:|max-color-index:|color-index:|min-color:|max-color:|color:)
+      push:
+        - match: (?=\))
+          pop: true
+        - include: function-calc
+        - include: integer-non-negative
+    - match: (?<=width:|min-width:|min-height:|min-device-width:|min-device-height:|max-width:|max-height:|max-device-width:|max-device-height:|height:|device-width:|device-height:)
+      push:
+        - match: (?=\))
+          pop: true
+        - include: function-calc
+        - include: length-non-negative
+    - match: (?<=light-level:)\s*(washed|normal|dim)\s*(?=\))
+      captures:
+        1: support.constant.property-value.css
+    - match: (?<=orientation:)\s*(portrait|landscape)\s*(?=\))
+      captures:
+        1: support.constant.property-value.css
+    - match: (?<=overflow-block:)\s*(scroll|paged|optional-paged|none)\s*(?=\))
+      captures:
+        1: support.constant.property-value.css
+    - match: (?<=overflow-inline:)\s*(scroll|none)\s*(?=\))
+      captures:
+        1: support.constant.property-value.css
+    - match: (?<=pointer:|any-pointer:)\s*(none|fine|coarse)\s*(?=\))
+      captures:
+        1: support.constant.property-value.css
+    - match: '(?<=min-device-aspect-ratio:|min-aspect-ratio:|max-device-aspect-ratio:|max-aspect-ratio:|device-aspect-ratio:|aspect-ratio:)\s*({{integer_pos}})\s*\/\s*({{integer_pos}})\s*(?=\))'
+      captures:
+        1: constant.numeric.css
+        2: constant.numeric.css
+    - match: '(?<=max-resolution:|min-resolution:|resolution:)\s*({{integer_pos}})({{resolution_unit}})\s*(?=\))'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+
+  media-query:
+    - meta_scope: meta.media-query.css
+    - match: '(?<=})'
+      pop: true
+    - include: rule-list
+
+  media-type:
+    - match: (?:(only|not)\s+)?(speech|screen|print|all)\b
+      captures:
+        1: keyword.operator.logic.media.css
+        2: support.constant.media.css
+
+  media-type-deprecated:
+    - match: \b(?:tv|tty|reader|projection|handheld|embossed|braille|aural)\b
+      scope: support.constant.media-type.css invalid.deprecated.css
+
+  number:
+    - match: '{{number}}'
+      scope: constant.numeric.css
+
+  percentage:
+    - match: '({{number}})(%)|\b(0)\b'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+        3: constant.numeric.css
+
+  rule-list:
+    - meta_scope: meta.rule-list.css
+    - match: '}'
+      scope: punctuation.section.rule-list.css
+      pop: true
+    # at-rules that are only nested, e.g.@swash
+    #   the rest of the at-rules are covered by including main
+    # property names
+    # selectors (wait! probably not necessary. include: main will get selectors)
+    - include: main
+
+  selector-media-query:
+    - meta_content_scope: meta.selector.media-query.css
+    - match: '(?={)'
+      pop: true
+    - include: media-type-deprecated
+    - include: media-type
+    - match: \(
+      scope: punctuation.section.media-feature.css
+      push: media-feature
+    - match: \)
+      scope: invalid.illegal.stray-closing-paren.css
+
+  string-double:
+    - meta_scope: string.quoted.double.css
+    - match: '"'
+      scope: punctuation.definition.string.end.css
+      pop: true
+    - include: escape
+
+  string-single:
+    - meta_scope: string.quoted.single.css
+    - match: \'
+      scope: punctuation.definition.string.end.css
+      pop: true
+    - include: escape
+
+  time:
+    - match: '({{number}})(m?s)|\b(0)\b'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+        3: constant.numeric.css
+
+  # custom_selector:
+  #   - match: '[\p{Ll,Lo,NI}_]{{nc_name_char}}*\-{{nc_name_char}}*'
