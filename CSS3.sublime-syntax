@@ -25,19 +25,16 @@ contexts:
     - include: string-double
     - include: string-single
     - include: comment
-    # for matched chars like braces and parens, the opening char will always
-    # push a different context. thus, it's not possible to define a generic
-    # "brace-start" context that works everywhere. the closing char, however,
-    # will always just "pop: true", so we can define "brace-end" and "paren-end"
     - match: '{'
-      scope: punctuation.section.rule-list.css
+      scope: punctuation.section.property-list.begin.css
       push: rule-list
     - include: stray-brace-end
-    - match: '(@)media(?=\s)'
+    - match: '(@)media\b'
       captures:
         1: punctuation.definition.keyword.css
       scope: meta.media-query.css keyword.control.at-rule.media.css
       push: [media-query, selector-media-query]
+
     # at rules
     # selectors
 
@@ -47,11 +44,6 @@ contexts:
         1: constant.numeric.css
         2: keyword.other.unit.css
         3: constant.numeric.css
-
-  brace-end:
-    - match: '}'
-      scope: punctuation.section.rule-list.css
-      pop: true
 
   comment:
     - match: /\*
@@ -78,7 +70,7 @@ contexts:
         2: punctuation.section.function.css
       push:
       - meta_content_scope: meta.function.calc.css
-      - include: paren-end
+      - include: paren-end-function
       - include: comment
       - include: function-calc
       - include: length
@@ -87,7 +79,7 @@ contexts:
       - include: time
       - include: percentage
       - include: number
-    - include: stray-paren-end
+    - include: stray-paren-end-function
 
   integer:
     - match: '{{integer}}'
@@ -125,6 +117,7 @@ contexts:
     - match: \)
       scope: punctuation.section.media-feature.css
       pop: true
+    - include: comment
     - match: '(?<=[><=(])\s*(width|update-frequency|scripting|scan|resolution|pointer|overflow-inline|overflow-block|orientation|monochrome|min-width|min-resolution|min-monochrome|min-height|min-device-width|min-device-height|min-device-aspect-ratio|min-color-index|min-color|min-aspect-ratio|max-width|max-resolution|max-monochrome|max-height|max-device-width|max-device-height|max-device-aspect-ratio|max-color-index|max-color|max-aspect-ratio|light-level|hover|height|grid|device-width|device-height|device-aspect-ratio|color-index|color|aspect-ratio|any-pointer|any-hover)\s*(?=[><=):])'
       captures:
         1: support.constant.property-value.css
@@ -138,12 +131,14 @@ contexts:
       push:
       - match: (?=\))
         pop: true
+      - include: comment
       - include: function-calc
       - include: integer-non-negative
     - match: (?<=width:|min-width:|min-height:|min-device-width:|min-device-height:|max-width:|max-height:|max-device-width:|max-device-height:|height:|device-width:|device-height:)
       push:
       - match: (?=\))
         pop: true
+      - include: comment
       - include: function-calc
       - include: length-non-negative
     - match: (?<=light-level:)\s*(washed|normal|dim)\s*(?=\))
@@ -207,7 +202,7 @@ contexts:
     - match: '{{number}}'
       scope: constant.numeric.css
 
-  paren-end:
+  paren-end-function:
     - match: \)
       scope: punctuation.section.function.css
       pop: true
@@ -233,54 +228,58 @@ contexts:
 
   rule-list:
     - meta_scope: meta.rule-list.css
-    - include: brace-end
-    # at-rules that are only nested, e.g.@swash
+    - match: '}'
+      scope: punctuation.section.property-list.end.css
+      pop: true
+
+    # at-rules that are only nested, e.g. @swash
     #   the rest of the at-rules are covered by including main
     # property names
-    # selectors (wait! probably not necessary. include: main will get selectors)
-    - include: main
+    - include: main  # matches comments and selectors
 
   selector-media-query:
     - meta_content_scope: meta.selector.media-query.css
     - match: '(?={)'
       pop: true
+    - include: comment
     - include: media-type-deprecated
     - include: media-type
     - match: \(
       scope: punctuation.section.media-feature.css
       push: media-feature
-    - include: stray-paren-end
+    - match: \)
+      scope: punctuation.section.media-feature.css invalid.illegal.stray-paren-end.css
 
   stray-brace-end:
     - match: '}'
-      scope: punctuation.section.rule-list.css invalid.illegal.stray-brace-end.css
+      scope: punctuation.section.property-list.end.css invalid.illegal.stray-brace-end.css
 
-  stray-paren-end:
+  stray-paren-end-function:
     - match: \)
       scope: punctuation.section.function.css invalid.illegal.stray-paren-end.css
 
   string-double:
     - match: '"'
-      scope: punctuation.definition.string.begin.css
+      scope: punctuation.definition.string.css
       push:
       - meta_scope: string.quoted.double.css
       - match: '"'
-        scope: punctuation.definition.string.end.css
+        scope: punctuation.definition.string.css
         pop: true
       - include: escape
 
   string-single:
     - match: \'
-      scope: punctuation.definition.string.begin.css
+      scope: punctuation.definition.string.css
       push:
       - meta_scope: string.quoted.single.css
       - match: \'
-        scope: punctuation.definition.string.end.css
+        scope: punctuation.definition.string.css
         pop: true
       - include: escape
 
   time:
-    - match: '({{number}})(m?s)|\b(0)\b'
+    - match: '({{number}})(m?s)|({{zero}})'
       captures:
         1: constant.numeric.css
         2: keyword.other.unit.css
