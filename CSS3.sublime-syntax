@@ -42,6 +42,18 @@ contexts:
     - include: selector-pseudo-element-webkit
     - include: selector-pseudo-element-moz
     - include: selector-pseudo-element
+    - include: selector-element-deprecated
+    - include: selector-pseudo-class-deprecated
+    - include: selector-pseudo-class-function-dir
+    - include: selector-pseudo-class-function-drop
+    - include: selector-pseudo-class-function-lang
+    - include: selector-pseudo-class-function-locale-dir
+    - include: selector-pseudo-class-function-nth
+    - include: selector-pseudo-class-function-system-metric
+    - include: selector-pseudo-class-function-tree
+    - include: selector-pseudo-class-moz
+    - include: selector-pseudo-class-ms
+    - include: selector-pseudo-class-webkit
 
   angle:
     - match: '({{number}})({{angle_unit}})\b|({{zero}})'
@@ -85,6 +97,10 @@ contexts:
       - include: percentage
       - include: number
     - include: stray-paren-end-function
+
+  identifier:
+    - match: '{{identifier}}'
+      scope: string.unquoted.identifier.css
 
   integer:
     - match: '{{integer}}'
@@ -267,6 +283,10 @@ contexts:
     - include: property-name
     - include: main  # matches comments and selectors
 
+  selector-element-deprecated:
+    - match: '(?<![-:\[])\b(?:xmp|tt|strike|spacer|plaintext|noframes|noembed|nobr|nextid|multicol|marquee|listing|isindex|hgroup|frameset|frame|font|dir|center|blink|big|bgsound|basefont|applet|acronym)\b(?!-)'
+      scope: entity.name.tag.css
+
   selector-media-query:
     - meta_content_scope: meta.selector.media-query.css
     - match: '(?={)'
@@ -280,6 +300,126 @@ contexts:
     - match: \)
       scope: punctuation.section.media-feature.css invalid.illegal.stray-paren-end.css
 
+  selector-pseudo-class-deprecated:
+    - match: (:)(?:first-line|first-letter|bound-element|before|after)\b
+      scope: entity.other.attribute-name.pseudo-class.css
+      captures:
+        1: punctuation.definition.entity.css
+
+  selector-pseudo-class-function-dir:
+    - match: ((:)dir)(\()
+      captures:
+        1: entity.other.attribute-name.pseudo-class.css
+        2: punctuation.definition.entity.css
+        3: punctuation.section.function.css
+      push:
+      - meta_content_scope: meta.function.dir.css
+      - include: paren-end-function
+      - include: comment
+      - match: \b(?:rtl|ltr|auto)\b
+        scope: support.constant.property-value.css
+    - include: stray-paren-end-function
+
+  selector-pseudo-class-function-drop:
+    - match: ((:)drop)(\()
+      captures:
+        1: entity.other.attribute-name.pseudo-class.css
+        2: punctuation.definition.entity.css
+        3: punctuation.section.function.css
+      push:
+      - meta_content_scope: meta.function.drop.css
+      - include: paren-end-function
+      - include: comment
+      - match: \b(?:valid|invalid|active)\b
+        scope: support.constant.property-value.css
+    - include: stray-paren-end-function
+
+  selector-pseudo-class-function-lang:
+    - match: ((:)lang)(\()
+      captures:
+        1: entity.other.attribute-name.pseudo-class.css
+        2: punctuation.definition.entity.css
+        3: punctuation.section.function.css
+      push:
+      - meta_content_scope: meta.function.lang.css
+      - include: paren-end-function
+      - include: comment
+    - include: stray-paren-end-function
+
+  selector-pseudo-class-function-locale-dir:
+    - match: ((:)(?:-moz-)?locale-dir)(\()
+      captures:
+        1: entity.other.attribute-name.pseudo-class.css
+        2: punctuation.definition.entity.css
+        3: punctuation.section.function.css
+      push:
+      - meta_content_scope: meta.function.locale-dir.css
+      - include: paren-end-function
+      - include: comment
+      - match: \b(?:rtl|ltr)\b
+        scope: support.constant.property-value.css
+    - include: stray-paren-end-function
+
+  selector-pseudo-class-function-nth:
+    - match: ((:)nth)(\()
+      captures:
+        1: entity.other.attribute-name.pseudo-class.css
+        2: punctuation.definition.entity.css
+        3: punctuation.section.function.css
+      push:
+      - meta_content_scope: meta.function.nth.css
+      - include: paren-end-function
+      - include: comment
+      - match: \bof\b
+        scope: support.constant.property-value.css
+      - include: identifier
+    - include: stray-paren-end-function
+
+  selector-pseudo-class-function-system-metric:
+    - match: ((:)(?:-moz-)?system-metric)(\()
+      captures:
+        1: entity.other.attribute-name.pseudo-class.css
+        2: punctuation.definition.entity.css
+        3: punctuation.section.function.css
+      push:
+      - meta_content_scope: meta.function.system-metric.css
+      - include: paren-end-function
+      - include: comment
+      - match: (?:-moz-)?(?:windows-theme|windows-glass|windows-default-theme|windows-compositor|windows-classic|touch-enabled|scrollbar-thumb-proportional|scrollbar-start-forward|scrollbar-start-backward|scrollbar-end-forward|scrollbar-end-backward|maemo-classic|mac-graphite-theme|images-in-menus|device-pixel-ratio)\b
+        scope: support.constant.property-value.css
+    - include: stray-paren-end-function
+
+  selector-pseudo-class-function-tree:
+    - match: ((:)(?:-moz-)?(?:tree-row|tree-cell-text))(\()
+      captures:
+        1: entity.other.attribute-name.pseudo-class.css
+        2: punctuation.definition.entity.css
+        3: punctuation.section.function.css
+      push:
+      - meta_content_scope: meta.function.tree.css
+      - include: paren-end-function
+      - include: comment
+      - match: \bhover\b
+        scope: support.constant.property-value.css
+    - include: stray-paren-end-function
+
+  selector-pseudo-class-moz:
+    - match: (:)-moz-(?:window-inactive|user-disabled|ui-valid|ui-invalid|tree-twisty|tree-separator|tree-row|tree-progressmeter|tree-line|tree-indentation|tree-image|tree-drop-feedback|tree-column|tree-checkbox|tree-cell-text|tree-cell|suppressed|submit-invalid|read-write|read-only|only-whitespace|lwtheme-darktext|lwtheme-brighttext|lwtheme|loading|list-number|list-bullet|last-node|handler-disabled|handler-crashed|handler-blocked|full-screen-ancestor|full-screen|focusring|first-node|drag-over|broken|bound-element|any-link|any)\b
+      captures:
+        1: punctuation.definition.entity.css
+
+  selector-pseudo-class-ms:
+    - match: (:)-ms-(?:keyboard-active|input-placeholder)\b
+      scope: entity.other.attribute-name.pseudo-class.css
+      captures:
+        1: punctuation.definition.entity.css
+
+  selector-pseudo-class-webkit:
+    - match: (:)-webkit-(?:full-screen|any)\b
+      scope: entity.other.attribute-name.pseudo-class.css
+      captures:
+        1: punctuation.definition.entity.css
+
   selector-pseudo-element:
     - match: (::)(?:spelling-error|shadow|selection|repeat-item|repeat-index|region|placeholder|marker|grammar-error|first-line|first-letter|content|before|after)\b
       scope: entity.other.attribute-name.pseudo-element.css
@@ -287,10 +427,10 @@ contexts:
         1: punctuation.definition.entity.css
 
   selector-pseudo-element-function:
-    - match: (::)(blank|slot)(\()
+    - match: ((::)(?:blank|slot))(\()
       captures:
-        1: punctuation.definition.entity.css
-        2: entity.other.attribute-name.pseudo-element.css
+        1: entity.other.attribute-name.pseudo-element.css
+        2: punctuation.definition.entity.css
         3: punctuation.section.function.css
       push:
       - meta_content_scope: meta.function.blank-slot.css
@@ -298,9 +438,8 @@ contexts:
       - include: comment
       - match: '(?<=\()\s*(\*)\s*(?=\))'
         captures:
-          1: support.constant.property-value.css invalid.illegal.css
-      - match: '{{identifier}}'
-        scope: string.unquoted.identifier.css invalid.deprecated.css
+          1: support.constant.property-value.css
+      - include: identifier
     - include: stray-paren-end-function
 
   selector-pseudo-element-moz:
