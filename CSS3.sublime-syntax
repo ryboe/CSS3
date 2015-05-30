@@ -538,6 +538,7 @@ contexts:
 
   selector-pseudo-class-moz:
     - match: (:)-moz-(?:window-inactive|user-disabled|ui-valid|ui-invalid|tree-twisty|tree-separator|tree-row|tree-progressmeter|tree-line|tree-indentation|tree-image|tree-drop-feedback|tree-column|tree-checkbox|tree-cell-text|tree-cell|suppressed|submit-invalid|read-write|read-only|only-whitespace|lwtheme-darktext|lwtheme-brighttext|lwtheme|loading|list-number|list-bullet|last-node|handler-disabled|handler-crashed|handler-blocked|full-screen-ancestor|full-screen|focusring|first-node|drag-over|broken|bound-element|any-link|any)\b
+      scope: entity.other.attribute-name.pseudo-class.css
       captures:
         1: punctuation.definition.entity.css
 
