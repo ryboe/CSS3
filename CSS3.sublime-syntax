@@ -8,7 +8,9 @@ variables:
   an_plus_b: '[+-]?\d*n(?:\s*[+-]\s*\d+)?'
   angle_unit: turn|grad|rad|deg
   escape: '\\(?:[^\n\r\f\h]|\h{1,6}{{whitespace}}?)'
-  identifier: '-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*'
+  ident_char: '[-a-zA-Z\d_\\\p{^ASCII}]'
+  ident_start: '-?[a-zA-Z_\\\p{^ASCII}]'
+  identifier: '{{ident_start}}{{ident_char}}*'
   integer: '[+-]?\d+'
   integer_nonneg: \+?\d+
   integer_pos: '\+?(?:[1-9]\d+|[1-9])'
@@ -68,13 +70,7 @@ contexts:
     - include: selector-id
     - include: selector-attribute
     - include: selector-combinator
-    # TODO: verify that these aren't nested selectors
-    # - include: selector-keyframes
-    # - include: selector-at-keyword
-
-    # TODO: add custom selector
-    # - include: selector-custom-element
-
+    - include: selector-custom-element
 
   # NOTE: deviates from spec by defining N as 'n', not
   # 'n|\\0{0,4}(4e|6e)(\r\n|[ \t\r\n\f])?|\\n' (regex taken from spec)
@@ -359,6 +355,14 @@ contexts:
     - match: '\|\||[+~>]|/{{identifier}}/'
       scope: keyword.operator.selector-combinator.css
 
+  selector-custom-element:
+    # TODO: can these have namespace prefixes?
+    # NOTE: deviates from spec. new ST regex engine doesn't support all
+    # unicode char classes
+    - match: '[\p{Ll}_][\p{Ll}\d._-]*-[a-z\d._-]*(?=\s*[,{\n])'
+      # custom element must contain hyphen '-'
+      scope: entity.name.tag.css invalid.deprecated.css  # DEBUG
+
   selector-element:
     - match: '((?:{{identifier}}|\*)\s*(\|))?\s*(?:(?<![:-])\b(abbr|address|area|article|aside|audio|a|base|bdi|bdo|blockquote|body|br|button|b|canvas|caption|cite|code|colgroup|col|datalist|data|dd|del|details|dfn|dialog|div|dl|dt|embed|em|fieldset|figcaption|figure|footer|form|h[1-6]|header|head|hr|html|iframe|i|img|input|ins|kbd|keygen|label|legend|link|li|main|map|mark|math|menuitem|menu|meta|meter|nav|noscript|object|ol|optgroup|option|output|param|pre|progress|p|q|rb|rp|rtc?|ruby|samp|script|section|select|small|source|span|strong|style|sub|summary|sup|svg|s|table|tbody|td|template|textarea|tfoot|thead|th|time|title|track|tr|ul?|var|video|wbr)\b|(\*))(?!-)'
       captures:
@@ -489,6 +493,9 @@ contexts:
         - include: paren-end-function
         - include: comment
         # TODO: include entire selector list here
+        # - include: selector-keyframes
+        # - include: selector-at-keyword
+
     - include: stray-paren-end-function
 
   # pseudo-classes that take An+B values and selector lists as parameters
@@ -506,6 +513,9 @@ contexts:
           scope: support.constant.property-value.css
         - include: an-plus-b
         # TODO: include entire selector list here
+        # - include: selector-keyframes
+        # - include: selector-at-keyword
+
     - include: stray-paren-end-function
 
   selector-pseudo-class-function-system-metric:
