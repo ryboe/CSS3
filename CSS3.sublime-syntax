@@ -5,15 +5,14 @@ file_extensions: [css]
 scope: source.css
 
 variables:
-  angle_unit: turn|grad|rad|deg
   an_plus_b: '[+-]?\d*n(?:\s*[+-]\s*\d+)?'
+  angle_unit: turn|grad|rad|deg
   escape: '\\(?:[^\n\r\f\h]|\h{1,6}{{whitespace}}?)'
-  identifier: '{{name_start}}(?:[\w-]|{{escape}})*'
+  identifier: '-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*'
   integer: '[+-]?\d+'
   integer_nonneg: \+?\d+
   integer_pos: '\+?(?:[1-9]\d+|[1-9])'
   length_unit: r?em|ex|ch|vw|vh|vmin|vmax|cm|mm|q|in|pc|pt|px
-  name_start: '--|-?(?:[a-zA-Z_\p{L}]|{{escape}})'
   number: '[+-]?(?:\d+\.\d+|\.\d+|\d+)(?:[eE][+-]?\d+)?'
   number_nonneg: '\+?(?:\d+\.\d+|\.\d+|\d+)(?:[eE][+-]?\d+)?'
   number_pos: '\+?(?:\d+\.\d*[1-9]\d*|\.\d*[1-9]\d*|[1-9]\d*)(?:[eE][+-]?\d+)?'
@@ -45,6 +44,7 @@ contexts:
 
     # at rules
     # selectors
+    - include: selector-class
     - include: selector-pseudo-element-function
     - include: selector-pseudo-element-webkit
     - include: selector-pseudo-element-moz
@@ -66,7 +66,6 @@ contexts:
     - include: selector-pseudo-class
     - include: selector-element
     - include: selector-id
-    - include: selector-class
     - include: selector-attribute
     - include: selector-combinator
     # TODO: verify that these aren't nested selectors
@@ -352,6 +351,7 @@ contexts:
 
   selector-class:
     - match: '(\.){{identifier}}'
+      scope: entity.other.attribute-name.class.css
       captures:
         1: punctuation.definition.entity.css
 
@@ -373,6 +373,7 @@ contexts:
 
   selector-id:
     - match: '(#){{identifier}}'
+      scope: entity.other.attribute-name.id.css
       captures:
         1: punctuation.definition.entity.css
 
@@ -620,6 +621,3 @@ contexts:
         1: constant.numeric.css
         2: keyword.other.unit.css
         3: constant.numeric.css
-
-  # custom_selector:
-  #   - match: '[\p{Ll,Lo,NI}_]{{nc_name_char}}*\-{{nc_name_char}}*'
