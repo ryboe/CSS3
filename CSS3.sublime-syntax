@@ -5,21 +5,23 @@ file_extensions: [css]
 scope: source.css
 
 variables:
-  name_start: '--|-?(?:[a-zA-Z_\p{L}]|{{escape}})'
   angle_unit: turn|grad|rad|deg
-  identifier: '{{name_start}}(?:[\w-]|{{escape}})*'
+  an_plus_b: '[+-]?\d*n(?:\s*[+-]\s*\d+)?'
   escape: '\\(?:[^\n\r\f\h]|\h{1,6}{{whitespace}}?)'
+  identifier: '{{name_start}}(?:[\w-]|{{escape}})*'
   integer: '[+-]?\d+'
   integer_nonneg: \+?\d+
   integer_pos: '\+?(?:[1-9]\d+|[1-9])'
   length_unit: r?em|ex|ch|vw|vh|vmin|vmax|cm|mm|q|in|pc|pt|px
-  number: '[+-]?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?'
-  number_nonneg: '\+?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?'
-  number_pos: '\+?(?:[0-9]+\.[0-9]*[1-9][0-9]*|\.[0-9]*[1-9][0-9]*|[1-9][0-9]*)(?:[eE][+-]?[0-9]+)?'
+  name_start: '--|-?(?:[a-zA-Z_\p{L}]|{{escape}})'
+  number: '[+-]?(?:\d+\.\d+|\.\d+|\d+)(?:[eE][+-]?\d+)?'
+  number_nonneg: '\+?(?:\d+\.\d+|\.\d+|\d+)(?:[eE][+-]?\d+)?'
+  number_pos: '\+?(?:\d+\.\d*[1-9]\d*|\.\d*[1-9]\d*|[1-9]\d*)(?:[eE][+-]?\d+)?'
   ratio: '({{integer_pos}})\s*\/\s*({{integer_pos}})'
   resolution_unit: dppx|dpi|dpcm
   whitespace: '[ \t\n]'
   zero: \b0\b
+  zero_to_hundred: (?:100|\d\d?)(?:\.\d+)?
 
 contexts:
   main:
@@ -35,6 +37,11 @@ contexts:
         1: punctuation.definition.keyword.css
       scope: meta.media-query.css keyword.control.at-rule.media.css
       push: [media-query, selector-media-query]
+    - match: (@)(?:-webkit-)?keyframes\b
+      scope: keyword.control.at-rule.keyframes.css
+      captures:
+        1: punctuation.definition.keyword.css
+      push: animation-name
 
     # at rules
     # selectors
@@ -49,11 +56,32 @@ contexts:
     - include: selector-pseudo-class-function-lang
     - include: selector-pseudo-class-function-locale-dir
     - include: selector-pseudo-class-function-nth
+    - include: selector-pseudo-class-function-selector-list
+    - include: selector-pseudo-class-function-selector-list-an-plus-b
     - include: selector-pseudo-class-function-system-metric
     - include: selector-pseudo-class-function-tree
     - include: selector-pseudo-class-moz
     - include: selector-pseudo-class-ms
     - include: selector-pseudo-class-webkit
+    - include: selector-pseudo-class
+    - include: selector-element
+    - include: selector-id
+    - include: selector-class
+    - include: selector-attribute
+    - include: selector-combinator
+    # TODO: verify that these aren't nested selectors
+    # - include: selector-keyframes
+    # - include: selector-at-keyword
+
+    # TODO: add custom selector
+    # - include: selector-custom-element
+
+
+  # NOTE: deviates from spec by defining N as 'n', not
+  # 'n|\\0{0,4}(4e|6e)(\r\n|[ \t\r\n\f])?|\\n' (regex taken from spec)
+  an-plus-b:
+    - match: 'odd|even|{{an_plus_b}}|{{integer}}'
+      scope: constant.other.an-plus-b.css
 
   angle:
     - match: '({{number}})({{angle_unit}})\b|({{zero}})'
@@ -62,12 +90,27 @@ contexts:
         2: keyword.other.unit.css
         3: constant.numeric.css
 
+  animation-name:
+    - meta_content_scope: meta.keyframes.animation-name.css
+    - match: '(?={)'
+      pop: true
+    - include: identifier
+
+  attribute-name:
+    - match: '(?<=\[)\s*(?:(?:({{identifier}})|(\*))?\s*(\|))?\s*(?:({{identifier}})|(\*))\s*(?=[~^$*=|\]])'
+      captures:
+        1: entity.other.attribute-name.namespace.css
+        2: entity.other.attribute-name.namespace.wildcard.css
+        3: punctuation.separator.namespace.css
+        4: entity.other.attribute-name.css
+        5: entity.other.attribute-name.wildcard.css
+
   comment:
     - match: /\*
       push:
-      - meta_scope: comment.block.css
-      - match: \*/
-        pop: true
+        - meta_scope: comment.block.css
+        - match: \*/
+          pop: true
 
   escape:
     - match: '{{escape}}'
@@ -86,16 +129,16 @@ contexts:
         1: support.function.calc.css
         2: punctuation.section.function.css
       push:
-      - meta_content_scope: meta.function.calc.css
-      - include: paren-end-function
-      - include: comment
-      - include: function-calc
-      - include: length
-      - include: frequency
-      - include: angle
-      - include: time
-      - include: percentage
-      - include: number
+        - meta_content_scope: meta.function.calc.css
+        - include: paren-end-function
+        - include: comment
+        - include: function-calc
+        - include: length
+        - include: frequency
+        - include: angle
+        - include: time
+        - include: percentage
+        - include: number
     - include: stray-paren-end-function
 
   identifier:
@@ -150,18 +193,18 @@ contexts:
         1: support.constant.property-value.css
     - match: (?<=min-monochrome:|max-monochrome:|monochrome:|min-color-index:|max-color-index:|color-index:|min-color:|max-color:|color:)
       push:
-      - match: (?=\))
-        pop: true
-      - include: comment
-      - include: function-calc
-      - include: integer-non-negative
+        - match: (?=\))
+          pop: true
+        - include: comment
+        - include: function-calc
+        - include: integer-non-negative
     - match: (?<=width:|min-width:|min-height:|min-device-width:|min-device-height:|max-width:|max-height:|max-device-width:|max-device-height:|height:|device-width:|device-height:)
       push:
-      - match: (?=\))
-        pop: true
-      - include: comment
-      - include: function-calc
-      - include: length-non-negative
+        - match: (?=\))
+          pop: true
+        - include: comment
+        - include: function-calc
+        - include: length-non-negative
     - match: (?<=light-level:)\s*(washed|normal|dim)\s*(?=\))
       captures:
         1: support.constant.property-value.css
@@ -283,9 +326,62 @@ contexts:
     - include: property-name
     - include: main  # matches comments and selectors
 
+  selector-at-keyword:
+    - match: '(@){{identifier}}'
+      scope: keyword.control.at-keyword.css
+      captures:
+        1: punctuation.definition.keyword.css
+
+  selector-attribute:
+    - match: '\['
+      scope: punctuation.section.attribute.css
+      push:
+        - match: '\]'
+          scope: punctuation.section.attribute.css
+          pop: true
+        - include: comment
+        - match: '[~^$*|]?='
+          scope: keyword.operator.attribute.css
+        - include: attribute-name
+        - include: string-double
+        - include: string-single
+        - match: '{{identifier}}'
+          scope: string.unquoted.attribute-value.css
+    - match: '\]'
+      scope: punctuation.section.attribute.css invalid.illegal.stray-bracket-end.css
+
+  selector-class:
+    - match: '(\.){{identifier}}'
+      captures:
+        1: punctuation.definition.entity.css
+
+  selector-combinator:
+    - match: '\|\||[+~>]|/{{identifier}}/'
+      scope: keyword.operator.selector-combinator.css
+
+  selector-element:
+    - match: '((?:{{identifier}}|\*)\s*(\|))?\s*(?:(?<![:-])\b(abbr|address|area|article|aside|audio|a|base|bdi|bdo|blockquote|body|br|button|b|canvas|caption|cite|code|colgroup|col|datalist|data|dd|del|details|dfn|dialog|div|dl|dt|embed|em|fieldset|figcaption|figure|footer|form|h[1-6]|header|head|hr|html|iframe|i|img|input|ins|kbd|keygen|label|legend|link|li|main|map|mark|math|menuitem|menu|meta|meter|nav|noscript|object|ol|optgroup|option|output|param|pre|progress|p|q|rb|rp|rtc?|ruby|samp|script|section|select|small|source|span|strong|style|sub|summary|sup|svg|s|table|tbody|td|template|textarea|tfoot|thead|th|time|title|track|tr|ul?|var|video|wbr)\b|(\*))(?!-)'
+      captures:
+        1: string.unquoted.namespace.css
+        2: punctuation.separator.namespace.css
+        3: entity.name.tag.css
+        4: entity.name.tag.wildcard.css
+
   selector-element-deprecated:
     - match: '(?<![-:\[])\b(?:xmp|tt|strike|spacer|plaintext|noframes|noembed|nobr|nextid|multicol|marquee|listing|isindex|hgroup|frameset|frame|font|dir|center|blink|big|bgsound|basefont|applet|acronym)\b(?!-)'
       scope: entity.name.tag.css
+
+  selector-id:
+    - match: '(#){{identifier}}'
+      captures:
+        1: punctuation.definition.entity.css
+
+  selector-keyframes:
+    - match: '(?:\b(from|to)\b|({{zero_to_hundred}})(%))\s*(?={)'
+      captures:
+        1: entity.other.attribute-name.keyframes-selector.css
+        2: constant.numeric.css
+        3: keyword.other.unit.css
 
   selector-media-query:
     - meta_content_scope: meta.selector.media-query.css
@@ -300,6 +396,12 @@ contexts:
     - match: \)
       scope: punctuation.section.media-feature.css invalid.illegal.stray-paren-end.css
 
+  selector-pseudo-class:
+    - match: (:)(?:visited|valid|user-error|target|scope|root|required|read-write|read-only|placeholder-shown|past|out-of-range|optional|only-of-type|only-child|link|last-of-type|last-child|invalid|indeterminate|in-range|hover|host|future|focus|first-of-type|first-child|enabled|empty|drop|disabled|default|current|checked|blank|any-link|active)\b
+      scope: entity.other.attribute-name.pseudo-class.css
+      captures:
+        1: punctuation.definition.entity.css
+
   selector-pseudo-class-deprecated:
     - match: (:)(?:first-line|first-letter|bound-element|before|after)\b
       scope: entity.other.attribute-name.pseudo-class.css
@@ -313,11 +415,11 @@ contexts:
         2: punctuation.definition.entity.css
         3: punctuation.section.function.css
       push:
-      - meta_content_scope: meta.function.dir.css
-      - include: paren-end-function
-      - include: comment
-      - match: \b(?:rtl|ltr|auto)\b
-        scope: support.constant.property-value.css
+        - meta_content_scope: meta.function.dir.css
+        - include: paren-end-function
+        - include: comment
+        - match: \b(?:rtl|ltr|auto)\b
+          scope: support.constant.property-value.css
     - include: stray-paren-end-function
 
   selector-pseudo-class-function-drop:
@@ -327,11 +429,11 @@ contexts:
         2: punctuation.definition.entity.css
         3: punctuation.section.function.css
       push:
-      - meta_content_scope: meta.function.drop.css
-      - include: paren-end-function
-      - include: comment
-      - match: \b(?:valid|invalid|active)\b
-        scope: support.constant.property-value.css
+        - meta_content_scope: meta.function.drop.css
+        - include: paren-end-function
+        - include: comment
+        - match: \b(?:valid|invalid|active)\b
+          scope: support.constant.property-value.css
     - include: stray-paren-end-function
 
   selector-pseudo-class-function-lang:
@@ -341,9 +443,9 @@ contexts:
         2: punctuation.definition.entity.css
         3: punctuation.section.function.css
       push:
-      - meta_content_scope: meta.function.lang.css
-      - include: paren-end-function
-      - include: comment
+        - meta_content_scope: meta.function.lang.css
+        - include: paren-end-function
+        - include: comment
     - include: stray-paren-end-function
 
   selector-pseudo-class-function-locale-dir:
@@ -353,26 +455,56 @@ contexts:
         2: punctuation.definition.entity.css
         3: punctuation.section.function.css
       push:
-      - meta_content_scope: meta.function.locale-dir.css
-      - include: paren-end-function
-      - include: comment
-      - match: \b(?:rtl|ltr)\b
-        scope: support.constant.property-value.css
+        - meta_content_scope: meta.function.locale-dir.css
+        - include: paren-end-function
+        - include: comment
+        - match: \b(?:rtl|ltr)\b
+          scope: support.constant.property-value.css
     - include: stray-paren-end-function
 
   selector-pseudo-class-function-nth:
-    - match: ((:)nth)(\()
+    - match: ((:)(?:nth-of-type|nth-last-of-type|nth-last-column|nth-column))(\()
       captures:
         1: entity.other.attribute-name.pseudo-class.css
         2: punctuation.definition.entity.css
         3: punctuation.section.function.css
       push:
-      - meta_content_scope: meta.function.nth.css
-      - include: paren-end-function
-      - include: comment
-      - match: \bof\b
-        scope: support.constant.property-value.css
-      - include: identifier
+        - meta_content_scope: meta.function.nth.css
+        - include: paren-end-function
+        - include: comment
+        - include: an-plus-b
+    - match: \)
+      scope: punctuation.section.function.css invalid.illegal.stray-paren-end.css
+
+  # pseudo-classes that take selector lists as parameters
+  selector-pseudo-class-function-selector-list:
+    - match: ((:)(?:scope-context|not|matches|host-context|host|has))(\()
+      captures:
+        1: entity.other.attribute-name.pseudo-class.css
+        2: punctuation.definition.entity.css
+        3: punctuation.section.function.css
+      push:
+        - meta_content_scope: meta.function.selector-list.css
+        - include: paren-end-function
+        - include: comment
+        # TODO: include entire selector list here
+    - include: stray-paren-end-function
+
+  # pseudo-classes that take An+B values and selector lists as parameters
+  selector-pseudo-class-function-selector-list-an-plus-b:
+    - match: ((:)(?:nth-last-child|nth-child))(\()
+      captures:
+        1: entity.other.attribute-name.pseudo-class.css
+        2: punctuation.definition.entity.css
+        3: punctuation.section.function.css
+      push:
+        - meta_content_scope: meta.function.selector-list.css
+        - include: paren-end-function
+        - include: comment
+        - match: \bof\b
+          scope: support.constant.property-value.css
+        - include: an-plus-b
+        # TODO: include entire selector list here
     - include: stray-paren-end-function
 
   selector-pseudo-class-function-system-metric:
@@ -382,11 +514,11 @@ contexts:
         2: punctuation.definition.entity.css
         3: punctuation.section.function.css
       push:
-      - meta_content_scope: meta.function.system-metric.css
-      - include: paren-end-function
-      - include: comment
-      - match: (?:-moz-)?(?:windows-theme|windows-glass|windows-default-theme|windows-compositor|windows-classic|touch-enabled|scrollbar-thumb-proportional|scrollbar-start-forward|scrollbar-start-backward|scrollbar-end-forward|scrollbar-end-backward|maemo-classic|mac-graphite-theme|images-in-menus|device-pixel-ratio)\b
-        scope: support.constant.property-value.css
+        - meta_content_scope: meta.function.system-metric.css
+        - include: paren-end-function
+        - include: comment
+        - match: (?:-moz-)?(?:windows-theme|windows-glass|windows-default-theme|windows-compositor|windows-classic|touch-enabled|scrollbar-thumb-proportional|scrollbar-start-forward|scrollbar-start-backward|scrollbar-end-forward|scrollbar-end-backward|maemo-classic|mac-graphite-theme|images-in-menus|device-pixel-ratio)\b
+          scope: support.constant.property-value.css
     - include: stray-paren-end-function
 
   selector-pseudo-class-function-tree:
@@ -396,11 +528,11 @@ contexts:
         2: punctuation.definition.entity.css
         3: punctuation.section.function.css
       push:
-      - meta_content_scope: meta.function.tree.css
-      - include: paren-end-function
-      - include: comment
-      - match: \bhover\b
-        scope: support.constant.property-value.css
+        - meta_content_scope: meta.function.tree.css
+        - include: paren-end-function
+        - include: comment
+        - match: \bhover\b
+          scope: support.constant.property-value.css
     - include: stray-paren-end-function
 
   selector-pseudo-class-moz:
@@ -433,13 +565,13 @@ contexts:
         2: punctuation.definition.entity.css
         3: punctuation.section.function.css
       push:
-      - meta_content_scope: meta.function.blank-slot.css
-      - include: paren-end-function
-      - include: comment
-      - match: '(?<=\()\s*(\*)\s*(?=\))'
-        captures:
-          1: support.constant.property-value.css
-      - include: identifier
+        - meta_content_scope: meta.function.blank-slot.css
+        - include: paren-end-function
+        - include: comment
+        - match: (?<=\()\s*(\*)\s*(?=\))
+          captures:
+            1: support.constant.property-value.css
+        - include: identifier
     - include: stray-paren-end-function
 
   selector-pseudo-element-moz:
@@ -466,21 +598,21 @@ contexts:
     - match: '"'
       scope: punctuation.definition.string.css
       push:
-      - meta_scope: string.quoted.double.css
-      - match: '"'
-        scope: punctuation.definition.string.css
-        pop: true
-      - include: escape
+        - meta_scope: string.quoted.double.css
+        - match: '"'
+          scope: punctuation.definition.string.css
+          pop: true
+        - include: escape
 
   string-single:
     - match: \'
       scope: punctuation.definition.string.css
       push:
-      - meta_scope: string.quoted.single.css
-      - match: \'
-        scope: punctuation.definition.string.css
-        pop: true
-      - include: escape
+        - meta_scope: string.quoted.single.css
+        - match: \'
+          scope: punctuation.definition.string.css
+          pop: true
+        - include: escape
 
   time:
     - match: '({{number}})(m?s)|({{zero}})'
