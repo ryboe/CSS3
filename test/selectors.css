@@ -642,7 +642,7 @@ div:blank {}
 :nth-child(even) {}   /* represents the 2nd, 4th, 6th, etc elements */
 :nth-child(10n-1) {}  /* represents the 9th, 19th, 29th, etc elements */
 :nth-child(10n+9) {}  /* Same */
-    :nth-child(10n+-1) {} /* Syntactically invalid, and would be ignored */
+:nth-child(10n+-1) {} /* Syntactically invalid, and would be ignored */
 li:nth-child(-n+3 of .important) {}
 li.important:nth-child(-n+3) {}
 tr:nth-child(even) {
