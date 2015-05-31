@@ -143,8 +143,6 @@ repository:
       match: (:(?:right|left|first|blank))\b
     - include: '#identifier'
     end: (?={)
-    endCaptures:
-      '0': {name: punctuation.section.rule-list.css}
 
   at-supports:
     name: meta.at-rule.supports.css
