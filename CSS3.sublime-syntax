@@ -24,6 +24,8 @@ variables:
   number_pos: '\+?(?:\d+\.\d*[1-9]\d*|\.\d*[1-9]\d*|[1-9]\d*)(?:[eE][+-]?\d+)?'
   ratio: '({{integer_pos}})\s*\/\s*({{integer_pos}})'
   resolution_unit: dppx|dpi|dpcm
+  # '' is how you escape a single ' in YAML
+  url_char: '[a-zA-Z0-9\-\._~:/\?#\[\]''@!$&()\*\+\%,;=]'
   whitespace: '[ \t\n]'
   zero: \b0\b
   zero_to_hundred: (?:100|\d\d?)(?:\.\d+)?
@@ -39,6 +41,7 @@ contexts:
     - include: at-counter-style
     - include: at-font-face
     - include: at-font-feature-values
+    - include: at-import
     - include: at-media
     - include: at-keyframes
 
@@ -98,7 +101,7 @@ contexts:
     - include: identifier
 
   at-charset:
-    - match: (@)charset\b
+    - match: ^(@)charset\b
       scope: keyword.control.at-rule.charset.css
       captures:
         1: punctuation.definition.keyword.css
@@ -108,7 +111,7 @@ contexts:
           pop: true
         - include: comment
         # only acceptable encoding is UTF-8
-        - match: (?:(\"(?:UTF-8|utf-8)\")|(\'(?:UTF-8|utf-8)\'))
+        - match: (?:("(?:UTF-8|utf-8)")|('(?:UTF-8|utf-8)'))
           captures:
             1: string.quoted.double.css
             2: string.quoted.single.css
@@ -144,6 +147,30 @@ contexts:
           pop: true
         - include: comment
         - include: identifier
+
+  at-import:
+    - match: (@)import\b
+      scope: keyword.control.at-rule.import.css
+      captures:
+        1: punctuation.definition.keyword.css
+      push:
+        - meta_scope: meta.at-rule.import.css
+        - match: ;
+          scope: punctuation.terminator.rule.css
+          pop: true
+        - include: comment
+        - match: \band\b
+          scope: keyword.operator.logic.css
+        - include: url
+        - include: media-type-deprecated
+        - include: media-type
+        - include: string-double
+        - include: string-single
+        - match: \(
+          scope: punctuation.section.media-feature.css
+          push: media-feature
+        - match: \)
+          scope: punctuation.section.media-feature.css invalid.illegal.stray-paren-end.css
 
   at-keyframes:
     - match: (@)(?:-webkit-)?keyframes\b
@@ -762,3 +789,16 @@ contexts:
         1: constant.numeric.css
         2: keyword.other.unit.css
         3: constant.numeric.css
+
+  url:
+    # per RFC 3986, the only characters permitted in a URL match this regex:
+    # [a-zA-Z0-9\-\._~:/\?#\[\]@!$&'()\*\+\%,;=]*
+    # '' is how you escape a single ' in YAML
+    - match: '\b(url)(\()\s*(?:("{{url_char}}*")|(''{{url_char}}*'')|({{url_char}}+))\s*(\))'
+      captures:
+        1: support.function.url.css
+        2: punctuation.section.function.css
+        3: string.quoted.double.css
+        4: string.quoted.single.css
+        5: string.unquoted.url.css
+        6: punctuation.section.function.css
