@@ -8,7 +8,8 @@ variables:
   an_plus_b: '[+-]?\d*n(?:\s*[+-]\s*\d+)?'
   angle_unit: turn|grad|rad|deg
   # end_selector is imperfect way to differentiate between selector and property
-  # fails to differentiate if ';' is not on same line as property name
+  # fails to differentiate if ';' is not on same line as property name, but
+  # should reduce cases of selector-custom-element matching property names.
   end_selector: '(?=[^;]*[\n{])'
   escape: '\\(?:[^\n\r\f\h]|\h{1,6}{{whitespace}}?)'
   ident_char: '[-a-zA-Z\d_\\\p{^ASCII}]'
@@ -73,14 +74,10 @@ contexts:
     - include: selector-id
     - include: selector-attribute
     - include: selector-combinator
-
-    # DEBUG: move this to inside property list
-    - include: selector-keyframes
-
     - include: selector-custom-element
 
   # NOTE: deviates from spec by defining N as 'n', not
-  # 'n|\\0{0,4}(4e|6e)(\r\n|[ \t\r\n\f])?|\\n' (regex taken from spec)
+  # 'n|\\0{0,4}(4e|6e)(\r\n|[ \t\r\n\f])?|\\n' <-- regex from spec
   an-plus-b:
     - match: 'odd|even|{{an_plus_b}}|{{integer}}'
       scope: constant.other.an-plus-b.css
@@ -317,15 +314,17 @@ contexts:
     - match: '}'
       scope: punctuation.section.property-list.end.css
       pop: true
-
-    # at-rules that are only nested, e.g. @swash
-    #   the rest of the at-rules are covered by including main
-    # property names
+    - include: property-name-illegal-webkit
     - include: property-name-illegal-moz
     - include: property-name-illegal-ms
-    - include: property-name-illegal-webkit
     - include: property-name-illegal
     - include: property-name
+    # selectors that are only ever nested (e.g. @swash) go here. rest of
+    # selectors go in main
+    - include: selector-page-margin
+    - include: selector-keyframes
+    - include: selector-at-keyword
+
     - include: main  # matches comments and selectors
 
   selector-at-keyword:
@@ -409,6 +408,12 @@ contexts:
       push: media-feature
     - match: \)
       scope: punctuation.section.media-feature.css invalid.illegal.stray-paren-end.css
+
+  selector-page-margin:
+    - match: '(@)(?:top-right-corner|top-right|top-left-corner|top-left|top-center|right-top|right-middle|right-bottom|left-top|left-middle|left-bottom|bottom-right-corner|bottom-right|bottom-left-corner|bottom-left|bottom-center){{end_selector}}'
+      scope: keyword.control.page-margin.css
+      captures:
+        1: punctuation.definition.keyword.css
 
   selector-pseudo-class:
     - match: '(:)(?:visited|valid|user-error|target|scope|root|required|read-write|read-only|placeholder-shown|past|out-of-range|optional|only-of-type|only-child|link|last-of-type|last-child|invalid|indeterminate|in-range|hover|host|future|focus|first-of-type|first-child|enabled|empty|drop|disabled|default|current|checked|blank|any-link|active)\b{{end_selector}}'
