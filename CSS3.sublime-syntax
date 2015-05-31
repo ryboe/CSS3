@@ -293,9 +293,10 @@ contexts:
 
     # selectors that are only ever nested (e.g. @swash) go here. rest of
     # selectors go in main
+
     - include: selector-page-margin
     - include: selector-keyframes
-    - include: selector-at-keyword
+    # - include: selector-at-keyword
 
     - include: main  # matches comments and selectors
 
