@@ -45,6 +45,7 @@ contexts:
     - include: at-keyframes
     - include: at-media
     - include: at-namespace
+    - include: at-page
 
     # property list
     - match: '{'
@@ -102,7 +103,7 @@ contexts:
     - include: identifier
 
   at-charset:
-    - match: ^(@)charset\b
+    - match: ^(@)charset(?=\s)
       scope: keyword.control.at-rule.charset.css
       captures:
         1: punctuation.definition.keyword.css
@@ -184,7 +185,7 @@ contexts:
       push: selector-media-query
 
   at-namespace:
-    - match: (@)namespace\b
+    - match: (@)namespace(?=\s)
       scope: keyword.control.at-rule.namespace.css
       captures:
         1: punctuation.definition.keyword.css
@@ -196,6 +197,18 @@ contexts:
         - include: string-single
         - match: (?<=\s)--(?=\s)
           scope: string.unquoted.identifier.css
+        - include: identifier
+
+  at-page:
+    - match: (@)(?:-webkit-)?page\b
+      scope: keyword.control.at-rule.page.css
+      captures:
+        1: punctuation.definition.keyword.css
+      push:
+        - match: '(?={)'
+          pop: true
+        - include: comment
+        - include: pseudo-page
         - include: identifier
 
   attribute-name:
@@ -409,6 +422,10 @@ contexts:
   property-name-illegal-webkit:
     - match: -webkit-(?:user-select|user-modify|user-input|user-focus|box-reflect|box-pack|box-orient|box-ordinal-group|box-lines|box-flex-group|box-flex|box-direction|box-align|appearance)\b
       scope: support.type.property-name.css invalid.illegal.css
+
+  pseudo-page:
+    - match: ':(?:right|left|first|blank)\b'
+      scope: entity.other.attribute-name.pseudo-page.css
 
   ratio:
     - match: '{{ratio}}'
