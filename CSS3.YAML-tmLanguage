@@ -116,7 +116,7 @@ repository:
     name: meta.at-rule.namespace.css
     begin: ((@)namespace)\b
     beginCaptures:
-      '1': {name: keyword.contro.at-rule.namespace.css}
+      '1': {name: keyword.control.at-rule.namespace.css}
     patterns:
     - include: '#comment-block'
     - include: '#type-function-url'
