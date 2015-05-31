@@ -35,16 +35,9 @@ contexts:
     - include: comment
 
     # at rules
-    - match: '(@)media\b'
-      captures:
-        1: punctuation.definition.keyword.css
-      scope: meta.media-query.css keyword.control.at-rule.media.css
-      push: selector-media-query
-    - match: (@)(?:-webkit-)?keyframes\b
-      scope: keyword.control.at-rule.keyframes.css
-      captures:
-        1: punctuation.definition.keyword.css
-      push: animation-name
+    - include: at-charset
+    - include: at-media
+    - include: at-keyframes
 
     # property list
     - match: '{'
@@ -100,6 +93,35 @@ contexts:
     - match: '(?={)'
       pop: true
     - include: identifier
+
+  at-charset:
+    - match: (@)charset\b
+      scope: keyword.control.at-rule.charset.css
+      captures:
+        1: punctuation.definition.keyword.css
+      push:
+        - match: ;
+          scope: punctuation.terminator.rule.css
+          pop: true
+        # only acceptable encoding is UTF-8
+        - match: (?:(\"(?:UTF-8|utf-8)\")|(\'(?:UTF-8|utf-8)\'))
+          captures:
+            1: string.quoted.double.css
+            2: string.quoted.single.css
+
+  at-keyframes:
+    - match: (@)(?:-webkit-)?keyframes\b
+      scope: keyword.control.at-rule.keyframes.css
+      captures:
+        1: punctuation.definition.keyword.css
+      push: animation-name
+
+  at-media:
+    - match: (@)media\b
+      captures:
+        1: punctuation.definition.keyword.css
+      scope: meta.media-query.css keyword.control.at-rule.media.css
+      push: selector-media-query
 
   attribute-name:
     - match: '(?<=\[)\s*(?:(?:({{identifier}})|(\*))?\s*(\|))?\s*(?:({{identifier}})|(\*))\s*(?=[~^$*=|\]])'
@@ -361,7 +383,7 @@ contexts:
     # unicode char classes
     - match: '[\p{Ll}_][\p{Ll}\d._-]*-[\p{Ll}\d._-]*{{end_selector}}'
       # custom element must contain hyphen '-'
-      scope:  meta.selector.css entity.name.tag.css invalid.deprecated.css  # DEBUG
+      scope:  meta.selector.css entity.name.tag.custom.css invalid.deprecated.css  # DEBUG
 
   selector-element:
     - match: '((?:{{identifier}}|\*)\s*(\|))?\s*(?:(?<![:-])\b(abbr|address|area|article|aside|audio|a|base|bdi|bdo|blockquote|body|br|button|b|canvas|caption|cite|code|colgroup|col|datalist|data|dd|del|details|dfn|dialog|div|dl|dt|embed|em|fieldset|figcaption|figure|footer|form|h[1-6]|header|head|hr|html|iframe|i|img|input|ins|kbd|keygen|label|legend|link|li|main|map|mark|math|menuitem|menu|meta|meter|nav|noscript|object|ol|optgroup|option|output|param|pre|progress|p|q|rb|rp|rtc?|ruby|samp|script|section|select|small|source|span|strong|style|sub|summary|sup|svg|s|table|tbody|td|template|textarea|tfoot|thead|th|time|title|track|tr|ul?|var|video|wbr)\b|(\*))(?!-){{end_selector}}'
