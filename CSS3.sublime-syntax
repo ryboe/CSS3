@@ -37,6 +37,8 @@ contexts:
       scope: punctuation.section.property-list.begin.css
       push: property-list
     - include: stray-brace-end
+
+    # at rules
     - match: '(@)media\b'
       captures:
         1: punctuation.definition.keyword.css
@@ -48,7 +50,6 @@ contexts:
         1: punctuation.definition.keyword.css
       push: animation-name
 
-    # at rules
     # selectors
     - include: selector-class
     - include: selector-pseudo-element-function
@@ -314,11 +315,14 @@ contexts:
     - match: '}'
       scope: punctuation.section.property-list.end.css
       pop: true
+
+    # property names
     - include: property-name-illegal-webkit
     - include: property-name-illegal-moz
     - include: property-name-illegal-ms
     - include: property-name-illegal
     - include: property-name
+
     # selectors that are only ever nested (e.g. @swash) go here. rest of
     # selectors go in main
     - include: selector-page-margin
@@ -502,7 +506,7 @@ contexts:
 
   # pseudo-classes that take selector lists as parameters
   selector-pseudo-class-function-selector-list:
-    - match: ((:)(?:scope-context|not|matches|host-context|host|has))(\()
+    - match: ((:)(?:scope-context|not|matches|host-context|host|has|current))(\()
       scope: meta.selector.css
       captures:
         1: entity.other.attribute-name.pseudo-class.css
@@ -512,10 +516,34 @@ contexts:
         - meta_content_scope: meta.function.selector-list.css
         - include: paren-end-function
         - include: comment
-        # TODO: include entire selector list here
-        # - include: selector-keyframes
-        # - include: selector-at-keyword
-
+        - include: selector-class
+        - include: selector-pseudo-element-function
+        - include: selector-pseudo-element-webkit
+        - include: selector-pseudo-element-moz
+        - include: selector-pseudo-element
+        - include: selector-element-deprecated
+        - include: selector-pseudo-class-deprecated
+        - include: selector-pseudo-class-function-dir
+        - include: selector-pseudo-class-function-drop
+        - include: selector-pseudo-class-function-lang
+        - include: selector-pseudo-class-function-locale-dir
+        - include: selector-pseudo-class-function-nth
+        - include: selector-pseudo-class-function-selector-list
+        - include: selector-pseudo-class-function-selector-list-an-plus-b
+        - include: selector-pseudo-class-function-system-metric
+        - include: selector-pseudo-class-function-tree
+        - include: selector-pseudo-class-moz
+        - include: selector-pseudo-class-ms
+        - include: selector-pseudo-class-webkit
+        - include: selector-pseudo-class
+        - include: selector-page-margin
+        - include: selector-element
+        - include: selector-id
+        - include: selector-attribute
+        - include: selector-combinator
+        - include: selector-keyframes
+        - include: selector-at-keyword
+        - include: selector-custom-element
     - include: stray-paren-end-function
 
   # pseudo-classes that take An+B values and selector lists as parameters
@@ -533,10 +561,34 @@ contexts:
         - match: \bof\b
           scope: support.constant.property-value.css
         - include: an-plus-b
-        # TODO: include entire selector list here
-        # - include: selector-keyframes
-        # - include: selector-at-keyword
-
+        - include: selector-class
+        - include: selector-pseudo-element-function
+        - include: selector-pseudo-element-webkit
+        - include: selector-pseudo-element-moz
+        - include: selector-pseudo-element
+        - include: selector-element-deprecated
+        - include: selector-pseudo-class-deprecated
+        - include: selector-pseudo-class-function-dir
+        - include: selector-pseudo-class-function-drop
+        - include: selector-pseudo-class-function-lang
+        - include: selector-pseudo-class-function-locale-dir
+        - include: selector-pseudo-class-function-nth
+        - include: selector-pseudo-class-function-selector-list
+        - include: selector-pseudo-class-function-selector-list-an-plus-b
+        - include: selector-pseudo-class-function-system-metric
+        - include: selector-pseudo-class-function-tree
+        - include: selector-pseudo-class-moz
+        - include: selector-pseudo-class-ms
+        - include: selector-pseudo-class-webkit
+        - include: selector-pseudo-class
+        - include: selector-page-margin
+        - include: selector-element
+        - include: selector-id
+        - include: selector-attribute
+        - include: selector-combinator
+        - include: selector-keyframes
+        - include: selector-at-keyword
+        - include: selector-custom-element
     - include: stray-paren-end-function
 
   selector-pseudo-class-function-system-metric:
