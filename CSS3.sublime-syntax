@@ -36,6 +36,9 @@ contexts:
 
     # at rules
     - include: at-charset
+    - include: at-counter-style
+    - include: at-font-face
+    - include: at-font-feature-values
     - include: at-media
     - include: at-keyframes
 
@@ -103,11 +106,44 @@ contexts:
         - match: ;
           scope: punctuation.terminator.rule.css
           pop: true
+        - include: comment
         # only acceptable encoding is UTF-8
         - match: (?:(\"(?:UTF-8|utf-8)\")|(\'(?:UTF-8|utf-8)\'))
           captures:
             1: string.quoted.double.css
             2: string.quoted.single.css
+
+  at-counter-style:
+    - match: (@)(?:-webkit-|-ms-|-moz-)?counter-style\b
+      scope: keyword.control.at-rule.counter-style.css
+      captures:
+        1: punctuation.definition.keyword.css
+      push:
+        - meta_scope: meta.at-rule.counter-style.css
+        - match: '(?={)'
+          pop: true
+        - include: comment
+        - match: \b(?:unset|none|initial|inherit|decimal)\b(?!-)
+          scope: invalid.illegal.css
+        - include: identifier
+
+  at-font-face:
+    - match: (@)font-face\b
+      scope: keyword.control.at-rule.font-face.css
+      captures:
+        1: punctuation.definition.keyword.css
+
+  at-font-feature-values:
+    - match: (@)(?:-webkit-|-ms-|-moz-)?font-feature-values\b
+      scope: keyword.control.at-rule.font-feature-values.css
+      captures:
+        1: punctuation.definition.keyword.css
+      push:
+        - meta_scope: meta.at-rule.font-feature-values.css
+        - match: '(?={)'
+          pop: true
+        - include: comment
+        - include: identifier
 
   at-keyframes:
     - match: (@)(?:-webkit-)?keyframes\b
@@ -138,6 +174,10 @@ contexts:
         - meta_scope: comment.block.css
         - match: \*/
           pop: true
+
+  counter-style-predefined:
+    - match: \b(?:yemsa|wolaita|upper-ukrainian-full|upper-ukrainian|upper-serbo-croatian|upper-russian-full|upper-russian|upper-roman|upper-oromo-qubee|upper-macedonian|upper-latin|upper-hexadecimal|upper-bulgarian|upper-belorussian|upper-armenian|upper-alpha-symbolic|upper-alpha|trad-chinese-informal|trad-chinese-formal|tigre|tibetan|thai-alphabetic|thai|telugu|tamil|super-decimal|square|simple-upper-roman|simple-lower-roman|simp-chinese-informal|simp-chinese-formal|silti|sidama|shan|saho|persian-alphabetic|persian-abjad|persian|parenthesized-lower-latin|parenthesized-ideograph|parenthesized-hangul-syllable|parenthesized-hangul-consonant|parenthesized-decimal|oromo|oriya|octal|new-base-60|myanmar|mongolian|meen|malayalam|lower-ukrainian-full|lower-ukrainian|lower-serbo-croatian|lower-russian-full|lower-russian|lower-roman|lower-oromo-qubee|lower-macedonian|lower-latin|lower-hexadecimal|lower-greek|lower-bulgarian|lower-belorussian|lower-armenian|lower-alpha-symbolic|lower-alpha|lepcha|lao|kunama|korean-syllable|korean-hanja-informal|korean-hanja-formal|korean-hangul-formal|korean-consonant|konso|khmer-consonant|khmer|kembata|kebena|katakana-iroha|katakana|kannada|kaffa|japanese-informal|japanese-formal|hiragana-iroha|hiragana|hindi|hebrew|harari|hadiyya|gurmukhi|gumuz|gujarati|greek|georgian|gedeo|fullwidth-upper-roman|fullwidth-upper-alpha|fullwidth-lower-roman|fullwidth-lower-alpha|fullwidth-decimal|filled-circled-decimal|ethiopic-numeric|double-circled-decimal|dotted-decimal|dizi|disclosure-open|disclosure-closed|disc|devanagari|decimal-leading-zero|decimal|cjk-heavenly-stem|cjk-earthly-branch|cjk-decimal|circled-upper-latin|circled-lower-latin|circled-korean-syllable|circled-korean-consonant|circled-katakana|circled-ideograph|circled-decimal|circle|cambodian|blin|binary|bengali|armenian|ari|arabic-indic|ancient-tamil|agaw|afar)\b
+      scope: support.constant.property-value.css
 
   escape:
     - match: '{{escape}}'
@@ -381,7 +421,7 @@ contexts:
     # TODO: can these have namespace prefixes?
     # NOTE: deviates from spec. new ST regex engine doesn't support all
     # unicode char classes
-    - match: '[\p{Ll}_][\p{Ll}\d._-]*-[\p{Ll}\d._-]*{{end_selector}}'
+    - match: '\b[\p{Ll}_][\p{Ll}\d._-]*-[\p{Ll}\d._-]*{{end_selector}}'
       # custom element must contain hyphen '-'
       scope:  meta.selector.css entity.name.tag.custom.css invalid.deprecated.css  # DEBUG
 

@@ -105,9 +105,7 @@ media features
 }
 
 @media screen {
-    #something {
-        float: left;
-        color: blue;
+    #something {float:left;color:blue;
     }
     #else {
         position: absolute;
