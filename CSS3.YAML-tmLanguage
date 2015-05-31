@@ -48,7 +48,6 @@ repository:
     captures:
       '1': {name: keyword.control.at-rule.font-face.css}
       '2': {name: punctuation.definition.keyword.css}
-      '3': {name: punctuation.section.property-list.css}
 
   at-font-feature-values:
     name: meta.at-rule.font-feature-values.css
@@ -62,8 +61,6 @@ repository:
     - include: '#type-string-single'
     - include: '#identifier'
     end: (?={)
-    endCaptures:
-      '0': {name: punctuation.section.rule-list.css}
 
   at-import:
     name: meta.at-rule.import.css
