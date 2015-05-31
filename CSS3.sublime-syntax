@@ -7,6 +7,9 @@ scope: source.css
 variables:
   an_plus_b: '[+-]?\d*n(?:\s*[+-]\s*\d+)?'
   angle_unit: turn|grad|rad|deg
+  # end_selector is imperfect way to differentiate between selector and property
+  # fails to differentiate if ';' is not on same line as property name
+  end_selector: '(?=[^;]*[\n{])'
   escape: '\\(?:[^\n\r\f\h]|\h{1,6}{{whitespace}}?)'
   ident_char: '[-a-zA-Z\d_\\\p{^ASCII}]'
   ident_start: '-?[a-zA-Z_\\\p{^ASCII}]'
@@ -70,6 +73,10 @@ contexts:
     - include: selector-id
     - include: selector-attribute
     - include: selector-combinator
+
+    # DEBUG: move this to inside property list
+    - include: selector-keyframes
+
     - include: selector-custom-element
 
   # NOTE: deviates from spec by defining N as 'n', not
@@ -322,7 +329,7 @@ contexts:
     - include: main  # matches comments and selectors
 
   selector-at-keyword:
-    - match: '(@){{identifier}}'
+    - match: '(@){{identifier}}{{end_selector}}'
       scope: meta.selector.css keyword.control.at-keyword.css
       captures:
         1: punctuation.definition.keyword.css
@@ -346,25 +353,25 @@ contexts:
       scope: punctuation.section.attribute.css invalid.illegal.stray-bracket-end.css
 
   selector-class:
-    - match: '(\.){{identifier}}'
+    - match: '(\.){{identifier}}{{end_selector}}'
       scope: meta.selector.css entity.other.attribute-name.class.css
       captures:
         1: punctuation.definition.entity.css
 
   selector-combinator:
-    - match: '\|\||[+~>]|/{{identifier}}/'
+    - match: '\|\||[+~>]|/{{identifier}}/{{end_selector}}'
       scope: meta.selector.css keyword.operator.selector-combinator.css
 
   selector-custom-element:
     # TODO: can these have namespace prefixes?
     # NOTE: deviates from spec. new ST regex engine doesn't support all
     # unicode char classes
-    - match: '[\p{Ll}_][\p{Ll}\d._-]*-[a-z\d._-]*(?=\s*[,{\n])'
+    - match: '[\p{Ll}_][\p{Ll}\d._-]*-[\p{Ll}\d._-]*{{end_selector}}'
       # custom element must contain hyphen '-'
       scope:  meta.selector.css entity.name.tag.css invalid.deprecated.css  # DEBUG
 
   selector-element:
-    - match: '((?:{{identifier}}|\*)\s*(\|))?\s*(?:(?<![:-])\b(abbr|address|area|article|aside|audio|a|base|bdi|bdo|blockquote|body|br|button|b|canvas|caption|cite|code|colgroup|col|datalist|data|dd|del|details|dfn|dialog|div|dl|dt|embed|em|fieldset|figcaption|figure|footer|form|h[1-6]|header|head|hr|html|iframe|i|img|input|ins|kbd|keygen|label|legend|link|li|main|map|mark|math|menuitem|menu|meta|meter|nav|noscript|object|ol|optgroup|option|output|param|pre|progress|p|q|rb|rp|rtc?|ruby|samp|script|section|select|small|source|span|strong|style|sub|summary|sup|svg|s|table|tbody|td|template|textarea|tfoot|thead|th|time|title|track|tr|ul?|var|video|wbr)\b|(\*))(?!-)'
+    - match: '((?:{{identifier}}|\*)\s*(\|))?\s*(?:(?<![:-])\b(abbr|address|area|article|aside|audio|a|base|bdi|bdo|blockquote|body|br|button|b|canvas|caption|cite|code|colgroup|col|datalist|data|dd|del|details|dfn|dialog|div|dl|dt|embed|em|fieldset|figcaption|figure|footer|form|h[1-6]|header|head|hr|html|iframe|i|img|input|ins|kbd|keygen|label|legend|link|li|main|map|mark|math|menuitem|menu|meta|meter|nav|noscript|object|ol|optgroup|option|output|param|pre|progress|p|q|rb|rp|rtc?|ruby|samp|script|section|select|small|source|span|strong|style|sub|summary|sup|svg|s|table|tbody|td|template|textarea|tfoot|thead|th|time|title|track|tr|ul?|var|video|wbr)\b|(\*))(?!-){{end_selector}}'
       scope: meta.selector.css
       captures:
         1: string.unquoted.namespace.css
@@ -373,17 +380,17 @@ contexts:
         4: entity.name.tag.wildcard.css
 
   selector-element-deprecated:
-    - match: '(?<![-:\[])\b(?:xmp|tt|strike|spacer|plaintext|noframes|noembed|nobr|nextid|multicol|marquee|listing|isindex|hgroup|frameset|frame|font|dir|center|blink|big|bgsound|basefont|applet|acronym)\b(?!-)'
+    - match: '(?<![-:\[])\b(?:xmp|tt|strike|spacer|plaintext|noframes|noembed|nobr|nextid|multicol|marquee|listing|isindex|hgroup|frameset|frame|font|dir|center|blink|big|bgsound|basefont|applet|acronym)\b(?!-){{end_selector}}'
       scope: meta.selector.css entity.name.tag.css
 
   selector-id:
-    - match: '(#){{identifier}}'
+    - match: '(#){{identifier}}{{end_selector}}'
       scope: meta.selector.css entity.other.attribute-name.id.css
       captures:
         1: punctuation.definition.entity.css
 
   selector-keyframes:
-    - match: '(?:\b(from|to)\b|({{zero_to_hundred}})(%))\s*(?={)'
+    - match: '(?:\b(from|to)\b|({{zero_to_hundred}})(%)){{end_selector}}'
       scope: meta.selector.css
       captures:
         1: entity.other.attribute-name.keyframes-selector.css
@@ -404,13 +411,13 @@ contexts:
       scope: punctuation.section.media-feature.css invalid.illegal.stray-paren-end.css
 
   selector-pseudo-class:
-    - match: (:)(?:visited|valid|user-error|target|scope|root|required|read-write|read-only|placeholder-shown|past|out-of-range|optional|only-of-type|only-child|link|last-of-type|last-child|invalid|indeterminate|in-range|hover|host|future|focus|first-of-type|first-child|enabled|empty|drop|disabled|default|current|checked|blank|any-link|active)\b
+    - match: '(:)(?:visited|valid|user-error|target|scope|root|required|read-write|read-only|placeholder-shown|past|out-of-range|optional|only-of-type|only-child|link|last-of-type|last-child|invalid|indeterminate|in-range|hover|host|future|focus|first-of-type|first-child|enabled|empty|drop|disabled|default|current|checked|blank|any-link|active)\b{{end_selector}}'
       scope: meta.selector.css entity.other.attribute-name.pseudo-class.css
       captures:
         1: punctuation.definition.entity.css
 
   selector-pseudo-class-deprecated:
-    - match: (:)(?:first-line|first-letter|bound-element|before|after)\b
+    - match: '(:)(?:first-line|first-letter|bound-element|before|after)\b{{end_selector}}'
       scope: meta.selector.css entity.other.attribute-name.pseudo-class.css
       captures:
         1: punctuation.definition.entity.css
@@ -558,25 +565,25 @@ contexts:
     - include: stray-paren-end-function
 
   selector-pseudo-class-moz:
-    - match: (:)-moz-(?:window-inactive|user-disabled|ui-valid|ui-invalid|tree-twisty|tree-separator|tree-row|tree-progressmeter|tree-line|tree-indentation|tree-image|tree-drop-feedback|tree-column|tree-checkbox|tree-cell-text|tree-cell|suppressed|submit-invalid|read-write|read-only|only-whitespace|lwtheme-darktext|lwtheme-brighttext|lwtheme|loading|list-number|list-bullet|last-node|handler-disabled|handler-crashed|handler-blocked|full-screen-ancestor|full-screen|focusring|first-node|drag-over|broken|bound-element|any-link|any)\b
+    - match: '(:)-moz-(?:window-inactive|user-disabled|ui-valid|ui-invalid|tree-twisty|tree-separator|tree-row|tree-progressmeter|tree-line|tree-indentation|tree-image|tree-drop-feedback|tree-column|tree-checkbox|tree-cell-text|tree-cell|suppressed|submit-invalid|read-write|read-only|only-whitespace|lwtheme-darktext|lwtheme-brighttext|lwtheme|loading|list-number|list-bullet|last-node|handler-disabled|handler-crashed|handler-blocked|full-screen-ancestor|full-screen|focusring|first-node|drag-over|broken|bound-element|any-link|any)\b{{end_selector}}'
       scope: meta.selector.css entity.other.attribute-name.pseudo-class.css
       captures:
         1: punctuation.definition.entity.css
 
   selector-pseudo-class-ms:
-    - match: (:)-ms-(?:keyboard-active|input-placeholder)\b
+    - match: '(:)-ms-(?:keyboard-active|input-placeholder)\b{{end_selector}}'
       scope: meta.selector.css entity.other.attribute-name.pseudo-class.css
       captures:
         1: punctuation.definition.entity.css
 
   selector-pseudo-class-webkit:
-    - match: (:)-webkit-(?:full-screen|any)\b
+    - match: '(:)-webkit-(?:full-screen|any)\b{{end_selector}}'
       scope: meta.selector.css entity.other.attribute-name.pseudo-class.css
       captures:
         1: punctuation.definition.entity.css
 
   selector-pseudo-element:
-    - match: (::)(?:spelling-error|shadow|selection|repeat-item|repeat-index|region|placeholder|marker|grammar-error|first-line|first-letter|content|before|after)\b
+    - match: '(::)(?:spelling-error|shadow|selection|repeat-item|repeat-index|region|placeholder|marker|grammar-error|first-line|first-letter|content|before|after)\b{{end_selector}}'
       scope: meta.selector.css entity.other.attribute-name.pseudo-element.css
       captures:
         1: punctuation.definition.entity.css
@@ -599,13 +606,13 @@ contexts:
     - include: stray-paren-end-function
 
   selector-pseudo-element-moz:
-    - match: (::)-moz-(?:xul-anonymous-block|viewport-scroll|viewport|table-row-group|table-row|table-outer|table-column-group|table-column|table-cell|table|svg-foreign-content|selection|scrolled-page-sequence|scrolled-content|scrolled-canvas|range-track|range-thumb|progress-bar|placeholder|pagecontent|pagebreak|page-sequence|page|math-stretchy|inline-table|full-screen|focus-outer|focus-inner|cell-content|canvas|anonymous-positioned-block|anonymous-block)\b
+    - match: '(::)-moz-(?:xul-anonymous-block|viewport-scroll|viewport|table-row-group|table-row|table-outer|table-column-group|table-column|table-cell|table|svg-foreign-content|selection|scrolled-page-sequence|scrolled-content|scrolled-canvas|range-track|range-thumb|progress-bar|placeholder|pagecontent|pagebreak|page-sequence|page|math-stretchy|inline-table|full-screen|focus-outer|focus-inner|cell-content|canvas|anonymous-positioned-block|anonymous-block)\b{{end_selector}}'
       scope: meta.selector.css entity.other.attribute-name.pseudo-element.css
       captures:
         1: punctuation.definition.entity.css
 
   selector-pseudo-element-webkit:
-    - match: (::)-webkit-(?:validation-bubble-message|validation-bubble-arrow-clipper|validation-bubble-arrow|validation-bubble|slider-thumb|search-results-decoration|search-results-button|search-decoration|search-cancel-button|scrollbar-track-piece|scrollbar-track|scrollbar-thumb|scrollbar-corner|scrollbar-button|scrollbar|progress-value|progress-bar|outer-spin-button|meter-suboptimum-value|meter-optimum-value|meter-even-less-good-value|media-controls-volume-slider-container|media-controls-volume-slider|media-controls-toggle-closed-captions-button|media-controls-timeline-container|media-controls-timeline|media-controls-time-remaining-display|media-controls-seek-forward-button|media-controls-seek-back-button|media-controls-rewind-button|media-controls-return-to-realtime-button|media-controls-play-button|media-controls-panel|media-controls-mute-button|media-controls-fullscreen-button|media-controls-current-time-display|inner-spin-button|full-page-media|file-upload-button)\b
+    - match: '(::)-webkit-(?:validation-bubble-message|validation-bubble-arrow-clipper|validation-bubble-arrow|validation-bubble|slider-thumb|search-results-decoration|search-results-button|search-decoration|search-cancel-button|scrollbar-track-piece|scrollbar-track|scrollbar-thumb|scrollbar-corner|scrollbar-button|scrollbar|progress-value|progress-bar|outer-spin-button|meter-suboptimum-value|meter-optimum-value|meter-even-less-good-value|media-controls-volume-slider-container|media-controls-volume-slider|media-controls-toggle-closed-captions-button|media-controls-timeline-container|media-controls-timeline|media-controls-time-remaining-display|media-controls-seek-forward-button|media-controls-seek-back-button|media-controls-rewind-button|media-controls-return-to-realtime-button|media-controls-play-button|media-controls-panel|media-controls-mute-button|media-controls-fullscreen-button|media-controls-current-time-display|inner-spin-button|full-page-media|file-upload-button)\b{{end_selector}}'
       scope: meta.selector.css entity.other.attribute-name.pseudo-element.css
       captures:
         1: punctuation.definition.entity.css
