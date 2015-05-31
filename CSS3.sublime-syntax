@@ -42,8 +42,9 @@ contexts:
     - include: at-font-face
     - include: at-font-feature-values
     - include: at-import
-    - include: at-media
     - include: at-keyframes
+    - include: at-media
+    - include: at-namespace
 
     # property list
     - match: '{'
@@ -106,9 +107,7 @@ contexts:
       captures:
         1: punctuation.definition.keyword.css
       push:
-        - match: ;
-          scope: punctuation.terminator.rule.css
-          pop: true
+        - include: rule-end
         - include: comment
         # only acceptable encoding is UTF-8
         - match: (?:("(?:UTF-8|utf-8)")|('(?:UTF-8|utf-8)'))
@@ -155,9 +154,7 @@ contexts:
         1: punctuation.definition.keyword.css
       push:
         - meta_scope: meta.at-rule.import.css
-        - match: ;
-          scope: punctuation.terminator.rule.css
-          pop: true
+        - include: rule-end
         - include: comment
         - match: \band\b
           scope: keyword.operator.logic.css
@@ -185,6 +182,21 @@ contexts:
         1: punctuation.definition.keyword.css
       scope: meta.media-query.css keyword.control.at-rule.media.css
       push: selector-media-query
+
+  at-namespace:
+    - match: (@)namespace\b
+      scope: keyword.control.at-rule.namespace.css
+      captures:
+        1: punctuation.definition.keyword.css
+      push:
+        - include: rule-end
+        - include: comment
+        - include: url
+        - include: string-double
+        - include: string-single
+        - match: (?<=\s)--(?=\s)
+          scope: string.unquoted.identifier.css
+        - include: identifier
 
   attribute-name:
     - match: '(?<=\[)\s*(?:(?:({{identifier}})|(\*))?\s*(\|))?\s*(?:({{identifier}})|(\*))\s*(?=[~^$*=|\]])'
@@ -409,6 +421,11 @@ contexts:
       captures:
         1: constant.numeric.css
         2: keyword.other.unit.css
+
+  rule-end:
+    - match: ;
+      scope: punctuation.terminator.rule.css
+      pop: true
 
   selector-at-keyword:
     - match: '(@){{identifier}}{{end_selector}}'
