@@ -46,6 +46,7 @@ contexts:
     - include: at-media
     - include: at-namespace
     - include: at-page
+    - include: at-supports
 
     # property list
     - match: '{'
@@ -210,6 +211,17 @@ contexts:
         - include: comment
         - include: pseudo-page
         - include: identifier
+
+  at-supports:
+    - match: (@)(?:-webkit-|-ms-|-moz-)?supports\b
+      scope: keyword.control.at-rule.supports.css
+      captures:
+        1: punctuation.definition.keyword.css
+      push:
+        - match: '(?={)'
+          pop: true
+        - include: comment
+        - include: supports-condition-parenthesized
 
   attribute-name:
     - match: '(?<=\[)\s*(?:(?:({{identifier}})|(\*))?\s*(\|))?\s*(?:({{identifier}})|(\*))\s*(?=[~^$*=|\]])'
@@ -816,6 +828,27 @@ contexts:
           scope: punctuation.definition.string.css
           pop: true
         - include: escape
+
+  supports-condition:
+    - match: \)
+      scope: punctuation.section.supports-condition.css
+      pop: true
+    - include: comment
+    - include: supports-condition-parenthesized
+    - match: \b(?:or|not|and)\b
+      scope: keyword.operator.logic.supports.css
+    - include: property-name-illegal-webkit
+    - include: property-name-illegal-moz
+    - include: property-name-illegal-ms
+    - include: property-name-illegal
+    - include: property-name
+
+  supports-condition-parenthesized:
+    - match: \(
+      scope: punctuation.section.supports-condition.css
+      push: supports-condition
+    - match: \)
+      scope: punctuation.section.supports-condition.css invalid.illegal.stray-paren-end.css
 
   time:
     - match: '({{number}})(m?s)|({{zero}})'
