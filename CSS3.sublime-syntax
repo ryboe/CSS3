@@ -47,6 +47,7 @@ contexts:
     - include: at-namespace
     - include: at-page
     - include: at-supports
+    - include: at-viewport
 
     # property list
     - match: '{'
@@ -222,6 +223,12 @@ contexts:
           pop: true
         - include: comment
         - include: supports-condition-parenthesized
+
+  at-viewport:
+    - match: (@)(?:-ms-)?viewport\b
+      scope: keyword.control.at-rule.supports.css
+      captures:
+        1: punctuation.definition.keyword.css
 
   attribute-name:
     - match: '(?<=\[)\s*(?:(?:({{identifier}})|(\*))?\s*(\|))?\s*(?:({{identifier}})|(\*))\s*(?=[~^$*=|\]])'
