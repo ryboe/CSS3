@@ -41,6 +41,7 @@ contexts:
     - include: at-counter-style
     - include: at-font-face
     - include: at-font-feature-values
+    - include: at-font-variant-alternates
     - include: at-import
     - include: at-keyframes
     - include: at-media
@@ -82,7 +83,6 @@ contexts:
     - include: selector-combinator
     - include: selector-page-margin
     - include: selector-keyframes
-    - include: selector-at-keyword
     - include: selector-custom-element
 
   # NOTE: deviates from spec by defining N as 'n', not
@@ -149,6 +149,12 @@ contexts:
           pop: true
         - include: comment
         - include: identifier
+
+  at-font-variant-alternates:
+    - match: (@)(?:swash|stylistic|styleset|ornaments|character-variant|annotation)\b
+      scope: keyword.control.at-rule.font-variant-alternates.css
+      captures:
+        1: punctuation.definition.keyword.css
 
   at-import:
     - match: (@)import\b
@@ -463,12 +469,6 @@ contexts:
       scope: punctuation.terminator.rule.css
       pop: true
 
-  selector-at-keyword:
-    - match: '(@){{identifier}}{{end_selector}}'
-      scope: meta.selector.css keyword.control.at-keyword.css
-      captures:
-        1: punctuation.definition.keyword.css
-
   selector-attribute:
     - match: '\['
       scope: meta.selector.css punctuation.section.attribute.css
@@ -501,7 +501,7 @@ contexts:
     # TODO: can these have namespace prefixes?
     # NOTE: deviates from spec. new ST regex engine doesn't support all
     # unicode char classes
-    - match: '\b[\p{Ll}_][\p{Ll}\d._-]*-[\p{Ll}\d._-]*{{end_selector}}'
+    - match: '(?<!-)\b[\p{Ll}_][\p{Ll}\d._-]*-[\p{Ll}\d._-]*{{end_selector}}'
       # custom element must contain hyphen '-'
       scope:  meta.selector.css entity.name.tag.custom.css invalid.deprecated.css  # DEBUG
 
@@ -676,7 +676,6 @@ contexts:
         - include: selector-attribute
         - include: selector-combinator
         - include: selector-keyframes
-        - include: selector-at-keyword
         - include: selector-custom-element
     - include: stray-paren-end-function
 
@@ -721,7 +720,6 @@ contexts:
         - include: selector-attribute
         - include: selector-combinator
         - include: selector-keyframes
-        - include: selector-at-keyword
         - include: selector-custom-element
     - include: stray-paren-end-function
 
