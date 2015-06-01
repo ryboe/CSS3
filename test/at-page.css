@@ -27,7 +27,7 @@ margin-top: 10cm; /* Top margin on first page 10cm */
 @page :right {
   @top-center { content: "Preliminary edition"; }
   @bottom-center { content: counter(page); }
-  @bulshit {}
+  @bullshit {}
 }
 
 @page {  }
