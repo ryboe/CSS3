@@ -28,7 +28,7 @@ variables:
   url_char: '[a-zA-Z0-9\-\._~:/\?#\[\]''@!$&()\*\+\%,;=]'
   whitespace: '[ \t\n]'
   zero: \b0\b
-  zero_to_hundred: (?:100|\d\d?)(?:\.\d+)?
+  zero_to_hundred: (?<!\d)(?:100|\d\d?)(?:\.\d+)?|\.\d+
 
 contexts:
   main:
@@ -249,6 +249,14 @@ contexts:
         4: entity.other.attribute-name.css
         5: entity.other.attribute-name.wildcard.css
 
+  color-named:
+    - match: \b(?:yellowgreen|yellow|whitesmoke|white|wheat|violet|turquoise|transparent|tomato|thistle|teal|tan|steelblue|springgreen|snow|slategrey|slategray|slateblue|skyblue|silver|sienna|seashell|seagreen|sandybrown|salmon|saddlebrown|royalblue|rosybrown|red|rebeccapurple|purple|powderblue|plum|pink|peru|peachpuff|papayawhip|palevioletred|paleturquoise|palegreen|palegoldenrod|orchid|orangered|orange|olivedrab|olive|oldlace|navy|navajowhite|moccasin|mistyrose|mintcream|midnightblue|mediumvioletred|mediumturquoise|mediumspringgreen|mediumslateblue|mediumseagreen|mediumpurple|mediumorchid|mediumblue|mediumaquamarine|maroon|magenta|linen|limegreen|lime|lightyellow|lightsteelblue|lightslategrey|lightslategray|lightskyblue|lightseagreen|lightsalmon|lightpink|lightgrey|lightgreen|lightgray|lightgoldenrodyellow|lightcyan|lightcoral|lightblue|lemonchiffon|lawngreen|lavenderblush|lavender|khaki|ivory|indigo|indianred|hotpink|honeydew|grey|greenyellow|green|gray|goldenrod|gold|ghostwhite|gainsboro|fuchsia|forestgreen|floralwhite|firebrick|dodgerblue|dimgrey|dimgray|deepskyblue|deeppink|darkviolet|darkturquoise|darkslategrey|darkslategray|darkslateblue|darkseagreen|darksalmon|darkred|darkorchid|darkorange|darkolivegreen|darkmagenta|darkkhaki|darkgrey|darkgreen|darkgray|darkgoldenrod|darkcyan|darkblue|cyan|currentColor|currentcolor|crimson|cornsilk|cornflowerblue|coral|chocolate|chartreuse|cadetblue|burlywood|brown|blueviolet|blue|blanchedalmond|black|bisque|beige|azure|aquamarine|aqua|antiquewhite|aliceblue)\b
+      scope: support.constant.color.css
+
+  color-named-deprecated:
+    - match: \b(?:WindowText|WindowFrame|Window|ThreeDShadow|ThreeDLightShadow|ThreeDHighlight|ThreeDFace|ThreeDDarkShadow|Scrollbar|MenuText|Menu|InfoText|InfoBackground|InactiveCaptionText|InactiveCaption|InactiveBorder|HighlightText|Highlight|GrayText|CaptionText|ButtonText|ButtonShadow|ButtonHighlight|ButtonFace|Background|AppWorkspace|ActiveCaption|ActiveBorder)\b
+      scope: support.constant.color.css invalid.deprecated.css
+
   comment:
     - match: /\*
       push:
@@ -313,7 +321,158 @@ contexts:
         - meta_content_scope: meta.function.cross-fade.css
         - include: paren-end-function
         - include: comment
-        # TODO: insert cross-fade color values here
+        - include: function-hwb
+        - include: function-device-cmyk
+        - include: function-color
+        - include: function-rgb
+        - include: function-rgba
+        # TODO: finish these
+    - include: stray-paren-end-function
+
+  function-color:
+    - match: \b(color)(\()
+      captures:
+        1: support.function.color.css
+        2: punctuation.section.function.css
+      push:
+        - meta_content_scope: meta.function.color.css
+        - include: paren-end-function
+        - include: comment
+        - include: important
+        - include: all
+        - include: function-attr
+        - include: function-toggle
+        - include: function-var
+        - include: function-gray
+        - include: color-named-deprecated
+        - include: color-named
+        - include: function-hsla
+        - include: function-rgb
+        - include: function-rgba
+        - include: function-hwb
+        - include: function-device-cmyk
+        - include: function-color
+        - include: hex-color
+    - include: stray-paren-end-function
+
+  function-device-cmyk:
+    - match: \b(device-cmyk)(\()
+      captures:
+        1: support.function.device-cmyk.css
+        2: punctuation.section.function.css
+      push:
+        - meta_content_scope: meta.function.device-cmyk.css
+        - include: paren-end-function
+        - include: comment
+        - include: function-rgb
+        - include: function-rgba
+        - include: function-hsla
+        - include: function-hwb
+        - include: function-gray
+        - include: device-cmyk
+        - include: function-color
+        - include: color-named-deprecated
+        - include: color-named
+        - include: hex-color
+        - include: percentage-zero-to-hundred
+        - include: number-zero-to-255
+    - include: stray-paren-end-function
+
+  function-gray:
+    - match: \b(gray)(\()
+      captures:
+        1: support.function.gray.css
+        2: punctuation.section.function.css
+      push:
+        - meta_content_scope: meta.function.gray.css
+        - include: paren-end-function
+        - include: comment
+        - include: percentage
+        - include: number
+    - include: stray-paren-end-function
+
+  function-hwb:
+    - match: \b(hwb)(\()
+      captures:
+        1: support.function.hwb.css
+        2: punctuation.section.function.css
+      push:
+        - meta_content_scope: meta.function.hwb.css
+        - include: paren-end-function
+        - include: comment
+        - match: \b(?:yellowish|yellow|reddish|red|purplish|purple|orangish|orange|greenish|green|bluish|blue)\b
+          scope: support.constant.property-value.css
+        - include: function-calc
+        - include: angle
+        - include: percentage-zero-to-hundred
+        - include: number
+    - include: stray-paren-end-function
+
+  function-hsla:
+    - match: \b(hsla?)(\()
+      captures:
+        1: support.function.hsl.css
+        2: punctuation.section.function.css
+      push:
+        - meta_content_scope: meta.function.hsl.css
+        - include: paren-end-function
+        - include: comment
+        # func has higher precedence because of collisions between funcs and
+        # keywords with same name, e.g. reddish() and reddish
+        - include: function-splash-hue
+        - match: \b(?:yellowish|yellow|reddish|red|purplish|purple|orangish|orange|greenish|green|bluish|blue)\b
+          scope: support.constant.property-value.css
+        - include: function-calc
+        - include: percentage-zero-to-hundred
+        - include: angle
+        - include: number
+    - include: stray-paren-end-function
+
+  function-rgb:
+    - match: \b(rgb)(\()
+      captures:
+        1: support.function.rgb.css
+        2: punctuation.section.function.css
+      push:
+        - meta_content_scope: meta.function.rgb.css
+        - include: paren-end-function
+        - include: comment
+        - include: function-calc
+        # operators are present when rgb is used as <color-adjuster> value,
+        # e.g. inside color()
+        - match: '(?<=[\(\s])[\+\-\*]'
+          scope: keyword.operator.arithmetic.css
+        - include: percentage
+        - include: number-zero-to-255
+    - include: stray-paren-end-function
+
+  function-rgba:
+    - match: \b(rgba)(\()
+      captures:
+        1: support.function.rgba.css
+        2: punctuation.section.function.css
+      push:
+        - meta_content_scope: meta.function.rgba.css
+        - include: paren-end-function
+        - include: comment
+        - match: '(?<=[\(\s])[\+\-\*]'
+          scope: keyword.operator.arithmetic.css
+        - include: percentage
+        - include: number-zero-to-255
+        - include: number-zero-to-one
+    - include: stray-paren-end-function
+
+  function-splash-hue:
+    - match: \b(bluish|greenish|orangish|purplish|reddish|yellowish)(\()
+      captures:
+        1: support.function.splash-hue.css
+        2: punctuation.section.function.css
+      push:
+        - meta_content_scope: meta.function.splash-hue.css
+        - include: paren-end-function
+        - include: comment
+        - include: function-calc
+        - include: percentage-zero-to-hundred
     - include: stray-paren-end-function
 
   # 2015-04-22 at risk
@@ -341,6 +500,12 @@ contexts:
         - include: property-name-custom
         # TODO: include all value rules here. var() can contain any value
     - include: stray-paren-end-function
+
+  hex-color:
+    - match: '(#)(?:\h{8}|\h{6}|\h{3,4})'
+      scope: constant.other.color.rgb-value.css
+      captures:
+        1: punctuation.definition.constant.css
 
   identifier:
     - match: '{{identifier}}'
@@ -465,6 +630,14 @@ contexts:
     - match: '{{number}}'
       scope: constant.numeric.css
 
+  number-zero-to-one:
+    - match: '0(?:\.\d+)?|1(?:\.0+)?|\.\d+'
+      scope: constant.numeric.css
+
+  number-zero-to-255:
+    - match: '\b(?:(?:2[0-5][0-5]|1\d\d|[1-9]\d|\d)(?:\.\d+)?|\.\d+)\b'
+      scope: constant.numeric.css
+
   paren-end-function:
     - match: \)
       scope: punctuation.section.function.css
@@ -472,6 +645,14 @@ contexts:
 
   percentage:
     - match: '({{number}})(%)|({{zero}})'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+        3: constant.numeric.css
+
+  percentage-zero-to-hundred:
+    # percentage value between 0 and 100%
+    - match: '({{zero_to_hundred}})(%)|{{zero}}'
       captures:
         1: constant.numeric.css
         2: keyword.other.unit.css
@@ -966,3 +1147,4 @@ contexts:
         - include: function-attr
         - include: function-toggle
         - include: function-var
+        - include: function-cross-fade
