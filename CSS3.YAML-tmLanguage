@@ -2931,6 +2931,8 @@ repository:
     patterns:
     - include: '#comment-block'
     - include: '#type-function-calc'
+    # operators are present when rgb is used as <color-adjuster> value,
+    # e.g. inside color()
     - name: keyword.operator.arithmetic.css
       match: (?<=[\(\s])[\+\-\*]
     - include: '#type-percentage'
