@@ -171,7 +171,7 @@ contexts:
         - include: comment
         - match: \band\b
           scope: keyword.operator.logic.css
-        - include: url
+        - include: function-url
         - include: media-type-deprecated
         - include: media-type
         - include: string-double
@@ -204,7 +204,7 @@ contexts:
       push:
         - include: rule-end
         - include: comment
-        - include: url
+        - include: function-url
         - include: string-double
         - include: string-single
         - match: (?<=\s)--(?=\s)
@@ -294,6 +294,32 @@ contexts:
         # TODO: match attr arguments
     - include: stray-paren-end-function
 
+  function-blur:
+    - match: \b(blur)(\()
+      captures:
+        1: support.function.blur.css
+        2: punctuation.section.function.css
+      push:
+        - meta_content_scope: meta.function.blur.css
+        - include: paren-end-function
+        - include: comment
+        - include: function-calc
+        - include: length-non-negative
+    - include: stray-paren-end-function
+
+  function-brightness-contrast-grayscale-invert-opacity-saturate-sepia:
+    - match: \b(brightness|contrast|grayscale|invert|opacity|saturate|sepia)(\()
+      captures:
+        1: support.function.filter-shorthand.css
+        2: punctuation.section.function.css
+      push:
+        - meta_content_scope: meta.function.filter-shorthand.css
+        - include: paren-end-function
+        - include: comment
+        - include: function-calc
+        - include: percentage-nonneg
+        - include: number-nonneg
+
   function-calc:
     - match: \b(calc)(\()
       captures:
@@ -324,8 +350,15 @@ contexts:
         - include: function-hwb
         - include: function-device-cmyk
         - include: function-color
-        - include: function-rgb
         - include: function-rgba
+        - include: function-rgb
+        - include: color-named-deprecated
+        - include: color-named
+        - include: function-hsla
+        - include: function-rgba
+        - include: function-cross-fade
+        - include: function-element
+        - include: function-filter
         # TODO: finish these
     - include: stray-paren-end-function
 
@@ -347,11 +380,39 @@ contexts:
         - include: color-named-deprecated
         - include: color-named
         - include: function-hsla
-        - include: function-rgb
         - include: function-rgba
+        - include: function-rgb
         - include: function-hwb
         - include: function-device-cmyk
         - include: function-color
+        - include: hex-color
+        # TODO: finish these
+    - include: stray-paren-end-function
+
+  function-conic-gradient:
+    - match: \b((?:repeating-)?conic-gradient)(\()
+      captures:
+        1: support.function.conic-gradient.css
+        2: punctuation.section.function.css
+      push:
+        - meta_content_scope: meta.function.conic-gradient.css
+        - include: paren-end-function
+        - include: comment
+        - match: \b(top|right|left|center|bottom|at)\b
+          scope: support.constant.property-value.css
+        - include: function-hwb
+        - include: function-device-cmyk
+        - include: function-color
+        - include: function-gray
+        - include: color-named-deprecated
+        - include: color-named
+        - include: function-hsla
+        - include: function-rgba
+        - include: function-rgb
+        - include: function-calc
+        - include: angle
+        - include: percentage
+        - include: length
         - include: hex-color
     - include: stray-paren-end-function
 
@@ -364,18 +425,77 @@ contexts:
         - meta_content_scope: meta.function.device-cmyk.css
         - include: paren-end-function
         - include: comment
-        - include: function-rgb
         - include: function-rgba
+        - include: function-rgb
         - include: function-hsla
         - include: function-hwb
         - include: function-gray
-        - include: device-cmyk
+        - include: function-device-cmyk
         - include: function-color
         - include: color-named-deprecated
         - include: color-named
         - include: hex-color
         - include: percentage-zero-to-hundred
         - include: number-zero-to-255
+    - include: stray-paren-end-function
+
+  function-drop-shadow:
+    - match: \b(drop-shadow)(\()
+      captures:
+        1: support.function.drop-shadow.css
+        2: punctuation.section.function.css
+      push:
+        - meta_content_scope: meta.function.drop-shadow.css
+        - include: paren-end-function
+        - include: comment
+        - include: function-hwb
+        - include: function-device-cmyk
+        - include: function-color
+        - include: function-gray
+        - include: color-named-deprecated
+        - include: color-named
+        - include: function-hsla
+        - include: function-rgba
+        - include: function-rgb
+        - include: function-calc
+        - include: length
+        - include: hex-color
+    - include: stray-paren-end-function
+
+  function-element:
+    - match: \b(element)(\()
+      captures:
+        1: support.function.element.css
+        2: punctuation.section.function.css
+      push:
+        - meta_content_scope: meta.function.element.css
+        - include: paren-end-function
+        - include: comment
+        - match: '(#){{identifier}}'
+          scope: entity.other.attribute-name.id.css
+          captures:
+            1: punctuation.definition.entity.css
+    - include: stray-paren-end-function
+
+  function-filter:
+    - match: \b(filter)(\()
+      captures:
+        1: support.function.filter.css
+        2: punctuation.section.function.css
+      push:
+        - meta_content_scope: meta.function.filter.css
+        - include: paren-end-function
+        - include: comment
+        - include: function-cross-fade
+        - include: function-element
+        - include: function-filter
+        - include: function-image
+        - include: function-image-set
+        - include: function-blur
+        - include: function-brightness-contrast-grayscale-invert-opacity-saturate-sepia
+        - include: function-drop-shadow
+        - include: function-hue-rotate
+        - include: function-url
     - include: stray-paren-end-function
 
   function-gray:
@@ -388,23 +508,6 @@ contexts:
         - include: paren-end-function
         - include: comment
         - include: percentage
-        - include: number
-    - include: stray-paren-end-function
-
-  function-hwb:
-    - match: \b(hwb)(\()
-      captures:
-        1: support.function.hwb.css
-        2: punctuation.section.function.css
-      push:
-        - meta_content_scope: meta.function.hwb.css
-        - include: paren-end-function
-        - include: comment
-        - match: \b(?:yellowish|yellow|reddish|red|purplish|purple|orangish|orange|greenish|green|bluish|blue)\b
-          scope: support.constant.property-value.css
-        - include: function-calc
-        - include: angle
-        - include: percentage-zero-to-hundred
         - include: number
     - include: stray-paren-end-function
 
@@ -426,6 +529,148 @@ contexts:
         - include: percentage-zero-to-hundred
         - include: angle
         - include: number
+    - include: stray-paren-end-function
+
+  function-hue-rotate:
+    - match: \b(hue-rotate)(\()
+      captures:
+        1: support.function.hue-rotate.css
+        2: punctuation.section.function.css
+      push:
+        - meta_content_scope: meta.function.hue-rotate.css
+        - include: paren-end-function
+        - include: comment
+        - include: function-calc
+        - include: angle
+    - include: stray-paren-end-function
+
+  function-hwb:
+    - match: \b(hwb)(\()
+      captures:
+        1: support.function.hwb.css
+        2: punctuation.section.function.css
+      push:
+        - meta_content_scope: meta.function.hwb.css
+        - include: paren-end-function
+        - include: comment
+        - match: \b(?:yellowish|yellow|reddish|red|purplish|purple|orangish|orange|greenish|green|bluish|blue)\b
+          scope: support.constant.property-value.css
+        - include: function-calc
+        - include: angle
+        - include: percentage-zero-to-hundred
+        - include: number
+    - include: stray-paren-end-function
+
+  function-image:
+    - match: \b(image)(\()
+      captures:
+        1: support.function.image.css
+        2: punctuation.section.function.css
+      push:
+        - meta_content_scope: meta.function.image.css
+        - include: paren-end-function
+        - include: comment
+        - match: \b(?:rtl|ltr)\b
+          scope: support.constant.property-value.css
+        - include: function-hwb
+        - include: function-device-cmyk
+        - include: function-color
+        - include: function-gray
+        - include: color-named-deprecated
+        - include: color-named
+        - include: function-hsla
+        - include: function-rgba
+        - include: function-rgb
+        - include: function-url
+        - include: hex-color
+        - include: string-double
+        - include: string-single
+    - include: stray-paren-end-function
+
+  function-image-set:
+    - match: \b(image-set)(\()
+      captures:
+        1: support.function.image-set.css
+        2: punctuation.section.function.css
+      push:
+        - meta_content_scope: meta.function.image-set.css
+        - include: paren-end-function
+        - include: comment
+        - include: function-hwb
+        - include: function-device-cmyk
+        - include: function-color
+        - include: function-gray
+        - include: color-named-deprecated
+        - include: color-named
+        - include: function-cross-fade
+        - include: function-element
+        - include: function-filter
+        - include: function-image
+        - include: function-hsla
+        - include: function-rgba
+        - include: function-rgb
+        - include: function-image-set
+        - include: function-conic-gradient
+        - include: function-linear-gradient
+        - include: function-radial-gradient
+        - include: function-url
+        - include: hex-color
+        - include: resolution
+        - include: string-double
+        - include: string-single
+    - include: stray-paren-end-function
+
+  function-linear-gradient:
+    - match: \b((?:repeating-)?linear-gradient)(\()
+      captures:
+        1: support.function.linear-gradient.css
+        2: punctuation.section.function.css
+      push:
+        - meta_content_scope: meta.function.linear-gradient.css
+        - include: paren-end-function
+        - include: comment
+        - match: \b(?:top|to|right|left|bottom)\b
+          scope: support.constant.property-value.css
+        - include: function-hwb
+        - include: function-device-cmyk
+        - include: function-color
+        - include: function-gray
+        - include: color-named-deprecated
+        - include: color-named
+        - include: function-hsla
+        - include: function-rgba
+        - include: function-rgb
+        - include: function-calc
+        - include: percentage
+        - include: angle
+        - include: length
+        - include: hex-color
+    - include: stray-paren-end-function
+
+  function-radial-gradient:
+    - match: \b((?:repeating-)?radial-gradient)(\()
+      captures:
+        1: support.function.radial-gradient.css
+        2: punctuation.section.function.css
+      push:
+        - meta_content_scope: meta.function.radial-gradient.css
+        - include: paren-end-function
+        - include: comment
+        - match: \b(top|right|left|farthest-side|farthest-corner|ellipse|closest-side|closest-corner|circle|center|bottom|at)\b
+          scope: support.constant.property-value.css
+        - include: function-hwb
+        - include: function-device-cmyk
+        - include: function-color
+        - include: function-gray
+        - include: color-named-deprecated
+        - include: color-named
+        - include: function-hsla
+        - include: function-rgba
+        - include: function-rgb
+        - include: function-calc
+        - include: percentage
+        - include: length
+        - include: hex-color
     - include: stray-paren-end-function
 
   function-rgb:
@@ -487,6 +732,19 @@ contexts:
         - include: comment
         # TODO: match toggle arguments
     - include: stray-paren-end-function
+
+  function-url:
+    # per RFC 3986, the only characters permitted in a URL match this regex:
+    # [a-zA-Z0-9\-\._~:/\?#\[\]@!$&'()\*\+\%,;=]*
+    # '' is how you escape a single ' in YAML
+    - match: '\b(url)(\()\s*(?:("{{url_char}}*")|(''{{url_char}}*'')|({{url_char}}+))\s*(\))'
+      captures:
+        1: support.function.url.css
+        2: punctuation.section.function.css
+        3: string.quoted.double.css
+        4: string.quoted.single.css
+        5: string.unquoted.url.css
+        6: punctuation.section.function.css
 
   function-var:
     - match: \b(var)(\()
@@ -630,6 +888,10 @@ contexts:
     - match: '{{number}}'
       scope: constant.numeric.css
 
+  number-nonneg:
+    - match: '{{number_nonneg}}'
+      scope: constant.numeric.css
+
   number-zero-to-one:
     - match: '0(?:\.\d+)?|1(?:\.0+)?|\.\d+'
       scope: constant.numeric.css
@@ -645,6 +907,13 @@ contexts:
 
   percentage:
     - match: '({{number}})(%)|({{zero}})'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+        3: constant.numeric.css
+
+  percentage-nonneg:
+    - match: '({{number_nonneg}})(%)|({{zero}})'
       captures:
         1: constant.numeric.css
         2: keyword.other.unit.css
@@ -1119,19 +1388,6 @@ contexts:
   unit:
     - match: \b(?:vw|vmin|vmax|vh|url|time|string|s|rem|rad|px|pt|pc|number|ms|mm|length|kHz|integer|in|Hz|grad|frequency|ex|em|deg|color|cm|angle)\b|(%)
       scope: support.constant.unit.css
-
-  url:
-    # per RFC 3986, the only characters permitted in a URL match this regex:
-    # [a-zA-Z0-9\-\._~:/\?#\[\]@!$&'()\*\+\%,;=]*
-    # '' is how you escape a single ' in YAML
-    - match: '\b(url)(\()\s*(?:("{{url_char}}*")|(''{{url_char}}*'')|({{url_char}}+))\s*(\))'
-      captures:
-        1: support.function.url.css
-        2: punctuation.section.function.css
-        3: string.quoted.double.css
-        4: string.quoted.single.css
-        5: string.unquoted.url.css
-        6: punctuation.section.function.css
 
   value-end:
     - match: '(?=[;)}])'
