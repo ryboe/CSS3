@@ -12,23 +12,25 @@ variables:
   # should reduce cases of selector-custom-element matching property names.
   end_selector: '(?=[^;]*[\n{])'
   escape: '\\(?:[^\n\r\f\h]|\h{1,6}{{whitespace}}?)'
+  exponent: '[eE][+-]?\d+'
   ident_char: '[-a-zA-Z\d_\\\p{^ASCII}]'
   ident_start: '-?[a-zA-Z_\\\p{^ASCII}]'
   identifier: '{{ident_start}}{{ident_char}}*'
   integer: '[+-]?\d+'
   integer_nonneg: \+?\d+
   integer_pos: '\+?(?:[1-9]\d+|[1-9])'
+  integer_zero_to_255: '\b(?:2[0-5][0-5]|1\d\d|[1-9]\d|\d)\b'
   length_unit: r?em|ex|ch|vw|vh|vmin|vmax|cm|mm|q|in|pc|pt|px
-  number: '[+-]?(?:\d+\.\d+|\.\d+|\d+)(?:[eE][+-]?\d+)?'
-  number_nonneg: '\+?(?:\d+\.\d+|\.\d+|\d+)(?:[eE][+-]?\d+)?'
-  number_pos: '\+?(?:\d+\.\d*[1-9]\d*|\.\d*[1-9]\d*|[1-9]\d*)(?:[eE][+-]?\d+)?'
+  number: '[+-]?(?:\d+\.\d+|\.\d+|\d+)(?:{{exponent}})?'
+  number_nonneg: '\+?(?:\d+\.\d+|\.\d+|\d+)(?:{{exponent}})?'
+  number_pos: '\+?(?:\d+\.\d*[1-9]\d*|\.\d*[1-9]\d*|[1-9]\d*)(?:{{exponent}})?'
   ratio: '({{integer_pos}})\s*\/\s*({{integer_pos}})'
   resolution_unit: dppx|dpi|dpcm
   # '' is how you escape a single ' in YAML
   url_char: '[a-zA-Z0-9\-\._~:/\?#\[\]''@!$&()\*\+\%,;=]'
   whitespace: '[ \t\n]'
   zero: \b0\b
-  zero_to_hundred: (?<!\d)(?:100|\d\d?)(?:\.\d+)?|\.\d+
+  zero_to_hundred: \b(?:100|\d\d?)(?:\.\d+)?|\.\d+
 
 contexts:
   main:
@@ -768,7 +770,8 @@ contexts:
       push:
         - meta_content_scope: meta.function.rgb.css
         - include: paren-end-function
-        - include: comment
+        - match: ','
+          set: function-rgb-component1
         - include: function-calc
         # operators are present when rgb is used as <color-adjuster> value,
         # e.g. inside color()
@@ -776,6 +779,24 @@ contexts:
         - include: percentage
         - include: number-zero-to-255
     - include: stray-paren-end-function
+
+  function-rgb-component1:
+    - match: ','
+      set: function-rgb-component2
+    - include: paren-end-function
+    - include: function-calc
+    - include: color-adjuster-operator
+    - include: percentage
+    - include: number-zero-to-255
+
+  function-rgb-component2:
+    - include: paren-end-function
+    - match: ','
+      scope: invalid.illegal.stray-comma.css
+    - include: function-calc
+    - include: color-adjuster-operator
+    - include: percentage
+    - include: number-zero-to-255
 
   function-rgba:
     - match: \b(rgba)(\()
@@ -869,6 +890,10 @@ contexts:
 
   integer-positive:
     - match: '{{integer_pos}}'
+      scope: constant.numeric.css
+
+  integer-zero-to-255:
+    - match: '{{integer_zero_to_255}}'
       scope: constant.numeric.css
 
   length:
@@ -983,7 +1008,7 @@ contexts:
       scope: constant.numeric.css
 
   number-zero-to-255:
-    - match: '\b(?:(?:2[0-5][0-5]|1\d\d|[1-9]\d|\d)(?:\.\d+)?|\.\d+)\b'
+    - match: '\b(?:(?:{{integer_zero_to_255}})(?:\.\d+)?|\.\d+)\b'
       scope: constant.numeric.css
 
   paren-end-function:
