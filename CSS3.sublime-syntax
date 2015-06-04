@@ -249,6 +249,10 @@ contexts:
         4: entity.other.attribute-name.css
         5: entity.other.attribute-name.wildcard.css
 
+  color-adjuster-operator:
+    - match: '(?<=[\(\s])[\+\-\*]'
+      scope: keyword.operator.arithmetic.css
+
   color-named:
     - match: \b(?:yellowgreen|yellow|whitesmoke|white|wheat|violet|turquoise|transparent|tomato|thistle|teal|tan|steelblue|springgreen|snow|slategrey|slategray|slateblue|skyblue|silver|sienna|seashell|seagreen|sandybrown|salmon|saddlebrown|royalblue|rosybrown|red|rebeccapurple|purple|powderblue|plum|pink|peru|peachpuff|papayawhip|palevioletred|paleturquoise|palegreen|palegoldenrod|orchid|orangered|orange|olivedrab|olive|oldlace|navy|navajowhite|moccasin|mistyrose|mintcream|midnightblue|mediumvioletred|mediumturquoise|mediumspringgreen|mediumslateblue|mediumseagreen|mediumpurple|mediumorchid|mediumblue|mediumaquamarine|maroon|magenta|linen|limegreen|lime|lightyellow|lightsteelblue|lightslategrey|lightslategray|lightskyblue|lightseagreen|lightsalmon|lightpink|lightgrey|lightgreen|lightgray|lightgoldenrodyellow|lightcyan|lightcoral|lightblue|lemonchiffon|lawngreen|lavenderblush|lavender|khaki|ivory|indigo|indianred|hotpink|honeydew|grey|greenyellow|green|gray|goldenrod|gold|ghostwhite|gainsboro|fuchsia|forestgreen|floralwhite|firebrick|dodgerblue|dimgrey|dimgray|deepskyblue|deeppink|darkviolet|darkturquoise|darkslategrey|darkslategray|darkslateblue|darkseagreen|darksalmon|darkred|darkorchid|darkorange|darkolivegreen|darkmagenta|darkkhaki|darkgrey|darkgreen|darkgray|darkgoldenrod|darkcyan|darkblue|cyan|currentColor|currentcolor|crimson|cornsilk|cornflowerblue|coral|chocolate|chartreuse|cadetblue|burlywood|brown|blueviolet|blue|blanchedalmond|black|bisque|beige|azure|aquamarine|aqua|antiquewhite|aliceblue)\b
       scope: support.constant.color.css
@@ -371,22 +375,93 @@ contexts:
         - meta_content_scope: meta.function.color.css
         - include: paren-end-function
         - include: comment
-        - include: important
-        - include: all
-        - include: function-attr
-        - include: function-toggle
-        - include: function-var
+        - include: function-hwb
+        - include: function-hwb
+        - include: function-device-cmyk
+        - include: function-color
+        - include: function-color-adjuster-blend
+        - include: function-color-adjuster-hsl
+        - include: function-color-adjuster-hue
+        - include: function-color-adjuster-rgba
+        - include: function-color-adjuster-tint-shade
+        - include: function-contrast
+        - include: function-splash-hue
+        # TODO: finish these
+    - include: stray-paren-end-function
+
+  function-color-adjuster-blend:
+    - match: \b(blenda?)(\()
+      captures:
+        1: support.function.color-adjuster-blend.css
+        2: punctuation.section.function.css
+      push:
+        - meta_content_scope: meta.function.color-adjuster-blend.css
+        - include: paren-end-function
+        - include: comment
+        - match: \b(?:rgb|hwb|hsl)\b
+          scope: support.constant.property-value.css
+        - include: function-hwb
+        - include: function-device-cmyk
+        - include: function-color
         - include: function-gray
         - include: color-named-deprecated
         - include: color-named
         - include: function-hsla
         - include: function-rgba
         - include: function-rgb
-        - include: function-hwb
-        - include: function-device-cmyk
-        - include: function-color
+        - include: percentage
         - include: hex-color
-        # TODO: finish these
+    - include: stray-paren-end-function
+
+  function-color-adjuster-hsl:
+    - match: \b(whiteness|w|saturation|s|lightness|l|blackness|b)(\()
+      captures:
+        1: support.function.color-adjuster-hsl.css
+        2: punctuation.section.function.css
+      push:
+        - meta_content_scope: meta.function.color-adjuster-hsl.css
+        - include: paren-end-function
+        - include: comment
+        - include: percentage
+    - include: stray-paren-end-function
+
+  function-color-adjuster-hue:
+    - match: \b(hue|h)(\()
+      captures:
+        1: support.function.color-adjuster-hue.css
+        2: punctuation.section.function.css
+      push:
+        - meta_content_scope: meta.function.color-adjuster-hue.css
+        - include: paren-end-function
+        - include: comment
+        - include: color-adjuster-operator
+        - include: angle
+    - include: stray-paren-end-function
+
+  function-color-adjuster-rgba:
+    - match: \b(red|green|blue|alpha|a)(\()
+      captures:
+        1: support.function.color-adjuster-rgba.css
+        2: punctuation.section.function.css
+      push:
+        - meta_content_scope: meta.function.color-adjuster-rgba.css
+        - include: paren-end-function
+        - include: comment
+        - include: color-adjuster-operator
+        - include: percentage
+        - include: number
+    - include: stray-paren-end-function
+
+  function-color-adjuster-tint-shade:
+    - match: \b(tint|shade)(\()
+      captures:
+        1: support.function.color-adjuster-tint-shade.css
+        2: punctuation.section.function.css
+      push:
+        - meta_content_scope: meta.function.color-adjuster-tint-shade.css
+        - include: paren-end-function
+        - include: comment
+        - include: percentage-zero-to-hundred
     - include: stray-paren-end-function
 
   function-conic-gradient:
@@ -414,6 +489,18 @@ contexts:
         - include: percentage
         - include: length
         - include: hex-color
+    - include: stray-paren-end-function
+
+  function-contrast:
+    - match: \b(contrast)(\()
+      captures:
+        1: support.function.contrast-adjuster.css
+        2: punctuation.section.function.css
+      push:
+        - meta_content_scope: meta.function.contrast-adjuster.css
+        - include: paren-end-function
+        - include: comment
+        - include: percentage-zero-to-hundred
     - include: stray-paren-end-function
 
   function-device-cmyk:
@@ -685,8 +772,7 @@ contexts:
         - include: function-calc
         # operators are present when rgb is used as <color-adjuster> value,
         # e.g. inside color()
-        - match: '(?<=[\(\s])[\+\-\*]'
-          scope: keyword.operator.arithmetic.css
+        - include: color-adjuster-operator
         - include: percentage
         - include: number-zero-to-255
     - include: stray-paren-end-function
