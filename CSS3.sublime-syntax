@@ -31,7 +31,7 @@ variables:
   whitespace: '[ \t\n]'
   zero: \b0\b
   zero_to_one: \b0(?:\.\d+)?|1(?:\.0+)?|\.\d+
-  zero_to_hundred: \b(?:100|\d\d?)(?:\.\d+)?|\.\d+
+  zero_to_hundred: '\b(?:100|[1-9]\d|\d)(?:\.\d+)?|\.\d+'
 
 contexts:
   main:
@@ -812,7 +812,7 @@ contexts:
         - include: paren-end-function
         - include: comment
         - include: function-calc
-        - include: percentage-zero-to-hundred
+        - include: percentage-zero-to-hundred-arg
     - include: stray-paren-end-function
 
   # 2015-04-22 at risk
@@ -1046,17 +1046,19 @@ contexts:
 
   percentage-zero-to-hundred:
     # percentage value between 0% and 100%
-    - match: '({{zero_to_hundred}})(%)|{{zero}}'
+    - match: '({{zero_to_hundred}})(%)|({{zero}})'
       captures:
         1: constant.numeric.css
         2: keyword.other.unit.css
+        3: constant.numeric.css
 
   percentage-zero-to-hundred-arg:
     # percentage value between 0 and 100%
-    - match: '({{zero_to_hundred}})(%)|{{zero}}'
+    - match: '({{zero_to_hundred}})(%)|({{zero}})'
       captures:
         1: constant.numeric.css
         2: keyword.other.unit.css
+        3: constant.numeric.css
       push: nothing-else
 
   property-list:
