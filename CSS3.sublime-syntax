@@ -30,6 +30,7 @@ variables:
   url_char: '[a-zA-Z0-9\-\._~:/\?#\[\]''@!$&()\*\+\%,;=]'
   whitespace: '[ \t\n]'
   zero: \b0\b
+  zero_to_one: \b0(?:\.\d+)?|1(?:\.0+)?|\.\d+
   zero_to_hundred: \b(?:100|\d\d?)(?:\.\d+)?|\.\d+
 
 contexts:
@@ -357,7 +358,6 @@ contexts:
         - include: function-device-cmyk
         - include: function-color
         - include: function-rgba
-        - include: function-rgb
         - include: color-named-deprecated
         - include: color-named
         - include: function-hsla
@@ -410,7 +410,6 @@ contexts:
         - include: color-named
         - include: function-hsla
         - include: function-rgba
-        - include: function-rgb
         - include: percentage
         - include: hex-color
     - include: stray-paren-end-function
@@ -485,7 +484,6 @@ contexts:
         - include: color-named
         - include: function-hsla
         - include: function-rgba
-        - include: function-rgb
         - include: function-calc
         - include: angle
         - include: percentage
@@ -515,7 +513,6 @@ contexts:
         - include: paren-end-function
         - include: comment
         - include: function-rgba
-        - include: function-rgb
         - include: function-hsla
         - include: function-hwb
         - include: function-gray
@@ -545,7 +542,6 @@ contexts:
         - include: color-named
         - include: function-hsla
         - include: function-rgba
-        - include: function-rgb
         - include: function-calc
         - include: length
         - include: hex-color
@@ -669,7 +665,6 @@ contexts:
         - include: color-named
         - include: function-hsla
         - include: function-rgba
-        - include: function-rgb
         - include: function-url
         - include: hex-color
         - include: string-double
@@ -697,7 +692,6 @@ contexts:
         - include: function-image
         - include: function-hsla
         - include: function-rgba
-        - include: function-rgb
         - include: function-image-set
         - include: function-conic-gradient
         - include: function-linear-gradient
@@ -728,7 +722,6 @@ contexts:
         - include: color-named
         - include: function-hsla
         - include: function-rgba
-        - include: function-rgb
         - include: function-calc
         - include: percentage
         - include: angle
@@ -755,64 +748,59 @@ contexts:
         - include: color-named
         - include: function-hsla
         - include: function-rgba
-        - include: function-rgb
         - include: function-calc
         - include: percentage
         - include: length
         - include: hex-color
     - include: stray-paren-end-function
 
-  function-rgb:
-    - match: \b(rgb)(\()
-      captures:
-        1: support.function.rgb.css
-        2: punctuation.section.function.css
-      push:
-        - meta_content_scope: meta.function.rgb.css
-        - include: paren-end-function
-        - match: ','
-          set: function-rgb-component1
-        - include: function-calc
-        # operators are present when rgb is used as <color-adjuster> value,
-        # e.g. inside color()
-        - include: color-adjuster-operator
-        - include: percentage
-        - include: number-zero-to-255
-    - include: stray-paren-end-function
-
-  function-rgb-component1:
-    - match: ','
-      set: function-rgb-component2
-    - include: paren-end-function
-    - include: function-calc
-    - include: color-adjuster-operator
-    - include: percentage
-    - include: number-zero-to-255
-
-  function-rgb-component2:
-    - include: paren-end-function
-    - match: ','
-      scope: invalid.illegal.stray-comma.css
-    - include: function-calc
-    - include: color-adjuster-operator
-    - include: percentage
-    - include: number-zero-to-255
-
   function-rgba:
-    - match: \b(rgba)(\()
+    - match: \b(rgba?)(\()
       captures:
         1: support.function.rgba.css
         2: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.rgba.css
         - include: paren-end-function
-        - include: comment
-        - match: '(?<=[\(\s])[\+\-\*]'
-          scope: keyword.operator.arithmetic.css
-        - include: percentage
-        - include: number-zero-to-255
-        - include: number-zero-to-one
+        - match: ','
+          set: function-rgba-component1
+        - include: function-calc
+        # operators are present when rgb is used as <color-adjuster> value,
+        # e.g. inside color()
+        - include: color-adjuster-operator
+        - include: percentage-arg
+        - include: number-zero-to-255-arg
     - include: stray-paren-end-function
+
+  function-rgba-component1:
+    - match: ','
+      set: function-rgba-component2
+    - include: paren-end-function
+    - include: function-calc
+    - include: color-adjuster-operator
+    - include: percentage-arg
+    - include: number-zero-to-255-arg
+
+  function-rgba-component2:
+    - match: ','
+      set: function-rgba-component3
+    - include: paren-end-function
+    - include: function-calc
+    - include: color-adjuster-operator
+    - include: percentage-arg
+    - include: number-zero-to-255-arg
+
+  function-rgba-component3:
+    - include: paren-end-function
+    - match: ','
+      scope: invalid.illegal.stray-comma.css
+    - include: function-calc
+    # can't include zero-to-one-arg here because values like 0.1% will not
+    # match as percentage. '0' will match number and ignore rest of literal.
+    - match: '({{zero_to_one}})(?![.%])'
+      scope: constant.numeric.css
+      push: nothing-else
+    - include: percentage-zero-to-hundred-arg
 
   function-splash-hue:
     - match: \b(bluish|greenish|orangish|purplish|reddish|yellowish)(\()
@@ -995,6 +983,12 @@ contexts:
     - match: \b(?:tv|tty|reader|projection|handheld|embossed|braille|aural)\b
       scope: support.constant.media-type.css invalid.deprecated.css
 
+  # consumes all text until until terminator. use when no further text is
+  # expected, e.g. after string arg in url("http://google.com" invalid-text)
+  nothing-else:
+    - match: '(?=[,\);}])'
+      pop: true
+
   number:
     - match: '{{number}}'
       scope: constant.numeric.css
@@ -1004,12 +998,22 @@ contexts:
       scope: constant.numeric.css
 
   number-zero-to-one:
-    - match: '0(?:\.\d+)?|1(?:\.0+)?|\.\d+'
+    - match: '{{zero_to_one}}'
       scope: constant.numeric.css
+
+  number-zero-to-one-arg:
+    - match: '{{zero_to_one}}'
+      scope: constant.numeric.css
+      push: nothing-else
 
   number-zero-to-255:
     - match: '\b(?:(?:{{integer_zero_to_255}})(?:\.\d+)?|\.\d+)\b'
       scope: constant.numeric.css
+
+  number-zero-to-255-arg:
+    - match: '\b(?:(?:{{integer_zero_to_255}})(?:\.\d+)?|\.\d+)\b'
+      scope: constant.numeric.css
+      push: nothing-else
 
   paren-end-function:
     - match: \)
@@ -1023,6 +1027,16 @@ contexts:
         2: keyword.other.unit.css
         3: constant.numeric.css
 
+  # matches last percentage val before comma, close paren, semicolon, or
+  # closing curly. useful for function args
+  percentage-arg:
+    - match: '({{number}})(%)|({{zero}})'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+        3: constant.numeric.css
+      push: nothing-else
+
   percentage-nonneg:
     - match: '({{number_nonneg}})(%)|({{zero}})'
       captures:
@@ -1031,12 +1045,19 @@ contexts:
         3: constant.numeric.css
 
   percentage-zero-to-hundred:
+    # percentage value between 0% and 100%
+    - match: '({{zero_to_hundred}})(%)|{{zero}}'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+
+  percentage-zero-to-hundred-arg:
     # percentage value between 0 and 100%
     - match: '({{zero_to_hundred}})(%)|{{zero}}'
       captures:
         1: constant.numeric.css
         2: keyword.other.unit.css
-        3: constant.numeric.css
+      push: nothing-else
 
   property-list:
     - meta_scope: meta.property-list.css
