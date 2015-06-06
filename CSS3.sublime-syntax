@@ -358,10 +358,12 @@ contexts:
         - include: function-device-cmyk
         - include: function-color
         - include: function-rgba
+        - include: function-rgb
         - include: color-named-deprecated
         - include: color-named
         - include: function-hsla
         - include: function-rgba
+        - include: function-rgb
         - include: function-cross-fade
         - include: function-element
         - include: function-filter
@@ -410,6 +412,7 @@ contexts:
         - include: color-named
         - include: function-hsla
         - include: function-rgba
+        - include: function-rgb
         - include: percentage
         - include: hex-color
     - include: stray-paren-end-function
@@ -484,6 +487,7 @@ contexts:
         - include: color-named
         - include: function-hsla
         - include: function-rgba
+        - include: function-rgb
         - include: function-calc
         - include: angle
         - include: percentage
@@ -513,6 +517,7 @@ contexts:
         - include: paren-end-function
         - include: comment
         - include: function-rgba
+        - include: function-rgb
         - include: function-hsla
         - include: function-hwb
         - include: function-gray
@@ -542,6 +547,7 @@ contexts:
         - include: color-named
         - include: function-hsla
         - include: function-rgba
+        - include: function-rgb
         - include: function-calc
         - include: length
         - include: hex-color
@@ -665,6 +671,7 @@ contexts:
         - include: color-named
         - include: function-hsla
         - include: function-rgba
+        - include: function-rgb
         - include: function-url
         - include: hex-color
         - include: string-double
@@ -692,6 +699,7 @@ contexts:
         - include: function-image
         - include: function-hsla
         - include: function-rgba
+        - include: function-rgb
         - include: function-image-set
         - include: function-conic-gradient
         - include: function-linear-gradient
@@ -722,6 +730,7 @@ contexts:
         - include: color-named
         - include: function-hsla
         - include: function-rgba
+        - include: function-rgb
         - include: function-calc
         - include: percentage
         - include: angle
@@ -748,14 +757,51 @@ contexts:
         - include: color-named
         - include: function-hsla
         - include: function-rgba
+        - include: function-rgb
         - include: function-calc
         - include: percentage
         - include: length
         - include: hex-color
     - include: stray-paren-end-function
 
+  function-rgb:
+    - match: \b(rgb)(\()
+      captures:
+        1: support.function.rgb.css
+        2: punctuation.section.function.css
+      push:
+        - meta_content_scope: meta.function.rgb.css
+        - include: paren-end-function
+        - match: ','
+          set: function-rgb-component1
+        - include: function-calc
+        # operators are present when rgb is used as <color-adjuster> value,
+        # e.g. inside color()
+        - include: color-adjuster-operator
+        - include: percentage-arg
+        - include: number-zero-to-255-arg
+    - include: stray-paren-end-function
+
+  function-rgb-component1:
+    - match: ','
+      set: function-rgb-component2
+    - include: paren-end-function
+    - include: function-calc
+    - include: color-adjuster-operator
+    - include: percentage-arg
+    - include: number-zero-to-255-arg
+
+  function-rgb-component2:
+    - include: paren-end-function
+    - match: ','
+      scope: invalid.illegal.stray-comma.css
+    - include: function-calc
+    - include: color-adjuster-operator
+    - include: percentage-arg
+    - include: number-zero-to-255-arg
+
   function-rgba:
-    - match: \b(rgba?)(\()
+    - match: \b(rgba)(\()
       captures:
         1: support.function.rgba.css
         2: punctuation.section.function.css
@@ -1027,7 +1073,7 @@ contexts:
         2: keyword.other.unit.css
         3: constant.numeric.css
 
-  # matches last percentage val before comma, close paren, semicolon, or
+  # matches last percentage val before comma close paren, semicolon, or
   # closing curly. useful for function args
   percentage-arg:
     - match: '({{number}})(%)|({{zero}})'
