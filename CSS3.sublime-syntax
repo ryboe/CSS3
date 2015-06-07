@@ -672,15 +672,16 @@ contexts:
     - include: percentage-zero-to-hundred-arg
 
   function-hwb-value3:
-    - include: paren-end-function
-    - include: comment
     - match: ','
       set: function-hwb-value4
+    - include: pop-before-paren
+    - include: comment
+    # - include: pop-before-paren
     # do not include calc() here, since it's a <percentage>
     - include: percentage-zero-to-hundred-arg
 
   function-hwb-value4:
-    - include: paren-end-function
+    - include: pop-before-paren
     - include: comment
     - include: stray-comma
     - include: function-calc
