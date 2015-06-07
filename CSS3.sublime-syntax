@@ -111,13 +111,28 @@ contexts:
         1: constant.numeric.css
         2: keyword.other.unit.css
         3: constant.numeric.css
-      push: nothing-else
+      push: arg
 
   animation-name:
     - meta_content_scope: meta.keyframes.animation-name.css
     - match: '(?={)'
       pop: true
     - include: identifier
+
+  # consume all text until until comma. use when no further text is expected,
+  # e.g. after first arg in rgb(255 invalid-text, 255, 255)
+  arg:
+    - include: comment
+    - match: '(?=,)'
+      pop: true
+
+  # consume all text until end of func. use in rules like function-rgb-value3
+  # which are expected to match final arg
+  arg-last:
+    - include: comment
+    - include: stray-comma
+    - match: '(?=\))'
+      pop: true
 
   at-charset:
     - match: ^(@)charset(?=\s)
@@ -579,17 +594,28 @@ contexts:
         - meta_content_scope: meta.function.filter.css
         - include: paren-end-function
         - include: comment
-        - include: function-cross-fade
-        - include: function-element
-        - include: function-filter
-        - include: function-image
-        - include: function-image-set
-        - include: function-blur
-        - include: function-brightness-contrast-grayscale-invert-opacity-saturate-sepia
-        - include: function-drop-shadow
-        - include: function-hue-rotate
+        - match: ','
+          push: filter-function-list
         - include: function-url
+        - include: function-image-set
+        - include: function-image
+        - include: function-element
+        - include: function-cross-fade
+        - include: function-linear-gradient
+        - include: function-radial-gradient
+        - include: string-double
+        - include: string-single
     - include: stray-paren-end-function
+
+  filter-function-list:
+    - include: pop-before-paren
+    - include: comment
+    - include: stray-comma
+    - include: function-url
+    - include: function-blur
+    - include: function-drop-shadow
+    - include: function-hue-rotate
+    - include: function-brightness-contrast-grayscale-invert-opacity-saturate-sepia
 
   function-gray:
     - match: \b(gray)(\()
@@ -614,10 +640,10 @@ contexts:
       captures:
         1: constant.numeric.css
         2: keyword.other.unit.css
-      push: nothing-else
+      push: arg
     - match: '{{zero_to_one}}'
       scope: constant.numeric.css
-      push: nothing-else
+      push: arg
 
   function-hue:
     - match: \b(hwb|hsla?)(\()
@@ -665,10 +691,10 @@ contexts:
       captures:
         1: constant.numeric.css
         2: keyword.other.unit.css
-      push: nothing-else
+      push: arg
     - match: '{{zero_to_one}}'
       scope: constant.numeric.css
-      push: nothing-else
+      push: arg
 
   function-hue-rotate:
     - match: \b(hue-rotate)(\()
@@ -826,8 +852,8 @@ contexts:
     - include: stray-comma
     - include: function-calc
     - include: color-adjuster-operator
-    - include: percentage-arg
-    - include: number-zero-to-255-arg
+    - include: percentage-last-arg
+    - include: number-zero-to-255-last-arg
 
   function-rgba:
     - match: \b(rgba)(\()
@@ -876,10 +902,10 @@ contexts:
       captures:
         1: constant.numeric.css
         2: keyword.other.unit.css
-      push: nothing-else
+      push: arg-last
     - match: '{{zero_to_one}}'
       scope: constant.numeric.css
-      push: nothing-else
+      push: arg-last
 
   function-splash-hue:
     - match: \b(bluish|greenish|orangish|purplish|reddish|yellowish)(\()
@@ -1069,14 +1095,7 @@ contexts:
   named-hue-arg:
     - match: \b(?:yellowish|yellow|reddish|red|purplish|purple|orangish|orange|greenish|green|bluish|blue)\b
       scope: support.constant.property-value.css
-      push: nothing-else
-
-  # consumes all text until until terminator. use when no further text is
-  # expected, e.g. after string arg in url("http://google.com" invalid-text)
-  nothing-else:
-    - include: comment
-    - match: '(?=[,\);}])'
-      pop: true
+      push: arg
 
   number:
     - match: '{{number}}'
@@ -1085,7 +1104,7 @@ contexts:
   number-arg:
     - match: '{{number}}'
       scope: constant.numeric.css
-      push: nothing-else
+      push: arg
 
   number-nonneg:
     - match: '{{number_nonneg}}'
@@ -1098,7 +1117,7 @@ contexts:
   number-zero-to-one-arg:
     - match: '{{zero_to_one}}'
       scope: constant.numeric.css
-      push: nothing-else
+      push: arg
 
   number-zero-to-255:
     - match: '\b(?:(?:{{integer_zero_to_255}})(?:\.\d+)?|\.\d+)\b'
@@ -1107,7 +1126,12 @@ contexts:
   number-zero-to-255-arg:
     - match: '\b(?:(?:{{integer_zero_to_255}})(?:\.\d+)?|\.\d+)\b'
       scope: constant.numeric.css
-      push: nothing-else
+      push: arg
+
+  number-zero-to-255-last-arg:
+    - match: '\b(?:(?:{{integer_zero_to_255}})(?:\.\d+)?|\.\d+)\b'
+      scope: constant.numeric.css
+      push: arg-last
 
   paren-end-function:
     - match: \)
@@ -1121,15 +1145,22 @@ contexts:
         2: keyword.other.unit.css
         3: constant.numeric.css
 
-  # matches last percentage val before comma close paren, semicolon, or
-  # closing curly. useful for function args
+  # matches last percentage val before comma. useful for function args
   percentage-arg:
     - match: '({{number}})(%)|({{zero}})'
       captures:
         1: constant.numeric.css
         2: keyword.other.unit.css
         3: constant.numeric.css
-      push: nothing-else
+      push: arg
+
+  percentage-last-arg:
+    - match: '({{number}})(%)|({{zero}})'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+        3: constant.numeric.css
+      push: arg-last
 
   percentage-nonneg:
     - match: '({{number_nonneg}})(%)|({{zero}})'
@@ -1138,22 +1169,31 @@ contexts:
         2: keyword.other.unit.css
         3: constant.numeric.css
 
+  # percentage value between 0% and 100%
   percentage-zero-to-hundred:
-    # percentage value between 0% and 100%
     - match: '({{zero_to_hundred}})(%)|({{zero}})'
       captures:
         1: constant.numeric.css
         2: keyword.other.unit.css
         3: constant.numeric.css
 
+  # percentage between 0 and 100%. use when value is an arg to a func
   percentage-zero-to-hundred-arg:
-    # percentage value between 0 and 100%
     - match: '({{zero_to_hundred}})(%)|({{zero}})'
       captures:
         1: constant.numeric.css
         2: keyword.other.unit.css
         3: constant.numeric.css
-      push: nothing-else
+      push: arg
+
+  # percentage between 0 and 100%. use when value is last arg to a func
+  percentage-zero-to-hundred-last-arg:
+    - match: '({{zero_to_hundred}})(%)|({{zero}})'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+        3: constant.numeric.css
+      push: arg-last
 
   # for sequences of args like in rgb(), pop current context off stack before
   # encountering closing paren
@@ -1260,6 +1300,7 @@ contexts:
     # unicode char classes
     - match: '(?<!-)\b[\p{Ll}_][\p{Ll}\d._-]*-[\p{Ll}\d._-]*{{end_selector}}'
       # custom element must contain hyphen '-'
+      # TODO: delete depr scope when finished
       scope:  meta.selector.css entity.name.tag.custom.css invalid.deprecated.css  # DEBUG
 
   selector-element:
