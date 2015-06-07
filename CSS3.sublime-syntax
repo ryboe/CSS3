@@ -105,6 +105,14 @@ contexts:
         2: keyword.other.unit.css
         3: constant.numeric.css
 
+  angle-arg:
+    - match: '({{number}})({{angle_unit}})\b|({{zero}})'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+        3: constant.numeric.css
+      push: nothing-else
+
   animation-name:
     - meta_content_scope: meta.keyframes.animation-name.css
     - match: '(?={)'
@@ -345,31 +353,6 @@ contexts:
         - include: number
     - include: stray-paren-end-function
 
-  function-cross-fade:
-    - match: \b(cross-fade)(\()
-      captures:
-        1: support.function.cross-fade.css
-        2: punctuation.section.function.css
-      push:
-        - meta_content_scope: meta.function.cross-fade.css
-        - include: paren-end-function
-        - include: comment
-        - include: function-hwb
-        - include: function-device-cmyk
-        - include: function-color
-        - include: function-rgba
-        - include: function-rgb
-        - include: color-named-deprecated
-        - include: color-named
-        - include: function-hsla
-        - include: function-rgba
-        - include: function-rgb
-        - include: function-cross-fade
-        - include: function-element
-        - include: function-filter
-        # TODO: finish these
-    - include: stray-paren-end-function
-
   function-color:
     - match: \b(color)(\()
       captures:
@@ -505,6 +488,31 @@ contexts:
         - include: paren-end-function
         - include: comment
         - include: percentage-zero-to-hundred
+    - include: stray-paren-end-function
+
+  function-cross-fade:
+    - match: \b(cross-fade)(\()
+      captures:
+        1: support.function.cross-fade.css
+        2: punctuation.section.function.css
+      push:
+        - meta_content_scope: meta.function.cross-fade.css
+        - include: paren-end-function
+        - include: comment
+        - include: function-hwb
+        - include: function-device-cmyk
+        - include: function-color
+        - include: function-rgba
+        - include: function-rgb
+        - include: color-named-deprecated
+        - include: color-named
+        - include: function-hsla
+        - include: function-rgba
+        - include: function-rgb
+        - include: function-cross-fade
+        - include: function-element
+        - include: function-filter
+        # TODO: finish these
     - include: stray-paren-end-function
 
   function-device-cmyk:
@@ -644,13 +652,46 @@ contexts:
         - meta_content_scope: meta.function.hwb.css
         - include: paren-end-function
         - include: comment
-        - match: \b(?:yellowish|yellow|reddish|red|purplish|purple|orangish|orange|greenish|green|bluish|blue)\b
-          scope: support.constant.property-value.css
+        - match: ','
+          push: function-hwb-value2
         - include: function-calc
-        - include: angle
-        - include: percentage-zero-to-hundred
-        - include: number
+        # function-splash-hue must have higher precedence than named-hue
+        # to avoid collisions
+        - include: function-splash-hue
+        - include: named-hue-arg
+        - include: angle-arg
+        - include: number-arg
     - include: stray-paren-end-function
+
+  function-hwb-value2:
+    - include: pop-before-paren
+    - include: comment
+    - match: ','
+      set: function-hwb-value3
+    # do not include calc() here, since it's a <percentage>
+    - include: percentage-zero-to-hundred-arg
+
+  function-hwb-value3:
+    - include: paren-end-function
+    - include: comment
+    - match: ','
+      set: function-hwb-value4
+    # do not include calc() here, since it's a <percentage>
+    - include: percentage-zero-to-hundred-arg
+
+  function-hwb-value4:
+    - include: paren-end-function
+    - include: comment
+    - include: stray-comma
+    - include: function-calc
+    - match: '({{zero_to_hundred}})(%)'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+      push: nothing-else
+    - match: '{{zero_to_one}}'
+      scope: constant.numeric.css
+      push: nothing-else
 
   function-image:
     - match: \b(image)(\()
@@ -772,8 +813,9 @@ contexts:
       push:
         - meta_content_scope: meta.function.rgb.css
         - include: paren-end-function
+        - include: comment
         - match: ','
-          set: function-rgb-component1
+          push: function-rgb-value2
         - include: function-calc
         # operators are present when rgb is used as <color-adjuster> value,
         # e.g. inside color()
@@ -782,19 +824,20 @@ contexts:
         - include: number-zero-to-255-arg
     - include: stray-paren-end-function
 
-  function-rgb-component1:
+  function-rgb-value2:
+    - include: pop-before-paren
+    - include: comment
     - match: ','
-      set: function-rgb-component2
-    - include: paren-end-function
+      set: function-rgb-value3
     - include: function-calc
     - include: color-adjuster-operator
     - include: percentage-arg
     - include: number-zero-to-255-arg
 
-  function-rgb-component2:
-    - include: paren-end-function
-    - match: ','
-      scope: invalid.illegal.stray-comma.css
+  function-rgb-value3:
+    - include: pop-before-paren
+    - include: comment
+    - include: stray-comma
     - include: function-calc
     - include: color-adjuster-operator
     - include: percentage-arg
@@ -809,7 +852,7 @@ contexts:
         - meta_content_scope: meta.function.rgba.css
         - include: paren-end-function
         - match: ','
-          set: function-rgba-component1
+          push: function-rgba-value2
         - include: function-calc
         # operators are present when rgb is used as <color-adjuster> value,
         # e.g. inside color()
@@ -818,35 +861,39 @@ contexts:
         - include: number-zero-to-255-arg
     - include: stray-paren-end-function
 
-  function-rgba-component1:
+  function-rgba-value2:
+    - include: pop-before-paren
+    - include: comment
     - match: ','
-      set: function-rgba-component2
-    - include: paren-end-function
+      set: function-rgba-value3
     - include: function-calc
     - include: color-adjuster-operator
     - include: percentage-arg
     - include: number-zero-to-255-arg
 
-  function-rgba-component2:
+  function-rgba-value3:
+    - include: pop-before-paren
+    - include: comment
     - match: ','
-      set: function-rgba-component3
-    - include: paren-end-function
+      set: function-rgba-value4
     - include: function-calc
     - include: color-adjuster-operator
     - include: percentage-arg
     - include: number-zero-to-255-arg
 
-  function-rgba-component3:
-    - include: paren-end-function
-    - match: ','
-      scope: invalid.illegal.stray-comma.css
+  function-rgba-value4:
+    - include: pop-before-paren
+    - include: comment
+    - include: stray-comma
     - include: function-calc
-    # can't include zero-to-one-arg here because values like 0.1% will not
-    # match as percentage. '0' will match number and ignore rest of literal.
-    - match: '({{zero_to_one}})(?![.%])'
+    - match: '({{zero_to_hundred}})(%)'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+      push: nothing-else
+    - match: '{{zero_to_one}}'
       scope: constant.numeric.css
       push: nothing-else
-    - include: percentage-zero-to-hundred-arg
 
   function-splash-hue:
     - match: \b(bluish|greenish|orangish|purplish|reddish|yellowish)(\()
@@ -1029,15 +1076,30 @@ contexts:
     - match: \b(?:tv|tty|reader|projection|handheld|embossed|braille|aural)\b
       scope: support.constant.media-type.css invalid.deprecated.css
 
+  named-hue:
+    - match: \b(?:yellowish|yellow|reddish|red|purplish|purple|orangish|orange|greenish|green|bluish|blue)\b
+      scope: support.constant.property-value.css
+
+  named-hue-arg:
+    - match: \b(?:yellowish|yellow|reddish|red|purplish|purple|orangish|orange|greenish|green|bluish|blue)\b
+      scope: support.constant.property-value.css
+      push: nothing-else
+
   # consumes all text until until terminator. use when no further text is
   # expected, e.g. after string arg in url("http://google.com" invalid-text)
   nothing-else:
+    - include: comment
     - match: '(?=[,\);}])'
       pop: true
 
   number:
     - match: '{{number}}'
       scope: constant.numeric.css
+
+  number-arg:
+    - match: '{{number}}'
+      scope: constant.numeric.css
+      push: nothing-else
 
   number-nonneg:
     - match: '{{number_nonneg}}'
@@ -1106,6 +1168,12 @@ contexts:
         2: keyword.other.unit.css
         3: constant.numeric.css
       push: nothing-else
+
+  # for sequences of args like in rgb(), pop current context off stack before
+  # encountering closing paren
+  pop-before-paren:
+    - match: '(?=\))'
+      pop: true
 
   property-list:
     - meta_scope: meta.property-list.css
@@ -1512,6 +1580,10 @@ contexts:
   stray-brace-end:
     - match: '}'
       scope: punctuation.section.property-list.end.css invalid.illegal.stray-brace-end.css
+
+  stray-comma:
+    - match: ','
+      scope: invalid.illegal.stray-comma.css
 
   stray-paren-end-function:
     - match: \)
