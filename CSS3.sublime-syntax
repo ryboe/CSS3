@@ -600,9 +600,24 @@ contexts:
         - meta_content_scope: meta.function.gray.css
         - include: paren-end-function
         - include: comment
-        - include: percentage
-        - include: number
+        - match: ','
+          push: function-gray-alpha-value
+        - include: percentage-arg
+        - include: number-arg
     - include: stray-paren-end-function
+
+  function-gray-alpha-value:
+    - include: pop-before-paren
+    - include: comment
+    - include: stray-comma
+    - match: '({{zero_to_hundred}})(%)'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+      push: nothing-else
+    - match: '{{zero_to_one}}'
+      scope: constant.numeric.css
+      push: nothing-else
 
   function-hue:
     - match: \b(hwb|hsla?)(\()
