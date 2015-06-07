@@ -550,18 +550,43 @@ contexts:
         - meta_content_scope: meta.function.device-cmyk.css
         - include: paren-end-function
         - include: comment
-        - include: function-rgba
-        - include: function-rgb
-        - include: function-hue
-        - include: function-gray
-        - include: function-device-cmyk
-        - include: function-color
-        - include: color-named-deprecated
-        - include: color-named
-        - include: hex-color
-        - include: percentage-zero-to-hundred
-        - include: number-zero-to-255
+        - match: ','
+          push: function-device-cmyk-value2
+        - include: percentage-zero-to-hundred-percent-enforced-arg
+        - include: number-zero-to-one-arg
     - include: stray-paren-end-function
+
+  function-device-cmyk-value2:
+    - include: pop-before-paren
+    - include: comment
+    - match: ','
+      set: function-device-cmyk-value3
+    - include: percentage-zero-to-hundred-percent-enforced-arg
+    - include: number-zero-to-one-arg
+
+  function-device-cmyk-value3:
+    - include: pop-before-paren
+    - include: comment
+    - match: ','
+      set: function-device-cmyk-value456
+    - include: percentage-zero-to-hundred-percent-enforced-arg
+    - include: number-zero-to-one-arg
+
+  # matches last <cmyk-component> and optional <alpha-value> and <color>
+  function-device-cmyk-value456:
+    - include: pop-before-paren
+    - include: comment
+    - include: function-rgba
+    - include: function-rgb
+    - include: function-hue
+    - include: function-gray
+    - include: function-device-cmyk
+    - include: function-color
+    - include: color-named-deprecated
+    - include: color-named-last-arg
+    - include: hex-color-last-arg
+    - include: percentage-zero-to-hundred-percent-enforced
+    - include: number-zero-to-one
 
   function-drop-shadow:
     - match: \b(drop-shadow)(\()
@@ -577,12 +602,13 @@ contexts:
         - include: function-color
         - include: function-gray
         - include: color-named-deprecated
-        - include: color-named
+        - include: color-named-last-arg
         - include: function-rgba
         - include: function-rgb
+        - include: hex-color-last-arg
         - include: function-calc
         - include: length
-        - include: hex-color
+        - include: stray-comma
     - include: stray-paren-end-function
 
   function-element:
@@ -597,8 +623,7 @@ contexts:
         - match: \b(?:start|last|first-except|first)\b
           scope: support.constant.property-value.css
           push: arg-last
-        - match: '{{identifier}}'
-          scope: entity.other.attribute-name.id.css
+        - include: id
     - include: stray-paren-end-function
 
   function-filter:
@@ -651,14 +676,8 @@ contexts:
   function-gray-alpha-value:
     - include: pop-before-paren
     - include: comment
-    - match: '({{zero_to_hundred}})(%)'
-      captures:
-        1: constant.numeric.css
-        2: keyword.other.unit.css
-      push: arg-last
-    - match: '{{zero_to_one}}'
-      scope: constant.numeric.css
-      push: arg-last
+    - include: percentage-zero-to-hundred-percent-enforced-last-arg
+    - include: number-zero-to-one-last-arg
 
   function-hue:
     - match: \b(hwb|hsla?)(\()
@@ -700,14 +719,8 @@ contexts:
     - include: pop-before-paren
     - include: comment
     - include: function-calc
-    - match: '({{zero_to_hundred}})(%)'
-      captures:
-        1: constant.numeric.css
-        2: keyword.other.unit.css
-      push: arg-last
-    - match: '{{zero_to_one}}'
-      scope: constant.numeric.css
-      push: arg-last
+    - include: percentage-zero-to-hundred-percent-enforced-last-arg
+    - include: number-zero-to-one-last-arg
     - include: stray-comma
 
   function-hue-rotate:
@@ -863,7 +876,6 @@ contexts:
   function-rgb-value3:
     - include: pop-before-paren
     - include: comment
-    - include: stray-comma
     - include: function-calc
     - include: color-adjuster-operator
     - include: percentage-last-arg
@@ -912,14 +924,8 @@ contexts:
     - include: pop-before-paren
     - include: comment
     - include: function-calc
-    - match: '({{zero_to_hundred}})(%)'
-      captures:
-        1: constant.numeric.css
-        2: keyword.other.unit.css
-      push: arg-last
-    - match: '{{zero_to_one}}'
-      scope: constant.numeric.css
-      push: arg-last
+    - include: percentage-zero-to-hundred-percent-enforced-last-arg
+    - include: number-zero-to-one-last-arg
     - include: stray-comma
 
   function-splash-hue:
@@ -987,6 +993,11 @@ contexts:
         1: punctuation.definition.constant.css
       push: arg-last
 
+  # same a identifier, but scoped as entity. this is a value, not a selector
+  id:
+    - match: '{{identifier}}'
+      scope: entity.other.attribute-name.id.css
+
   identifier:
     - match: '{{identifier}}'
       scope: string.unquoted.identifier.css
@@ -1017,6 +1028,14 @@ contexts:
         1: constant.numeric.css
         2: keyword.other.unit.css
         3: constant.numeric.css
+
+  length-arg:
+    - match: '({{number}})({{length_unit}})\b|({{zero}})'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+        3: constant.numeric.css
+      push: arg
 
   length-non-negative:
     - match: '({{number_nonneg}})({{length_unit}})|({{zero}})'
@@ -1141,6 +1160,11 @@ contexts:
       scope: constant.numeric.css
       push: arg
 
+  number-zero-to-one-last-arg:
+    - match: '{{zero_to_one}}'
+      scope: constant.numeric.css
+      push: arg-last
+
   number-zero-to-255:
     - match: '\b(?:(?:{{integer_zero_to_255}})(?:\.\d+)?|\.\d+)\b'
       scope: constant.numeric.css
@@ -1215,6 +1239,28 @@ contexts:
         1: constant.numeric.css
         2: keyword.other.unit.css
         3: constant.numeric.css
+      push: arg-last
+
+  # like percentage-zero-to-hundred, but does not match 0 without %. used to
+  # avoid collisions with number rule
+  percentage-zero-to-hundred-percent-enforced:
+    - match: '({{zero_to_hundred}})(%)'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+
+  percentage-zero-to-hundred-percent-enforced-arg:
+    - match: '({{zero_to_hundred}})(%)'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+      push: arg
+
+  percentage-zero-to-hundred-percent-enforced-last-arg:
+    - match: '({{zero_to_hundred}})(%)'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
       push: arg-last
 
   # for sequences of args like in rgb(), pop current context off stack before
