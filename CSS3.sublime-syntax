@@ -362,8 +362,7 @@ contexts:
         - meta_content_scope: meta.function.color.css
         - include: paren-end-function
         - include: comment
-        - include: function-hwb
-        - include: function-hwb
+        - include: function-hue
         - include: function-device-cmyk
         - include: function-color
         - include: function-color-adjuster-blend
@@ -387,13 +386,12 @@ contexts:
         - include: comment
         - match: \b(?:rgb|hwb|hsl)\b
           scope: support.constant.property-value.css
-        - include: function-hwb
+        - include: function-hue
         - include: function-device-cmyk
         - include: function-color
         - include: function-gray
         - include: color-named-deprecated
         - include: color-named
-        - include: function-hsla
         - include: function-rgba
         - include: function-rgb
         - include: percentage
@@ -462,13 +460,12 @@ contexts:
         - include: comment
         - match: \b(top|right|left|center|bottom|at)\b
           scope: support.constant.property-value.css
-        - include: function-hwb
+        - include: function-hue
         - include: function-device-cmyk
         - include: function-color
         - include: function-gray
         - include: color-named-deprecated
         - include: color-named
-        - include: function-hsla
         - include: function-rgba
         - include: function-rgb
         - include: function-calc
@@ -499,14 +496,13 @@ contexts:
         - meta_content_scope: meta.function.cross-fade.css
         - include: paren-end-function
         - include: comment
-        - include: function-hwb
+        - include: function-hue
         - include: function-device-cmyk
         - include: function-color
         - include: function-rgba
         - include: function-rgb
         - include: color-named-deprecated
         - include: color-named
-        - include: function-hsla
         - include: function-rgba
         - include: function-rgb
         - include: function-cross-fade
@@ -526,8 +522,7 @@ contexts:
         - include: comment
         - include: function-rgba
         - include: function-rgb
-        - include: function-hsla
-        - include: function-hwb
+        - include: function-hue
         - include: function-gray
         - include: function-device-cmyk
         - include: function-color
@@ -547,13 +542,12 @@ contexts:
         - meta_content_scope: meta.function.drop-shadow.css
         - include: paren-end-function
         - include: comment
-        - include: function-hwb
+        - include: function-hue
         - include: function-device-cmyk
         - include: function-color
         - include: function-gray
         - include: color-named-deprecated
         - include: color-named
-        - include: function-hsla
         - include: function-rgba
         - include: function-rgb
         - include: function-calc
@@ -610,25 +604,56 @@ contexts:
         - include: number
     - include: stray-paren-end-function
 
-  function-hsla:
-    - match: \b(hsla?)(\()
+  function-hue:
+    - match: \b(hwb|hsla?)(\()
       captures:
-        1: support.function.hsl.css
+        1: support.function.hue.css
         2: punctuation.section.function.css
       push:
-        - meta_content_scope: meta.function.hsl.css
+        - meta_content_scope: meta.function.hue.css
         - include: paren-end-function
         - include: comment
-        # func has higher precedence because of collisions between funcs and
-        # keywords with same name, e.g. reddish() and reddish
-        - include: function-splash-hue
-        - match: \b(?:yellowish|yellow|reddish|red|purplish|purple|orangish|orange|greenish|green|bluish|blue)\b
-          scope: support.constant.property-value.css
+        - match: ','
+          push: function-hue-value2
         - include: function-calc
-        - include: percentage-zero-to-hundred
-        - include: angle
-        - include: number
+        # function-splash-hue must have higher precedence than named-hue
+        # to avoid collisions
+        - include: function-splash-hue
+        - include: named-hue-arg
+        - include: angle-arg
+        - include: number-arg
     - include: stray-paren-end-function
+
+  function-hue-value2:
+    - include: pop-before-paren
+    - include: comment
+    - match: ','
+      set: function-hue-value3
+    # do not include calc() here, since it's a <percentage>
+    - include: percentage-zero-to-hundred-arg
+
+  function-hue-value3:
+    - match: ','
+      set: function-hue-value4
+    - include: pop-before-paren
+    - include: comment
+    # - include: pop-before-paren
+    # do not include calc() here, since it's a <percentage>
+    - include: percentage-zero-to-hundred-arg
+
+  function-hue-value4:
+    - include: pop-before-paren
+    - include: comment
+    - include: stray-comma
+    - include: function-calc
+    - match: '({{zero_to_hundred}})(%)'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+      push: nothing-else
+    - match: '{{zero_to_one}}'
+      scope: constant.numeric.css
+      push: nothing-else
 
   function-hue-rotate:
     - match: \b(hue-rotate)(\()
@@ -643,57 +668,6 @@ contexts:
         - include: angle
     - include: stray-paren-end-function
 
-  function-hwb:
-    - match: \b(hwb)(\()
-      captures:
-        1: support.function.hwb.css
-        2: punctuation.section.function.css
-      push:
-        - meta_content_scope: meta.function.hwb.css
-        - include: paren-end-function
-        - include: comment
-        - match: ','
-          push: function-hwb-value2
-        - include: function-calc
-        # function-splash-hue must have higher precedence than named-hue
-        # to avoid collisions
-        - include: function-splash-hue
-        - include: named-hue-arg
-        - include: angle-arg
-        - include: number-arg
-    - include: stray-paren-end-function
-
-  function-hwb-value2:
-    - include: pop-before-paren
-    - include: comment
-    - match: ','
-      set: function-hwb-value3
-    # do not include calc() here, since it's a <percentage>
-    - include: percentage-zero-to-hundred-arg
-
-  function-hwb-value3:
-    - match: ','
-      set: function-hwb-value4
-    - include: pop-before-paren
-    - include: comment
-    # - include: pop-before-paren
-    # do not include calc() here, since it's a <percentage>
-    - include: percentage-zero-to-hundred-arg
-
-  function-hwb-value4:
-    - include: pop-before-paren
-    - include: comment
-    - include: stray-comma
-    - include: function-calc
-    - match: '({{zero_to_hundred}})(%)'
-      captures:
-        1: constant.numeric.css
-        2: keyword.other.unit.css
-      push: nothing-else
-    - match: '{{zero_to_one}}'
-      scope: constant.numeric.css
-      push: nothing-else
-
   function-image:
     - match: \b(image)(\()
       captures:
@@ -705,13 +679,12 @@ contexts:
         - include: comment
         - match: \b(?:rtl|ltr)\b
           scope: support.constant.property-value.css
-        - include: function-hwb
+        - include: function-hue
         - include: function-device-cmyk
         - include: function-color
         - include: function-gray
         - include: color-named-deprecated
         - include: color-named
-        - include: function-hsla
         - include: function-rgba
         - include: function-rgb
         - include: function-url
@@ -729,7 +702,7 @@ contexts:
         - meta_content_scope: meta.function.image-set.css
         - include: paren-end-function
         - include: comment
-        - include: function-hwb
+        - include: function-hue
         - include: function-device-cmyk
         - include: function-color
         - include: function-gray
@@ -739,7 +712,6 @@ contexts:
         - include: function-element
         - include: function-filter
         - include: function-image
-        - include: function-hsla
         - include: function-rgba
         - include: function-rgb
         - include: function-image-set
@@ -764,13 +736,12 @@ contexts:
         - include: comment
         - match: \b(?:top|to|right|left|bottom)\b
           scope: support.constant.property-value.css
-        - include: function-hwb
+        - include: function-hue
         - include: function-device-cmyk
         - include: function-color
         - include: function-gray
         - include: color-named-deprecated
         - include: color-named
-        - include: function-hsla
         - include: function-rgba
         - include: function-rgb
         - include: function-calc
@@ -791,13 +762,12 @@ contexts:
         - include: comment
         - match: \b(top|right|left|farthest-side|farthest-corner|ellipse|closest-side|closest-corner|circle|center|bottom|at)\b
           scope: support.constant.property-value.css
-        - include: function-hwb
+        - include: function-hue
         - include: function-device-cmyk
         - include: function-color
         - include: function-gray
         - include: color-named-deprecated
         - include: color-named
-        - include: function-hsla
         - include: function-rgba
         - include: function-rgb
         - include: function-calc
