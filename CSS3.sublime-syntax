@@ -98,6 +98,8 @@ contexts:
     - match: 'odd|even|{{an_plus_b}}|{{integer}}'
       scope: constant.other.an-plus-b.css
 
+  # having three variants of all the value contexts (*, *-arg, *-last-arg) is
+  # ugly and non-DRY, but catches lots of mistakes
   angle:
     - match: '({{number}})({{angle_unit}})\b|({{zero}})'
       captures:
@@ -112,6 +114,14 @@ contexts:
         2: keyword.other.unit.css
         3: constant.numeric.css
       push: arg
+
+  angle-last-arg:
+    - match: '({{number}})({{angle_unit}})\b|({{zero}})'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+        3: constant.numeric.css
+      push: arg-last
 
   animation-name:
     - meta_content_scope: meta.keyframes.animation-name.css
@@ -282,6 +292,11 @@ contexts:
   color-named:
     - match: \b(?:yellowgreen|yellow|whitesmoke|white|wheat|violet|turquoise|transparent|tomato|thistle|teal|tan|steelblue|springgreen|snow|slategrey|slategray|slateblue|skyblue|silver|sienna|seashell|seagreen|sandybrown|salmon|saddlebrown|royalblue|rosybrown|red|rebeccapurple|purple|powderblue|plum|pink|peru|peachpuff|papayawhip|palevioletred|paleturquoise|palegreen|palegoldenrod|orchid|orangered|orange|olivedrab|olive|oldlace|navy|navajowhite|moccasin|mistyrose|mintcream|midnightblue|mediumvioletred|mediumturquoise|mediumspringgreen|mediumslateblue|mediumseagreen|mediumpurple|mediumorchid|mediumblue|mediumaquamarine|maroon|magenta|linen|limegreen|lime|lightyellow|lightsteelblue|lightslategrey|lightslategray|lightskyblue|lightseagreen|lightsalmon|lightpink|lightgrey|lightgreen|lightgray|lightgoldenrodyellow|lightcyan|lightcoral|lightblue|lemonchiffon|lawngreen|lavenderblush|lavender|khaki|ivory|indigo|indianred|hotpink|honeydew|grey|greenyellow|green|gray|goldenrod|gold|ghostwhite|gainsboro|fuchsia|forestgreen|floralwhite|firebrick|dodgerblue|dimgrey|dimgray|deepskyblue|deeppink|darkviolet|darkturquoise|darkslategrey|darkslategray|darkslateblue|darkseagreen|darksalmon|darkred|darkorchid|darkorange|darkolivegreen|darkmagenta|darkkhaki|darkgrey|darkgreen|darkgray|darkgoldenrod|darkcyan|darkblue|cyan|currentColor|currentcolor|crimson|cornsilk|cornflowerblue|coral|chocolate|chartreuse|cadetblue|burlywood|brown|blueviolet|blue|blanchedalmond|black|bisque|beige|azure|aquamarine|aqua|antiquewhite|aliceblue)\b
       scope: support.constant.color.css
+
+  color-named-last-arg:
+    - match: \b(?:yellowgreen|yellow|whitesmoke|white|wheat|violet|turquoise|transparent|tomato|thistle|teal|tan|steelblue|springgreen|snow|slategrey|slategray|slateblue|skyblue|silver|sienna|seashell|seagreen|sandybrown|salmon|saddlebrown|royalblue|rosybrown|red|rebeccapurple|purple|powderblue|plum|pink|peru|peachpuff|papayawhip|palevioletred|paleturquoise|palegreen|palegoldenrod|orchid|orangered|orange|olivedrab|olive|oldlace|navy|navajowhite|moccasin|mistyrose|mintcream|midnightblue|mediumvioletred|mediumturquoise|mediumspringgreen|mediumslateblue|mediumseagreen|mediumpurple|mediumorchid|mediumblue|mediumaquamarine|maroon|magenta|linen|limegreen|lime|lightyellow|lightsteelblue|lightslategrey|lightslategray|lightskyblue|lightseagreen|lightsalmon|lightpink|lightgrey|lightgreen|lightgray|lightgoldenrodyellow|lightcyan|lightcoral|lightblue|lemonchiffon|lawngreen|lavenderblush|lavender|khaki|ivory|indigo|indianred|hotpink|honeydew|grey|greenyellow|green|gray|goldenrod|gold|ghostwhite|gainsboro|fuchsia|forestgreen|floralwhite|firebrick|dodgerblue|dimgrey|dimgray|deepskyblue|deeppink|darkviolet|darkturquoise|darkslategrey|darkslategray|darkslateblue|darkseagreen|darksalmon|darkred|darkorchid|darkorange|darkolivegreen|darkmagenta|darkkhaki|darkgrey|darkgreen|darkgray|darkgoldenrod|darkcyan|darkblue|cyan|currentColor|currentcolor|crimson|cornsilk|cornflowerblue|coral|chocolate|chartreuse|cadetblue|burlywood|brown|blueviolet|blue|blanchedalmond|black|bisque|beige|azure|aquamarine|aqua|antiquewhite|aliceblue)\b
+      scope: support.constant.color.css
+      push: arg-last
 
   color-named-deprecated:
     - match: \b(?:WindowText|WindowFrame|Window|ThreeDShadow|ThreeDLightShadow|ThreeDHighlight|ThreeDFace|ThreeDDarkShadow|Scrollbar|MenuText|Menu|InfoText|InfoBackground|InactiveCaptionText|InactiveCaption|InactiveBorder|HighlightText|Highlight|GrayText|CaptionText|ButtonText|ButtonShadow|ButtonHighlight|ButtonFace|Background|AppWorkspace|ActiveCaption|ActiveBorder)\b
@@ -579,10 +594,11 @@ contexts:
         - meta_content_scope: meta.function.element.css
         - include: paren-end-function
         - include: comment
-        - match: '(#){{identifier}}'
+        - match: \b(?:start|last|first-except|first)\b
+          scope: support.constant.property-value.css
+          push: arg-last
+        - match: '{{identifier}}'
           scope: entity.other.attribute-name.id.css
-          captures:
-            1: punctuation.definition.entity.css
     - include: stray-paren-end-function
 
   function-filter:
@@ -635,15 +651,14 @@ contexts:
   function-gray-alpha-value:
     - include: pop-before-paren
     - include: comment
-    - include: stray-comma
     - match: '({{zero_to_hundred}})(%)'
       captures:
         1: constant.numeric.css
         2: keyword.other.unit.css
-      push: arg
+      push: arg-last
     - match: '{{zero_to_one}}'
       scope: constant.numeric.css
-      push: arg
+      push: arg-last
 
   function-hue:
     - match: \b(hwb|hsla?)(\()
@@ -674,27 +689,26 @@ contexts:
     - include: percentage-zero-to-hundred-arg
 
   function-hue-value3:
-    - match: ','
-      set: function-hue-value4
     - include: pop-before-paren
     - include: comment
-    # - include: pop-before-paren
+    - match: ','
+      set: function-hue-value4
     # do not include calc() here, since it's a <percentage>
     - include: percentage-zero-to-hundred-arg
 
   function-hue-value4:
     - include: pop-before-paren
     - include: comment
-    - include: stray-comma
     - include: function-calc
     - match: '({{zero_to_hundred}})(%)'
       captures:
         1: constant.numeric.css
         2: keyword.other.unit.css
-      push: arg
+      push: arg-last
     - match: '{{zero_to_one}}'
       scope: constant.numeric.css
-      push: arg
+      push: arg-last
+    - include: stray-comma
 
   function-hue-rotate:
     - match: \b(hue-rotate)(\()
@@ -706,7 +720,7 @@ contexts:
         - include: paren-end-function
         - include: comment
         - include: function-calc
-        - include: angle
+        - include: angle-last-arg
     - include: stray-paren-end-function
 
   function-image:
@@ -725,11 +739,11 @@ contexts:
         - include: function-color
         - include: function-gray
         - include: color-named-deprecated
-        - include: color-named
+        - include: color-named-last-arg
         - include: function-rgba
         - include: function-rgb
         - include: function-url
-        - include: hex-color
+        - include: hex-color-last-arg
         - include: string-double
         - include: string-single
     - include: stray-paren-end-function
@@ -854,6 +868,7 @@ contexts:
     - include: color-adjuster-operator
     - include: percentage-last-arg
     - include: number-zero-to-255-last-arg
+    - include: stray-comma
 
   function-rgba:
     - match: \b(rgba)(\()
@@ -896,7 +911,6 @@ contexts:
   function-rgba-value4:
     - include: pop-before-paren
     - include: comment
-    - include: stray-comma
     - include: function-calc
     - match: '({{zero_to_hundred}})(%)'
       captures:
@@ -906,6 +920,7 @@ contexts:
     - match: '{{zero_to_one}}'
       scope: constant.numeric.css
       push: arg-last
+    - include: stray-comma
 
   function-splash-hue:
     - match: \b(bluish|greenish|orangish|purplish|reddish|yellowish)(\()
@@ -917,7 +932,7 @@ contexts:
         - include: paren-end-function
         - include: comment
         - include: function-calc
-        - include: percentage-zero-to-hundred-arg
+        - include: percentage-zero-to-hundred-last-arg
     - include: stray-paren-end-function
 
   # 2015-04-22 at risk
@@ -964,6 +979,13 @@ contexts:
       scope: constant.other.color.rgb-value.css
       captures:
         1: punctuation.definition.constant.css
+
+  hex-color-last-arg:
+    - match: '(#)(?:\h{8}|\h{6}|\h{3,4})'
+      scope: constant.other.color.rgb-value.css
+      captures:
+        1: punctuation.definition.constant.css
+      push: arg-last
 
   identifier:
     - match: '{{identifier}}'
