@@ -526,20 +526,40 @@ contexts:
         - meta_content_scope: meta.function.cross-fade.css
         - include: paren-end-function
         - include: comment
-        - include: function-hue
-        - include: function-device-cmyk
-        - include: function-color
-        - include: function-rgba
-        - include: function-rgb
-        - include: color-named-deprecated
-        - include: color-named
-        - include: function-rgba
-        - include: function-rgb
-        - include: function-cross-fade
+        - match: ','
+          push: function-cross-fade-final-image
+        - include: function-url
+        - include: function-image-set
+        - include: function-image
         - include: function-element
         - include: function-filter
-        # TODO: finish these
+        - include: function-cross-fade
+        - include: function-linear-gradient
+        - include: function-radial-gradient
+        - include: percentage-zero-to-hundred
     - include: stray-paren-end-function
+
+  function-cross-fade-final-image:
+    - include: pop-before-paren
+    - include: comment
+    - include: function-url
+    - include: function-image-set
+    - include: function-image
+    - include: function-element
+    - include: function-filter
+    - include: function-cross-fade
+    - include: function-linear-gradient
+    - include: function-radial-gradient
+    - include: function-rgba
+    - include: function-rgb
+    - include: function-hue
+    - include: function-gray
+    - include: function-device-cmyk
+    - include: function-color
+    - include: color-named-deprecated
+    - include: color-named-last-arg
+    - include: hex-color-last-arg
+    - include: stray-comma
 
   function-device-cmyk:
     - match: \b(device-cmyk)(\()
@@ -641,6 +661,7 @@ contexts:
         - include: function-image-set
         - include: function-image
         - include: function-element
+        - include: function-filter
         - include: function-cross-fade
         - include: function-linear-gradient
         - include: function-radial-gradient
