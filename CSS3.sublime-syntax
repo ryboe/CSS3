@@ -514,7 +514,8 @@ contexts:
         - meta_content_scope: meta.function.contrast-adjuster.css
         - include: paren-end-function
         - include: comment
-        - include: percentage-zero-to-hundred
+        - include: percentage-nonneg-percent-enforced-last-arg
+        - include: number-nonneg-last-arg
     - include: stray-paren-end-function
 
   function-cross-fade:
@@ -1172,6 +1173,11 @@ contexts:
     - match: '{{number_nonneg}}'
       scope: constant.numeric.css
 
+  number-nonneg-last-arg:
+    - match: '{{number_nonneg}}'
+      scope: constant.numeric.css
+      push: arg-last
+
   number-zero-to-one:
     - match: '{{zero_to_one}}'
       scope: constant.numeric.css
@@ -1235,6 +1241,13 @@ contexts:
         1: constant.numeric.css
         2: keyword.other.unit.css
         3: constant.numeric.css
+
+  percentage-nonneg-percent-enforced-last-arg:
+    - match: '({{number_nonneg}})(%)'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+      push: arg-last
 
   # percentage value between 0% and 100%
   percentage-zero-to-hundred:
