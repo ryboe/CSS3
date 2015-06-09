@@ -150,7 +150,7 @@ contexts:
       captures:
         1: punctuation.definition.keyword.css
       push:
-        - include: at-rule-end
+        - include: rule-end
         - include: comment
         # only acceptable encoding is UTF-8
         - match: (?:("(?:UTF-8|utf-8)")|('(?:UTF-8|utf-8)'))
@@ -203,7 +203,7 @@ contexts:
         1: punctuation.definition.keyword.css
       push:
         - meta_scope: meta.at-rule.import.css
-        - include: at-rule-end
+        - include: rule-end
         - include: comment
         - match: \band\b
           scope: keyword.operator.logic.css
@@ -238,7 +238,7 @@ contexts:
       captures:
         1: punctuation.definition.keyword.css
       push:
-        - include: at-rule-end
+        - include: rule-end
         - include: comment
         - include: function-url
         - include: string-double
@@ -258,11 +258,6 @@ contexts:
         - include: comment
         - include: pseudo-page
         - include: identifier
-
-  at-rule-end:
-    - match: ;
-      scope: punctuation.terminator.rule.css
-      pop: true
 
   at-supports:
     - match: (@)(?:-webkit-|-ms-|-moz-)?supports\b
@@ -1334,6 +1329,11 @@ contexts:
         2: keyword.other.unit.css
       push: arg-last
 
+  # for values that don't end in semicolons
+  pop-before-curly:
+    - match: '(?=})'
+      pop: true
+
   # for sequences of args like in rgb(), pop current context off stack before
   # encountering closing paren
   pop-before-paren:
@@ -1399,6 +1399,11 @@ contexts:
       captures:
         1: constant.numeric.css
         2: keyword.other.unit.css
+
+  rule-end:
+    - match: ;
+      scope: punctuation.terminator.rule.css
+      pop: true
 
   selector-attribute:
     - match: '\['
@@ -1805,15 +1810,20 @@ contexts:
   value-additive-symbols:
     - match: (?<=additive-symbols:)
       push:
-        - include: value-end
+        - include: rule-end
+        - include: pop-before-curly
         - include: comment
         - include: important
         - include: all
-        - include: function-attr
-        - include: function-toggle
         - include: function-var
+        - include: function-image-set
+        - include: function-image
+        - include: function-element
         - include: function-cross-fade
-
-  value-end:
-    - match: '(?=[;}])'
-      pop: true
+        - include: function-linear-gradient
+        - include: function-radial-gradient
+        - include: function-url
+        - include: string-double
+        - include: string-single
+        - include: integer
+        - include: identifier
