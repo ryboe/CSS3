@@ -1356,6 +1356,7 @@ contexts:
 
     # values
     - include: value-additive-symbols
+    - include: value-align-content-justify-content
 
     # matches variables, e.g. --myvar
     - include: property-name-custom
@@ -1844,3 +1845,4 @@ contexts:
         - include: all
         - match: \b(?:true|stretch|start|space-evenly|space-between|space-around|safe|right|left|last-baseline|flex-start|flex-end|end|center|baseline|auto)\b
           scope: support.constant.property-value.css
+
