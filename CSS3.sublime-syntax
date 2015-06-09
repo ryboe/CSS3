@@ -979,7 +979,7 @@ contexts:
         - meta_content_scope: meta.function.toggle.css
         - include: paren-end-function
         - include: comment
-        # TODO: match toggle arguments
+        # TODO: match toggle arguments if toggle() isn't dropped from the spec
     - include: stray-paren-end-function
 
   function-url:
