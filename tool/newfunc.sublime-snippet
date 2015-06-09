@@ -1,0 +1,19 @@
+<snippet>
+    <content><![CDATA[
+function-${1:name}:
+  - match: \b(${1:name})(\()
+    captures:
+      1: support.function.${1:name}.css
+      2: punctuation.section.function.css
+    push:
+      - meta_content_scope: meta.function.${1:name}.css
+      - include: paren-end-function
+      - include: comment
+      - ${2}
+  - include: stray-paren-end-function
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>newfunc</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.yaml</scope>
+</snippet>

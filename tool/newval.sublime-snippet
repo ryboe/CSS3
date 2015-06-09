@@ -1,19 +1,19 @@
 <snippet>
     <content><![CDATA[
 value-${1:name}:
-  begin: (?<=${1:name}:)
-  patterns:
-  - include: '#comment-block'
-  - include: '#type-important'
-  - include: '#type-all'
-  - include: '#type-function-attr'
-  - include: '#type-function-toggle'
-  - include: '#type-function-var'
-  - ${0}
-  end: (?=[;)])
+  - match: (?<=${1:name}:)
+    push:
+      - meta_content_scope: meta.property.${1:name}.css
+      - include: rule-end
+      - include: pop-before-curly
+      - include: comment
+      - include: important
+      - include: function-var
+      - include: all
+      - ${0}
 ]]></content>
     <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
     <tabTrigger>newval</tabTrigger>
     <!-- Optional: Set a scope to limit where the snippet will trigger -->
-    <!-- <scope>source.python</scope> -->
+    <scope>source.yaml</scope>
 </snippet>
