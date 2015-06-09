@@ -150,7 +150,7 @@ contexts:
       captures:
         1: punctuation.definition.keyword.css
       push:
-        - include: rule-end
+        - include: at-rule-end
         - include: comment
         # only acceptable encoding is UTF-8
         - match: (?:("(?:UTF-8|utf-8)")|('(?:UTF-8|utf-8)'))
@@ -203,7 +203,7 @@ contexts:
         1: punctuation.definition.keyword.css
       push:
         - meta_scope: meta.at-rule.import.css
-        - include: rule-end
+        - include: at-rule-end
         - include: comment
         - match: \band\b
           scope: keyword.operator.logic.css
@@ -238,7 +238,7 @@ contexts:
       captures:
         1: punctuation.definition.keyword.css
       push:
-        - include: rule-end
+        - include: at-rule-end
         - include: comment
         - include: function-url
         - include: string-double
@@ -258,6 +258,11 @@ contexts:
         - include: comment
         - include: pseudo-page
         - include: identifier
+
+  at-rule-end:
+    - match: ;
+      scope: punctuation.terminator.rule.css
+      pop: true
 
   at-supports:
     - match: (@)(?:-webkit-|-ms-|-moz-)?supports\b
@@ -332,7 +337,7 @@ contexts:
         2: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.attr.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - include: unit
         - include: function-calc
@@ -346,7 +351,7 @@ contexts:
         2: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.blur.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - include: function-calc
         - include: length-non-negative-last-arg
@@ -359,7 +364,7 @@ contexts:
         2: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.filter-shorthand.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - include: function-calc
         - include: percentage-non-negative-percent-enforced-last-arg
@@ -372,7 +377,7 @@ contexts:
         2: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.calc.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - include: function-calc
         - include: length
@@ -390,7 +395,7 @@ contexts:
         2: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.color.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - include: function-hue
         - include: function-device-cmyk
@@ -417,7 +422,7 @@ contexts:
         2: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.color-adjuster-blend.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - match: \b(?:rgb|hwb|hsl)\b
           scope: support.constant.property-value.css
@@ -441,7 +446,7 @@ contexts:
         2: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.color-adjuster-hsl.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - include: percentage-last-arg
     - include: stray-paren-end-function
@@ -453,7 +458,7 @@ contexts:
         2: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.color-adjuster-hue.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - include: color-adjuster-operator
         - include: angle-last-arg
@@ -466,7 +471,7 @@ contexts:
         2: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.color-adjuster-rgba.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - include: color-adjuster-operator
         - include: percentage-percent-enforced-last-arg
@@ -480,7 +485,7 @@ contexts:
         2: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.color-adjuster-tint-shade.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - include: percentage-zero-to-hundred-last-arg
     - include: stray-paren-end-function
@@ -492,7 +497,7 @@ contexts:
         2: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.conic-gradient.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - match: \b(top|right|left|center|bottom|at)\b
           scope: support.constant.property-value.css
@@ -518,7 +523,7 @@ contexts:
         2: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.contrast-adjuster.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - include: percentage-non-negative-percent-enforced-last-arg
         - include: number-non-negative-last-arg
@@ -531,7 +536,7 @@ contexts:
         2: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.cross-fade.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - match: ','
           push: function-cross-fade-final-image
@@ -575,7 +580,7 @@ contexts:
         2: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.device-cmyk.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - match: ','
           push: function-device-cmyk-value2
@@ -622,7 +627,7 @@ contexts:
         2: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.drop-shadow.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - include: function-hue
         - include: function-device-cmyk
@@ -645,13 +650,18 @@ contexts:
         2: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.element.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - match: \b(?:start|last|first-except|first)\b
           scope: support.constant.property-value.css
           push: arg-last
         - include: id
     - include: stray-paren-end-function
+
+  function-end:
+    - match: \)
+      scope: punctuation.section.function.css
+      pop: true
 
   function-filter:
     - match: \b(filter)(\()
@@ -660,7 +670,7 @@ contexts:
         2: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.filter.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - match: ','
           push: filter-function-list
@@ -693,7 +703,7 @@ contexts:
         2: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.gray.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - match: ','
           push: function-gray-alpha-value
@@ -714,7 +724,7 @@ contexts:
         2: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.hue.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - match: ','
           push: function-hue-value2
@@ -758,7 +768,7 @@ contexts:
         2: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.hue-rotate.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - include: function-calc
         - include: angle-last-arg
@@ -771,7 +781,7 @@ contexts:
         2: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.image.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - match: \b(?:rtl|ltr)\b
           scope: support.constant.property-value.css
@@ -796,7 +806,7 @@ contexts:
         2: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.image-set.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - include: function-hue
         - include: function-device-cmyk
@@ -828,7 +838,7 @@ contexts:
         2: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.linear-gradient.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - match: \b(?:top|to|right|left|bottom)\b
           scope: support.constant.property-value.css
@@ -854,7 +864,7 @@ contexts:
         2: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.radial-gradient.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - match: \b(top|right|left|farthest-side|farthest-corner|ellipse|closest-side|closest-corner|circle|center|bottom|at)\b
           scope: support.constant.property-value.css
@@ -879,7 +889,7 @@ contexts:
         2: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.rgb.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - match: ','
           push: function-rgb-value2
@@ -917,7 +927,7 @@ contexts:
         2: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.rgba.css
-        - include: paren-end-function
+        - include: function-end
         - match: ','
           push: function-rgba-value2
         - include: function-calc
@@ -963,7 +973,7 @@ contexts:
         2: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.splash-hue.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - include: function-calc
         - include: percentage-zero-to-hundred-last-arg
@@ -977,7 +987,7 @@ contexts:
         2: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.toggle.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         # TODO: match toggle arguments if toggle() isn't dropped from the spec
     - include: stray-paren-end-function
@@ -1002,7 +1012,7 @@ contexts:
         2: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.var.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - include: property-name-custom
         # TODO: include all value rules here. var() can contain any value
@@ -1225,11 +1235,6 @@ contexts:
       scope: constant.numeric.css
       push: arg-last
 
-  paren-end-function:
-    - match: \)
-      scope: punctuation.section.function.css
-      pop: true
-
   percentage:
     - match: '({{number}})(%)|({{zero}})'
       captures:
@@ -1395,11 +1400,6 @@ contexts:
         1: constant.numeric.css
         2: keyword.other.unit.css
 
-  rule-end:
-    - match: ;
-      scope: punctuation.terminator.rule.css
-      pop: true
-
   selector-attribute:
     - match: '\['
       scope: meta.selector.css punctuation.section.attribute.css
@@ -1506,7 +1506,7 @@ contexts:
         3: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.dir.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - match: \b(?:rtl|ltr|auto)\b
           scope: support.constant.property-value.css
@@ -1521,7 +1521,7 @@ contexts:
         3: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.drop.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - match: \b(?:valid|invalid|active)\b
           scope: support.constant.property-value.css
@@ -1536,7 +1536,7 @@ contexts:
         3: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.lang.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
     - include: stray-paren-end-function
 
@@ -1549,7 +1549,7 @@ contexts:
         3: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.locale-dir.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - match: \b(?:rtl|ltr)\b
           scope: support.constant.property-value.css
@@ -1564,7 +1564,7 @@ contexts:
         3: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.nth.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - include: an-plus-b
     - match: \)
@@ -1580,7 +1580,7 @@ contexts:
         3: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.selector-list.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - include: selector-class
         - include: selector-pseudo-element-function
@@ -1621,7 +1621,7 @@ contexts:
         3: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.selector-list.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - match: \bof\b
           scope: support.constant.property-value.css
@@ -1664,7 +1664,7 @@ contexts:
         3: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.system-metric.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - match: (?:-moz-)?(?:windows-theme|windows-glass|windows-default-theme|windows-compositor|windows-classic|touch-enabled|scrollbar-thumb-proportional|scrollbar-start-forward|scrollbar-start-backward|scrollbar-end-forward|scrollbar-end-backward|maemo-classic|mac-graphite-theme|images-in-menus|device-pixel-ratio)\b
           scope: support.constant.property-value.css
@@ -1679,7 +1679,7 @@ contexts:
         3: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.tree.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - match: \bhover\b
           scope: support.constant.property-value.css
@@ -1718,7 +1718,7 @@ contexts:
         3: punctuation.section.function.css
       push:
         - meta_content_scope: meta.function.blank-slot.css
-        - include: paren-end-function
+        - include: function-end
         - include: comment
         - match: (?<=\()\s*(\*)\s*(?=\))
           captures:
@@ -1802,10 +1802,6 @@ contexts:
     - match: \b(?:vw|vmin|vmax|vh|url|time|string|s|rem|rad|px|pt|pc|number|ms|mm|length|kHz|integer|in|Hz|grad|frequency|ex|em|deg|color|cm|angle)\b|(%)
       scope: support.constant.unit.css
 
-  value-end:
-    - match: '(?=[;)}])'
-      pop: true
-
   value-additive-symbols:
     - match: (?<=additive-symbols:)
       push:
@@ -1817,3 +1813,7 @@ contexts:
         - include: function-toggle
         - include: function-var
         - include: function-cross-fade
+
+  value-end:
+    - match: '(?=[;}])'
+      pop: true
