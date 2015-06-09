@@ -1,8 +1,10 @@
-from CSS3.completions import properties
-from CSS3.completions import values
 import re
+
 import sublime
 import sublime_plugin
+
+from CSS3.completions import properties
+from CSS3.completions import values
 
 
 INHIBIT_DEFAULTS = sublime.INHIBIT_WORD_COMPLETIONS | sublime.INHIBIT_EXPLICIT_COMPLETIONS
