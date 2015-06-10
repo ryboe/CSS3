@@ -1357,6 +1357,8 @@ contexts:
     # values
     - include: value-additive-symbols
     - include: value-align-content-justify-content
+    - include: value-align-items-align-self-justify-self
+    - include: value-alignment
 
     # matches variables, e.g. --myvar
     - include: property-name-custom
@@ -1846,3 +1848,30 @@ contexts:
         - match: \b(?:true|stretch|start|space-evenly|space-between|space-around|safe|right|left|last-baseline|flex-start|flex-end|end|center|baseline|auto)\b
           scope: support.constant.property-value.css
 
+  # properties defined in two specs: CSS Flexible Box Layout Module Level 1 and
+  # CSS Box Alignment Module Level 3
+  value-align-items-align-self-justify-self:
+    - match: (?<=align-items:|align-self:|justify-self:)
+      push:
+        - meta_content_scope: meta.property.align-self.css
+        - include: rule-end
+        - include: pop-before-curly
+        - include: comment
+        - include: important
+        - include: function-var
+        - include: all
+        - match: \b(?:true|stretch|start|self-start|self-end|safe|right|left|last-baseline|flex-start|flex-end|end|center|baseline|auto)\b
+          scope: support.constant.property-value.css
+
+  value-alignment:
+    - match: (?<=alignment:)
+      push:
+        - meta_content_scope: meta.property.alignment.css
+        - include: rule-end
+        - include: pop-before-curly
+        - include: comment
+        - include: important
+        - include: function-var
+        - include: all
+        - match: \b(?:top|right|left|center|bottom)\b
+          scope: support.constant.property-value.css
