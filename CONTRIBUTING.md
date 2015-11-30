@@ -91,7 +91,7 @@ make sure you see "✓ CSS3".
 
 ## Tips
 
-* `match` field uses Ruby regex syntax.
+* The `match` field uses Oniguruma regular expressions.
 * If CSS files are opening as Plain Text, make sure your Sublime Text build is
 3084 or greater.
 
