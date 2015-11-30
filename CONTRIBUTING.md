@@ -47,8 +47,9 @@ installed in the new version of Sublime Text 3.
 If you have CSS3 installed, you should probably uninstall it to prevent any
 conflicts.
 
-If you installed it through Package Control, then press `cmd+shift+p` and then
-type "Package Control: Remove Package". Finally, select CSS3 from the menu.
+If you installed it through Package Control, then press `ctrl+shift+p`, or
+`cmd+shift+p` on OS X, and then type "Package Control: Remove Package". Finally,
+select CSS3 from the menu.
 
 If you manually cloned it to your Packages directory, then delete the folder.
 
@@ -57,8 +58,8 @@ If you manually cloned it to your Packages directory, then delete the folder.
 You'll probably want to disable the built-in CSS package to prevent any
 conflicts with CSS3.
 
-Press `cmd+shift+p`, type "Package Control: Disable Package", and press enter.
-Finally, select CSS to disable it.
+Press `ctrl+shift+p`, or `cmd+shift+p` on OS X, type "Package Control:
+Disable Package", and press enter. Finally, select CSS to disable it.
 
 ### Download source
 
@@ -72,8 +73,9 @@ git clone git@github.com:<your_username>/CSS3.git
 You’ll want this for opening the `CSS3.YAML-tmLanguage` file. It gives you a
 highlighting option.
 
-Press `cmd+shift+p`, type "Package Control: Install Package", and press enter.
-Next, type "AAAPackageDev" and press enter to install that package.
+Press `ctrl+shift+p`, or `cmd+shift+p` on OS X, type "Package Control: Install
+Package", and press enter. Next, type "AAAPackageDev" and press enter to install
+that package.
 
 ### Restart Sublime Text
 
