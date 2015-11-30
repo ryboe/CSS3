@@ -99,6 +99,8 @@ make sure you see "✓ CSS3".
 * The `match` field uses Oniguruma regular expressions.
 * If CSS files are opening as Plain Text, make sure your Sublime Text build is
 3084 or greater.
+* You might want to set `ignore_vcs_packages: true` in Package Settings >
+Package Control > Settings - User, if Package Control reports git errors.
 
 ## Reading list
 
