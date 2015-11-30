@@ -99,5 +99,5 @@ make sure you see "✓ CSS3".
 
 * [Sublime Syntax Spec](http://www.sublimetext.com/docs/3/syntax.html)
 * [Sublime Syntax Examples](https://github.com/sublimehq/Packages)
-* [SublimeLPC](https://github.com/abathur/SublimeLPC) (Syntax and tests)
+* [SublimeLPC](https://github.com/abathur/SublimeLPC) (See syntax and test files)
 * [CSS3 Spec](http://www.w3.org/Style/CSS/current-work.en.html)
