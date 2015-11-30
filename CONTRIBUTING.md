@@ -16,7 +16,7 @@ help. Let's keep bad code out of the Web!
 ## Submit a pull request
 
 It would be awesome to have more people dive into these regular expressions with
-me! You should probably open an issue first before writing any code though.
+us! You should probably open an issue first before writing any code though.
 
 ## Setup a dev environment
 
