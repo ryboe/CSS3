@@ -8,7 +8,7 @@ you can help!
 If you think something's missing, make sure you're not asking for something on
 [this list of bad CSS
 properties](https://gist.github.com/y0ssar1an/bb95223148e486acbe7a#file-
-bad_css). If it's not on that list, open an issue and we'll investigate. we'll
+bad_css). If it's not on that list, open an issue and we'll investigate. We'll
 be monitoring the specs as they're updated on [the W3C
 feed](http://www.w3.org/Style/CSS/current-work.en.html), but we still need your
 help. Let's keep bad code out of the Web!
@@ -18,10 +18,7 @@ help. Let's keep bad code out of the Web!
 It would be awesome to have more people dive into these regular expressions with
 us! You should probably open an issue first before writing any code though.
 
-## Setup a dev environment
-
-If you're ready to dive into the code, then this is how. The following
-instructions are for hackers only.
+## Set up a dev environment
 
 ### Fork CSS3
 
@@ -63,7 +60,7 @@ If you manually cloned it to your Packages directory, then delete the folder.
 You'll probably want to disable the built-in CSS package to prevent any
 conflicts with CSS3.
 
-Press `ctrl+shift+p`, or `cmd+shift+p` on OS X, type "Package Control: Disable
+Press `ctrl+shift+p`, or `cmd+shift+p` on OS X. Type "Package Control: Disable
 Package", and press enter. Finally, select CSS to disable it.
 
 ### Download source
