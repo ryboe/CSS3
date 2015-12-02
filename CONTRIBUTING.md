@@ -67,7 +67,7 @@ it.
 
 #### Restart Sublime Text
 
-Probably a good idea to restart now.
+It's probably a good idea to restart now.
 
 #### Sanity check
 
