@@ -29,20 +29,8 @@ Create a fork of CSS3 on GitHub.
 To work with the new Sublime Syntax, you'll need to have Sublime Text 3 Build
 3084 or greater. To check, click on Help > About Sublime Text, or Sublime Text >
 About Sublime Text on OS X, to see the build number you currently have
-installed.
-
-If your version of Sublime Text 3 is build 3083 or lower, then you'll need to
-install Sublime Text 3dev, which is a build ahead of regular Sublime Text 3.
-Click [here](http://www.sublimetext.com/3dev) to download it. You need to be a
-registered user to install it.
-
-If you have to install Sublime Text 3dev, then you should probably uninstall the
-old version before installing the new version to prevent possible conflicts. If
-you want to keep your User preferences, make sure you save them somewhere before
-uninstalling the older version of Sublime Text 3 so that you can reimport them
-after installing the newer version. In addition, make sure [Package
-Control]((https://packagecontrol.io/installation)) is installed in the new
-version of Sublime Text 3.
+installed. In addition, make sure [Package Control]((https://packagecontrol.io/installation))
+is installed in the new version of Sublime Text 3.
 
 ### Uninstall CSS3
 
