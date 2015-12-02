@@ -34,8 +34,7 @@ is installed in the new version of Sublime Text 3.
 
 ### Uninstall CSS3
 
-If you have CSS3 installed, you should probably uninstall it to prevent any
-conflicts.
+If you have CSS3 installed, uninstall it to prevent conflicts.
 
 If you installed it through Package Control, then press `ctrl+shift+p`, or
 `cmd+shift+p` on OS X, and then type "Package Control: Remove Package". Finally,
@@ -45,8 +44,7 @@ If you manually cloned it to your Packages directory, then delete the folder.
 
 ### Disable built-in CSS Package
 
-You'll probably want to disable the built-in CSS package to prevent any
-conflicts with CSS3.
+Disable the built-in CSS package to prevent any conflicts with CSS3.
 
 Press `ctrl+shift+p`, or `cmd+shift+p` on OS X. Type "Package Control: Disable
 Package", and press enter. Finally, select CSS to disable it.
