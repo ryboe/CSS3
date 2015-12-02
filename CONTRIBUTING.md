@@ -79,7 +79,7 @@ make sure you see "✓ CSS3".
 
 ## Tips
 
-* The `match` field uses Oniguruma regular expressions.
+* The `match` field uses [Oniguruma regular expressions](https://gist.github.com/alphabetum/4228696).
 * If CSS files are opening as Plain Text, make sure your Sublime Text build is
 3084 or greater.
 * You might want to set `ignore_vcs_packages: true` in Package Settings >
