@@ -30,7 +30,7 @@ To work with the new Sublime Syntax, you'll need to have Sublime Text 3 Build
 3084 or greater. To check, click on Help > About Sublime Text, or Sublime Text >
 About Sublime Text on OS X, to see the build number you currently have
 installed. In addition, make sure [Package Control]((https://packagecontrol.io/installation))
-is installed in the new version of Sublime Text 3.
+is installed.
 
 ### Uninstall CSS3
 
