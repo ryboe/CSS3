@@ -20,11 +20,11 @@ us! You should probably open an issue first before writing any code though.
 
 ## Set up a dev environment
 
-1. Fork CSS3
+##### Fork CSS3
 
 Create a fork of CSS3 on GitHub.
 
-2. Check Sublime Text's build number
+##### Check Sublime Text's build number
 
 To work with the new Sublime Syntax, you'll need to have Sublime Text 3 Build
 3084 or greater. To check, click on Help > About Sublime Text, or Sublime Text >
@@ -32,7 +32,7 @@ About Sublime Text on OS X, to see the build number you currently have
 installed. In addition, make sure [Package Control]((https://packagecontrol.io/installation))
 is installed.
 
-3. Uninstall CSS3
+##### Uninstall CSS3
 
 If you have CSS3 installed, uninstall it to prevent conflicts.
 
@@ -42,21 +42,21 @@ select CSS3 from the menu.
 
 If you manually cloned it to your Packages directory, then delete the folder.
 
-4. Disable built-in CSS Package
+##### Disable built-in CSS Package
 
 Disable the built-in CSS package to prevent any conflicts with CSS3.
 
 Press `ctrl+shift+p`, or `cmd+shift+p` on OS X. Type "Package Control: Disable
 Package", and press enter. Finally, select CSS to disable it.
 
-5. Download source
+##### Download source
 
 ```
 cd "$HOME/Library/Application Support/Sublime Text 3/Packages"
 git clone git@github.com:<your_username>/CSS3.git
 ```
 
-6. Install AAAPackageDev
+##### Install AAAPackageDev
 
 You’ll want this for opening the `CSS3.YAML-tmLanguage` file. It gives you a
 highlighting option.
@@ -65,11 +65,11 @@ Press `ctrl+shift+p`, or `cmd+shift+p` on OS X, type "Package Control: Install
 Package", and press enter. Next, type "AAAPackageDev" and press enter to install
 it.
 
-7. Restart Sublime Text
+##### Restart Sublime Text
 
 It's probably a good idea to restart now.
 
-8. Sanity check
+##### Sanity check
 
 Press `` ctrl+` `` to open the console. Make sure there aren't any errors there.
 
