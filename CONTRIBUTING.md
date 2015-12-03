@@ -69,8 +69,8 @@ git clone git@github.com:<your_username>/CSS3.git
 
 ##### Install AAAPackageDev
 
-You’ll want this for opening the `CSS3.YAML-tmLanguage` file. It gives you a
-highlighting option.
+AAAPackageDev gives you a `Sublime Syntax Def (YAML)` syntax option, which is
+very useful for reading the `CSS3.YAML-tmLanguage` file.
 
 Press `ctrl+shift+p`, or `cmd+shift+p` on OS X, type "Package Control: Install
 Package", and press enter. Next, type "AAAPackageDev" and press enter to install
