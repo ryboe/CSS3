@@ -3555,6 +3555,7 @@ repository:
     - include: '#value-transition-timing-function'
     - include: '#value-unicode-bidi'
     - include: '#value-unicode-range'
+    - include: '#value-user-select'
     - include: '#value-user-zoom'
     - include: '#value-vertical-align'
     - include: '#value-voice-balance'
@@ -7319,6 +7320,7 @@ repository:
     - include: '#value-transition-timing-function'
     - include: '#value-unicode-bidi'
     - include: '#value-unicode-range'
+    - include: '#value-user-select'
     - include: '#value-user-zoom'
     - include: '#value-vertical-align'
     - include: '#value-voice-balance'
@@ -7983,6 +7985,19 @@ repository:
     - include: '#type-function-var'
     - name: constant.numeric.unicode-range.css
       match: (?i:U\+[\h?]{1,6}(?:-[\h?]{1,6})?)
+    end: (?=[;)])
+
+  value-user-select:
+    begin: (?<=user-select:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:text|none|contain|auto|all)\b
     end: (?=[;)])
 
   value-user-zoom:
