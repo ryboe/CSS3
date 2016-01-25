@@ -5,9 +5,12 @@ completions.
 Mac:           cmd+shift+p  -> Package Control: Disable Package -> CSS
 Linux/Windows: ctrl+shift+p -> Package Control: Disable Package -> CSS
 
-If you have CSS3_Syntax or Emmet installed, you should remove those as well.
-Removing Emmet breaks my heart, but the code it inserts is often quite outdated,
-and it's completions completely drown out the completions in this plugin.
+If you have Emmet installed, its completions will drown out the completions
+in CSS3. You can disable Emmet's completions by adding the following lines
+to your Emmet package settings:
+
+	"show_css_completions": false,
+	"disable_tab_abbreviations_for_scopes": "source.css"
 
 That's it. Enjoy the plugin. If you have any problems, please open an issue on
 Github and I'll fix it as soon as I can.
