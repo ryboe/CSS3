@@ -3378,7 +3378,8 @@ repository:
     - include: '#comment-block'
     - include: '#value-additive-symbols'
     - include: '#value-align-content-justify-content'
-    - include: '#value-align-items-align-self-justify-self'
+    - include: '#value-align-items'
+    - include: '#value-align-self-justify-self'
     - include: '#value-alignment-adjust'
     - include: '#value-alignment-baseline'
     - include: '#value-animation-delay-animation-duration'
@@ -3700,14 +3701,13 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - name: support.constant.property-value.css
-      match: \b(?:true|stretch|start|space-evenly|space-between|space-around|safe|right|left|last-baseline|flex-start|flex-end|end|center|baseline|auto)\b
+      match: \b(?:unsafe|stretch|start|space-evenly|space-between|space-around|safe|right|normal|left|last-baseline|flex-start|flex-end|end|center|baseline)\b
     # Ending before a closing paren makes these rules usable inside an @supports
     # condition.
     end: (?=[;)])
 
-  # The CSS Box Alignment Module Level 3 spec supersedes the values listed in the Flexbox spec.
-  value-align-items-align-self-justify-self:
-    begin: (?<=align-items:|align-self:|justify-self:)
+  value-align-items:
+    begin: (?<=align-items:)
     patterns:
     - include: '#comment-block'
     - include: '#type-important'
@@ -3715,13 +3715,22 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
-    - match: \b(?:(stretch|last-baseline|baseline|auto)|(start|self-start|self-end|right|left|flex-start|flex-end|end|center)(?:\s+(true|safe))?|(?:(true|safe)\s+)?(start|self-start|self-end|right|left|flex-start|flex-end|end|center))\b
-      captures:
-        '1': {name: support.constant.property-value.css}
-        '2': {name: support.constant.property-value.css}
-        '3': {name: support.constant.property-value.css}
-        '4': {name: support.constant.property-value.css}
-        '5': {name: support.constant.property-value.css}
+    - name: support.constant.property-value.css
+      match: \b(?:unsafe|stretch|start|self-start|self-end|safe|right|normal|left|last-baseline|flex-start|flex-end|end|center|baseline)\b
+    end: (?=[;)])
+
+  # The CSS Box Alignment Module Level 3 spec supersedes the values listed in the Flexbox spec.
+  value-align-self-justify-self:
+    begin: (?<=align-self:|justify-self:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:unsafe|stretch|start|self-start|self-end|safe|right|normal|left|last-baseline|flex-start|flex-end|end|center|baseline|auto)\b
     end: (?=[;)])
 
   value-alignment:
@@ -5721,7 +5730,7 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - name: support.constant.property-value.css
-      match: \b(?:subgrid|stack|row|none|min-content|max-content|dense|column|auto)\b
+      match: \b(?:subgrid|row|none|min-content|max-content|dense|column|auto)\b
     - name: support.constant.property-value.css
       match: (?<=\s)\*(?=[\s\W])
     - include: '#type-function-minmax'
@@ -5996,7 +6005,7 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - name: support.constant.property-value.css
-      match: \b(?:true|stretch|start|self-start|self-end|safe|right|legacy|left|last-baseline|flex-start|flex-end|end|center|baseline|auto)\b
+      match: \b(?:unsafe|stretch|start|self-start|self-end|safe|right|normal|legacy|left|last-baseline|flex-start|flex-end|end|center|baseline|auto)\b
     end: (?=[;)])
 
   value-letter-spacing:
@@ -7200,7 +7209,8 @@ repository:
     - include: '#comment-block'
     - include: '#value-additive-symbols'
     - include: '#value-align-content-justify-content'
-    - include: '#value-align-items-align-self-justify-self'
+    - include: '#value-align-items'
+    - include: '#value-align-self-justify-self'
     - include: '#value-alignment-adjust'
     - include: '#value-alignment-baseline'
     - include: '#value-animation-delay-animation-duration'
