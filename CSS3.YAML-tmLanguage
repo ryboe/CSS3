@@ -3424,6 +3424,8 @@ repository:
     - include: '#value-break-after-break-before'
     - include: '#value-break-inside'
     - include: '#value-caption-side'
+    - include: '#value-caret-color'
+    - include: '#value-caret-shape'
     - include: '#value-child-align'
     - include: '#value-clear-after'
     - include: '#value-clear-side'
@@ -3599,7 +3601,7 @@ repository:
     - include: '#value-background'
     - include: '#value-bleed'
     - include: '#value-border'
-    - include: '#value-caret-color'
+    - include: '#value-caret'
     - include: '#value-chains'
     - include: '#value-clear'
     - include: '#value-color'
@@ -4568,6 +4570,30 @@ repository:
       match: \b(?:top|bottom)\b
     end: (?=[;)])
 
+  value-caret:
+    begin: (?<=caret:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:underscore|block|bar|auto)\b
+    - include: '#type-function-gray'
+    - include: '#type-color-named-deprecated'
+    - include: '#type-color-named'
+    - include: '#type-function-hsla'
+    - include: '#type-function-hsl'
+    - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-color-hex'
+    end: (?=[;)])
+
   value-caret-color:
     begin: (?<=caret-color:)
     patterns:
@@ -4590,6 +4616,19 @@ repository:
     - include: '#type-function-device-cmyk'
     - include: '#type-function-color'
     - include: '#type-color-hex'
+    end: (?=[;)])
+
+  value-caret-shape:
+    begin: (?<=caret-shape:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:underscore|block|bar|auto)\b
     end: (?=[;)])
 
   value-chains:
@@ -7207,6 +7246,8 @@ repository:
     - include: '#value-break-after-break-before'
     - include: '#value-break-inside'
     - include: '#value-caption-side'
+    - include: '#value-caret-color'
+    - include: '#value-caret-shape'
     - include: '#value-child-align'
     - include: '#value-clear-after'
     - include: '#value-clear-side'
@@ -7378,7 +7419,7 @@ repository:
     - include: '#value-background'
     - include: '#value-bleed'
     - include: '#value-border'
-    - include: '#value-caret-color'
+    - include: '#value-caret'
     - include: '#value-chains'
     - include: '#value-clear'
     - include: '#value-color'
