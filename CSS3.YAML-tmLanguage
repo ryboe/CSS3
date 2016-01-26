@@ -5801,6 +5801,7 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
+    - include: '#type-function-calc'
     - include: '#type-length-non-negative'
     end: (?=[;)])
 
