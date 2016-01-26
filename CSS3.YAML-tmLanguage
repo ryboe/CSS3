@@ -3273,13 +3273,13 @@ repository:
       '3': {name: constant.numeric.css}
 
   type-line-name:
-    begin: \(
+    begin: \[
     beginCaptures:
       '0': {name: punctuation.section.line-name.css}
     patterns:
     - include: '#comment-block'
     - include: '#identifier'
-    end: \)
+    end: \]
     endCaptures:
       '0': {name: punctuation.section.line-name.css}
 
@@ -5792,7 +5792,7 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - name: support.constant.property-value.css
-      match: \b(?:subgrid|none|min-content|max-content|fit-content|auto)\b
+      match: \b(?:subgrid|none|min-content|max-content|auto)\b
     - name: support.constant.property-value.css
       match: (?<=\s)\*(?=[\s\W])
     - include: '#type-function-minmax'
