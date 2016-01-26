@@ -7,6 +7,6 @@ VERSION 1.2.16 CHANGES
    by adding these lines to the Emmet package settings:
 
 		"show_css_completions": false,
-		"disable_tab_abbreviations_for_scopes": "source.css",
+		"disable_tab_abbreviations_for_scopes": "source.css"
 
    Thank you mohamadnorouzi20 for pointing this out!
