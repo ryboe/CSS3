@@ -2926,7 +2926,7 @@ repository:
     patterns:
     - include: '#comment-block'
     - name: support.constant.property-value.css
-      match: \b(?:min-content|max-content|auto)\b
+      match: \b(?:min-content|max-content|auto-fit|auto-fill)\b
     - include: '#type-function-minmax'
     - include: '#type-function-calc'
     - include: '#type-percentage-non-negative'
