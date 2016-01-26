@@ -1,0 +1,12 @@
+VERSION 1.2.16 CHANGES
+
+1) Support user-select, since it's now on the standards track.
+2) Update for the latest changes to the CSS Basic User Interface Module
+   Level 4 spec.
+3) The install notes describe how to disable Emmet CSS completions
+   by adding these lines to the Emmet package settings:
+
+		"show_css_completions": false,
+		"disable_tab_abbreviations_for_scopes": "source.css",
+
+   Thank you mohamadnorouzi20 for pointing this out!
