@@ -3486,6 +3486,7 @@ repository:
     - include: '#value-grid-area-grid-row-grid-column'
     - include: '#value-grid-auto-columns-grid-auto-rows'
     - include: '#value-grid-auto-flow'
+    - include: '#value-grid-gap'
     - include: '#value-grid-template'
     - include: '#value-grid-template-areas'
     - include: '#value-grid-template-columns-grid-template-rows'
@@ -5791,6 +5792,18 @@ repository:
       match: \b(?:row|dense|column)\b
     end: (?=[;)])
 
+  value-grid-gap:
+    begin: (?<=grid-column-gap|grid-row-gap|grid-gap:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-length-non-negative'
+    end: (?=[;)])
+
   value-grid-template:
     begin: (?<=grid-template:)
     patterns:
@@ -7317,6 +7330,7 @@ repository:
     - include: '#value-grid-area-grid-row-grid-column'
     - include: '#value-grid-auto-columns-grid-auto-rows'
     - include: '#value-grid-auto-flow'
+    - include: '#value-grid-gap'
     - include: '#value-grid-template'
     - include: '#value-grid-template-areas'
     - include: '#value-grid-template-columns-grid-template-rows'
