@@ -516,7 +516,7 @@ names = [
 ]
 
 value_for_name = {
-    "-moz-box-sizing": [("border-box",), ("content-box",), ("padding-box",)],
+    "-moz-box-sizing": [("border-box",), ("content-box",)],
     "-moz-column-count": [("auto",), v.integer, v.calc],
     "-moz-column-fill": [("auto",), ("balance",), ("balance-all",)],
     "-moz-column-gap": [("normal",), v.length, v.calc],
