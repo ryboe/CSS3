@@ -49,14 +49,16 @@ better :)
 
     *Warning: may break other CSS plugins*
 
-4. (Recommended) Disable Emmet
+4. (Recommended) Disable CSS completions in Emmet
 
-    If you have Emmet installed, its completions will appear alongside the
-    carefully researched, standards-based completions included in this plugin.
-    There are so many Emmet completions that they completely drown out the CSS3
-    completions. This wouldn't necessarily be a problem, except that Emmet is
-    behind the times. The code it inserts is frequently bad. You're better off
-    disabling it altogether. The Web will thank you.
+    If you have Emmet installed, its completions will drown out the completions
+    offered by this package. You can disable Emmet completions by adding these
+    two lines to your Emmet Package settings.
+
+    ```
+    "show_css_completions": false,
+    "disable_tab_abbreviations_for_scopes": "source.css"
+    ```
 
 5. (Recommended) Set CSS3 as the default language for `.css` files
     * Open a `.css` file.
