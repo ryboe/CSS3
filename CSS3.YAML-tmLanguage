@@ -2494,6 +2494,21 @@ repository:
       '4': {name: punctuation.definition.entity.css}
       '5': {name: punctuation.section.function.css}
 
+  type-function-fade:
+    begin: \b(fade)(\()
+    beginCaptures:
+      '1': {name: support.function.fade.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.fade.css
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-function-calc'
+    - include: '#type-percentage-non-negative'
+    - include: '#type-length-non-negative'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
   type-function-filter:
     begin: \b(filter)(\()
     beginCaptures:
@@ -7741,8 +7756,9 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
+    - include: '#type-function-fade'
     - name: support.constant.property-value.css
-      match: \b(?:ellipsis|clip)\b
+      match: \b(?:fade|ellipsis|clip)\b
     - include: '#type-string-double'
     - include: '#type-string-single'
     end: (?=[;)])
