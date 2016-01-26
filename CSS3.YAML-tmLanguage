@@ -5721,7 +5721,7 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - name: support.constant.property-value.css
-      match: \b(?:subgrid|stack|row|none|min-content|max-content|fit-content|dense|column|auto)\b
+      match: \b(?:subgrid|stack|row|none|min-content|max-content|dense|column|auto)\b
     - name: support.constant.property-value.css
       match: (?<=\s)\*(?=[\s\W])
     - include: '#type-function-minmax'
@@ -5831,7 +5831,7 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - name: support.constant.property-value.css
-      match: \b(?:subgrid|none|min-content|max-content|fit-content|auto)\b
+      match: \b(?:subgrid|none|min-content|max-content|auto)\b
     - name: support.constant.property-value.css
       match: (?<=\s)\*(?=[\s\W])
     - include: '#type-function-minmax'
