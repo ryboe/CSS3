@@ -19,7 +19,6 @@
     align-content: center;
     align-content: space-between;
     align-content:space-around;
-    align-content:auto;
     align-content: baseline;
     align-content: last-baseline;
     align-content: space-evenly;
@@ -28,7 +27,6 @@
     align-content: end;
     align-content: left;
     align-content: right;
-    align-content: true;
     align-content: safe;
     -webkit-align-content: initial;
     -webkit-align-content: inherit;
@@ -39,7 +37,6 @@
     -webkit-align-content: center;
     -webkit-align-content: space-between;
     -webkit-align-content:space-around;
-    -webkit-align-content:auto;
     -webkit-align-content: baseline;
     -webkit-align-content: last-baseline;
     -webkit-align-content: space-evenly;
@@ -47,7 +44,6 @@
     -webkit-align-content: end;
     -webkit-align-content: left;
     -webkit-align-content: right;
-    -webkit-align-content: true;
     -webkit-align-content: safe;
 
     align-items: initial;
@@ -66,7 +62,6 @@
     align-self: unset;
     align-self: auto;
     align-self: flex-start;
-    align-self: flex-start true;
     align-self: flex-end;
     align-self: safe flex-end;
     align-self: center;
