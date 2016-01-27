@@ -11087,6 +11087,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-grid-gap</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-column-gap</string>
 				</dict>
 				<dict>
@@ -11280,10 +11284,6 @@
 				<dict>
 					<key>include</key>
 					<string>#value-grid-auto-flow</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#value-grid-gap</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -18806,7 +18806,7 @@
 		<key>value-grid-gap</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;=grid-column-gap|grid-row-gap|grid-gap:)</string>
+			<string>(?&lt;=grid-column-gap:|grid-row-gap:|grid-gap:)</string>
 			<key>end</key>
 			<string>(?=[;)])</string>
 			<key>patterns</key>
@@ -23653,6 +23653,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-grid-gap</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-column-gap</string>
 				</dict>
 				<dict>
@@ -23846,10 +23850,6 @@
 				<dict>
 					<key>include</key>
 					<string>#value-grid-auto-flow</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#value-grid-gap</string>
 				</dict>
 				<dict>
 					<key>include</key>
