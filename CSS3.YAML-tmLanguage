@@ -5793,7 +5793,7 @@ repository:
     end: (?=[;)])
 
   value-grid-gap:
-    begin: (?<=grid-column-gap|grid-row-gap|grid-gap:)
+    begin: (?<=grid-column-gap:|grid-row-gap:|grid-gap:)
     patterns:
     - include: '#comment-block'
     - include: '#type-important'
