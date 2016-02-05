@@ -5991,6 +5991,7 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
+    - include: '#type-function-calc'
     - name: support.constant.property-value.css
       match: \b(?:none|grid|first|all)\b
     - include: '#type-percentage'
