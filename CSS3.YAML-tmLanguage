@@ -3494,6 +3494,7 @@ repository:
     - include: '#value-image-orientation'
     - include: '#value-image-resolution'
     - include: '#value-indent-edge-reset'
+    - include: '#value-initial-letter-wrap'
     - include: '#value-initial-letter-align'
     - include: '#value-initial-letter'
     - include: '#value-inline-box-align'
@@ -3773,7 +3774,7 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - name: support.constant.property-value.css
-      match: \b(?:use-script|under-edge|text-under-edge|text-over-edge|over-edge|middle|mathematical|ideographic|hanging|central|baseline|alphabetic)\b
+      match: \b(?:top|text-top|text-bottom|middle|mathematical|central|center|bottom|baseline|alphabetic)\b
     end: (?=[;)])
 
   value-all:
@@ -4118,7 +4119,7 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - name: support.constant.property-value.css
-      match: \b(?:super|sub|baseline)\b
+      match: \b(?:super|sub)\b
     - include: '#type-function-calc'
     - include: '#type-percentage'
     - include: '#type-length'
@@ -5151,7 +5152,7 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - name: support.constant.property-value.css
-      match: \b(?:use-script|text-under-edge|text-over-edge|reset-size|no-change|middle|mathematical|ideographic|hanging|central|auto|alphabetic)\b
+      match: \b(?:text-top|text-bottom|mathematical|hanging|central|auto|alphabetic)\b
     end: (?=[;)])
 
   value-empty-cells:
@@ -5978,7 +5979,22 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - name: support.constant.property-value.css
-      match: \b(?:ideographic|hanging|auto|alphabetic)\b
+      match: \b(?:ideographic|hebrew|hanging|border-box|alphabetic)\b
+    end: (?=[;)])
+
+  value-initial-letter-wrap:
+    begin: (?<=initial-letter-wrap:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:none|grid|first|all)\b
+    - include: '#type-percentage'
+    - include: '#type-length'
     end: (?=[;)])
 
   value-inline-box-align:
@@ -7339,6 +7355,7 @@ repository:
     - include: '#value-image-orientation'
     - include: '#value-image-resolution'
     - include: '#value-indent-edge-reset'
+    - include: '#value-initial-letter-wrap'
     - include: '#value-initial-letter-align'
     - include: '#value-initial-letter'
     - include: '#value-inline-box-align'
@@ -8120,7 +8137,7 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - name: support.constant.property-value.css
-      match: \b(?:top|text-top|text-bottom|super|sub|middle|central|bottom|baseline|auto)\b
+      match: \b(?:top|text-top|text-bottom|super|sub|middle|mathematical|central|center|bottom|baseline|alphabetic)\b
     - include: '#type-function-calc'
     - include: '#type-percentage'
     - include: '#type-length'

@@ -11315,6 +11315,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-initial-letter-wrap</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-initial-letter-align</string>
 				</dict>
 				<dict>
@@ -12307,7 +12311,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:use-script|under-edge|text-under-edge|text-over-edge|over-edge|middle|mathematical|ideographic|hanging|central|baseline|alphabetic)\b</string>
+					<string>\b(?:top|text-top|text-bottom|middle|mathematical|central|center|bottom|baseline|alphabetic)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>
@@ -13437,7 +13441,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:super|sub|baseline)\b</string>
+					<string>\b(?:super|sub)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>
@@ -16767,7 +16771,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:use-script|text-under-edge|text-over-edge|reset-size|no-change|middle|mathematical|ideographic|hanging|central|auto|alphabetic)\b</string>
+					<string>\b(?:text-top|text-bottom|mathematical|hanging|central|auto|alphabetic)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>
@@ -19393,9 +19397,57 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:ideographic|hanging|auto|alphabetic)\b</string>
+					<string>\b(?:ideographic|hebrew|hanging|border-box|alphabetic)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-initial-letter-wrap</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=initial-letter-wrap:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:none|grid|first|all)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-percentage</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-length</string>
 				</dict>
 			</array>
 		</dict>
@@ -23881,6 +23933,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-initial-letter-wrap</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-initial-letter-align</string>
 				</dict>
 				<dict>
@@ -26539,7 +26595,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:top|text-top|text-bottom|super|sub|middle|central|bottom|baseline|auto)\b</string>
+					<string>\b(?:top|text-top|text-bottom|super|sub|middle|mathematical|central|center|bottom|baseline|alphabetic)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>

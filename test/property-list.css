@@ -876,7 +876,6 @@
     baseline-shift: 100em;
     baseline-shift: -100em;
     baseline-shift: 0;
-    baseline-shift: baseline;
     baseline-shift: sub;
     baseline-shift: super;
 
@@ -5153,7 +5152,6 @@
     initial-letter-align: unset;
     initial-letter-align: ideographic;
     initial-letter-align: hanging;
-    initial-letter-align: auto;
     initial-letter-align: alphabetic;
 
     inline-box-align: initial;
