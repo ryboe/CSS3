@@ -13,6 +13,6 @@ to your Emmet package settings:
 	"disable_tab_abbreviations_for_scopes": "source.css"
 
 That's it. Enjoy the plugin. If you have any problems, please open an issue on
-Github and I'll fix it as soon as I can.
+GitHub and I'll fix it as soon as I can.
 
 https://github.com/y0ssar1an/CSS3/issues
