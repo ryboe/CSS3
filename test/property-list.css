@@ -7000,6 +7000,12 @@
     shape-image-threshold: 0.1;
     -webkit-shape-image-threshold: 0.1;
 
+    shape-inside: shape-box;
+    shape-inside: outside-shape;
+    shape-inside: display;
+    shape-inside: auto;
+    shape-inside: linear-gradient();
+
     shape-margin: initial;
     shape-margin: inherit;
     shape-margin: unset;

@@ -462,6 +462,7 @@ names = [
     ("shape-inside", "shape-inside: ${0};"),
     ("shape-margin", "shape-margin: ${0};"),
     ("shape-outside", "shape-outside: ${0};"),
+    ("shape-padding", "shape-padding: ${0};"),
     ("size", "size: ${0};"),
     ("speak", "speak: ${0};"),
     ("speak-as", "speak-as: ${0};"),
@@ -995,6 +996,7 @@ value_for_name = {
     "shape-inside": [("auto",), ("display",), ("outside-shape",), ("shape-box",), v.circle, v.ellipse, v.inset, v.polygon] + v.image,
     "shape-margin": [v.length, v.percentage, v.calc],
     "shape-outside": [("border-box",), ("content-box",), ("margin-box",), ("none",), ("padding-box",), v.circle, v.ellipse, v.inset, v.polygon] + v.image,
+    "shape-padding": [v.length, v.calc],
     "size": [("A3",), ("A4",), ("A5",), ("B4",), ("B5",), ("auto",), ("landscape",), ("ledger",), ("legal",), ("letter",), ("portrait",), v.length, v.calc],
     "speak": [("auto",), ("none",), ("normal",)],
     # there is also a speak-as descriptor for @counter-style. the values here are a mix of the two properties.
