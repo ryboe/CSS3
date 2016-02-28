@@ -31,5 +31,3 @@ mistakes.
 Thanks for helping out! It's a lot of work to keep CSS3 up to date with the
 latest browser/spec changes. Stuff gets by me. Any update is appreciated, no
 matter how small.
-
-Please reference the Issue # in your PR notes.
