@@ -366,6 +366,7 @@ repository:
     - include: '#property-name-illegal-moz'
     - include: '#property-name-illegal-ms'
     - include: '#property-name-illegal'
+    - include: '#property-name-deprecated'
     - include: '#property-name-legal'
     - include: '#property-name-custom'
     end: (?=:)
@@ -377,7 +378,7 @@ repository:
 
   property-name-illegal:
     name: invalid.illegal.css
-    match: \b(?:nav-index|ime-mode|icon|glyph-orientation-vertical|font-smooth|clip|behavior|accelerator)\b(?!\-)
+    match: \b(?:nav-index|ime-mode|icon|font-smooth|clip|behavior|accelerator)\b(?!\-)
 
   property-name-illegal-moz:
     name: invalid.illegal.css
@@ -390,6 +391,10 @@ repository:
   property-name-illegal-webkit:
     name: invalid.illegal.css
     match: -webkit-(?:user-modify|user-input|user-focus|box-reflect|box-pack|box-orient|box-ordinal-group|box-lines|box-flex-group|box-flex|box-direction|box-align)\b
+
+  property-name-deprecated:
+    name: invalid.deprecated.css
+    match: \b(?:page-break-inside|page-break-before|page-break-after|glyph-orientation-vertical)\b
 
   property-name-legal:
     name: support.type.property-name.css
@@ -406,6 +411,7 @@ repository:
     - include: '#property-name-illegal-moz'
     - include: '#property-name-illegal-ms'
     - include: '#property-name-illegal'
+    - include: '#property-name-deprecated'
     - include: '#property-name-legal'
     - include: '#property-name-custom'
     end: (?=:)
@@ -4605,7 +4611,7 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - name: support.constant.property-value.css
-      match: \b(?:verso|right|region|recto|page|left|column|avoid-region|avoid-page|avoid-column|avoid|auto|any|always)\b
+      match: \b(?:verso|right|region|recto|page|left|column|avoid-region|avoid-page|avoid-column|avoid|auto|always)\b
     end: (?=[;)])
 
   # NOTE: break-before, break-after, and break-inside are described in 3 specs: CSS Regions Module

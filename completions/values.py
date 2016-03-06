@@ -106,7 +106,7 @@ urange      = ("<urange>", "U+${1}")
 
 
 # COMMON VALUES
-all_values = [("inherit",), ("initial",), ("unset",), attr, toggle, var]
+all_values = [("inherit",), ("initial",), ("revert",), ("unset",), attr, toggle, var]
 
 
 # TODO

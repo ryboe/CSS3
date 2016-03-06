@@ -1087,6 +1087,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#property-name-deprecated</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#property-name-legal</string>
 				</dict>
 				<dict>
@@ -1102,10 +1106,17 @@
 			<key>name</key>
 			<string>support.type.property-name.custom.css</string>
 		</dict>
+		<key>property-name-deprecated</key>
+		<dict>
+			<key>match</key>
+			<string>\b(?:page-break-inside|page-break-before|page-break-after|glyph-orientation-vertical)\b</string>
+			<key>name</key>
+			<string>invalid.deprecated.css</string>
+		</dict>
 		<key>property-name-illegal</key>
 		<dict>
 			<key>match</key>
-			<string>\b(?:nav-index|ime-mode|icon|glyph-orientation-vertical|font-smooth|clip|behavior|accelerator)\b(?!\-)</string>
+			<string>\b(?:nav-index|ime-mode|icon|font-smooth|clip|behavior|accelerator)\b(?!\-)</string>
 			<key>name</key>
 			<string>invalid.illegal.css</string>
 		</dict>
@@ -1174,6 +1185,10 @@
 				<dict>
 					<key>include</key>
 					<string>#property-name-illegal</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#property-name-deprecated</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -15027,7 +15042,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:verso|right|region|recto|page|left|column|avoid-region|avoid-page|avoid-column|avoid|auto|any|always)\b</string>
+					<string>\b(?:verso|right|region|recto|page|left|column|avoid-region|avoid-page|avoid-column|avoid|auto|always)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>
