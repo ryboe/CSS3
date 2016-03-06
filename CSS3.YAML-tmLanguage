@@ -76,6 +76,7 @@ repository:
     - name: keyword.oeprator.logic.media.css
       match: \band\b
     - include: '#type-function-url'
+    - include: '#type-function-supports'
     - include: '#media-type-deprecated'
     - include: '#media-type'
     - include: '#media-feature'
@@ -2043,7 +2044,7 @@ repository:
 
   type-all:
     name: support.constant.property-value.css
-    match: \b(?:unset|initial|inherit|default)\b
+    match: \b(?:unset|revert|initial|inherit)\b
 
   type-an-plus-b:
     name: constant.other.an-plus-b.css
@@ -3115,6 +3116,21 @@ repository:
       match: \b(?:start|last|first-except|first)\b
     - include: '#identifier'
     end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
+  type-function-supports:
+    begin: \b(supports)(?=\()
+    beginCaptures:
+      '1': {name: support.function.supports.css}
+    contentName: meta.function.supports.css
+    patterns:
+    - include: '#comment-block'
+    - name: keyword.operator.logic.supports.css
+      match: \b(?:or|not|and)\b
+    - include: '#property-name-supports-condition'
+    - include: '#value-supports-condition'
+    end: (?<=\))
     endCaptures:
       '0': {name: punctuation.section.function.css}
 

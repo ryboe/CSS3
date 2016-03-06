@@ -258,6 +258,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#type-function-supports</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#media-type-deprecated</string>
 				</dict>
 				<dict>
@@ -6589,7 +6593,7 @@
 		<key>type-all</key>
 		<dict>
 			<key>match</key>
-			<string>\b(?:unset|initial|inherit|default)\b</string>
+			<string>\b(?:unset|revert|initial|inherit)\b</string>
 			<key>name</key>
 			<string>support.constant.property-value.css</string>
 		</dict>
@@ -10065,6 +10069,52 @@
 				<dict>
 					<key>include</key>
 					<string>#identifier</string>
+				</dict>
+			</array>
+		</dict>
+		<key>type-function-supports</key>
+		<dict>
+			<key>begin</key>
+			<string>\b(supports)(?=\()</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.supports.css</string>
+				</dict>
+			</dict>
+			<key>contentName</key>
+			<string>meta.function.supports.css</string>
+			<key>end</key>
+			<string>(?&lt;=\))</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:or|not|and)\b</string>
+					<key>name</key>
+					<string>keyword.operator.logic.supports.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#property-name-supports-condition</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-supports-condition</string>
 				</dict>
 			</array>
 		</dict>
