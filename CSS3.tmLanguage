@@ -711,7 +711,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(?&lt;=[&gt;&lt;=(])\s*(width|update-frequency|scripting|scan|resolution|pointer|overflow-inline|overflow-block|orientation|monochrome|min-width|min-resolution|min-monochrome|min-height|min-device-width|min-device-height|min-device-aspect-ratio|min-color-index|min-color|min-aspect-ratio|max-width|max-resolution|max-monochrome|max-height|max-device-width|max-device-height|max-device-aspect-ratio|max-color-index|max-color|max-aspect-ratio|light-level|hover|height|grid|device-width|device-radius|device-height|device-aspect-ratio|color-index|color|aspect-ratio|any-pointer|any-hover)\s*(?=[&gt;&lt;=):])</string>
+			<string>(?&lt;=[&gt;&lt;=(])\s*(width|update-frequency|scripting|scan|resolution|pointer|overflow-inline|overflow-block|orientation|monochrome|min-width|min-resolution|min-monochrome|min-height|min-device-width|min-device-radius|min-device-height|min-device-aspect-ratio|min-color-index|min-color|min-aspect-ratio|max-width|max-resolution|max-monochrome|max-height|max-device-width|max-device-radius|max-device-height|max-device-aspect-ratio|max-color-index|max-color|max-aspect-ratio|light-level|hover|height|grid|device-width|device-radius|device-height|device-aspect-ratio|color-index|color|aspect-ratio|any-pointer|any-hover)\s*(?=[&gt;&lt;=):])</string>
 		</dict>
 		<key>media-feature-property-device-radius</key>
 		<dict>
@@ -22669,7 +22669,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:top|right|left|center|bottom)\b</string>
+					<string>\b(?:top|right|left|center|bottom|auto)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>
@@ -22763,7 +22763,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\bcontain\b</string>
+					<string>\b(?:farthest-side|farthest-corner|contain|closest-side|closest-corner)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>
