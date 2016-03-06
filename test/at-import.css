@@ -8,7 +8,11 @@
 @import url("chrome://communicator/skin/");
 @import url("chrome://communicator/skin/");
 @import url( 'landscape.css' ) screen and  (orientation:landscape);
-
+@import url( 'landscape.css' ) screen and (orientation:landscape);
+@import url("fineprint.css") print;
+@import "mystyle.css" supports(display: flex);
+@import "mystyle.css" supports((display: flex));
+@import url("fallback-layout.css") supports(not (display: flex));
 
 /* invalid */
 
