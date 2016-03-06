@@ -225,7 +225,7 @@ repository:
       '0': {name: punctuation.section.media-feature.css}
 
   media-feature-name:
-    match: (?<=[><=(])\s*(width|update-frequency|scripting|scan|resolution|pointer|overflow-inline|overflow-block|orientation|monochrome|min-width|min-resolution|min-monochrome|min-height|min-device-width|min-device-height|min-device-aspect-ratio|min-color-index|min-color|min-aspect-ratio|max-width|max-resolution|max-monochrome|max-height|max-device-width|max-device-height|max-device-aspect-ratio|max-color-index|max-color|max-aspect-ratio|light-level|hover|height|grid|device-width|device-radius|device-height|device-aspect-ratio|color-index|color|aspect-ratio|any-pointer|any-hover)\s*(?=[><=):])
+    match: (?<=[><=(])\s*(width|update-frequency|scripting|scan|resolution|pointer|overflow-inline|overflow-block|orientation|monochrome|min-width|min-resolution|min-monochrome|min-height|min-device-width|min-device-radius|min-device-height|min-device-aspect-ratio|min-color-index|min-color|min-aspect-ratio|max-width|max-resolution|max-monochrome|max-height|max-device-width|max-device-radius|max-device-height|max-device-aspect-ratio|max-color-index|max-color|max-aspect-ratio|light-level|hover|height|grid|device-width|device-radius|device-height|device-aspect-ratio|color-index|color|aspect-ratio|any-pointer|any-hover)\s*(?=[><=):])
     captures:
       '1': {name: support.constant.property-value.css}
 
@@ -6994,7 +6994,7 @@ repository:
     - include: '#type-function-var'
     - include: '#type-function-calc'
     - name: support.constant.property-value.css
-      match: \b(?:top|right|left|center|bottom)\b
+      match: \b(?:top|right|left|center|bottom|auto)\b
     - include: '#type-percentage'
     - include: '#type-length'
     end: (?=[;)])
@@ -7023,7 +7023,7 @@ repository:
     - include: '#type-function-var'
     - include: '#type-function-calc'
     - name: support.constant.property-value.css
-      match: \bcontain\b
+      match: \b(?:farthest-side|farthest-corner|contain|closest-side|closest-corner)\b
     - include: '#type-percentage'
     - include: '#type-length'
     end: (?=[;)])
