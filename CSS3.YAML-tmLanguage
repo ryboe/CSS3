@@ -376,7 +376,7 @@ repository:
 
   property-name-illegal:
     name: invalid.illegal.css
-    match: \b(?:nav-index|ime-mode|icon|font-smooth|clip|behavior|accelerator)\b(?!\-)
+    match: \b(?:nav-index|ime-mode|icon|glyph-orientation-vertical|font-smooth|clip|behavior|accelerator)\b(?!\-)
 
   property-name-illegal-moz:
     name: invalid.illegal.css
@@ -8040,7 +8040,7 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - name: support.constant.property-value.css
-      match: \b(?:use-glyph-orientation|upright|sideways-right|sideways-left|sideways|mixed)\b
+      match: \b(?:upright|sideways|mixed)\b
     end: (?=[;)])
 
   value-text-overflow:
@@ -8671,7 +8671,7 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - name: support.constant.property-value.css
-      match: \b(?:vertical-rl|vertical-lr|horizontal-tb)\b
+      match: \b(?:vertical-rl|vertical-lr|sideways-rl|sideways-lr|horizontal-tb)\b
     end: (?=[;)])
 
   value-z-index:
