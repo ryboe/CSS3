@@ -3774,6 +3774,7 @@ repository:
     # condition.
     end: (?=[;)])
 
+  # The CSS Box Alignment Module Level 3 spec supersedes the values listed in the Flexbox spec.
   value-align-items:
     begin: (?<=align-items:)
     patterns:
