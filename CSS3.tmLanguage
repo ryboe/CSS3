@@ -1101,7 +1101,7 @@
 		<key>property-name-illegal</key>
 		<dict>
 			<key>match</key>
-			<string>\b(?:nav-index|ime-mode|icon|font-smooth|clip|behavior|accelerator)\b(?!\-)</string>
+			<string>\b(?:nav-index|ime-mode|icon|glyph-orientation-vertical|font-smooth|clip|behavior|accelerator)\b(?!\-)</string>
 			<key>name</key>
 			<string>invalid.illegal.css</string>
 		</dict>
@@ -26287,7 +26287,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:use-glyph-orientation|upright|sideways-right|sideways-left|sideways|mixed)\b</string>
+					<string>\b(?:upright|sideways|mixed)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>
@@ -28313,7 +28313,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:vertical-rl|vertical-lr|horizontal-tb)\b</string>
+					<string>\b(?:vertical-rl|vertical-lr|sideways-rl|sideways-lr|horizontal-tb)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>
