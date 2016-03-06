@@ -258,6 +258,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#type-function-supports</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#media-type-deprecated</string>
 				</dict>
 				<dict>
@@ -707,7 +711,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(?&lt;=[&gt;&lt;=(])\s*(width|update-frequency|scripting|scan|resolution|pointer|overflow-inline|overflow-block|orientation|monochrome|min-width|min-resolution|min-monochrome|min-height|min-device-width|min-device-height|min-device-aspect-ratio|min-color-index|min-color|min-aspect-ratio|max-width|max-resolution|max-monochrome|max-height|max-device-width|max-device-height|max-device-aspect-ratio|max-color-index|max-color|max-aspect-ratio|light-level|hover|height|grid|device-width|device-radius|device-height|device-aspect-ratio|color-index|color|aspect-ratio|any-pointer|any-hover)\s*(?=[&gt;&lt;=):])</string>
+			<string>(?&lt;=[&gt;&lt;=(])\s*(width|update-frequency|scripting|scan|resolution|pointer|overflow-inline|overflow-block|orientation|monochrome|min-width|min-resolution|min-monochrome|min-height|min-device-width|min-device-radius|min-device-height|min-device-aspect-ratio|min-color-index|min-color|min-aspect-ratio|max-width|max-resolution|max-monochrome|max-height|max-device-width|max-device-radius|max-device-height|max-device-aspect-ratio|max-color-index|max-color|max-aspect-ratio|light-level|hover|height|grid|device-width|device-radius|device-height|device-aspect-ratio|color-index|color|aspect-ratio|any-pointer|any-hover)\s*(?=[&gt;&lt;=):])</string>
 		</dict>
 		<key>media-feature-property-device-radius</key>
 		<dict>
@@ -1083,6 +1087,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#property-name-deprecated</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#property-name-legal</string>
 				</dict>
 				<dict>
@@ -1097,6 +1105,13 @@
 			<string>--[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*</string>
 			<key>name</key>
 			<string>support.type.property-name.custom.css</string>
+		</dict>
+		<key>property-name-deprecated</key>
+		<dict>
+			<key>match</key>
+			<string>\b(?:page-break-inside|page-break-before|page-break-after|glyph-orientation-vertical)\b</string>
+			<key>name</key>
+			<string>invalid.deprecated.css</string>
 		</dict>
 		<key>property-name-illegal</key>
 		<dict>
@@ -1129,7 +1144,7 @@
 		<key>property-name-legal</key>
 		<dict>
 			<key>match</key>
-			<string>(-webkit-writing-mode|-webkit-user-select|-webkit-transition-timing-function|-webkit-transition-property|-webkit-transition-duration|-webkit-transition-delay|-webkit-transition|-webkit-transform-style|-webkit-transform-origin|-webkit-transform|-webkit-text-orientation|-webkit-text-emphasis-style|-webkit-text-emphasis-position|-webkit-text-emphasis-color|-webkit-text-emphasis|-webkit-text-decoration-style|-webkit-text-decoration-skip|-webkit-text-decoration-line|-webkit-text-decoration-color|-webkit-shape-outside|-webkit-shape-margin|-webkit-shape-image-threshold|-webkit-ruby-position|-webkit-region-fragment|-webkit-perspective-origin|-webkit-perspective|-webkit-order|-webkit-mask-type|-webkit-mask-size|-webkit-mask-repeat|-webkit-mask-position|-webkit-mask-origin|-webkit-mask-mode|-webkit-mask-image|-webkit-mask-composite|-webkit-mask-clip|-webkit-mask-border-width|-webkit-mask-border-source|-webkit-mask-border-slice|-webkit-mask-border-repeat|-webkit-mask-border-outset|-webkit-mask-border|-webkit-mask|-webkit-justify-self|-webkit-justify-content|-webkit-hyphens|-webkit-grid-template-rows|-webkit-grid-template-columns|-webkit-grid-template-areas|-webkit-grid-template|-webkit-grid-row-start|-webkit-grid-row-end|-webkit-grid-row|-webkit-grid-column-start|-webkit-grid-column-end|-webkit-grid-column|-webkit-grid-auto-rows|-webkit-grid-auto-flow|-webkit-grid-auto-columns|-webkit-grid-area|-webkit-grid|-webkit-filter|-webkit-font-variant-ligatures|-webkit-font-size-delta|-webkit-font-kerning|-webkit-font-feature-settings|-webkit-flow-into|-webkit-flow-from|-webkit-flex-wrap|-webkit-flex-shrink|-webkit-flex-grow|-webkit-flex-flow|-webkit-flex-direction|-webkit-flex-basis|-webkit-flex|-webkit-columns|-webkit-column-width|-webkit-column-span|-webkit-column-rule-width|-webkit-column-rule-style|-webkit-column-rule-color|-webkit-column-rule|-webkit-column-gap|-webkit-column-fill|-webkit-column-count|-webkit-clip-path|-webkit-break-inside|-webkit-break-before|-webkit-break-after|-webkit-box-decoration-break|-webkit-border-image|-webkit-backface-visibility|-webkit-animation-timing-function|-webkit-animation-play-state|-webkit-animation-name|-webkit-animation-iteration-count|-webkit-animation-fill-mode|-webkit-animation-duration|-webkit-animation-direction|-webkit-animation-delay|-webkit-animation|-webkit-align-self|-webkit-align-items|-webkit-align-content|-ms-writing-mode|-ms-wrap-through|-ms-wrap-flow|-ms-word-wrap|-ms-user-select|-ms-transform-style|-ms-transform-origin|-ms-transform|-ms-text-justify|-ms-text-align-last|-ms-scroll-snap-type|-ms-scroll-snap-points-y|-ms-scroll-snap-points-x|-ms-scroll-snap-destination|-ms-scroll-snap-coordinate|-ms-perspective-origin|-ms-perspective|-ms-overflow-y|-ms-overflow-x|-ms-hyphens|-ms-grid-row-span|-ms-grid-row-align|-ms-grid-row|-ms-grid-column-span|-ms-grid-column-align|-ms-grid-column|-ms-flow-into|-ms-flow-from|-ms-flex-wrap|-ms-flex-flow|-ms-flex-direction|-ms-flex|-ms-backface-visibility|-moz-user-select|-moz-text-decoration-style|-moz-text-decoration-skip|-moz-text-decoration-line|-moz-text-decoration-color|-moz-text-align-last|-moz-tab-size|-moz-hyphens|-moz-font-language-override|-moz-font-feature-settings|-moz-columns|-moz-column-width|-moz-column-span|-moz-column-rule-width|-moz-column-rule-style|-moz-column-rule-color|-moz-column-rule|-moz-column-gap|-moz-column-fill|-moz-column-count|-moz-box-sizing)\b|\b(zoom|z-index|writing-mode|wrap-through|wrap-inside|wrap-flow|wrap-before|wrap-after|word-wrap|word-spacing|word-break|will-change|width|widows|white-space|voice-volume|voice-stress|voice-rate|voice-range|voice-pitch|voice-family|voice-duration|voice-balance|visibility|vertical-align|user-zoom|user-select|unicode-range|unicode-bidi|transition-timing-function|transition-property|transition-duration|transition-delay|transition|transform-style|transform-origin|transform-box|transform|top|text-wrap|text-underline-position|text-transform|text-spacing|text-space-trim|text-space-collapse|text-shadow|text-overflow|text-orientation|text-justify|text-indent|text-height|text-emphasis-style|text-emphasis-position|text-emphasis-color|text-emphasis|text-decoration-style|text-decoration-skip|text-decoration-line|text-decoration-color|text-decoration|text-combine-upright|text-align-last|text-align|table-layout|tab-size|system|symbols|suffix|string-set|src|speak-as|speak|size|shape-padding|shape-outside|shape-margin|shape-inside|shape-image-threshold|scroll-snap-type|scroll-snap-points-y|scroll-snap-points-x|scroll-snap-destination|scroll-snap-coordinate|running|ruby-position|ruby-merge|ruby-align|rotation-point|rotation|right|rest-before|rest-after|rest|resolution|resize|region-fragment|range|quotes|prefix|position|polar-origin|polar-distance|polar-angle|polar-anchor|pointer-events|perspective-origin|perspective|pause-before|pause-after|pause|page-policy|page|padding-top|padding-right|padding-left|padding-bottom|padding|pad|overflow-y|overflow-x|overflow-wrap|overflow|outline-width|outline-style|outline-offset|outline-color|outline|orphans|orientation|order|opacity|offset-start|offset-end|offset-before|offset-after|object-position|object-fit|negative|nav-up|nav-right|nav-left|nav-down|motion-rotation|motion-path|motion-offset|motion|mix-blend-mode|min-zoom|min-width|min-height|max-zoom|max-width|max-lines|max-height|mask-type|mask-size|mask-repeat|mask-position|mask-origin|mask-mode|mask-image|mask-composite|mask-clip|mask-border-width|mask-border-source|mask-border-slice|mask-border-repeat|mask-border-outset|mask-border-mode|mask-border|mask|marks|marker-side|margin-top|margin-right|margin-left|margin-bottom|margin|list-style-type|list-style-position|list-style-image|list-style|line-stacking-strategy|line-stacking-shift|line-stacking-ruby|line-stacking|line-snap|line-height|line-grid|line-break|lighting-color|letter-spacing|left|justify-self|justify-items|justify-content|isolation|inline-box-align|initial-letter-wrap|initial-letter-align|initial-letter|indent-edge-reset|image-resolution|image-rendering|image-orientation|hyphens|hyphenate-limit-zone|hyphenate-limit-lines|hyphenate-limit-last|hyphenate-limit-chars|hyphenate-character|height|hanging-punctuation|grid-template-rows|grid-template-columns|grid-template-areas|grid-template|grid-row-start|grid-row-gap|grid-row-end|grid-row|grid-gap|grid-column-start|grid-column-gap|grid-column-end|grid-column|grid-auto-rows|grid-auto-flow|grid-auto-columns|grid-area|grid|footnote-policy|footnote-display|font-weight|font-variant-position|font-variant-numeric|font-variant-ligatures|font-variant-east-asian|font-variant-caps|font-variant-alternates|font-variant|font-synthesis|font-style|font-stretch|font-size-adjust|font-size|font-language-override|font-kerning|font-feature-settings|font-family|font|flow-into|flow-from|flow|flood-opacity|flood-color|float-wrap|float-offset|float-displace|float-defer-page|float-defer-column|float|flex-wrap|flex-shrink|flex-grow|flex-flow|flex-direction|flex-basis|flex|filter|fallback|empty-cells|dominant-baseline|display-outside|display-list|display-inside|display|direction|cursor|cue-before|cue-after|cue|counter-set|counter-reset|counter-increment|corners|corner-shape|content|columns|column-width|column-span|column-rule-width|column-rule-style|column-rule-color|column-rule|column-gap|column-fill|column-count|color-interpolation-filters|color-interpolation|color-correction|color-adjust|color|clip-rule|clip-path|clear-side|clear-after|clear|child-align|chains|caret-shape|caret-color|caret|caption-side|break-inside|break-before|break-after|box-suppress|box-snap|box-sizing|box-shadow|box-decoration-break|bottom|border-width|border-top-width|border-top-style|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-style|border-spacing|border-right-width|border-right-style|border-right-color|border-right|border-radius|border-limit|border-left-width|border-left-style|border-left-color|border-left|border-image-width|border-image-source|border-image-slice|border-image-repeat|border-image-outset|border-image|border-color|border-collapse|border-clip-top|border-clip-right|border-clip-left|border-clip-bottom|border-clip|border-bottom-width|border-bottom-style|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border-boundary|border|bookmark-state|bookmark-level|bookmark-label|bleed|baseline-shift|background-size|background-repeat|background-position|background-origin|background-image|background-color|background-clip|background-blend-mode|background-attachment|background|backface-visibility|appearance|animation-timing-function|animation-play-state|animation-name|animation-iteration-count|animation-fill-mode|animation-duration|animation-direction|animation-delay|animation|all|alignment-baseline|alignment-adjust|alignment|align-self|align-items|align-content|additive-symbols)\b</string>
+			<string>(-webkit-writing-mode|-webkit-user-select|-webkit-transition-timing-function|-webkit-transition-property|-webkit-transition-duration|-webkit-transition-delay|-webkit-transition|-webkit-transform-style|-webkit-transform-origin|-webkit-transform|-webkit-text-orientation|-webkit-text-emphasis-style|-webkit-text-emphasis-position|-webkit-text-emphasis-color|-webkit-text-emphasis|-webkit-text-decoration-style|-webkit-text-decoration-skip|-webkit-text-decoration-line|-webkit-text-decoration-color|-webkit-shape-outside|-webkit-shape-margin|-webkit-shape-image-threshold|-webkit-ruby-position|-webkit-region-fragment|-webkit-perspective-origin|-webkit-perspective|-webkit-order|-webkit-mask-type|-webkit-mask-size|-webkit-mask-repeat|-webkit-mask-position|-webkit-mask-origin|-webkit-mask-mode|-webkit-mask-image|-webkit-mask-composite|-webkit-mask-clip|-webkit-mask-border-width|-webkit-mask-border-source|-webkit-mask-border-slice|-webkit-mask-border-repeat|-webkit-mask-border-outset|-webkit-mask-border|-webkit-mask|-webkit-justify-self|-webkit-justify-content|-webkit-hyphens|-webkit-grid-template-rows|-webkit-grid-template-columns|-webkit-grid-template-areas|-webkit-grid-template|-webkit-grid-row-start|-webkit-grid-row-end|-webkit-grid-row|-webkit-grid-column-start|-webkit-grid-column-end|-webkit-grid-column|-webkit-grid-auto-rows|-webkit-grid-auto-flow|-webkit-grid-auto-columns|-webkit-grid-area|-webkit-grid|-webkit-filter|-webkit-font-variant-ligatures|-webkit-font-size-delta|-webkit-font-kerning|-webkit-font-feature-settings|-webkit-flow-into|-webkit-flow-from|-webkit-flex-wrap|-webkit-flex-shrink|-webkit-flex-grow|-webkit-flex-flow|-webkit-flex-direction|-webkit-flex-basis|-webkit-flex|-webkit-columns|-webkit-column-width|-webkit-column-span|-webkit-column-rule-width|-webkit-column-rule-style|-webkit-column-rule-color|-webkit-column-rule|-webkit-column-gap|-webkit-column-fill|-webkit-column-count|-webkit-clip-path|-webkit-break-inside|-webkit-break-before|-webkit-break-after|-webkit-box-decoration-break|-webkit-border-image|-webkit-backface-visibility|-webkit-animation-timing-function|-webkit-animation-play-state|-webkit-animation-name|-webkit-animation-iteration-count|-webkit-animation-fill-mode|-webkit-animation-duration|-webkit-animation-direction|-webkit-animation-delay|-webkit-animation|-webkit-align-self|-webkit-align-items|-webkit-align-content|-ms-writing-mode|-ms-wrap-through|-ms-wrap-flow|-ms-word-wrap|-ms-user-select|-ms-transform-style|-ms-transform-origin|-ms-transform|-ms-text-justify|-ms-text-align-last|-ms-scroll-snap-type|-ms-scroll-snap-points-y|-ms-scroll-snap-points-x|-ms-scroll-snap-destination|-ms-scroll-snap-coordinate|-ms-perspective-origin|-ms-perspective|-ms-overflow-y|-ms-overflow-x|-ms-hyphens|-ms-grid-row-span|-ms-grid-row-align|-ms-grid-row|-ms-grid-column-span|-ms-grid-column-align|-ms-grid-column|-ms-flow-into|-ms-flow-from|-ms-flex-wrap|-ms-flex-flow|-ms-flex-direction|-ms-flex|-ms-backface-visibility|-moz-user-select|-moz-text-decoration-style|-moz-text-decoration-skip|-moz-text-decoration-line|-moz-text-decoration-color|-moz-text-align-last|-moz-tab-size|-moz-hyphens|-moz-font-language-override|-moz-font-feature-settings|-moz-columns|-moz-column-width|-moz-column-span|-moz-column-rule-width|-moz-column-rule-style|-moz-column-rule-color|-moz-column-rule|-moz-column-gap|-moz-column-fill|-moz-column-count|-moz-box-sizing)\b|\b(zoom|z-index|writing-mode|wrap-through|wrap-inside|wrap-flow|wrap-before|wrap-after|word-wrap|word-spacing|word-break|will-change|width|widows|white-space|voice-volume|voice-stress|voice-rate|voice-range|voice-pitch|voice-family|voice-duration|voice-balance|visibility|vertical-align|user-zoom|user-select|unicode-range|unicode-bidi|transition-timing-function|transition-property|transition-duration|transition-delay|transition|transform-style|transform-origin|transform-box|transform|top|text-wrap|text-underline-position|text-transform|text-spacing|text-space-trim|text-space-collapse|text-shadow|text-overflow|text-orientation|text-justify|text-indent|text-height|text-emphasis-style|text-emphasis-position|text-emphasis-color|text-emphasis|text-decoration-style|text-decoration-skip|text-decoration-line|text-decoration-color|text-decoration|text-combine-upright|text-align-last|text-align|table-layout|tab-size|system|symbols|suffix|string-set|src|speak-as|speak|size|shape-padding|shape-outside|shape-margin|shape-inside|shape-image-threshold|scroll-snap-type|scroll-snap-points-y|scroll-snap-points-x|scroll-snap-destination|scroll-snap-coordinate|running|ruby-position|ruby-merge|ruby-align|rotation-point|rotation|right|rest-before|rest-after|rest|resolution|resize|region-fragment|range|quotes|prefix|position|polar-origin|polar-distance|polar-angle|polar-anchor|pointer-events|perspective-origin|perspective|pause-before|pause-after|pause|page-policy|page|padding-top|padding-right|padding-left|padding-bottom|padding|pad|overflow-y|overflow-x|overflow-wrap|overflow|outline-width|outline-style|outline-offset|outline-color|outline|orphans|orientation|order|opacity|offset-start|offset-end|offset-before|offset-after|object-position|object-fit|negative|nav-up|nav-right|nav-left|nav-down|motion-rotation|motion-path|motion-offset|motion|mix-blend-mode|min-zoom|min-width|min-height|max-zoom|max-width|max-lines|max-height|mask-type|mask-size|mask-repeat|mask-position|mask-origin|mask-mode|mask-image|mask-composite|mask-clip|mask-border-width|mask-border-source|mask-border-slice|mask-border-repeat|mask-border-outset|mask-border-mode|mask-border|mask|marks|marker-side|margin-top|margin-right|margin-left|margin-bottom|margin|list-style-type|list-style-position|list-style-image|list-style|line-stacking-strategy|line-stacking-shift|line-stacking-ruby|line-stacking|line-snap|line-height|line-grid|line-break|lighting-color|letter-spacing|left|justify-self|justify-items|justify-content|isolation|inline-box-align|initial-letter-wrap|initial-letter-align|initial-letter|indent-edge-reset|image-resolution|image-rendering|image-orientation|hyphens|hyphenate-limit-zone|hyphenate-limit-lines|hyphenate-limit-last|hyphenate-limit-chars|hyphenate-character|height|hanging-punctuation|grid-template-rows|grid-template-columns|grid-template-areas|grid-template|grid-row-start|grid-row-gap|grid-row-end|grid-row|grid-gap|grid-column-start|grid-column-gap|grid-column-end|grid-column|grid-auto-rows|grid-auto-flow|grid-auto-columns|grid-area|grid|footnote-policy|footnote-display|font-weight|font-variant-position|font-variant-numeric|font-variant-ligatures|font-variant-east-asian|font-variant-caps|font-variant-alternates|font-variant|font-synthesis|font-style|font-stretch|font-size-adjust|font-size|font-language-override|font-kerning|font-feature-settings|font-family|font|flow-into|flow-from|flow|flood-opacity|flood-color|float-wrap|float-reference|float-offset|float-displace|float-defer|float|flex-wrap|flex-shrink|flex-grow|flex-flow|flex-direction|flex-basis|flex|filter|fallback|empty-cells|dominant-baseline|display-outside|display-list|display-inside|display|direction|cursor|cue-before|cue-after|cue|counter-set|counter-reset|counter-increment|corners|corner-shape|content|columns|column-width|column-span|column-rule-width|column-rule-style|column-rule-color|column-rule|column-gap|column-fill|column-count|color-interpolation-filters|color-interpolation|color-correction|color-adjust|color|clip-rule|clip-path|clear-side|clear-after|clear|child-align|chains|caret-shape|caret-color|caret|caption-side|break-inside|break-before|break-after|box-suppress|box-snap|box-sizing|box-shadow|box-decoration-break|bottom|border-width|border-top-width|border-top-style|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-style|border-spacing|border-right-width|border-right-style|border-right-color|border-right|border-radius|border-limit|border-left-width|border-left-style|border-left-color|border-left|border-image-width|border-image-source|border-image-slice|border-image-repeat|border-image-outset|border-image|border-color|border-collapse|border-clip-top|border-clip-right|border-clip-left|border-clip-bottom|border-clip|border-bottom-width|border-bottom-style|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border-boundary|border|bookmark-state|bookmark-level|bookmark-label|bleed|baseline-shift|background-size|background-repeat|background-position|background-origin|background-image|background-color|background-clip|background-blend-mode|background-attachment|background|backface-visibility|appearance|animation-timing-function|animation-play-state|animation-name|animation-iteration-count|animation-fill-mode|animation-duration|animation-direction|animation-delay|animation|all|alignment-baseline|alignment-adjust|alignment|align-self|align-items|align-content|additive-symbols)\b</string>
 			<key>name</key>
 			<string>support.type.property-name.css</string>
 		</dict>
@@ -1170,6 +1185,10 @@
 				<dict>
 					<key>include</key>
 					<string>#property-name-illegal</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#property-name-deprecated</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -6589,7 +6608,7 @@
 		<key>type-all</key>
 		<dict>
 			<key>match</key>
-			<string>\b(?:unset|initial|inherit|default)\b</string>
+			<string>\b(?:unset|revert|initial|inherit)\b</string>
 			<key>name</key>
 			<string>support.constant.property-value.css</string>
 		</dict>
@@ -9874,16 +9893,16 @@
 				</dict>
 			</array>
 		</dict>
-		<key>type-function-snap</key>
+		<key>type-function-snap-block</key>
 		<dict>
 			<key>begin</key>
-			<string>\b(snap)(\()</string>
+			<string>\b(snap-block)(\()</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>support.function.snap.css</string>
+					<string>support.function.snap-block.css</string>
 				</dict>
 				<key>2</key>
 				<dict>
@@ -9892,7 +9911,7 @@
 				</dict>
 			</dict>
 			<key>contentName</key>
-			<string>meta.function.snap.css</string>
+			<string>meta.function.snap-block.css</string>
 			<key>end</key>
 			<string>\)</string>
 			<key>endCaptures</key>
@@ -9911,7 +9930,58 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:top|near|bottom)\b</string>
+					<string>\b(?:start|near|end)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-length</string>
+				</dict>
+			</array>
+		</dict>
+		<key>type-function-snap-inline</key>
+		<dict>
+			<key>begin</key>
+			<string>\b(snap-inline)(\()</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.snap-inline.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>contentName</key>
+			<string>meta.function.snap-inline.css</string>
+			<key>end</key>
+			<string>\)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:right|near|left)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>
@@ -10065,6 +10135,52 @@
 				<dict>
 					<key>include</key>
 					<string>#identifier</string>
+				</dict>
+			</array>
+		</dict>
+		<key>type-function-supports</key>
+		<dict>
+			<key>begin</key>
+			<string>\b(supports)(?=\()</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.supports.css</string>
+				</dict>
+			</dict>
+			<key>contentName</key>
+			<string>meta.function.supports.css</string>
+			<key>end</key>
+			<string>(?&lt;=\))</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:or|not|and)\b</string>
+					<key>name</key>
+					<string>keyword.operator.logic.supports.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#property-name-supports-condition</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-supports-condition</string>
 				</dict>
 			</array>
 		</dict>
@@ -11199,7 +11315,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-float-defer-column-float-defer-page</string>
+					<string>#value-float-defer</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -11208,6 +11324,10 @@
 				<dict>
 					<key>include</key>
 					<string>#value-float-offset</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-float-reference</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -14977,7 +15097,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:verso|right|region|recto|page|left|column|avoid-region|avoid-page|avoid-column|avoid|auto|any|always)\b</string>
+					<string>\b(?:verso|right|region|recto|page|left|column|avoid-region|avoid-page|avoid-column|avoid|auto|always)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>
@@ -15395,7 +15515,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:both|left|none|right)\b</string>
+					<string>\b(?:top|right|none|left|inline-start|inline-end|bottom|both-inline|both-block|both|block-start|block-end|all)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>
@@ -17359,20 +17479,24 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-function-snap</string>
+					<string>#type-function-snap-inline</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-snap-block</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:top|start|snap|right|outside|none|left|inside|end|contour|bottom)\b</string>
+					<string>\b(?:top|snap-inline|snap-block|right|none|left|inline-start|inline-end|bottom|block-start|block-end)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>
 			</array>
 		</dict>
-		<key>value-float-defer-column-float-defer-page</key>
+		<key>value-float-defer</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;=float-defer-column:|float-defer-page:)</string>
+			<string>(?&lt;=float-defer:)</string>
 			<key>end</key>
 			<string>(?=[;)])</string>
 			<key>patterns</key>
@@ -17500,6 +17624,46 @@
 				<dict>
 					<key>include</key>
 					<string>#type-length</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-float-reference</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=float-reference:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:region|page|inline|column)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
 				</dict>
 			</array>
 		</dict>
@@ -22505,7 +22669,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:top|right|left|center|bottom)\b</string>
+					<string>\b(?:top|right|left|center|bottom|auto)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>
@@ -22599,7 +22763,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\bcontain\b</string>
+					<string>\b(?:farthest-side|farthest-corner|contain|closest-side|closest-corner)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>
@@ -24435,7 +24599,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-float-defer-column-float-defer-page</string>
+					<string>#value-float-defer</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -24444,6 +24608,10 @@
 				<dict>
 					<key>include</key>
 					<string>#value-float-offset</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-float-reference</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -26287,7 +26455,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:use-glyph-orientation|upright|sideways-right|sideways-left|sideways|mixed)\b</string>
+					<string>\b(?:upright|sideways|mixed)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>
@@ -28313,7 +28481,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:vertical-rl|vertical-lr|horizontal-tb)\b</string>
+					<string>\b(?:vertical-rl|vertical-lr|sideways-rl|sideways-lr|horizontal-tb)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>

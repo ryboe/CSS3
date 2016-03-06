@@ -57,6 +57,8 @@ sepia        = ("sepia()", "sepia(${1})")
 skew         = ("skew()", "skew(${1:<angle>}${2:, ${3:<angle>}})")
 skewX        = ("skewX()", "skewX(${1:<angle>})")
 skewY        = ("skewY()", "skewY(${1:<angle>})")
+snap_block   = ("snap-block()", "snap-block(${1})")
+snap_inline  = ("snap-inline()", "snap-inline(${1})")
 steps        = ("steps()", "steps(${1})")
 styleset     = ("styleset()", "styleset(${1})")
 stylistic    = ("stylistic()", "stylistic(${1})")
@@ -106,7 +108,7 @@ urange      = ("<urange>", "U+${1}")
 
 
 # COMMON VALUES
-all_values = [("inherit",), ("initial",), ("unset",), attr, toggle, var]
+all_values = [("inherit",), ("initial",), ("revert",), ("unset",), attr, toggle, var]
 
 
 # TODO
