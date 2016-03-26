@@ -199,10 +199,12 @@ repository:
     patterns:
     - include: '#comment-block'
     - include: '#media-feature-name'
+    - include: '#media-feature-property-color-gamut'
     - include: '#media-feature-property-device-radius'
     - include: '#media-feature-property-grid'
     - include: '#media-feature-property-hover'
     - include: '#media-feature-property-integer'
+    - include: '#media-feature-property-inverted-colors'
     - include: '#media-feature-property-length'
     - include: '#media-feature-property-light-level'
     - include: '#media-feature-property-orientation'
@@ -213,7 +215,7 @@ repository:
     - include: '#media-feature-property-resolution'
     - include: '#media-feature-property-scan'
     - include: '#media-feature-property-scripting'
-    - include: '#media-feature-property-update-frequency'
+    - include: '#media-feature-property-update'
     - include: '#media-feature-range-operator'
     - include: '#type-function-calc'
     - include: '#type-ratio'
@@ -225,7 +227,12 @@ repository:
       '0': {name: punctuation.section.media-feature.css}
 
   media-feature-name:
-    match: (?<=[><=(])\s*(width|update-frequency|scripting|scan|resolution|pointer|overflow-inline|overflow-block|orientation|monochrome|min-width|min-resolution|min-monochrome|min-height|min-device-width|min-device-radius|min-device-height|min-device-aspect-ratio|min-color-index|min-color|min-aspect-ratio|max-width|max-resolution|max-monochrome|max-height|max-device-width|max-device-radius|max-device-height|max-device-aspect-ratio|max-color-index|max-color|max-aspect-ratio|light-level|hover|height|grid|device-width|device-radius|device-height|device-aspect-ratio|color-index|color|aspect-ratio|any-pointer|any-hover)\s*(?=[><=):])
+    match: (?<=[><=(])\s*(width|update|scripting|scan|resolution|pointer|overflow-inline|overflow-block|orientation|monochrome|min-width|min-resolution|min-monochrome|min-height|min-device-width|min-device-radius|min-device-height|min-device-aspect-ratio|min-color-index|min-color|min-aspect-ratio|max-width|max-resolution|max-monochrome|max-height|max-device-width|max-device-radius|max-device-height|max-device-aspect-ratio|max-color-index|max-color|max-aspect-ratio|light-level|inverted-colors|hover|height|grid|device-width|device-radius|device-height|device-aspect-ratio|color-index|color-gamut|color|aspect-ratio|any-pointer|any-hover)\s*(?=[><=):])
+    captures:
+      '1': {name: support.constant.property-value.css}
+
+  media-feature-property-color-gamut:
+    match: (?<=color-gamut:)\s*(srgb|rec2020|p3)\s*(?=\))
     captures:
       '1': {name: support.constant.property-value.css}
 
@@ -256,6 +263,11 @@ repository:
     - include: '#type-function-calc'
     - include: '#type-integer-non-negative'
     end: (?=\))
+
+  media-feature-property-inverted-colors:
+    match: (?<=inverted-colors:)\s*(none|inverted)\s*(?=\))
+    captures:
+      '1': {name: support.constant.property-value.css}
 
   # (width: 600px)
   media-feature-property-length:
@@ -315,8 +327,8 @@ repository:
     captures:
       '1': {name: support.constant.property-value.css}
 
-  media-feature-property-update-frequency:
-    match: (?<=update-frequency:)\s*(normal|none|slow)\s*(?=\))
+  media-feature-property-update:
+    match: (?<=update:)\s*(none|slow|fast)\s*(?=\))
     captures:
       '1': {name: support.constant.property-value.css}
 
@@ -394,11 +406,11 @@ repository:
 
   property-name-deprecated:
     name: invalid.deprecated.css
-    match: \b(?:page-break-inside|page-break-before|page-break-after|glyph-orientation-vertical)\b
+    match: \b(?:page-break-inside|page-break-before|page-break-after|kerning|glyph-orientation-vertical|glyph-orientation-horizontal|clip)\b
 
   property-name-legal:
     name: support.type.property-name.css
-    match: (zoom|z-index|writing-mode|wrap-through|wrap-inside|wrap-flow|wrap-before|wrap-after|word-wrap|word-spacing|word-break|will-change|width|widows|white-space|voice-volume|voice-stress|voice-rate|voice-range|voice-pitch|voice-family|voice-duration|voice-balance|visibility|vertical-align|vector-effect|user-zoom|user-select|unicode-range|unicode-bidi|transition-timing-function|transition-property|transition-duration|transition-delay|transition|transform-style|transform-origin|transform-box|transform|top|text-wrap|text-underline-position|text-transform|text-spacing|text-space-trim|text-space-collapse|text-shadow|text-rendering|text-overflow|text-orientation|text-justify|text-indent|text-height|text-emphasis-style|text-emphasis-position|text-emphasis-color|text-emphasis|text-decoration-style|text-decoration-skip|text-decoration-line|text-decoration-color|text-decoration|text-combine-upright|text-anchor|text-align-last|text-align|table-layout|tab-size|system|symbols|suffix|stroke-width|stroke-opacity|stroke-miterlimit|stroke-linejoin|stroke-linecap|stroke-dashoffset|stroke-dasharray|stroke|string-set|stop-opacity|stop-color|src|speak-as|speak|size|shape-rendering|shape-padding|shape-outside|shape-margin|shape-inside|shape-image-threshold|scroll-snap-type|scroll-snap-points-y|scroll-snap-points-x|scroll-snap-destination|scroll-snap-coordinate|running|ruby-position|ruby-merge|ruby-align|rotation-point|rotation|right|rest-before|rest-after|rest|resolution|resize|region-fragment|range|quotes|prefix|position|polar-origin|polar-distance|polar-angle|polar-anchor|pointer-events|perspective-origin|perspective|pause-before|pause-after|pause|paint-order|page-policy|page|padding-top|padding-right|padding-left|padding-bottom|padding|pad|overflow-y|overflow-x|overflow-wrap|overflow|outline-width|outline-style|outline-offset|outline-color|outline|orphans|orientation|order|opacity|offset-start|offset-end|offset-before|offset-after|object-position|object-fit|negative|nav-up|nav-right|nav-left|nav-down|motion-rotation|motion-path|motion-offset|motion|mix-blend-mode|min-zoom|min-width|min-height|max-zoom|max-width|max-lines|max-height|mask-type|mask-size|mask-repeat|mask-position|mask-origin|mask-mode|mask-image|mask-composite|mask-clip|mask-border-width|mask-border-source|mask-border-slice|mask-border-repeat|mask-border-outset|mask-border-mode|mask-border|mask|marks|marker-start|marker-side|marker-mid|marker-end|marker|margin-top|margin-right|margin-left|margin-bottom|margin|list-style-type|list-style-position|list-style-image|list-style|line-stacking-strategy|line-stacking-shift|line-stacking-ruby|line-stacking|line-snap|line-height|line-grid|line-break|lighting-color|letter-spacing|left|justify-self|justify-items|justify-content|isolation|inline-box-align|initial-letter-wrap|initial-letter-align|initial-letter|indent-edge-reset|image-resolution|image-rendering|image-orientation|hyphens|hyphenate-limit-zone|hyphenate-limit-lines|hyphenate-limit-last|hyphenate-limit-chars|hyphenate-character|height|hanging-punctuation|grid-template-rows|grid-template-columns|grid-template-areas|grid-template|grid-row-start|grid-row-gap|grid-row-end|grid-row|grid-gap|grid-column-start|grid-column-gap|grid-column-end|grid-column|grid-auto-rows|grid-auto-flow|grid-auto-columns|grid-area|grid|glyph-orientation-vertical|glyph-orientation-horizontal|footnote-policy|footnote-display|font-weight|font-variant-position|font-variant-numeric|font-variant-ligatures|font-variant-east-asian|font-variant-caps|font-variant-alternates|font-variant|font-synthesis|font-style|font-stretch|font-size-adjust|font-size|font-language-override|font-kerning|font-feature-settings|font-family|font|flow-into|flow-from|flow|flood-opacity|flood-color|float-wrap|float-reference|float-offset|float-displace|float-defer|float|flex-wrap|flex-shrink|flex-grow|flex-flow|flex-direction|flex-basis|flex|filter|fill-rule|fill-opacity|fill|fallback|empty-cells|dominant-baseline|display-outside|display-list|display-inside|display|direction|cursor|cue-before|cue-after|cue|counter-set|counter-reset|counter-increment|corners|corner-shape|content|columns|column-width|column-span|column-rule-width|column-rule-style|column-rule-color|column-rule|column-gap|column-fill|column-count|color-rendering|color-interpolation-filters|color-interpolation|color-correction|color-adjust|color|clip-rule|clip-path|clip|clear-side|clear-after|clear|child-align|chains|caret-shape|caret-color|caret|caption-side|break-inside|break-before|break-after|box-suppress|box-snap|box-sizing|box-shadow|box-decoration-break|bottom|border-width|border-top-width|border-top-style|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-style|border-spacing|border-right-width|border-right-style|border-right-color|border-right|border-radius|border-limit|border-left-width|border-left-style|border-left-color|border-left|border-image-width|border-image-source|border-image-slice|border-image-repeat|border-image-outset|border-image|border-color|border-collapse|border-clip-top|border-clip-right|border-clip-left|border-clip-bottom|border-clip|border-boundary|border-bottom-width|border-bottom-style|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border|bookmark-state|bookmark-level|bookmark-label|bleed|baseline-shift|background-size|background-repeat|background-position|background-origin|background-image|background-color|background-clip|background-blend-mode|background-attachment|background|backface-visibility|appearance|animation-timing-function|animation-play-state|animation-name|animation-iteration-count|animation-fill-mode|animation-duration|animation-direction|animation-delay|animation|all|alignment-baseline|alignment-adjust|alignment|align-self|align-items|align-content|additive-symbols|-webkit-writing-mode|-webkit-user-select|-webkit-transition-timing-function|-webkit-transition-property|-webkit-transition-duration|-webkit-transition-delay|-webkit-transition|-webkit-transform-style|-webkit-transform-origin|-webkit-transform|-webkit-text-orientation|-webkit-text-emphasis-style|-webkit-text-emphasis-position|-webkit-text-emphasis-color|-webkit-text-emphasis|-webkit-text-decoration-style|-webkit-text-decoration-skip|-webkit-text-decoration-line|-webkit-text-decoration-color|-webkit-shape-outside|-webkit-shape-margin|-webkit-shape-image-threshold|-webkit-ruby-position|-webkit-region-fragment|-webkit-perspective-origin|-webkit-perspective|-webkit-order|-webkit-mask-type|-webkit-mask-size|-webkit-mask-repeat|-webkit-mask-position|-webkit-mask-origin|-webkit-mask-mode|-webkit-mask-image|-webkit-mask-composite|-webkit-mask-clip|-webkit-mask-border-width|-webkit-mask-border-source|-webkit-mask-border-slice|-webkit-mask-border-repeat|-webkit-mask-border-outset|-webkit-mask-border|-webkit-mask|-webkit-justify-self|-webkit-justify-content|-webkit-hyphens|-webkit-grid-template-rows|-webkit-grid-template-columns|-webkit-grid-template-areas|-webkit-grid-template|-webkit-grid-row-start|-webkit-grid-row-end|-webkit-grid-row|-webkit-grid-column-start|-webkit-grid-column-end|-webkit-grid-column|-webkit-grid-auto-rows|-webkit-grid-auto-flow|-webkit-grid-auto-columns|-webkit-grid-area|-webkit-grid|-webkit-font-variant-ligatures|-webkit-font-size-delta|-webkit-font-kerning|-webkit-font-feature-settings|-webkit-flow-into|-webkit-flow-from|-webkit-flex-wrap|-webkit-flex-shrink|-webkit-flex-grow|-webkit-flex-flow|-webkit-flex-direction|-webkit-flex-basis|-webkit-flex|-webkit-filter|-webkit-columns|-webkit-column-width|-webkit-column-span|-webkit-column-rule-width|-webkit-column-rule-style|-webkit-column-rule-color|-webkit-column-rule|-webkit-column-gap|-webkit-column-fill|-webkit-column-count|-webkit-clip-path|-webkit-break-inside|-webkit-break-before|-webkit-break-after|-webkit-box-decoration-break|-webkit-border-image|-webkit-backface-visibility|-webkit-animation-timing-function|-webkit-animation-play-state|-webkit-animation-name|-webkit-animation-iteration-count|-webkit-animation-fill-mode|-webkit-animation-duration|-webkit-animation-direction|-webkit-animation-delay|-webkit-animation|-webkit-align-self|-webkit-align-items|-webkit-align-content|-ms-writing-mode|-ms-wrap-through|-ms-wrap-flow|-ms-word-wrap|-ms-user-select|-ms-transform-style|-ms-transform-origin|-ms-transform|-ms-text-justify|-ms-text-align-last|-ms-scroll-snap-type|-ms-scroll-snap-points-y|-ms-scroll-snap-points-x|-ms-scroll-snap-destination|-ms-scroll-snap-coordinate|-ms-perspective-origin|-ms-perspective|-ms-overflow-y|-ms-overflow-x|-ms-hyphens|-ms-grid-row-span|-ms-grid-row-align|-ms-grid-row|-ms-grid-column-span|-ms-grid-column-align|-ms-grid-column|-ms-flow-into|-ms-flow-from|-ms-flex-wrap|-ms-flex-flow|-ms-flex-direction|-ms-flex|-ms-backface-visibility|-moz-user-select|-moz-text-decoration-style|-moz-text-decoration-skip|-moz-text-decoration-line|-moz-text-decoration-color|-moz-text-align-last|-moz-tab-size|-moz-hyphens|-moz-font-language-override|-moz-font-feature-settings|-moz-columns|-moz-column-width|-moz-column-span|-moz-column-rule-width|-moz-column-rule-style|-moz-column-rule-color|-moz-column-rule|-moz-column-gap|-moz-column-fill|-moz-column-count|-moz-box-sizing)\b
+    match: (?:zoom|z-index|y|x|writing-mode|wrap-through|wrap-inside|wrap-flow|wrap-before|wrap-after|word-wrap|word-spacing|word-break|will-change|width|widows|white-space|voice-volume|voice-stress|voice-rate|voice-range|voice-pitch|voice-family|voice-duration|voice-balance|visibility|vertical-align|vector-effect|user-zoom|user-select|unicode-range|unicode-bidi|transition-timing-function|transition-property|transition-duration|transition-delay|transition|transform-style|transform-origin|transform-box|transform|top|text-wrap|text-underline-position|text-transform|text-spacing|text-space-trim|text-space-collapse|text-shadow|text-rendering|text-overflow|text-orientation|text-justify|text-indent|text-height|text-emphasis-style|text-emphasis-position|text-emphasis-color|text-emphasis|text-decoration-style|text-decoration-skip|text-decoration-line|text-decoration-color|text-decoration|text-combine-upright|text-anchor|text-align-last|text-align|table-layout|tab-size|system|symbols|suffix|stroke-width|stroke-opacity|stroke-miterlimit|stroke-linejoin|stroke-linecap|stroke-dashoffset|stroke-dasharray|stroke|string-set|stop-opacity|stop-color|src|speak-as|speak|size|shape-subtract|shape-rendering|shape-padding|shape-outside|shape-margin|shape-inside|shape-image-threshold|scroll-snap-type|scroll-snap-points-y|scroll-snap-points-x|scroll-snap-destination|scroll-snap-coordinate|ry|rx|running|ruby-position|ruby-merge|ruby-align|rotation-point|rotation|right|rest-before|rest-after|rest|resolution|resize|region-fragment|range|r|quotes|prefix|position|polar-origin|polar-distance|polar-angle|polar-anchor|pointer-events|perspective-origin|perspective|pause-before|pause-after|pause|paint-order|page-policy|page|padding-top|padding-right|padding-left|padding-bottom|padding|pad|overflow-y|overflow-x|overflow-wrap|overflow|outline-width|outline-style|outline-offset|outline-color|outline|orphans|orientation|order|opacity|offset-start|offset-end|offset-before|offset-after|object-position|object-fit|negative|nav-up|nav-right|nav-left|nav-down|motion-rotation|motion-path|motion-offset|motion|mix-blend-mode|min-zoom|min-width|min-height|max-zoom|max-width|max-lines|max-height|mask-type|mask-size|mask-repeat|mask-position|mask-origin|mask-mode|mask-image|mask-composite|mask-clip|mask-border-width|mask-border-source|mask-border-slice|mask-border-repeat|mask-border-outset|mask-border-mode|mask-border|mask|marks|marker-start|marker-side|marker-mid|marker-end|marker|margin-top|margin-right|margin-left|margin-bottom|margin|list-style-type|list-style-position|list-style-image|list-style|line-stacking-strategy|line-stacking-shift|line-stacking-ruby|line-stacking|line-snap|line-height|line-grid|line-break|lighting-color|letter-spacing|left|justify-self|justify-items|justify-content|isolation|inline-size|inline-box-align|initial-letter-wrap|initial-letter-align|initial-letter|indent-edge-reset|image-resolution|image-rendering|image-orientation|hyphens|hyphenate-limit-zone|hyphenate-limit-lines|hyphenate-limit-last|hyphenate-limit-chars|hyphenate-character|height|hanging-punctuation|grid-template-rows|grid-template-columns|grid-template-areas|grid-template|grid-row-start|grid-row-gap|grid-row-end|grid-row|grid-gap|grid-column-start|grid-column-gap|grid-column-end|grid-column|grid-auto-rows|grid-auto-flow|grid-auto-columns|grid-area|grid|footnote-policy|footnote-display|font-weight|font-variant-position|font-variant-numeric|font-variant-ligatures|font-variant-east-asian|font-variant-caps|font-variant-alternates|font-variant|font-synthesis|font-style|font-stretch|font-size-adjust|font-size|font-language-override|font-kerning|font-feature-settings|font-family|font|flow-into|flow-from|flow|flood-opacity|flood-color|float-wrap|float-reference|float-offset|float-displace|float-defer|float|flex-wrap|flex-shrink|flex-grow|flex-flow|flex-direction|flex-basis|flex|filter|fill-rule|fill-opacity|fill|fallback|empty-cells|dominant-baseline|display-outside|display-list|display-inside|display|direction|d|cy|cx|cursor|cue-before|cue-after|cue|counter-set|counter-reset|counter-increment|corners|corner-shape|content|columns|column-width|column-span|column-rule-width|column-rule-style|column-rule-color|column-rule|column-gap|column-fill|column-count|color-rendering|color-interpolation-filters|color-interpolation|color-correction|color-adjust|color|clip-rule|clip-path|clip|clear-side|clear-after|clear|child-align|chains|caret-shape|caret-color|caret|caption-side|break-inside|break-before|break-after|box-suppress|box-snap|box-sizing|box-shadow|box-decoration-break|bottom|border-width|border-top-width|border-top-style|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-style|border-spacing|border-right-width|border-right-style|border-right-color|border-right|border-radius|border-limit|border-left-width|border-left-style|border-left-color|border-left|border-image-width|border-image-source|border-image-slice|border-image-repeat|border-image-outset|border-image|border-color|border-collapse|border-clip-top|border-clip-right|border-clip-left|border-clip-bottom|border-clip|border-boundary|border-bottom-width|border-bottom-style|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border|bookmark-state|bookmark-level|bookmark-label|bleed|baseline-shift|background-size|background-repeat|background-position|background-origin|background-image|background-color|background-clip|background-blend-mode|background-attachment|background|backface-visibility|appearance|animation-timing-function|animation-play-state|animation-name|animation-iteration-count|animation-fill-mode|animation-duration|animation-direction|animation-delay|animation|all|alignment-baseline|alignment-adjust|alignment|align-self|align-items|align-content|additive-symbols|-webkit-writing-mode|-webkit-user-select|-webkit-transition-timing-function|-webkit-transition-property|-webkit-transition-duration|-webkit-transition-delay|-webkit-transition|-webkit-transform-style|-webkit-transform-origin|-webkit-transform|-webkit-text-orientation|-webkit-text-emphasis-style|-webkit-text-emphasis-position|-webkit-text-emphasis-color|-webkit-text-emphasis|-webkit-text-decoration-style|-webkit-text-decoration-skip|-webkit-text-decoration-line|-webkit-text-decoration-color|-webkit-shape-outside|-webkit-shape-margin|-webkit-shape-image-threshold|-webkit-ruby-position|-webkit-region-fragment|-webkit-perspective-origin|-webkit-perspective|-webkit-order|-webkit-mask-type|-webkit-mask-size|-webkit-mask-repeat|-webkit-mask-position|-webkit-mask-origin|-webkit-mask-mode|-webkit-mask-image|-webkit-mask-composite|-webkit-mask-clip|-webkit-mask-border-width|-webkit-mask-border-source|-webkit-mask-border-slice|-webkit-mask-border-repeat|-webkit-mask-border-outset|-webkit-mask-border|-webkit-mask|-webkit-justify-self|-webkit-justify-content|-webkit-hyphens|-webkit-grid-template-rows|-webkit-grid-template-columns|-webkit-grid-template-areas|-webkit-grid-template|-webkit-grid-row-start|-webkit-grid-row-end|-webkit-grid-row|-webkit-grid-column-start|-webkit-grid-column-end|-webkit-grid-column|-webkit-grid-auto-rows|-webkit-grid-auto-flow|-webkit-grid-auto-columns|-webkit-grid-area|-webkit-grid|-webkit-font-variant-ligatures|-webkit-font-size-delta|-webkit-font-kerning|-webkit-font-feature-settings|-webkit-flow-into|-webkit-flow-from|-webkit-flex-wrap|-webkit-flex-shrink|-webkit-flex-grow|-webkit-flex-flow|-webkit-flex-direction|-webkit-flex-basis|-webkit-flex|-webkit-filter|-webkit-columns|-webkit-column-width|-webkit-column-span|-webkit-column-rule-width|-webkit-column-rule-style|-webkit-column-rule-color|-webkit-column-rule|-webkit-column-gap|-webkit-column-fill|-webkit-column-count|-webkit-clip-path|-webkit-break-inside|-webkit-break-before|-webkit-break-after|-webkit-box-decoration-break|-webkit-border-image|-webkit-backface-visibility|-webkit-animation-timing-function|-webkit-animation-play-state|-webkit-animation-name|-webkit-animation-iteration-count|-webkit-animation-fill-mode|-webkit-animation-duration|-webkit-animation-direction|-webkit-animation-delay|-webkit-animation|-webkit-align-self|-webkit-align-items|-webkit-align-content|-ms-writing-mode|-ms-wrap-through|-ms-wrap-flow|-ms-word-wrap|-ms-user-select|-ms-transform-style|-ms-transform-origin|-ms-transform|-ms-text-justify|-ms-text-align-last|-ms-scroll-snap-type|-ms-scroll-snap-points-y|-ms-scroll-snap-points-x|-ms-scroll-snap-destination|-ms-scroll-snap-coordinate|-ms-perspective-origin|-ms-perspective|-ms-overflow-y|-ms-overflow-x|-ms-hyphens|-ms-grid-row-span|-ms-grid-row-align|-ms-grid-row|-ms-grid-column-span|-ms-grid-column-align|-ms-grid-column|-ms-flow-into|-ms-flow-from|-ms-flex-wrap|-ms-flex-flow|-ms-flex-direction|-ms-flex|-ms-backface-visibility|-moz-user-select|-moz-text-decoration-style|-moz-text-decoration-skip|-moz-text-decoration-line|-moz-text-decoration-color|-moz-text-align-last|-moz-tab-size|-moz-hyphens|-moz-font-language-override|-moz-font-feature-settings|-moz-columns|-moz-column-width|-moz-column-span|-moz-column-rule-width|-moz-column-rule-style|-moz-column-rule-color|-moz-column-rule|-moz-column-gap|-moz-column-fill|-moz-column-count|-moz-box-sizing)\b
 
   property-name-supports-condition:
     name: meta.supports-condition-property-name.css
@@ -511,12 +523,16 @@ repository:
     match: '[-\p{Ll}\p{Lm}\p{Lo}][-\p{Ll}\p{Lm}\p{Lo}\d._\p{M}]*'
 
   selector-element:
-    match: ((?:-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*|\*)\s*(\|))?\s*(?:(?<![:-])\b(wbr|view|video|var|use|unknown|ul|u|tspan|track|tr|title|time|thead|th|tfoot|textPath|textarea|text|template|td|tbody|table|symbol|switch|svg|sup|summary|sub|style|strong|stop|span|source|solidcolor|small|set|select|section|script|samp|s|ruby|rtc|rt|rp|rect|rb|radialGradient|q|progress|pre|polyline|polygon|pattern|path|param|p|output|option|optgroup|ol|object|noscript|nav|mpath|meter|metadata|meta|meshrow|meshpatch|mesh|menuitem|menu|mask|marker|mark|map|main|link|linearGradient|line|li|legend|label|keygen|kbd|ins|input|img|image|iframe|i|html|hr|header|head|hatchpath|hatch|h6|h5|h4|h3|h2|h1|g|form|foreignObject|footer|filter|figure|figcaption|fieldset|feTurbulence|feTile|feSpotLight|feSpecularLighting|fePointLight|feOffset|feMorphology|feMergeNode|feMerge|feImage|feGaussianBlur|feFuncR|feFuncG|feFuncB|feFuncA|feFlood|feDropShadow|feDistantLight|feDisplacementMap|feDiffuseLighting|feConvolveMatrix|feComposite|feComponentTransfer|feColorMatrix|feBlend|embed|em|ellipse|dt|dl|div|discard|dialog|dfn|details|desc|del|defs|dd|datalist|data|cursor|colgroup|col|code|clipPath|cite|circle|caption|canvas|button|br|body|blockquote|bdo|bdi|base|b|audio|aside|article|area|animateTransform|animateMotion|animate|address|abbr|a)\b|(\*))(?!-)
+    match: ((?:-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*|\*)\s*(\|))?\s*(?:(?<![:-])\b(wbr|view|video|var|use|unknown|ul|u|tspan|track|tr|title|time|thead|th|tfoot|textPath|textarea|text|template|td|tbody|table|symbol|switch|svg|sup|summary|sub|style|strong|stop|span|source|solidcolor|small|set|select|section|script|samp|s|ruby|rt|rp|rect|radialGradient|q|progress|pre|polyline|polygon|pattern|path|param|p|output|option|optgroup|ol|object|noscript|nav|mpath|meter|metadata|meta|meshrow|meshpatch|mesh|menuitem|menu|mask|marker|mark|map|main|link|linearGradient|line|li|legend|label|keygen|kbd|ins|input|img|image|iframe|i|html|hr|header|head|hatchpath|hatch|h6|h5|h4|h3|h2|h1|g|form|foreignObject|footer|filter|figure|figcaption|fieldset|feTurbulence|feTile|feSpotLight|feSpecularLighting|fePointLight|feOffset|feMorphology|feMergeNode|feMerge|feImage|feGaussianBlur|feFuncR|feFuncG|feFuncB|feFuncA|feFlood|feDropShadow|feDistantLight|feDisplacementMap|feDiffuseLighting|feConvolveMatrix|feComposite|feComponentTransfer|feColorMatrix|feBlend|embed|em|ellipse|dt|dl|div|discard|dialog|dfn|details|desc|del|defs|dd|datalist|data|cursor|colgroup|col|code|clipPath|cite|circle|caption|canvas|button|br|body|blockquote|bdo|bdi|base|b|audio|aside|article|area|animateTransform|animateMotion|animate|address|abbr|a)\b|(\*))(?!-)
     captures:
       '1': {name: string.unquoted.namespace.css}
       '2': {name: punctuation.separator.namespace.css}
       '3': {name: entity.name.tag.css}
       '4': {name: entity.name.tag.wildcard.css}
+
+  selector-element-deprecated:
+    name: invalid.deprecated.css
+    match: (?<![-:\[])\b(?:xmp|tt|strike|spacer|rtc|rb|plaintext|noframes|noembed|nobr|nextid|multicol|marquee|listing|isindex|hgroup|frameset|frame|font|dir|center|blink|big|bgsound|basefont|applet|acronym)\b(?!-)
 
   selector-id:
     name: entity.other.attribute-name.id.css
@@ -767,10 +783,6 @@ repository:
     captures:
       '1': {name: punctuation.definition.entity.css}
       '2': {name: entity.other.attribute-name.pseudo-class.prefix.webkit.css}
-
-  selector-element-deprecated:
-    name: invalid.deprecated.css
-    match: (?<![-:\[])\b(?:xmp|tt|strike|spacer|plaintext|noframes|noembed|nobr|nextid|multicol|marquee|listing|isindex|hgroup|frameset|frame|font|dir|center|blink|big|bgsound|basefont|applet|acronym)\b(?!-)
 
   selector-pseudo-element:
     name: entity.other.attribute-name.pseudo-element.css
@@ -2204,6 +2216,48 @@ repository:
     endCaptures:
       '0': {name: punctuation.section.function.css}
 
+  type-function-child:
+    begin: \b(child)(\()
+    beginCaptures:
+      '1': {name: support.function.child.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.child.css
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-function-calc'
+    - include: '#type-integer-positive'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
+  type-function-cielab:
+    begin: \b(cielab)(\()
+    beginCaptures:
+      '1': {name: support.function.cielab.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.cielab.css
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-function-calc'
+    - include: '#type-number'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
+  type-function-cielchab:
+    begin: \b(cielchab)(\()
+    beginCaptures:
+      '1': {name: support.function.cielchab.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.cielchab.css
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-function-calc'
+    - include: '#type-number'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
   type-function-color:
     begin: \b(color)(\()
     beginCaptures:
@@ -2449,6 +2503,20 @@ repository:
     endCaptures:
       '0': {name: punctuation.section.function.css}
 
+  type-function-d-path:
+    begin: \b(path)(\()
+    beginCaptures:
+      '1': {name: support.function.d-path.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.d-path.css
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-string-double'
+    - include: '#type-string-single'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
   type-function-device-cmyk:
     begin: \b(device-cmyk)(\()
     beginCaptures:
@@ -2471,6 +2539,20 @@ repository:
     - include: '#type-percentage-hundred-max'
     # TODO: restrict the number to between 0 and 255 (<alpha-value>)
     - include: '#type-number-non-negative'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
+  type-function-device-gray-nchannel-rgb:
+    begin: \b(device-(?:rgb|nchannel|gray))(\()
+    beginCaptures:
+      '1': {name: support.function.device-gray-nchannel-rgb.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.device-gray-nchannel-rgb.css
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-function-calc'
+    - include: '#type-number'
     end: \)
     endCaptures:
       '0': {name: punctuation.section.function.css}
@@ -2671,6 +2753,23 @@ repository:
     begin: \b(icc-color)(\()
     beginCaptures:
       '1': {name: support.function.icc-color.css}
+      '2': {name: punctuation.section.function.css}
+    contentName: meta.function.icc-named-color.css
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-function-calc'
+    - include: '#type-number'
+    # This matches icc color names
+    - name: string.unquoted.identifier.css
+      match: '[^,()\s]+'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
+
+  type-function-icc-named-color:
+    begin: \b(icc-named-color)(\()
+    beginCaptures:
+      '1': {name: support.function.icc-named-color.css}
       '2': {name: punctuation.section.function.css}
     contentName: meta.function.icc-color.css
     patterns:
@@ -3343,6 +3442,10 @@ repository:
     name: constant.numeric.css
     match: \+?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?
 
+  type-number-zero-to-one:
+    name: constant.numeric.css
+    match: '[01]?\.0+|0?\.\d*[1-9]\d*|[01]'
+
   type-percentage:
     match: (?:([+-]?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?)(%)|\b(0)\b)
     captures:
@@ -3484,6 +3587,7 @@ repository:
     - include: '#value-color-adjust'
     - include: '#value-color-correction'
     - include: '#value-color-interpolation-filters'
+    - include: '#value-color-rendering'
     - include: '#value-column-count'
     - include: '#value-column-fill'
     - include: '#value-grid-gap'
@@ -3501,6 +3605,8 @@ repository:
     - include: '#value-display-outside'
     - include: '#value-dominant-baseline'
     - include: '#value-empty-cells'
+    - include: '#value-fill-opacity'
+    - include: '#value-fill-rule'
     - include: '#value-flex-basis'
     - include: '#value-flex-direction'
     - include: '#value-flex-flow'
@@ -3547,12 +3653,14 @@ repository:
     - include: '#value-hyphenate-limit-lines'
     - include: '#value-hyphenate-limit-zone'
     - include: '#value-image-orientation'
+    - include: '#value-image-rendering'
     - include: '#value-image-resolution'
     - include: '#value-indent-edge-reset'
     - include: '#value-initial-letter-wrap'
     - include: '#value-initial-letter-align'
     - include: '#value-initial-letter'
     - include: '#value-inline-box-align'
+    - include: '#value-inline-size'
     - include: '#value-justify-items'
     - include: '#value-letter-spacing'
     - include: '#value-line-break'
@@ -3566,6 +3674,7 @@ repository:
     - include: '#value-list-style-position'
     - include: '#value-list-style-type'
     - include: '#value-list-style'
+    - include: '#value-marker-end-mid-start'
     - include: '#value-marker-side'
     - include: '#value-mask-clip'
     - include: '#value-mask-composite'
@@ -3584,6 +3693,7 @@ repository:
     - include: '#value-outline-style'
     - include: '#value-overflow-wrap-word-wrap'
     - include: '#value-page-policy'
+    - include: '#value-paint-order'
     - include: '#value-perspective-origin'
     - include: '#value-pointer-events'
     - include: '#value-polar-anchor-polar-origin'
@@ -3603,12 +3713,24 @@ repository:
     - include: '#value-shape-margin'
     - include: '#value-shape-outside'
     - include: '#value-shape-padding'
+    - include: '#value-shape-rendering'
+    - include: '#value-shape-subtract'
     - include: '#value-speak-as'
+    - include: '#value-stop-color'
+    - include: '#value-stop-opacity'
     - include: '#value-string-set'
+    - include: '#value-stroke-dasharray'
+    - include: '#value-stroke-dashoffset'
+    - include: '#value-stroke-linecap'
+    - include: '#value-stroke-linejoin'
+    - include: '#value-stroke-miterlimit'
+    - include: '#value-stroke-opacity'
+    - include: '#value-stroke-width'
     - include: '#value-tab-size'
     - include: '#value-table-layout'
     - include: '#value-text-align'
     - include: '#value-text-align-last'
+    - include: '#value-text-anchor'
     - include: '#value-text-combine-upright'
     - include: '#value-text-decoration'
     - include: '#value-text-decoration-color-text-emphasis-color'
@@ -3623,6 +3745,7 @@ repository:
     - include: '#value-text-justify'
     - include: '#value-text-orientation'
     - include: '#value-text-overflow'
+    - include: '#value-text-rendering'
     - include: '#value-text-shadow'
     - include: '#value-text-space-collapse'
     - include: '#value-text-space-trim'
@@ -3640,6 +3763,7 @@ repository:
     - include: '#value-unicode-range'
     - include: '#value-user-select'
     - include: '#value-user-zoom'
+    - include: '#value-vector-effect'
     - include: '#value-vertical-align'
     - include: '#value-voice-balance'
     - include: '#value-voice-duration'
@@ -3678,8 +3802,10 @@ repository:
     - include: '#value-corners'
     - include: '#value-cue'
     - include: '#value-cursor'
+    - include: '#value-cx-cy-x-y'  # four one-word properties
     - include: '#value-direction'
     - include: '#value-display'
+    - include: '#value-d'
     - include: '#value-fallback'
     - include: '#value-filter'
     - include: '#value-flex'
@@ -3701,7 +3827,7 @@ repository:
     - include: '#value-opacity'
     - include: '#value-order'
     - include: '#value-orientation'
-    - include: '#value-orphans-widows'
+    - include: '#value-orphans-widows'  # two one-word properties
     - include: '#value-outline'
     - include: '#value-pad'
     - include: '#value-padding'
@@ -3717,9 +3843,11 @@ repository:
     - include: '#value-rest'
     - include: '#value-rotation'
     - include: '#value-running'
+    - include: '#value-r-rx-ry'  # three one-word properties
     - include: '#value-size'
     - include: '#value-speak'
     - include: '#value-src'
+    - include: '#value-text-decoration-fill-stroke'  # contains two one-word properties
     - include: '#value-suffix'
     - include: '#value-symbols'
     - include: '#value-system'
@@ -3728,7 +3856,7 @@ repository:
     - include: '#value-visibility'
     - include: '#value-width'
     - include: '#value-zoom'
-    - include: '#value-bottom-left-right-top'
+    - include: '#value-bottom-left-right-top'  # four one-word properties
     end: (?:;|(?=\)))
     endCaptures:
       '0': {name: punctuation.terminator.rule.css}
@@ -4882,6 +5010,19 @@ repository:
       match: \b(?:sRGB|linearRGB|auto)
     end: (?=[;)])
 
+  value-color-rendering:
+    begin: (?<=color-rendering:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:optimizeSpeed|optimizeQuality|auto)\b
+    end: (?=[;)])
+
   value-column-count:
     begin: (?<=column-count:)
     patterns:
@@ -5157,6 +5298,33 @@ repository:
     - include: '#type-number'
     end: (?=[;)])
 
+  value-cx-cy-x-y:
+    begin: (?<=cx:|cy:|x:|y:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-length'
+    - include: '#type-percentage'
+    end: (?=[;)])
+
+  value-d:
+    begin: (?<=d:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bnone\b
+    - include: '#type-function-d-path'
+    end: (?=[;)])
+
   value-direction:
     begin: (?<=direction:)
     patterns:
@@ -5259,6 +5427,31 @@ repository:
     - include: '#type-function-var'
     - include: '#type-counter-style-predefined'
     - include: '#identifier'
+    end: (?=[;)])
+
+  value-fill-opacity:
+    begin: (?<=fill-opacity:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-number-zero-to-one'
+    end: (?=[;)])
+
+  value-fill-rule:
+    begin: (?<=fill-rule:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:nonzero|evenodd)\b
     end: (?=[;)])
 
   value-filter:
@@ -5456,17 +5649,21 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
-    - include: '#type-function-icc-color'
-    - include: '#type-function-hwb'
-    - include: '#type-function-device-cmyk'
-    - include: '#type-function-color'
+    - include: '#type-function-device-gray-nchannel-rgb'
     - include: '#type-function-gray'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
-    - include: '#type-function-hsla'
+    - include: '#type-function-cielab'
+    - include: '#type-function-cielchab'
+    - include: '#type-function-color'
+    - include: '#type-function-device-cmyk'
     - include: '#type-function-hsl'
-    - include: '#type-function-rgba'
+    - include: '#type-function-hsla'
+    - include: '#type-function-hwb'
+    - include: '#type-function-icc-color'
+    - include: '#type-function-icc-named-color'
     - include: '#type-function-rgb'
+    - include: '#type-function-rgba'
     - include: '#type-color-hex'
     end: (?=[;)])
 
@@ -6092,6 +6289,19 @@ repository:
     - include: '#type-angle'
     end: (?=[;)])
 
+  value-image-rendering:
+    begin: (?<=image-rendering:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:optimizeSpeed|optimizeQuality|auto)\b
+    end: (?=[;)])
+
   value-image-resolution:
     begin: (?<=image-resolution:)
     patterns:
@@ -6177,6 +6387,21 @@ repository:
       match: \blast\b
     - include: '#type-function-calc'
     - include: '#type-integer'
+    end: (?=[;)])
+
+  value-inline-size:
+    begin: (?<=inline-size:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-function-calc'
+    - include: '#type-length'
+    - include: '#type-percentage'
+    - include: '#type-number'
     end: (?=[;)])
 
   value-isolation:
@@ -6398,6 +6623,20 @@ repository:
     - include: '#type-function-calc'
     - include: '#type-percentage'
     - include: '#type-length'
+    end: (?=[;)])
+
+  value-marker-end-mid-start:
+    begin: (?<=marker-end:|marker-mid:|marker-start:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \bnone\b
+    - include: '#type-function-url'
     end: (?=[;)])
 
   value-marker-side:
@@ -6710,8 +6949,7 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
-    - name: constant.numeric.css
-      match: '[01]?\.0+|0?\.\d*[1-9]\d*|[01]'
+    - include: '#type-number-zero-to-one'
     end: (?=[;)])
 
   value-order:
@@ -6912,6 +7150,19 @@ repository:
     - include: '#identifier'
     end: (?=[;)])
 
+  value-paint-order:
+    begin: (?<=paint-order:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:stroke|normal|markers|fill)\b
+    end: (?=[;)])
+
   value-page-policy:
     begin: (?<=page-policy:)
     patterns:
@@ -6981,7 +7232,7 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - name: support.constant.property-value.css
-      match: \b(?:visibleStroke|visiblePainted|visibleFill|visible|stroke|painted|none|fill|auto|all)\b
+      match: \b(?:visibleStroke|visiblePainted|visibleFill|visible|stroke|painted|none|fill|bounding-box|auto|all)\b
     end: (?=[;)])
 
   value-polar-anchor-polar-origin:
@@ -7078,6 +7329,19 @@ repository:
       match: \bnone\b
     - include: '#type-string-double'
     - include: '#type-string-single'
+    end: (?=[;)])
+
+  value-r-rx-ry:
+    begin: (?<=r:|rx:|ry:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-length-non-negative'
+    - include: '#type-percentage-non-negative'
     end: (?=[;)])
 
   value-range:
@@ -7380,6 +7644,44 @@ repository:
     - include: '#type-length-positive'
     end: (?=[;)])
 
+  value-shape-rendering:
+    begin: (?<=shape-rendering:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:optimizeSpeed|geometricPrecision|crispEdges|auto)\b
+    end: (?=[;)])
+
+  value-shape-subtract:
+    begin: (?<=shape-subtract:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:shape-box|outside-shape|none|display)\b
+    - include: '#type-function-inset'
+    - include: '#type-function-circle-ellipse'
+    - include: '#type-function-polygon'
+    - include: '#type-function-cross-fade'
+    - include: '#type-function-element'
+    - include: '#type-function-filter'
+    - include: '#type-function-image'
+    - include: '#type-function-image-set'
+    - include: '#type-function-conic-gradient'
+    - include: '#type-function-linear-gradient'
+    - include: '#type-function-radial-gradient'
+    - include: '#type-function-url'
+    end: (?=[;)])
+
   value-size:
     begin: (?<=size:)
     patterns:
@@ -7439,6 +7741,46 @@ repository:
     - include: '#type-function-url'
     end: (?=[;)])
 
+  value-stop-color:
+    begin: (?<=stop-color:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-function-device-gray-nchannel-rgb'
+    - include: '#type-function-gray'
+    - include: '#type-color-named-deprecated'
+    - include: '#type-color-named'
+    - include: '#type-function-cielab'
+    - include: '#type-function-cielchab'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-hsla'
+    - include: '#type-function-hsl'
+    - include: '#type-function-icc-color'
+    - include: '#type-function-icc-named-color'
+    - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
+    - include: '#type-function-hwb'
+    - include: '#type-function-color'
+    - include: '#type-color-hex'
+    end: (?=[;)])
+
+  value-stop-opacity:
+    begin: (?<=stop-opacity:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-function-calc'
+    - include: '#type-number-zero-to-one'
+    end: (?=[;)])
+
   value-string-set:
     begin: (?<=string-set:)
     patterns:
@@ -7455,6 +7797,104 @@ repository:
     - include: '#type-string-double'
     - include: '#type-string-single'
     - include: '#identifier'
+    end: (?=[;)])
+
+  value-stroke-dasharray:
+    begin: (?<=stroke-dasharray:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-function-calc'
+    - name: support.constant.property-value.css
+      match: \bnone\b
+    - include: '#type-percentage-non-negative'
+    - include: '#type-length-non-negative'
+    - include: '#type-number-non-negative'
+    end: (?=[;)])
+
+  value-stroke-dashoffset:
+    begin: (?<=stroke-dashoffset:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-function-calc'
+    - include: '#type-percentage'
+    - include: '#type-length'
+    end: (?=[;)])
+
+  value-stroke-linecap:
+    begin: (?<=stroke-linecap:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:square|round|butt)\b
+    end: (?=[;)])
+
+  value-stroke-linejoin:
+    begin: (?<=stroke-linejoin:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:round|miter-clip|miter|bevel|arcs)\b
+    end: (?=[;)])
+
+  value-stroke-miterlimit:
+    begin: (?<=stroke-miterlimit:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-function-calc'
+    - name: constant.numeric.css
+      match: '\+?[1-9]+(?:\.\d+)?(?:[eE]\+?[0-9]+)?' # number >= 1
+    end: (?=[;)])
+
+  value-stroke-opacity:
+    begin: (?<=stroke-opacity:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-function-calc'
+    - include: '#type-number-zero-to-one'
+    end: (?=[;)])
+
+  value-stroke-width:
+    begin: (?<=stroke-width:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-function-calc'
+    - include: '#type-percentage-non-negative'
+    - include: '#type-length-non-negative'
     end: (?=[;)])
 
   value-suffix:
@@ -7547,6 +7987,7 @@ repository:
     - include: '#value-color-adjust'
     - include: '#value-color-correction'
     - include: '#value-color-interpolation-filters'
+    - include: '#value-color-rendering'
     - include: '#value-column-count'
     - include: '#value-column-fill'
     - include: '#value-grid-gap'
@@ -7564,6 +8005,8 @@ repository:
     - include: '#value-display-outside'
     - include: '#value-dominant-baseline'
     - include: '#value-empty-cells'
+    - include: '#value-fill-opacity'
+    - include: '#value-fill-rule'
     - include: '#value-flex-basis'
     - include: '#value-flex-direction'
     - include: '#value-flex-flow'
@@ -7610,12 +8053,14 @@ repository:
     - include: '#value-hyphenate-limit-lines'
     - include: '#value-hyphenate-limit-zone'
     - include: '#value-image-orientation'
+    - include: '#value-image-rendering'
     - include: '#value-image-resolution'
     - include: '#value-indent-edge-reset'
     - include: '#value-initial-letter-wrap'
     - include: '#value-initial-letter-align'
     - include: '#value-initial-letter'
     - include: '#value-inline-box-align'
+    - include: '#value-inline-size'
     - include: '#value-justify-items'
     - include: '#value-letter-spacing'
     - include: '#value-line-break'
@@ -7629,6 +8074,7 @@ repository:
     - include: '#value-list-style-position'
     - include: '#value-list-style-type'
     - include: '#value-list-style'
+    - include: '#value-marker-end-mid-start'
     - include: '#value-marker-side'
     - include: '#value-mask-border-mode-mask-type'
     - include: '#value-mask-clip'
@@ -7643,6 +8089,7 @@ repository:
     - include: '#value-outline-style'
     - include: '#value-overflow-wrap-word-wrap'
     - include: '#value-page-policy'
+    - include: '#value-paint-order'
     - include: '#value-perspective-origin'
     - include: '#value-pointer-events'
     - include: '#value-polar-anchor-polar-origin'
@@ -7662,12 +8109,24 @@ repository:
     - include: '#value-shape-margin'
     - include: '#value-shape-outside'
     - include: '#value-shape-padding'
+    - include: '#value-shape-rendering'
+    - include: '#value-shape-subtract'
     - include: '#value-speak-as'
+    - include: '#value-stop-color'
+    - include: '#value-stop-opacity'
     - include: '#value-string-set'
+    - include: '#value-stroke-dasharray'
+    - include: '#value-stroke-dashoffset'
+    - include: '#value-stroke-linecap'
+    - include: '#value-stroke-linejoin'
+    - include: '#value-stroke-miterlimit'
+    - include: '#value-stroke-opacity'
+    - include: '#value-stroke-width'
     - include: '#value-tab-size'
     - include: '#value-table-layout'
     - include: '#value-text-align'
     - include: '#value-text-align-last'
+    - include: '#value-text-anchor'
     - include: '#value-text-combine-upright'
     - include: '#value-text-decoration'
     - include: '#value-text-decoration-color-text-emphasis-color'
@@ -7682,6 +8141,7 @@ repository:
     - include: '#value-text-justify'
     - include: '#value-text-orientation'
     - include: '#value-text-overflow'
+    - include: '#value-text-rendering'
     - include: '#value-text-shadow'
     - include: '#value-text-space-collapse'
     - include: '#value-text-space-trim'
@@ -7699,6 +8159,7 @@ repository:
     - include: '#value-unicode-range'
     - include: '#value-user-select'
     - include: '#value-user-zoom'
+    - include: '#value-vector-effect'
     - include: '#value-vertical-align'
     - include: '#value-voice-balance'
     - include: '#value-voice-duration'
@@ -7737,8 +8198,10 @@ repository:
     - include: '#value-corners'
     - include: '#value-cue'
     - include: '#value-cursor'
+    - include: '#value-cx-cy-x-y'  # four one-word properties
     - include: '#value-direction'
     - include: '#value-display'
+    - include: '#value-d'
     - include: '#value-fallback'
     - include: '#value-filter'
     - include: '#value-flex'
@@ -7759,7 +8222,7 @@ repository:
     - include: '#value-opacity'
     - include: '#value-order'
     - include: '#value-orientation'
-    - include: '#value-orphans-widows'
+    - include: '#value-orphans-widows'  # two one-word properties
     - include: '#value-outline'
     - include: '#value-pad'
     - include: '#value-padding'
@@ -7775,9 +8238,11 @@ repository:
     - include: '#value-rest'
     - include: '#value-rotation'
     - include: '#value-running'
+    - include: '#value-r-rx-ry'  # three one-word properties
     - include: '#value-size'
     - include: '#value-speak'
     - include: '#value-src'
+    - include: '#value-text-decoration-fill-stroke'  # contains two one-word properties
     - include: '#value-suffix'
     - include: '#value-symbols'
     - include: '#value-system'
@@ -7786,7 +8251,7 @@ repository:
     - include: '#value-visibility'
     - include: '#value-width'
     - include: '#value-zoom'
-    - include: '#value-bottom-left-right-top'
+    - include: '#value-bottom-left-right-top'  # four one-word properties
     end: \)
     endCaptures:
       '0': {name: punctuation.section.supports-condition.css}
@@ -7884,6 +8349,19 @@ repository:
       match: \b(?:start|right|left|justify|end|center|auto)\b
     end: (?=[;)])
 
+  value-text-anchor:
+    begin: (?<=text-anchor:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:start|middle|end)\b
+    end: (?=[;)])
+
   value-text-combine-upright:
     begin: (?<=text-combine-upright:)
     patterns:
@@ -7942,6 +8420,32 @@ repository:
     - include: '#type-function-hsl'
     - include: '#type-function-rgba'
     - include: '#type-function-rgb'
+    - include: '#type-color-hex'
+    end: (?=[;)])
+
+  value-text-decoration-fill-stroke:
+    begin: (?<=text-decoration-stroke:|text-decoration-fill:|fill:|stroke:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - include: '#type-function-gray'
+    - include: '#type-function-child'
+    - include: '#type-color-named-deprecated'
+    - include: '#type-color-named'
+    - include: '#type-function-hwb'
+    - include: '#type-function-device-cmyk'
+    - include: '#type-function-color'
+    - include: '#type-function-hsla'
+    - include: '#type-function-hsl'
+    - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
+    - name: support.constant.property-value.css
+      match: \b(?:none|context-stroke|context-fill|child)\b
+    - include: '#type-function-url'
     - include: '#type-color-hex'
     end: (?=[;)])
 
@@ -8112,6 +8616,19 @@ repository:
       match: \b(?:fade|ellipsis|clip)\b
     - include: '#type-string-double'
     - include: '#type-string-single'
+    end: (?=[;)])
+
+  value-text-rendering:
+    begin: (?<=text-rendering:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:optimizeSpeed|optimizeLegibility|geometricPrecision|auto)\b
     end: (?=[;)])
 
   value-text-shadow:
@@ -8445,6 +8962,19 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:zoom|fixed)\b
+    end: (?=[;)])
+
+  value-vector-effect:
+    begin: (?<=vector-effect:)
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-important'
+    - include: '#type-all'
+    - include: '#type-function-attr'
+    - include: '#type-function-toggle'
+    - include: '#type-function-var'
+    - name: support.constant.property-value.css
+      match: \b(?:non-scaling-stroke|none)\b
     end: (?=[;)])
 
   value-vertical-align:
