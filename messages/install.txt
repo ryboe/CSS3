@@ -15,4 +15,4 @@ to your Emmet package settings:
 That's it. Enjoy the plugin. If you have any problems, please open an issue on
 GitHub and I'll fix it as soon as I can.
 
-https://github.com/y0ssar1an/CSS3/issues
+	https://github.com/y0ssar1an/CSS3/issues
