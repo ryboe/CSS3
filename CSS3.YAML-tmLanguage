@@ -3353,21 +3353,24 @@ repository:
     - include: '#comment-block'
     - include: '#type-function-calc'
     - include: '#type-length'
+    - include: '#type-percentage'
     end: \)
     endCaptures:
       '0': {name: punctuation.section.function.css}
 
-  # per RFC 3986, the only characters permitted in a URL match this regex:
-  # [a-zA-Z0-9\-\._~:/\?#\[\]@!$&'()\*\+\%,;=]*
   type-function-url:
-    match: \b(url)(\()\s*(?:(\"[a-zA-Z0-9\-\._~:/\?#\[\]@!$&'()\*\+\%,;=]*\")|(\'[a-zA-Z0-9\-\._~:/\?#\[\]@!$&'()\*\+\%,;=]*\')|([\\a-zA-Z0-9\-\._~:/\?#\[\]@!$&'()\*\+\%,;=]+))\s*(\))
-    captures:
+    begin: \b(url)(\()
+    beginCaptures:
       '1': {name: support.function.url.css}
       '2': {name: punctuation.section.function.css}
-      '3': {name: string.quoted.double.css}
-      '4': {name: string.quoted.single.css}
-      '5': {name: string.unquoted.url.css}
-      '6': {name: punctuation.section.function.css}
+    contentName: meta.function.url.css
+    patterns:
+    - include: '#comment-block'
+    - include: '#type-string-double'
+    - include: '#type-string-single'
+    end: \)
+    endCaptures:
+      '0': {name: punctuation.section.function.css}
 
   type-function-var:
     begin: \b(var)(\()
@@ -3400,6 +3403,13 @@ repository:
 
   type-length:
     match: (?:([+-]?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?)(r?em|ex|ch|vw|vh|vmin|vmax|cm|mm|q|in|pc|pt|px)\b|\b(0)\b)
+    captures:
+      '1': {name: constant.numeric.css}
+      '2': {name: keyword.other.unit.css}
+      '3': {name: constant.numeric.css}
+
+  type-length-absolute:
+    match: (?:([+-]?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?)(cm|mm|q|in|pc|pt|px)\b|\b(0)\b)
     captures:
       '1': {name: constant.numeric.css}
       '2': {name: keyword.other.unit.css}
@@ -8583,12 +8593,8 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:hanging|each-line)\b
+    - include: '#type-length-absolute'
     - include: '#type-percentage'
-    - match: (?:([+-]?(?:[0-9]+\.[0-9]+|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?)(cm|mm|q|in|pc|pt|px)\b|\b(0)\b)
-      captures:
-        '1': {name: constant.numeric.css}
-        '2': {name: keyword.other.unit.css}
-        '3': {name: constant.numeric.css}
     end: (?=[;)])
 
   value-text-justify:

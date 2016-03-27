@@ -1,0 +1,10 @@
+VERSION 1.3.2 CHANGES
+
+1) The url() rule now only highlights quoted URLs. Unquoted URLs are not
+   illegal in CSS, but they are discouraged by the spec as legacy code. Unquoted
+   URLs have to be specially parsed, have more characters that need to be
+   escaped, and do not support URL modifiers. Please update your code.
+
+       https://drafts.csswg.org/css-values/#urls
+
+2) Fixed translate*() rule not matching percentages.
