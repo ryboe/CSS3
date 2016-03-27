@@ -406,7 +406,7 @@ repository:
 
   property-name-deprecated:
     name: invalid.deprecated.css
-    match: \b(?:page-break-inside|page-break-before|page-break-after|kerning|glyph-orientation-vertical|glyph-orientation-horizontal|clip)\b
+    match: (?<!\-)\b(?:page-break-inside|page-break-before|page-break-after|kerning|glyph-orientation-vertical|glyph-orientation-horizontal|clip)\b((?!\-))
 
   property-name-legal:
     name: support.type.property-name.css
@@ -3803,10 +3803,8 @@ repository:
     - include: '#value-corners'
     - include: '#value-cue'
     - include: '#value-cursor'
-    - include: '#value-cx-cy-x-y'  # four one-word properties
     - include: '#value-direction'
     - include: '#value-display'
-    - include: '#value-d'
     - include: '#value-fallback'
     - include: '#value-filter'
     - include: '#value-flex'
@@ -3844,7 +3842,6 @@ repository:
     - include: '#value-rest'
     - include: '#value-rotation'
     - include: '#value-running'
-    - include: '#value-r-rx-ry'  # three one-word properties
     - include: '#value-size'
     - include: '#value-speak'
     - include: '#value-src'
@@ -3858,6 +3855,9 @@ repository:
     - include: '#value-width'
     - include: '#value-zoom'
     - include: '#value-bottom-left-right-top'  # four one-word properties
+    - include: '#value-d'
+    - include: '#value-r-rx-ry'  # three one-word properties
+    - include: '#value-cx-cy-x-y'  # four one-word properties
     end: (?:;|(?=\)))
     endCaptures:
       '0': {name: punctuation.terminator.rule.css}
@@ -8213,10 +8213,8 @@ repository:
     - include: '#value-corners'
     - include: '#value-cue'
     - include: '#value-cursor'
-    - include: '#value-cx-cy-x-y'  # four one-word properties
     - include: '#value-direction'
     - include: '#value-display'
-    - include: '#value-d'
     - include: '#value-fallback'
     - include: '#value-filter'
     - include: '#value-flex'
@@ -8253,7 +8251,6 @@ repository:
     - include: '#value-rest'
     - include: '#value-rotation'
     - include: '#value-running'
-    - include: '#value-r-rx-ry'  # three one-word properties
     - include: '#value-size'
     - include: '#value-speak'
     - include: '#value-src'
@@ -8267,6 +8264,9 @@ repository:
     - include: '#value-width'
     - include: '#value-zoom'
     - include: '#value-bottom-left-right-top'  # four one-word properties
+    - include: '#value-d'
+    - include: '#value-r-rx-ry'  # three one-word properties
+    - include: '#value-cx-cy-x-y'  # four one-word properties
     end: \)
     endCaptures:
       '0': {name: punctuation.section.supports-condition.css}
