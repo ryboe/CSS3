@@ -616,6 +616,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#media-feature-property-color-gamut</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#media-feature-property-device-radius</string>
 				</dict>
 				<dict>
@@ -629,6 +633,10 @@
 				<dict>
 					<key>include</key>
 					<string>#media-feature-property-integer</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#media-feature-property-inverted-colors</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -672,7 +680,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#media-feature-property-update-frequency</string>
+					<string>#media-feature-property-update</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -711,7 +719,20 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(?&lt;=[&gt;&lt;=(])\s*(width|update-frequency|scripting|scan|resolution|pointer|overflow-inline|overflow-block|orientation|monochrome|min-width|min-resolution|min-monochrome|min-height|min-device-width|min-device-radius|min-device-height|min-device-aspect-ratio|min-color-index|min-color|min-aspect-ratio|max-width|max-resolution|max-monochrome|max-height|max-device-width|max-device-radius|max-device-height|max-device-aspect-ratio|max-color-index|max-color|max-aspect-ratio|light-level|hover|height|grid|device-width|device-radius|device-height|device-aspect-ratio|color-index|color|aspect-ratio|any-pointer|any-hover)\s*(?=[&gt;&lt;=):])</string>
+			<string>(?&lt;=[&gt;&lt;=(])\s*(width|update|scripting|scan|resolution|pointer|overflow-inline|overflow-block|orientation|monochrome|min-width|min-resolution|min-monochrome|min-height|min-device-width|min-device-radius|min-device-height|min-device-aspect-ratio|min-color-index|min-color|min-aspect-ratio|max-width|max-resolution|max-monochrome|max-height|max-device-width|max-device-radius|max-device-height|max-device-aspect-ratio|max-color-index|max-color|max-aspect-ratio|light-level|inverted-colors|hover|height|grid|device-width|device-radius|device-height|device-aspect-ratio|color-index|color-gamut|color|aspect-ratio|any-pointer|any-hover)\s*(?=[&gt;&lt;=):])</string>
+		</dict>
+		<key>media-feature-property-color-gamut</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?&lt;=color-gamut:)\s*(srgb|rec2020|p3)\s*(?=\))</string>
 		</dict>
 		<key>media-feature-property-device-radius</key>
 		<dict>
@@ -786,6 +807,19 @@
 					<string>#type-integer-non-negative</string>
 				</dict>
 			</array>
+		</dict>
+		<key>media-feature-property-inverted-colors</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(?&lt;=inverted-colors:)\s*(none|inverted)\s*(?=\))</string>
 		</dict>
 		<key>media-feature-property-length</key>
 		<dict>
@@ -936,7 +970,7 @@
 			<key>match</key>
 			<string>(?&lt;=scripting:)\s*(none|initial-only|enabled)\s*(?=\))</string>
 		</dict>
-		<key>media-feature-property-update-frequency</key>
+		<key>media-feature-property-update</key>
 		<dict>
 			<key>captures</key>
 			<dict>
@@ -947,7 +981,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>(?&lt;=update-frequency:)\s*(normal|none|slow)\s*(?=\))</string>
+			<string>(?&lt;=update:)\s*(none|slow|fast)\s*(?=\))</string>
 		</dict>
 		<key>media-feature-range-operator</key>
 		<dict>
@@ -1109,7 +1143,7 @@
 		<key>property-name-deprecated</key>
 		<dict>
 			<key>match</key>
-			<string>\b(?:page-break-inside|page-break-before|page-break-after|glyph-orientation-vertical)\b</string>
+			<string>\b(?:page-break-inside|page-break-before|page-break-after|kerning|glyph-orientation-vertical|glyph-orientation-horizontal|clip)\b</string>
 			<key>name</key>
 			<string>invalid.deprecated.css</string>
 		</dict>
@@ -1144,7 +1178,7 @@
 		<key>property-name-legal</key>
 		<dict>
 			<key>match</key>
-			<string>(-webkit-writing-mode|-webkit-user-select|-webkit-transition-timing-function|-webkit-transition-property|-webkit-transition-duration|-webkit-transition-delay|-webkit-transition|-webkit-transform-style|-webkit-transform-origin|-webkit-transform|-webkit-text-orientation|-webkit-text-emphasis-style|-webkit-text-emphasis-position|-webkit-text-emphasis-color|-webkit-text-emphasis|-webkit-text-decoration-style|-webkit-text-decoration-skip|-webkit-text-decoration-line|-webkit-text-decoration-color|-webkit-shape-outside|-webkit-shape-margin|-webkit-shape-image-threshold|-webkit-ruby-position|-webkit-region-fragment|-webkit-perspective-origin|-webkit-perspective|-webkit-order|-webkit-mask-type|-webkit-mask-size|-webkit-mask-repeat|-webkit-mask-position|-webkit-mask-origin|-webkit-mask-mode|-webkit-mask-image|-webkit-mask-composite|-webkit-mask-clip|-webkit-mask-border-width|-webkit-mask-border-source|-webkit-mask-border-slice|-webkit-mask-border-repeat|-webkit-mask-border-outset|-webkit-mask-border|-webkit-mask|-webkit-justify-self|-webkit-justify-content|-webkit-hyphens|-webkit-grid-template-rows|-webkit-grid-template-columns|-webkit-grid-template-areas|-webkit-grid-template|-webkit-grid-row-start|-webkit-grid-row-end|-webkit-grid-row|-webkit-grid-column-start|-webkit-grid-column-end|-webkit-grid-column|-webkit-grid-auto-rows|-webkit-grid-auto-flow|-webkit-grid-auto-columns|-webkit-grid-area|-webkit-grid|-webkit-filter|-webkit-font-variant-ligatures|-webkit-font-size-delta|-webkit-font-kerning|-webkit-font-feature-settings|-webkit-flow-into|-webkit-flow-from|-webkit-flex-wrap|-webkit-flex-shrink|-webkit-flex-grow|-webkit-flex-flow|-webkit-flex-direction|-webkit-flex-basis|-webkit-flex|-webkit-columns|-webkit-column-width|-webkit-column-span|-webkit-column-rule-width|-webkit-column-rule-style|-webkit-column-rule-color|-webkit-column-rule|-webkit-column-gap|-webkit-column-fill|-webkit-column-count|-webkit-clip-path|-webkit-break-inside|-webkit-break-before|-webkit-break-after|-webkit-box-decoration-break|-webkit-border-image|-webkit-backface-visibility|-webkit-animation-timing-function|-webkit-animation-play-state|-webkit-animation-name|-webkit-animation-iteration-count|-webkit-animation-fill-mode|-webkit-animation-duration|-webkit-animation-direction|-webkit-animation-delay|-webkit-animation|-webkit-align-self|-webkit-align-items|-webkit-align-content|-ms-writing-mode|-ms-wrap-through|-ms-wrap-flow|-ms-word-wrap|-ms-user-select|-ms-transform-style|-ms-transform-origin|-ms-transform|-ms-text-justify|-ms-text-align-last|-ms-scroll-snap-type|-ms-scroll-snap-points-y|-ms-scroll-snap-points-x|-ms-scroll-snap-destination|-ms-scroll-snap-coordinate|-ms-perspective-origin|-ms-perspective|-ms-overflow-y|-ms-overflow-x|-ms-hyphens|-ms-grid-row-span|-ms-grid-row-align|-ms-grid-row|-ms-grid-column-span|-ms-grid-column-align|-ms-grid-column|-ms-flow-into|-ms-flow-from|-ms-flex-wrap|-ms-flex-flow|-ms-flex-direction|-ms-flex|-ms-backface-visibility|-moz-user-select|-moz-text-decoration-style|-moz-text-decoration-skip|-moz-text-decoration-line|-moz-text-decoration-color|-moz-text-align-last|-moz-tab-size|-moz-hyphens|-moz-font-language-override|-moz-font-feature-settings|-moz-columns|-moz-column-width|-moz-column-span|-moz-column-rule-width|-moz-column-rule-style|-moz-column-rule-color|-moz-column-rule|-moz-column-gap|-moz-column-fill|-moz-column-count|-moz-box-sizing)\b|\b(zoom|z-index|writing-mode|wrap-through|wrap-inside|wrap-flow|wrap-before|wrap-after|word-wrap|word-spacing|word-break|will-change|width|widows|white-space|voice-volume|voice-stress|voice-rate|voice-range|voice-pitch|voice-family|voice-duration|voice-balance|visibility|vertical-align|user-zoom|user-select|unicode-range|unicode-bidi|transition-timing-function|transition-property|transition-duration|transition-delay|transition|transform-style|transform-origin|transform-box|transform|top|text-wrap|text-underline-position|text-transform|text-spacing|text-space-trim|text-space-collapse|text-shadow|text-overflow|text-orientation|text-justify|text-indent|text-height|text-emphasis-style|text-emphasis-position|text-emphasis-color|text-emphasis|text-decoration-style|text-decoration-skip|text-decoration-line|text-decoration-color|text-decoration|text-combine-upright|text-align-last|text-align|table-layout|tab-size|system|symbols|suffix|string-set|src|speak-as|speak|size|shape-padding|shape-outside|shape-margin|shape-inside|shape-image-threshold|scroll-snap-type|scroll-snap-points-y|scroll-snap-points-x|scroll-snap-destination|scroll-snap-coordinate|running|ruby-position|ruby-merge|ruby-align|rotation-point|rotation|right|rest-before|rest-after|rest|resolution|resize|region-fragment|range|quotes|prefix|position|polar-origin|polar-distance|polar-angle|polar-anchor|pointer-events|perspective-origin|perspective|pause-before|pause-after|pause|page-policy|page|padding-top|padding-right|padding-left|padding-bottom|padding|pad|overflow-y|overflow-x|overflow-wrap|overflow|outline-width|outline-style|outline-offset|outline-color|outline|orphans|orientation|order|opacity|offset-start|offset-end|offset-before|offset-after|object-position|object-fit|negative|nav-up|nav-right|nav-left|nav-down|motion-rotation|motion-path|motion-offset|motion|mix-blend-mode|min-zoom|min-width|min-height|max-zoom|max-width|max-lines|max-height|mask-type|mask-size|mask-repeat|mask-position|mask-origin|mask-mode|mask-image|mask-composite|mask-clip|mask-border-width|mask-border-source|mask-border-slice|mask-border-repeat|mask-border-outset|mask-border-mode|mask-border|mask|marks|marker-side|margin-top|margin-right|margin-left|margin-bottom|margin|list-style-type|list-style-position|list-style-image|list-style|line-stacking-strategy|line-stacking-shift|line-stacking-ruby|line-stacking|line-snap|line-height|line-grid|line-break|lighting-color|letter-spacing|left|justify-self|justify-items|justify-content|isolation|inline-box-align|initial-letter-wrap|initial-letter-align|initial-letter|indent-edge-reset|image-resolution|image-rendering|image-orientation|hyphens|hyphenate-limit-zone|hyphenate-limit-lines|hyphenate-limit-last|hyphenate-limit-chars|hyphenate-character|height|hanging-punctuation|grid-template-rows|grid-template-columns|grid-template-areas|grid-template|grid-row-start|grid-row-gap|grid-row-end|grid-row|grid-gap|grid-column-start|grid-column-gap|grid-column-end|grid-column|grid-auto-rows|grid-auto-flow|grid-auto-columns|grid-area|grid|footnote-policy|footnote-display|font-weight|font-variant-position|font-variant-numeric|font-variant-ligatures|font-variant-east-asian|font-variant-caps|font-variant-alternates|font-variant|font-synthesis|font-style|font-stretch|font-size-adjust|font-size|font-language-override|font-kerning|font-feature-settings|font-family|font|flow-into|flow-from|flow|flood-opacity|flood-color|float-wrap|float-reference|float-offset|float-displace|float-defer|float|flex-wrap|flex-shrink|flex-grow|flex-flow|flex-direction|flex-basis|flex|filter|fallback|empty-cells|dominant-baseline|display-outside|display-list|display-inside|display|direction|cursor|cue-before|cue-after|cue|counter-set|counter-reset|counter-increment|corners|corner-shape|content|columns|column-width|column-span|column-rule-width|column-rule-style|column-rule-color|column-rule|column-gap|column-fill|column-count|color-interpolation-filters|color-interpolation|color-correction|color-adjust|color|clip-rule|clip-path|clear-side|clear-after|clear|child-align|chains|caret-shape|caret-color|caret|caption-side|break-inside|break-before|break-after|box-suppress|box-snap|box-sizing|box-shadow|box-decoration-break|bottom|border-width|border-top-width|border-top-style|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-style|border-spacing|border-right-width|border-right-style|border-right-color|border-right|border-radius|border-limit|border-left-width|border-left-style|border-left-color|border-left|border-image-width|border-image-source|border-image-slice|border-image-repeat|border-image-outset|border-image|border-color|border-collapse|border-clip-top|border-clip-right|border-clip-left|border-clip-bottom|border-clip|border-bottom-width|border-bottom-style|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border-boundary|border|bookmark-state|bookmark-level|bookmark-label|bleed|baseline-shift|background-size|background-repeat|background-position|background-origin|background-image|background-color|background-clip|background-blend-mode|background-attachment|background|backface-visibility|appearance|animation-timing-function|animation-play-state|animation-name|animation-iteration-count|animation-fill-mode|animation-duration|animation-direction|animation-delay|animation|all|alignment-baseline|alignment-adjust|alignment|align-self|align-items|align-content|additive-symbols)\b</string>
+			<string>(?:zoom|z-index|y|x|writing-mode|wrap-through|wrap-inside|wrap-flow|wrap-before|wrap-after|word-wrap|word-spacing|word-break|will-change|width|widows|white-space|voice-volume|voice-stress|voice-rate|voice-range|voice-pitch|voice-family|voice-duration|voice-balance|visibility|vertical-align|vector-effect|user-zoom|user-select|unicode-range|unicode-bidi|transition-timing-function|transition-property|transition-duration|transition-delay|transition|transform-style|transform-origin|transform-box|transform|top|text-wrap|text-underline-position|text-transform|text-spacing|text-space-trim|text-space-collapse|text-shadow|text-rendering|text-overflow|text-orientation|text-justify|text-indent|text-height|text-emphasis-style|text-emphasis-position|text-emphasis-color|text-emphasis|text-decoration-style|text-decoration-skip|text-decoration-line|text-decoration-color|text-decoration|text-combine-upright|text-anchor|text-align-last|text-align|table-layout|tab-size|system|symbols|suffix|stroke-width|stroke-opacity|stroke-miterlimit|stroke-linejoin|stroke-linecap|stroke-dashoffset|stroke-dasharray|stroke|string-set|stop-opacity|stop-color|src|speak-as|speak|size|shape-subtract|shape-rendering|shape-padding|shape-outside|shape-margin|shape-inside|shape-image-threshold|scroll-snap-type|scroll-snap-points-y|scroll-snap-points-x|scroll-snap-destination|scroll-snap-coordinate|scroll-behavior|ry|rx|running|ruby-position|ruby-merge|ruby-align|rotation-point|rotation|right|rest-before|rest-after|rest|resolution|resize|region-fragment|range|r|quotes|prefix|position|polar-origin|polar-distance|polar-angle|polar-anchor|pointer-events|perspective-origin|perspective|pause-before|pause-after|pause|paint-order|page-policy|page|padding-top|padding-right|padding-left|padding-bottom|padding|pad|overflow-y|overflow-x|overflow-wrap|overflow|outline-width|outline-style|outline-offset|outline-color|outline|orphans|orientation|order|opacity|offset-start|offset-end|offset-before|offset-after|object-position|object-fit|negative|nav-up|nav-right|nav-left|nav-down|motion-rotation|motion-path|motion-offset|motion|mix-blend-mode|min-zoom|min-width|min-height|max-zoom|max-width|max-lines|max-height|mask-type|mask-size|mask-repeat|mask-position|mask-origin|mask-mode|mask-image|mask-composite|mask-clip|mask-border-width|mask-border-source|mask-border-slice|mask-border-repeat|mask-border-outset|mask-border-mode|mask-border|mask|marks|marker-start|marker-side|marker-mid|marker-end|marker|margin-top|margin-right|margin-left|margin-bottom|margin|list-style-type|list-style-position|list-style-image|list-style|line-stacking-strategy|line-stacking-shift|line-stacking-ruby|line-stacking|line-snap|line-height|line-grid|line-break|lighting-color|letter-spacing|left|justify-self|justify-items|justify-content|isolation|inline-size|inline-box-align|initial-letter-wrap|initial-letter-align|initial-letter|indent-edge-reset|image-resolution|image-rendering|image-orientation|hyphens|hyphenate-limit-zone|hyphenate-limit-lines|hyphenate-limit-last|hyphenate-limit-chars|hyphenate-character|height|hanging-punctuation|grid-template-rows|grid-template-columns|grid-template-areas|grid-template|grid-row-start|grid-row-gap|grid-row-end|grid-row|grid-gap|grid-column-start|grid-column-gap|grid-column-end|grid-column|grid-auto-rows|grid-auto-flow|grid-auto-columns|grid-area|grid|footnote-policy|footnote-display|font-weight|font-variant-position|font-variant-numeric|font-variant-ligatures|font-variant-east-asian|font-variant-caps|font-variant-alternates|font-variant|font-synthesis|font-style|font-stretch|font-size-adjust|font-size|font-language-override|font-kerning|font-feature-settings|font-family|font|flow-into|flow-from|flow|flood-opacity|flood-color|float-wrap|float-reference|float-offset|float-displace|float-defer|float|flex-wrap|flex-shrink|flex-grow|flex-flow|flex-direction|flex-basis|flex|filter|fill-rule|fill-opacity|fill|fallback|empty-cells|dominant-baseline|display-outside|display-list|display-inside|display|direction|d|cy|cx|cursor|cue-before|cue-after|cue|counter-set|counter-reset|counter-increment|corners|corner-shape|content|columns|column-width|column-span|column-rule-width|column-rule-style|column-rule-color|column-rule|column-gap|column-fill|column-count|color-rendering|color-interpolation-filters|color-interpolation|color-correction|color-adjust|color|clip-rule|clip-path|clip|clear-side|clear-after|clear|child-align|chains|caret-shape|caret-color|caret|caption-side|break-inside|break-before|break-after|box-suppress|box-snap|box-sizing|box-shadow|box-decoration-break|bottom|border-width|border-top-width|border-top-style|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-style|border-spacing|border-right-width|border-right-style|border-right-color|border-right|border-radius|border-limit|border-left-width|border-left-style|border-left-color|border-left|border-image-width|border-image-source|border-image-slice|border-image-repeat|border-image-outset|border-image|border-color|border-collapse|border-clip-top|border-clip-right|border-clip-left|border-clip-bottom|border-clip|border-boundary|border-bottom-width|border-bottom-style|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border|bookmark-state|bookmark-level|bookmark-label|bleed|baseline-shift|background-size|background-repeat|background-position|background-origin|background-image|background-color|background-clip|background-blend-mode|background-attachment|background|backface-visibility|appearance|animation-timing-function|animation-play-state|animation-name|animation-iteration-count|animation-fill-mode|animation-duration|animation-direction|animation-delay|animation|all|alignment-baseline|alignment-adjust|alignment|align-self|align-items|align-content|additive-symbols|-webkit-writing-mode|-webkit-user-select|-webkit-transition-timing-function|-webkit-transition-property|-webkit-transition-duration|-webkit-transition-delay|-webkit-transition|-webkit-transform-style|-webkit-transform-origin|-webkit-transform|-webkit-text-orientation|-webkit-text-emphasis-style|-webkit-text-emphasis-position|-webkit-text-emphasis-color|-webkit-text-emphasis|-webkit-text-decoration-style|-webkit-text-decoration-skip|-webkit-text-decoration-line|-webkit-text-decoration-color|-webkit-shape-outside|-webkit-shape-margin|-webkit-shape-image-threshold|-webkit-ruby-position|-webkit-region-fragment|-webkit-perspective-origin|-webkit-perspective|-webkit-order|-webkit-mask-type|-webkit-mask-size|-webkit-mask-repeat|-webkit-mask-position|-webkit-mask-origin|-webkit-mask-mode|-webkit-mask-image|-webkit-mask-composite|-webkit-mask-clip|-webkit-mask-border-width|-webkit-mask-border-source|-webkit-mask-border-slice|-webkit-mask-border-repeat|-webkit-mask-border-outset|-webkit-mask-border|-webkit-mask|-webkit-justify-self|-webkit-justify-content|-webkit-hyphens|-webkit-grid-template-rows|-webkit-grid-template-columns|-webkit-grid-template-areas|-webkit-grid-template|-webkit-grid-row-start|-webkit-grid-row-end|-webkit-grid-row|-webkit-grid-column-start|-webkit-grid-column-end|-webkit-grid-column|-webkit-grid-auto-rows|-webkit-grid-auto-flow|-webkit-grid-auto-columns|-webkit-grid-area|-webkit-grid|-webkit-font-variant-ligatures|-webkit-font-size-delta|-webkit-font-kerning|-webkit-font-feature-settings|-webkit-flow-into|-webkit-flow-from|-webkit-flex-wrap|-webkit-flex-shrink|-webkit-flex-grow|-webkit-flex-flow|-webkit-flex-direction|-webkit-flex-basis|-webkit-flex|-webkit-filter|-webkit-columns|-webkit-column-width|-webkit-column-span|-webkit-column-rule-width|-webkit-column-rule-style|-webkit-column-rule-color|-webkit-column-rule|-webkit-column-gap|-webkit-column-fill|-webkit-column-count|-webkit-clip-path|-webkit-break-inside|-webkit-break-before|-webkit-break-after|-webkit-box-decoration-break|-webkit-border-image|-webkit-backface-visibility|-webkit-animation-timing-function|-webkit-animation-play-state|-webkit-animation-name|-webkit-animation-iteration-count|-webkit-animation-fill-mode|-webkit-animation-duration|-webkit-animation-direction|-webkit-animation-delay|-webkit-animation|-webkit-align-self|-webkit-align-items|-webkit-align-content|-ms-writing-mode|-ms-wrap-through|-ms-wrap-flow|-ms-word-wrap|-ms-user-select|-ms-transform-style|-ms-transform-origin|-ms-transform|-ms-text-justify|-ms-text-align-last|-ms-scroll-snap-type|-ms-scroll-snap-points-y|-ms-scroll-snap-points-x|-ms-scroll-snap-destination|-ms-scroll-snap-coordinate|-ms-perspective-origin|-ms-perspective|-ms-overflow-y|-ms-overflow-x|-ms-hyphens|-ms-grid-row-span|-ms-grid-row-align|-ms-grid-row|-ms-grid-column-span|-ms-grid-column-align|-ms-grid-column|-ms-flow-into|-ms-flow-from|-ms-flex-wrap|-ms-flex-flow|-ms-flex-direction|-ms-flex|-ms-backface-visibility|-moz-user-select|-moz-text-decoration-style|-moz-text-decoration-skip|-moz-text-decoration-line|-moz-text-decoration-color|-moz-text-align-last|-moz-tab-size|-moz-hyphens|-moz-font-language-override|-moz-font-feature-settings|-moz-columns|-moz-column-width|-moz-column-span|-moz-column-rule-width|-moz-column-rule-style|-moz-column-rule-color|-moz-column-rule|-moz-column-gap|-moz-column-fill|-moz-column-count|-moz-box-sizing)\b</string>
 			<key>name</key>
 			<string>support.type.property-name.css</string>
 		</dict>
@@ -1485,12 +1519,12 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>((?:-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*|\*)\s*(\|))?\s*(?:(?&lt;![:-])\b(abbr|address|area|article|aside|audio|a|base|bdi|bdo|blockquote|body|br|button|b|canvas|caption|cite|code|colgroup|col|datalist|data|dd|del|details|dfn|dialog|div|dl|dt|embed|em|fieldset|figcaption|figure|footer|form|h[1-6]|header|head|hr|html|iframe|i|img|input|ins|kbd|keygen|label|legend|link|li|main|map|mark|math|menuitem|menu|meta|meter|nav|noscript|object|ol|optgroup|option|output|param|pre|progress|p|q|rb|rp|rtc?|ruby|samp|script|section|select|small|source|span|strong|style|sub|summary|sup|svg|s|table|tbody|td|template|textarea|tfoot|thead|th|time|title|track|tr|ul?|var|video|wbr)\b|(\*))(?!-)</string>
+			<string>((?:-?[a-zA-Z_\\\p{^ASCII}][-a-zA-Z\d_\\\p{^ASCII}]*|\*)\s*(\|))?\s*(?:(?&lt;![:-])\b(wbr|view|video|var|use|unknown|ul|u|tspan|track|tr|title|time|thead|th|tfoot|textPath|textarea|text|template|td|tbody|table|symbol|switch|svg|sup|summary|sub|style|strong|stop|span|source|solidcolor|small|set|select|section|script|samp|s|ruby|rt|rp|rect|radialGradient|q|progress|pre|polyline|polygon|pattern|path|param|p|output|option|optgroup|ol|object|noscript|nav|mpath|meter|metadata|meta|meshrow|meshpatch|mesh|menuitem|menu|mask|marker|mark|map|main|link|linearGradient|line|li|legend|label|keygen|kbd|ins|input|img|image|iframe|i|html|hr|header|head|hatchpath|hatch|h6|h5|h4|h3|h2|h1|g|form|foreignObject|footer|filter|figure|figcaption|fieldset|feTurbulence|feTile|feSpotLight|feSpecularLighting|fePointLight|feOffset|feMorphology|feMergeNode|feMerge|feImage|feGaussianBlur|feFuncR|feFuncG|feFuncB|feFuncA|feFlood|feDropShadow|feDistantLight|feDisplacementMap|feDiffuseLighting|feConvolveMatrix|feComposite|feComponentTransfer|feColorMatrix|feBlend|embed|em|ellipse|dt|dl|div|discard|dialog|dfn|details|desc|del|defs|dd|datalist|data|cursor|colgroup|col|code|clipPath|cite|circle|caption|canvas|button|br|body|blockquote|bdo|bdi|base|b|audio|aside|article|area|animateTransform|animateMotion|animate|address|abbr|a)\b|(\*))(?!-)</string>
 		</dict>
 		<key>selector-element-deprecated</key>
 		<dict>
 			<key>match</key>
-			<string>(?&lt;![-:\[])\b(?:xmp|tt|strike|spacer|plaintext|noframes|noembed|nobr|nextid|multicol|marquee|listing|isindex|hgroup|frameset|frame|font|dir|center|blink|big|bgsound|basefont|applet|acronym)\b(?!-)</string>
+			<string>(?&lt;![-:\[])\b(?:xmp|tt|strike|spacer|rtc|rb|plaintext|noframes|noembed|nobr|nextid|multicol|marquee|listing|isindex|hgroup|frameset|frame|font|dir|center|blink|big|bgsound|basefont|applet|acronym)\b(?!-)</string>
 			<key>name</key>
 			<string>invalid.deprecated.css</string>
 		</dict>
@@ -6985,6 +7019,141 @@
 				</dict>
 			</array>
 		</dict>
+		<key>type-function-child</key>
+		<dict>
+			<key>begin</key>
+			<string>\b(child)(\()</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.child.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>contentName</key>
+			<string>meta.function.child.css</string>
+			<key>end</key>
+			<string>\)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-integer-positive</string>
+				</dict>
+			</array>
+		</dict>
+		<key>type-function-cielab</key>
+		<dict>
+			<key>begin</key>
+			<string>\b(cielab)(\()</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.cielab.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>contentName</key>
+			<string>meta.function.cielab.css</string>
+			<key>end</key>
+			<string>\)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-number</string>
+				</dict>
+			</array>
+		</dict>
+		<key>type-function-cielchab</key>
+		<dict>
+			<key>begin</key>
+			<string>\b(cielchab)(\()</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.cielchab.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>contentName</key>
+			<string>meta.function.cielchab.css</string>
+			<key>end</key>
+			<string>\)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-number</string>
+				</dict>
+			</array>
+		</dict>
 		<key>type-function-circle-ellipse</key>
 		<dict>
 			<key>begin</key>
@@ -7860,6 +8029,51 @@
 				</dict>
 			</array>
 		</dict>
+		<key>type-function-d-path</key>
+		<dict>
+			<key>begin</key>
+			<string>\b(path)(\()</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.d-path.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>contentName</key>
+			<string>meta.function.d-path.css</string>
+			<key>end</key>
+			<string>\)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-string-double</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-string-single</string>
+				</dict>
+			</array>
+		</dict>
 		<key>type-function-device-cmyk</key>
 		<dict>
 			<key>begin</key>
@@ -7946,6 +8160,51 @@
 				<dict>
 					<key>include</key>
 					<string>#type-number-non-negative</string>
+				</dict>
+			</array>
+		</dict>
+		<key>type-function-device-gray-nchannel-rgb</key>
+		<dict>
+			<key>begin</key>
+			<string>\b(device-(?:rgb|nchannel|gray))(\()</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.device-gray-nchannel-rgb.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>contentName</key>
+			<string>meta.function.device-gray-nchannel-rgb.css</string>
+			<key>end</key>
+			<string>\)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-number</string>
 				</dict>
 			</array>
 		</dict>
@@ -8592,6 +8851,57 @@
 				<dict>
 					<key>name</key>
 					<string>support.function.icc-color.css</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>contentName</key>
+			<string>meta.function.icc-named-color.css</string>
+			<key>end</key>
+			<string>\)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.function.css</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-number</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>[^,()\s]+</string>
+					<key>name</key>
+					<string>string.unquoted.identifier.css</string>
+				</dict>
+			</array>
+		</dict>
+		<key>type-function-icc-named-color</key>
+		<dict>
+			<key>begin</key>
+			<string>\b(icc-named-color)(\()</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.icc-named-color.css</string>
 				</dict>
 				<key>2</key>
 				<dict>
@@ -10745,6 +11055,13 @@
 			<key>name</key>
 			<string>constant.numeric.css</string>
 		</dict>
+		<key>type-number-zero-to-one</key>
+		<dict>
+			<key>match</key>
+			<string>[01]?\.0+|0?\.\d*[1-9]\d*|[01]</string>
+			<key>name</key>
+			<string>constant.numeric.css</string>
+		</dict>
 		<key>type-percentage</key>
 		<dict>
 			<key>captures</key>
@@ -11227,6 +11544,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-color-rendering</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-column-count</string>
 				</dict>
 				<dict>
@@ -11292,6 +11613,14 @@
 				<dict>
 					<key>include</key>
 					<string>#value-empty-cells</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-fill-opacity</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-fill-rule</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -11479,6 +11808,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-image-rendering</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-image-resolution</string>
 				</dict>
 				<dict>
@@ -11500,6 +11833,10 @@
 				<dict>
 					<key>include</key>
 					<string>#value-inline-box-align</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-inline-size</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -11552,6 +11889,10 @@
 				<dict>
 					<key>include</key>
 					<string>#value-list-style</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-marker-end-mid-start</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -11627,6 +11968,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-paint-order</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-perspective-origin</string>
 				</dict>
 				<dict>
@@ -11667,6 +12012,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-scroll-behavior</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-scroll-snap-coordinate</string>
 				</dict>
 				<dict>
@@ -11703,11 +12052,55 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-shape-rendering</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-shape-subtract</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-speak-as</string>
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-stop-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-stop-opacity</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-string-set</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-stroke-dasharray</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-stroke-dashoffset</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-stroke-linecap</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-stroke-linejoin</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-stroke-miterlimit</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-stroke-opacity</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-stroke-width</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -11724,6 +12117,10 @@
 				<dict>
 					<key>include</key>
 					<string>#value-text-align-last</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-text-anchor</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -11780,6 +12177,10 @@
 				<dict>
 					<key>include</key>
 					<string>#value-text-overflow</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-text-rendering</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -11848,6 +12249,10 @@
 				<dict>
 					<key>include</key>
 					<string>#value-user-zoom</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-vector-effect</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -11987,11 +12392,19 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-cx-cy-x-y</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-direction</string>
 				</dict>
 				<dict>
 					<key>include</key>
 					<string>#value-display</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-d</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -12143,6 +12556,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-r-rx-ry</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-size</string>
 				</dict>
 				<dict>
@@ -12152,6 +12569,10 @@
 				<dict>
 					<key>include</key>
 					<string>#value-src</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-text-decoration-fill-stroke</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -15899,6 +16320,46 @@
 				</dict>
 			</array>
 		</dict>
+		<key>value-color-rendering</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=color-rendering:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:optimizeSpeed|optimizeQuality|auto)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</array>
+		</dict>
 		<key>value-column-count</key>
 		<dict>
 			<key>begin</key>
@@ -16793,6 +17254,92 @@
 				</dict>
 			</array>
 		</dict>
+		<key>value-cx-cy-x-y</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=cx:|cy:|x:|y:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-length</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-percentage</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-d</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=d:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\bnone\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-d-path</string>
+				</dict>
+			</array>
+		</dict>
 		<key>value-direction</key>
 		<dict>
 			<key>begin</key>
@@ -17112,6 +17659,84 @@
 				<dict>
 					<key>include</key>
 					<string>#identifier</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-fill-opacity</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=fill-opacity:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-number-zero-to-one</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-fill-rule</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=fill-rule:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:nonzero|evenodd)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
 				</dict>
 			</array>
 		</dict>
@@ -17741,19 +18366,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-function-icc-color</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#type-function-hwb</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#type-function-device-cmyk</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#type-function-color</string>
+					<string>#type-function-device-gray-nchannel-rgb</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -17769,7 +18382,19 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-function-hsla</string>
+					<string>#type-function-cielab</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-cielchab</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -17777,11 +18402,27 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-function-rgba</string>
+					<string>#type-function-hsla</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-icc-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-icc-named-color</string>
 				</dict>
 				<dict>
 					<key>include</key>
 					<string>#type-function-rgb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-rgba</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -19757,6 +20398,46 @@
 				</dict>
 			</array>
 		</dict>
+		<key>value-image-rendering</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=image-rendering:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:optimizeSpeed|optimizeQuality|auto)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</array>
+		</dict>
 		<key>value-image-resolution</key>
 		<dict>
 			<key>begin</key>
@@ -20030,6 +20711,56 @@
 				<dict>
 					<key>include</key>
 					<string>#type-integer</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-inline-size</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=inline-size:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-length</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-percentage</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-number</string>
 				</dict>
 			</array>
 		</dict>
@@ -20734,6 +21465,50 @@
 				<dict>
 					<key>include</key>
 					<string>#type-length</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-marker-end-mid-start</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=marker-end:|marker-mid:|marker-start:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\bnone\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-url</string>
 				</dict>
 			</array>
 		</dict>
@@ -21740,10 +22515,8 @@
 					<string>#type-function-var</string>
 				</dict>
 				<dict>
-					<key>match</key>
-					<string>[01]?\.0+|0?\.\d*[1-9]\d*|[01]</string>
-					<key>name</key>
-					<string>constant.numeric.css</string>
+					<key>include</key>
+					<string>#type-number-zero-to-one</string>
 				</dict>
 			</array>
 		</dict>
@@ -22443,6 +23216,46 @@
 				</dict>
 			</array>
 		</dict>
+		<key>value-paint-order</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=paint-order:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:stroke|normal|markers|fill)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</array>
+		</dict>
 		<key>value-pause</key>
 		<dict>
 			<key>begin</key>
@@ -22625,7 +23438,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(?:visibleStroke|visiblePainted|visibleFill|visible|stroke|painted|none|fill|auto|all)\b</string>
+					<string>\b(?:visibleStroke|visiblePainted|visibleFill|visible|stroke|painted|none|fill|bounding-box|auto|all)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>
@@ -22944,6 +23757,48 @@
 				<dict>
 					<key>include</key>
 					<string>#type-string-single</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-r-rx-ry</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=r:|rx:|ry:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-length-non-negative</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-percentage-non-negative</string>
 				</dict>
 			</array>
 		</dict>
@@ -23416,6 +24271,46 @@
 				<dict>
 					<key>include</key>
 					<string>#identifier</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-scroll-behavior</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=scroll-behavior:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:smooth|auto)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
 				</dict>
 			</array>
 		</dict>
@@ -23915,6 +24810,134 @@
 				</dict>
 			</array>
 		</dict>
+		<key>value-shape-rendering</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=shape-rendering:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:optimizeSpeed|geometricPrecision|crispEdges|auto)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-shape-subtract</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=shape-subtract:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:shape-box|outside-shape|none|display)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-inset</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-circle-ellipse</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-polygon</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-cross-fade</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-element</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-filter</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-image</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-image-set</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-conic-gradient</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-linear-gradient</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-radial-gradient</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-url</string>
+				</dict>
+			</array>
+		</dict>
 		<key>value-size</key>
 		<dict>
 			<key>begin</key>
@@ -24097,6 +25120,146 @@
 				</dict>
 			</array>
 		</dict>
+		<key>value-stop-color</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=stop-color:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-gray-nchannel-rgb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-color-named-deprecated</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-color-named</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-cielab</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-cielchab</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hsla</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hsl</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-icc-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-icc-named-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-rgba</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-rgb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-color-hex</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-stop-opacity</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=stop-opacity:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-number-zero-to-one</string>
+				</dict>
+			</array>
+		</dict>
 		<key>value-string-set</key>
 		<dict>
 			<key>begin</key>
@@ -24154,6 +25317,320 @@
 				<dict>
 					<key>include</key>
 					<string>#identifier</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-stroke-dasharray</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=stroke-dasharray:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\bnone\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-percentage-non-negative</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-length-non-negative</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-number-non-negative</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-stroke-dashoffset</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=stroke-dashoffset:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-percentage</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-length</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-stroke-linecap</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=stroke-linecap:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:square|round|butt)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-stroke-linejoin</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=stroke-linejoin:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:round|miter-clip|miter|bevel|arcs)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-stroke-miterlimit</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=stroke-miterlimit:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\+?[1-9]+(?:\.\d+)?(?:[eE]\+?[0-9]+)?</string>
+					<key>name</key>
+					<string>constant.numeric.css</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-stroke-opacity</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=stroke-opacity:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-number-zero-to-one</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-stroke-width</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=stroke-width:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-percentage-non-negative</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-length-non-negative</string>
 				</dict>
 			</array>
 		</dict>
@@ -24511,6 +25988,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-color-rendering</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-column-count</string>
 				</dict>
 				<dict>
@@ -24576,6 +26057,14 @@
 				<dict>
 					<key>include</key>
 					<string>#value-empty-cells</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-fill-opacity</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-fill-rule</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -24763,6 +26252,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-image-rendering</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-image-resolution</string>
 				</dict>
 				<dict>
@@ -24784,6 +26277,10 @@
 				<dict>
 					<key>include</key>
 					<string>#value-inline-box-align</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-inline-size</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -24836,6 +26333,10 @@
 				<dict>
 					<key>include</key>
 					<string>#value-list-style</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-marker-end-mid-start</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -24895,6 +26396,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-paint-order</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-perspective-origin</string>
 				</dict>
 				<dict>
@@ -24935,6 +26440,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-scroll-behavior</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-scroll-snap-coordinate</string>
 				</dict>
 				<dict>
@@ -24971,11 +26480,55 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-shape-rendering</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-shape-subtract</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-speak-as</string>
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-stop-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-stop-opacity</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-string-set</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-stroke-dasharray</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-stroke-dashoffset</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-stroke-linecap</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-stroke-linejoin</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-stroke-miterlimit</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-stroke-opacity</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-stroke-width</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -24992,6 +26545,10 @@
 				<dict>
 					<key>include</key>
 					<string>#value-text-align-last</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-text-anchor</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -25048,6 +26605,10 @@
 				<dict>
 					<key>include</key>
 					<string>#value-text-overflow</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-text-rendering</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -25116,6 +26677,10 @@
 				<dict>
 					<key>include</key>
 					<string>#value-user-zoom</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-vector-effect</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -25255,11 +26820,19 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-cx-cy-x-y</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-direction</string>
 				</dict>
 				<dict>
 					<key>include</key>
 					<string>#value-display</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-d</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -25407,6 +26980,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#value-r-rx-ry</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#value-size</string>
 				</dict>
 				<dict>
@@ -25416,6 +26993,10 @@
 				<dict>
 					<key>include</key>
 					<string>#value-src</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-text-decoration-fill-stroke</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -25759,6 +27340,46 @@
 				</dict>
 			</array>
 		</dict>
+		<key>value-text-anchor</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=text-anchor:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:start|middle|end)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</array>
+		</dict>
 		<key>value-text-combine-upright</key>
 		<dict>
 			<key>begin</key>
@@ -25960,6 +27581,98 @@
 				<dict>
 					<key>include</key>
 					<string>#type-function-rgb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-color-hex</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-text-decoration-fill-stroke</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=text-decoration-stroke:|text-decoration-fill:|fill:|stroke:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-gray</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-child</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-color-named-deprecated</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-color-named</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hwb</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-device-cmyk</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hsla</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-hsl</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-rgba</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-rgb</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:none|context-stroke|context-fill|child)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-url</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -26510,6 +28223,46 @@
 				<dict>
 					<key>include</key>
 					<string>#type-string-single</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-text-rendering</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=text-rendering:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:optimizeSpeed|optimizeLegibility|geometricPrecision|auto)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
 				</dict>
 			</array>
 		</dict>
@@ -27598,6 +29351,46 @@
 				<dict>
 					<key>match</key>
 					<string>\b(?:zoom|fixed)\b</string>
+					<key>name</key>
+					<string>support.constant.property-value.css</string>
+				</dict>
+			</array>
+		</dict>
+		<key>value-vector-effect</key>
+		<dict>
+			<key>begin</key>
+			<string>(?&lt;=vector-effect:)</string>
+			<key>end</key>
+			<string>(?=[;)])</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-important</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-all</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-attr</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-toggle</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(?:non-scaling-stroke|none)\b</string>
 					<key>name</key>
 					<string>support.constant.property-value.css</string>
 				</dict>

@@ -30,7 +30,7 @@ class Css3Validator(sublime_plugin.TextCommand):
         """Submit the user's code to the W3C Validator."""
         global settings
         settings = sublime.load_settings("CSS3.sublime-settings")
-        timeout = settings.get("validator_timeout", 10)
+        timeout = settings.get("validator_timeout", 20)
 
         threads = []
         for text in texts:
