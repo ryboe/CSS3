@@ -1143,7 +1143,7 @@
 		<key>property-name-deprecated</key>
 		<dict>
 			<key>match</key>
-			<string>\b(?:page-break-inside|page-break-before|page-break-after|kerning|glyph-orientation-vertical|glyph-orientation-horizontal|clip)\b</string>
+			<string>(?&lt;!\-)\b(?:page-break-inside|page-break-before|page-break-after|kerning|glyph-orientation-vertical|glyph-orientation-horizontal|clip)\b((?!\-))</string>
 			<key>name</key>
 			<string>invalid.deprecated.css</string>
 		</dict>
@@ -12392,19 +12392,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-cx-cy-x-y</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#value-direction</string>
 				</dict>
 				<dict>
 					<key>include</key>
 					<string>#value-display</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#value-d</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -12556,10 +12548,6 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-r-rx-ry</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#value-size</string>
 				</dict>
 				<dict>
@@ -12609,6 +12597,18 @@
 				<dict>
 					<key>include</key>
 					<string>#value-bottom-left-right-top</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-d</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-r-rx-ry</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-cx-cy-x-y</string>
 				</dict>
 			</array>
 		</dict>
@@ -26820,19 +26820,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-cx-cy-x-y</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#value-direction</string>
 				</dict>
 				<dict>
 					<key>include</key>
 					<string>#value-display</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#value-d</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -26980,10 +26972,6 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-r-rx-ry</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#value-size</string>
 				</dict>
 				<dict>
@@ -27033,6 +27021,18 @@
 				<dict>
 					<key>include</key>
 					<string>#value-bottom-left-right-top</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-d</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-r-rx-ry</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#value-cx-cy-x-y</string>
 				</dict>
 			</array>
 		</dict>
