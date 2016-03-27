@@ -3912,14 +3912,7 @@
     dominant-baseline: auto;
     dominant-baseline: central;
     dominant-baseline: hanging;
-    dominant-baseline: ideographic;
     dominant-baseline: mathematical;
-    dominant-baseline: middle;
-    dominant-baseline: no-change;
-    dominant-baseline: reset-size;
-    dominant-baseline: text-over-edge;
-    dominant-baseline: text-under-edge;
-    dominant-baseline: use-script;
 
     empty-cells: initial;
     empty-cells: inherit;
@@ -4368,37 +4361,10 @@
     float: unset;
     float: none;
     float: top;
-    float: snap;
     float: bottom;
-    float: inside;
-    float: outside;
     float: right;
     float: left;
-    float: snap(1.5em);
-    float: snap(2.5em);
-    float: snap(0);
-    float: snap(3em , bottom);
-    float: snap(3em 2em, bottom);
-
-    float-defer-column: initial;
-    float-defer-column: inherit;
-    float-defer-column: unset;
-    float-defer-column: last;
-    float-defer-column: none;
-    float-defer-column: 1;
-    float-defer-column: -1;
-    float-defer-column: 0;
-    float-defer-column: 100;
-
-    float-defer-page: initial;
-    float-defer-page: inherit;
-    float-defer-page: unset;
-    float-defer-page: last;
-    float-defer-page: none;
-    float-defer-page: 1;
-    float-defer-page: -1;
-    float-defer-page: 0;
-    float-defer-page: 100;
+    float: snap-block(10em, start);
 
     float-offset: initial;
     float-offset: inherit;
@@ -5006,11 +4972,11 @@
     grid-template: none;
     grid-template: auto 1fr auto / auto 1fr;
     grid-template: auto 1fr auto /
-    (header-top) "a   a   a"     (header-bottom)
-      (main-top) "b   b   b" 1fr (main-bottom);
+    [header-top] "a   a   a"     [header-bottom]
+      [main-top] "b   b   b" 1fr [main-bottom];
     -webkit-grid-template: auto 1fr auto /
-    (header-top) "a   a   a"     (header-bottom)
-      (main-top) "b   b   b" 1fr (main-bottom);
+    [header-top] "a   a   a"     [header-bottom]
+      [main-top] "b   b   b" 1fr [main-bottom];
 
     grid-template-areas: initial;
     grid-template-areas: inherit;
@@ -5042,33 +5008,33 @@
     grid-template-columns: unset;
     grid-template-columns: auto minmax(min-content, 1fr);
     grid-template-columns:
-        (start)        auto
-        (track-start)  0.5fr
-        (thumb-start)  auto
-        (fill-split)   auto
-        (thumb-end)    0.5fr
-        (track-end)    auto
-        (end);
+        [start]        auto
+        [track-start]  0.5fr
+        [thumb-start]  auto
+        [fill-split]   auto
+        [thumb-end]    0.5fr
+        [track-end]    auto
+        [end];
     grid-template-columns: 150px 1fr;
-    grid-template-columns: 150px (item1-start) 1fr (item1-end);
+    grid-template-columns: 150px [item1-start] 1fr [item1-end];
     grid-template-columns: 100px 1fr max-content minmax(min-content, 1fr);
     grid-template-columns: 100px 1fr max-content minmax(0%, 0);
-    grid-template-columns: (first nav) 150px (main) 1fr (last);
-    grid-template-columns: 10px (col-start) 250px (col-end)
-                             10px (col-start) 250px (col-end)
-                             10px (col-start) 250px (col-end)
-                             10px (col-start) 250px (col-end) 10px;
-    grid-template-columns: repeat(4, 10px (col-start) 250px (col-end)) 10px;
+    grid-template-columns: [first nav] 150px [main] 1fr [last];
+    grid-template-columns: 10px [col-start] 250px [col-end]
+                             10px [col-start] 250px [col-end]
+                             10px [col-start] 250px [col-end]
+                             10px [col-start] 250px [col-end] 10px;
+    grid-template-columns: repeat(4, 10px [col-start] 250px [col-end]) 10px;
     grid-template-columns: 300px auto 300px;
-    grid-template-columns: subgrid (first) (second) (third) (fourth) (fifth);
+    grid-template-columns: subgrid [first] [second] [third] [fourth] [fifth];
     grid-template-columns:
-        (a)     auto
-        (b)     minmax(min-content, 1fr)
-        (b c d) repeat(2, (e) 40px)
+        [a]     auto
+        [b]     minmax(min-content, 1fr)
+        [b c d] repeat(2, [e] 40px)
                 repeat(5, auto);
     grid-template-columns: auto 1fr auto;
     grid-template-columns: 20px;
-    grid-template-columns: (labels) auto (controls) auto (oversized) auto;
+    grid-template-columns: [labels] auto [controls] auto [oversized] auto;
     grid-template-columns: repeat(5, 100px);
     grid-template-columns: 1fr 1fr;
     -webkit-grid-template-columns: 1fr 1fr;
@@ -5079,14 +5045,14 @@
     grid-template-rows: auto minmax(min-content, 1fr) auto;
     grid-template-rows: auto auto minmax(min-content, 1fr) auto;
     grid-template-rows: 50px 1fr 50px;
-    grid-template-rows: (item1-start) 50px 1fr 50px (item1-end);
+    grid-template-rows: [item1-start] 50px 1fr 50px [item1-end];
     grid-template-rows: 1fr minmax(min-content, 1fr);
     grid-template-rows: 10px repeat(2, 1fr auto minmax(30%, 1fr));
     grid-template-rows: calc(4em - 5px);
-    grid-template-rows: (first header) 50px (main) 1fr (footer) 50px (last);
+    grid-template-rows: [first header] 50px [main] 1fr [footer] 50px [last];
     grid-template-rows: 1fr;
     grid-template-rows: auto 1fr;
-    grid-template-rows: (header-top) auto (header-bottom main-top) 1fr (main-bottom);
+    grid-template-rows: [header-top] auto [header-bottom main-top] 1fr [main-bottom];
     grid-template-rows: 20px;
     -webkit-grid-template-rows: 1fr 1fr;
 
