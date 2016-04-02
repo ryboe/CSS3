@@ -2282,6 +2282,7 @@ repository:
     - include: '#type-function-rgba'
     - include: '#type-function-hsl'
     - include: '#type-function-hsla'
+    - include: '#type-function-calc'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - name: support.constant.property-value.css
@@ -2313,6 +2314,7 @@ repository:
     - include: '#type-function-hsl'
     - include: '#type-function-rgba'
     - include: '#type-function-rgb'
+    - include: '#type-function-calc'
     - include: '#type-percentage'
     - include: '#type-color-hex'
     end: \)
@@ -2329,6 +2331,7 @@ repository:
     - include: '#comment-block'
     - name: keyword.operator.arithmetic.css
       match: (?<=[\(\s])[\+\-\*]
+    - include: '#type-function-calc'
     - include: '#type-percentage'
     end: \)
     endCaptures:
@@ -2359,6 +2362,7 @@ repository:
     - include: '#comment-block'
     - name: keyword.operator.arithmetic.css
       match: (?<=[\(\s])[\+\-\*]
+    - include: '#type-function-calc'
     - include: '#type-percentage'
     - include: '#type-number'
     end: \)
@@ -2373,6 +2377,7 @@ repository:
     contentName: meta.function.color-adjuster.tint-shade.css
     patterns:
     - include: '#comment-block'
+    - include: '#type-function-calc'
     - include: '#type-percentage-hundred-max'
     end: \)
     endCaptures:
@@ -2429,6 +2434,7 @@ repository:
     contentName: meta.function.contrast-adjuster.css
     patterns:
     - include: '#comment-block'
+    - include: '#type-function-calc'
     - include: '#type-percentage-hundred-max'
     end: \)
     endCaptures:
@@ -2533,6 +2539,7 @@ repository:
     - include: '#type-function-gray'
     - include: '#type-function-device-cmyk'
     - include: '#type-function-color'
+    - include: '#type-function-calc'
     - include: '#type-color-named-deprecated'
     - include: '#type-color-named'
     - include: '#type-color-hex'
@@ -2668,6 +2675,7 @@ repository:
     contentName: meta.function.gray.css
     patterns:
     - include: '#comment-block'
+    - include: '#type-function-calc'
     - include: '#type-percentage'
     - include: '#type-number'
     end: \)
@@ -5318,6 +5326,7 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
+    - include: '#type-function-calc'
     - include: '#type-percentage'
     - include: '#type-length'
     end: (?=[;)])
@@ -7351,6 +7360,7 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
+    - include: '#type-function-calc'
     - include: '#type-percentage-non-negative'
     - include: '#type-length-non-negative'
     end: (?=[;)])
@@ -8585,6 +8595,7 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
+    - include: '#type-function-calc'
     - name: support.constant.property-value.css
       match: \b(?:hanging|each-line)\b
     - include: '#type-percentage'
