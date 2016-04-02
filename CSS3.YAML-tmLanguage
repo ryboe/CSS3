@@ -3352,8 +3352,8 @@ repository:
     patterns:
     - include: '#comment-block'
     - include: '#type-function-calc'
-    - include: '#type-length'
     - include: '#type-percentage'
+    - include: '#type-length'
     end: \)
     endCaptures:
       '0': {name: punctuation.section.function.css}
@@ -4604,8 +4604,8 @@ repository:
     - name: support.constant.property-value.css
       match: \b(?:top|sides|right|left |corners|bottom|all)\b
     - include: '#type-function-calc'
-    - include: '#type-length'
     - include: '#type-percentage'
+    - include: '#type-length'
     end: (?=[;)])
 
   value-border-radius:
@@ -5318,8 +5318,8 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
-    - include: '#type-length'
     - include: '#type-percentage'
+    - include: '#type-length'
     end: (?=[;)])
 
   value-d:
@@ -6410,8 +6410,8 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - include: '#type-function-calc'
-    - include: '#type-length'
     - include: '#type-percentage'
+    - include: '#type-length'
     - include: '#type-number'
     end: (?=[;)])
 
@@ -7351,8 +7351,8 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
-    - include: '#type-length-non-negative'
     - include: '#type-percentage-non-negative'
+    - include: '#type-length-non-negative'
     end: (?=[;)])
 
   value-range:
@@ -7554,8 +7554,8 @@ repository:
     - include: '#type-function-toggle'
     - include: '#type-function-var'
     - include: '#type-function-calc'
-    - include: '#type-length'
     - include: '#type-percentage'
+    - include: '#type-length'
     end: (?=[;)])
 
   value-scroll-snap-type:
@@ -8587,8 +8587,8 @@ repository:
     - include: '#type-function-var'
     - name: support.constant.property-value.css
       match: \b(?:hanging|each-line)\b
-    - include: '#type-length-absolute'
     - include: '#type-percentage'
+    - include: '#type-length-absolute'
     end: (?=[;)])
 
   value-text-justify:
@@ -9156,9 +9156,9 @@ repository:
     - include: '#type-function-attr'
     - include: '#type-function-toggle'
     - include: '#type-function-var'
-    # The extend-to-zoom attribute is only for when width: is used as a @viewport
-    # descriptor, but is included here for completeness. Do not use extend-to-zoom
-    # outside of an @viewport rule.
+    # The extend-to-zoom attribute is only for when width: is used as a
+    # @viewport descriptor, but is included here for completeness. Do not use
+    # extend-to-zoom outside of an @viewport rule.
     - name: support.constant.property-value.css
       match: \b(?:none|min-content|max-content|fit-content|extend-to-zoom|content-box|border-box|available|auto)\b
     - include: '#type-function-calc'
