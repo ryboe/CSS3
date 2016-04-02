@@ -7306,6 +7306,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#type-function-calc</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type-color-named-deprecated</string>
 				</dict>
 				<dict>
@@ -7415,6 +7419,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#type-function-calc</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type-percentage</string>
 				</dict>
 				<dict>
@@ -7463,6 +7471,10 @@
 					<string>(?&lt;=[\(\s])[\+\-\*]</string>
 					<key>name</key>
 					<string>keyword.operator.arithmetic.css</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -7560,6 +7572,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#type-function-calc</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type-percentage</string>
 				</dict>
 				<dict>
@@ -7602,6 +7618,10 @@
 				<dict>
 					<key>include</key>
 					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -7789,6 +7809,10 @@
 				<dict>
 					<key>include</key>
 					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -8140,6 +8164,10 @@
 				<dict>
 					<key>include</key>
 					<string>#type-function-color</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -8596,6 +8624,10 @@
 				<dict>
 					<key>include</key>
 					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -17322,6 +17354,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#type-function-calc</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type-percentage</string>
 				</dict>
 				<dict>
@@ -23828,6 +23864,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#type-function-calc</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#type-percentage-non-negative</string>
 				</dict>
 				<dict>
@@ -28073,6 +28113,10 @@
 				<dict>
 					<key>include</key>
 					<string>#type-function-var</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#type-function-calc</string>
 				</dict>
 				<dict>
 					<key>match</key>
