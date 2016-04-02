@@ -3700,7 +3700,6 @@ repository:
     - include: '#value-mask-origin'
     - include: '#value-mask-border-mode-mask-type'
     - include: '#value-max-lines'
-    - include: '#value-max-zoom-min-zoom'
     - include: '#value-motion-offset'
     - include: '#value-motion-path'
     - include: '#value-motion-rotation'
@@ -6790,25 +6789,6 @@ repository:
     - include: '#type-integer-positive'
     end: (?=[;)])
 
-  value-max-zoom-min-zoom:
-    begin: (?<=max-zoom:|min-zoom:)
-    patterns:
-    - include: '#comment-block'
-    - include: '#type-important'
-    - include: '#type-all'
-    - include: '#type-function-attr'
-    - include: '#type-function-toggle'
-    - include: '#type-function-var'
-    - name: support.constant.property-value.css
-      match: \bauto\b
-    - include: '#type-function-calc'
-    - include: '#type-percentage-positive'
-    # The spec calls for a positive percentage or number. Enforcing positive
-    # values is easy for percentages, but it's not worth the trouble for
-    # numbers.
-    - include: '#type-number-non-negative'
-    end: (?=[;)])
-
   value-mix-blend-mode:
     begin: (?<=mix-blend-mode:)
     patterns:
@@ -8110,7 +8090,6 @@ repository:
     - include: '#value-mask-mode'
     - include: '#value-mask-origin'
     - include: '#value-max-lines'
-    - include: '#value-max-zoom-min-zoom'
     - include: '#value-object-fit'
     - include: '#value-outline-color'
     - include: '#value-outline-offset'
@@ -9301,7 +9280,7 @@ repository:
     end: (?=[;)])
 
   value-zoom:
-    begin: (?<=zoom:)
+    begin: (?<=zoom:|min-zoom:|max-zoom:)
     patterns:
     - include: '#comment-block'
     - include: '#type-important'
@@ -9312,8 +9291,8 @@ repository:
     - name: support.constant.property-value.css
       match: \bauto\b
     - include: '#type-function-calc'
-    - include: '#type-percentage-positive'
-    - include: '#type-number'
+    - include: '#type-percentage-non-negative'
+    - include: '#type-number-non-negative'
     end: (?=[;)])
 
 # TODO
