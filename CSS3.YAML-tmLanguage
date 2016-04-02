@@ -1025,8 +1025,8 @@ repository:
       match: \b(?:step-start|step-end|linear|ease-out|ease-in-out|ease-in|ease)\b
     - include: '#type-function-hsl'
     - include: '#type-function-hsla'
-    - include: '#type-function-rgb'
     - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
     - include: '#type-function-calc'
     - include: '#type-function-cubic-bezier'
     - include: '#type-function-steps'
@@ -1115,8 +1115,8 @@ repository:
     - include: '#type-color-named'
     - include: '#type-function-hsl'
     - include: '#type-function-hsla'
-    - include: '#type-function-rgb'
     - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
     - include: '#type-function-calc'
     - include: '#type-function-cubic-bezier'
     - include: '#type-function-steps'
@@ -2278,8 +2278,8 @@ repository:
     - include: '#type-function-contrast-adjuster'
     - include: '#type-function-splash-hue'
     # the normal rgb() rule is modified to also match the rgb() color adjuster
-    - include: '#type-function-rgb'
     - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
     - include: '#type-function-hsl'
     - include: '#type-function-hsla'
     - include: '#type-function-calc'
@@ -2531,8 +2531,8 @@ repository:
     contentName: meta.function.device-cmyk.css
     patterns:
     - include: '#comment-block'
-    - include: '#type-function-rgb'
     - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
     - include: '#type-function-hsl'
     - include: '#type-function-hsla'
     - include: '#type-function-hwb'
@@ -4486,8 +4486,8 @@ repository:
     - include: '#type-color-named'
     - include: '#type-function-hsl'
     - include: '#type-function-hsla'
-    - include: '#type-function-rgb'
     - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
     - include: '#type-color-hex'
     end: (?=[;)])
 
@@ -4717,8 +4717,8 @@ repository:
     - include: '#type-color-named'
     - include: '#type-function-hsl'
     - include: '#type-function-hsla'
-    - include: '#type-function-rgb'
     - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
     - include: '#type-color-hex'
     - include: '#type-function-calc'
     - include: '#type-length'
@@ -5681,8 +5681,8 @@ repository:
     - include: '#type-function-hwb'
     - include: '#type-function-icc-color'
     - include: '#type-function-icc-named-color'
-    - include: '#type-function-rgb'
     - include: '#type-function-rgba'
+    - include: '#type-function-rgb'
     - include: '#type-color-hex'
     end: (?=[;)])
 
