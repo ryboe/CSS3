@@ -11990,10 +11990,6 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-max-zoom-min-zoom</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#value-motion-offset</string>
 				</dict>
 				<dict>
@@ -21998,58 +21994,6 @@
 				</dict>
 			</array>
 		</dict>
-		<key>value-max-zoom-min-zoom</key>
-		<dict>
-			<key>begin</key>
-			<string>(?&lt;=max-zoom:|min-zoom:)</string>
-			<key>end</key>
-			<string>(?=[;)])</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#comment-block</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#type-important</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#type-all</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#type-function-attr</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#type-function-toggle</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#type-function-var</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\bauto\b</string>
-					<key>name</key>
-					<string>support.constant.property-value.css</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#type-function-calc</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#type-percentage-positive</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#type-number-non-negative</string>
-				</dict>
-			</array>
-		</dict>
 		<key>value-mix-blend-mode</key>
 		<dict>
 			<key>begin</key>
@@ -26422,10 +26366,6 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#value-max-zoom-min-zoom</string>
-				</dict>
-				<dict>
-					<key>include</key>
 					<string>#value-object-fit</string>
 				</dict>
 				<dict>
@@ -30371,7 +30311,7 @@
 		<key>value-zoom</key>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;=zoom:)</string>
+			<string>(?&lt;=zoom:|min-zoom:|max-zoom:)</string>
 			<key>end</key>
 			<string>(?=[;)])</string>
 			<key>patterns</key>
@@ -30412,11 +30352,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-percentage-positive</string>
+					<string>#type-percentage-non-negative</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-number</string>
+					<string>#type-number-non-negative</string>
 				</dict>
 			</array>
 		</dict>
