@@ -102,7 +102,7 @@ margin-top: 10cm; /* Top margin on first page 10cm */
 
 @page {
   @top-left-corner { content: " "; border: solid green; }
-  @top-right-corner { content: url(foo.png); border: solid green; }
+  @top-right-corner { content: url("foo.png"); border: solid green; }
   @bottom-right-corner { content: counter(page); border: solid green; }
   @bottom-left-corner { content: normal; border: solid green; }
 }

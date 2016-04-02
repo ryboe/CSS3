@@ -436,5 +436,5 @@ media features
 }
 
 @media screen {
-  @namespace svg url(http://example.com);    /* @namespace can't be nested. must be at top-level */
+  @namespace svg url("http://example.com");    /* @namespace can't be nested. must be at top-level */
 }

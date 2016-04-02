@@ -1152,7 +1152,7 @@ ul {
     top: 8px;
     right: 11px;
     color: #aaa;
-    text-shadow: 0 -1px 1px rbga(0,0,0,.6);
+    text-shadow: 0, -1px, 1px , rgba(0,0,0,.6);
     font-weight: bold;
     cursor: pointer;
 }
@@ -1836,8 +1836,7 @@ to {
 ;
 }
 
-@-webkit-keyframes
-rotate {
+@-webkit-keyframes rotate {
     from {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
