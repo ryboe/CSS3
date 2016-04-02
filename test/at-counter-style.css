@@ -45,7 +45,7 @@
 
 @counter-style go {
   system: alphabetic;
-  symbols: url(white.svg) url(black.svg);
+  symbols: url("white.svg") url("black.svg");
   suffix: " ";
 }
 

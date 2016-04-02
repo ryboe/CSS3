@@ -4,7 +4,7 @@
 @import "custom.css";
 @import "";
 @import '';
-@import url(http://fineprint.css) print;
+@import url("http://fineprint.css") print;
 @import url("chrome://communicator/skin/");
 @import url("chrome://communicator/skin/");
 @import url( 'landscape.css' ) screen and  (orientation:landscape);
@@ -17,4 +17,4 @@
 /* invalid */
 
 @import "common.css" screen, projection;  /* deprecated media types */
-@import url(blueish.css) projection, tv;
+@import url("blueish.css") projection, tv;

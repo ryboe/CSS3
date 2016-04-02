@@ -101,16 +101,9 @@
     alignment-baseline: inherit;
     alignment-baseline: unset;
     alignment-baseline: baseline;
-    alignment-baseline: use-script;
-    alignment-baseline: over-edge;
-    alignment-baseline: text-over-edge;
-    alignment-baseline: under-edge;
-    alignment-baseline: text-under-edge;
     alignment-baseline: central;
     alignment-baseline: middle;
-    alignment-baseline: ideographic;
     alignment-baseline: alphabetic;
-    alignment-baseline: hanging;
     alignment-baseline: mathematical;
 
     all: initial;
@@ -396,16 +389,16 @@
     background: red scroll fixed local;
     background: inherit repeat-x repeat-y repeat no-repeat repeat no-repeat;
     background: url("chess.png") 40% / 10em gray
-       round fixed border-box padding-box content-box scroll fixed local;
+       round fixed border-box content-box scroll fixed local;
     background: url("hello.com");
     background: url('hello.com');
-    background: url(hel\nlo.com);
+    background: url("hel\nlo.com");
     background: none;
     background: #CCC  url('metal.jpg') top left / 100% auto no-repeat;
-    background: padding-box url(paper.jpg) white center ;
-    background: url(a.png) top left no-repeat,
-            url(b.png) center / 100% 100% 10em 100px 0 no-repeat,
-            url(c.png) white ;
+    background: url("paper.jpg") white center ;
+    background: url("a.png") top left no-repeat,
+            url("b.png") center / 100% 100% 10em 100px 0 no-repeat,
+            url("c.png") white ;
     background: rgb(0, 255, 0);
     background: rgb(25, 0, 255);
     background: rgb(255, 255, 255);
@@ -466,7 +459,6 @@
     background-clip: inherit;
     background-clip: unset;
     background-clip: border-box,  border-box;
-    background-clip: padding-box;
     background-clip: content-box;
     background-clip: content-box, border-box,  content-box;
 
@@ -474,7 +466,6 @@
     background-origin: inherit;
     background-origin: unset;
     background-origin: border-box;
-    background-origin: padding-box;
     background-origin: content-box;
     background-origin: content-box, border-box,  content-box;
 
@@ -812,18 +803,18 @@
     background-image: inherit;
     background-image: unset;
     background-image: none;
-    background-image: url(plasma.png), url(plasma.png), url(plasma.png);
+    background-image: url("plasma.png"), url("plasma.png"), url("plasma.png");
     background-image: url("tubes.png");
     background-image: url('tile.png');
-    background-image: url(flower.png);
-    background-image: url(chain.png);
-    background-image: url(image1.png\aa);
-    background-image: url(image2.png);
-    background-image: url(image3.png);
-    background-image: url(image4.png);
-    background-image: url(image5.png);
-    background-image: url(chess.png);
-    background-image: url(paper.jpg);
+    background-image: url("flower.png");
+    background-image: url("chain.png");
+    background-image: url("image1.png\aa");
+    background-image: url("image2.png");
+    background-image: url("image3.png");
+    background-image: url("image4.png");
+    background-image: url("image5.png");
+    background-image: url("chess.png");
+    background-image: url("paper.jpg");
 
     background-position: initial;
     background-position: inherit;
@@ -1732,7 +1723,6 @@
     border-color: red cyan gold;
     border-color: red cyan black gold;
     border-color: currentColor;
-    border-color: -moz-use-text-color;
     border-color: device-cmyk(0, 81%, 81%, 30%);
     border-color: rgb(178, 34, 34);
     border-color: firebrick;
@@ -2187,8 +2177,8 @@
     border-image: inherit;
     border-image: unset;
     border-image: url("image.png") 25 30 10 20 repeat stretch;
-    border-image: url(my-image.gif) 25% 30% 10% 20% repeat;
-    border-image: url(my-image.gif) 25 30 10 20 repeat;
+    border-image: url("my-image.gif") 25% 30% 10% 20% repeat;
+    border-image: url("my-image.gif") 25 30 10 20 repeat;
     border-image: 100 fill 10% fill 15% fill 100%;
     -webkit-border-image: 100 fill 10% fill 15% fill 100%;
 
@@ -2211,14 +2201,13 @@
     border-image-slice: 100 fill 10%;
 
     border-image-source: element(#asdfasd);
-    border-image-source: filter(asdf asdfads asdf);
     border-image-source: initial;
     border-image-source: inherit;
     border-image-source: unset;
     border-image-source: none;
-    border-image-source: url(border.png);
+    border-image-source: url("border.png");
     border-image-source:none  ;
-    border-image-source: url(image.jpg);                        /* the image.jpg is used as image */
+    border-image-source: url("image.jpg");                        /* the image.jpg is used as image */
     border-image-source: linear-gradient(to top, red, yellow);  /* a gradient is used as image */
     border-image-source: radial-gradient(5em circle at top left, yellow, blue);
     border-image-source: radial-gradient(circle, #006, #00a 90%, #0000af 100%, white 100%);
@@ -2298,9 +2287,6 @@
     border-style:ridge;
     border-style:inset;
     border-style:outset;
-    border-style:-moz-bg-inset;
-    border-style:-moz-bg-outset;
-    border-style:-moz-bg-solid;
 
     border-bottom-style: initial;
     border-bottom-style: inherit;
@@ -2537,8 +2523,6 @@
     box-sizing: border-box;
     box-sizing:border-box;
     box-sizing:content-box;
-    box-sizing:padding-box;
-    -moz-box-sizing:padding-box;
 
     box-snap: initial;
     box-snap: inherit;
@@ -3744,20 +3728,20 @@
     content: no-open-quote;
     content: counters(section,".") " ";
     content: " (" attr(id) ")";
-    content:url(https://mozorg.cdn.mozilla.net/media/img/favicon.ico) ;
-    content:url(https://mdn.mozillademos.org/files/7691/mdn-favicon16.png) ;
-    content:url(http://w3c.org/2008/site/images/favicon.ico) ;
+    content:url("https://mozorg.cdn.mozilla.net/media/img/favicon.ico") ;
+    content:url("https://mdn.mozillademos.org/files/7691/mdn-favicon16.png") ;
+    content:url("http://w3c.org/2008/site/images/favicon.ico") ;
     content: " New!";
     content: '\1f4a1';
-    content: url(http://www.mozilla.org/favicon.ico) " MOZILLA: ";
+    content: url("http://www.mozilla.org/favicon.ico") " MOZILLA: ";
     content: "Chapter ";
     content: "[" counter(slideNum) "]";
     content: "Section " counter(section) ": ";
     content: string(hello first);
     content: running(hello);
-    content: target-counter(url(hello.com), yemsa);
-    content: target-counters("hello", yemsa, url(sup.com) "hello");
-    content: target-text(url(hello.com), a);
+    content: target-counter(url("hello.com"), yemsa);
+    content: target-counters("hello", yemsa, url("sup.com") "hello");
+    content: target-text(url("hello.com"), a);
     content: leader(dotted "hello");
 
     corner-shape: inherit;
@@ -3820,32 +3804,32 @@
     cue-before: initial;
     cue-before: inherit;
     cue-before: unset;
-    cue-before: url(/audio/bell.aiff) -3dB;
+    cue-before: url("/audio/bell.aiff") -3dB;
     cue-before: url('../clips-1/pop.au') +6dB;
-    cue-before: url(./audio/caution.wav) +8dB;
-    cue-before: url(pop.au);
+    cue-before: url("./audio/caution.wav") +8dB;
+    cue-before: url("pop.au");
     cue-before: none;
 
     cue-after: initial;
     cue-after: inherit;
     cue-after: unset;
-    cue-after: url(dong.wav);
-    cue-after: url(../clips-2/pop.au) 6dB;
-    cue-after: url(pop.au);
+    cue-after: url("dong.wav");
+    cue-after: url("../clips-2/pop.au") 6dB;
+    cue-after: url("pop.au");
 
     cue: initial;
     cue: inherit;
     cue: unset;
-    cue: url(pop.au);
+    cue: url("pop.au");
     cue: initial initial;
-    cue: url(pop.au) url(pop.au) 6dB;
+    cue: url("pop.au") url("pop.au") 6dB;
 
     cursor: initial;
     cursor: inherit;
     cursor: unset;
-    cursor: url(example.svg#linkcursor),
-            url(hyper.cur),
-            url(hyper.png) 2 3,
+    cursor: url("example.svg#linkcursor"),
+            url("hyper.cur"),
+            url("hyper.png") 2 3,
             pointer;
 
     direction: inherit;
@@ -3858,8 +3842,6 @@
     display: unset;
     display: block;
     display: flex;
-    display: -webkit-flex;
-    display: -webkit-inline-flex;
     display: grid;
     display: inline;
     display: inline-block;
@@ -3882,20 +3864,6 @@
     display: table-row;
     display: table-row-group;
     display: table-row-group;
-    display:-moz-box;
-    display:-moz-inline-box;
-    display:-moz-inline-grid;
-    display:-moz-inline-stack;
-    display:-moz-grid;
-    display:-moz-grid-group;
-    display:-moz-grid-line;
-    display:-moz-groupbox;
-    display:-moz-deck;
-    display: -moz-popup;
-    display:-moz-stack;
-    display:-moz-marker;
-    display:-moz-inline-table;
-    display: -moz-inline-block;
 
     display-list: list-item;
     display-list: none;
@@ -3932,9 +3900,9 @@
     filter: inherit;
     filter: unset;
     filter: grayscale(0.5) blur(10px);
-    filter: url(#c1);
-    filter: url(commonfilters.xml#large-blur);
-    filter: url(resources.svg#c1);
+    filter: url("#c1");
+    filter: url("commonfilters.xml#large-blur");
+    filter: url("resources.svg#c1");
     filter: blur(5px);
     filter: brightness(0.5);
     filter: contrast(200%);
@@ -5031,7 +4999,7 @@
         [a]     auto
         [b]     minmax(min-content, 1fr)
         [b c d] repeat(2, [e] 40px)
-                repeat(5, auto);
+                repeat(5, auto-fit);
     grid-template-columns: auto 1fr auto;
     grid-template-columns: 20px;
     grid-template-columns: [labels] auto [controls] auto [oversized] auto;
@@ -5047,7 +5015,7 @@
     grid-template-rows: 50px 1fr 50px;
     grid-template-rows: [item1-start] 50px 1fr 50px [item1-end];
     grid-template-rows: 1fr minmax(min-content, 1fr);
-    grid-template-rows: 10px repeat(2, 1fr auto minmax(30%, 1fr));
+    grid-template-rows: 10px repeat(2, 1fr auto-fill minmax(30%, 1fr));
     grid-template-rows: calc(4em - 5px);
     grid-template-rows: [first header] 50px [main] 1fr [footer] 50px [last];
     grid-template-rows: 1fr;
@@ -5397,9 +5365,9 @@
     list-style: upper-roman inside;
     list-style: circle outside;
     list-style: none disc;
-    list-style: none url(bullet.png);
+    list-style: none url("bullet.png");
     list-style: none;
-    list-style: none disc url(bullet.png);
+    list-style: none disc url("bullet.png");
     list-style: lower-alpha;
     list-style: disc;
 
@@ -5407,9 +5375,9 @@
     list-style-image: inherit;
     list-style-image: unset;
     list-style-image: none;
-    list-style-image:  url(border.png);
+    list-style-image:  url("border.png");
     list-style-image: none  ;
-    list-style-image:  url(image.jpg);                        /* the image.jpg is used as image */
+    list-style-image:  url("image.jpg");                        /* the image.jpg is used as image */
     list-style-image:  linear-gradient(to top, red, yellow);  /* a gradient is used as image */
     list-style-image:  linear-gradient(to top, red, yellow);  /* a gradient is used as image */
     list-style-image: linear-gradient(to top, device-cmyk(0, 81%, 81%, 30%), yellow);
@@ -5842,18 +5810,18 @@
     mask: initial;
     mask: inherit;
     mask: unset;
-    mask: url(#c1);
-    mask: url(resources.svg#c1);
-    mask: url(mask.svg) top left / cover;
-    mask: url(#masking);
+    mask: url("#c1");
+    mask: url("resources.svg#c1");
+    mask: url("mask.svg") top left / cover;
+    mask: url("#masking");
     -webkit-mask: initial;
 
     mask-border: initial;
     mask-border: inherit;
     mask-border: unset;
     mask-border: url("image.png") 25 30 10 20 repeat stretch;
-    mask-border: url(my-image.gif) 25% 30% 10% 20% repeat;
-    mask-border: url(my-image.gif) 25 30 10 20 repeat;
+    mask-border: url("my-image.gif") 25% 30% 10% 20% repeat;
+    mask-border: url("my-image.gif") 25 30 10 20 repeat;
     mask-border: 100 fill 10% fill 15% fill 100%;
     -webkit-mask-border: 100 fill 10% fill 15% fill 100%;
 
@@ -5895,9 +5863,9 @@
     mask-border-source: inherit;
     mask-border-source: unset;
     mask-border-source: none;
-    mask-border-source: url(border.png);
+    mask-border-source: url("border.png");
     mask-border-source:none  ;
-    mask-border-source: url(image.jpg);                        /* the image.jpg is used as image */
+    mask-border-source: url("image.jpg");                        /* the image.jpg is used as image */
     mask-border-source: linear-gradient(to top, red, yellow);  /* a gradient is used as image */
     mask-border-source: radial-gradient(at top, red, yellow);
     -webkit-mask-border-source: radial-gradient(at top, red, yellow);
@@ -5931,12 +5899,12 @@
     mask-image: initial;
     mask-image: inherit;
     mask-image: unset;
-    mask-image: url(#mask);
+    mask-image: url("#mask");
     mask-image: linear-gradient(black 0%, transparent 100%); /* using percentages here may be a mistake in the spec; */
     mask-image: none;
-    mask-image: url(resources.svg#mask2);
-    mask-image: url(#SVGMask);
-    mask-image: url(dot-mask.png);
+    mask-image: url("resources.svg#mask2");
+    mask-image: url("#SVGMask");
+    mask-image: url("dot-mask.png");
     mask-image: url("logo.png");
     -webkit-mask-image: url("logo.png");
 
@@ -6617,10 +6585,6 @@
     overflow: paged-y-controls;
     overflow: scroll;
     overflow: visible;
-    overflow: -moz-scrollbars-horizontal ;
-    overflow: -moz-scrollbars-vertical ;
-    overflow: -moz-hidden-unscrollable;
-    overflow: -moz-scrollbars-none ;
 
     overflow-wrap: initial;
     overflow-wrap: inherit;
@@ -6682,7 +6646,7 @@
     pad: initial;
     pad: unset;
     pad: element(#ads);
-    pad: url(ahasfdas);
+    pad: url("ahasfdas");
     pad: repeating-conic-gradient();
     pad: linear-gradient();
 
@@ -6829,7 +6793,7 @@
     prefix: inherit;
     prefix: initial;
     prefix: unset;
-    prefix: conic-gradient(asfsadf);
+    prefix: conic-gradient();
     prefix: "hello";
 
     quotes: inherit;
@@ -7026,39 +6990,39 @@
     src: initial;
     src: inherit;
     src: unset;
-    src: url(fonts/simple.woff);
-    src: url(/fonts/simple.woff);
-    src: url(fonts.svg#simple);
-    src: url(ideal-sans-serif.woff) format("woff"),
-       url(basic-sans-serif.ttf) format("opentype");
+    src: url("fonts/simple.woff");
+    src: url("/fonts/simple.woff");
+    src: url("fonts.svg#simple");
+    src: url("ideal-sans-serif.woff") format("woff"),
+       url("basic-sans-serif.ttf") format("opentype");
     src: local(Gentium),    /* use locally available Gentium */
-       url(Gentium.woff);
+       url("Gentium.woff");
     src: local(Gentium Bold),    /* full font name */
        local(Gentium-Bold),    /* Postscript name */
-       url(GentiumBold.woff);
+       url("GentiumBold.woff");
     src: local(Futura-Medium),
-       url(fonts.svg#MyGeometricModern) format("svg");
+       url("fonts.svg#MyGeometricModern") format("svg");
     src: local(HiraKakuPro-W3), local(Meiryo), local(IPAPGothic);
     src: local(HoeflerText-Ornaments);
     src: local("Arial Lihavoitu");
-    src: url(gentium.eot);                     /* for use with older user agents */
-    src: local("Gentium"), url(gentium.woff);
-    src: url(baskerville-regular.woff);
-    src: url(fonts/BBCBengali.woff) format("woff");
-    src: local(STIXGeneral), url(/stixfonts/STIXGeneral.otf);
+    src: url("gentium.eot");                     /* for use with older user agents */
+    src: local("Gentium"), url("gentium.woff");
+    src: url("baskerville-regular.woff");
+    src: url("fonts/BBCBengali.woff") format("woff");
+    src: local(STIXGeneral), url("/stixfonts/STIXGeneral.otf");
     src: local(MSMincho);
-    src: url(../fonts/Gentium.woff);
-    src: url(DroidSansFallback.woff);
-    src: url(DroidSansJapanese.woff);
-    src: url(DroidSans.woff);
-    src: url(fonts/simple.woff);
+    src: url("../fonts/Gentium.woff");
+    src: url("DroidSansFallback.woff");
+    src: url("DroidSansJapanese.woff");
+    src: url("DroidSans.woff");
+    src: url("fonts/simple.woff");
     src: url("data:application/font-woff;base64,...");
-    src: url(http://another.example.com/fonts/simple.woff);
-    src: url(https://example.com/fonts/simple.woff);
-    src: url(http://another.example.com/fonts/simple.woff);
-    src: url(http://example.com/font.woff);
+    src: url("http://another.example.com/fonts/simple.woff");
+    src: url("https://example.com/fonts/simple.woff");
+    src: url("http://another.example.com/fonts/simple.woff");
+    src: url("http://example.com/font.woff");
     src: local("HiraMaruPro-W4");
-    src: url(fonts/ffmeta.woff) format("woff");
+    src: url("fonts/ffmeta.woff") format("woff");
 
     string-set: inherit;
     string-set: initial;
@@ -7117,9 +7081,6 @@
     text-align: match-parent;
     text-align: right;
     text-align: start;
-    text-align: -moz-left;
-    text-align: -moz-center;
-    text-align: -moz-right;
 
     text-align-last: initial;
     text-align-last: inherit;
@@ -7167,7 +7128,6 @@
     text-decoration: dotted underline;
     text-decoration: underline;
     text-decoration: navy dotted underline;
-    text-decoration: -moz-anchor-decoration;
 
     text-decoration-color: initial;
     text-decoration-color: inherit;
@@ -7632,11 +7592,7 @@
     text-orientation: unset;
     text-orientation: mixed;
     text-orientation: sideways;
-    text-orientation: sideways-left;
-    text-orientation: sideways-right;
     text-orientation: upright;
-    text-orientation: use-glyph-orientation;
-    -webkit-text-orientation: use-glyph-orientation;
 
     text-overflow: initial;
     text-overflow: inherit;
@@ -7750,16 +7706,16 @@
     transition: background red scroll fixed local;
     transition: background inherit repeat-x repeat-y repeat no-repeat repeat no-repeat;
     transition: background url("chess.png") 40% / 10em gray
-       round fixed border-box padding-box content-box scroll fixed local;
+       round fixed border-box content-box scroll fixed local;
     transition: background url("hello.com");
     transition: background url('hello.com');
-    transition: background url(hel\nlo.com);
+    transition: background url("hel\nlo.com");
     transition: background none;
     transition: background #CCC  url('metal.jpg') top left / 100% auto no-repeat;
-    transition: background padding-box url(paper.jpg) white center ;
-    transition: background url(a.png) top left no-repeat,
-     url(b.png) center / 100% 100% 10em 100px 0 no-repeat,
-            url(c.png) white ;
+    transition: background url("paper.jpg") white center ;
+    transition: background url("a.png") top left no-repeat,
+     url("b.png") center / 100% 100% 10em 100px 0 no-repeat,
+            url("c.png") white ;
     transition: background rgb(0, 255, 0);
     transition: background rgb(25, 0, 255);
     transition: background rgb(255, 255, 255);
@@ -8082,4 +8038,6 @@
     zoom: 0.5;
     zoom: 1.0;
     zoom: 2.0;
+    min-zoom: 2.0;
+    max-zoom: 2.0;
 }

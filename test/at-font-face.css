@@ -2,33 +2,33 @@
 
 @font-face {
   font-family: Gentium;
-  src: url(http://example.com/fonts/Gentium.woff);
+  src: url("http://example.com/fonts/Gentium.woff");
 }
 
 @font-face {
   font-family: bodytext;
-  src: url(ideal-sans-serif.woff) format("woff"),
-       url(basic-sans-serif.ttf) format("opentype");
+  src: url("ideal-sans-serif.woff") format("woff"),
+       url("basic-sans-serif.ttf") format("opentype");
 }
 
 @font-face {
   font-family: MyGentium;
   src: local(Gentium),    /* use locally available Gentium */
-       url(Gentium.woff); /* otherwise, download it */
+       url("Gentium.woff"); /* otherwise, download it */
 }
 
 @font-face {
   font-family: MyGentium;
   src: local(Gentium Bold),    /* full font name */
        local(Gentium-Bold),    /* Postscript name */
-       url(GentiumBold.woff);  /* otherwise, download it */
+       url("GentiumBold.woff");  /* otherwise, download it */
   font-weight: bold;
 }
 
 @font-face {
   font-family: Headline;
   src: local(Futura-Medium),
-       url(fonts.svg#MyGeometricModern) format("svg");
+       url("fonts.svg#MyGeometricModern") format("svg");
 }
 
 @font-face {
@@ -50,36 +50,36 @@
 
 @font-face {
   font-family: MainText;
-  src: url(gentium.eot);                     /* for use with older user agents */
-  src: local("Gentium"), url(gentium.woff);  /* Overrides src definition */
+  src: url("gentium.eot");                     /* for use with older user agents */
+  src: local("Gentium"), url("gentium.woff");  /* Overrides src definition */
 }
 
 
 @font-face {
   font-family: BaskervilleSimple;
-  src: url(baskerville-regular.woff);
+  src: url("baskerville-regular.woff");
 }
 
 @font-face {
   font-family: BaskervilleFull;
-  src: url(baskerville-regular.woff);
+  src: url("baskerville-regular.woff");
 }
 
 @font-face {
   font-family: BaskervilleFull;
-  src: url(baskerville-italic.woff);
+  src: url("baskerville-italic.woff");
   font-style: italic;
 }
 
 @font-face {
   font-family: BBCBengali;
-  src: url(fonts/BBCBengali.woff) format("woff");
+  src: url("fonts/BBCBengali.woff") format("woff");
   unicode-range: U+00-FF, U+980-9FF;
 }
 
 @font-face {
   font-family: STIXGeneral;
-  src: local(STIXGeneral), url(/stixfonts/STIXGeneral.otf);
+  src: local(STIXGeneral), url("/stixfonts/STIXGeneral.otf");
   unicode-range: U+000-49F, U+2000-27FF, U+2900-2BFF, U+1D400-1D7FF;
 }
 
@@ -91,20 +91,20 @@
 
 @font-face {
   font-family: JapaneseWithGentium;
-  src: url(../fonts/Gentium.woff);
+  src: url("../fonts/Gentium.woff");
   unicode-range: U+0-2FF;
 }
 
 @font-face {
   font-family: DroidSans;
-  src: url(DroidSansFallback.woff);
+  src: url("DroidSansFallback.woff");
   /* no range specified, defaults to entire range */
 }
 
 /* Japanese glyphs - size: 1.2MB */
 @font-face {
   font-family: DroidSans;
-  src: url(DroidSansJapanese.woff);
+  src: url("DroidSansJapanese.woff");
   unicode-range: U+3000-9FFF, U+ff??;
 }
 
@@ -112,18 +112,18 @@
    punctuation and symbols - size: 190KB */
 @font-face {
   font-family: DroidSans;
-  src: url(DroidSans.woff);
+  src: url("DroidSans.woff");
   unicode-range: U+000-5FF, U+1e00-1fff, U+2000-2300;
 }
 
 @font-face {
   font-family: GeometricModern;
-  src: url(font.woff);
+  src: url("font.woff");
 }
 
 @media screen {
   @font-face {
     font-family: something;
-    src: url(something.woff);
+    src: url("something.woff");
   }
 }
