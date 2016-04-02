@@ -3161,11 +3161,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-function-rgb</string>
+					<string>#type-function-rgba</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-function-rgba</string>
+					<string>#type-function-rgb</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -3467,11 +3467,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-function-rgb</string>
+					<string>#type-function-rgba</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-function-rgba</string>
+					<string>#type-function-rgb</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -7290,11 +7290,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-function-rgb</string>
+					<string>#type-function-rgba</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-function-rgba</string>
+					<string>#type-function-rgb</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -8135,11 +8135,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-function-rgb</string>
+					<string>#type-function-rgba</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-function-rgba</string>
+					<string>#type-function-rgb</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -14644,11 +14644,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-function-rgb</string>
+					<string>#type-function-rgba</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-function-rgba</string>
+					<string>#type-function-rgb</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -15408,11 +15408,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-function-rgb</string>
+					<string>#type-function-rgba</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-function-rgba</string>
+					<string>#type-function-rgb</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -18484,11 +18484,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-function-rgb</string>
+					<string>#type-function-rgba</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#type-function-rgba</string>
+					<string>#type-function-rgb</string>
 				</dict>
 				<dict>
 					<key>include</key>
