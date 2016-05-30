@@ -14,8 +14,10 @@ variables:
   # should reduce cases of selector-custom-element matching property names.
   # end_selector: '(?=[^;]*[\n{])'
 
+  arithmetic_operator: '[-+*/]'
   escape: '\\(?:[^\n\r\f\h]|\h{1,6}{{whitespace}}?)'
   exponent: '[eE][+-]?\d+'
+  frequency_unit: k?Hz
   ident_char: '[-a-zA-Z\d_\\\p{^ASCII}]'
   ident_start: '-?[a-zA-Z_\\\p{^ASCII}]'
   identifier: '{{ident_start}}{{ident_char}}*'
@@ -29,8 +31,10 @@ variables:
   number: '[+-]?(?:\d+\.\d+|\.\d+|\d+)(?:{{exponent}})?'
   number_non_neg: '\+?(?:\d+\.\d+|\.\d+|\d+)(?:{{exponent}})?'
   number_pos: '\+?(?:\d+\.\d*[1-9]\d*|\.\d*[1-9]\d*|[1-9]\d*)(?:{{exponent}})?'
+  percentage_unit: '%'
   ratio: '({{integer_pos}})\s*\/\s*({{integer_pos}})'
   resolution_unit: dppx|dpi|dpcm
+  time_unit: m?s
   # '' is how you escape a single ' in YAML
   url_char: '[a-zA-Z0-9\-\._~:/\?#\[\]''@!$&()\*\+\%,;=]'
   whitespace: '[ \t\n]'
@@ -48,20 +52,21 @@ contexts:
     # - include: string-double
     # - include: string-single
 
-  comment:
-    - match: /\*
-      push:
-        - meta_scope: comment.block.css
-        - match: \*/
-          pop: true
+  angle:
+    - include: func-calc
+    - match: '(?x)
+        (?:
+          ({{number}})({{angle_unit}})\b|
+          ({{zero}})|
+        )'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+        3: constant.numeric.css
 
-  end-value:
-    - match: '(?=[;}])'
-      pop: true
-
-  escape:
-    - match: '{{escape}}'
-      scope: constant.character.escape.css
+  arithmetic-operator:
+    - match: '{{arithmetic_operator}}'
+      scope: keyword.operator.arithmetic.css
 
   # Media queries start with "@media" and end with a closing curly brace. To
   # match this text, we define an outer scope that starts with "@media" and
@@ -97,6 +102,81 @@ contexts:
       - match: '(?<=})'
         pop: true
 
+  comment:
+    - match: /\*
+      push:
+        - meta_scope: comment.block.css
+        - match: \*/
+          pop: true
+
+  end-func:
+    - match: \)
+      scope: punctuation.section.function.end.css
+      pop: true
+
+  end-media-feature:
+    - match: '(?=\))'
+      pop: true
+
+  end-value:
+    - match: '(?=[;}])'
+      pop: true
+
+  escape:
+    - match: '{{escape}}'
+      scope: constant.character.escape.css
+
+  frequency:
+    - include: func-calc
+    - match: '(?x)
+        (?:
+          ({{number}})({{frequency_unit}})\b|
+          ({{zero}})|
+        )'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+        3: constant.numeric.css
+
+  func-calc:
+    - match: \b(calc)(\()
+      captures:
+        1: support.function.calc.css
+        2: punctuation.section.function.begin.css
+      push:
+        - include: end-func
+        - include: length
+        - include: frequency
+        - include: angle
+        - include: time
+        - include: percentage
+        - include: number
+        - include: arithmetic-operator
+
+  length:
+    - include: func-calc
+    - match: '(?x)
+        (?:
+          ({{number}})({{length_unit}})\b|
+          ({{zero}})|
+        )'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+        3: constant.numeric.css
+
+  length-non-negative:
+    - include: func-calc
+    - match: '(?x)
+        (?:
+          ({{number_non_neg}})({{length_unit}})\b|
+          ({{zero}})|
+        )'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+        3: constant.numeric.css
+
   media-feature:
     - match: \(
       scope: punctuation.section.media-feature.begin.css
@@ -105,9 +185,6 @@ contexts:
           scope: punctuation.section.media-feature.end.css
           pop: true
         - include: media-features
-        # TODO: delete this
-        # - include: media-feature-name
-        # - include: media-feature-value
     - match: \)
       scope: invalid.illegal.stray-paren.css
 
@@ -125,36 +202,48 @@ contexts:
         ):'
       scope: support.constant.property-value.css
       push:
-        - match: '(?=\))'
-          pop: true
+        - include: end-media-feature
         - include: length-non-negative
 
-  length-non-negative:
+  media-type:
+    - include: media-type-deprecated
+    - match: (?:(only|not)\s+)?(speech|screen|print|all)
+      captures:
+        1: keyword.operator.logic.media.css
+        2: support.constant.media.css
+
+  media-type-deprecated:
+    - match: \b(?:tv|tty|reader|projection|handheld|embossed|braille|aural)\b
+      scope: support.constant.media.css invalid.deprecated.css
+
+  number:
+    - include: func-calc
+    - match: '{{number}}'
+      scope: constant.numeric.css
+
+  percentage:
     - include: func-calc
     - match: '(?x)
         (?:
-          ({{number_non_neg}})({{length_unit}})\b|
-          \b(0)\b|
+          ({{number}})({{percentage_unit}})\b|
+          ({{zero}})|
         )'
       captures:
         1: constant.numeric.css
         2: keyword.other.unit.css
         3: constant.numeric.css
 
-  func-calc:
-    - match: \b(calc)(\()
+  time:
+    - include: func-calc
+    - match: '(?x)
+        (?:
+          ({{number}})({{time_unit}})\b|
+          ({{zero}})|
+        )'
       captures:
-        1: support.function.calc.css
-        2: punctuation.section.function.calc.begin.css
-      push:
-        - include: end-func
-        - include: func-calc
-
-
-  end-func:
-    - match: \)
-      scope: punctuation.section.function.calc.begin.css
-      pop: true
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+        3: constant.numeric.css
 
 
   # media-feature-name:
@@ -182,17 +271,6 @@ contexts:
 
   # media-feature-value:
 
-
-  media-type:
-    - include: media-type-deprecated
-    - match: (?:(only|not)\s+)?(speech|screen|print|all)
-      captures:
-        1: keyword.operator.logic.media.css
-        2: support.constant.media.css
-
-  media-type-deprecated:
-    - match: \b(?:tv|tty|reader|projection|handheld|embossed|braille|aural)\b
-      scope: support.constant.media.css invalid.deprecated.css
 
   # property-list matches a block of property-value pairs.
   # {
