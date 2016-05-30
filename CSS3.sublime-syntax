@@ -1,0 +1,243 @@
+%YAML 1.2
+---
+name: CSS3
+file_extensions: [css, css.erb]
+scope: source.css
+
+variables:
+  an_plus_b: '[+-]?\d*n(?:\s*[+-]\s*\d+)?'
+  angle_unit: turn|grad|rad|deg
+
+  # TODO: delete this?
+  # end_selector is imperfect way to differentiate between selector and property
+  # fails to differentiate if ';' is not on same line as property name, but
+  # should reduce cases of selector-custom-element matching property names.
+  # end_selector: '(?=[^;]*[\n{])'
+
+  escape: '\\(?:[^\n\r\f\h]|\h{1,6}{{whitespace}}?)'
+  exponent: '[eE][+-]?\d+'
+  ident_char: '[-a-zA-Z\d_\\\p{^ASCII}]'
+  ident_start: '-?[a-zA-Z_\\\p{^ASCII}]'
+  identifier: '{{ident_start}}{{ident_char}}*'
+  integer: '[+-]?\d+'
+  integer_nonneg: \+?\d+
+  integer_pos: '\+?(?:[1-9]\d+|[1-9])'
+  integer_zero_to_255: '\b(?:2[0-5][0-5]|1\d\d|[1-9]\d|\d)\b'
+  length_unit: r?em|ex|ch|vw|vh|vmin|vmax|cm|mm|q|in|pc|pt|px
+  # TODO: delete this
+  media_feature_range: '(?:min-|max-)?(?:width|resolution|monochrome|height|device-width|device-height|device-aspect-ratio|color-index|color|aspect-ratio)'
+  number: '[+-]?(?:\d+\.\d+|\.\d+|\d+)(?:{{exponent}})?'
+  number_non_neg: '\+?(?:\d+\.\d+|\.\d+|\d+)(?:{{exponent}})?'
+  number_pos: '\+?(?:\d+\.\d*[1-9]\d*|\.\d*[1-9]\d*|[1-9]\d*)(?:{{exponent}})?'
+  ratio: '({{integer_pos}})\s*\/\s*({{integer_pos}})'
+  resolution_unit: dppx|dpi|dpcm
+  # '' is how you escape a single ' in YAML
+  url_char: '[a-zA-Z0-9\-\._~:/\?#\[\]''@!$&()\*\+\%,;=]'
+  whitespace: '[ \t\n]'
+  zero: \b0\b
+  zero_to_one: \b0(?:\.\d+)?|1(?:\.0+)?|\.\d+
+  zero_to_hundred: '\b(?:100|[1-9]\d|\d)(?:\.\d+)?|\.\d+'
+
+prototype:
+  - include: comment
+
+contexts:
+  main:
+    - include: at-media
+    # - include: property-list
+    # - include: string-double
+    # - include: string-single
+
+  comment:
+    - match: /\*
+      push:
+        - meta_scope: comment.block.css
+        - match: \*/
+          pop: true
+
+  end-value:
+    - match: '(?=[;}])'
+      pop: true
+
+  escape:
+    - match: '{{escape}}'
+      scope: constant.character.escape.css
+
+  # Media queries start with "@media" and end with a closing curly brace. To
+  # match this text, we define an outer scope that starts with "@media" and
+  # continues until just past the "}". The text between the curlies is then
+  # matched as a nested scope, i.e. the opening curly pushes a new scope on the
+  # stack, which is popped at the closing curly. This lets us match the media
+  # features before the opening curly and the text between the curlies in one
+  # rule.
+  #
+  # |-------------------outer scope-----------------------------------|
+  #        |---media-features-etc----||--------nested scope-----------|
+  # @media stuff-before-opening-curly { selector { property: value; } }
+  at-media:
+    - match: (@)media\b
+      captures:
+        0: keyword.control.at-rule.media.css
+        1: punctuation.definition.keyword.css
+      push:
+      - match: '{'
+        scope: punctuation.section.media-query.begin.css
+        push:
+          - include: at-media
+          - include: rule
+          # only match closing curly after nested scopes have had a chance to
+          # match
+          - match: '}'
+            scope: punctuation.section.media-query.end.css
+            pop: true
+      - match: \band\b
+        scope: keyword.operator.logic.media.css
+      - include: media-feature
+      - include: media-type
+      - match: '(?<=})'
+        pop: true
+
+  media-feature:
+    - match: \(
+      scope: punctuation.section.media-feature.begin.css
+      push:
+        - match: \)
+          scope: punctuation.section.media-feature.end.css
+          pop: true
+        - include: media-features
+        # TODO: delete this
+        # - include: media-feature-name
+        # - include: media-feature-value
+    - match: \)
+      scope: invalid.illegal.stray-paren.css
+
+  media-features:
+    - include: media-feature-width-height
+
+  media-feature-width-height:
+    - match: '(?x)
+        (?:min-|max-)?
+        (?:
+          width|
+          height|
+          device-width|
+          device-height|
+        ):'
+      scope: support.constant.property-value.css
+      push:
+        - match: '(?=\))'
+          pop: true
+        - include: length-non-negative
+
+  length-non-negative:
+    - include: func-calc
+    - match: '(?x)
+        (?:
+          ({{number_non_neg}})({{length_unit}})\b|
+          \b(0)\b|
+        )'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+        3: constant.numeric.css
+
+  func-calc:
+    - match: \b(calc)(\()
+      captures:
+        1: support.function.calc.css
+        2: punctuation.section.function.calc.begin.css
+      push:
+        - include: end-func
+        - include: func-calc
+
+
+  end-func:
+    - match: \)
+      scope: punctuation.section.function.calc.begin.css
+      pop: true
+
+
+  # media-feature-name:
+  #   - match: '(?x)
+  #       (?<=[><=(])\s*  (?# preceded by (, <, >, or =)
+  #         (
+  #           {{media_feature_range}}| (?# e.g. width, min-width, max-aspect-ratio)
+  #           update-frequency|
+  #           scripting|
+  #           scan|
+  #           pointer|
+  #           overflow-inline|
+  #           overflow-block|
+  #           orientation|
+  #           light-level|
+  #           hover|
+  #           grid|
+  #           any-pointer|
+  #           any-hover
+  #         )
+  #       \s*(?=[><=):]
+  #     )'
+  #     captures:
+  #       1: support.constant.property-value.css
+
+  # media-feature-value:
+
+
+  media-type:
+    - include: media-type-deprecated
+    - match: (?:(only|not)\s+)?(speech|screen|print|all)
+      captures:
+        1: keyword.operator.logic.media.css
+        2: support.constant.media.css
+
+  media-type-deprecated:
+    - match: \b(?:tv|tty|reader|projection|handheld|embossed|braille|aural)\b
+      scope: support.constant.media.css invalid.deprecated.css
+
+  # property-list matches a block of property-value pairs.
+  # {
+  #     property: value;
+  # }
+  property-list:
+    - match: '{'
+      scope: punctation.section.property-list.begin.css
+      push:
+        # - meta_scope: invalid.deprecated.css # DEBUG
+        - match: '}'
+          scope: punctuation.section.property-list.end.css
+          pop: true
+        # TODO: add rules for matching property/value pairs here
+
+  # a rule is a selector and a property list.
+  # selector {
+  #     property: value;
+  # }
+  rule:
+    - match: '(?=[\w.#-])'
+      push:
+        - include: property-list
+        - match: '(?<=})'
+          pop: true
+        # TODO: add rules matching selectors here
+
+  string-double:
+    - meta_include_prototype: false
+    - match: '"'
+      scope: punctuation.definition.string.begin.css
+      push:
+        - meta_scope: string.quoted.double.css
+        - match: '"'
+          scope: punctuation.definition.string.end.css
+          pop: true
+        - include: escape
+
+  string-single:
+    - meta_include_prototype: false # /* inside string should not match as comment
+    - match: "'"
+      scope: punctuation.definition.string.begin.css
+      push:
+        - meta_scope: string.quoted.single.css
+        - match: "'"
+          scope: punctuation.definition.string.end.css
+          pop: true
+        - include: escape

@@ -1,0 +1,73 @@
+// SYNTAX TEST "Packages/CSS3/CSS3.sublime-syntax"
+
+// Examples taken from https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries
+
+@media (max-width: 600px) {
+// <- source.css meta.at-rule.media.css keyword.control.at-rule.media.css punctuation.definition.keyword.css
+ // <- source.css meta.at-rule.media.css keyword.control.at-rule.media.css
+// ^ source.css meta.at-rule.media.css keyword.control.at-rule.media.css
+//     ^ source.css meta.at-rule.media.css meta.media-feature.css punctuation.section.media-feature.css
+//      ^ source.css meta.at-rule.media.css meta.media-feature.css
+  .facet_sidebar {
+    display: none;
+  }
+}
+
+@media (min-width: 700px) {}
+
+@media (min-width: 700px) and (orientation: landscape) {}
+
+@media tv and (min-width: 700px) and (orientation: landscape) {}
+
+@media (min-width: 700px), handheld and (orientation: landscape) {}
+
+@media not all and (monochrome) {}
+
+@media not (all and (monochrome)) {}
+
+@media (not all) and (monochrome) {}
+
+@media not screen and (color), print and (color) {}
+
+@media (not (screen and (color))), print and (color) {}
+
+@media all and (color) {}
+
+@media all and (min-color: 4) {}
+
+@media all and (color-index) {}
+
+@media screen and (min-aspect-ratio: 1/1) {}
+
+@media screen and (device-aspect-ratio: 16/9), screen and (device-aspect-ratio: 16/10) {}
+
+@media screen and (max-device-height: 799px) {}
+
+@media screen and (max-device-width: 799px) {}
+
+@media all and (display-mode: fullscreen) {
+  body {
+    margin: 0;
+    border: 5px solid black;
+  }
+}
+
+@media handheld and (grid) and (max-width: 15em) {}
+
+@media all and (monochrome) {}
+
+@media all and (min-monochrome: 8) {}
+
+@media all and (orientation: portrait) {}
+
+@media print and (min-resolution: 300dpi) {}
+
+@media screen and (min-resolution: 2dppx) {}
+
+@media tv and (scan: progressive) {}
+
+@media handheld and (min-width: 20em), screen and (min-width: 20em) {}
+
+@media print and (min-width: 8.5in) {}
+
+@media screen and (min-width: 500px) and (max-width: 800px) {}

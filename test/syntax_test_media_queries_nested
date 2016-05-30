@@ -1,0 +1,59 @@
+// SYNTAX TEST "Packages/CSS3/CSS3.sublime-syntax"
+
+@media screen {
+    my-custom-element {
+    	float:left;
+    	color:blue;
+    }
+    #foo {
+    	float:left;
+    	color:blue;
+    }
+    .bar {
+        position: absolute;
+    }
+
+    @media (max-width: 100px) {
+        @media (scripting) {
+        	.baz {
+        		color: green;
+        	}
+        }
+
+        .qux {
+            color: red;
+        }
+    }
+}
+
+@media {
+    @media {
+        @media {
+        }
+    }
+}
+
+@media (width) {
+
+}
+
+@media (any-hover) {
+
+}
+
+@media print {
+  /* hide navigation controls when printing */
+  div p {
+    margin: auto;
+  }
+  #navigation {
+    display: none;
+  }
+  @media (min-width: 1cm) {
+      #dummy {}
+      @media (max-width: 12cm) {
+        /* keep notes in flow when printing to narrow pages */
+        .note { float: none; }
+      }
+  }
+}
