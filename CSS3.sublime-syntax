@@ -22,12 +22,12 @@ variables:
   ident_start: '-?[a-zA-Z_\\\p{^ASCII}]'
   identifier: '{{ident_start}}{{ident_char}}*'
   integer: '[+-]?\d+'
-  integer_nonneg: \+?\d+
+  integer_non_neg: \+?\d+
   integer_pos: '\+?(?:[1-9]\d+|[1-9])'
   integer_zero_to_255: '\b(?:2[0-5][0-5]|1\d\d|[1-9]\d|\d)\b'
   length_unit: r?em|ex|ch|vw|vh|vmin|vmax|cm|mm|q|in|pc|pt|px
-  # TODO: delete this
-  media_feature_range: '(?:min-|max-)?(?:width|resolution|monochrome|height|device-width|device-height|device-aspect-ratio|color-index|color|aspect-ratio)'
+  optional_min_max_prefix: '\b(?:min-|max-)?'
+  not_followed_by_dash: '(?!-)'
   number: '[+-]?(?:\d+\.\d+|\.\d+|\d+)(?:{{exponent}})?'
   number_non_neg: '\+?(?:\d+\.\d+|\.\d+|\d+)(?:{{exponent}})?'
   number_pos: '\+?(?:\d+\.\d*[1-9]\d*|\.\d*[1-9]\d*|[1-9]\d*)(?:{{exponent}})?'
@@ -42,9 +42,6 @@ variables:
   zero_to_one: \b0(?:\.\d+)?|1(?:\.0+)?|\.\d+
   zero_to_hundred: '\b(?:100|[1-9]\d|\d)(?:\.\d+)?|\.\d+'
 
-prototype:
-  - include: comment
-
 contexts:
   main:
     - include: at-media
@@ -57,7 +54,7 @@ contexts:
     - match: '(?x)
         (?:
           ({{number}})({{angle_unit}})\b|
-          ({{zero}})|
+          ({{zero}})
         )'
       captures:
         1: constant.numeric.css
@@ -119,7 +116,8 @@ contexts:
       pop: true
 
   end-value:
-    - match: '(?=[;}])'
+    - match: ';|(?=\})'
+      scope: punctuation.terminator.rule.css
       pop: true
 
   escape:
@@ -131,7 +129,7 @@ contexts:
     - match: '(?x)
         (?:
           ({{number}})({{frequency_unit}})\b|
-          ({{zero}})|
+          ({{zero}})
         )'
       captures:
         1: constant.numeric.css
@@ -153,12 +151,22 @@ contexts:
         - include: number
         - include: arithmetic-operator
 
+  integer:
+    - include: func-calc
+    - match: '{{integer}}'
+      scope: constant.numeric.css
+
+  integer-non-negative:
+    - include: func-calc
+    - match: '{{integer_non_neg}}'
+      scope: constant.numeric.css
+
   length:
     - include: func-calc
     - match: '(?x)
         (?:
           ({{number}})({{length_unit}})\b|
-          ({{zero}})|
+          ({{zero}})
         )'
       captures:
         1: constant.numeric.css
@@ -170,7 +178,7 @@ contexts:
     - match: '(?x)
         (?:
           ({{number_non_neg}})({{length_unit}})\b|
-          ({{zero}})|
+          ({{zero}})
         )'
       captures:
         1: constant.numeric.css
@@ -181,29 +189,237 @@ contexts:
     - match: \(
       scope: punctuation.section.media-feature.begin.css
       push:
+        # Note that this is different from media-feature-end, which matches
+        # just before the closing paren.
         - match: \)
           scope: punctuation.section.media-feature.end.css
           pop: true
-        - include: media-features
+        - include: media-feature-custom
+        - include: media-feature-aspect-ratio
+        - include: media-feature-color-gamut
+        - include: media-feature-grid
+        - include: media-feature-hover
+        - include: media-feature-inverted-colors
+        - include: media-feature-monochrome-color-index
+        - include: media-feature-width-height
+        - include: media-feature-light-level
+        - include: media-feature-orientation
+        - include: media-feature-overflow-block
+        - include: media-feature-overflow-inline
+        - include: media-feature-pointer
+        - include: media-feature-resolution
+        - include: media-feature-scan
+        - include: media-feature-scripting
+        - include: media-feature-update
+        - include: media-feature-range-operator
+        # match values and comparison operators that appear before a range
+        #  |------|
+        # (480px <= width <= 640px)
+        - include: ratio
+        - include: resolution
+        - include: length-non-negative
+        - include: integer-non-negative
     - match: \)
       scope: invalid.illegal.stray-paren.css
 
-  media-features:
-    - include: media-feature-width-height
+  # e.g. (aspect-ratio: 16/9)
+  media-feature-aspect-ratio:
+    - match: '(?x)
+        (
+          {{optional_min_max_prefix}}
+          (?:device-)?
+          aspect-ratio
+        )\s*(:)'
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-media-feature
+        - match: '{{ratio}}'
+          captures:
+            1: constant.numeric.css
+            2: constant.numeric.css
+        - include: media-feature-range-operator
 
+  media-feature-custom:
+    - match: '\-\-{{identifier}}'
+      scope: support.constant.property-name.custom.css
+
+  media-feature-color-gamut:
+    - match: \b(color-gamut)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-media-feature
+        - match: \b(?:srgb|rec2020|p3)\b
+          scope: support.constant.property-value.css
+
+  media-feature-grid:
+    - match: \b(grid)\s*(:)?
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-media-feature
+        - match: \b(?:0|1)\b
+          scope: support.constant.property-value.css
+
+  media-feature-hover:
+    - match: \b((?:any-)?hover)\s*(:)?
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-media-feature
+        - match: \b(?:on-demand|none|hover)\b
+          scope: support.constant.property-value.css
+
+  media-feature-inverted-colors:
+    - match: \b(inverted-colors)\s*(:)?
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-media-feature
+        - match: \b(?:none|inverted)\b
+          scope: support.constant.property-value.css
+
+  media-feature-light-level:
+    - match: '\b(light-level)\s*(:)'
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-media-feature
+        - match: washed|normal|dim
+          scope: support.constant.property-value.css
+
+  media-feature-monochrome-color-index:
+    # {{not_followed_by_dash}} prevents "color" from matching misspelled
+    # "color-index" or "color-gamut"
+    - match: '(?x)
+        (
+          {{optional_min_max_prefix}}
+          (?:monochrome|color-index|color)
+        )\s*(:)?
+        {{not_followed_by_dash}}'
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-media-feature
+        - include: integer-non-negative
+        - include: media-feature-range-operator
+
+  media-feature-orientation:
+    - match: \b(orientation)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-media-feature
+        - match: \b(?:portrait|landscape)\b
+          scope: support.constant.property-value.css
+
+  media-feature-overflow-block:
+    - match: \b(overflow-block)\s*(:)?
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-media-feature
+        - match: \b(?:scroll|paged|optional-paged|none)\b
+          scope: support.constant.property-value.css
+
+  media-feature-overflow-inline:
+    - match: \b(overflow-inline)\s*(:)?
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-media-feature
+        - match: \b(?:scroll|none)\b
+          scope: support.constant.property-value.css
+
+  media-feature-pointer:
+    - match: \b((?:any-)?pointer)\s*(:)?
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-media-feature
+        - match: \b(?:none|fine|coarse)\b
+          scope: support.constant.property-value.css
+
+  media-feature-range-operator:
+    - match: '(?<=[\s\w])(?:[<>]=?|=)(?=[\s\w])'
+      scope: keyword.operator.arithmetic.css
+
+  # e.g. (min-resolution: 300dpi)
+  media-feature-resolution:
+    - match: '(?x)
+        (
+          {{optional_min_max_prefix}}
+          resolution
+        )\s*(:)?'
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-media-feature
+        - include: resolution
+        - include: media-feature-range-operator
+
+  media-feature-scan:
+    - match: '\b(scan)\s*(:)?'
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-media-feature
+        - match: '\b(?:progressive|interlace)\b'
+          scope: support.constant.property-value.css
+
+  media-feature-scripting:
+    - match: '\b(scripting)\s*(:)?'
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-media-feature
+        - match: \b(?:none|initial-only|enabled)\b
+          scope: support.constant.property-value.css
+
+  media-feature-update:
+    - match: \b(update)\s*(:)?
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-media-feature
+        - match: \b(?:normal|none|slow)\b
+          scope: support.constant.property-value.css
+
+  # may appear as "(width: 480px)" or "(width >= 480px)"
   media-feature-width-height:
     - match: '(?x)
-        (?:min-|max-)?
-        (?:
-          width|
-          height|
-          device-width|
-          device-height|
-        ):'
-      scope: support.constant.property-value.css
+        (
+          {{optional_min_max_prefix}}
+          (?:
+            width|
+            height|
+            device-width|
+            device-height
+          )
+        )\s*(:)?'
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
       push:
         - include: end-media-feature
         - include: length-non-negative
+        - include: media-feature-range-operator
 
   media-type:
     - include: media-type-deprecated
@@ -226,51 +442,12 @@ contexts:
     - match: '(?x)
         (?:
           ({{number}})({{percentage_unit}})\b|
-          ({{zero}})|
+          ({{zero}})
         )'
       captures:
         1: constant.numeric.css
         2: keyword.other.unit.css
         3: constant.numeric.css
-
-  time:
-    - include: func-calc
-    - match: '(?x)
-        (?:
-          ({{number}})({{time_unit}})\b|
-          ({{zero}})|
-        )'
-      captures:
-        1: constant.numeric.css
-        2: keyword.other.unit.css
-        3: constant.numeric.css
-
-
-  # media-feature-name:
-  #   - match: '(?x)
-  #       (?<=[><=(])\s*  (?# preceded by (, <, >, or =)
-  #         (
-  #           {{media_feature_range}}| (?# e.g. width, min-width, max-aspect-ratio)
-  #           update-frequency|
-  #           scripting|
-  #           scan|
-  #           pointer|
-  #           overflow-inline|
-  #           overflow-block|
-  #           orientation|
-  #           light-level|
-  #           hover|
-  #           grid|
-  #           any-pointer|
-  #           any-hover
-  #         )
-  #       \s*(?=[><=):]
-  #     )'
-  #     captures:
-  #       1: support.constant.property-value.css
-
-  # media-feature-value:
-
 
   # property-list matches a block of property-value pairs.
   # {
@@ -278,13 +455,22 @@ contexts:
   # }
   property-list:
     - match: '{'
-      scope: punctation.section.property-list.begin.css
+      scope: punctuation.section.property-list.begin.css
       push:
         # - meta_scope: invalid.deprecated.css # DEBUG
         - match: '}'
           scope: punctuation.section.property-list.end.css
           pop: true
         # TODO: add rules for matching property/value pairs here
+
+  prototype:
+    - include: comment
+
+  resolution:
+    - match: '({{integer_pos}})({{resolution_unit}})'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
 
   # a rule is a selector and a property list.
   # selector {
@@ -299,10 +485,11 @@ contexts:
         # TODO: add rules matching selectors here
 
   string-double:
-    - meta_include_prototype: false
     - match: '"'
       scope: punctuation.definition.string.begin.css
       push:
+        # /* inside string should not match as comment
+        - meta_include_prototype: false
         - meta_scope: string.quoted.double.css
         - match: '"'
           scope: punctuation.definition.string.end.css
@@ -310,12 +497,26 @@ contexts:
         - include: escape
 
   string-single:
-    - meta_include_prototype: false # /* inside string should not match as comment
+    - meta_include_prototype: false
     - match: "'"
       scope: punctuation.definition.string.begin.css
       push:
+        # /* inside string should not match as comment
+        - meta_include_prototype: false
         - meta_scope: string.quoted.single.css
         - match: "'"
           scope: punctuation.definition.string.end.css
           pop: true
         - include: escape
+
+  time:
+    - include: func-calc
+    - match: '(?x)
+        (?:
+          ({{number}})({{time_unit}})\b|
+          ({{zero}})
+        )'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+        3: constant.numeric.css
