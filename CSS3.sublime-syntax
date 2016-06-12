@@ -5,7 +5,7 @@ file_extensions: [css, css.erb]
 scope: source.css
 
 variables:
-  an_plus_b: '[+-]?\d*n(?:\s*[+-]\s*\d+)?'
+  an_plus_b: '(?<!\w)[+-]?\d*n(?:\s*[+-]\s*\d+)?'
   angle_unit: turn|grad|rad|deg
 
   # TODO: delete this?
@@ -27,12 +27,13 @@ variables:
   integer_zero_to_255: '\b(?:2[0-5][0-5]|1\d\d|[1-9]\d|\d)\b'
   length_unit: r?em|ex|ch|vw|vh|vmin|vmax|cm|mm|q|in|pc|pt|px
   optional_min_max_prefix: '\b(?:min-|max-)?'
+  optional_vendor_prefix: '(?:-webkit-|-ms-|-moz-)?'
   not_followed_by_dash: '(?!-)'
   number: '[+-]?(?:\d+\.\d+|\.\d+|\d+)(?:{{exponent}})?'
   number_non_neg: '\+?(?:\d+\.\d+|\.\d+|\d+)(?:{{exponent}})?'
   number_pos: '\+?(?:\d+\.\d*[1-9]\d*|\.\d*[1-9]\d*|[1-9]\d*)(?:{{exponent}})?'
   percentage_unit: '%'
-  ratio_var: '({{integer_pos}})\s*(\/)\s*({{integer_pos}})'
+  ratio: '({{integer_pos}})\s*(\/)\s*({{integer_pos}})'
   resolution_unit: dppx|dpi|dpcm
   time_unit: m?s
   # '' is how you escape a single ' in YAML
@@ -60,6 +61,10 @@ contexts:
         1: constant.numeric.css
         2: keyword.other.unit.css
         3: constant.numeric.css
+
+  an_plus_b:
+    - match: 'odd|even|{{an_plus_b}}'
+      scope: constant.other.an-plus-b.css
 
   arithmetic-operator:
     - match: '{{arithmetic_operator}}'
@@ -220,8 +225,7 @@ contexts:
         - include: resolution
         - include: length-non-negative
         - include: integer-non-negative
-    - match: \)
-      scope: invalid.illegal.stray-paren.css
+    - include: stray-paren
 
   # e.g. (aspect-ratio: 16/9)
   media-feature-aspect-ratio:
@@ -465,7 +469,7 @@ contexts:
     - include: comment
 
   ratio:
-    - match: '{{ratio_var}}'
+    - match: '{{ratio}}'
       captures:
         1: constant.numeric.css
         2: keyword.operator.arithmetic.css
@@ -482,12 +486,244 @@ contexts:
   #     property: value;
   # }
   rule:
-    - match: '(?=[\w.#-])'
+    - match: '(?=[\w.:#-])'
       push:
-        - include: property-list
         - match: '(?<=})'
           pop: true
-        # TODO: add rules matching selectors here
+        - include: property-list
+        - include: selector
+
+  selector-pseudo-class:
+    # Match pseudo-class functions first to avoid collisions between
+    # pseudo-classes like :drop and :drop().
+    - include: selector-pseudo-class-func
+    - match: '(?x)
+      (:)
+      {{optional_vendor_prefix}}
+      (?:
+        visited|
+        valid|
+        user-invalid|
+        target|
+        scope|
+        root|
+        required|
+        read-write|
+        read-only|
+        playing|
+        placeholder-shown|
+        paused|
+        past|
+        out-of-range|
+        optional|
+        only-of-type|
+        only-child|
+        link|
+        last-of-type|
+        last-child|
+        invalid|
+        indeterminate|
+        in-range|
+        hover|
+        host|
+        future|
+        focus-within|
+        focus|
+        first-of-type|
+        first-child|
+        enabled|
+        empty|
+        drop|
+        disabled|
+        default|
+        current|
+        checked|
+        blank|
+        any-link|
+        active
+      )\b'
+      captures:
+        0: entity.other.attribute-name.pseudo-class.css
+        1: punctuation.definition.entity.css
+
+  selector-pseudo-class-func:
+    - include: selector-pseudo-class-dir
+    - include: selector-pseudo-class-drop
+    - include: selector-pseudo-class-host
+    - include: selector-pseudo-class-lang
+    - include: selector-pseudo-class-not-matches-has
+    - include: selector-pseudo-class-nth-child
+    - include: selector-pseudo-class-nth-column-nth-type
+    - include: selector-pseudo-class-scope-context
+
+  selector-pseudo-class-dir:
+    - match: ((:)dir)(\()
+      captures:
+        1: entity.other.attribute-name.pseudo-class.css
+        2: punctuation.definition.entity.css
+        3: punctuation.section.function.css
+      push:
+        - meta_scope: meta.pseudo-class.dir.css
+        - include: end-func
+        - match: \b(?:rtl|ltr)\b
+          scope: support.constant.property-value.css
+    - include: stray-paren
+
+  selector-pseudo-class-drop:
+    - match: ((:)drop)(\()
+      captures:
+        1: entity.other.attribute-name.pseudo-class.css
+        2: punctuation.definition.entity.css
+        3: punctuation.section.function.css
+      push:
+        - meta_scope: meta.pseudo-class.drop.css
+        - include: end-func
+        - match: \b(?:valid|invalid|active)\b
+          scope: support.constant.property-value.css
+    - include: stray-paren
+
+  selector-pseudo-class-host:
+    - match: ((:)host-context|host)(\()
+      captures:
+        1: entity.other.attribute-name.pseudo-class.css
+        2: punctuation.definition.entity.css
+        3: punctuation.section.function.css
+      push:
+        - meta_scope: meta.pseudo-class.host.css
+        - include: end-func
+        - include: selector-simple
+    - include: stray-paren
+
+  selector-pseudo-class-lang:
+    - match: ((:)lang)(\()
+      captures:
+        1: entity.other.attribute-name.pseudo-class.css
+        2: punctuation.definition.entity.css
+        3: punctuation.section.function.css
+      push:
+        - meta_scope: meta.pseudo-class.lang.css
+        - include: end-func
+        - match: '[*a-zA-Z0-9-]+'
+          scope: support.constant.property.value.css
+    - include: stray-paren
+
+  selector-pseudo-class-not-matches-has:
+    - match: '((:)(?:not|matches|has))(\()'
+      captures:
+        1: entity.other.attribute-name.pseudo-class.css
+        2: punctuation.definition.entity.css
+        3: punctuation.section.function.css
+      push:
+        - meta_scope: meta.pseudo-class.dir.css
+        - include: end-func
+        - include: selector-list
+    - include: stray-paren
+
+  selector-pseudo-class-nth-child:
+    - match: '((:)(?:nth-last-child|nth-child))(\()'
+      captures:
+        1: entity.other.attribute-name.pseudo-class.css
+        2: punctuation.definition.entity.css
+        3: punctuation.section.function.css
+      push:
+        - meta_scope: meta.pseudo-class.nth.css
+        - include: end-func
+        - match: \bof\b
+          scope: support.constant.property-value.css
+        - include: an_plus_b
+        - include: selector-list
+    - include: stray-paren
+
+  selector-pseudo-class-nth-column-nth-type:
+    - match: '(?x)
+      (
+        (:)
+        (?:
+          nth-of-type|
+          nth-last-of-type|
+          nth-last-column|
+          nth-column
+        )
+      )
+      (\()'
+      captures:
+        1: entity.other.attribute-name.pseudo-class.css
+        2: punctuation.definition.entity.css
+        3: punctuation.section.function.css
+      push:
+        - meta_scope: meta.pseudo-class.nth-column.css
+        - include: end-func
+        - include: an_plus_b
+    - include: stray-paren
+
+  selector-pseudo-class-scope-context:
+    - match: ((:)scope-context)(\()
+      captures:
+        1: entity.other.attribute-name.pseudo-class.css
+        2: punctuation.definition.entity.css
+        3: punctuation.section.function.css
+      push:
+        - meta_scope: meta.pseudo-class.scope-context.css
+        - include: end-func
+        - include: selector-list
+    - include: stray-paren
+
+  selector-pseudo-element:
+    - match: '(?x)
+        (::)
+        {{optional_vendor_prefix}}
+        (?:spelling-error|
+          shadow|
+          selection|
+          region|
+          placeholder|
+          marker|
+          inactive-selection|
+          grammar-error|
+          first-line|
+          first-letter|
+          content|
+          before|
+          after
+        )\b'
+      captures:
+        0: entity.other.attribute-name.pseudo-element.css
+        1: punctuation.definition.entity.css
+    - include: selector-pseudo-element-slotted
+
+  selector-pseudo-element-slotted:
+    - match: '((::)slotted)(\()'
+      captures:
+        1: entity.other.attribute-name.pseudo-element.css
+        2: punctuation.definition.entity.css
+        3: punctuation.section.function.css
+      push:
+        - include: end-func
+        - include: selector-simple
+    - include: stray-paren
+
+  selector:
+    - include: selector-pseudo-element
+    - include: selector-pseudo-class
+
+  selector-list:
+    - include: selector-simple
+    - include: combinator
+
+  # This also matches compound selectors, which are just one or more simple
+  # selectors.
+  selector-simple:
+    # TODO: write these
+    - include: selector-pseudo-element
+    - include: selector-pseudo-class
+    - include: selector-type
+    - include: selector-id
+    - include: selector-class
+    - include: selector-attribute
+
+  stray-paren:
+    - match: \)
+      scope: invalid.illegal.stray-paren.css
 
   string-double:
     - match: '"'
