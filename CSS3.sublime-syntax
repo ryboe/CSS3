@@ -32,7 +32,7 @@ variables:
   number_non_neg: '\+?(?:\d+\.\d+|\.\d+|\d+)(?:{{exponent}})?'
   number_pos: '\+?(?:\d+\.\d*[1-9]\d*|\.\d*[1-9]\d*|[1-9]\d*)(?:{{exponent}})?'
   percentage_unit: '%'
-  ratio: '({{integer_pos}})\s*\/\s*({{integer_pos}})'
+  ratio_var: '({{integer_pos}})\s*(\/)\s*({{integer_pos}})'
   resolution_unit: dppx|dpi|dpcm
   time_unit: m?s
   # '' is how you escape a single ' in YAML
@@ -194,6 +194,7 @@ contexts:
         - match: \)
           scope: punctuation.section.media-feature.end.css
           pop: true
+        - include: media-feature-deprecated
         - include: media-feature-custom
         - include: media-feature-aspect-ratio
         - include: media-feature-color-gamut
@@ -227,7 +228,6 @@ contexts:
     - match: '(?x)
         (
           {{optional_min_max_prefix}}
-          (?:device-)?
           aspect-ratio
         )\s*(:)'
       captures:
@@ -235,15 +235,8 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-media-feature
-        - match: '{{ratio}}'
-          captures:
-            1: constant.numeric.css
-            2: constant.numeric.css
+        - include: ratio
         - include: media-feature-range-operator
-
-  media-feature-custom:
-    - match: '\-\-{{identifier}}'
-      scope: support.constant.property-name.custom.css
 
   media-feature-color-gamut:
     - match: \b(color-gamut)\s*(:)
@@ -254,6 +247,16 @@ contexts:
         - include: end-media-feature
         - match: \b(?:srgb|rec2020|p3)\b
           scope: support.constant.property-value.css
+
+  media-feature-custom:
+    - match: '\-\-{{identifier}}'
+      scope: support.constant.property-name.custom.css
+
+  media-feature-deprecated:
+    - match: '\b({{optional_min_max_prefix}}device\-(?:width|height|aspect-ratio))\s*(:)?'
+      captures:
+        1: support.constant.property-name.css invalid.deprecated.css
+        2: punctuation.separator.key-value.css
 
   media-feature-grid:
     - match: \b(grid)\s*(:)?
@@ -406,12 +409,7 @@ contexts:
     - match: '(?x)
         (
           {{optional_min_max_prefix}}
-          (?:
-            width|
-            height|
-            device-width|
-            device-height
-          )
+          (?:width|height)
         )\s*(:)?'
       captures:
         1: support.constant.property-name.css
@@ -465,6 +463,13 @@ contexts:
 
   prototype:
     - include: comment
+
+  ratio:
+    - match: '{{ratio_var}}'
+      captures:
+        1: constant.numeric.css
+        2: keyword.operator.arithmetic.css
+        3: constant.numeric.css
 
   resolution:
     - match: '({{integer_pos}})({{resolution_unit}})'
