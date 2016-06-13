@@ -15,6 +15,7 @@ variables:
   # end_selector: '(?=[^;]*[\n{])'
 
   arithmetic_operator: '[-+*/]'
+  attr_matcher: '[~^$*|]?='
   escape: '\\(?:[^\n\r\f\h]|\h{1,6}{{whitespace}}?)'
   exponent: '[eE][+-]?\d+'
   frequency_unit: k?Hz
@@ -26,12 +27,13 @@ variables:
   integer_pos: '\+?(?:[1-9]\d+|[1-9])'
   integer_zero_to_255: '\b(?:2[0-5][0-5]|1\d\d|[1-9]\d|\d)\b'
   length_unit: r?em|ex|ch|vw|vh|vmin|vmax|cm|mm|q|in|pc|pt|px
-  optional_min_max_prefix: '\b(?:min-|max-)?'
-  optional_vendor_prefix: '(?:-webkit-|-ms-|-moz-)?'
   not_followed_by_dash: '(?!-)'
+  ns_prefix: '(?:{{identifier}}|(\*))?(\|)'
   number: '[+-]?(?:\d+\.\d+|\.\d+|\d+)(?:{{exponent}})?'
   number_non_neg: '\+?(?:\d+\.\d+|\.\d+|\d+)(?:{{exponent}})?'
   number_pos: '\+?(?:\d+\.\d*[1-9]\d*|\.\d*[1-9]\d*|[1-9]\d*)(?:{{exponent}})?'
+  optional_min_max_prefix: '\b(?:min-|max-)?'
+  optional_vendor_prefix: '(?:-webkit-|-ms-|-moz-)?'
   percentage_unit: '%'
   ratio: '({{integer_pos}})\s*(\/)\s*({{integer_pos}})'
   resolution_unit: dppx|dpi|dpcm
@@ -39,6 +41,7 @@ variables:
   # '' is how you escape a single ' in YAML
   url_char: '[a-zA-Z0-9\-\._~:/\?#\[\]''@!$&()\*\+\%,;=]'
   whitespace: '[ \t\n]'
+  wq_name: '({{ns_prefix}})?({{identifier}}|(\*))'
   zero: \b0\b
   zero_to_one: \b0(?:\.\d+)?|1(?:\.0+)?|\.\d+
   zero_to_hundred: '\b(?:100|[1-9]\d|\d)(?:\.\d+)?|\.\d+'
@@ -493,6 +496,43 @@ contexts:
         - include: property-list
         - include: selector
 
+  selector:
+    - include: selector-simple-compound
+    # TODO: finish this
+    # - include: combinator
+
+  selector-attribute:
+    - match: '\['
+      scope: punctuation.section.attribute.css
+      push:
+        - match: '\]'
+          scope: punctuation.section.attribute.css
+          pop: true
+        - include: string
+        - match: '{{attr_matcher}}'
+          scope: keyword.operator.attribute.css
+        - match: \bi\b
+          scope: support.constant.attr-modifier.css
+        - match: '(?<=\[)\s*{{wq_name}}\s*(?=[~^$*=|\]])'
+          scope: string.unquoted.attribute-value.css
+
+  selector-class:
+    - match: '(\.){{identifier}}'
+      captures:
+        0: entity.other.attribute-name.class.css
+        1: punctuation.definition.entity.css
+
+  selector-id:
+    - match: '(#){{identifier}}'
+      captures:
+        0: entity.other.attribute-name.id.css
+        1: punctuation.definition.entity.css
+
+  selector-list:
+    - include: selector-simple-compound
+    # TODO: write this
+    # - include: combinator
+
   selector-pseudo-class:
     # Match pseudo-class functions first to avoid collisions between
     # pseudo-classes like :drop and :drop().
@@ -591,7 +631,7 @@ contexts:
       push:
         - meta_scope: meta.pseudo-class.host.css
         - include: end-func
-        - include: selector-simple
+        - include: selector-simple-compound
     - include: stray-paren
 
   selector-pseudo-class-lang:
@@ -699,31 +739,75 @@ contexts:
         3: punctuation.section.function.css
       push:
         - include: end-func
-        - include: selector-simple
+        - include: selector-simple-compound
     - include: stray-paren
 
-  selector:
+  # This matches simple selectors and compound selectors, which are just one
+  # or more simple selectors.
+  selector-simple-compound:
     - include: selector-pseudo-element
     - include: selector-pseudo-class
-
-  selector-list:
-    - include: selector-simple
-    - include: combinator
-
-  # This also matches compound selectors, which are just one or more simple
-  # selectors.
-  selector-simple:
-    # TODO: write these
-    - include: selector-pseudo-element
-    - include: selector-pseudo-class
-    - include: selector-type
     - include: selector-id
     - include: selector-class
     - include: selector-attribute
+    # Match selector-type last because this includes custom elements, which
+    # match nonspecific identifiers.
+    - include: selector-type
+
+  selector-type:
+    - include: selector-type-deprecated
+    - match: '(?x)
+        (?:
+          {{wq_name}}|
+          {{ns_prefix}}(\*)
+        )'
+      captures:
+        1: string.unquoted.namespace.css
+        2: string.unquoted.namespace.wildcard.css
+        3: punctuation.separator.namespace.css
+        4: entity.name.tag.css
+        5: entity.name.tag.wildcard.css
+
+  selector-type-deprecated:
+    - match: '(?x)
+        (?<![-:\[])
+        \b(?:
+          xmp|
+          tt|
+          strike|
+          spacer|
+          plaintext|
+          noframes|
+          noembed|
+          nobr|
+          nextid|
+          multicol|
+          marquee|
+          listing|
+          isindex|
+          hgroup|
+          frameset|
+          frame|
+          font|
+          dir|
+          center|
+          blink|
+          big|
+          bgsound|
+          basefont|
+          applet|
+          acronym
+        )\b
+      (?!-)'
+      scope: entity.name.tag.css invalid.deprecated.css
 
   stray-paren:
     - match: \)
       scope: invalid.illegal.stray-paren.css
+
+  string:
+    - include: string-double
+    - include: string-single
 
   string-double:
     - match: '"'
