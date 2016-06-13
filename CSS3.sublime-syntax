@@ -44,9 +44,7 @@ variables:
 contexts:
   main:
     - include: at-media
-    # - include: property-list
-    # - include: string-double
-    # - include: string-single
+    - include: rule
 
   angle:
     - include: func-calc
@@ -451,7 +449,8 @@ contexts:
 
   # property-list matches a block of property-value pairs.
   # {
-  #     property: value;
+  #     property1: value1;
+  #     property2: value2;
   # }
   property-list:
     - match: '{'
@@ -479,12 +478,13 @@ contexts:
         1: constant.numeric.css
         2: keyword.other.unit.css
 
-  # a rule is a selector and a property list.
+  # A rule is a selector and a property list.
   # selector {
-  #     property: value;
+  #     property1: value1;
+  #     property2: value2;
   # }
   rule:
-    - match: '(?=[\w.:#-])'
+    - match: '(?=[\w.:#-\[*])'
       push:
         - match: '(?<=})'
           pop: true
@@ -493,7 +493,7 @@ contexts:
 
   selector:
     - include: selector-simple-compound
-    # TODO: finish this
+    - include: selector-combinator
 
   selector-attribute:
     - match: '\['
@@ -528,14 +528,11 @@ contexts:
         0: entity.other.attribute-name.id.css
         1: punctuation.definition.entity.css
 
-  selector-list:
-    - include: selector-simple-compound
-    - include: selector-combinator
-
   selector-pseudo-class:
     # Match pseudo-class functions first to avoid collisions between
     # pseudo-classes like :drop and :drop().
     - include: selector-pseudo-class-func
+    - include: selector-pseudo-class-deprecated
     - match: '(?x)
       (:)
       {{optional_vendor_prefix}}
@@ -583,6 +580,21 @@ contexts:
       )\b'
       captures:
         0: entity.other.attribute-name.pseudo-class.css
+        1: punctuation.definition.entity.css
+
+  selector-pseudo-class-deprecated:
+    - match: '(?x)
+        (:)
+        {{optional_vendor_prefix}}
+        (?:
+          first-line|
+          first-letter|
+          bound-element|
+          before|
+          after
+        )\b'
+      captures:
+        0: entity.other.attribute-name.pseudo-class.css invalid.deprecated.css
         1: punctuation.definition.entity.css
 
   selector-pseudo-class-func:
@@ -655,7 +667,7 @@ contexts:
       push:
         - meta_scope: meta.pseudo-class.dir.css
         - include: end-func
-        - include: selector-list
+        - include: selector
     - include: stray-paren
 
   selector-pseudo-class-nth-child:
@@ -670,7 +682,7 @@ contexts:
         - match: \bof\b
           scope: support.constant.property-value.css
         - include: an_plus_b
-        - include: selector-list
+        - include: selector
     - include: stray-paren
 
   selector-pseudo-class-nth-column-nth-type:
@@ -704,7 +716,7 @@ contexts:
       push:
         - meta_scope: meta.pseudo-class.scope-context.css
         - include: end-func
-        - include: selector-list
+        - include: selector
     - include: stray-paren
 
   selector-pseudo-element:
