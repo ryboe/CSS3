@@ -7,15 +7,10 @@ scope: source.css
 variables:
   an_plus_b: '(?<!\w)[+-]?\d*n(?:\s*[+-]\s*\d+)?'
   angle_unit: turn|grad|rad|deg
-
-  # TODO: delete this?
-  # end_selector is imperfect way to differentiate between selector and property
-  # fails to differentiate if ';' is not on same line as property name, but
-  # should reduce cases of selector-custom-element matching property names.
-  # end_selector: '(?=[^;]*[\n{])'
-
   arithmetic_operator: '[-+*/]'
   attr_matcher: '[~^$*|]?='
+  column: '\|\|'
+  combinator: '(?:{{column}}|>{1,3}|[+~])'
   escape: '\\(?:[^\n\r\f\h]|\h{1,6}{{whitespace}}?)'
   exponent: '[eE][+-]?\d+'
   frequency_unit: k?Hz
@@ -499,7 +494,6 @@ contexts:
   selector:
     - include: selector-simple-compound
     # TODO: finish this
-    # - include: combinator
 
   selector-attribute:
     - match: '\['
@@ -522,6 +516,12 @@ contexts:
         0: entity.other.attribute-name.class.css
         1: punctuation.definition.entity.css
 
+  selector-combinator:
+    - match: '{{combinator}}(?![>+~|])'
+      scope: keyword.operator.combinator.css
+    - match: '{{combinator}}{2,}'
+      scope: keyword.operator.combinator.css invalid.illegal.combinator.css
+
   selector-id:
     - match: '(#){{identifier}}'
       captures:
@@ -530,8 +530,7 @@ contexts:
 
   selector-list:
     - include: selector-simple-compound
-    # TODO: write this
-    # - include: combinator
+    - include: selector-combinator
 
   selector-pseudo-class:
     # Match pseudo-class functions first to avoid collisions between
