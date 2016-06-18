@@ -100,12 +100,40 @@ contexts:
       - match: '(?<=})'
         pop: true
 
+  baseline-position:
+    - match: \b(?:last-)?baseline\b
+      scope: support.constant.property-value.css
+
   comment:
     - match: /\*
       push:
         - meta_scope: comment.block.css
         - match: \*/
           pop: true
+
+  content-distribution:
+    - match: '(?x)
+        \b(?:
+          stretch|
+          space-evenly|
+          space-between|
+          space-around
+        )\b
+        {{not_followed_by_dash}}'
+      scope: support.constant.property.value.css
+
+  content-position:
+    - match: '(?x)
+        \b(?:
+          start|
+          right|
+          left|
+          flex-start|
+          flex-end|
+          end|
+          center
+        )\b'
+      scope: support.constant.property.value.css
 
   end-func:
     - match: \)
@@ -117,7 +145,9 @@ contexts:
       pop: true
 
   end-value:
-    - match: ';|(?=\})'
+    # end on } if this is the last property-value pair in the block.
+    # end on ) if we're inside an @supports condition.
+    - match: ';|(?=[})])'
       scope: punctuation.terminator.rule.css
       pop: true
 
@@ -435,6 +465,10 @@ contexts:
     - match: '{{number}}'
       scope: constant.numeric.css
 
+  overflow-position:
+    - match: '\b(?:un)?safe\b'
+      scope: support.constant.property.value.css
+
   percentage:
     - include: func-calc
     - match: '(?x)
@@ -447,6 +481,103 @@ contexts:
         2: keyword.other.unit.css
         3: constant.numeric.css
 
+  properties:
+    # TODO: add rules for matching property/value pairs here
+    - include: property-deprecated
+    # TODO: sort properties in reverse alphabetical order
+    - include: property-align-content
+    - include: property-align-items
+    # - include: property-custom
+
+  # align-content is defined in two specs:
+  #     CSS Box Alignment Module Level 3
+  #     CSS Flexible Box Layout Module Level 1 (subset of Box Alignment Level 3)
+  property-align-content:
+    - match: \b(align-content)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - match: \bnormal\b
+          scope: support.constant.property-value.css
+        - include: baseline-position
+        - include: content-distribution
+        - include: overflow-position
+        - include: content-position
+
+  # align-items is defined in two specs:
+  #     CSS Box Alignment Module Level 3
+  #     CSS Flexible Box Layout Module Level 1 (subset of Box Alignment Level 3)
+  property-align-items:
+    - match: \b(align-items)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - match: \b(?:stretch|normal)\b
+          scope: support.constant.property-value.css
+        - include: baseline-position
+        - include: overflow-position
+        - include: self-position
+
+  # align-self is defined in two specs:
+  #     CSS Box Alignment Module Level 3
+  #     CSS Flexible Box Layout Module Level 1 (subset of Box Alignment Level 3)
+  property-align-self:
+    - match: \b(align-self)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - match: \b(?:stretch|normal|auto)\b
+          scope: support.constant.property-value.css
+        - include: baseline-position
+        - include: overflow-position
+        - include: self-position
+
+
+  # TODO: write this
+  # property-custom:
+
+
+  property-deprecated:
+    - match: '(?x)
+        {{optional_vendor_prefix}}
+        (?:
+          user-select|
+          user-modify|
+          user-input|
+          user-focus|
+          text-kashida-space|
+          progress-appearance|
+          nav-index|
+          layout-flow|
+          interpolation-mode|
+          ime-mode|
+          icon|
+          font-smooth|
+          clip|
+          box-reflect|
+          box-pack|
+          box-orient|
+          box-ordinal-group|
+          box-lines|
+          box-flex-group|
+          box-flex|
+          box-direction|
+          box-align|
+          block-progression|
+          binding|
+          behavior|
+          appearance|
+          accelerator
+        )\b
+        {{not_followed_by_dash}}'  # won't match clip-path, for example
+      scope: support.constant.property-name.css invalid.deprecated.css
+
   # property-list matches a block of property-value pairs.
   # {
   #     property1: value1;
@@ -457,10 +588,11 @@ contexts:
       scope: punctuation.section.property-list.begin.css
       push:
         # - meta_scope: invalid.deprecated.css # DEBUG
+        - meta_content_scope: meta.property-list.css
         - match: '}'
           scope: punctuation.section.property-list.end.css
           pop: true
-        # TODO: add rules for matching property/value pairs here
+        - include: properties
 
   prototype:
     - include: comment
@@ -833,6 +965,21 @@ contexts:
         )\b
       (?!-)'
       scope: entity.name.tag.css invalid.deprecated.css
+
+  self-position:
+    - match: '(?x)
+        \b(?:
+          start|
+          self-start|
+          self-end|
+          right|
+          left|
+          flex-start|
+          flex-end|
+          end|
+          center
+        )\b'
+      scope: support.constant.property.value.css
 
   stray-paren:
     - match: \)
