@@ -5,13 +5,13 @@
 @media (max-width: 600px) {
 /* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
  /* <- source.css keyword.control.at-rule.media.css */
-/*   ^ source.css keyword.control.at-rule.media.css */
-/*    ^ source.css */
+/*^^^^ source.css keyword.control.at-rule.media.css */
+/*    ^ source.css -keyword.control.at-rule.media.css */
 /*     ^ source.css punctuation.section.media-feature.begin.css */
-/*      ^ source.css support.constant.property-name.css */
+/*      ^^^^^^^^^ source.css support.constant.property-name.css */
 /*               ^ source.css punctuation.separator.key-value.css */
-/*                 ^ source.css constant.numeric.css */
-/*                    ^ source.css keyword.other.unit.css */
+/*                 ^^^ source.css constant.numeric.css */
+/*                    ^^ source.css keyword.other.unit.css */
 /*                      ^ source.css punctuation.section.media-feature.end.css */
 /*                        ^ source.css punctuation.section.media-query.begin.css */
   .facet_sidebar {
@@ -24,102 +24,108 @@
 /* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
  /* <- source.css keyword.control.at-rule.media.css */
 /*   ^ source.css keyword.control.at-rule.media.css */
-/*    ^ source.css */
+/*    ^ source.css -keyword.control.at-rule.media.css */
 /*     ^ source.css punctuation.section.media-feature.begin.css */
-/*      ^ source.css support.constant.property-name.css */
+/*      ^^^^^^^^^ source.css support.constant.property-name.css */
 /*               ^ source.css punctuation.separator.key-value.css */
-/*                 ^ source.css constant.numeric.css */
-/*                    ^ source.css keyword.other.unit.css */
+/*                 ^^^ source.css constant.numeric.css */
+/*                    ^^ source.css keyword.other.unit.css */
 /*                      ^ source.css punctuation.section.media-feature.end.css */
-/*                        ^ source.css keyword.operator.logic.media.css */
+/*                        ^^^ source.css keyword.operator.logic.media.css */
 /*                            ^ source.css punctuation.section.media-feature.begin.css */
-/*                             ^ source.css support.constant.property-name.css */
+/*                             ^^^^^^^^^^^ source.css support.constant.property-name.css */
 /*                                        ^ source.css punctuation.separator.key-value.css */
-/*                                          ^ source.css support.constant.property-value.css */
+/*                                          ^^^^^^^^^ source.css support.constant.property-value.css */
 /*                                                   ^ source.css punctuation.section.media-feature.end.css */
 
 @media tv and (min-width: 700px) and (orientation: landscape) {}
 /* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
  /* <- source.css keyword.control.at-rule.media.css */
 /*   ^ source.css keyword.control.at-rule.media.css */
-/*     ^ source.css support.constant.media.css invalid.deprecated.css */
-/*        ^ source.css keyword.operator.logic.media.css */
+/*    ^ source.css -keyword.control.at-rule.media.css */
+/*     ^^ source.css support.constant.media.css invalid.deprecated.css */
+/*        ^^^ source.css keyword.operator.logic.media.css */
 /*            ^ source.css punctuation.section.media-feature.begin.css */
-/*             ^ source.css support.constant.property-name.css */
+/*             ^^^^^^^^^ source.css support.constant.property-name.css */
 /*                      ^ source.css punctuation.separator.key-value.css */
-/*                        ^ source.css constant.numeric.css */
-/*                           ^ source.css keyword.other.unit.css */
+/*                        ^^^ source.css constant.numeric.css */
+/*                           ^^ source.css keyword.other.unit.css */
 /*                             ^ source.css punctuation.section.media-feature.end.css */
-/*                               ^ source.css keyword.operator.logic.media.css */
+/*                               ^^^ source.css keyword.operator.logic.media.css */
 /*                                   ^ source.css punctuation.section.media-feature.begin.css */
-/*                                    ^ source.css support.constant.property-name.css */
+/*                                    ^^^^^^^^^^^ source.css support.constant.property-name.css */
 /*                                               ^ source.css punctuation.separator.key-value.css */
-/*                                                 ^ source.css support.constant.property-value.css */
+/*                                                 ^^^^^^^^^ source.css support.constant.property-value.css */
 /*                                                          ^ source.css punctuation.section.media-feature.end.css */
 
 @media (min-width: 700px), handheld and (orientation: landscape) {}
 /* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
  /* <- source.css keyword.control.at-rule.media.css */
 /*   ^ source.css keyword.control.at-rule.media.css */
+/*    ^ source.css -keyword.control.at-rule.media.css */
 /*     ^ source.css punctuation.section.media-feature.begin.css */
-/*      ^ source.css support.constant.property-name.css */
+/*      ^^^^^^^^^ source.css support.constant.property-name.css */
 /*               ^ source.css punctuation.separator.key-value.css */
-/*                 ^ source.css constant.numeric.css */
-/*                    ^ source.css keyword.other.unit.css */
+/*                 ^^^ source.css constant.numeric.css */
+/*                    ^^ source.css keyword.other.unit.css */
 /*                      ^ source.css punctuation.section.media-feature.end.css */
-/*                         ^ source.css support.constant.media.css invalid.deprecated.css */
-/*                                  ^ source.css keyword.operator.logic.media.css */
+/*                         ^^^^^^^^ source.css support.constant.media.css invalid.deprecated.css */
+/*                                  ^^^ source.css keyword.operator.logic.media.css */
 /*                                      ^ source.css punctuation.section.media-feature.begin.css */
-/*                                       ^ source.css support.constant.property-name.css */
+/*                                       ^^^^^^^^^^^ source.css support.constant.property-name.css */
 /*                                                  ^ source.css punctuation.separator.key-value.css */
-/*                                                    ^ source.css support.constant.property-value.css */
+/*                                                    ^^^^^^^^^ source.css support.constant.property-value.css */
 /*                                                             ^ source.css punctuation.section.media-feature.end.css */
 
 @media not all and (monochrome) {}
 /* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
  /* <- source.css keyword.control.at-rule.media.css */
 /*   ^ source.css keyword.control.at-rule.media.css */
-/*     ^ source.css keyword.operator.logic.media.css */
-/*         ^ source.css support.constant.media.css */
-/*             ^ source.css keyword.operator.logic.media.css */
+/*    ^ source.css -keyword.control.at-rule.media.css */
+/*     ^^^ source.css keyword.operator.logic.media.css */
+/*         ^^^ source.css support.constant.media.css */
+/*             ^^^ source.css keyword.operator.logic.media.css */
 /*                 ^ source.css punctuation.section.media-feature.begin.css */
-/*                  ^ source.css support.constant.property-name.css */
+/*                  ^^^^^^^^^^ source.css support.constant.property-name.css */
 /*                            ^ source.css punctuation.section.media-feature.end.css */
 
 @media not screen and (color), print and (color) {}
 /* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
  /* <- source.css keyword.control.at-rule.media.css */
 /*   ^ source.css keyword.control.at-rule.media.css */
-/*     ^ source.css keyword.operator.logic.media.css */
-/*         ^ source.css support.constant.media.css */
-/*                ^ source.css keyword.operator.logic.media.css */
+/*    ^ source.css -keyword.control.at-rule.media.css */
+/*     ^^^ source.css keyword.operator.logic.media.css */
+/*         ^^^^^^ source.css support.constant.media.css */
+/*                ^^^ source.css keyword.operator.logic.media.css */
 /*                    ^ source.css punctuation.section.media-feature.begin.css */
-/*                     ^ source.css support.constant.property-name.css */
+/*                     ^^^^^ source.css support.constant.property-name.css */
 /*                          ^ source.css punctuation.section.media-feature.end.css */
-/*                             ^ source.css support.constant.media.css */
-/*                                   ^ source.css keyword.operator.logic.media.css */
+/*                             ^^^^^ source.css support.constant.media.css */
+/*                                   ^^^ source.css keyword.operator.logic.media.css */
 /*                                       ^ source.css punctuation.section.media-feature.begin.css */
-/*                                        ^ source.css support.constant.property-name.css */
+/*                                        ^^^^^ source.css support.constant.property-name.css */
 /*                                             ^ source.css punctuation.section.media-feature.end.css */
 
 @media all and (color) {}
 /* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
  /* <- source.css keyword.control.at-rule.media.css */
 /*   ^ source.css keyword.control.at-rule.media.css */
-/*     ^ source.css support.constant.media.css */
-/*         ^ source.css keyword.operator.logic.media.css */
+/*    ^ source.css -keyword.control.at-rule.media.css */
+/*     ^^^ source.css support.constant.media.css */
+/*         ^^^ source.css keyword.operator.logic.media.css */
 /*             ^ source.css punctuation.section.media-feature.begin.css */
-/*              ^ source.css support.constant.property-name.css */
+/*              ^^^^^ source.css support.constant.property-name.css */
 /*                   ^ source.css punctuation.section.media-feature.end.css */
 
 @media all and (min-color: 4) {}
 /* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
  /* <- source.css keyword.control.at-rule.media.css */
 /*   ^ source.css keyword.control.at-rule.media.css */
-/*     ^ source.css support.constant.media.css */
-/*         ^ source.css keyword.operator.logic.media.css */
+/*    ^ source.css -keyword.control.at-rule.media.css */
+/*     ^^^ source.css support.constant.media.css */
+/*         ^^^ source.css keyword.operator.logic.media.css */
 /*             ^ source.css punctuation.section.media-feature.begin.css */
-/*              ^ source.css support.constant.property-name.css */
+/*              ^^^^^^^^^ source.css support.constant.property-name.css */
 /*                       ^ source.css punctuation.separator.key-value.css */
 /*                         ^ constant.numeric.css
 /*                          ^ source.css punctuation.section.media-feature.end.css */
@@ -128,20 +134,22 @@
 /* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
  /* <- source.css keyword.control.at-rule.media.css */
 /*   ^ source.css keyword.control.at-rule.media.css */
-/*     ^ source.css support.constant.media.css */
-/*         ^ source.css keyword.operator.logic.media.css */
+/*    ^ source.css -keyword.control.at-rule.media.css */
+/*     ^^^ source.css support.constant.media.css */
+/*         ^^^ source.css keyword.operator.logic.media.css */
 /*             ^ source.css punctuation.section.media-feature.begin.css */
-/*              ^ source.css support.constant.property-name.css */
+/*              ^^^^^^^^^^^ source.css support.constant.property-name.css */
 /*                         ^ source.css punctuation.section.media-feature.end.css */
 
 @media screen and (min-aspect-ratio: 1/1) {}
 /* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
  /* <- source.css keyword.control.at-rule.media.css */
 /*   ^ source.css keyword.control.at-rule.media.css */
-/*     ^ source.css support.constant.media.css */
-/*            ^ source.css keyword.operator.logic.media.css */
+/*    ^ source.css -keyword.control.at-rule.media.css */
+/*     ^^^^^^ source.css support.constant.media.css */
+/*            ^^^ source.css keyword.operator.logic.media.css */
 /*                ^ source.css punctuation.section.media-feature.begin.css */
-/*                 ^ source.css support.constant.property-name.css */
+/*                 ^^^^^^^^^^^^^^^^ source.css support.constant.property-name.css */
 /*                                 ^ source.css punctuation.separator.key-value.css */
 /*                                   ^ source.css constant.numeric.css
 /*                                    ^ source.css keyword.operator.arithmetic.css
@@ -149,27 +157,193 @@
 /*                                      ^ source.css punctuation.section.media-feature.end.css */
 
 @media screen and (device-aspect-ratio: 16/9), screen and (device-aspect-ratio: 16/10) {}
+/* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
+ /* <- source.css keyword.control.at-rule.media.css */
+/*   ^ source.css keyword.control.at-rule.media.css */
+/*    ^ source.css -keyword.control.at-rule.media.css */
+/*     ^^^^^^ source.css support.constant.media.css */
+/*            ^^^ source.css keyword.operator.logic.media.css */
+/*                ^ source.css punctuation.section.media-feature.begin.css */
+/*                 ^^^^^^^^^^^^^^^^^^^ source.css support.constant.property-name.css invalid.deprecated.css */
+/*                                    ^ source.css punctuation.separator.key-value.css */
+/*                                      ^^ source.css constant.numeric.css
+/*                                        ^ source.css keyword.operator.arithmetic.css
+/*                                         ^ source.css constant.numeric.css
+/*                                          ^ source.css punctuation.section.media-feature.end.css */
+/*                                             ^^^^^^ source.css support.constant.media.css */
+/*                                                    ^^^ source.css keyword.operator.logic.media.css */
+/*                                                        ^ source.css punctuation.section.media-feature.begin.css */
+/*                                                         ^^^^^^^^^^^^^^^^^^^ source.css support.constant.property-name.css invalid.deprecated.css */
+/*                                                                            ^ source.css punctuation.separator.key-value.css */
+/*                                                                              ^^ source.css constant.numeric.css
+/*                                                                                ^ source.css keyword.operator.arithmetic.css
+/*                                                                                 ^^ source.css constant.numeric.css
+/*                                                                                   ^ source.css punctuation.section.media-feature.end.css */
 
 @media screen and (max-device-height: 799px) {}
-
-@media screen and (max-device-width: 799px) {}
+/* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
+ /* <- source.css keyword.control.at-rule.media.css */
+/*   ^ source.css keyword.control.at-rule.media.css */
+/*    ^ source.css -keyword.control.at-rule.media.css */
+/*     ^^^^^^ source.css support.constant.media.css */
+/*            ^^^ source.css keyword.operator.logic.media.css */
+/*                ^ source.css punctuation.section.media-feature.begin.css */
+/*                 ^^^^^^^^^^^^^^^^^ source.css support.constant.property-name.css invalid.deprecated.css */
+/*                                  ^ source.css punctuation.separator.key-value.css */
+/*                                    ^^^ source.css constant.numeric.css
+/*                                       ^^ source.css keyword.other.unit.css */
+/*                                         ^ source.css punctuation.section.media-feature.end.css */
 
 @media handheld and (grid) and (max-width: 15em) {}
+/* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
+ /* <- source.css keyword.control.at-rule.media.css */
+/*   ^ source.css keyword.control.at-rule.media.css */
+/*    ^ source.css -keyword.control.at-rule.media.css */
+/*     ^^^^^^^^ source.css support.constant.media.css invalid.deprecated.css */
+/*              ^^^ source.css keyword.operator.logic.media.css */
+/*                  ^ source.css punctuation.section.media-feature.begin.css */
+/*                   ^^^^ source.css support.constant.property-name.css */
+/*                       ^ source.css punctuation.section.media-feature.end.css */
+/*                         ^^^ source.css keyword.operator.logic.media.css */
+/*                             ^ source.css punctuation.section.media-feature.begin.css */
+/*                              ^^^^^^^^^ source.css support.constant.property-name.css */
+/*                                       ^ source.css punctuation.separator.key-value.css */
+/*                                         ^^ source.css constant.numeric.css
+/*                                           ^^ source.css keyword.other.unit.css */
+/*                                             ^ source.css punctuation.section.media-feature.end.css */
 
 @media all and (monochrome) {}
+/* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
+ /* <- source.css keyword.control.at-rule.media.css */
+/*   ^ source.css keyword.control.at-rule.media.css */
+/*    ^ source.css -keyword.control.at-rule.media.css */
+/*     ^^^ source.css support.constant.media.css */
+/*         ^^^ source.css keyword.operator.logic.media.css */
+/*             ^ source.css punctuation.section.media-feature.begin.css */
+/*              ^^^^^^^^^^ source.css support.constant.property-name.css */
+/*                        ^ source.css punctuation.section.media-feature.end.css */
 
 @media all and (min-monochrome: 8) {}
+/* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
+ /* <- source.css keyword.control.at-rule.media.css */
+/*   ^ source.css keyword.control.at-rule.media.css */
+/*    ^ source.css -keyword.control.at-rule.media.css */
+/*     ^^^ source.css support.constant.media.css */
+/*         ^^^ source.css keyword.operator.logic.media.css */
+/*             ^ source.css punctuation.section.media-feature.begin.css */
+/*              ^^^^^^^^^^^^^^ source.css support.constant.property-name.css */
+/*                            ^ source.css punctuation.separator.key-value.css */
+/*                              ^ source.css constant.numeric.css
+/*                               ^ source.css punctuation.section.media-feature.end.css */
 
 @media all and (orientation: portrait) {}
+/* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
+ /* <- source.css keyword.control.at-rule.media.css */
+/*   ^ source.css keyword.control.at-rule.media.css */
+/*    ^ source.css -keyword.control.at-rule.media.css */
+/*     ^^^ source.css support.constant.media.css */
+/*         ^^^ source.css keyword.operator.logic.media.css */
+/*             ^ source.css punctuation.section.media-feature.begin.css */
+/*              ^^^^^^^^^^^ source.css support.constant.property-name.css */
+/*                         ^ source.css punctuation.separator.key-value.css */
+/*                           ^^^^^^^^ source.css support.constant.property-value.css */
+/*                                   ^ source.css punctuation.section.media-feature.end.css */
 
 @media print and (min-resolution: 300dpi) {}
+/* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
+ /* <- source.css keyword.control.at-rule.media.css */
+/*   ^ source.css keyword.control.at-rule.media.css */
+/*    ^ source.css -keyword.control.at-rule.media.css */
+/*     ^^^^^ source.css support.constant.media.css */
+/*           ^^^ source.css keyword.operator.logic.media.css */
+/*               ^ source.css punctuation.section.media-feature.begin.css */
+/*                ^^^^^^^^^^^^^^ source.css support.constant.property-name.css */
+/*                              ^ source.css punctuation.separator.key-value.css */
+/*                                ^^^ source.css constant.numeric.css
+/*                                   ^^^ source.css keyword.other.unit.css */
+/*                                      ^ source.css punctuation.section.media-feature.end.css */
 
 @media screen and (min-resolution: 2dppx) {}
+/* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
+ /* <- source.css keyword.control.at-rule.media.css */
+/*   ^ source.css keyword.control.at-rule.media.css */
+/*    ^ source.css -keyword.control.at-rule.media.css */
+/*     ^^^^^^ source.css support.constant.media.css */
+/*            ^^^ source.css keyword.operator.logic.media.css */
+/*                ^ source.css punctuation.section.media-feature.begin.css */
+/*                 ^^^^^^^^^^^^^^ source.css support.constant.property-name.css */
+/*                               ^ source.css punctuation.separator.key-value.css */
+/*                                 ^ source.css constant.numeric.css
+/*                                  ^^^^ source.css keyword.other.unit.css */
+/*                                      ^ source.css punctuation.section.media-feature.end.css */
 
 @media tv and (scan: progressive) {}
+/* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
+ /* <- source.css keyword.control.at-rule.media.css */
+/*   ^ source.css keyword.control.at-rule.media.css */
+/*    ^ source.css -keyword.control.at-rule.media.css */
+/*     ^^ source.css support.constant.media.css invalid.deprecated.css */
+/*        ^^^ source.css keyword.operator.logic.media.css */
+/*            ^ source.css punctuation.section.media-feature.begin.css */
+/*             ^^^^ source.css support.constant.property-name.css */
+/*                 ^ source.css punctuation.separator.key-value.css */
+/*                   ^^^^^^^^^^^ source.css support.constant.property-value.css */
+/*                              ^ source.css punctuation.section.media-feature.end.css */
 
 @media handheld and (min-width: 20em), screen and (min-width: 20em) {}
+/* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
+ /* <- source.css keyword.control.at-rule.media.css */
+/*   ^ source.css keyword.control.at-rule.media.css */
+/*    ^ source.css -keyword.control.at-rule.media.css */
+/*     ^^^^^^^^ source.css support.constant.media.css invalid.deprecated.css */
+/*              ^^^ source.css keyword.operator.logic.media.css */
+/*                  ^ source.css punctuation.section.media-feature.begin.css */
+/*                   ^^^^^^^^^ source.css support.constant.property-name.css */
+/*                            ^ source.css punctuation.separator.key-value.css */
+/*                              ^^ source.css constant.numeric.css
+/*                                ^^ source.css keyword.other.unit.css */
+/*                                  ^ source.css punctuation.section.media-feature.end.css */
+/*                                     ^^^^^^ source.css support.constant.media.css */
+/*                                            ^^^ source.css keyword.operator.logic.media.css */
+/*                                                ^ source.css punctuation.section.media-feature.begin.css */
+/*                                                  ^^^^^^^^ source.css support.constant.property-name.css */
+/*                                                          ^ source.css punctuation.separator.key-value.css */
+/*                                                            ^^ source.css constant.numeric.css
+/*                                                              ^^ source.css keyword.other.unit.css */
+/*                                                                ^ source.css punctuation.section.media-feature.end.css */
+
 
 @media print and (min-width: 8.5in) {}
+/* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
+ /* <- source.css keyword.control.at-rule.media.css */
+/*   ^ source.css keyword.control.at-rule.media.css */
+/*    ^ source.css -keyword.control.at-rule.media.css */
+/*     ^^^^^ source.css support.constant.media.css */
+/*           ^^^ source.css keyword.operator.logic.media.css */
+/*               ^ source.css punctuation.section.media-feature.begin.css */
+/*                ^^^^^^^^^ source.css support.constant.property-name.css */
+/*                         ^ source.css punctuation.separator.key-value.css */
+/*                           ^^^ source.css constant.numeric.css
+/*                              ^^ source.css keyword.other.unit.css */
+/*                                ^ source.css punctuation.section.media-feature.end.css */
 
 @media screen and (min-width: 500px) and (max-width: 800px) {}
+/* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
+ /* <- source.css keyword.control.at-rule.media.css */
+/*   ^ source.css keyword.control.at-rule.media.css */
+/*    ^ source.css -keyword.control.at-rule.media.css */
+/*     ^^^^^^ source.css support.constant.media.css */
+/*            ^^^ source.css keyword.operator.logic.media.css */
+/*                ^ source.css punctuation.section.media-feature.begin.css */
+/*                 ^^^^^^^^^ source.css support.constant.property-name.css */
+/*                          ^ source.css punctuation.separator.key-value.css */
+/*                            ^^^ source.css constant.numeric.css
+/*                               ^^ source.css keyword.other.unit.css */
+/*                                 ^ source.css punctuation.section.media-feature.end.css */
+/*                                   ^^^ source.css keyword.operator.logic.media.css */
+/*                                       ^ source.css punctuation.section.media-feature.begin.css */
+/*                                        ^^^^^^^^^ source.css support.constant.property-name.css */
+/*                                                 ^ source.css punctuation.separator.key-value.css */
+/*                                                   ^^^ source.css constant.numeric.css
+/*                                                      ^^ source.css keyword.other.unit.css */
+/*                                                        ^ source.css punctuation.section.media-feature.end.css */
