@@ -68,6 +68,7 @@ contexts:
   an_plus_b:
     - match: 'odd|even|{{an_plus_b}}'
       scope: constant.other.an-plus-b.css
+    - include: integer
 
   arithmetic-operator:
     - match: '{{arithmetic_operator}}'
