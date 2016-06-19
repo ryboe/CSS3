@@ -507,12 +507,14 @@ contexts:
         3: constant.numeric.css
 
   properties:
-    # TODO: add rules for matching property/value pairs here
     - include: property-deprecated
     # TODO: sort properties in reverse alphabetical order
     - include: property-align-content
     - include: property-align-items
-    # - include: property-custom
+    - include: property-alignment-baseline
+
+    # TODO: add rules for matching property/value pairs here
+    - include: property-custom
 
   # align-content is defined in two specs:
   #     CSS Box Alignment Module Level 3
@@ -563,9 +565,41 @@ contexts:
         - include: overflow-position
         - include: self-position
 
+  # CSS Inline Layout Module Level 3
+  property-alignment-baseline:
+    - match: \b(alignment-baseline)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - match: '(?x)
+            {{bs}}
+            (?>
+              top|
+              text-top|
+              text-bottom|
+              middle|
+              mathematical|
+              ideographic|
+              central|
+              center|
+              bottom|
+              baseline|
+              alphabetic
+            )
+            {{be}}'
+          scope: support.constant.property.value.CSS3
 
-  # TODO: write this
-  # property-custom:
+  # TODO: finish this
+  property-custom:
+    - match: '(--{{identifier}})\s*(:)'
+      captures:
+        1: support.constant.property-name.custom.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        # - include: any-value  # TODO: write this when all values are complete
 
 
   property-deprecated:
@@ -655,18 +689,22 @@ contexts:
 
   selector-attribute:
     - match: '\['
-      scope: punctuation.section.attribute.css
+      scope: punctuation.section.attribute-selector.css
       push:
+        - meta_scope: meta.attribute-selector.css
         - match: '\]'
-          scope: punctuation.section.attribute.css
+          scope: punctuation.section.attribute-selector.css
           pop: true
         - include: string
         - match: '{{attr_matcher}}'
-          scope: keyword.operator.attribute.css
-        - match: \bi\b
+          scope: keyword.operator.attribute-selector.css
+        - match: "{{bs}}i{{be}}"
           scope: support.constant.attr-modifier.css
         - match: '(?<=\[)\s*{{wq_name}}\s*(?=[~^$*=|\]])'
-          scope: string.unquoted.attribute-value.css
+          scope: string.unquoted.attribute-name.css
+        - match: '(?<=\=)\s*({{identifier}})'
+          captures:
+            1: string.unquoted.attribute-value.css
 
   selector-class:
     - match: '(\.){{identifier}}'
@@ -913,7 +951,31 @@ contexts:
         0: entity.other.attribute-name.pseudo-element.css
         1: punctuation.definition.entity.css
     - include: selector-pseudo-element-slotted
+    - include: selector-pseudo-element-attr
     - include: selector-pseudo-element-invalid
+
+  selector-pseudo-element-attr:
+    - match: '((::)attr)(\()'
+      captures:
+        1: entity.other.attribute-name.pseudo-element.css
+        2: punctuation.definition.entity.css
+        3: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.pseudo-element.attr.css
+        - include: end-func
+        # The <wq-name> pattern is close enough to the <namespace-attr> pattern
+        # defined in Non-element Selectors Module Level 1.
+        # https://drafts.csswg.org/selectors-nonelement/#attribute-node-selectors
+        - match: '{{wq_name}}'
+          captures:
+            1: string.unquoted.namespace.css
+            2: string.unquoted.namespace.widlcard.css
+            3: punctuation.separator.namespace.css
+            4: entity.name.tag.css
+            5: entity.name.tag.wildcard.css
+
+    - include: stray-paren
+
 
   # Match selector text that starts with "::" but isn't on the list of valid
   # pseudo-elements. This prevents the text from being mistakenly matched by
@@ -961,6 +1023,10 @@ contexts:
         3: punctuation.separator.namespace.css
         4: entity.name.tag.css
         5: entity.name.tag.wildcard.css
+        6: string.unquoted.namespace.css
+        7: string.unquoted.namespace.wildcard.css
+        8: punctuation.separator.namespace.css
+        9: entity.name.tag.wildcard.css
 
   selector-type-deprecated:
     - match: '(?x)
