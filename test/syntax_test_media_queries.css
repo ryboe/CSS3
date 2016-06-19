@@ -219,6 +219,14 @@
 /*                         ^^ source.css keyword.other.unit.css */
 /*                           ^ source.css punctuation.section.media-feature.end.css */
 
+@media (min-device-height > 480px) {}
+/*     ^ source.css punctuation.section.media-feature.begin.css */
+/*      ^^^^^^^^^^^^^^^^^ source.css support.constant.property-name.css invalid.deprecated.css */
+/*                        ^ source.css keyword.operator.arithmetic.css */
+/*                          ^^^ source.css constant.numeric.css */
+/*                             ^^ source.css keyword.other.unit.css */
+/*                               ^ source.css punctuation.section.media-feature.end.css */
+
 
 /* TEST MEDIA FEATURES WITH A BOOLEAN CONTEXT */
 @media (any-hover) {}
