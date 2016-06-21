@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
     <key>name</key>
@@ -13,8 +12,6 @@
         <key>symbolTransformation</key>
         <string>s/^\s*/CSS3: /; s/\s+/ /g</string>
     </dict>
-    <key>uuid</key>
-    <string>F2ADEC99-6167-4A50-9E26-18824A40B8D9</string>
 </dict>
 <dict>
     <key>scope</key>
