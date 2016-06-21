@@ -5,16 +5,13 @@ file_extensions: [css, css.erb]
 scope: source.css
 
 variables:
-  an_plus_b: '(?<!\w)[+-]?\d*n(?:\s*[+-]\s*\d+)?'
+  an_plus_b: '[+-]?\d*n(?:\s*[+-]\s*\d+)?'
   angle_unit: turn|grad|rad|deg
   arithmetic_operator: '[-+*/]'
   attr_matcher: '[~^$*|]?='
   # \b word boundaries are not enough to prevent some mismatches, like "clip\b"
-  # matching "clip-path". adding negative lookaround for dashes fixes this.
-  #     bs = boundary start
-  #     be = boundary end
-  be: '\b{{not_followed_by_dash}}'
-  bs: '{{not_preceded_by_dash}}\b'
+  # matching "clip-path". adding negative lookahead for dashes fixes this.
+  b: '\b{{not_followed_by_dash}}'
   column: '\|\|'
   combinator: '(?:{{column}}|>{1,3}|[+~])'
   escape: '\\(?:[^\n\r\f\h]|\h{1,6}{{whitespace}}?)'
@@ -29,11 +26,11 @@ variables:
   integer_zero_to_255: '\b(?:2[0-5][0-5]|1\d\d|[1-9]\d|\d)\b'
   length_unit: r?em|ex|ch|vw|vh|vmin|vmax|cm|mm|q|in|pc|pt|px
   not_followed_by_dash: '(?!-)'
-  not_preceded_by_dash: '(?<!-)'
   ns_prefix: '(?:{{identifier}}|(\*))?(\|)'
   number: '[+-]?(?:\d+\.\d+|\.\d+|\d+)(?:{{exponent}})?'
   number_non_neg: '\+?(?:\d+\.\d+|\.\d+|\d+)(?:{{exponent}})?'
   number_pos: '\+?(?:\d+\.\d*[1-9]\d*|\.\d*[1-9]\d*|[1-9]\d*)(?:{{exponent}})?'
+  number_zero_to_one: '\+?(?:0?\.\d+|0|1|)'  # TODO: fix this
   optional_min_max_prefix: '\b(?:min-|max-)?'
   optional_vendor_prefix: '(?:-webkit-|-ms-|-moz-)?'
   percentage_unit: '%'
@@ -86,7 +83,7 @@ contexts:
   #        |---media-features-etc----||--------nested scope-----------|
   # @media stuff-before-opening-curly { selector { property: value; } }
   at-media:
-    - match: (@)media\b
+    - match: '(@)media{{b}}'
       captures:
         0: keyword.control.at-rule.media.css
         1: punctuation.definition.keyword.css
@@ -96,20 +93,20 @@ contexts:
         push:
           - include: at-media
           - include: rule
-          # only match closing curly after nested scopes have had a chance to
-          # match
-          - match: '}'
-            scope: punctuation.section.media-query.end.css
+          # Only match the closing curly after nested scopes have had a chance
+          # to match.
+          - match: '(?=})'
             pop: true
-      - match: \band\b
+      - match: '\band{{b}}'
         scope: keyword.operator.logic.media.css
       - include: media-feature
       - include: media-type
-      - match: '(?<=})'
+      - match: '}'
+        scope: punctuation.section.media-query.end.css
         pop: true
 
   baseline-position:
-    - match: \b(?:last-)?baseline\b
+    - match: '\b(?:last-)?baseline{{b}}'
       scope: support.constant.property-value.css
 
   comment:
@@ -121,21 +118,20 @@ contexts:
 
   content-distribution:
     - match: '(?x)
-        {{bs}}
-        (?>
+        \b
+        (?:
           stretch|
           space-evenly|
           space-between|
           space-around
         )
-        {{be}}'
+        {{b}}'
       scope: support.constant.property.value.css
 
   content-position:
     - match: '(?x)
-        {{bs}}
-        flex-start
-        (?>
+        \b
+        (?:
           start|
           right|
           left|
@@ -144,7 +140,7 @@ contexts:
           end|
           center
         )
-        {{be}}'
+        {{b}}'
       scope: support.constant.property.value.css
 
   end-func:
@@ -194,6 +190,30 @@ contexts:
         - include: number
         - include: arithmetic-operator
 
+  func-cubic-bezier:
+    - match: \b(cubic-bezier)(\()
+      captures:
+        1: support.function.cubic-bezier.css
+        2: punctuation.section.function.begin.css
+      push:
+        - include: end-func
+        - include: number-zero-to-one
+
+
+  func-steps:
+    - match: \b(steps)(\()
+      captures:
+        1: support.function.steps.css
+        2: punctuation.section.function.begin.css
+      push:
+        - include: end-func
+        - match: '\b(?:start|end){{b}}'
+        - include: integer-positive
+
+  identifier:
+    - match: '{{identifier}}'
+      scope: string.unquoted.identifier.css
+
   integer:
     - include: func-calc
     - match: '{{integer}}'
@@ -202,6 +222,11 @@ contexts:
   integer-non-negative:
     - include: func-calc
     - match: '{{integer_non_neg}}'
+      scope: constant.numeric.css
+
+  integer-positive:
+    - include: func-calc
+    - match: '{{integer_pos}}'
       scope: constant.numeric.css
 
   length:
@@ -299,7 +324,7 @@ contexts:
     - match: '(?x)
         (
           {{optional_min_max_prefix}}
-          device\-(?>width|height|aspect-ratio)
+          device\-(?:width|height|aspect-ratio)
         )
         \s*(:)?'
       captures:
@@ -323,7 +348,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-media-feature
-        - match: \b(?:on-demand|none|hover)\b
+        - match: '\b(?:on-demand|none|hover){{b}}'
           scope: support.constant.property-value.css
 
   media-feature-inverted-colors:
@@ -333,7 +358,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-media-feature
-        - match: \b(?:none|inverted)\b
+        - match: '\b(?:none|inverted){{b}}'
           scope: support.constant.property-value.css
 
   media-feature-light-level:
@@ -353,9 +378,9 @@ contexts:
         \b
         (
           {{optional_min_max_prefix}}
-          (?>monochrome|color-index|color)
+          (?:monochrome|color-index|color)
         )\s*(:)?
-        {{not_followed_by_dash}}' # {{be}} won't work because ':' isn't a word boundary
+        {{not_followed_by_dash}}' # {{b}} won't work because ':' isn't a word boundary
       captures:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
@@ -365,15 +390,13 @@ contexts:
         - include: media-feature-range-operator
 
   media-feature-orientation:
-    # Use \b instead of {{bs}} for properties/media features because it might be
-    # vendor prefixed.
     - match: \b(orientation)\s*(:)
       captures:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - include: end-media-feature
-        - match: '{{bs}}(?:portrait|landscape){{be}}'
+        - match: '\b(?:portrait|landscape){{b}}'
           scope: support.constant.property-value.css
 
   media-feature-overflow-block:
@@ -383,7 +406,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-media-feature
-        - match: '{{bs}}(?>scroll|paged|optional-paged|none){{be}}'
+        - match: '\b(?:scroll|paged|optional-paged|none){{b}}'
           scope: support.constant.property-value.css
 
   media-feature-overflow-inline:
@@ -393,7 +416,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-media-feature
-        - match: '{{bs}}(?>scroll|none){{be}}'
+        - match: '\b(?:scroll|none){{b}}'
           scope: support.constant.property-value.css
 
   media-feature-pointer:
@@ -403,11 +426,11 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-media-feature
-        - match: '{{bs}}(?>none|fine|coarse){{be}}'
+        - match: '\b(?:none|fine|coarse){{b}}'
           scope: support.constant.property-value.css
 
   media-feature-range-operator:
-    - match: '(?<=[\s\w])(?:[<>]=?|=)(?=[\s\w])'
+    - match: '(?:[<>]=?|=)(?=[\s\w])'
       scope: keyword.operator.arithmetic.css
 
   # e.g. (min-resolution: 300dpi)
@@ -434,7 +457,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-media-feature
-        - match: '{{bs}}(?>progressive|interlace){{be}}'
+        - match: '\b(?:progressive|interlace){{b}}'
           scope: support.constant.property-value.css
 
   media-feature-scripting:
@@ -444,7 +467,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-media-feature
-        - match: '{{bs}}(?>none|initial-only|enabled){{be}}'
+        - match: '\b(?:none|initial-only|enabled){{b}}'
           scope: support.constant.property-value.css
 
   media-feature-update:
@@ -454,7 +477,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-media-feature
-        - match: '{{bs}}(?>normal|none|slow){{be}}'
+        - match: '\b(?:normal|none|slow){{b}}'
           scope: support.constant.property-value.css
 
   # may appear as "(width: 480px)" or "(width >= 480px)"
@@ -463,7 +486,7 @@ contexts:
         \b
         (
           {{optional_min_max_prefix}}
-          (?>width|height)
+          (?:width|height)
         )\s*(:)?
         {{not_followed_by_dash}}'
       captures:
@@ -476,13 +499,13 @@ contexts:
 
   media-type:
     - include: media-type-deprecated
-    - match: (?>(only|not)\s+)?(speech|screen|print|all)
+    - match: (?:(only|not)\s+)?(speech|screen|print|all)
       captures:
         1: keyword.operator.logic.media.css
         2: support.constant.media.css
 
   media-type-deprecated:
-    - match: '{{bs}}(?>tv|tty|reader|projection|handheld|embossed|braille|aural){{be}}'
+    - match: '\b(?:tv|tty|reader|projection|handheld|embossed|braille|aural){{b}}'
       scope: support.constant.media.css invalid.deprecated.css
 
   number:
@@ -490,8 +513,12 @@ contexts:
     - match: '{{number}}'
       scope: constant.numeric.css
 
+  number-zero-to-one:
+    - match: '{{number_zero_to_one}}'
+      scope: constant.numeric.css
+
   overflow-position:
-    - match: '{{bs}}(?:un)?safe{{be}}'
+    - match: '\b(?:un)?safe{{b}}'
       scope: support.constant.property.value.css
 
   percentage:
@@ -512,6 +539,15 @@ contexts:
     - include: property-align-content
     - include: property-align-items
     - include: property-alignment-baseline
+    - include: property-all
+    - include: property-animation-delay
+    - include: property-animation-direction
+    - include: property-animation-duration
+    - include: property-animation-fill-mode
+    - include: property-animation-iteration-count
+    - include: property-animation-name
+    - include: property-animation-play-state
+    - include: property-animation-timing-function
 
     # TODO: add rules for matching property/value pairs here
     - include: property-custom
@@ -526,7 +562,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-value
-        - match: '{{bs}}normal{{be}}'
+        - match: '\bnormal{{b}}'
           scope: support.constant.property-value.css
         - include: baseline-position
         - include: content-distribution
@@ -543,7 +579,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-value
-        - match: '{{bs}}(?>stretch|normal){{be}}'
+        - match: '\b(?:stretch|normal){{b}}'
           scope: support.constant.property-value.css
         - include: baseline-position
         - include: overflow-position
@@ -559,7 +595,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-value
-        - match: '{{bs}}(?>stretch|normal|auto){{be}}'
+        - match: '\b(?:stretch|normal|auto){{b}}'
           scope: support.constant.property-value.css
         - include: baseline-position
         - include: overflow-position
@@ -574,8 +610,8 @@ contexts:
       push:
         - include: end-value
         - match: '(?x)
-            {{bs}}
-            (?>
+            \b
+            (?:
               top|
               text-top|
               text-bottom|
@@ -588,8 +624,117 @@ contexts:
               baseline|
               alphabetic
             )
-            {{be}}'
-          scope: support.constant.property.value.CSS3
+            {{b}}'
+          scope: support.constant.property.value.css
+
+  # CSS Cascading and Inheritance Level 4
+  property-all:
+    - match: \b(all)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - match: '(?x)
+          \b
+          (?:
+            unset|
+            revert|
+            initial|
+            inherit
+          )
+          {{b}}'
+          scope: support.constant.property-value.css
+
+  # TODO: write this
+  # property-animation:
+  #   - match: \b(animation)\s*(:)
+  #     captures:
+  #       1: support.constant.property-name.css
+  #       2: punctuation.separator.key-value.css
+  #     push:
+  #       - include: end-value
+  #       -
+
+  # CSS Animations Level 1
+  property-animation-delay:
+    - match: \b(animation-delay)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: time
+
+  # CSS Animations Level 1
+  property-animation-direction:
+    - match: \b(animation-direction)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: single-animation-direction
+
+  # CSS Animations Level 1
+  property-animation-duration:
+    - match: \b(animation-duration)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: time
+
+  # CSS Animations Level 1
+  property-animation-fill-mode:
+    - match: \b(animation-fill-mode)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: single-animation-fill-mode
+
+  # CSS Animations Level 1
+  property-animation-iteration-count:
+    - match: \b(animation-iteration-count)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: single-animation-iteration-count
+
+  # CSS Animations Level 1
+  property-animation-name:
+    - match: \b(animation-name)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: single-animation-name
+
+  # CSS Animations Level 1
+  property-animation-play-state:
+    - match: \b(animation-play-state)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: single-animation-play-state
+
+  # CSS Animations Level 1
+  property-animation-timing-function:
+    - match: \b(animation-timing-function)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: single-timing-function
 
   # TODO: finish this
   property-custom:
@@ -604,9 +749,9 @@ contexts:
 
   property-deprecated:
     - match: '(?x)
-        {{bs}}
+        \b
         {{optional_vendor_prefix}}
-        (?>
+        (?:
           user-select|
           user-modify|
           user-input|
@@ -635,7 +780,7 @@ contexts:
           appearance|
           accelerator
         )
-        {{be}}'  # won't match clip-path, for example
+        {{b}}'  # won't match clip-path, for example
       scope: support.constant.property-name.css invalid.deprecated.css
 
   # property-list matches a block of property-value pairs.
@@ -649,8 +794,7 @@ contexts:
       push:
         # - meta_scope: invalid.deprecated.css # DEBUG
         - meta_content_scope: meta.property-list.css
-        - match: '}'
-          scope: punctuation.section.property-list.end.css
+        - match: '(?=})'
           pop: true
         - include: properties
 
@@ -678,7 +822,8 @@ contexts:
   rule:
     - match: '(?=[\w.:#-\[*])'
       push:
-        - match: '(?<=})'
+        - match: '}'
+          scope: punctuation.section.property-list.end.css
           pop: true
         - include: property-list
         - include: selector
@@ -689,22 +834,40 @@ contexts:
 
   selector-attribute:
     - match: '\['
-      scope: punctuation.section.attribute-selector.css
+      scope: punctuation.section.attribute-selector.begin.css
       push:
         - meta_scope: meta.attribute-selector.css
         - match: '\]'
-          scope: punctuation.section.attribute-selector.css
+          scope: punctuation.section.attribute-selector.end.css
           pop: true
-        - include: string
+        # It's difficult to match attribute names and values separately when
+        # the values are unquoted.
+        #     [attr="value"]  easy to distinguish attr and value
+        #     [attr=value]    attr pattern will probably match value text
+        # The only way to distinguish the two is that values are always preceded
+        # by "attribute matchers" (e.g. ~=, ^=, $=, *=, =). Since we can't use
+        # lookbehind to check for this, instead we scan for the matcher first.
+        # We push a new context on the stack when we find it. The new context
+        # will only match text on the right side of the '=' symbol (the value
+        # text). In this way we can fake positive lookbehind.
         - match: '{{attr_matcher}}'
           scope: keyword.operator.attribute-selector.css
-        - match: "{{bs}}i{{be}}"
-          scope: support.constant.attr-modifier.css
-        - match: '(?<=\[)\s*{{wq_name}}\s*(?=[~^$*=|\]])'
-          scope: string.unquoted.attribute-name.css
-        - match: '(?<=\=)\s*({{identifier}})'
+          push:
+            - match: '(?=])'
+              pop: true
+            - include: string
+            - match: '\b[iI]{{b}}'
+              scope: support.constant.attr-modifier.css
+            - match: '({{identifier}})\s*(?=[i\]])'
+              captures:
+                1: string.unquoted.attribute-value.css
+        - match: '{{wq_name}}'
           captures:
-            1: string.unquoted.attribute-value.css
+            1: entity.other.attribute-name.namespace.css
+            2: entity.other.attribute-name.namespace.wildcard.css
+            3: punctuation.separator.namespace.css
+            4: entity.other.attribute-name.css
+            5: entity.other.attribute-name.wildcard.css
 
   selector-class:
     - match: '(\.){{identifier}}'
@@ -732,7 +895,7 @@ contexts:
     - match: '(?x)
       (:)
       {{optional_vendor_prefix}}
-      (?>
+      (?:
         visited|
         valid|
         user-invalid|
@@ -774,7 +937,7 @@ contexts:
         any-link|
         active
       )
-      {{be}}'
+      {{b}}'
       captures:
         0: entity.other.attribute-name.pseudo-class.css
         1: punctuation.definition.entity.css
@@ -784,14 +947,14 @@ contexts:
     - match: '(?x)
         (:)
         {{optional_vendor_prefix}}
-        (?>
+        (?:
           first-line|
           first-letter|
           bound-element|
           before|
           after
         )
-        {{be}}'
+        {{b}}'
       captures:
         0: entity.other.attribute-name.pseudo-class.css invalid.deprecated.css
         1: punctuation.definition.entity.css
@@ -867,7 +1030,7 @@ contexts:
     - include: stray-paren
 
   selector-pseudo-class-not-matches-has:
-    - match: '((:)(?>not|matches|has))(\()'
+    - match: '((:)(?:not|matches|has))(\()'
       captures:
         1: entity.other.attribute-name.pseudo-class.css
         2: punctuation.definition.entity.css
@@ -879,7 +1042,7 @@ contexts:
     - include: stray-paren
 
   selector-pseudo-class-nth-child:
-    - match: '((:)(?>nth-last-child|nth-child))(\()'
+    - match: '((:)(?:nth-last-child|nth-child))(\()'
       captures:
         1: entity.other.attribute-name.pseudo-class.css
         2: punctuation.definition.entity.css
@@ -887,7 +1050,7 @@ contexts:
       push:
         - meta_content_scope: meta.pseudo-class.nth-child.css
         - include: end-func
-        - match: \bof\b
+        - match: '\bof{{b}}'
           scope: support.constant.property-value.css
         - include: an_plus_b
         - include: selector
@@ -897,7 +1060,7 @@ contexts:
     - match: '(?x)
       (
         (:)
-        (?>
+        (?:
           nth-of-type|
           nth-last-of-type|
           nth-last-column|
@@ -931,7 +1094,7 @@ contexts:
     - match: '(?x)
         (::)
         {{optional_vendor_prefix}}
-        (?>
+        (?:
           spelling-error|
           shadow|
           selection|
@@ -946,7 +1109,7 @@ contexts:
           before|
           after
         )
-        {{be}}'
+        {{b}}'
       captures:
         0: entity.other.attribute-name.pseudo-element.css
         1: punctuation.definition.entity.css
@@ -969,7 +1132,7 @@ contexts:
         - match: '{{wq_name}}'
           captures:
             1: string.unquoted.namespace.css
-            2: string.unquoted.namespace.widlcard.css
+            2: string.unquoted.namespace.wildcard.css
             3: punctuation.separator.namespace.css
             4: entity.name.tag.css
             5: entity.name.tag.wildcard.css
@@ -1030,8 +1193,8 @@ contexts:
 
   selector-type-deprecated:
     - match: '(?x)
-        (?<![-:\[])
-        \b(?>
+        \b
+        (?:
           xmp|
           tt|
           strike|
@@ -1058,13 +1221,13 @@ contexts:
           applet|
           acronym
         )
-        {{be}}'
+        {{b}}'
       scope: entity.name.tag.css invalid.deprecated.css
 
   self-position:
     - match: '(?x)
-        {{bs}}
-        (?>
+        \b
+        (?:
           start|
           self-start|
           self-end|
@@ -1075,8 +1238,69 @@ contexts:
           end|
           center
         )
-        {{be}}'
+        {{b}}'
       scope: support.constant.property.value.css
+
+  single-animation-direction:
+    - match: '(?x)
+        \b
+        (?:
+          reverse|
+          normal|
+          alternate-reverse|
+          alternate
+        )
+        {{b}}'
+      scope: support.constant.property-value.css
+
+  single-animation-fill-mode:
+    - match: '(?x)
+        \b
+        (?:
+          none|
+          forwards|
+          both|
+          backwards
+        )
+        {{b}}'
+      scope: support.constant.property-value.css
+
+  single-animation-iteration-count:
+    - match: '\binfinite{{b}}'
+      scope: support.constant.property-value.css
+    - include: number
+
+  single-animation-name:
+    - match: '\bnone{{b}}'
+      scope: support.constant.property-value.css
+    - include: string
+    - include: identifier
+
+  single-animation-play-state:
+    - match: '\b(?:running|paused){{b}}'
+      scope: support.constant.property-value.css
+
+  single-timing-function:
+    - match: '(?x)
+        \b
+        (?:
+          step-start|
+          step-end|
+          linear|
+          ease-out|
+          ease-in-out|
+          ease-in|
+          ease
+        )
+        {{b}}
+      '
+      scope: support.constant.property-value.css
+    - include: func-cubic-bezier
+    - include: func-steps
+
+  stray-brace:
+    - match: '}'
+      scope: invalid.illegal.stray-brace.css
 
   stray-paren:
     - match: \)
