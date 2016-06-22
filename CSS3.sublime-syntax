@@ -203,6 +203,7 @@ contexts:
         2: punctuation.section.function.begin.css
       push:
         - include: end-func
+        - include: func-var
         - include: length
         - include: frequency
         - include: angle
@@ -219,6 +220,7 @@ contexts:
         2: punctuation.section.function.begin.css
       push:
         - include: end-func
+        - include: func-var
         - include: number-zero-to-one
     - include: stray-paren
 
@@ -229,6 +231,7 @@ contexts:
         2: punctuation.section.function.begin.css
       push:
         - include: end-func
+        - include: func-var
         - match: '\b(?:start|end){{b}}'
         - include: integer-positive
     - include: stray-paren
@@ -240,6 +243,7 @@ contexts:
         2: punctuation.section.function.begin.css
       push:
         - include: end-func
+        - include: func-var
         - match: ','
           push:
             - match: '(?=[,)])'
