@@ -14,6 +14,7 @@ variables:
   b: '\b{{not_followed_by_dash}}'
   column: '\|\|'
   combinator: '(?:{{column}}|>{1,3}|[+~])'
+  custom_property_name: '--{{identifier}}'
   escape: '\\(?:[^\n\r\f\h]|\h{1,6}{{whitespace}}?)'
   exponent: '[eE][+-]?\d+'
   frequency_unit: k?Hz
@@ -62,6 +63,27 @@ contexts:
         2: keyword.other.unit.css
         3: constant.numeric.css
 
+  any-value:
+    # We don't want to try to write a regex with every possible valid value,
+    # including all keywords for each property. Therefore, we try to match every
+    # valid unit, numeric type, and function. Any valid identifier after that is
+    # assumed to be a valid property value.
+    - include: value-css-wide  # includes "var()"
+    - include: func-cubic-bezier
+    - include: func-steps
+    # TODO: finish adding funcs here
+    - include: angle
+    - include: frequency
+    - include: percentage
+    - include: resolution
+    - include: time
+    - include: length
+    - include: any_plus_b
+    - include: integer
+    - include: number
+    - match: '{{identifier}}'
+      scope: support.constant.property-value.css
+
   an_plus_b:
     - match: 'odd|even|{{an_plus_b}}'
       scope: constant.other.an-plus-b.css
@@ -73,14 +95,14 @@ contexts:
 
   # Media queries start with "@media" and end with a closing curly brace. To
   # match this text, we define an outer scope that starts with "@media" and
-  # continues until just past the "}". The text between the curlies is then
-  # matched as a nested scope, i.e. the opening curly pushes a new scope on the
-  # stack, which is popped at the closing curly. This lets us match the media
+  # continues until the closing "}". The text between the curlies is then
+  # matched as a nested scope (the opening curly pushes a new scope on the
+  # stack, which is popped at the closing curly). This lets us match the media
   # features before the opening curly and the text between the curlies in one
   # rule.
   #
   # |-------------------outer scope-----------------------------------|
-  #        |---media-features-etc----||--------nested scope-----------|
+  #        |---media-features-etc----||--------nested scope----------|
   # @media stuff-before-opening-curly { selector { property: value; } }
   at-media:
     - match: '(@)media{{b}}'
@@ -88,22 +110,21 @@ contexts:
         0: keyword.control.at-rule.media.css
         1: punctuation.definition.keyword.css
       push:
-      - match: '{'
-        scope: punctuation.section.media-query.begin.css
-        push:
-          - include: at-media
-          - include: rule
-          # Only match the closing curly after nested scopes have had a chance
-          # to match.
-          - match: '(?=})'
-            pop: true
-      - match: '\band{{b}}'
-        scope: keyword.operator.logic.media.css
-      - include: media-feature
-      - include: media-type
-      - match: '}'
-        scope: punctuation.section.media-query.end.css
-        pop: true
+        - match: '}'
+          scope: punctuation.section.media-query.end.css
+          pop: true
+        - match: '{'
+          scope: punctuation.section.media-query.begin.css
+          push:
+            - match: '(?=})'
+              pop: true
+            - include: at-media
+            - include: rule
+        - match: '\band{{b}}'
+          scope: keyword.operator.logic.media.css
+        - include: media-feature
+        - include: media-type
+    - include: stray-brace
 
   baseline-position:
     - match: '\b(?:last-)?baseline{{b}}'
@@ -154,8 +175,8 @@ contexts:
 
   end-value:
     # end on } if this is the last property-value pair in the block.
-    # end on ) if we're inside an @supports condition.
-    - match: ';|(?=[})])'
+    # end on ) if we're inside an @supports condition.  # TODO: is this a good idea?
+    - match: ';|(?=}\))'
       scope: punctuation.terminator.rule.css
       pop: true
 
@@ -189,6 +210,7 @@ contexts:
         - include: percentage
         - include: number
         - include: arithmetic-operator
+    - include: stray-paren
 
   func-cubic-bezier:
     - match: \b(cubic-bezier)(\()
@@ -198,7 +220,7 @@ contexts:
       push:
         - include: end-func
         - include: number-zero-to-one
-
+    - include: stray-paren
 
   func-steps:
     - match: \b(steps)(\()
@@ -209,6 +231,23 @@ contexts:
         - include: end-func
         - match: '\b(?:start|end){{b}}'
         - include: integer-positive
+    - include: stray-paren
+
+  func-var:
+    - match: \b(var)(\()
+      captures:
+        1: support.function.var.css
+        2: punctuation.section.function.begin.css
+      push:
+        - include: end-func
+        - match: ','
+          push:
+            - match: '(?=[,)])'
+              pop: true
+            - include: any-value  # <declaration-value>
+        - match: '{{custom_property_name}}'
+          scope: support.constant.property-name.custom.css
+    - include: stray-paren
 
   identifier:
     - match: '{{identifier}}'
@@ -263,7 +302,7 @@ contexts:
           scope: punctuation.section.media-feature.end.css
           pop: true
         - include: media-feature-deprecated
-        - include: media-feature-custom
+        - include: media-feature-custom  # TODO: correct precedence?
         - include: media-feature-aspect-ratio
         - include: media-feature-color-gamut
         - include: media-feature-grid
@@ -280,8 +319,9 @@ contexts:
         - include: media-feature-scan
         - include: media-feature-scripting
         - include: media-feature-update
+        - include: media-feature-var
         - include: media-feature-range-operator
-        # match values and comparison operators that appear before a range
+        # Match values and comparison operators that appear at the start.
         #  |------|
         # (480px <= width <= 640px)
         - include: ratio
@@ -303,6 +343,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-media-feature
+        - include: value-css-wide
         - include: ratio
         - include: media-feature-range-operator
 
@@ -313,9 +354,11 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-media-feature
+        - include: value-css-wide
         - match: \b(?:srgb|rec2020|p3)\b
           scope: support.constant.property-value.css
 
+  # TODO: finish this
   media-feature-custom:
     - match: '\-\-{{identifier}}'
       scope: support.constant.property-name.custom.css
@@ -338,6 +381,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-media-feature
+        - include: value-css-wide
         - match: \b(?:0|1)\b
           scope: support.constant.property-value.css
 
@@ -348,6 +392,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-media-feature
+        - include: value-css-wide
         - match: '\b(?:on-demand|none|hover){{b}}'
           scope: support.constant.property-value.css
 
@@ -358,6 +403,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-media-feature
+        - include: value-css-wide
         - match: '\b(?:none|inverted){{b}}'
           scope: support.constant.property-value.css
 
@@ -368,24 +414,27 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-media-feature
+        - include: value-css-wide
         - match: washed|normal|dim
           scope: support.constant.property-value.css
 
   media-feature-monochrome-color-index:
-    # {{not_followed_by_dash}} prevents "color" from matching misspelled
-    # "color-index" or "color-gamut"
     - match: '(?x)
         \b
         (
           {{optional_min_max_prefix}}
           (?:monochrome|color-index|color)
         )\s*(:)?
-        {{not_followed_by_dash}}' # {{b}} won't work because ':' isn't a word boundary
+        {{not_followed_by_dash}}'
+        # {{not_followed_by_dash}} prevents "color" from matching misspelled
+        # "color-index" or "color-gamut". {{b}} won't work because ':' isn't a
+        # word boundary.
       captures:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - include: end-media-feature
+        - include: value-css-wide
         - include: integer-non-negative
         - include: media-feature-range-operator
 
@@ -396,6 +445,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-media-feature
+        - include: value-css-wide
         - match: '\b(?:portrait|landscape){{b}}'
           scope: support.constant.property-value.css
 
@@ -406,6 +456,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-media-feature
+        - include: value-css-wide
         - match: '\b(?:scroll|paged|optional-paged|none){{b}}'
           scope: support.constant.property-value.css
 
@@ -416,6 +467,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-media-feature
+        - include: value-css-wide
         - match: '\b(?:scroll|none){{b}}'
           scope: support.constant.property-value.css
 
@@ -426,6 +478,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-media-feature
+        - include: value-css-wide
         - match: '\b(?:none|fine|coarse){{b}}'
           scope: support.constant.property-value.css
 
@@ -447,6 +500,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-media-feature
+        - include: value-css-wide
         - include: resolution
         - include: media-feature-range-operator
 
@@ -457,6 +511,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-media-feature
+        - include: value-css-wide
         - match: '\b(?:progressive|interlace){{b}}'
           scope: support.constant.property-value.css
 
@@ -467,6 +522,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-media-feature
+        - include: value-css-wide
         - match: '\b(?:none|initial-only|enabled){{b}}'
           scope: support.constant.property-value.css
 
@@ -477,6 +533,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-media-feature
+        - include: value-css-wide
         - match: '\b(?:normal|none|slow){{b}}'
           scope: support.constant.property-value.css
 
@@ -494,6 +551,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-media-feature
+        - include: value-css-wide
         - include: length-non-negative
         - include: media-feature-range-operator
 
@@ -514,6 +572,7 @@ contexts:
       scope: constant.numeric.css
 
   number-zero-to-one:
+    - include: func-calc
     - match: '{{number_zero_to_one}}'
       scope: constant.numeric.css
 
@@ -579,6 +638,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-value
+        - include: value-css-wide
         - match: '\b(?:stretch|normal){{b}}'
           scope: support.constant.property-value.css
         - include: baseline-position
@@ -595,6 +655,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-value
+        - include: value-css-wide
         - match: '\b(?:stretch|normal|auto){{b}}'
           scope: support.constant.property-value.css
         - include: baseline-position
@@ -609,6 +670,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-value
+        - include: value-css-wide
         - match: '(?x)
             \b
             (?:
@@ -635,16 +697,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-value
-        - match: '(?x)
-          \b
-          (?:
-            unset|
-            revert|
-            initial|
-            inherit
-          )
-          {{b}}'
-          scope: support.constant.property-value.css
+        - include: value-css-wide
 
   # TODO: write this
   # property-animation:
@@ -664,6 +717,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-value
+        - include: value-css-wide
         - include: time
 
   # CSS Animations Level 1
@@ -674,6 +728,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-value
+        - include: value-css-wide
         - include: single-animation-direction
 
   # CSS Animations Level 1
@@ -684,6 +739,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-value
+        - include: value-css-wide
         - include: time
 
   # CSS Animations Level 1
@@ -694,6 +750,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-value
+        - include: value-css-wide
         - include: single-animation-fill-mode
 
   # CSS Animations Level 1
@@ -704,6 +761,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-value
+        - include: value-css-wide
         - include: single-animation-iteration-count
 
   # CSS Animations Level 1
@@ -714,6 +772,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-value
+        - include: value-css-wide
         - include: single-animation-name
 
   # CSS Animations Level 1
@@ -724,6 +783,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-value
+        - include: value-css-wide
         - include: single-animation-play-state
 
   # CSS Animations Level 1
@@ -734,53 +794,217 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-value
+        - include: value-css-wide
         - include: single-timing-function
 
-  # TODO: finish this
   property-custom:
-    - match: '(--{{identifier}})\s*(:)'
+    - match: '({{custom_property_name}})\s*(:)'
       captures:
         1: support.constant.property-name.custom.css
         2: punctuation.separator.key-value.css
       push:
         - include: end-value
-        # - include: any-value  # TODO: write this when all values are complete
-
+        - include: any-value
 
   property-deprecated:
     - match: '(?x)
         \b
         {{optional_vendor_prefix}}
         (?:
-          user-select|
+          zoom|
+          wrap-padding|
+          wrap-option|
+          wrap-margin|
+          wrap|
+          word-break-inside|
+          word-break-cjk|
+          white-space-treatment|
+          white-space-collapsing|
+          white-space-collapse|
+          voice-pitch-range|
+          vertical-position|
+          user-zoom|
           user-modify|
           user-input|
           user-focus|
+          text-underline-width|
+          text-underline-style|
+          text-underline-mode|
+          text-underline-color|
+          text-underline|
+          text-trim|
+          text-script|
+          text-replace|
+          text-overline-width|
+          text-overline-style|
+          text-overline-mode|
+          text-overline-color|
+          text-overline|
+          text-overflow-mode|
+          text-overflow-ellipsis|
+          text-outline|
+          text-line-through-width|
+          text-line-through-style|
+          text-line-through-mode|
+          text-line-through-color|
+          text-line-through|
           text-kashida-space|
+          text-justify-trim|
+          text-first-indent|
+          text-emphasis-skip|
+          text-combine-mode|
+          text-combine-horizontal|
+          text-combine|
+          text-block-indent|
+          text-blink|
+          text-autospace|
+          text-align-first|
+          target-position|
+          target-new|
+          target-name|
+          target|
+          tab-side|
+          speakability|
+          scroll-snap-points-y|
+          scroll-snap-points-x|
+          scroll-snap-destination|
+          scroll-snap-coordinate|
+          row-gap|
+          resolution|
+          resizer|
+          rendering-intent|
+          region-overflow|
+          punctuation-trim|
           progress-appearance|
+          phonemes|
+          page-policy|
+          overflow-clip|
+          orientation|
           nav-index|
+          move-to|
+          min-zoom|
+          min-font-size|
+          max-zoom|
+          max-font-size|
+          mask-source-type|
+          mask-box-width|
+          mask-box-source|
+          mask-box-slice|
+          mask-box-repeat|
+          mask-box-outset|
+          mask-box-image-width|
+          mask-box-image-source|
+          mask-box-image-slice|
+          mask-box-image-repeat|
+          mask-box-image-outset|
+          mask-box-image|
+          mask-box|
+          marquee-repetition|
+          marquee-play-count|
+          marquee|
+          marks|
+          mark-before|
+          mark-after|
+          mark|
+          linefeed-treatment|
+          line-slack|
+          line-grid-progression|
+          line-grid-mode|
           layout-flow|
+          key-equivalent|
+          kerning-pair-threshold|
+          kerning-mode|
           interpolation-mode|
+          indent-edge-reset|
           ime-mode|
           icon|
+          hyphenate-resource|
+          hyphenate-lines|
+          hyphenate-limit-before|
+          hyphenate-limit-after|
+          hyphenate-dictionary|
+          hyphenate-before|
+          hyphenate-after|
+          hyphenate|
+          grid-start|
+          grid-span|
+          grid-rows|
+          grid-row-span|
+          grid-row-sizing|
+          grid-row-position|
+          grid-row-align|
+          grid-position|
+          grid-flow|
+          grid-end|
+          grid-definition-rows|
+          grid-definition-columns|
+          grid-columns|
+          grid-column-span|
+          grid-column-sizing|
+          grid-column-position|
+          grid-column-align|
+          grid-cell-stacking|
+          grid-cell|
+          grid-before|
+          grid-auto-position|
+          grid-after|
+          glyph-orientation-horizontal|
           font-smooth|
+          float-displace|
+          flex-pack|
+          flex-order|
+          flex-line-pack|
+          flex-item-align|
+          flex-align|
+          fit-position|
+          fit|
+          filter-margin-top|
+          filter-margin-right|
+          filter-margin-left|
+          filter-margin-bottom|
+          filter-margin|
+          enable-background|
+          display-role|
+          display-outside|
+          display-model|
+          display-list|
+          display-inside|
+          display-extras|
+          display-box|
+          crop|
+          content-order|
+          column-break-before|
+          column-break-after|
+          color-profile|
           clip|
+          clear-after|
+          box-width|
           box-reflect|
           box-pack|
           box-orient|
           box-ordinal-group|
           box-lines|
+          box-height|
           box-flex-group|
           box-flex|
           box-direction|
+          box-break|
           box-align|
+          border-length|
+          border-break|
+          bookmark-target|
           block-progression|
+          bleed|
           binding|
+          bikeshedding|
           behavior|
-          appearance|
+          background-spacing|
+          background-quantity|
+          background-break|
+          all-space-treatment|
           accelerator
         )
-        {{b}}'  # won't match clip-path, for example
+        {{b}}'  # "clip" won't match "clip-path"
       scope: support.constant.property-name.css invalid.deprecated.css
 
   # property-list matches a block of property-value pairs.
@@ -792,8 +1016,7 @@ contexts:
     - match: '{'
       scope: punctuation.section.property-list.begin.css
       push:
-        # - meta_scope: invalid.deprecated.css # DEBUG
-        - meta_content_scope: meta.property-list.css
+        - meta_scope: meta.property-list.css
         - match: '(?=})'
           pop: true
         - include: properties
@@ -827,6 +1050,7 @@ contexts:
           pop: true
         - include: property-list
         - include: selector
+    - include: stray-brace
 
   selector:
     - include: selector-simple-compound
@@ -1136,9 +1360,7 @@ contexts:
             3: punctuation.separator.namespace.css
             4: entity.name.tag.css
             5: entity.name.tag.wildcard.css
-
     - include: stray-paren
-
 
   # Match selector text that starts with "::" but isn't on the list of valid
   # pseudo-elements. This prevents the text from being mistakenly matched by
@@ -1346,3 +1568,13 @@ contexts:
         1: constant.numeric.css
         2: keyword.other.unit.css
         3: constant.numeric.css
+
+  # This context matches CSS-wide keywords and functions, like "inherit" and
+  # "var()". It should be included in all property contexts.
+  value-css-wide:
+    - include: func-var
+    # TODO: write these? they are at-risk.
+    # - include: func-attr
+    # - include: func-toggle
+    - match: '\b(?:unset|revert|inherit|initial){{b}}'
+      scope: support.constant.property-value.css
