@@ -710,7 +710,7 @@ contexts:
   #       2: punctuation.separator.key-value.css
   #     push:
   #       - include: end-value
-  #       -
+  #       - include: value-css-wide
 
   # CSS Animations Level 1
   property-animation-delay:
@@ -807,6 +807,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-value
+        - include: value-css-wide
         - include: any-value
 
   property-deprecated:
@@ -1579,5 +1580,7 @@ contexts:
     # TODO: write these? they are at-risk.
     # - include: func-attr
     # - include: func-toggle
+    - match: '!important'
+      scope: keyword.other.important.css
     - match: '\b(?:unset|revert|inherit|initial){{b}}'
       scope: support.constant.property-value.css
