@@ -31,8 +31,8 @@ variables:
   number: '[+-]?(?:\d+\.\d+|\.\d+|\d+)(?:{{exponent}})?'
   number_non_neg: '\+?(?:\d+\.\d+|\.\d+|\d+)(?:{{exponent}})?'
   number_pos: '\+?(?:\d+\.\d*[1-9]\d*|\.\d*[1-9]\d*|[1-9]\d*)(?:{{exponent}})?'
-  # number_zero_to_one: \b0(?:\.\d+)?|1(?:\.0+)?|\.\d+  # TODO: delete this if the other one works
-  number_zero_to_one: '\+?(?:1\.0+|0?\.\d+|[01])'
+  number_zero_to_one: '\+?(?:0(?:\.\d+)?|1(?:\.0+)?|\.\d+)\b(?!\.)'
+  # number_zero_to_one: '\+?(?:1\.0+|0?\.\d+|[01])'  # TODO: delete this if the other one works
   number_zero_to_100: '\b(?:100|[1-9]\d|\d)(?:\.\d+)?|\.\d+'
   optional_min_max_prefix: '\b(?:min-|max-)?'
   optional_vendor_prefix: '(?:-webkit-|-ms-|-moz-)?'
