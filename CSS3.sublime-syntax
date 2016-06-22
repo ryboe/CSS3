@@ -49,6 +49,7 @@ variables:
 contexts:
   main:
     - include: at-media
+    - include: at-supports
     - include: rule
 
   angle:
@@ -119,11 +120,33 @@ contexts:
             - match: '(?=})'
               pop: true
             - include: at-media
+            - include: at-supports
             - include: rule
         - match: '\band{{b}}'
           scope: keyword.operator.logic.media.css
         - include: media-feature
         - include: media-type
+    - include: stray-brace
+
+  at-supports:
+    - match: '(@)supports{{b}}'
+      captures:
+        0: keyword.control.at-rule.supports.css
+        1: punctuation.definition.keyword.css
+      push:
+        - match: '}'
+          scope: punctuation.section.at-supports.end.css
+          pop: true
+        - match: '{'
+          scope: punctuation.section.at-supports.begin.css
+          push:
+            - match: '(?=})'
+              pop: true
+            - include: at-supports
+            - include: at-media
+            - include: rule
+        - include: supports-condition-operator
+        - include: supports-condition
     - include: stray-brace
 
   baseline-position:
@@ -176,7 +199,7 @@ contexts:
   end-value:
     # end on } if this is the last property-value pair in the block.
     # end on ) if we're inside an @supports condition.  # TODO: is this a good idea?
-    - match: ';|(?=}\))'
+    - match: ';|(?=[}\)])'
       scope: punctuation.terminator.rule.css
       pop: true
 
@@ -1579,6 +1602,23 @@ contexts:
           scope: punctuation.definition.string.end.css
           pop: true
         - include: escape
+
+  supports-condition:
+    - match: '\('
+      scope: punctuation.section.supports-condition.begin.css
+      push:
+        - meta_scope: meta.supports-condition.css
+        - match: '\)'
+          scope: punctuation.section.supports-condition.end.css
+          pop: true
+        - include: supports-condition
+        - include: supports-condition-operator
+        - include: properties
+    - include: stray-paren
+
+  supports-condition-operator:
+    - match: \b(?:or|not|and){{b}}
+      scope: keyword.operator.logic.at-supports.css
 
   time:
     - include: func-calc
