@@ -610,6 +610,7 @@ contexts:
     - include: property-animation-name
     - include: property-animation-play-state
     - include: property-animation-timing-function
+    - include: property-animation
 
     # TODO: add rules for matching property/value pairs here
     - include: property-custom
@@ -702,15 +703,22 @@ contexts:
         - include: end-value
         - include: value-css-wide
 
-  # TODO: write this
-  # property-animation:
-  #   - match: \b(animation)\s*(:)
-  #     captures:
-  #       1: support.constant.property-name.css
-  #       2: punctuation.separator.key-value.css
-  #     push:
-  #       - include: end-value
-  #       - include: value-css-wide
+  # CSS Animations Level 1
+  property-animation:
+    - match: \b(animation)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: single-animation-play-state
+        - include: single-animation-fill-mode
+        - include: single-animation-direction
+        - include: single-timing-function
+        - include: time
+        - include: single-animation-iteration-count
+        - include: single-animation-name
 
   # CSS Animations Level 1
   property-animation-delay:
@@ -799,6 +807,18 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: single-timing-function
+
+  # CSS Basic User Interface Module Level 4
+  property-appearance:
+    - match: \b(appearance)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: \b(?:none|auto){{b}}
+          scope: support.constant.property-value.css
 
   property-custom:
     - match: '({{custom_property_name}})\s*(:)'
@@ -1518,8 +1538,7 @@ contexts:
           ease-in|
           ease
         )
-        {{b}}
-      '
+        {{b}}'
       scope: support.constant.property-value.css
     - include: func-cubic-bezier
     - include: func-steps
