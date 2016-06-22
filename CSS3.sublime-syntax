@@ -323,7 +323,6 @@ contexts:
         - include: media-feature-scan
         - include: media-feature-scripting
         - include: media-feature-update
-        - include: media-feature-var
         - include: media-feature-range-operator
         # Match values and comparison operators that appear at the start.
         #  |------|
