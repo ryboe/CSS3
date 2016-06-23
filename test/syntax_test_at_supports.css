@@ -1,5 +1,6 @@
 /* SYNTAX TEST "Packages/CSS3/CSS3.sublime-syntax" */
 
+
 /* TEST NESTING */
 @supports {
 /* <- source.css keyword.control.at-rule.supports.css punctuation.definition.keyword.css */
@@ -22,6 +23,7 @@
 /*  ^ source.css punctuation.section.at-supports.end.css */
 }
 /* <- source.css punctuation.section.at-supports.end.css */
+
 
 /* TEST EXAMPLE CODE FROM THE SPEC */
 /* https://drafts.csswg.org/css-conditional/#at-supports */

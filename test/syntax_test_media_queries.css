@@ -56,6 +56,7 @@
 /*                     ^^^ source.css constant.numeric.css */
 /*                        ^^ source.css keyword.other.unit.css */
 /*                          ^ source.css punctuation.section.media-feature.end.css */
+/*                            ^ source.css punctuation.section.media-query.begin.css */
         @media (scripting) {
 /*      ^ source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
 /*       ^^^^^ source.css keyword.control.at-rule.media.css */
@@ -63,16 +64,20 @@
 /*             ^ source.css punctuation.section.media-feature.begin.css */
 /*              ^^^^^^^^^ source.css support.constant.property-name.css */
 /*                       ^ source.css punctuation.section.media-feature.end.css */
+/*                         ^ source.css punctuation.section.media-query.begin.css */
           .baz {
             color: green;
           }
         }
+/*      ^ source.css punctuation.section.media-query.end.css */
 
         .qux {
             color: red;
         }
     }
+/*  ^ source.css punctuation.section.media-query.end.css */
 }
+/* <- source.css punctuation.section.media-query.end.css */
 
 
 /* TEST MEDIA TYPES */
@@ -82,12 +87,16 @@
 /*^^^^ source.css keyword.control.at-rule.media.css */
 /*    ^ source.css -keyword.control.at-rule.media.css */
 /*     ^^^ source.css support.constant.media.css */
+/*         ^ source.css punctuation.section.media-query.begin.css */
+/*          ^ source.css punctuation.section.media-query.end.css */
 @media print {}
 /* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
  /* <- source.css keyword.control.at-rule.media.css */
 /*^^^^ source.css keyword.control.at-rule.media.css */
 /*    ^ source.css -keyword.control.at-rule.media.css */
 /*     ^^^^^ source.css support.constant.media.css */
+/*           ^ source.css punctuation.section.media-query.begin.css */
+/*            ^ source.css punctuation.section.media-query.end.css */
 @media only print {}
 /* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
  /* <- source.css keyword.control.at-rule.media.css */
@@ -95,6 +104,8 @@
 /*    ^ source.css -keyword.control.at-rule.media.css */
 /*     ^^^^ source.css keyword.operator.logic.media.css */
 /*          ^^^^^ source.css support.constant.media.css */
+/*                ^ source.css punctuation.section.media-query.begin.css */
+/*                 ^ source.css punctuation.section.media-query.end.css */
 @media not print {}
 /* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
  /* <- source.css keyword.control.at-rule.media.css */
@@ -102,12 +113,16 @@
 /*    ^ source.css -keyword.control.at-rule.media.css */
 /*     ^^^ source.css keyword.operator.logic.media.css */
 /*         ^^^^^ source.css support.constant.media.css */
+/*               ^ source.css punctuation.section.media-query.begin.css */
+/*                ^ source.css punctuation.section.media-query.end.css */
 @media screen {}
 /* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
  /* <- source.css keyword.control.at-rule.media.css */
 /*^^^^source.css keyword.control.at-rule.media.css */
 /*    ^ source.css -keyword.control.at-rule.media.css */
 /*     ^^^^^^ source.css support.constant.media.css */
+/*            ^ source.css punctuation.section.media-query.begin.css */
+/*             ^ source.css punctuation.section.media-query.end.css */
 @media only screen {}
 /* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
  /* <- source.css keyword.control.at-rule.media.css */
@@ -115,6 +130,8 @@
 /*    ^ source.css -keyword.control.at-rule.media.css */
 /*     ^^^^ source.css keyword.operator.logic.media.css */
 /*          ^^^^^^ source.css support.constant.media.css */
+/*                 ^ source.css punctuation.section.media-query.begin.css */
+/*                  ^ source.css punctuation.section.media-query.end.css */
 @media not screen {}
 /* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
  /* <- source.css keyword.control.at-rule.media.css */
@@ -122,12 +139,16 @@
 /*    ^ source.css -keyword.control.at-rule.media.css */
 /*     ^^^ source.css keyword.operator.logic.media.css */
 /*         ^^^^^^ source.css support.constant.media.css */
+/*                ^ source.css punctuation.section.media-query.begin.css */
+/*                 ^ source.css punctuation.section.media-query.end.css */
 @media speech {}
 /* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
  /* <- source.css keyword.control.at-rule.media.css */
 /*^^^^source.css keyword.control.at-rule.media.css */
 /*    ^ source.css -keyword.control.at-rule.media.css */
 /*     ^^^^^^ source.css support.constant.media.css */
+/*            ^ source.css punctuation.section.media-query.begin.css */
+/*             ^ source.css punctuation.section.media-query.end.css */
 @media only speech {}
 /* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
  /* <- source.css keyword.control.at-rule.media.css */
@@ -135,6 +156,8 @@
 /*    ^ source.css -keyword.control.at-rule.media.css */
 /*     ^^^^ source.css keyword.operator.logic.media.css */
 /*          ^^^^^^ source.css support.constant.media.css */
+/*                 ^ source.css punctuation.section.media-query.begin.css */
+/*                  ^ source.css punctuation.section.media-query.end.css */
 @media not speech {}
 /* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
  /* <- source.css keyword.control.at-rule.media.css */
@@ -142,6 +165,8 @@
 /*    ^ source.css -keyword.control.at-rule.media.css */
 /*     ^^^ source.css keyword.operator.logic.media.css */
 /*         ^^^^^^ source.css support.constant.media.css */
+/*                ^ source.css punctuation.section.media-query.begin.css */
+/*                 ^ source.css punctuation.section.media-query.end.css */
 
 
 /* TEST DEPRECATED MEDIA TYPES */
@@ -677,6 +702,7 @@
 /*                           ^ source.css punctuation.section.media-feature.begin.css */
 /*                            ^^^^^^^^^ source.css support.constant.property-name.css */
 /*                                     ^ source.css punctuation.section.media-feature.end.css */
+
 
 /* TEST @CUSTOM-MEDIA */
 @custom-media --narrow-window (max-width: 30em);
