@@ -33,8 +33,8 @@ variables:
   number_non_neg: '\+?(?:\d+\.\d+|\.\d+|\d+)(?:{{exponent}})?'
   number_pos: '\+?(?:\d+\.\d*[1-9]\d*|\.\d*[1-9]\d*|[1-9]\d*)(?:{{exponent}})?'
   number_zero_to_one: '\+?(?:0(?:\.\d+)?|1(?:\.0+)?|\.\d+)\b(?!\.)'
-  number_zero_to_100: '\b(?:100|[1-9]\d|\d)(?:\.\d+)?|\.\d+'
-  number_zero_to_255: '\b(?:2[0-5][0-5](?:\.0+)?|1\d\d(?:\.\d+)?|[1-9]\d(?:\.\d+)?|\d(?:\.\d+)?)\b'
+  number_zero_to_100: '\b(?:100(?:\.0+)?|[1-9]\d(?:\.\d+)?|\d(?:\.\d+)?|\.\d+)'
+  number_zero_to_255: '\b(?:2[0-5][0-5](?:\.0+)?|1\d\d(?:\.\d+)?|[1-9]\d(?:\.\d+)?|\d(?:\.\d+)?)'
   optional_min_max_prefix: '\b(?:min-|max-)?'
   optional_vendor_prefix: '(?:-webkit-|-ms-|-moz-)?'
   percentage_unit: '%'
@@ -50,8 +50,10 @@ variables:
 contexts:
   main:
     - include: at-custom-media
-    - include: at-media
+    - include: at-keyframes
     - include: at-supports
+    - include: at-viewport
+    - include: at-media
     - include: rule
 
   angle:
@@ -112,6 +114,24 @@ contexts:
     - match: ';'
       scope: invalid.illegal.stray-semicolon.css
 
+  at-keyframes:
+    - match: '(@)keyframes{{b}}'
+      captures:
+        0: keyword.control.at-rule.keyframes.css
+        1: punctuation.definition.keyword.css
+      push:
+        - match: '}'
+          scope: punctuation.section.keyframes-rule.end.css
+          pop: true
+        - match: '{'
+          scope: punctuation.section.keyframes-rule.begin.css
+          push:
+            - match: '(?=})'
+              pop: true
+            - include: keyframes-block
+        - include: keyframes-name
+    - include: stray-brace
+
   # Media queries start with "@media" and end with a closing curly brace. To
   # match this text, we define an outer scope that starts with "@media" and
   # continues until the closing "}". The text between the curlies is then
@@ -138,6 +158,7 @@ contexts:
             - match: '(?=})'
               pop: true
             - include: at-media
+            - include: at-keyframes
             - include: at-supports
             - include: rule
         - match: '\band{{b}}'
@@ -161,6 +182,7 @@ contexts:
             - match: '(?=})'
               pop: true
             - include: at-supports
+            - include: at-keyframes
             - include: at-media
             - include: rule
         - include: supports-condition-operator
@@ -424,8 +446,8 @@ contexts:
       push:
         - include: end-func
         - include: func-var
-        - include: percentage_zero_to_100
-        - include: number_zero_to_one
+        - include: percentage-zero-to-100
+        - include: number-zero-to-one
         - include: color
     - include: stray-paren
 
@@ -437,7 +459,7 @@ contexts:
       push:
         - include: end-func
         - include: func-var
-        - include: percentage_zero_to_100
+        - include: percentage-zero-to-100
         - include: number
     - include: stray-paren
 
@@ -450,7 +472,7 @@ contexts:
         - include: end-func
         - include: func-var
         - include: angle
-        - include: percentage_zero_to_100
+        - include: percentage-zero-to-100
         - include: number  # matches part of <hue> and <alpha-value>
     - include: stray-paren
 
@@ -463,7 +485,7 @@ contexts:
         - include: end-func
         - include: func-var
         - include: angle
-        - include: percentage_zero_to_100
+        - include: percentage-zero-to-100
         - include: number  # matches part of <hue> and <alpha-value>
     - include: stray-paren
 
@@ -732,6 +754,30 @@ contexts:
     - include: func-calc
     - match: '{{integer_pos}}'
       scope: constant.numeric.css
+
+  # This is based on the rule context.
+  keyframes-block:
+    - match: '(?=[fromt\d%])'  # to|from|<percentage>
+      push:
+        - match: '}'
+          scope: punctuation.section.keyframes-declaration-list.end.css
+          pop: true
+        - include: keyframes-declaration-list
+        - include: selector-keyframes
+    - include: stray-brace
+
+  keyframes-declaration-list:
+    - match: '{'
+      scope: punctuation.section.keyframes-declaration-list.begin.css
+      push:
+        - meta_scope: meta.keyframes-declaration-list.css
+        - match: '(?=})'
+          pop: true
+        - include: properties
+
+  keyframes-name:
+    - include: string
+    - include: identifier
 
   length:
     - include: func-calc
@@ -1060,11 +1106,11 @@ contexts:
         2: keyword.other.unit.css
         3: constant.numeric.css
 
-  percentage_zero_to_100:
+  percentage-zero-to-100:
     - include: func-calc
     - match: '(?x)
         (?:
-          ({{number_zero_to_100}})({{percentage_unit}})\b|
+          ({{number_zero_to_100}})({{percentage_unit}})|
           ({{zero}})
         )'
       captures:
@@ -1200,6 +1246,17 @@ contexts:
         - include: time
         - include: single-animation-iteration-count
         - include: single-animation-name
+
+  # CSS Animations Level 2
+  property-animation-composition:
+    - match: \b(animation-composition)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: single-animation-composition
 
   # CSS Animations Level 1
   property-animation-delay:
@@ -1578,7 +1635,7 @@ contexts:
   # Since <alpha-value> is used along with <rgb-component>, there's no point
   # creating a separate rule.
   rgb-component:
-    - include: percentage_zero_to_100
+    - include: percentage-zero-to-100
     - include: number_zero_to_255
 
   # A rule is a selector and a property list.
@@ -1654,6 +1711,11 @@ contexts:
       captures:
         0: entity.other.attribute-name.id.css
         1: punctuation.definition.entity.css
+
+  selector-keyframes:
+    - match: '\b(?:to|from){{b}}'
+      scope: entity.other.attribute-name.keyframes-selector.css
+    - include: percentage-zero-to-100
 
   selector-pseudo-class:
     # Match pseudo-class functions first to avoid collisions between
@@ -2005,6 +2067,10 @@ contexts:
           center
         )
         {{b}}'
+      scope: support.constant.property.value.css
+
+  single-animation-composition:
+    - match: '\b(?:replace|add|accumulate){{b}}'
       scope: support.constant.property.value.css
 
   single-animation-direction:
