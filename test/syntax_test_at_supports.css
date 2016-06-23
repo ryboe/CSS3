@@ -1,0 +1,86 @@
+/* SYNTAX TEST "Packages/CSS3/CSS3.sublime-syntax" */
+
+/* TEST NESTING */
+@supports {
+/* <- source.css keyword.control.at-rule.supports.css punctuation.definition.keyword.css */
+ /* <- source.css keyword.control.at-rule.supports.css */
+/*^^^^^^^ source.css keyword.control.at-rule.supports.css */
+/*       ^ source.css -keyword.control.at-rule.supports.css */
+/*        ^ source.css punctuation.section.at-supports.begin.css */
+    @supports {
+/*  ^ source.css keyword.control.at-rule.supports.css punctuation.definition.keyword.css */
+/*   ^^^^^^^^ source.css keyword.control.at-rule.supports.css */
+/*           ^ source.css -keyword.control.at-rule.supports.css */
+/*            ^ source.css punctuation.section.at-supports.begin.css */
+        @supports {}
+/*      ^ source.css keyword.control.at-rule.supports.css punctuation.definition.keyword.css */
+/*       ^^^^^^^^ source.css keyword.control.at-rule.supports.css */
+/*               ^ source.css -keyword.control.at-rule.supports.css */
+/*                ^ source.css punctuation.section.at-supports.begin.css */
+/*                 ^ source.css punctuation.section.at-supports.end.css */
+    }
+/*  ^ source.css punctuation.section.at-supports.end.css */
+}
+/* <- source.css punctuation.section.at-supports.end.css */
+
+/* TEST EXAMPLE CODE FROM THE SPEC */
+/* https://drafts.csswg.org/css-conditional/#at-supports */
+@supports ( display: flex ) {
+/* <- source.css keyword.control.at-rule.supports.css punctuation.definition.keyword.css */
+ /* <- source.css keyword.control.at-rule.supports.css */
+/*^^^^^^^ source.css keyword.control.at-rule.supports.css */
+/*       ^ source.css -keyword.control.at-rule.supports.css */
+/*        ^ source.css punctuation.section.supports-condition.begin.css */
+/*         ^ source.css meta.supports-condition.css */
+/*          ^^^^^^^ source.css support.constant.property-name.css */
+/*                 ^ source.css punctuation.separator.key-value.css */
+/*                   ^^^^ source.css support.constant.property-value.css */
+/*                       ^ source.css -support.constant.property-value.css */
+/*                        ^ source.css punctuation.section.supports-condition.end.css */
+  body, #navigation, #content { display: flex; }
+  #navigation { background: blue; color: white; }
+  #article { background: white; color: black; }
+}
+/* <- source.css punctuation.section.at-supports.end.css */
+
+@supports not ( display: flex ) {
+/* <- source.css keyword.control.at-rule.supports.css punctuation.definition.keyword.css */
+ /* <- source.css keyword.control.at-rule.supports.css */
+/*^^^^^^^ source.css keyword.control.at-rule.supports.css */
+/*       ^ source.css -keyword.control.at-rule.supports.css */
+/*        ^^^ source.css keyword.operator.logic.at-supports.css */
+/*           ^ source.css -keyword.operator.logic.at-supports.css */
+/*            ^ source.css punctuation.section.supports-condition.begin.css */
+/*             ^ source.css meta.supports-condition.css */
+/*              ^^^^^^^ source.css support.constant.property-name.css */
+/*                     ^ source.css punctuation.separator.key-value.css */
+/*                       ^^^^ source.css support.constant.property-value.css */
+/*                           ^ source.css -support.constant.property-value.css */
+/*                            ^ source.css punctuation.section.supports-condition.end.css */
+  body { width: 100%; height: 100%; background: white; color: black; }
+  #navigation { width: 25%; }
+  #article { width: 75%; }
+}
+/* <- source.css punctuation.section.at-supports.end.css */
+
+@supports ( box-shadow: 0 0 2px black inset ) or
+          ( -moz-box-shadow: 0 0 2px black inset ) or
+          ( -webkit-box-shadow: 0 0 2px black inset ) or
+          ( -o-box-shadow: 0 0 2px black inset ) {
+  .noticebox {
+    -moz-box-shadow: 0 0 2px black inset;
+    -webkit-box-shadow: 0 0 2px black inset;
+    -o-box-shadow: 0 0 2px black inset;
+    box-shadow: 0 0 2px black inset; /* unprefixed last */
+    /* override the rule above the @supports rule */
+    border: none;
+    padding: 2px;
+  }
+}
+
+@supports ((transition-property: color) or
+           (animation-name: foo)) and
+          (transform: rotate(10deg)) {}
+@supports (transition-property: color) or
+          ((animation-name: foo) and
+           (transform: rotate(10deg))) {}
