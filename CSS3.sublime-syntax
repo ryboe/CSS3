@@ -18,6 +18,7 @@ variables:
   escape: '\\(?:[^\n\r\f\h]|\h{1,6}{{whitespace}}?)'
   exponent: '[eE][+-]?\d+'
   frequency_unit: k?Hz
+  hex_color: '(#)(?:\h{8}|\h{6}|\h{3,4})\b'
   ident_char: '[-a-zA-Z\d_\\\p{^ASCII}]'
   ident_start: '-?[a-zA-Z_\\\p{^ASCII}]'
   identifier: '{{ident_start}}{{ident_char}}*'
@@ -32,8 +33,8 @@ variables:
   number_non_neg: '\+?(?:\d+\.\d+|\.\d+|\d+)(?:{{exponent}})?'
   number_pos: '\+?(?:\d+\.\d*[1-9]\d*|\.\d*[1-9]\d*|[1-9]\d*)(?:{{exponent}})?'
   number_zero_to_one: '\+?(?:0(?:\.\d+)?|1(?:\.0+)?|\.\d+)\b(?!\.)'
-  # number_zero_to_one: '\+?(?:1\.0+|0?\.\d+|[01])'  # TODO: delete this if the other one works
   number_zero_to_100: '\b(?:100|[1-9]\d|\d)(?:\.\d+)?|\.\d+'
+  number_zero_to_255: '\b(?:2[0-5][0-5](?:\.0+)?|1\d\d(?:\.\d+)?|[1-9]\d(?:\.\d+)?|\d(?:\.\d+)?)\b'
   optional_min_max_prefix: '\b(?:min-|max-)?'
   optional_vendor_prefix: '(?:-webkit-|-ms-|-moz-)?'
   percentage_unit: '%'
@@ -153,6 +154,360 @@ contexts:
     - match: '\b(?:last-)?baseline{{b}}'
       scope: support.constant.property-value.css
 
+  color:
+    - include: func-rgba
+    - include: func-hsla
+    - include: func-hwb
+    - include: func-gray
+    - include: func-device-cmyk
+    - include: color-named
+    - include: color-adjuster
+    - include: hex-color
+
+  color-named:
+    - include: color-named-deprecated
+    - match: '(?x)
+        \b
+        (?:
+          yellowgreen|
+          yellow|
+          whitesmoke|
+          white|
+          wheat|
+          violet|
+          turquoise|
+          tomato|
+          thistle|
+          teal|
+          tan|
+          steelblue|
+          springgreen|
+          snow|
+          slategrey|
+          slategray|
+          slateblue|
+          skyblue|
+          silver|
+          sienna|
+          seashell|
+          seagreen|
+          sandybrown|
+          salmon|
+          saddlebrown|
+          royalblue|
+          rosybrown|
+          red|
+          rebeccapurple|
+          purple|
+          powderblue|
+          plum|
+          pink|
+          peru|
+          peachpuff|
+          papayawhip|
+          palevioletred|
+          paleturquoise|
+          palegreen|
+          palegoldenrod|
+          orchid|
+          orangered|
+          orange|
+          olivedrab|
+          olive|
+          oldlace|
+          navy|
+          navajowhite|
+          moccasin|
+          mistyrose|
+          mintcream|
+          midnightblue|
+          mediumvioletred|
+          mediumturquoise|
+          mediumspringgreen|
+          mediumslateblue|
+          mediumseagreen|
+          mediumpurple|
+          mediumorchid|
+          mediumblue|
+          mediumaquamarine|
+          maroon|
+          magenta|
+          linen|
+          limegreen|
+          lime|
+          lightyellow|
+          lightsteelblue|
+          lightslategrey|
+          lightslategray|
+          lightskyblue|
+          lightseagreen|
+          lightsalmon|
+          lightpink|
+          lightgrey|
+          lightgreen|
+          lightgray|
+          lightgoldenrodyellow|
+          lightcyan|
+          lightcoral|
+          lightblue|
+          lemonchiffon|
+          lawngreen|
+          lavenderblush|
+          lavender|
+          khaki|
+          ivory|
+          indigo|
+          indianred|
+          hotpink|
+          honeydew|
+          grey|
+          greenyellow|
+          green|
+          gray|
+          goldenrod|
+          gold|
+          ghostwhite|
+          gainsboro|
+          fuchsia|
+          forestgreen|
+          floralwhite|
+          firebrick|
+          dodgerblue|
+          dimgrey|
+          dimgray|
+          deepskyblue|
+          deeppink|
+          darkviolet|
+          darkturquoise|
+          darkslategrey|
+          darkslategray|
+          darkslateblue|
+          darkseagreen|
+          darksalmon|
+          darkred|
+          darkorchid|
+          darkorange|
+          darkolivegreen|
+          darkmagenta|
+          darkkhaki|
+          darkgrey|
+          darkgreen|
+          darkgray|
+          darkgoldenrod|
+          darkcyan|
+          darkblue|
+          cyan|
+          currentcolor|
+          crimson|
+          cornsilk|
+          cornflowerblue|
+          coral|
+          chocolate|
+          chartreuse|
+          cadetblue|
+          burlywood|
+          brown|
+          blueviolet|
+          blue|
+          blanchedalmond|
+          black|
+          bisque|
+          beige|
+          azure|
+          aquamarine|
+          aqua|
+          antiquewhite|
+          aliceblue
+        )
+        {{b}}'
+      scope: support.constant.color.w3c-color-name.css
+
+  color-named-deprecated:
+    - match: '(?x)
+        \b
+        (?:
+          WindowText|
+          WindowFrame|
+          Window|
+          ThreeDShadow|
+          ThreeDLightShadow|
+          ThreeDHighlight|
+          ThreeDFace|
+          ThreeDDarkShadow|
+          Scrollbar|
+          MenuText|
+          Menu|
+          InfoText|
+          InfoBackground|
+          InactiveCaptionText|
+          InactiveCaption|
+          InactiveBorder|
+          HighlightText|
+          Highlight|
+          GrayText|
+          CaptionText|
+          ButtonText|
+          ButtonShadow|
+          ButtonHighlight|
+          ButtonFace|
+          Background|
+          AppWorkspace|
+          ActiveCaption|
+          ActiveBorder
+        )
+        {{b}}'
+      scope: support.constant.color.w3c-color-name.css invalid.deprecated.css
+
+  func-blenda:
+    - match: \b(blenda?)(\()
+      captures:
+        1: support.function.blenda.css
+        2: punctuation.section.function.begin.css
+      push:
+        - include: end-func
+        - include: func-var
+        - match: '\b(?:rgb|hwb|hsl){{b}}'
+        - include: percentage
+        - include: color
+    - include: stray-paren
+
+  func-color:
+    - match: \b(color)(\()
+      captures:
+        1: support.function.color.css
+        2: punctuation.section.function.begin.css
+      push:
+        - include: end-func
+        - include: func-var
+        - include: angle
+        - include: number
+        - include: color-adjuster
+        - include: color
+    - include: stray-paren
+
+  func-color-adjuster-rgb:
+    - match: \b(rgb)(\()
+      captures:
+        1: support.function.color-adjuster-rgb.css
+        2: punctuation.section.function.begin.css
+      push:
+        - include: end-func
+        - include: func-var
+        - include: percentage
+        - include: hex-color
+        - include: number
+        - include: color-adjuster-operator
+    - include: stray-paren
+
+  func-device-cmyk:
+    - match: \b(device-cmyk)(\()
+      captures:
+        1: support.function.device-cmyk.css
+        2: punctuation.section.function.begin.css
+      push:
+        - include: end-func
+        - include: func-var
+        - include: percentage_zero_to_100
+        - include: number_zero_to_one
+        - include: color
+    - include: stray-paren
+
+  func-gray:
+    - match: \b(gray)(\()
+      captures:
+        1: support.function.gray.css
+        2: punctuation.section.function.begin.css
+      push:
+        - include: end-func
+        - include: func-var
+        - include: percentage_zero_to_100
+        - include: number
+    - include: stray-paren
+
+  func-hsla:
+    - match: \b(hsla?)(\()
+      captures:
+        1: support.function.hsla.css
+        2: punctuation.section.function.begin.css
+      push:
+        - include: end-func
+        - include: func-var
+        - include: angle
+        - include: percentage_zero_to_100
+        - include: number  # matches part of <hue> and <alpha-value>
+    - include: stray-paren
+
+  func-hwb:
+    - match: \b(hwb)(\()
+      captures:
+        1: support.function.hwb.css
+        2: punctuation.section.function.begin.css
+      push:
+        - include: end-func
+        - include: func-var
+        - include: angle
+        - include: percentage_zero_to_100
+        - include: number  # matches part of <hue> and <alpha-value>
+    - include: stray-paren
+
+  func-red-green-blue-alpha-a:
+    - match: \b(red|green|blue|alpha|a)(\()
+      captures:
+        1: support.function.red-gree-blue-alpha-a.css
+        2: punctuation.section.function.begin.css
+      push:
+        - include: end-func
+        - include: func-var
+        - include: percentage
+        - include: number
+        - include: color-adjuster-operator
+    - include: stray-paren
+
+  func-rgba:
+    - match: \b(rgba?)(\()
+      captures:
+        1: support.function.rgba.css
+        2: punctuation.section.function.begin.css
+      push:
+        - include: end-func
+        - include: func-var
+        - include: rgb-component  # matches <alpha-value> too
+    - include: stray-paren
+
+  func-tint-shade-contrast:
+    - match: \b(tint|shade|contrast)(\()
+      captures:
+        1: support.function.func-tint-shade-contrast.css
+        2: punctuation.section.function.begin.css
+      push:
+        - include: end-func
+        - include: func-var
+        - include: percentage
+    - include: stray-paren
+
+  func-whiteness-saturation-lightness-hue-blackness:
+    - match: \b(whiteness|w|saturation|s|lightness|l|hue|h|blackness|b)(\()
+      captures:
+        1: support.function.whiteness-saturation-lightness-hue-blackness.css
+        2: punctuation.section.function.begin.css
+      push:
+        - include: end-func
+        - include: func-var
+        - include: percentage
+        - include: color-adjuster-operator
+    - include: stray-paren
+
+  color-adjuster:
+    - include: func-color-adjuster-rgb
+    - include: func-tint-shade-contrast
+    - include: func-blenda
+    - include: func-whiteness-saturation-lightness-hue-blackness
+    - include: func-red-green-blue-alpha-a
+
+  color-adjuster-operator:
+    - match: '[*+-]'
+      scope: keyword.operator.arithmetic.css ari
+
   comment:
     - match: /\*
       push:
@@ -186,6 +541,66 @@ contexts:
         )
         {{b}}'
       scope: support.constant.property.value.css
+
+  display-box:
+    - match: '\b(?:none|contents){{b}}'
+      scope: support.constant.property-value.css
+
+  display-inside:
+    - match: '(?x)
+        \b
+        (?:
+          table|
+          ruby|
+          grid|
+          flow-root|
+          flow|
+          flex
+        )
+        {{b}}'
+      scope: support.constant.property-value.css
+
+  display-internal:
+    - match: '(?x)
+        \b
+        (?:
+          table-row-group|
+          table-row|
+          table-header-group|
+          table-footer-group|
+          table-column-group|
+          table-column|
+          table-cell|
+          table-caption|
+          ruby-text-container|
+          ruby-text|
+          ruby-base-container|
+          ruby-base
+        )
+        {{b}}'
+      scope: support.constant.property-value.css
+
+  display-legacy:
+    - match: '(?x)
+        \b
+        (?:
+          inline-table|
+          inline-list-item|
+          inline-grid|
+          inline-flex|
+          inline-block
+        )
+        {{b}}'
+      scope: support.constant.property-value.css
+
+  display-listitem:
+    - match: '\b(?:list-item|flow-root|flow){{b}}'
+      scope: support.constant.property-value.css
+    - include: display-outside
+
+  display-outside:
+    - match: '\b(?:run-in|inline|block){{b}}'
+      scope: support.constant.property-value.css
 
   end-func:
     - match: \)
@@ -275,6 +690,12 @@ contexts:
         - match: '{{custom_property_name}}'
           scope: support.constant.property-name.custom.css
     - include: stray-paren
+
+  hex-color:
+    - match: '{{hex_color}}'
+      captures:
+        0: constant.other.color.rgb-value.css
+        1: punctuation.definition.constant.css
 
   identifier:
     - match: '{{identifier}}'
@@ -602,6 +1023,11 @@ contexts:
     - match: '{{number_zero_to_one}}'
       scope: constant.numeric.css
 
+  number-zero-to-255:
+    - include: func-calc
+    - match: '{{number_zero_to_255}}'
+      scope: constant.numeric.css
+
   overflow-position:
     - match: '\b(?:un)?safe{{b}}'
       scope: support.constant.property.value.css
@@ -611,6 +1037,18 @@ contexts:
     - match: '(?x)
         (?:
           ({{number}})({{percentage_unit}})\b|
+          ({{zero}})
+        )'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+        3: constant.numeric.css
+
+  percentage_zero_to_100:
+    - include: func-calc
+    - match: '(?x)
+        (?:
+          ({{number_zero_to_100}})({{percentage_unit}})\b|
           ({{zero}})
         )'
       captures:
@@ -634,6 +1072,10 @@ contexts:
     - include: property-animation-play-state
     - include: property-animation-timing-function
     - include: property-animation
+
+    - include: property-box-shadow
+
+    - include: property-display
 
     # TODO: add rules for matching property/value pairs here
     - include: property-custom
@@ -842,6 +1284,20 @@ contexts:
         - include: value-css-wide
         - match: \b(?:none|auto){{b}}
           scope: support.constant.property-value.css
+
+  # CSS Backgrounds and Borders Module Level 3
+  property-box-shadow:
+    - match: \b(box-shadow)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\binset{{b}}'
+          scope: support.constant.property-value.css
+        - include: length
+        - include: color
 
   property-custom:
     - match: '({{custom_property_name}})\s*(:)'
@@ -1054,6 +1510,22 @@ contexts:
         {{b}}'  # "clip" won't match "clip-path"
       scope: support.constant.property-name.css invalid.deprecated.css
 
+  # CSS Display Module Level 3
+  property-display:
+    - match: \b(display)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: display-outside
+        - include: display-inside
+        - include: display-listitem
+        - include: display-internal
+        - include: display-box
+        - include: display-legacy
+
   # property-list matches a block of property-value pairs.
   # {
   #     property1: value1;
@@ -1083,6 +1555,15 @@ contexts:
       captures:
         1: constant.numeric.css
         2: keyword.other.unit.css
+
+  # <rgb-component> is a superset of <alpha-value> and will match it too.
+  # <alpha-value> is limited to the range 0-100% or 0.0-1.0.
+  # <rgb-component> matches the range 0-100% or 0.0 - 255.0.
+  # Since <alpha-value> is used along with <rgb-component>, there's no point
+  # creating a separate rule.
+  rgb-component:
+    - include: percentage_zero_to_100
+    - include: number_zero_to_255
 
   # A rule is a selector and a property list.
   # selector {
@@ -1632,8 +2113,8 @@ contexts:
         2: keyword.other.unit.css
         3: constant.numeric.css
 
-  # This context matches CSS-wide keywords and functions, like "inherit" and
-  # "var()". It should be included in all property contexts.
+  # This context matches CSS-wide keywords and functions, like "inherit",
+  # "var()", and "!important". It should be included in all property contexts.
   value-css-wide:
     - include: func-var
     # TODO: write these? they are at-risk.
