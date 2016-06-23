@@ -663,7 +663,7 @@
 /*^^^^ source.css keyword.control.at-rule.media.css */
 /*    ^ source.css -keyword.control.at-rule.media.css */
 /*     ^ source.css punctuation.section.media-feature.begin.css */
-/*      ^^^^^^^^^^^^^^^ source.css support.constant.property-name.custom.css */
+/*      ^^^^^^^^^^^^^^^ source.css support.constant.custom-media-query-name.css */
 /*                     ^ source.css punctuation.section.media-feature.end.css */
 @media (--narrow-window) and (scripting) {}
 /* <- source.css keyword.control.at-rule.media.css punctuation.definition.keyword.css */
@@ -671,9 +671,24 @@
 /*^^^^ source.css keyword.control.at-rule.media.css */
 /*    ^ source.css -keyword.control.at-rule.media.css */
 /*     ^ source.css punctuation.section.media-feature.begin.css */
-/*      ^^^^^^^^^^^^^^^ source.css support.constant.property-name.custom.css */
+/*      ^^^^^^^^^^^^^^^ source.css support.constant.custom-media-query-name.css */
 /*                     ^ source.css punctuation.section.media-feature.end.css */
 /*                       ^^^ source.css keyword.operator.logic.media.css */
 /*                           ^ source.css punctuation.section.media-feature.begin.css */
 /*                            ^^^^^^^^^ source.css support.constant.property-name.css */
 /*                                     ^ source.css punctuation.section.media-feature.end.css */
+
+/* TEST @CUSTOM-MEDIA */
+@custom-media --narrow-window (max-width: 30em);
+/* <- source.css keyword.control.at-rule.custom-media.css punctuation.definition.keyword.css */
+ /* <- source.css keyword.control.at-rule.custom-media.css */
+/* ^^^^^^^^^^ source.css keyword.control.at-rule.custom-media.css */
+/*            ^^^^^^^^^^^^^^^ source.css support.constant.custom-media-query-name.css */
+/*                           ^ source.css -support.constant.custom-media-query-name.css */
+/*                            ^ source.css punctuation.section.media-feature.begin.css */
+/*                             ^^^^^^^^^ source.css support.constant.property-name.css */
+/*                                      ^ source.css punctuation.separator.key-value.css */
+/*                                        ^^ source.css constant.numeric.css */
+/*                                          ^^ source.css keyword.other.unit.css */
+/*                                            ^ source.css punctuation.section.media-feature.end.css */
+/*                                             ^ source.css punctuation.terminator.custom-media.css */
