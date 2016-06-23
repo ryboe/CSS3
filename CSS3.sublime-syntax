@@ -49,6 +49,7 @@ variables:
 
 contexts:
   main:
+    - include: at-custom-media
     - include: at-media
     - include: at-supports
     - include: rule
@@ -94,6 +95,22 @@ contexts:
   arithmetic-operator:
     - match: '{{arithmetic_operator}}'
       scope: keyword.operator.arithmetic.css
+
+  at-custom-media:
+    - match: '(@)custom-media{{b}}'
+      captures:
+        0: keyword.control.at-rule.custom-media.css
+        1: punctuation.definition.keyword.css
+      push:
+        - match: ';'
+          scope: punctuation.terminator.custom-media.css
+          pop: true
+        - match: '\b(?:true|false){{b}}'
+          scope: support.constant.property-value.css
+        - include: media-feature
+        - include: media-feature-custom
+    - match: ';'
+      scope: invalid.illegal.stray-semicolon.css
 
   # Media queries start with "@media" and end with a closing curly brace. To
   # match this text, we define an outer scope that starts with "@media" and
@@ -805,10 +822,9 @@ contexts:
         - match: \b(?:srgb|rec2020|p3)\b
           scope: support.constant.property-value.css
 
-  # TODO: finish this
   media-feature-custom:
     - match: '\-\-{{identifier}}'
-      scope: support.constant.property-name.custom.css
+      scope: support.constant.custom-media-query-name.css
 
   media-feature-deprecated:
     - match: '(?x)
