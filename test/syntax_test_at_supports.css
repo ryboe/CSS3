@@ -57,6 +57,7 @@
 /*                       ^^^^ source.css support.constant.property-value.css */
 /*                           ^ source.css -support.constant.property-value.css */
 /*                            ^ source.css punctuation.section.supports-condition.end.css */
+/*                              ^ source.css punctuation.section.at-supports.begin.css */
   body { width: 100%; height: 100%; background: white; color: black; }
   #navigation { width: 25%; }
   #article { width: 75%; }
@@ -64,9 +65,56 @@
 /* <- source.css punctuation.section.at-supports.end.css */
 
 @supports ( box-shadow: 0 0 2px black inset ) or
+/* <- source.css keyword.control.at-rule.supports.css punctuation.definition.keyword.css */
+ /* <- source.css keyword.control.at-rule.supports.css */
+/*^^^^^^^ source.css keyword.control.at-rule.supports.css */
+/*       ^ source.css -keyword.control.at-rule.supports.css */
+/*        ^ source.css punctuation.section.supports-condition.begin.css */
+/*          ^^^^^^^^^^ source.css support.constant.property-name.css */
+/*                    ^ source.css punctuation.separator.key-value.css */
+/*                      ^ source.css constant.numeric.css */
+/*                        ^ source.css constant.numeric.css */
+/*                          ^ source.css constant.numeric.css */
+/*                           ^^ source.css keyword.other.unit.css */
+/*                              ^^^^^ source.css support.constant.color.w3c-color-name.css */
+/*                                    ^^^^^ source.css support.constant.property-value.css */
+/*                                          ^ source.css punctuation.section.supports-condition.end.css */
+/*                                            ^^ source.css keyword.operator.logic.at-supports.css */
           ( -moz-box-shadow: 0 0 2px black inset ) or
+/*        ^ source.css punctuation.section.supports-condition.begin.css */
+/*               ^^^^^^^^^^ source.css support.constant.property-name.css */
+/*                         ^ source.css punctuation.separator.key-value.css */
+/*                           ^ source.css constant.numeric.css */
+/*                             ^ source.css constant.numeric.css */
+/*                               ^ source.css constant.numeric.css */
+/*                                ^^ source.css keyword.other.unit.css */
+/*                                   ^^^^^ source.css support.constant.color.w3c-color-name.css */
+/*                                         ^^^^^ source.css support.constant.property-value.css */
+/*                                               ^ source.css punctuation.section.supports-condition.end.css */
+/*                                                 ^^ source.css keyword.operator.logic.at-supports.css */
           ( -webkit-box-shadow: 0 0 2px black inset ) or
+/*        ^ source.css punctuation.section.supports-condition.begin.css */
+/*                  ^^^^^^^^^^ source.css support.constant.property-name.css */
+/*                            ^ source.css punctuation.separator.key-value.css */
+/*                              ^ source.css constant.numeric.css */
+/*                                ^ source.css constant.numeric.css */
+/*                                  ^ source.css constant.numeric.css */
+/*                                   ^^ source.css keyword.other.unit.css */
+/*                                      ^^^^^ source.css support.constant.color.w3c-color-name.css */
+/*                                            ^^^^^ source.css support.constant.property-value.css */
+/*                                                  ^ source.css punctuation.section.supports-condition.end.css */
+/*                                                    ^^ source.css keyword.operator.logic.at-supports.css */
           ( -o-box-shadow: 0 0 2px black inset ) {
+/*        ^ source.css punctuation.section.supports-condition.begin.css */
+/*             ^^^^^^^^^^ source.css support.constant.property-name.css */
+/*                       ^ source.css punctuation.separator.key-value.css */
+/*                         ^ source.css constant.numeric.css */
+/*                           ^ source.css constant.numeric.css */
+/*                             ^ source.css constant.numeric.css */
+/*                              ^^ source.css keyword.other.unit.css */
+/*                                 ^^^^^ source.css support.constant.color.w3c-color-name.css */
+/*                                       ^^^^^ source.css support.constant.property-value.css */
+/*                                             ^ source.css punctuation.section.supports-condition.end.css */
   .noticebox {
     -moz-box-shadow: 0 0 2px black inset;
     -webkit-box-shadow: 0 0 2px black inset;
@@ -77,10 +125,74 @@
     padding: 2px;
   }
 }
+/* <- source.css punctuation.section.at-supports.end.css */
 
 @supports ((transition-property: color) or
+/* <- source.css keyword.control.at-rule.supports.css punctuation.definition.keyword.css */
+ /* <- source.css keyword.control.at-rule.supports.css */
+/*^^^^^^^ source.css keyword.control.at-rule.supports.css */
+/*       ^ source.css -keyword.control.at-rule.supports.css */
+/*        ^^ source.css punctuation.section.supports-condition.begin.css */
+/*                                    ^ source.css punctuation.section.supports-condition.end.css */
+/*                                      ^^ source.css keyword.operator.logic.at-supports.css */
            (animation-name: foo)) and
-          (transform: rotate(10deg)) {}
+/*         ^ source.css punctuation.section.supports-condition.begin.css */
+/*          ^^^^^^^^^^^^^^ source.css support.constant.property-name.css */
+/*                        ^ source.css punctuation.separator.key-value.css */
+/*                          ^^^ source.css string.unquoted.identifier.css */
+/*                             ^^ source.css punctuation.section.supports-condition.end.css */
+/*                                ^^^ source.css keyword.operator.logic.at-supports.css */
+           (transform: rotate(10deg)) {}
+/*         ^ source.css punctuation.section.supports-condition.begin.css */
+/*                                 ^^ source.css punctuation.section.supports-condition.end.css */
+/*                                    ^ source.css punctuation.section.at-supports.begin.css */
+/*                                     ^ source.css punctuation.section.at-supports.end.css */
+
+
 @supports (transition-property: color) or
+/* <- source.css keyword.control.at-rule.supports.css punctuation.definition.keyword.css */
+ /* <- source.css keyword.control.at-rule.supports.css */
+/*^^^^^^^ source.css keyword.control.at-rule.supports.css */
+/*       ^ source.css -keyword.control.at-rule.supports.css */
+/*        ^ source.css punctuation.section.supports-condition.begin.css */
+/*                                   ^ source.css punctuation.section.supports-condition.end.css */
           ((animation-name: foo) and
+/*        ^^ source.css punctuation.section.supports-condition.begin.css */
+/*          ^^^^^^^^^^^^^^ source.css support.constant.property-name.css */
+/*                        ^ source.css punctuation.separator.key-value.css */
+/*                          ^^^ source.css string.unquoted.identifier.css */
+/*                             ^ source.css punctuation.section.supports-condition.end.css */
+/*                               ^^^ source.css keyword.operator.logic.at-supports.css */
            (transform: rotate(10deg))) {}
+/*         ^ source.css punctuation.section.supports-condition.begin.css */
+/*                                  ^^ source.css punctuation.section.supports-condition.end.css */
+/*                                     ^ source.css punctuation.section.at-supports.begin.css */
+/*                                      ^ source.css punctuation.section.at-supports.end.css */
+
+@supports ((display: flex)) {}
+/* <- source.css keyword.control.at-rule.supports.css punctuation.definition.keyword.css */
+ /* <- source.css keyword.control.at-rule.supports.css */
+/*^^^^^^^ source.css keyword.control.at-rule.supports.css */
+/*       ^ source.css -keyword.control.at-rule.supports.css */
+/*        ^^ source.css punctuation.section.supports-condition.begin.css */
+/*          ^^^^^^^ source.css support.constant.property-name.css */
+/*                 ^ source.css punctuation.separator.key-value.css */
+/*                   ^^^^ source.css support.constant.property-value.css */
+/*                       ^^ source.css punctuation.section.supports-condition.end.css */
+/*                          ^ source.css punctuation.section.at-supports.begin.css */
+/*                           ^ source.css punctuation.section.at-supports.end.css */
+
+@supports (display: flex !important) {}
+/* <- source.css keyword.control.at-rule.supports.css punctuation.definition.keyword.css */
+ /* <- source.css keyword.control.at-rule.supports.css */
+/*^^^^^^^ source.css keyword.control.at-rule.supports.css */
+/*       ^ source.css -keyword.control.at-rule.supports.css */
+/*        ^ source.css punctuation.section.supports-condition.begin.css */
+/*         ^^^^^^^ source.css support.constant.property-name.css */
+/*                ^ source.css punctuation.separator.key-value.css */
+/*                  ^^^^ source.css support.constant.property-value.css */
+/*                      ^ source.css -support.constant.property-value.css */
+/*                       ^^^^^^^^^^ source.css -support.constant.property-value.css */
+/*                                 ^ source.css punctuation.section.supports-condition.end.css */
+/*                                   ^ source.css punctuation.section.at-supports.begin.css */
+/*                                    ^ source.css punctuation.section.at-supports.end.css */
