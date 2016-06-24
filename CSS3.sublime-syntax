@@ -111,8 +111,7 @@ contexts:
           scope: support.constant.property-value.css
         - include: media-feature
         - include: media-feature-custom
-    - match: ';'
-      scope: invalid.illegal.stray-semicolon.css
+    - include: stray-semicolon
 
   at-keyframes:
     - match: '(@){{vendor_prefix}}keyframes{{b}}'
@@ -199,7 +198,12 @@ contexts:
         - match: '}'
           scope: punctuation.section.at-viewport.end.css
           pop: true
-        - include: viewport-descriptor-block
+        - match: '{'
+          scope: punctuation.section.at-viewport.begin.css
+          push:
+            - match: '(?=})'
+              pop: true
+            - include: viewport-descriptors
 
   baseline-position:
     - match: '\b(?:last-)?baseline{{b}}'
@@ -2211,6 +2215,10 @@ contexts:
   stray-paren:
     - match: \)
       scope: invalid.illegal.stray-paren.css
+
+  stray-semicolon:
+    - match: ';'
+      scope: invalid.illegal.stray-semicolon.css
 
   string:
     - include: string-double
