@@ -243,7 +243,7 @@ contexts:
 
   color-adjuster-operator:
     - match: '[*+-]'
-      scope: keyword.operator.arithmetic.css ari
+      scope: keyword.operator.arithmetic.css
 
   color-named:
     - include: color-named-deprecated
@@ -461,7 +461,7 @@ contexts:
           space-around
         )
         {{b}}'
-      scope: support.constant.property.value.css
+      scope: support.constant.property-value.css
 
   content-list:
     - match: '\b(?:document-url|contents){{b}}'
@@ -485,7 +485,7 @@ contexts:
           center
         )
         {{b}}'
-      scope: support.constant.property.value.css
+      scope: support.constant.property-value.css
 
   # NOTE: Do not implement. symbols() is a very specific match, while
   # <identifier> is very nonspecific. Lumping them together will cause
@@ -863,7 +863,7 @@ contexts:
   func-red-green-blue-alpha-a:
     - match: \b(red|green|blue|alpha|a)(\()
       captures:
-        1: support.function.red-gree-blue-alpha-a.css
+        1: support.function.red-green-blue-alpha-a.css
         2: punctuation.section.function.begin.css
       push:
         - include: end-func
@@ -1397,7 +1397,7 @@ contexts:
 
   overflow-position:
     - match: '\b(?:un)?safe{{b}}'
-      scope: support.constant.property.value.css
+      scope: support.constant.property-value.css
 
   page-margin-box:
     - match: '(?x)
@@ -1581,7 +1581,7 @@ contexts:
               alphabetic
             )
             {{b}}'
-          scope: support.constant.property.value.css
+          scope: support.constant.property-value.css
 
   # CSS Cascading and Inheritance Level 4
   property-all:
@@ -2254,7 +2254,7 @@ contexts:
         - meta_content_scope: meta.pseudo-class.lang.css
         - include: end-func
         - match: '[*a-zA-Z0-9-]+'
-          scope: support.constant.property.value.css
+          scope: support.constant.property-value.css
     - include: stray-paren
 
   selector-pseudo-class-not-matches-has:
@@ -2465,7 +2465,7 @@ contexts:
           center
         )
         {{b}}'
-      scope: support.constant.property.value.css
+      scope: support.constant.property-value.css
 
   side-or-corner:
     - match: '\b(?:top|right|left|bottom){{b}}'
@@ -2473,7 +2473,7 @@ contexts:
 
   single-animation-composition:
     - match: '\b(?:replace|add|accumulate){{b}}'
-      scope: support.constant.property.value.css
+      scope: support.constant.property-value.css
 
   single-animation-direction:
     - match: '(?x)
