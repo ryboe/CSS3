@@ -36,13 +36,13 @@ variables:
   number_zero_to_100: '\b(?:100(?:\.0+)?|[1-9]\d(?:\.\d+)?|\d(?:\.\d+)?|\.\d+)'
   number_zero_to_255: '\b(?:2[0-5][0-5](?:\.0+)?|1\d\d(?:\.\d+)?|[1-9]\d(?:\.\d+)?|\d(?:\.\d+)?)'
   optional_min_max_prefix: '\b(?:min-|max-)?'
-  optional_vendor_prefix: '(?:-webkit-|-ms-|-moz-)?'
   percentage_unit: '%'
   ratio: '({{integer_pos}})\s*(\/)\s*({{integer_pos}})'
   resolution_unit: dppx|dpi|dpcm
   time_unit: m?s
   # '' is how you escape a single ' in YAML
   url_char: '[a-zA-Z0-9\-\._~:/\?#\[\]''@!$&()\*\+\%,;=]'
+  vendor_prefix: '(?:-webkit-|-ms-|-moz-)?'
   whitespace: '[ \t\n]'
   wq_name: '({{ns_prefix}})?({{identifier}}|(\*))'
   zero: \b0\b
@@ -115,7 +115,7 @@ contexts:
       scope: invalid.illegal.stray-semicolon.css
 
   at-keyframes:
-    - match: '(@)keyframes{{b}}'
+    - match: '(@){{vendor_prefix}}keyframes{{b}}'
       captures:
         0: keyword.control.at-rule.keyframes.css
         1: punctuation.definition.keyword.css
@@ -159,6 +159,7 @@ contexts:
               pop: true
             - include: at-media
             - include: at-keyframes
+            - include: at-viewport
             - include: at-supports
             - include: rule
         - match: '\band{{b}}'
@@ -188,6 +189,17 @@ contexts:
         - include: supports-condition-operator
         - include: supports-condition
     - include: stray-brace
+
+  at-viewport:
+    - match: '(@){{vendor_prefix}}viewport{{b}}'
+      captures:
+        0: keyword.control.at-rule.viewport.css
+        1: punctuation.definition.keyword.css
+      push:
+        - match: '}'
+          scope: punctuation.section.at-viewport.end.css
+          pop: true
+        - include: viewport-descriptor-block
 
   baseline-position:
     - match: '\b(?:last-)?baseline{{b}}'
@@ -396,6 +408,51 @@ contexts:
         )
         {{b}}'
       scope: support.constant.color.w3c-color-name.css invalid.deprecated.css
+
+  descriptor-viewport-height-width:
+    - match: '\b({{optional_min_max_prefix}}(?:width|height))\s*(:)'
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: viewport-length
+    - include: stray-semicolon
+
+  descriptor-viewport-orientation:
+    - match: '\b(orientation)\s*(:)'
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - match: '\b(?:portrait|landscape|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-semicolon
+
+  descriptor-viewport-user-zoom:
+    - match: '\b(user-zoom)\s*(:)'
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - match: '\b(?:zoom|fixed){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-semicolon
+
+  descriptor-viewport-zoom:
+    - match: '\b({{optional_min_max_prefix}}zoom)\s*(:)'
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - match: '\bauto{{b}}'
+          scope: support.constant.property-value.css
+        - include: percentage-non-negative
+        - include: number-non-negative
+    - include: stray-semicolon
 
   func-blenda:
     - match: \b(blenda?)(\()
@@ -1080,6 +1137,11 @@ contexts:
     - match: '{{number}}'
       scope: constant.numeric.css
 
+  number-non-negative:
+    - include: func-calc
+    - match: '{{number_non_neg}}'
+      scope: constant.numeric.css
+
   number-zero-to-one:
     - include: func-calc
     - match: '{{number_zero_to_one}}'
@@ -1099,6 +1161,18 @@ contexts:
     - match: '(?x)
         (?:
           ({{number}})({{percentage_unit}})\b|
+          ({{zero}})
+        )'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+        3: constant.numeric.css
+
+  percentage-non-negative:
+    - include: func-calc
+    - match: '(?x)
+        (?:
+          ({{number_non_neg}})({{percentage_unit}})|
           ({{zero}})
         )'
       captures:
@@ -1134,6 +1208,7 @@ contexts:
     - include: property-animation-play-state
     - include: property-animation-timing-function
     - include: property-animation
+    - include: property-appearance
 
     - include: property-box-shadow
 
@@ -1348,7 +1423,7 @@ contexts:
 
   # CSS Basic User Interface Module Level 4
   property-appearance:
-    - match: \b(appearance)\s*(:)
+    - match: ({{vendor_prefix}}\bappearance)\s*(:)
       captures:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
@@ -1384,8 +1459,8 @@ contexts:
 
   property-deprecated:
     - match: '(?x)
+        {{vendor_prefix}}
         \b
-        {{optional_vendor_prefix}}
         (?:
           zoom|
           wrap-padding|
@@ -1636,7 +1711,7 @@ contexts:
   # creating a separate rule.
   rgb-component:
     - include: percentage-zero-to-100
-    - include: number_zero_to_255
+    - include: number-zero-to-255
 
   # A rule is a selector and a property list.
   # selector {
@@ -1724,7 +1799,7 @@ contexts:
     - include: selector-pseudo-class-deprecated
     - match: '(?x)
       (:)
-      {{optional_vendor_prefix}}
+      {{vendor_prefix}}
       (?:
         visited|
         valid|
@@ -1776,7 +1851,7 @@ contexts:
   selector-pseudo-class-deprecated:
     - match: '(?x)
         (:)
-        {{optional_vendor_prefix}}
+        {{vendor_prefix}}
         (?:
           first-line|
           first-letter|
@@ -1923,7 +1998,7 @@ contexts:
   selector-pseudo-element:
     - match: '(?x)
         (::)
-        {{optional_vendor_prefix}}
+        {{vendor_prefix}}
         (?:
           spelling-error|
           shadow|
@@ -2206,3 +2281,23 @@ contexts:
       scope: keyword.other.important.css
     - match: '\b(?:unset|revert|inherit|initial){{b}}'
       scope: support.constant.property-value.css
+
+  viewport-descriptor-block:
+    - match: '{'
+      scope: punctuation.section.at-viewport.begin.css
+      push:
+        - match: '(?=})'
+          pop: true
+        - include: viewport-descriptors
+
+  viewport-descriptors:
+    - include: descriptor-viewport-user-zoom
+    - include: descriptor-viewport-orientation
+    - include: descriptor-viewport-height-width
+    - include: descriptor-viewport-zoom
+
+  viewport-length:
+    - match: '\b(?:extend-to-zoom|auto){{b}}'
+      scope: support.constant.property-value.css
+    - include: percentage-non-negative
+    - include: length-non-negative
