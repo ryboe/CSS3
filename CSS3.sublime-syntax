@@ -18,6 +18,7 @@ variables:
   escape: '\\(?:[^\n\r\f\h]|\h{1,6}{{whitespace}}?)'
   exponent: '[eE][+-]?\d+'
   frequency_unit: k?Hz
+  generic_font_family: 'serif|sans-serif|monospace|fantasy|cursive'
   hex_color: '(#)(?:\h{8}|\h{6}|\h{3,4})\b'
   ident_char: '[-a-zA-Z\d_\\\p{^ASCII}]'
   ident_start: '-?[a-zA-Z_\\\p{^ASCII}]'
@@ -40,6 +41,8 @@ variables:
   ratio: '({{integer_pos}})\s*(\/)\s*({{integer_pos}})'
   resolution_unit: dppx|dpi|dpcm
   time_unit: m?s
+  # '?' is a literal character that is legal in a <urange>
+  unicode_range: '[uU]\+[\?\h]{1,6}(?:-[\?\h]{1,6})?'
   # '' is how you escape a single ' in YAML
   url_char: '[a-zA-Z0-9\-\._~:/\?#\[\]''@!$&()\*\+\%,;=]'
   vendor_prefix: '(?:-webkit-|-ms-|-moz-)?'
@@ -122,6 +125,228 @@ contexts:
         - include: media-feature
         - include: media-feature-custom
     - include: stray-semicolon
+
+  at-font-face:
+    - match: '(@)font-face{{b}}'
+      captures:
+        0: keyword.control.at-rule.font-face.css
+        1: punctuation.definition.keyword.css
+      push:
+        - match: '}'
+          scope: punctuation.section.font-face-descriptor-block.end.css
+          pop: true
+        - match: '{'
+          scope: punctuation.section.font-face-descriptor-block.begin.css
+          push:
+            - match: '(?=})'
+              pop: true
+            - include: font-face-descriptors
+    - include: stray-brace
+
+  font-face-descriptors:
+    - include: descriptor-font-feature-settings
+    - include: descriptor-unicode-range
+    - include: descriptor-font-variant
+    - include: descriptor-font-stretch
+    - include: descriptor-font-family
+    - include: descriptor-font-weight
+    - include: descriptor-font-style
+    - include: descriptor-src
+
+  descriptor-font-family:
+    - match: \b(font-family)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: string
+        # Generic font familys, like 'serif', are not permitted in the
+        # font-family descriptor, only in the font-family property.
+        - match: '\b(?:{{generic_font_family}}){{b}}'
+          scope: invalid.illegal.font-family.css
+        - include: identifier
+
+  descriptor-font-feature-settings:
+    - match: \b(font-feature-settings)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:on|off|normal){{b}}'
+          scope: support.constant.property-value.css
+        - include: string
+        - include: integer-non-negative
+
+  descriptor-src:
+    - match: \b(src)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: func-format
+        - include: func-local
+        - include: func-url
+
+  func-format:
+    - match: \b(format)(\()
+      captures:
+        1: support.function.format.css
+        2: punctuation.section.function.begin.css
+      push:
+        - include: end-func
+        - include: func-var
+        - include: string
+    - include: stray-paren
+
+  func-local:
+    - match: \b(local)(\()
+      captures:
+        1: support.function.local.css
+        2: punctuation.section.function.begin.css
+      push:
+        - include: end-func
+        - include: func-var
+        - include: string
+        - include: identifier
+    - include: stray-paren
+
+  descriptor-font-stretch:
+    - match: \b(font-stretch)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '(?x)
+            \b
+            (?:
+              ultra-expanded|
+              ultra-condensed|
+              semi-expanded|
+              semi-condensed|
+              normal|
+              extra-expanded|
+              extra-condensed|
+              expanded|
+              condensed
+            )
+            {{b}}'
+          scope: support.constant.property-value.css
+
+  descriptor-font-style:
+    - match: \b(font-style)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:oblique|normal|italic){{b}}'
+          scope: support.constant.property-value.css
+
+  descriptor-font-variant:
+    - match: \b(font-variant)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: func-swash-styleset-stylistic-ornaments-character-variant-annotation
+        - match: '(?x)
+            \b
+            (?:
+              unicase|
+              titling-caps|
+              super|
+              sub|
+              small-caps|
+              slashed-zero|
+              ruby|
+              petite-caps|
+              ordinal|
+              normal|
+              none|
+              historical-forms|
+              all-small-caps|
+              all-petite-caps
+            )
+            {{b}}'
+          scope: support.constant.property-value.css
+        - include: common-lig-values
+        - include: contextual-alt-values
+        - include: discretionary-lig-values
+        - include: east-asian-variant-values
+        - include: east-asian-width-values
+        - include: historical-lig-values
+        - include: numeric-figure-values
+        - include: numeric-spacing-values
+        - include: numeric-fraction-values
+
+  descriptor-font-weight:
+    - match: \b(font-weight)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:normal|bold|[1-9]00){{b}}'
+          scope: support.constant.property-value.css
+
+  descriptor-unicode-range:
+    - match: \b(unicode-range)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '{{unicode_range}}'
+          scope: constant.numeric.unicode-range.css
+
+  common-lig-values:
+    - match: '\b(?:no-common-ligatures|common-ligatures){{b}}'
+      scope: support.constant.property-value.css
+
+  contextual-alt-values:
+    - match: '\b(?:no-contextual|contextual){{b}}'
+      scope: support.constant.property-value.css
+
+  discretionary-lig-values:
+    - match: '\b(?:no-discretionary-ligatures|discretionary-ligatures){{b}}'
+      scope: support.constant.property-value.css
+
+  east-asian-variant-values:
+    - match: '\b(?:traditional|simplified|jis90|jis83|jis78|jis04){{b}}'
+      scope: support.constant.property-value.css
+
+  east-asian-width-values:
+    - match: '\b(?:proportional-width|full-width){{b}}'
+      scope: support.constant.property-value.css
+
+  historical-lig-values:
+    - match: '\b(?:no-historical-ligatures|historical-ligatures){{b}}'
+      scope: support.constant.property-value.css
+
+  numeric-figure-values:
+    - match: '\b(?:oldstyle-nums|lining-nums){{b}}'
+      scope: support.constant.property-value.css
+
+  numeric-spacing-values:
+    - match: '\b(?:tabular-nums|proportional-nums){{b}}'
+      scope: support.constant.property-value.css
+
+  numeric-fraction-values:
+    - match: '\b(?:stacked-fractions|diagonal-fractions){{b}}'
+      scope: support.constant.property-value.css
 
   at-font-feature-values:
     - match: '(@)font-feature-values{{b}}'
@@ -966,6 +1191,18 @@ contexts:
         - match: '\b(?:start|end){{b}}'
           scope: support.constant.property-value.css
         - include: integer-positive
+    - include: stray-paren
+
+  func-swash-styleset-stylistic-ornaments-character-variant-annotation:
+    - match: \b(swash|stylistic|styleset|ornaments|character-variant|annotation)(\()
+      captures:
+        1: support.function.swash-styleset-stylistic-ornaments-character-variant-annotation.css
+        2: punctuation.section.function.begin.css
+      push:
+        - include: end-func
+        - include: func-var
+        - include: identifier
+        - include: integer-non-negative
     - include: stray-paren
 
   func-symbols:
