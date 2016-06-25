@@ -601,6 +601,7 @@ contexts:
         - include: value-css-wide
         - include: integer-non-negative
         - include: symbol
+    - include: stray-paren-or-semicolon
 
   descriptor-fallback:
     - match: \b(fallback)\s*(:)
@@ -611,6 +612,7 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: identifier
+    - include: stray-paren-or-semicolon
 
   descriptor-font-family:
     - match: \b(font-family)\s*(:)
@@ -626,6 +628,7 @@ contexts:
         - match: '\b(?:{{generic_font_family}}){{b}}'
           scope: invalid.illegal.font-family.css
         - include: identifier
+    - include: stray-paren-or-semicolon
 
   descriptor-font-feature-settings:
     - match: \b(font-feature-settings)\s*(:)
@@ -639,6 +642,7 @@ contexts:
           scope: support.constant.property-value.css
         - include: string
         - include: integer-non-negative
+    - include: stray-paren-or-semicolon
 
   descriptor-font-src:
     - match: \b(src)\s*(:)
@@ -651,6 +655,7 @@ contexts:
         - include: func-format
         - include: func-local
         - include: func-url
+    - include: stray-paren-or-semicolon
 
   descriptor-font-stretch:
     - match: \b(font-stretch)\s*(:)
@@ -675,6 +680,7 @@ contexts:
             )
             {{b}}'
           scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
 
   descriptor-font-style:
     - match: \b(font-style)\s*(:)
@@ -686,6 +692,7 @@ contexts:
         - include: value-css-wide
         - match: '\b(?:oblique|normal|italic){{b}}'
           scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
 
   descriptor-font-variant:
     - match: \b(font-variant)\s*(:)
@@ -725,6 +732,7 @@ contexts:
         - include: numeric-figure-values
         - include: numeric-spacing-values
         - include: numeric-fraction-values
+    - include: stray-paren-or-semicolon
 
   descriptor-font-weight:
     - match: \b(font-weight)\s*(:)
@@ -736,6 +744,7 @@ contexts:
         - include: value-css-wide
         - match: '\b(?:normal|bold|[1-9]00){{b}}'
           scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
 
   descriptor-negative:
     - match: \b(negative)\s*(:)
@@ -746,6 +755,7 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: symbol
+    - include: stray-paren-or-semicolon
 
   descriptor-pad:
     - match: \b(pad)\s*(:)
@@ -759,6 +769,7 @@ contexts:
           scope: support.constant.property-value.css
         - include: integer
         - include: symbol
+    - include: stray-paren-or-semicolon
 
   descriptor-range:
     - match: \b(range)\s*(:)
@@ -771,6 +782,7 @@ contexts:
         - match: '\b(?:infinite|auto){{b}}'
           scope: support.constant.property-value.css
         - include: integer
+    - include: stray-paren-or-semicolon
 
   descriptor-suffix-prefix:
     - match: \b(suffix|prefix)\s*(:)
@@ -781,6 +793,7 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: symbol
+    - include: stray-paren-or-semicolon
 
   descriptor-speak-as:
     - match: \b(speak-as)\s*(:)
@@ -793,6 +806,7 @@ contexts:
         - match: '\b(?:words|spell-out|numbers|bullets|auto){{b}}'
           scope: support.constant.property-value.css
         - include: identifier
+    - include: stray-paren-or-semicolon
 
   descriptor-symbols:
     - match: \b(symbols)\s*(:)
@@ -803,6 +817,7 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: symbol
+    - include: stray-paren-or-semicolon
 
   descriptor-system:
     - match: \b(system)\s*(:)
@@ -827,6 +842,7 @@ contexts:
           scope: support.constant.property-value.css
         - include: integer
         - include: identifier
+    - include: stray-paren-or-semicolon
 
   descriptor-viewport-height-width:
     - match: '\b({{optional_min_max_prefix}}(?:width|height))\s*(:)'
@@ -836,7 +852,7 @@ contexts:
       push:
         - include: end-value
         - include: viewport-length
-    - include: stray-semicolon
+    - include: stray-paren-or-semicolon
 
   descriptor-viewport-orientation:
     - match: '\b(orientation)\s*(:)'
@@ -847,7 +863,7 @@ contexts:
         - include: end-value
         - match: '\b(?:portrait|landscape|auto){{b}}'
           scope: support.constant.property-value.css
-    - include: stray-semicolon
+    - include: stray-paren-or-semicolon
 
   descriptor-viewport-user-zoom:
     - match: '\b(user-zoom)\s*(:)'
@@ -858,7 +874,7 @@ contexts:
         - include: end-value
         - match: '\b(?:zoom|fixed){{b}}'
           scope: support.constant.property-value.css
-    - include: stray-semicolon
+    - include: stray-paren-or-semicolon
 
   descriptor-viewport-zoom:
     - match: '\b({{optional_min_max_prefix}}zoom)\s*(:)'
@@ -871,7 +887,7 @@ contexts:
           scope: support.constant.property-value.css
         - include: percentage-non-negative
         - include: number-non-negative
-    - include: stray-semicolon
+    - include: stray-paren-or-semicolon
 
   descriptor-unicode-range:
     - match: \b(unicode-range)\s*(:)
@@ -883,6 +899,7 @@ contexts:
         - include: value-css-wide
         - match: '{{unicode_range}}'
           scope: constant.numeric.unicode-range.css
+    - include: stray-paren-or-semicolon
 
   discretionary-lig-values:
     - match: '\b(?:no-discretionary-ligatures|discretionary-ligatures){{b}}'
@@ -1054,7 +1071,6 @@ contexts:
         - match: '\b(?:rgb|hwb|hsl){{b}}'
         - include: percentage
         - include: color
-    - include: stray-paren
 
   func-calc:
     - match: \b(calc)(\()
@@ -1071,7 +1087,6 @@ contexts:
         - include: percentage
         - include: number
         - include: arithmetic-operator
-    - include: stray-paren
 
   func-color:
     - match: \b(color)(\()
@@ -1085,7 +1100,6 @@ contexts:
         - include: number
         - include: color-adjuster
         - include: color
-    - include: stray-paren
 
   func-color-adjuster-rgb:
     - match: \b(rgb)(\()
@@ -1099,7 +1113,6 @@ contexts:
         - include: hex-color
         - include: number
         - include: color-adjuster-operator
-    - include: stray-paren
 
   func-cross-fade:
     - match: \b(cross-fade)(\()
@@ -1112,7 +1125,6 @@ contexts:
         - include: image
         - include: color
         - include: percentage-zero-to-100
-    - include: stray-paren
 
   func-cubic-bezier:
     - match: \b(cubic-bezier)(\()
@@ -1123,7 +1135,6 @@ contexts:
         - include: end-func
         - include: func-var
         - include: number-zero-to-one
-    - include: stray-paren
 
   func-device-cmyk:
     - match: \b(device-cmyk)(\()
@@ -1136,7 +1147,6 @@ contexts:
         - include: percentage-zero-to-100
         - include: number-zero-to-one
         - include: color
-    - include: stray-paren
 
   func-element:
     - match: \b(element)(\()
@@ -1149,7 +1159,6 @@ contexts:
         - match: '\b(?:start|last|first-except|first){{b}}'
           scope: support.constant.property-value.css
         - include: identifier
-    - include: stray-paren
 
   func-format:
     - match: \b(format)(\()
@@ -1160,7 +1169,6 @@ contexts:
         - include: end-func
         - include: func-var
         - include: string
-    - include: stray-paren
 
   func-gray:
     - match: \b(gray)(\()
@@ -1172,7 +1180,6 @@ contexts:
         - include: func-var
         - include: percentage-zero-to-100
         - include: number
-    - include: stray-paren
 
   func-hsla:
     - match: \b(hsla?)(\()
@@ -1185,7 +1192,6 @@ contexts:
         - include: angle
         - include: percentage-zero-to-100
         - include: number  # matches part of <hue> and <alpha-value>
-    - include: stray-paren
 
   func-hwb:
     - match: \b(hwb)(\()
@@ -1198,7 +1204,6 @@ contexts:
         - include: angle
         - include: percentage-zero-to-100
         - include: number  # matches part of <hue> and <alpha-value>
-    - include: stray-paren
 
   func-image:
     - match: \b(image)(\()
@@ -1211,7 +1216,6 @@ contexts:
         - include: image
         - include: color
         - include: string
-    - include: stray-paren
 
   func-image-set:
     - match: \b(image-set)(\()
@@ -1224,7 +1228,6 @@ contexts:
         - include: image
         - include: resolution
         - include: string
-    - include: stray-paren
 
   func-leader:
     - match: \b(leader)(\()
@@ -1237,7 +1240,6 @@ contexts:
         - match: '\b(?:space|solid|dotted){{b}}'
           scope: support.constant.property-value.css
         - include: string
-    - include: stray-paren
 
   func-linear-gradient:
     - match: \b((?:repeating-)?linear-gradient)(\()
@@ -1252,7 +1254,6 @@ contexts:
           scope: support.constant.property-value.css
         - include: angle
         - include: color-stop
-    - include: stray-paren
 
   func-local:
     - match: \b(local)(\()
@@ -1264,7 +1265,6 @@ contexts:
         - include: func-var
         - include: string
         - include: identifier
-    - include: stray-paren
 
   func-radial-gradient:
     - match: \b((?:repeating-)?radial-gradient)(\()
@@ -1279,7 +1279,6 @@ contexts:
         - include: size
         - include: position
         - include: color-stop
-    - include: stray-paren
 
   func-red-green-blue-alpha-a:
     - match: \b(red|green|blue|alpha|a)(\()
@@ -1292,7 +1291,6 @@ contexts:
         - include: percentage
         - include: number
         - include: color-adjuster-operator
-    - include: stray-paren
 
   func-rgba:
     - match: \b(rgba?)(\()
@@ -1303,7 +1301,6 @@ contexts:
         - include: end-func
         - include: func-var
         - include: rgb-component  # matches <alpha-value> too
-    - include: stray-paren
 
   func-steps:
     - match: \b(steps)(\()
@@ -1316,7 +1313,6 @@ contexts:
         - match: '\b(?:start|end){{b}}'
           scope: support.constant.property-value.css
         - include: integer-positive
-    - include: stray-paren
 
   func-swash-styleset-stylistic-ornaments-character-variant-annotation:
     - match: \b(swash|stylistic|styleset|ornaments|character-variant|annotation)(\()
@@ -1328,7 +1324,6 @@ contexts:
         - include: func-var
         - include: identifier
         - include: integer-non-negative
-    - include: stray-paren
 
   func-symbols:
     - match: \b(symbols)(\()
@@ -1351,7 +1346,6 @@ contexts:
             {{b}}'
           scope: support.constant.property-value.css
         - include: string
-    - include: stray-paren
 
   # This context matches target-counter() too.
   func-target-counters:
@@ -1366,7 +1360,6 @@ contexts:
         - include: func-url
         - include: string
         - include: identifier
-    - include: stray-paren
 
   func-target-text:
     - match: \b(target-text)(\()
@@ -1388,7 +1381,6 @@ contexts:
             {{b}}'
           scope: support.constant.property-value.css
         - include: string
-    - include: stray-paren
 
   func-tint-shade-contrast:
     - match: \b(tint|shade|contrast)(\()
@@ -1399,7 +1391,6 @@ contexts:
         - include: end-func
         - include: func-var
         - include: percentage
-    - include: stray-paren
 
   func-url:
     - match: \b(url)(\()
@@ -1410,7 +1401,6 @@ contexts:
         - include: end-func
         - include: func-var
         - include: string
-    - include: stray-paren
 
   func-var:
     - match: \b(var)(\()
@@ -1427,7 +1417,6 @@ contexts:
             - include: any-value  # <declaration-value>
         - match: '{{custom_property_name}}'
           scope: support.constant.property-name.custom.css
-    - include: stray-paren
 
   func-whiteness-saturation-lightness-hue-blackness:
     - match: \b(whiteness|w|saturation|s|lightness|l|hue|h|blackness|b)(\()
@@ -1439,7 +1428,6 @@ contexts:
         - include: func-var
         - include: percentage
         - include: color-adjuster-operator
-    - include: stray-paren
 
   gradient:
     - include: func-radial-gradient
@@ -1970,6 +1958,7 @@ contexts:
         - include: content-distribution
         - include: overflow-position
         - include: content-position
+    - include: stray-paren-or-semicolon
 
   # align-items is defined in two specs:
   #     CSS Box Alignment Module Level 3
@@ -1987,6 +1976,7 @@ contexts:
         - include: baseline-position
         - include: overflow-position
         - include: self-position
+    - include: stray-paren-or-semicolon
 
   # align-self is defined in two specs:
   #     CSS Box Alignment Module Level 3
@@ -2004,6 +1994,7 @@ contexts:
         - include: baseline-position
         - include: overflow-position
         - include: self-position
+    - include: stray-paren-or-semicolon
 
   # CSS Inline Layout Module Level 3
   property-alignment-baseline:
@@ -2031,6 +2022,7 @@ contexts:
             )
             {{b}}'
           scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
 
   # CSS Cascading and Inheritance Level 4
   property-all:
@@ -2041,6 +2033,7 @@ contexts:
       push:
         - include: end-value
         - include: value-css-wide
+    - include: stray-paren-or-semicolon
 
   # CSS Animations Level 1
   property-animation:
@@ -2058,6 +2051,7 @@ contexts:
         - include: time
         - include: single-animation-iteration-count
         - include: single-animation-name
+    - include: stray-paren-or-semicolon
 
   # CSS Animations Level 2
   property-animation-composition:
@@ -2069,6 +2063,7 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: single-animation-composition
+    - include: stray-paren-or-semicolon
 
   # CSS Animations Level 1
   property-animation-delay:
@@ -2080,6 +2075,7 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: time
+    - include: stray-paren-or-semicolon
 
   # CSS Animations Level 1
   property-animation-direction:
@@ -2091,6 +2087,7 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: single-animation-direction
+    - include: stray-paren-or-semicolon
 
   # CSS Animations Level 1
   property-animation-duration:
@@ -2102,6 +2099,7 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: time
+    - include: stray-paren-or-semicolon
 
   # CSS Animations Level 1
   property-animation-fill-mode:
@@ -2113,6 +2111,7 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: single-animation-fill-mode
+    - include: stray-paren-or-semicolon
 
   # CSS Animations Level 1
   property-animation-iteration-count:
@@ -2124,6 +2123,7 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: single-animation-iteration-count
+    - include: stray-paren-or-semicolon
 
   # CSS Animations Level 1
   property-animation-name:
@@ -2135,6 +2135,7 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: single-animation-name
+    - include: stray-paren-or-semicolon
 
   # CSS Animations Level 1
   property-animation-play-state:
@@ -2146,6 +2147,7 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: single-animation-play-state
+    - include: stray-paren-or-semicolon
 
   # CSS Animations Level 1
   property-animation-timing-function:
@@ -2157,6 +2159,7 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: single-timing-function
+    - include: stray-paren-or-semicolon
 
   # CSS Basic User Interface Module Level 4
   property-appearance:
@@ -2169,6 +2172,7 @@ contexts:
         - include: value-css-wide
         - match: \b(?:none|auto){{b}}
           scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
 
   # CSS Backgrounds and Borders Module Level 3
   property-box-shadow:
@@ -2183,6 +2187,7 @@ contexts:
           scope: support.constant.property-value.css
         - include: length
         - include: color
+    - include: stray-paren-or-semicolon
 
   # CSS Generated Content Module Level 3
   property-content:
@@ -2196,6 +2201,7 @@ contexts:
         - match: '\b(?:normal|none){{b}}'
           scope: support.constant.property-value.css
         - include: content-list
+    - include: stray-paren-or-semicolon
 
   property-custom:
     - match: '({{custom_property_name}})\s*(:)'
@@ -2206,6 +2212,7 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: any-value
+    - include: stray-paren-or-semicolon
 
   property-deprecated:
     - match: '(?x)
@@ -2423,6 +2430,7 @@ contexts:
         - include: display-internal
         - include: display-box
         - include: display-legacy
+    - include: stray-paren-or-semicolon
 
   # property-list matches a block of property-value pairs.
   # {
@@ -2992,6 +3000,22 @@ contexts:
   stray-paren:
     - match: \)
       scope: invalid.illegal.stray-paren.css
+
+  # TODO: delete this after you're sure the stray matching isn't overzealous.
+  # you won't know this until after you've implemented most properties.
+  # "overzealous" means that getting it to work will make it so that a single
+  # bad property will cause stray matches throughout the rest of the file.
+  # ideally, the stray matches should stop at the end of the current block.
+  # stray-paren-or-semicolon:
+  #   - match: '[;)]'
+  #     scope: invalid.illegal.stray.css
+  #     push:
+  #       - match: '(?=})'
+  #         pop: true
+
+  stray-paren-or-semicolon:
+    - include: stray-semicolon
+    - include: stray-paren
 
   stray-semicolon:
     - match: ';'
