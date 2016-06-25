@@ -111,6 +111,20 @@ contexts:
     - match: '{{arithmetic_operator}}'
       scope: keyword.operator.arithmetic.css
 
+  at-charset:
+    - match: '(@)charset{{b}}'
+      captures:
+        0: keyword.control.at-rule.charset.css
+        1: punctuation.definition.keyword.css
+      push:
+        - match: ';'
+          scope: punctuation.terminator.charset.css
+          pop: true
+        # This intentionally only matches UTF-8.
+        - match: '''utf-8''|''UTF-8''|"utf-8"|"UTF-8"'
+          scope: string.quoted.charset.css
+    - include: stray-semicolon
+
   at-counter-style:
     - match: '(@)counter-style{{b}}'
       captures:
