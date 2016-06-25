@@ -1,0 +1,90 @@
+/* SYNTAX TEST "Packages/CSS3/CSS3.sublime-syntax" */
+
+
+/* TEST EXAMPLE CODE FROM THE SPEC */
+/* https://drafts.csswg.org/css-namespaces/#declaration */
+@namespace toto "http://toto.example.org";
+/* <- keyword.control.at-rule.namespace.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.namespace.css */
+/*^^^^^^^^ keyword.control.at-rule.namespace.css */
+/*        ^ -keyword.control.at-rule.namespace.css */
+/*         ^^^^ string.unquoted.identifier.css */
+/*              ^ string.quoted.double.css punctuation.definition.string.begin.css */
+/*               ^^^^^^^^^^^^^^^^^^^^^^^ string.quoted.double.css */
+/*                                      ^ string.quoted.double.css punctuation.definition.string.end.css */
+/*                                       ^ punctuation.terminator.at-namespace.css */
+@namespace "http://example.com/foo";
+/* <- keyword.control.at-rule.namespace.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.namespace.css */
+/*^^^^^^^^ keyword.control.at-rule.namespace.css */
+/*        ^ -keyword.control.at-rule.namespace.css */
+/*         ^ string.quoted.double.css punctuation.definition.string.begin.css */
+/*          ^^^^^^^^^^^^^^^^^^^^^^ string.quoted.double.css */
+/*                                ^ string.quoted.double.css punctuation.definition.string.end.css */
+/*                                 ^ punctuation.terminator.at-namespace.css */
+
+
+/* TEST EXAMPLE CODE FROM MDN */
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/@namespace */
+/* Default namespace */
+@namespace url("XML-namespace-URL");
+/* <- keyword.control.at-rule.namespace.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.namespace.css */
+/*^^^^^^^^ keyword.control.at-rule.namespace.css */
+/*        ^ -keyword.control.at-rule.namespace.css */
+/*         ^^^ support.function.url.css */
+/*            ^ punctuation.section.function.begin.css */
+/*             ^ string.quoted.double.css punctuation.definition.string.begin.css */
+/*              ^^^^^^^^^^^^^^^^^ string.quoted.double.css */
+/*                               ^ string.quoted.double.css punctuation.definition.string.end.css */
+/*                                ^ punctuation.section.function.end.css */
+/*                                 ^ punctuation.terminator.at-namespace.css */
+
+@namespace "XML-namespace-URL";
+/* <- keyword.control.at-rule.namespace.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.namespace.css */
+/*^^^^^^^^ keyword.control.at-rule.namespace.css */
+/*        ^ -keyword.control.at-rule.namespace.css */
+/*         ^ string.quoted.double.css punctuation.definition.string.begin.css */
+/*          ^^^^^^^^^^^^^^^^^ string.quoted.double.css */
+/*                           ^ string.quoted.double.css punctuation.definition.string.end.css */
+/*                            ^ punctuation.terminator.at-namespace.css */
+
+/* Prefixed namespace */
+@namespace prefix url("XML-namespace-URL");
+/* <- keyword.control.at-rule.namespace.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.namespace.css */
+/*^^^^^^^^ keyword.control.at-rule.namespace.css */
+/*        ^ -keyword.control.at-rule.namespace.css */
+/*         ^^^^^^ string.unquoted.identifier.css */
+/*                ^^^ support.function.url.css */
+/*                   ^ punctuation.section.function.begin.css */
+/*                    ^ string.quoted.double.css punctuation.definition.string.begin.css */
+/*                     ^^^^^^^^^^^^^^^^^ string.quoted.double.css */
+/*                                      ^ string.quoted.double.css punctuation.definition.string.end.css */
+/*                                       ^ punctuation.section.function.end.css */
+/*                                        ^ punctuation.terminator.at-namespace.css */
+
+@namespace prefix "XML-namespace-URL";
+/* <- keyword.control.at-rule.namespace.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.namespace.css */
+/*^^^^^^^^ keyword.control.at-rule.namespace.css */
+/*        ^ -keyword.control.at-rule.namespace.css */
+/*         ^^^^^^ string.unquoted.identifier.css */
+/*                ^ string.quoted.double.css punctuation.definition.string.begin.css */
+/*                 ^^^^^^^^^^^^^^^^^ string.quoted.double.css */
+/*                                  ^ string.quoted.double.css punctuation.definition.string.end.css */
+/*                                   ^ punctuation.terminator.at-namespace.css */
+
+
+/* TEST INVALID NAMESPACE */
+@namespace "too-many-semicolons";;
+/* <- keyword.control.at-rule.namespace.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.namespace.css */
+/*^^^^^^^^ keyword.control.at-rule.namespace.css */
+/*        ^ -keyword.control.at-rule.namespace.css */
+/*         ^ string.quoted.double.css punctuation.definition.string.begin.css */
+/*          ^^^^^^^^^^^^^^^^^^^ string.quoted.double.css */
+/*                             ^ string.quoted.double.css punctuation.definition.string.end.css */
+/*                              ^ punctuation.terminator.at-namespace.css */
+/*                               ^ invalid.illegal.stray-semicolon.css */

@@ -242,6 +242,20 @@ contexts:
         - include: media-query-list
     - include: stray-brace
 
+  at-namespace:
+    - match: '(@)namespace{{b}}'
+      captures:
+        0: keyword.control.at-rule.namespace.css
+        1: punctuation.definition.keyword.css
+      push:
+        - match: ';'
+          scope: punctuation.terminator.at-namespace.css
+          pop: true
+        - include: func-url
+        - include: string
+        - include: identifier
+    - include: stray-semicolon
+
   at-page:
     - match: '(@)page{{b}}'
       captures:
