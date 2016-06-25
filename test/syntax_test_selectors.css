@@ -2,1041 +2,1041 @@
 
 /* TEST PSEUDO-ELEMENTS */
 ::after {}
-/* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
-/*^^^^^ source.css entity.other.attribute-name.pseudo-element.css */
-/*     ^ source.css -entity.other.attribute-name.pseudo-element.css */
+/* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+/*^^^^^ entity.other.attribute-name.pseudo-element.css */
+/*     ^ -entity.other.attribute-name.pseudo-element.css */
 ::before {}
-/* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
-/*^^^^^^ source.css entity.other.attribute-name.pseudo-element.css */
-/*      ^ source.css -entity.other.attribute-name.pseudo-element.css */
+/* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+/*^^^^^^ entity.other.attribute-name.pseudo-element.css */
+/*      ^ -entity.other.attribute-name.pseudo-element.css */
 ::content {}
-/* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
-/*^^^^^^^ source.css entity.other.attribute-name.pseudo-element.css */
-/*       ^ source.css -entity.other.attribute-name.pseudo-element.css */
+/* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+/*^^^^^^^ entity.other.attribute-name.pseudo-element.css */
+/*       ^ -entity.other.attribute-name.pseudo-element.css */
 ::first-letter {}
-/* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
-/*^^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-element.css */
-/*            ^ source.css -entity.other.attribute-name.pseudo-element.css */
+/* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+/*^^^^^^^^^^^^ entity.other.attribute-name.pseudo-element.css */
+/*            ^ -entity.other.attribute-name.pseudo-element.css */
 ::first-line {}
-/* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
-/*^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-element.css */
-/*          ^ source.css -entity.other.attribute-name.pseudo-element.css */
+/* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+/*^^^^^^^^^^ entity.other.attribute-name.pseudo-element.css */
+/*          ^ -entity.other.attribute-name.pseudo-element.css */
 ::grammar-error {}
-/* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
-/*^^^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-element.css */
-/*             ^ source.css -entity.other.attribute-name.pseudo-element.css */
+/* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+/*^^^^^^^^^^^^^ entity.other.attribute-name.pseudo-element.css */
+/*             ^ -entity.other.attribute-name.pseudo-element.css */
 ::inactive-selection {}
-/* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
-/*^^^^^^^^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-element.css */
-/*                  ^ source.css -entity.other.attribute-name.pseudo-element.css */
+/* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+/*^^^^^^^^^^^^^^^^^^ entity.other.attribute-name.pseudo-element.css */
+/*                  ^ -entity.other.attribute-name.pseudo-element.css */
 ::marker {}
-/* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
-/*^^^^^^ source.css entity.other.attribute-name.pseudo-element.css */
-/*      ^ source.css -entity.other.attribute-name.pseudo-element.css */
+/* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+/*^^^^^^ entity.other.attribute-name.pseudo-element.css */
+/*      ^ -entity.other.attribute-name.pseudo-element.css */
 ::placeholder {}
-/* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
-/*^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-element.css */
-/*           ^ source.css -entity.other.attribute-name.pseudo-element.css */
+/* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+/*^^^^^^^^^^^ entity.other.attribute-name.pseudo-element.css */
+/*           ^ -entity.other.attribute-name.pseudo-element.css */
 ::region {}
-/* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
-/*^^^^^^ source.css entity.other.attribute-name.pseudo-element.css */
-/*      ^ source.css -entity.other.attribute-name.pseudo-element.css */
+/* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+/*^^^^^^ entity.other.attribute-name.pseudo-element.css */
+/*      ^ -entity.other.attribute-name.pseudo-element.css */
 ::selection {}
-/* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
-/*^^^^^^^^^ source.css entity.other.attribute-name.pseudo-element.css */
-/*         ^ source.css -entity.other.attribute-name.pseudo-element.css */
+/* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+/*^^^^^^^^^ entity.other.attribute-name.pseudo-element.css */
+/*         ^ -entity.other.attribute-name.pseudo-element.css */
 ::shadow {}
-/* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
-/*^^^^^^ source.css entity.other.attribute-name.pseudo-element.css */
-/*      ^ source.css -entity.other.attribute-name.pseudo-element.css */
+/* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+/*^^^^^^ entity.other.attribute-name.pseudo-element.css */
+/*      ^ -entity.other.attribute-name.pseudo-element.css */
 ::spelling-error {}
-/* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
-/*^^^^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-element.css */
-/*              ^ source.css -entity.other.attribute-name.pseudo-element.css */
+/* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+/*^^^^^^^^^^^^^^ entity.other.attribute-name.pseudo-element.css */
+/*              ^ -entity.other.attribute-name.pseudo-element.css */
 ::slotted( ) {}
-/* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
-/*^^^^^^^ source.css entity.other.attribute-name.pseudo-element.css */
-/*       ^ source.css punctuation.section.function.begin.css */
-/*        ^ source.css meta.pseudo-element.slotted.css */
-/*         ^ source.css punctuation.section.function.end.css */
+/* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+/*^^^^^^^ entity.other.attribute-name.pseudo-element.css */
+/*       ^ punctuation.section.function.begin.css */
+/*        ^ meta.pseudo-element.slotted.css */
+/*         ^ punctuation.section.function.end.css */
 
 ::attr( ) {}
-/* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
-/*^^^^ source.css entity.other.attribute-name.pseudo-element.css */
-/*    ^ source.css punctuation.section.function.begin.css */
-/*     ^ source.css meta.pseudo-element.attr.css */
-/*      ^ source.css punctuation.section.function.end.css */
+/* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+/*^^^^ entity.other.attribute-name.pseudo-element.css */
+/*    ^ punctuation.section.function.begin.css */
+/*     ^ meta.pseudo-element.attr.css */
+/*      ^ punctuation.section.function.end.css */
 
 /* TEST INVALID PSEUDO-ELEMENT */
 ::invalid {}
-/* <- source.css punctuation.definition.entity.css */
- /* <- source.css punctuation.definition.entity.css */
-/*^^^^^^^^ source.css -entity.other.attribute-name.pseudo-element.css */
+/* <- punctuation.definition.entity.css */
+ /* <- punctuation.definition.entity.css */
+/*^^^^^^^^ -entity.other.attribute-name.pseudo-element.css */
 
 /* TEST VENDOR PREFIXED PSEUDO-ELEMENTS */
 ::-moz-content {}
-/* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
-/*^^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-element.css */
-/*            ^ source.css -entity.other.attribute-name.pseudo-element.css */
+/* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+/*^^^^^^^^^^^^ entity.other.attribute-name.pseudo-element.css */
+/*            ^ -entity.other.attribute-name.pseudo-element.css */
 ::-ms-content {}
-/* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
-/*^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-element.css */
-/*           ^ source.css -entity.other.attribute-name.pseudo-element.css */
+/* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+/*^^^^^^^^^^^ entity.other.attribute-name.pseudo-element.css */
+/*           ^ -entity.other.attribute-name.pseudo-element.css */
 ::-webkit-content {}
-/* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
-/*^^^^^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-element.css */
-/*               ^ source.css -entity.other.attribute-name.pseudo-element.css */
+/* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+/*^^^^^^^^^^^^^^^ entity.other.attribute-name.pseudo-element.css */
+/*               ^ -entity.other.attribute-name.pseudo-element.css */
 
 /* TEST PSEUDO-CLASSES */
 :visited {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*      ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*      ^ -entity.other.attribute-name.pseudo-class.css */
 :valid {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*    ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^ entity.other.attribute-name.pseudo-class.css */
+/*    ^ -entity.other.attribute-name.pseudo-class.css */
 :user-invalid {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*           ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*           ^ -entity.other.attribute-name.pseudo-class.css */
 :target {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*     ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*     ^ -entity.other.attribute-name.pseudo-class.css */
 :scope {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*    ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^ entity.other.attribute-name.pseudo-class.css */
+/*    ^ -entity.other.attribute-name.pseudo-class.css */
 :root {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*   ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^ entity.other.attribute-name.pseudo-class.css */
+/*   ^ -entity.other.attribute-name.pseudo-class.css */
 :required {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*       ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*       ^ -entity.other.attribute-name.pseudo-class.css */
 :read-write {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*         ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*         ^ -entity.other.attribute-name.pseudo-class.css */
 :read-only {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*        ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*        ^ -entity.other.attribute-name.pseudo-class.css */
 :playing {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*      ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*      ^ -entity.other.attribute-name.pseudo-class.css */
 :placeholder-shown {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*                ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*                ^ -entity.other.attribute-name.pseudo-class.css */
 :paused {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*     ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*     ^ -entity.other.attribute-name.pseudo-class.css */
 :past {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*   ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^ entity.other.attribute-name.pseudo-class.css */
+/*   ^ -entity.other.attribute-name.pseudo-class.css */
 :out-of-range {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*           ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*           ^ -entity.other.attribute-name.pseudo-class.css */
 :optional {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*       ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*       ^ -entity.other.attribute-name.pseudo-class.css */
 :only-of-type {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*           ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*           ^ -entity.other.attribute-name.pseudo-class.css */
 :only-child {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*         ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*         ^ -entity.other.attribute-name.pseudo-class.css */
 :link {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*   ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^ entity.other.attribute-name.pseudo-class.css */
+/*   ^ -entity.other.attribute-name.pseudo-class.css */
 :last-of-type {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*           ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*           ^ -entity.other.attribute-name.pseudo-class.css */
 :last-child {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*         ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*         ^ -entity.other.attribute-name.pseudo-class.css */
 :invalid {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*      ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*      ^ -entity.other.attribute-name.pseudo-class.css */
 :indeterminate {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*            ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*            ^ -entity.other.attribute-name.pseudo-class.css */
 :in-range {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*       ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*       ^ -entity.other.attribute-name.pseudo-class.css */
 :hover {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*    ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^ entity.other.attribute-name.pseudo-class.css */
+/*    ^ -entity.other.attribute-name.pseudo-class.css */
 :host {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*   ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^ entity.other.attribute-name.pseudo-class.css */
+/*   ^ -entity.other.attribute-name.pseudo-class.css */
 :future {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*     ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*     ^ -entity.other.attribute-name.pseudo-class.css */
 :focus-within {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*           ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*           ^ -entity.other.attribute-name.pseudo-class.css */
 :focus {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*    ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^ entity.other.attribute-name.pseudo-class.css */
+/*    ^ -entity.other.attribute-name.pseudo-class.css */
 :first-of-type {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*            ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*            ^ -entity.other.attribute-name.pseudo-class.css */
 :first-child {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*          ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*          ^ -entity.other.attribute-name.pseudo-class.css */
 :enabled {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*      ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*      ^ -entity.other.attribute-name.pseudo-class.css */
 :empty {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*    ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^ entity.other.attribute-name.pseudo-class.css */
+/*    ^ -entity.other.attribute-name.pseudo-class.css */
 :drop {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*   ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^ entity.other.attribute-name.pseudo-class.css */
+/*   ^ -entity.other.attribute-name.pseudo-class.css */
 :disabled {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*       ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*       ^ -entity.other.attribute-name.pseudo-class.css */
 :default {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*      ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*      ^ -entity.other.attribute-name.pseudo-class.css */
 :current {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*      ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*      ^ -entity.other.attribute-name.pseudo-class.css */
 :checked {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*      ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*      ^ -entity.other.attribute-name.pseudo-class.css */
 :blank {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*    ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^ entity.other.attribute-name.pseudo-class.css */
+/*    ^ -entity.other.attribute-name.pseudo-class.css */
 :any-link {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*       ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*       ^ -entity.other.attribute-name.pseudo-class.css */
 :active {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*     ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*     ^ -entity.other.attribute-name.pseudo-class.css */
 :dir( ) {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*  ^ source.css punctuation.section.function.begin.css */
-/*   ^ source.css meta.pseudo-class.dir.css */
-/*    ^ source.css punctuation.section.function.end.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^ entity.other.attribute-name.pseudo-class.css */
+/*  ^ punctuation.section.function.begin.css */
+/*   ^ meta.pseudo-class.dir.css */
+/*    ^ punctuation.section.function.end.css */
 :drop( ) {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*   ^ source.css punctuation.section.function.begin.css */
-/*    ^ source.css meta.pseudo-class.drop.css */
-/*     ^ source.css punctuation.section.function.end.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^ entity.other.attribute-name.pseudo-class.css */
+/*   ^ punctuation.section.function.begin.css */
+/*    ^ meta.pseudo-class.drop.css */
+/*     ^ punctuation.section.function.end.css */
 :has( ) {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*  ^ source.css punctuation.section.function.begin.css */
-/*   ^ source.css meta.pseudo-class.not-matches-has.css */
-/*    ^ source.css punctuation.section.function.end.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^ entity.other.attribute-name.pseudo-class.css */
+/*  ^ punctuation.section.function.begin.css */
+/*   ^ meta.pseudo-class.not-matches-has.css */
+/*    ^ punctuation.section.function.end.css */
 :host( ) {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*   ^ source.css punctuation.section.function.begin.css */
-/*    ^ source.css meta.pseudo-class.host.css */
-/*     ^ source.css punctuation.section.function.end.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^ entity.other.attribute-name.pseudo-class.css */
+/*   ^ punctuation.section.function.begin.css */
+/*    ^ meta.pseudo-class.host.css */
+/*     ^ punctuation.section.function.end.css */
 :host-context( ) {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*           ^ source.css punctuation.section.function.begin.css */
-/*            ^ source.css meta.pseudo-class.host.css */
-/*             ^ source.css punctuation.section.function.end.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*           ^ punctuation.section.function.begin.css */
+/*            ^ meta.pseudo-class.host.css */
+/*             ^ punctuation.section.function.end.css */
 :lang( ) {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*   ^ source.css punctuation.section.function.begin.css */
-/*    ^ source.css meta.pseudo-class.lang.css */
-/*     ^ source.css punctuation.section.function.end.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^ entity.other.attribute-name.pseudo-class.css */
+/*   ^ punctuation.section.function.begin.css */
+/*    ^ meta.pseudo-class.lang.css */
+/*     ^ punctuation.section.function.end.css */
 :matches( ) {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*      ^ source.css punctuation.section.function.begin.css */
-/*       ^ source.css meta.pseudo-class.not-matches-has.css */
-/*        ^ source.css punctuation.section.function.end.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*      ^ punctuation.section.function.begin.css */
+/*       ^ meta.pseudo-class.not-matches-has.css */
+/*        ^ punctuation.section.function.end.css */
 :not( ) {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*  ^ source.css punctuation.section.function.begin.css */
-/*   ^ source.css meta.pseudo-class.not-matches-has.css */
-/*    ^ source.css punctuation.section.function.end.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^ entity.other.attribute-name.pseudo-class.css */
+/*  ^ punctuation.section.function.begin.css */
+/*   ^ meta.pseudo-class.not-matches-has.css */
+/*    ^ punctuation.section.function.end.css */
 :nth-last-child( ) {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*             ^ source.css punctuation.section.function.begin.css */
-/*              ^ source.css meta.pseudo-class.nth-child.css */
-/*               ^ source.css punctuation.section.function.end.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*             ^ punctuation.section.function.begin.css */
+/*              ^ meta.pseudo-class.nth-child.css */
+/*               ^ punctuation.section.function.end.css */
 :nth-child( ) {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*        ^ source.css punctuation.section.function.begin.css */
-/*         ^ source.css meta.pseudo-class.nth-child.css */
-/*          ^ source.css punctuation.section.function.end.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*        ^ punctuation.section.function.begin.css */
+/*         ^ meta.pseudo-class.nth-child.css */
+/*          ^ punctuation.section.function.end.css */
 :nth-of-type( ) {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*          ^ source.css punctuation.section.function.begin.css */
-/*           ^ source.css meta.pseudo-class.nth.css */
-/*            ^ source.css punctuation.section.function.end.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*          ^ punctuation.section.function.begin.css */
+/*           ^ meta.pseudo-class.nth.css */
+/*            ^ punctuation.section.function.end.css */
 :nth-last-of-type( ) {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*               ^ source.css punctuation.section.function.begin.css */
-/*                ^ source.css meta.pseudo-class.nth.css */
-/*                 ^ source.css punctuation.section.function.end.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*               ^ punctuation.section.function.begin.css */
+/*                ^ meta.pseudo-class.nth.css */
+/*                 ^ punctuation.section.function.end.css */
 :nth-last-column( ) {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*              ^ source.css punctuation.section.function.begin.css */
-/*               ^ source.css meta.pseudo-class.nth.css */
-/*                ^ source.css punctuation.section.function.end.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*              ^ punctuation.section.function.begin.css */
+/*               ^ meta.pseudo-class.nth.css */
+/*                ^ punctuation.section.function.end.css */
 :nth-column( ) {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*         ^ source.css punctuation.section.function.begin.css */
-/*          ^ source.css meta.pseudo-class.nth.css */
-/*           ^ source.css punctuation.section.function.end.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*         ^ punctuation.section.function.begin.css */
+/*          ^ meta.pseudo-class.nth.css */
+/*           ^ punctuation.section.function.end.css */
 :scope-context( ) {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*            ^ source.css punctuation.section.function.begin.css */
-/*             ^ source.css meta.pseudo-class.scope-context.css */
-/*              ^ source.css punctuation.section.function.end.css */
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*            ^ punctuation.section.function.begin.css */
+/*             ^ meta.pseudo-class.scope-context.css */
+/*              ^ punctuation.section.function.end.css */
 
 /* TEST INVALID PSEUDO-CLASS */
 :not-valid {}  /* ":invalid" is actually a valid pseudo-class */
-/* <- source.css punctuation.definition.entity.css -entity.other.attribute-name.pseudo-class.css */
- /* <- source.css -entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^^^^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- punctuation.definition.entity.css -entity.other.attribute-name.pseudo-class.css */
+ /* <- -entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^^^^ -entity.other.attribute-name.pseudo-class.css */
 
 /* TEST DEPRECATED PSEUDO-CLASS */
 :after {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css invalid.deprecated.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css invalid.deprecated.css */
-/*^^^^ source.css entity.other.attribute-name.pseudo-class.css invalid.deprecated.css */
-/*    ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css invalid.deprecated.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css invalid.deprecated.css */
+/*^^^^ entity.other.attribute-name.pseudo-class.css invalid.deprecated.css */
+/*    ^ -entity.other.attribute-name.pseudo-class.css */
 :before {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css invalid.deprecated.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css invalid.deprecated.css */
-/*^^^^^ source.css entity.other.attribute-name.pseudo-class.css invalid.deprecated.css */
-/*     ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css invalid.deprecated.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css invalid.deprecated.css */
+/*^^^^^ entity.other.attribute-name.pseudo-class.css invalid.deprecated.css */
+/*     ^ -entity.other.attribute-name.pseudo-class.css */
 :bound-element {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css invalid.deprecated.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css invalid.deprecated.css */
-/*^^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css invalid.deprecated.css */
-/*            ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css invalid.deprecated.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css invalid.deprecated.css */
+/*^^^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css invalid.deprecated.css */
+/*            ^ -entity.other.attribute-name.pseudo-class.css */
 :first-letter {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css invalid.deprecated.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css invalid.deprecated.css */
-/*^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css invalid.deprecated.css */
-/*           ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css invalid.deprecated.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css invalid.deprecated.css */
+/*^^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css invalid.deprecated.css */
+/*           ^ -entity.other.attribute-name.pseudo-class.css */
 :first-line {}
-/* <- source.css entity.other.attribute-name.pseudo-class.css invalid.deprecated.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css invalid.deprecated.css */
-/*^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css invalid.deprecated.css */
-/*         ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.pseudo-class.css invalid.deprecated.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.pseudo-class.css invalid.deprecated.css */
+/*^^^^^^^^^ entity.other.attribute-name.pseudo-class.css invalid.deprecated.css */
+/*         ^ -entity.other.attribute-name.pseudo-class.css */
 
 /* TEST ATTRIBUTE SELECTORS FROM MDN */
 /* https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/Selectors */
 [disabled] {}
-/* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
- /* <- source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*^^^^^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*       ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+ /* <- meta.attribute-selector.css entity.other.attribute-name.css */
+/*^^^^^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*       ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 [type='button'] {}
-/* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
- /* <- source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*   ^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*    ^ source.css meta.attribute-selector.css string.quoted.single.css punctuation.definition.string.begin.css */
-/*     ^^^^^^ source.css meta.attribute-selector.css string.quoted.single.css */
-/*           ^ source.css meta.attribute-selector.css string.quoted.single.css punctuation.definition.string.end.css */
-/*            ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+ /* <- meta.attribute-selector.css entity.other.attribute-name.css */
+/*^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*   ^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*    ^ meta.attribute-selector.css string.quoted.single.css punctuation.definition.string.begin.css */
+/*     ^^^^^^ meta.attribute-selector.css string.quoted.single.css */
+/*           ^ meta.attribute-selector.css string.quoted.single.css punctuation.definition.string.end.css */
+/*            ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 [class~=key] {}
-/* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
- /* <- source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*^^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*    ^^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*      ^^^ source.css meta.attribute-selector.css string.unquoted.attribute-value.css */
-/*         ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+ /* <- meta.attribute-selector.css entity.other.attribute-name.css */
+/*^^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*    ^^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*      ^^^ meta.attribute-selector.css string.unquoted.attribute-value.css */
+/*         ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 [lang|=es] {}
-/* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
- /* <- source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*   ^^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*     ^^ source.css meta.attribute-selector.css string.unquoted.attribute-value.css */
-/*       ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+ /* <- meta.attribute-selector.css entity.other.attribute-name.css */
+/*^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*   ^^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*     ^^ meta.attribute-selector.css string.unquoted.attribute-value.css */
+/*       ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 [title*="example" i] {}
-/* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
- /* <- source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*^^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*    ^^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*      ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
-/*       ^^^^^^^ source.css meta.attribute-selector.css string.quoted.double.css */
-/*              ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
-/*                ^ source.css meta.attribute-selector.css support.constant.attr-modifier.css */
-/*                 ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+ /* <- meta.attribute-selector.css entity.other.attribute-name.css */
+/*^^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*    ^^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*      ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
+/*       ^^^^^^^ meta.attribute-selector.css string.quoted.double.css */
+/*              ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
+/*                ^ meta.attribute-selector.css support.constant.attr-modifier.css */
+/*                 ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 a[href^="https://"] {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
-/*^^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*    ^^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*      ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
-/*       ^^^^^^^^ source.css meta.attribute-selector.css string.quoted.double.css */
-/*               ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
-/*                ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- entity.name.tag.css */
+ /* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+/*^^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*    ^^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*      ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
+/*       ^^^^^^^^ meta.attribute-selector.css string.quoted.double.css */
+/*               ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
+/*                ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 img[src$=".png"] {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.name.tag.css */
-/*^ source.css entity.name.tag.css */
-/* ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
-/*  ^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*     ^^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*       ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
-/*        ^^^^ source.css meta.attribute-selector.css string.quoted.double.css */
-/*            ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
-/*             ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- entity.name.tag.css */
+ /* <- entity.name.tag.css */
+/*^ entity.name.tag.css */
+/* ^ meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+/*  ^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*     ^^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*       ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
+/*        ^^^^ meta.attribute-selector.css string.quoted.double.css */
+/*            ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
+/*             ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors */
 span[lang] {}
-/* <- source.css entity.name.tag.css */
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.name.tag.css */
-/*^^ source.css entity.name.tag.css */
-/*  ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
-/*   ^^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*       ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- entity.name.tag.css */
+/* <- entity.name.tag.css */
+ /* <- entity.name.tag.css */
+/*^^ entity.name.tag.css */
+/*  ^ meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+/*   ^^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*       ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 span[lang="pt"] {}
-/* <- source.css entity.name.tag.css */
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.name.tag.css */
-/*^^ source.css entity.name.tag.css */
-/*  ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
-/*   ^^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*       ^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*        ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
-/*         ^^ source.css meta.attribute-selector.css string.quoted.double.css */
-/*           ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
-/*            ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- entity.name.tag.css */
+/* <- entity.name.tag.css */
+ /* <- entity.name.tag.css */
+/*^^ entity.name.tag.css */
+/*  ^ meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+/*   ^^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*       ^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*        ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
+/*         ^^ meta.attribute-selector.css string.quoted.double.css */
+/*           ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
+/*            ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 span[lang~="en-us"] {}
-/* <- source.css entity.name.tag.css */
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.name.tag.css */
-/*^^ source.css entity.name.tag.css */
-/*  ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
-/*   ^^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*       ^^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*         ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
-/*          ^^^^^ source.css meta.attribute-selector.css string.quoted.double.css */
-/*               ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
-/*                ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- entity.name.tag.css */
+/* <- entity.name.tag.css */
+ /* <- entity.name.tag.css */
+/*^^ entity.name.tag.css */
+/*  ^ meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+/*   ^^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*       ^^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*         ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
+/*          ^^^^^ meta.attribute-selector.css string.quoted.double.css */
+/*               ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
+/*                ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 span[lang|="zh"] {}
-/* <- source.css entity.name.tag.css */
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.name.tag.css */
-/*^^ source.css entity.name.tag.css */
-/*  ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
-/*   ^^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*       ^^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*         ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
-/*          ^^ source.css meta.attribute-selector.css string.quoted.double.css */
-/*            ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
-/*             ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- entity.name.tag.css */
+/* <- entity.name.tag.css */
+ /* <- entity.name.tag.css */
+/*^^ entity.name.tag.css */
+/*  ^ meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+/*   ^^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*       ^^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*         ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
+/*          ^^ meta.attribute-selector.css string.quoted.double.css */
+/*            ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
+/*             ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 a[href^="#"] {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
-/*^^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*    ^^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*      ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
-/*       ^ source.css meta.attribute-selector.css string.quoted.double.css */
-/*        ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
-/*         ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- entity.name.tag.css */
+ /* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+/*^^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*    ^^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*      ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
+/*       ^ meta.attribute-selector.css string.quoted.double.css */
+/*        ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
+/*         ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 span[class^="main"] {}
-/* <- source.css entity.name.tag.css */
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.name.tag.css */
-/*^^ source.css entity.name.tag.css */
-/*  ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
-/*   ^^^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*        ^^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*          ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
-/*           ^^^^ source.css meta.attribute-selector.css string.quoted.double.css */
-/*               ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
-/*                ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- entity.name.tag.css */
+/* <- entity.name.tag.css */
+ /* <- entity.name.tag.css */
+/*^^ entity.name.tag.css */
+/*  ^ meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+/*   ^^^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*        ^^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*          ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
+/*           ^^^^ meta.attribute-selector.css string.quoted.double.css */
+/*               ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
+/*                ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 a[href$=".cn"] {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
-/*^^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*    ^^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*      ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
-/*       ^^^ source.css meta.attribute-selector.css string.quoted.double.css */
-/*          ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
-/*           ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- entity.name.tag.css */
+ /* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+/*^^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*    ^^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*      ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
+/*       ^^^ meta.attribute-selector.css string.quoted.double.css */
+/*          ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
+/*           ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 a[href*="example"] {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
-/*^^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*    ^^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*      ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
-/*       ^^^^^^^ source.css meta.attribute-selector.css string.quoted.double.css */
-/*              ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
-/*               ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- entity.name.tag.css */
+ /* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+/*^^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*    ^^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*      ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
+/*       ^^^^^^^ meta.attribute-selector.css string.quoted.double.css */
+/*              ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
+/*               ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 input[type="email" i] {}
-/* <- source.css entity.name.tag.css */
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.name.tag.css */
-/*^^^ source.css entity.name.tag.css */
-/*   ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
-/*    ^^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*        ^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*         ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
-/*          ^^^^^ source.css meta.attribute-selector.css string.quoted.double.css */
-/*               ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
-/*                 ^ source.css meta.attribute-selector.css support.constant.attr-modifier.css */
-/*                  ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- entity.name.tag.css */
+/* <- entity.name.tag.css */
+ /* <- entity.name.tag.css */
+/*^^^ entity.name.tag.css */
+/*   ^ meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+/*    ^^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*        ^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*         ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
+/*          ^^^^^ meta.attribute-selector.css string.quoted.double.css */
+/*               ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
+/*                 ^ meta.attribute-selector.css support.constant.attr-modifier.css */
+/*                  ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 
 /* TEST SELECTORS FROM "The 30 CSS Selectors You Must Memorize" */
 /* http://code.tutsplus.com/tutorials/the-30-css-selectors-you-must-memorize--net-16048 */
 * {}
-/* <- source.css entity.name.tag.wildcard.css */
+/* <- entity.name.tag.wildcard.css */
 #container * {}
-/* <- source.css entity.other.attribute-name.id.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.id.css */
-/*^^^^^^^^ source.css entity.other.attribute-name.id.css */
-/*         ^ source.css entity.name.tag.wildcard.css */
+/* <- entity.other.attribute-name.id.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.id.css */
+/*^^^^^^^^ entity.other.attribute-name.id.css */
+/*         ^ entity.name.tag.wildcard.css */
 #container {}
-/* <- source.css entity.other.attribute-name.id.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.id.css */
-/*^^^^^^^^ source.css entity.other.attribute-name.id.css */
+/* <- entity.other.attribute-name.id.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.id.css */
+/*^^^^^^^^ entity.other.attribute-name.id.css */
 .error {}
-/* <- source.css entity.other.attribute-name.class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.class.css */
-/*^^^^ source.css entity.other.attribute-name.class.css */
+/* <- entity.other.attribute-name.class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.class.css */
+/*^^^^ entity.other.attribute-name.class.css */
 
 li a {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.name.tag.css */
-/*^ source.css -entity.name.tag.css */
-/* ^ source.css entity.name.tag.css */
+/* <- entity.name.tag.css */
+ /* <- entity.name.tag.css */
+/*^ -entity.name.tag.css */
+/* ^ entity.name.tag.css */
 a {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css -entity.name.tag.css */
+/* <- entity.name.tag.css */
+ /* <- -entity.name.tag.css */
 ul {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.name.tag.css */
-/*^ source.css -entity.name.tag.css */
+/* <- entity.name.tag.css */
+ /* <- entity.name.tag.css */
+/*^ -entity.name.tag.css */
 a:link {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
-/*^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*    ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.name.tag.css */
+ /* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*^^^^ entity.other.attribute-name.pseudo-class.css */
+/*    ^ -entity.other.attribute-name.pseudo-class.css */
 a:visited {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
-/*^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*       ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.name.tag.css */
+ /* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*       ^ -entity.other.attribute-name.pseudo-class.css */
 ul + p {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.name.tag.css */
-/*^ source.css -entity.name.tag.css */
-/* ^ source.css keyword.operator.combinator.css */
-/*  ^ source.css -keyword.operator.combinator.css */
-/*   ^ source.css entity.name.tag.css */
+/* <- entity.name.tag.css */
+ /* <- entity.name.tag.css */
+/*^ -entity.name.tag.css */
+/* ^ keyword.operator.combinator.css */
+/*  ^ -keyword.operator.combinator.css */
+/*   ^ entity.name.tag.css */
 div#container > ul {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.name.tag.css */
-/*^ source.css entity.name.tag.css */
-/* ^ source.css entity.other.attribute-name.id.css punctuation.definition.entity.css */
-/*  ^^^^^^^^^ source.css entity.other.attribute-name.id.css */
-/*           ^ source.css -entity.other.attribute-name.id.css */
-/*            ^ source.css keyword.operator.combinator.css */
-/*              ^^ source.css entity.name.tag.css */
+/* <- entity.name.tag.css */
+ /* <- entity.name.tag.css */
+/*^ entity.name.tag.css */
+/* ^ entity.other.attribute-name.id.css punctuation.definition.entity.css */
+/*  ^^^^^^^^^ entity.other.attribute-name.id.css */
+/*           ^ -entity.other.attribute-name.id.css */
+/*            ^ keyword.operator.combinator.css */
+/*              ^^ entity.name.tag.css */
 ul ~ p {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.name.tag.css */
-/*^ source.css -entity.name.tag.css */
-/* ^ source.css keyword.operator.combinator.css */
-/*  ^ source.css -keyword.operator.combinator.css */
-/*   ^ source.css entity.name.tag.css */
+/* <- entity.name.tag.css */
+ /* <- entity.name.tag.css */
+/*^ -entity.name.tag.css */
+/* ^ keyword.operator.combinator.css */
+/*  ^ -keyword.operator.combinator.css */
+/*   ^ entity.name.tag.css */
 a[title] {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
-/*^^^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*     ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- entity.name.tag.css */
+ /* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+/*^^^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*     ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 a[href="http://net.tutsplus.com"] {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
-/*^^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*    ^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*     ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
-/*      ^^^^^^^^^^^^^^^^^^^^^^^ source.css meta.attribute-selector.css string.quoted.double.css */
-/*                             ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
-/*                              ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- entity.name.tag.css */
+ /* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+/*^^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*    ^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*     ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
+/*      ^^^^^^^^^^^^^^^^^^^^^^^ meta.attribute-selector.css string.quoted.double.css */
+/*                             ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
+/*                              ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 a[href*="tuts"] {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
-/*^^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*    ^^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*      ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
-/*       ^^^^ source.css meta.attribute-selector.css string.quoted.double.css */
-/*           ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
-/*            ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- entity.name.tag.css */
+ /* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+/*^^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*    ^^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*      ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
+/*       ^^^^ meta.attribute-selector.css string.quoted.double.css */
+/*           ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
+/*            ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 a[href^="http"] {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
-/*^^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*    ^^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*      ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
-/*       ^^^^ source.css meta.attribute-selector.css string.quoted.double.css */
-/*           ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
-/*            ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- entity.name.tag.css */
+ /* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+/*^^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*    ^^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*      ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
+/*       ^^^^ meta.attribute-selector.css string.quoted.double.css */
+/*           ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
+/*            ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 a[href$=".jpg"] {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
-/*^^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*    ^^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*      ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
-/*       ^^^^ source.css meta.attribute-selector.css string.quoted.double.css */
-/*           ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
-/*            ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- entity.name.tag.css */
+ /* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+/*^^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*    ^^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*      ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
+/*       ^^^^ meta.attribute-selector.css string.quoted.double.css */
+/*           ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
+/*            ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 a[data-filetype="image"] {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
-/*^^^^^^^^^^^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*             ^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*              ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
-/*               ^^^^^ source.css meta.attribute-selector.css string.quoted.double.css */
-/*                    ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
-/*                     ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- entity.name.tag.css */
+ /* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+/*^^^^^^^^^^^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*             ^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*              ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
+/*               ^^^^^ meta.attribute-selector.css string.quoted.double.css */
+/*                    ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
+/*                     ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 a[href$=".jpg"],
-/* <- source.css entity.name.tag.css */
- /* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
-/*^^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*    ^^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*      ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
-/*       ^^^^ source.css meta.attribute-selector.css string.quoted.double.css */
-/*           ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
-/*            ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- entity.name.tag.css */
+ /* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+/*^^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*    ^^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*      ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
+/*       ^^^^ meta.attribute-selector.css string.quoted.double.css */
+/*           ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
+/*            ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 a[href$=".jpeg"],
-/* <- source.css entity.name.tag.css */
- /* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
-/*^^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*    ^^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*      ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
-/*       ^^^^^ source.css meta.attribute-selector.css string.quoted.double.css */
-/*            ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
-/*             ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- entity.name.tag.css */
+ /* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+/*^^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*    ^^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*      ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
+/*       ^^^^^ meta.attribute-selector.css string.quoted.double.css */
+/*            ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
+/*             ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 a[href$=".png"],
-/* <- source.css entity.name.tag.css */
- /* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
-/*^^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*    ^^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*      ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
-/*       ^^^^ source.css meta.attribute-selector.css string.quoted.double.css */
-/*           ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
-/*            ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- entity.name.tag.css */
+ /* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+/*^^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*    ^^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*      ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
+/*       ^^^^ meta.attribute-selector.css string.quoted.double.css */
+/*           ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
+/*            ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 a[href$=".gif"] {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
-/*^^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*    ^^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*      ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
-/*       ^^^^ source.css meta.attribute-selector.css string.quoted.double.css */
-/*           ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
-/*            ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- entity.name.tag.css */
+ /* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+/*^^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*    ^^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*      ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
+/*       ^^^^ meta.attribute-selector.css string.quoted.double.css */
+/*           ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
+/*            ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 a[data-filetype="image"] {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
-/*^^^^^^^^^^^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*             ^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*              ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
-/*               ^^^^^ source.css meta.attribute-selector.css string.quoted.double.css */
-/*                    ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
-/*                     ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- entity.name.tag.css */
+ /* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+/*^^^^^^^^^^^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*             ^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*              ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
+/*               ^^^^^ meta.attribute-selector.css string.quoted.double.css */
+/*                    ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
+/*                     ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 a[data-info~="external"] {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
-/*^^^^^^^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*         ^^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*           ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
-/*            ^^^^^^^^ source.css meta.attribute-selector.css string.quoted.double.css */
-/*                    ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
-/*                     ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- entity.name.tag.css */
+ /* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+/*^^^^^^^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*         ^^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*           ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
+/*            ^^^^^^^^ meta.attribute-selector.css string.quoted.double.css */
+/*                    ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
+/*                     ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 input[type=radio]:checked {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.name.tag.css */
-/*^^^ source.css entity.name.tag.css */
-/*   ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
-/*    ^^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*        ^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*         ^^^^^ source.css meta.attribute-selector.css string.unquoted.attribute-value.css */
-/*              ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
-/*               ^ source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
-/*                ^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
+/* <- entity.name.tag.css */
+ /* <- entity.name.tag.css */
+/*^^^ entity.name.tag.css */
+/*   ^ meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+/*    ^^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*        ^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*         ^^^^^ meta.attribute-selector.css string.unquoted.attribute-value.css */
+/*              ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/*               ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*                ^^^^^^^ entity.other.attribute-name.pseudo-class.css */
 [foo|att=value] {}
-/* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
- /* <- source.css meta.attribute-selector.css entity.other.attribute-name.namespace.css */
-/*^^ source.css meta.attribute-selector.css entity.other.attribute-name.namespace.css */
-/*  ^ source.css meta.attribute-selector.css punctuation.separator.namespace.css */
-/*   ^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*      ^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*       ^^^^^ source.css meta.attribute-selector.css string.unquoted.attribute-value.css */
-/*            ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+ /* <- meta.attribute-selector.css entity.other.attribute-name.namespace.css */
+/*^^ meta.attribute-selector.css entity.other.attribute-name.namespace.css */
+/*  ^ meta.attribute-selector.css punctuation.separator.namespace.css */
+/*   ^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*      ^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*       ^^^^^ meta.attribute-selector.css string.unquoted.attribute-value.css */
+/*            ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 [foo|att=value i] {}
-/* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
- /* <- source.css meta.attribute-selector.css entity.other.attribute-name.namespace.css */
-/*^^ source.css meta.attribute-selector.css entity.other.attribute-name.namespace.css */
-/*  ^ source.css meta.attribute-selector.css punctuation.separator.namespace.css */
-/*   ^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*      ^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*       ^^^^^ source.css meta.attribute-selector.css string.unquoted.attribute-value.css */
-/*            ^ source.css meta.attribute-selector.css -string.unquoted.attribute-value.css */
-/*             ^ source.css meta.attribute-selector.css support.constant.attr-modifier.css */
-/*              ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+ /* <- meta.attribute-selector.css entity.other.attribute-name.namespace.css */
+/*^^ meta.attribute-selector.css entity.other.attribute-name.namespace.css */
+/*  ^ meta.attribute-selector.css punctuation.separator.namespace.css */
+/*   ^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*      ^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*       ^^^^^ meta.attribute-selector.css string.unquoted.attribute-value.css */
+/*            ^ meta.attribute-selector.css -string.unquoted.attribute-value.css */
+/*             ^ meta.attribute-selector.css support.constant.attr-modifier.css */
+/*              ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 [foo|att='value' i] {}
-/* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
- /* <- source.css meta.attribute-selector.css entity.other.attribute-name.namespace.css */
-/*^^ source.css meta.attribute-selector.css entity.other.attribute-name.namespace.css */
-/*  ^ source.css meta.attribute-selector.css punctuation.separator.namespace.css */
-/*   ^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*      ^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*       ^ source.css meta.attribute-selector.css string.quoted.single.css punctuation.definition.string.begin.css */
-/*        ^^^^^ source.css meta.attribute-selector.css string.quoted.single.css */
-/*             ^ source.css meta.attribute-selector.css string.quoted.single.css punctuation.definition.string.end.css */
-/*              ^ source.css meta.attribute-selector.css -string.unquoted.attribute-value.css */
-/*               ^ source.css meta.attribute-selector.css support.constant.attr-modifier.css */
-/*                ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+ /* <- meta.attribute-selector.css entity.other.attribute-name.namespace.css */
+/*^^ meta.attribute-selector.css entity.other.attribute-name.namespace.css */
+/*  ^ meta.attribute-selector.css punctuation.separator.namespace.css */
+/*   ^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*      ^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*       ^ meta.attribute-selector.css string.quoted.single.css punctuation.definition.string.begin.css */
+/*        ^^^^^ meta.attribute-selector.css string.quoted.single.css */
+/*             ^ meta.attribute-selector.css string.quoted.single.css punctuation.definition.string.end.css */
+/*              ^ meta.attribute-selector.css -string.unquoted.attribute-value.css */
+/*               ^ meta.attribute-selector.css support.constant.attr-modifier.css */
+/*                ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 [foo|att="value" i] {}
-/* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
- /* <- source.css meta.attribute-selector.css entity.other.attribute-name.namespace.css */
-/*^^ source.css meta.attribute-selector.css entity.other.attribute-name.namespace.css */
-/*  ^ source.css meta.attribute-selector.css punctuation.separator.namespace.css */
-/*   ^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*      ^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*       ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
-/*        ^^^^^ source.css meta.attribute-selector.css string.quoted.double.css */
-/*             ^ source.css meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
-/*              ^ source.css meta.attribute-selector.css -string.unquoted.attribute-value.css */
-/*               ^ source.css meta.attribute-selector.css support.constant.attr-modifier.css */
-/*                ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+ /* <- meta.attribute-selector.css entity.other.attribute-name.namespace.css */
+/*^^ meta.attribute-selector.css entity.other.attribute-name.namespace.css */
+/*  ^ meta.attribute-selector.css punctuation.separator.namespace.css */
+/*   ^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*      ^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*       ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.begin.css */
+/*        ^^^^^ meta.attribute-selector.css string.quoted.double.css */
+/*             ^ meta.attribute-selector.css string.quoted.double.css punctuation.definition.string.end.css */
+/*              ^ meta.attribute-selector.css -string.unquoted.attribute-value.css */
+/*               ^ meta.attribute-selector.css support.constant.attr-modifier.css */
+/*                ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 [foo|att] {}
-/* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
- /* <- source.css meta.attribute-selector.css entity.other.attribute-name.namespace.css */
-/*^^ source.css meta.attribute-selector.css entity.other.attribute-name.namespace.css */
-/*  ^ source.css meta.attribute-selector.css punctuation.separator.namespace.css */
-/*   ^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*      ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+ /* <- meta.attribute-selector.css entity.other.attribute-name.namespace.css */
+/*^^ meta.attribute-selector.css entity.other.attribute-name.namespace.css */
+/*  ^ meta.attribute-selector.css punctuation.separator.namespace.css */
+/*   ^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*      ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 [foo|*] {}
-/* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
- /* <- source.css meta.attribute-selector.css entity.other.attribute-name.namespace.css */
-/*^^ source.css meta.attribute-selector.css entity.other.attribute-name.namespace.css */
-/*  ^ source.css meta.attribute-selector.css punctuation.separator.namespace.css */
-/*   ^ source.css meta.attribute-selector.css entity.other.attribute-name.wildcard.css */
-/*    ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+ /* <- meta.attribute-selector.css entity.other.attribute-name.namespace.css */
+/*^^ meta.attribute-selector.css entity.other.attribute-name.namespace.css */
+/*  ^ meta.attribute-selector.css punctuation.separator.namespace.css */
+/*   ^ meta.attribute-selector.css entity.other.attribute-name.wildcard.css */
+/*    ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 [*|att] {}
-/* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
- /* <- source.css meta.attribute-selector.css entity.other.attribute-name.namespace.wildcard.css */
-/*^ source.css meta.attribute-selector.css punctuation.separator.namespace.css */
-/* ^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*    ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+ /* <- meta.attribute-selector.css entity.other.attribute-name.namespace.wildcard.css */
+/*^ meta.attribute-selector.css punctuation.separator.namespace.css */
+/* ^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*    ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 [|att] {}
-/* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
- /* <- source.css meta.attribute-selector.css punctuation.separator.namespace.css */
-/*^^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*   ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+ /* <- meta.attribute-selector.css punctuation.separator.namespace.css */
+/*^^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*   ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 [att] {}
-/* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
- /* <- source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*  ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+ /* <- meta.attribute-selector.css entity.other.attribute-name.css */
+/*^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*  ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 [att=value] {}
-/* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
- /* <- source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*  ^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*   ^^^^^ source.css meta.attribute-selector.css string.unquoted.attribute-value.css */
-/*        ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+ /* <- meta.attribute-selector.css entity.other.attribute-name.css */
+/*^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*  ^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*   ^^^^^ meta.attribute-selector.css string.unquoted.attribute-value.css */
+/*        ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 [att=value i] {}
-/* <- source.css meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
- /* <- source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*^^ source.css meta.attribute-selector.css entity.other.attribute-name.css */
-/*  ^ source.css meta.attribute-selector.css keyword.operator.attribute-selector.css */
-/*   ^^^^^ source.css meta.attribute-selector.css string.unquoted.attribute-value.css */
-/*        ^ source.css meta.attribute-selector.css -string.unquoted.attribute-value.css */
-/*         ^ source.css meta.attribute-selector.css support.constant.attr-modifier.css */
-/*          ^ source.css meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
+/* <- meta.attribute-selector.css punctuation.section.attribute-selector.begin.css */
+ /* <- meta.attribute-selector.css entity.other.attribute-name.css */
+/*^^ meta.attribute-selector.css entity.other.attribute-name.css */
+/*  ^ meta.attribute-selector.css keyword.operator.attribute-selector.css */
+/*   ^^^^^ meta.attribute-selector.css string.unquoted.attribute-value.css */
+/*        ^ meta.attribute-selector.css -string.unquoted.attribute-value.css */
+/*         ^ meta.attribute-selector.css support.constant.attr-modifier.css */
+/*          ^ meta.attribute-selector.css punctuation.section.attribute-selector.end.css */
 
 .clearfix:after {}
-/* <- source.css entity.other.attribute-name.class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.class.css */
-/*^^^^^^^ source.css entity.other.attribute-name.class.css */
-/*       ^ source.css entity.other.attribute-name.pseudo-class.css invalid.deprecated.css punctuation.definition.entity.css */
-/*        ^^^^^ source.css entity.other.attribute-name.pseudo-class.css invalid.deprecated.css */
-/*             ^ source.css -entity.other.attribute-name.pseudo-class.css */
+/* <- entity.other.attribute-name.class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.class.css */
+/*^^^^^^^ entity.other.attribute-name.class.css */
+/*       ^ entity.other.attribute-name.pseudo-class.css invalid.deprecated.css punctuation.definition.entity.css */
+/*        ^^^^^ entity.other.attribute-name.pseudo-class.css invalid.deprecated.css */
+/*             ^ -entity.other.attribute-name.pseudo-class.css */
 .clearfix {}
-/* <- source.css entity.other.attribute-name.class.css punctuation.definition.entity.css */
- /* <- source.css entity.other.attribute-name.class.css */
-/*^^^^^^^ source.css entity.other.attribute-name.class.css */
-/*       ^ source.css -entity.other.attribute-name.class.css */
+/* <- entity.other.attribute-name.class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.class.css */
+/*^^^^^^^ entity.other.attribute-name.class.css */
+/*       ^ -entity.other.attribute-name.class.css */
 div:hover {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.name.tag.css */
-/*^ source.css entity.name.tag.css */
-/* ^ source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
-/*  ^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
+/* <- entity.name.tag.css */
+ /* <- entity.name.tag.css */
+/*^ entity.name.tag.css */
+/* ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*  ^^^^^ entity.other.attribute-name.pseudo-class.css */
 a:hover {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
-/*^^^^ source.css entity.other.attribute-name.pseudo-class.css */
+/* <- entity.name.tag.css */
+ /* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*^^^^ entity.other.attribute-name.pseudo-class.css */
 div:not(#container) {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.name.tag.css */
-/*^ source.css entity.name.tag.css */
-/* ^ source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
-/*  ^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*     ^ source.css punctuation.section.function.begin.css */
-/*      ^ source.css entity.other.attribute-name.id.css punctuation.definition.entity.css */
-/*       ^^^^^^^^^ source.css entity.other.attribute-name.id.css */
-/*                ^ source.css punctuation.section.function.end.css */
+/* <- entity.name.tag.css */
+ /* <- entity.name.tag.css */
+/*^ entity.name.tag.css */
+/* ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*  ^^^ entity.other.attribute-name.pseudo-class.css */
+/*     ^ punctuation.section.function.begin.css */
+/*      ^ entity.other.attribute-name.id.css punctuation.definition.entity.css */
+/*       ^^^^^^^^^ entity.other.attribute-name.id.css */
+/*                ^ punctuation.section.function.end.css */
 *:not(p) {}
-/* <- source.css entity.name.tag.wildcard.css */
- /* <- source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
-/*^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*   ^ source.css punctuation.section.function.begin.css */
-/*    ^ source.css entity.name.tag.css */
-/*     ^ source.css punctuation.section.function.end.css */
+/* <- entity.name.tag.wildcard.css */
+ /* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*^^^ entity.other.attribute-name.pseudo-class.css */
+/*   ^ punctuation.section.function.begin.css */
+/*    ^ entity.name.tag.css */
+/*     ^ punctuation.section.function.end.css */
 p::first-line {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
-/*^ source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
-/* ^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-element.css */
+/* <- entity.name.tag.css */
+ /* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+/*^ entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+/* ^^^^^^^^^^ entity.other.attribute-name.pseudo-element.css */
 p::first-letter {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
-/*^ source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
-/* ^^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-element.css */
+/* <- entity.name.tag.css */
+ /* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+/*^ entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+/* ^^^^^^^^^^^^ entity.other.attribute-name.pseudo-element.css */
 p::first-line {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
-/*^ source.css entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
-/* ^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-element.css */
+/* <- entity.name.tag.css */
+ /* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+/*^ entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.css */
+/* ^^^^^^^^^^ entity.other.attribute-name.pseudo-element.css */
 li:nth-child(3) {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.name.tag.css */
-/*^ source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
-/* ^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*          ^ source.css punctuation.section.function.begin.css */
-/*           ^ source.css constant.numeric.css */
-/*            ^ source.css punctuation.section.function.end.css */
+/* <- entity.name.tag.css */
+ /* <- entity.name.tag.css */
+/*^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/* ^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*          ^ punctuation.section.function.begin.css */
+/*           ^ constant.numeric.css */
+/*            ^ punctuation.section.function.end.css */
 li:nth-last-child(2) {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.name.tag.css */
-/*^ source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
-/* ^^^^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*               ^ source.css punctuation.section.function.begin.css */
-/*                ^ source.css constant.numeric.css */
-/*                 ^ source.css punctuation.section.function.end.css */
+/* <- entity.name.tag.css */
+ /* <- entity.name.tag.css */
+/*^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/* ^^^^^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*               ^ punctuation.section.function.begin.css */
+/*                ^ constant.numeric.css */
+/*                 ^ punctuation.section.function.end.css */
 ul:nth-of-type(3) {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.name.tag.css */
-/*^ source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
-/* ^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*            ^ source.css punctuation.section.function.begin.css */
-/*             ^ source.css constant.numeric.css */
-/*              ^ source.css punctuation.section.function.end.css */
+/* <- entity.name.tag.css */
+ /* <- entity.name.tag.css */
+/*^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/* ^^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*            ^ punctuation.section.function.begin.css */
+/*             ^ constant.numeric.css */
+/*              ^ punctuation.section.function.end.css */
 ul:nth-last-of-type(3) {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.name.tag.css */
-/*^ source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
-/* ^^^^^^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*                 ^ source.css punctuation.section.function.begin.css */
-/*                  ^ source.css constant.numeric.css */
-/*                   ^ source.css punctuation.section.function.end.css */
+/* <- entity.name.tag.css */
+ /* <- entity.name.tag.css */
+/*^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/* ^^^^^^^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*                 ^ punctuation.section.function.begin.css */
+/*                  ^ constant.numeric.css */
+/*                   ^ punctuation.section.function.end.css */
 ul li:first-child {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.name.tag.css */
-/*^ source.css -entity.name.tag.css */
-/* ^^ source.css entity.name.tag.css */
-/*   ^ source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
-/*    ^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
+/* <- entity.name.tag.css */
+ /* <- entity.name.tag.css */
+/*^ -entity.name.tag.css */
+/* ^^ entity.name.tag.css */
+/*   ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*    ^^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
 ul > li:last-child {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.name.tag.css */
-/*^ source.css -entity.name.tag.css */
-/* ^ source.css keyword.operator.combinator.css
-/*   ^^ source.css entity.name.tag.css */
-/*     ^ source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
-/*      ^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
+/* <- entity.name.tag.css */
+ /* <- entity.name.tag.css */
+/*^ -entity.name.tag.css */
+/* ^ keyword.operator.combinator.css
+/*   ^^ entity.name.tag.css */
+/*     ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*      ^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
 li:first-child {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.name.tag.css */
-/*^ source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
-/* ^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
+/* <- entity.name.tag.css */
+ /* <- entity.name.tag.css */
+/*^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/* ^^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
 li:last-child {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.name.tag.css */
-/*^ source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
-/* ^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
+/* <- entity.name.tag.css */
+ /* <- entity.name.tag.css */
+/*^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/* ^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
 div p:only-child {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.name.tag.css */
-/*^ source.css entity.name.tag.css */
-/* ^ source.css -entity.name.tag.css */
-/*  ^ source.css entity.name.tag.css */
-/*   ^ source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
-/*    ^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
+/* <- entity.name.tag.css */
+ /* <- entity.name.tag.css */
+/*^ entity.name.tag.css */
+/* ^ -entity.name.tag.css */
+/*  ^ entity.name.tag.css */
+/*   ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*    ^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
 li:only-of-type {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.name.tag.css */
-/*^ source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
-/* ^^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
+/* <- entity.name.tag.css */
+ /* <- entity.name.tag.css */
+/*^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/* ^^^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
 ul > li:only-of-type {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.name.tag.css */
-/*^ source.css -entity.name.tag.css */
-/* ^ source.css keyword.operator.combinator.css */
-/*   ^^ source.css entity.name.tag.css */
-/*     ^ source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
-/*      ^^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
+/* <- entity.name.tag.css */
+ /* <- entity.name.tag.css */
+/*^ -entity.name.tag.css */
+/* ^ keyword.operator.combinator.css */
+/*   ^^ entity.name.tag.css */
+/*     ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*      ^^^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
 ul:first-of-type > li:nth-child(2) {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.name.tag.css */
-/*^ source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
-/* ^^^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*              ^ source.css -entity.other.attribute-name.pseudo-class.css */
-/*               ^ source.css keyword.operator.combinator.css */
-/*                ^ source.css -keyword.operator.combinator.css */
-/*                 ^^ source.css entity.name.tag.css */
-/*                   ^ source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
-/*                    ^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*                             ^ source.css punctuation.section.function.begin.css */
-/*                              ^ source.css constant.numeric.css */
-/*                               ^ source.css punctuation.section.function.end.css */
+/* <- entity.name.tag.css */
+ /* <- entity.name.tag.css */
+/*^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/* ^^^^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*              ^ -entity.other.attribute-name.pseudo-class.css */
+/*               ^ keyword.operator.combinator.css */
+/*                ^ -keyword.operator.combinator.css */
+/*                 ^^ entity.name.tag.css */
+/*                   ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*                    ^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*                             ^ punctuation.section.function.begin.css */
+/*                              ^ constant.numeric.css */
+/*                               ^ punctuation.section.function.end.css */
 p + ul li:last-child {}
-/* <- source.css entity.name.tag.css */
-/*^ source.css keyword.operator.combinator.css */
-/*  ^^ source.css entity.name.tag.css */
-/*     ^^ source.css entity.name.tag.css */
-/*       ^ source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
-/*        ^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
+/* <- entity.name.tag.css */
+/*^ keyword.operator.combinator.css */
+/*  ^^ entity.name.tag.css */
+/*     ^^ entity.name.tag.css */
+/*       ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*        ^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
 ul:first-of-type li:nth-last-child(1) {}
-/* <- source.css entity.name.tag.css */
- /* <- source.css entity.name.tag.css */
-/*^ source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
-/* ^^^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*              ^ source.css -entity.other.attribute-name.pseudo-class.css */
-/*               ^^ source.css entity.name.tag.css */
-/*                 ^ source.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
-/*                  ^^^^^^^^^^^^^^ source.css entity.other.attribute-name.pseudo-class.css */
-/*                                ^ source.css punctuation.section.function.begin.css */
-/*                                 ^ source.css constant.numeric.css */
-/*                                  ^ source.css punctuation.section.function.end.css */
+/* <- entity.name.tag.css */
+ /* <- entity.name.tag.css */
+/*^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/* ^^^^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*              ^ -entity.other.attribute-name.pseudo-class.css */
+/*               ^^ entity.name.tag.css */
+/*                 ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*                  ^^^^^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*                                ^ punctuation.section.function.begin.css */
+/*                                 ^ constant.numeric.css */
+/*                                  ^ punctuation.section.function.end.css */
