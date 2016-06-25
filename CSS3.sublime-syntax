@@ -180,6 +180,20 @@ contexts:
         - include: identifier
     - include: stray-brace
 
+  at-import:
+    - match: '(@)import{{b}}'
+      captures:
+        0: keyword.control.at-rule.import.css
+        1: punctuation.definition.keyword.css
+      push:
+        - match: ';'
+          scope: punctuation.terminator.at-import.css
+          pop: true
+        - include: func-url
+        - include: media-query-list
+        - include: string
+    - include: stray-semicolon
+
   at-keyframes:
     - match: '(@){{vendor_prefix}}keyframes{{b}}'
       captures:
@@ -225,10 +239,7 @@ contexts:
               pop: true
             - include: nestable-at-rules
             - include: rule
-        - match: '\band{{b}}'
-          scope: keyword.operator.logic.media.css
-        - include: media-feature
-        - include: media-type
+        - include: media-query-list
     - include: stray-brace
 
   at-page:
@@ -1778,6 +1789,13 @@ contexts:
         - include: value-css-wide
         - include: length-non-negative
         - include: media-feature-range-operator
+
+  # This is used by the at-media and at-import contexts.
+  media-query-list:
+    - match: '\band{{b}}'
+      scope: keyword.operator.logic.media.css
+    - include: media-feature
+    - include: media-type
 
   media-type:
     - include: media-type-deprecated
