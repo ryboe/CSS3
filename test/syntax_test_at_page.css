@@ -483,7 +483,7 @@ margin-top: 10cm /* Top margin on first page 10cm */
 /* ^^^^^^^^^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
 /*                 ^ -keyword.control.at-rule.page-margin-box.css */
 /*                  ^ punctuation.section.page-margin-at-rule.begin.css */
-/*                                                                ^ punctuation.section.page-margin-at-rule.end.css */
+/*                                                                  ^ punctuation.section.page-margin-at-rule.end.css */
   @bottom-right-corner { content: target-counter(page); border: solid green; }
 /*^ keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
 /* ^^^^^^^^^^^^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
