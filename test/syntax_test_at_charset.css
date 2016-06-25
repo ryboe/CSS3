@@ -1,0 +1,50 @@
+/* SYNTAX TEST "Packages/CSS3/CSS3.sublime-syntax" */
+
+
+/* TEST VALID CHARSETS */
+@charset 'utf-8';
+/* <- keyword.control.at-rule.charset.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.charset.css */
+/*^^^^^^ keyword.control.at-rule.charset.css */
+/*      ^ -keyword.control.at-rule.charset.css */
+/*       ^^^^^^^ string.quoted.charset.css */
+/*              ^ punctuation.terminator.charset.css */
+@charset 'UTF-8';
+/* <- keyword.control.at-rule.charset.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.charset.css */
+/*^^^^^^ keyword.control.at-rule.charset.css */
+/*      ^ -keyword.control.at-rule.charset.css */
+/*       ^^^^^^^ string.quoted.charset.css */
+/*              ^ punctuation.terminator.charset.css */
+@charset "utf-8";
+/* <- keyword.control.at-rule.charset.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.charset.css */
+/*^^^^^^ keyword.control.at-rule.charset.css */
+/*      ^ -keyword.control.at-rule.charset.css */
+/*       ^^^^^^^ string.quoted.charset.css */
+/*              ^ punctuation.terminator.charset.css */
+@charset "UTF-8";
+/* <- keyword.control.at-rule.charset.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.charset.css */
+/*^^^^^^ keyword.control.at-rule.charset.css */
+/*      ^ -keyword.control.at-rule.charset.css */
+/*       ^^^^^^^ string.quoted.charset.css */
+/*              ^ punctuation.terminator.charset.css */
+
+
+/* TEST INVALID CHARSETS */
+@charset 'iso-8859-15'; /* Death to non-UTF-8 charsets! */
+/* <- keyword.control.at-rule.charset.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.charset.css */
+/*^^^^^^ keyword.control.at-rule.charset.css */
+/*      ^ -keyword.control.at-rule.charset.css */
+/*       ^^^^^^^^^^^^^ -string.quoted.charset.css */
+/*                    ^ punctuation.terminator.charset.css */
+@charset 'utf-8';;
+/* <- keyword.control.at-rule.charset.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.charset.css */
+/*^^^^^^ keyword.control.at-rule.charset.css */
+/*      ^ -keyword.control.at-rule.charset.css */
+/*       ^^^^^^^ string.quoted.charset.css */
+/*              ^ punctuation.terminator.charset.css */
+/*               ^ invalid.illegal.stray-semicolon.css */
