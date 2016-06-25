@@ -49,10 +49,16 @@ variables:
 
 contexts:
   main:
+    - include: at-font-feature-values
+    - include: at-counter-style
     - include: at-custom-media
+    - include: at-namespace
+    - include: at-font-face
     - include: at-keyframes
     - include: at-supports
     - include: at-viewport
+    - include: at-charset
+    - include: at-import
     - include: at-media
     - include: at-page
     - include: rule
@@ -78,13 +84,16 @@ contexts:
     - include: func-cubic-bezier
     - include: func-steps
     # TODO: finish adding funcs here
+    - include: image
     - include: angle
     - include: frequency
     - include: percentage
     - include: resolution
     - include: time
+    - include: position
     - include: length
     - include: an_plus_b
+    - include: color
     - include: integer
     - include: number
     - match: '{{identifier}}'
@@ -113,6 +122,25 @@ contexts:
         - include: media-feature
         - include: media-feature-custom
     - include: stray-semicolon
+
+  at-font-feature-values:
+    - match: '(@)font-feature-values{{b}}'
+      captures:
+        0: keyword.control.at-rule.font-feature-values.css
+        1: punctuation.definition.keyword.css
+      push:
+        - match: '}'
+          scope: punctuation.section.font-feature-values-rule.end.css
+          pop: true
+        - match: '{'
+          scope: punctuation.section.font-feature-values-rule.begin.css
+          push:
+            - match: '(?=})'
+              pop: true
+            - include: font-feature-value-rule
+        - include: string
+        - include: identifier
+    - include: stray-brace
 
   at-keyframes:
     - match: '(@){{vendor_prefix}}keyframes{{b}}'
@@ -632,6 +660,49 @@ contexts:
         )
         {{b}}'
       scope: support.constant.property-value.css
+
+  font-feature-value-block:
+    - match: '{'
+      scope: punctuation.section.font-feature-value-block.begin.css
+      push:
+        - match: '(?=})'
+          pop: true
+        - include: font-feature-value-definition
+
+  font-feature-value-definition:
+    - match: '\b({{identifier}})\s*(:)'
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: integer
+
+  # This matches a feature_type (e.g. @swash) and a feature_value_block.
+  #     |-----matches-------|
+  #     @swash { ornate: 1; }
+  font-feature-value-rule:
+    - match: '(?x)
+        (@)
+        (?:
+          swash|
+          stylistic|
+          styleset|
+          ornaments|
+          character-variant|
+          annotation
+        )
+        {{b}}'
+      captures:
+        0: keyword.control.at-rule.feature-type.css
+        1: punctuation.definition.keyword.css
+      push:
+        - match: '}'
+          scope: punctuation.section.font-feature-value-block.end.css
+          pop: true
+        - include: font-feature-value-block
+    - include: stray-brace
 
   frequency:
     - include: func-calc
