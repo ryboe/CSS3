@@ -111,6 +111,24 @@ contexts:
     - match: '{{arithmetic_operator}}'
       scope: keyword.operator.arithmetic.css
 
+  at-counter-style:
+    - match: '(@)counter-style{{b}}'
+      captures:
+        0: keyword.control.at-rule.counter-style.css
+        1: punctuation.definition.keyword.css
+      push:
+        - match: '}'
+          scope: punctuation.section.counter-style-declaration-list.end.css
+          pop: true
+        - match: '{'
+          scope: punctuation.section.counter-style-declaration-list.begin.css
+          push:
+            - match: '(?=})'
+              pop: true
+            - include: descriptors-counter-style
+        - include: identifier
+    - include: stray-brace
+
   at-custom-media:
     - match: '(@)custom-media{{b}}'
       captures:
@@ -140,213 +158,8 @@ contexts:
           push:
             - match: '(?=})'
               pop: true
-            - include: font-face-descriptors
+            - include: descriptors-font-face
     - include: stray-brace
-
-  font-face-descriptors:
-    - include: descriptor-font-feature-settings
-    - include: descriptor-unicode-range
-    - include: descriptor-font-variant
-    - include: descriptor-font-stretch
-    - include: descriptor-font-family
-    - include: descriptor-font-weight
-    - include: descriptor-font-style
-    - include: descriptor-src
-
-  descriptor-font-family:
-    - match: \b(font-family)\s*(:)
-      captures:
-        1: support.constant.property-name.css
-        2: punctuation.separator.key-value.css
-      push:
-        - include: end-value
-        - include: value-css-wide
-        - include: string
-        # Generic font familys, like 'serif', are not permitted in the
-        # font-family descriptor, only in the font-family property.
-        - match: '\b(?:{{generic_font_family}}){{b}}'
-          scope: invalid.illegal.font-family.css
-        - include: identifier
-
-  descriptor-font-feature-settings:
-    - match: \b(font-feature-settings)\s*(:)
-      captures:
-        1: support.constant.property-name.css
-        2: punctuation.separator.key-value.css
-      push:
-        - include: end-value
-        - include: value-css-wide
-        - match: '\b(?:on|off|normal){{b}}'
-          scope: support.constant.property-value.css
-        - include: string
-        - include: integer-non-negative
-
-  descriptor-src:
-    - match: \b(src)\s*(:)
-      captures:
-        1: support.constant.property-name.css
-        2: punctuation.separator.key-value.css
-      push:
-        - include: end-value
-        - include: value-css-wide
-        - include: func-format
-        - include: func-local
-        - include: func-url
-
-  func-format:
-    - match: \b(format)(\()
-      captures:
-        1: support.function.format.css
-        2: punctuation.section.function.begin.css
-      push:
-        - include: end-func
-        - include: func-var
-        - include: string
-    - include: stray-paren
-
-  func-local:
-    - match: \b(local)(\()
-      captures:
-        1: support.function.local.css
-        2: punctuation.section.function.begin.css
-      push:
-        - include: end-func
-        - include: func-var
-        - include: string
-        - include: identifier
-    - include: stray-paren
-
-  descriptor-font-stretch:
-    - match: \b(font-stretch)\s*(:)
-      captures:
-        1: support.constant.property-name.css
-        2: punctuation.separator.key-value.css
-      push:
-        - include: end-value
-        - include: value-css-wide
-        - match: '(?x)
-            \b
-            (?:
-              ultra-expanded|
-              ultra-condensed|
-              semi-expanded|
-              semi-condensed|
-              normal|
-              extra-expanded|
-              extra-condensed|
-              expanded|
-              condensed
-            )
-            {{b}}'
-          scope: support.constant.property-value.css
-
-  descriptor-font-style:
-    - match: \b(font-style)\s*(:)
-      captures:
-        1: support.constant.property-name.css
-        2: punctuation.separator.key-value.css
-      push:
-        - include: end-value
-        - include: value-css-wide
-        - match: '\b(?:oblique|normal|italic){{b}}'
-          scope: support.constant.property-value.css
-
-  descriptor-font-variant:
-    - match: \b(font-variant)\s*(:)
-      captures:
-        1: support.constant.property-name.css
-        2: punctuation.separator.key-value.css
-      push:
-        - include: end-value
-        - include: value-css-wide
-        - include: func-swash-styleset-stylistic-ornaments-character-variant-annotation
-        - match: '(?x)
-            \b
-            (?:
-              unicase|
-              titling-caps|
-              super|
-              sub|
-              small-caps|
-              slashed-zero|
-              ruby|
-              petite-caps|
-              ordinal|
-              normal|
-              none|
-              historical-forms|
-              all-small-caps|
-              all-petite-caps
-            )
-            {{b}}'
-          scope: support.constant.property-value.css
-        - include: common-lig-values
-        - include: contextual-alt-values
-        - include: discretionary-lig-values
-        - include: east-asian-variant-values
-        - include: east-asian-width-values
-        - include: historical-lig-values
-        - include: numeric-figure-values
-        - include: numeric-spacing-values
-        - include: numeric-fraction-values
-
-  descriptor-font-weight:
-    - match: \b(font-weight)\s*(:)
-      captures:
-        1: support.constant.property-name.css
-        2: punctuation.separator.key-value.css
-      push:
-        - include: end-value
-        - include: value-css-wide
-        - match: '\b(?:normal|bold|[1-9]00){{b}}'
-          scope: support.constant.property-value.css
-
-  descriptor-unicode-range:
-    - match: \b(unicode-range)\s*(:)
-      captures:
-        1: support.constant.property-name.css
-        2: punctuation.separator.key-value.css
-      push:
-        - include: end-value
-        - include: value-css-wide
-        - match: '{{unicode_range}}'
-          scope: constant.numeric.unicode-range.css
-
-  common-lig-values:
-    - match: '\b(?:no-common-ligatures|common-ligatures){{b}}'
-      scope: support.constant.property-value.css
-
-  contextual-alt-values:
-    - match: '\b(?:no-contextual|contextual){{b}}'
-      scope: support.constant.property-value.css
-
-  discretionary-lig-values:
-    - match: '\b(?:no-discretionary-ligatures|discretionary-ligatures){{b}}'
-      scope: support.constant.property-value.css
-
-  east-asian-variant-values:
-    - match: '\b(?:traditional|simplified|jis90|jis83|jis78|jis04){{b}}'
-      scope: support.constant.property-value.css
-
-  east-asian-width-values:
-    - match: '\b(?:proportional-width|full-width){{b}}'
-      scope: support.constant.property-value.css
-
-  historical-lig-values:
-    - match: '\b(?:no-historical-ligatures|historical-ligatures){{b}}'
-      scope: support.constant.property-value.css
-
-  numeric-figure-values:
-    - match: '\b(?:oldstyle-nums|lining-nums){{b}}'
-      scope: support.constant.property-value.css
-
-  numeric-spacing-values:
-    - match: '\b(?:tabular-nums|proportional-nums){{b}}'
-      scope: support.constant.property-value.css
-
-  numeric-fraction-values:
-    - match: '\b(?:stacked-fractions|diagonal-fractions){{b}}'
-      scope: support.constant.property-value.css
 
   at-font-feature-values:
     - match: '(@)font-feature-values{{b}}'
@@ -704,6 +517,10 @@ contexts:
         - match: \*/
           pop: true
 
+  common-lig-values:
+    - match: '\b(?:no-common-ligatures|common-ligatures){{b}}'
+      scope: support.constant.property-value.css
+
   content-distribution:
     - match: '(?x)
         \b
@@ -740,6 +557,10 @@ contexts:
         {{b}}'
       scope: support.constant.property-value.css
 
+  contextual-alt-values:
+    - match: '\b(?:no-contextual|contextual){{b}}'
+      scope: support.constant.property-value.css
+
   # NOTE: Do not implement. symbols() is a very specific match, while
   # <identifier> is very nonspecific. Lumping them together will cause
   # mismatches, either because the precedence of symbols() is too low or because
@@ -748,6 +569,264 @@ contexts:
   # counter-style:
   #   - include: func-symbols
   #   - include: identifier
+
+  descriptors-counter-style:
+    - include: descriptor-system
+    - include: descriptor-negative
+    - include: descriptor-suffix-prefix
+    - include: descriptor-range
+    - include: descriptor-pad
+    - include: descriptor-fallback
+    - include: descriptor-symbols
+    - include: descriptor-additive-symbols
+    - include: descriptor-speak-as
+
+  descriptors-font-face:
+    - include: descriptor-font-feature-settings
+    - include: descriptor-unicode-range
+    - include: descriptor-font-variant
+    - include: descriptor-font-stretch
+    - include: descriptor-font-family
+    - include: descriptor-font-weight
+    - include: descriptor-font-style
+    - include: descriptor-font-src
+
+  descriptor-additive-symbols:
+    - match: \b(additive-symbols)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: integer-non-negative
+        - include: symbol
+
+  descriptor-fallback:
+    - match: \b(fallback)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: identifier
+
+  descriptor-font-family:
+    - match: \b(font-family)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: string
+        # Generic font familys, like 'serif', are not permitted in the
+        # font-family descriptor, only in the font-family property.
+        - match: '\b(?:{{generic_font_family}}){{b}}'
+          scope: invalid.illegal.font-family.css
+        - include: identifier
+
+  descriptor-font-feature-settings:
+    - match: \b(font-feature-settings)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:on|off|normal){{b}}'
+          scope: support.constant.property-value.css
+        - include: string
+        - include: integer-non-negative
+
+  descriptor-font-src:
+    - match: \b(src)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: func-format
+        - include: func-local
+        - include: func-url
+
+  descriptor-font-stretch:
+    - match: \b(font-stretch)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '(?x)
+            \b
+            (?:
+              ultra-expanded|
+              ultra-condensed|
+              semi-expanded|
+              semi-condensed|
+              normal|
+              extra-expanded|
+              extra-condensed|
+              expanded|
+              condensed
+            )
+            {{b}}'
+          scope: support.constant.property-value.css
+
+  descriptor-font-style:
+    - match: \b(font-style)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:oblique|normal|italic){{b}}'
+          scope: support.constant.property-value.css
+
+  descriptor-font-variant:
+    - match: \b(font-variant)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: func-swash-styleset-stylistic-ornaments-character-variant-annotation
+        - match: '(?x)
+            \b
+            (?:
+              unicase|
+              titling-caps|
+              super|
+              sub|
+              small-caps|
+              slashed-zero|
+              ruby|
+              petite-caps|
+              ordinal|
+              normal|
+              none|
+              historical-forms|
+              all-small-caps|
+              all-petite-caps
+            )
+            {{b}}'
+          scope: support.constant.property-value.css
+        - include: common-lig-values
+        - include: contextual-alt-values
+        - include: discretionary-lig-values
+        - include: east-asian-variant-values
+        - include: east-asian-width-values
+        - include: historical-lig-values
+        - include: numeric-figure-values
+        - include: numeric-spacing-values
+        - include: numeric-fraction-values
+
+  descriptor-font-weight:
+    - match: \b(font-weight)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:normal|bold|[1-9]00){{b}}'
+          scope: support.constant.property-value.css
+
+  descriptor-negative:
+    - match: \b(negative)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: symbol
+
+  descriptor-pad:
+    - match: \b(pad)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:infinite|auto){{b}}'
+          scope: support.constant.property-value.css
+        - include: integer
+        - include: symbol
+
+  descriptor-range:
+    - match: \b(range)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:infinite|auto){{b}}'
+          scope: support.constant.property-value.css
+        - include: integer
+
+  descriptor-suffix-prefix:
+    - match: \b(suffix|prefix)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: symbol
+
+  descriptor-speak-as:
+    - match: \b(speak-as)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:words|spell-out|numbers|bullets|auto){{b}}'
+          scope: support.constant.property-value.css
+        - include: identifier
+
+  descriptor-symbols:
+    - match: \b(symbols)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: symbol
+
+  descriptor-system:
+    - match: \b(system)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '(?x)
+            \b
+            (?:
+              symbolic|
+              numeric|
+              fixed|
+              extends|
+              cyclic|
+              alphabetic|
+              additive
+            )
+            {{b}}'
+          scope: support.constant.property-value.css
+        - include: integer
+        - include: identifier
 
   descriptor-viewport-height-width:
     - match: '\b({{optional_min_max_prefix}}(?:width|height))\s*(:)'
@@ -793,6 +872,21 @@ contexts:
         - include: percentage-non-negative
         - include: number-non-negative
     - include: stray-semicolon
+
+  descriptor-unicode-range:
+    - match: \b(unicode-range)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '{{unicode_range}}'
+          scope: constant.numeric.unicode-range.css
+
+  discretionary-lig-values:
+    - match: '\b(?:no-discretionary-ligatures|discretionary-ligatures){{b}}'
+      scope: support.constant.property-value.css
 
   display-box:
     - match: '\b(?:none|contents){{b}}'
@@ -852,6 +946,14 @@ contexts:
 
   display-outside:
     - match: '\b(?:run-in|inline|block){{b}}'
+      scope: support.constant.property-value.css
+
+  east-asian-variant-values:
+    - match: '\b(?:traditional|simplified|jis90|jis83|jis78|jis04){{b}}'
+      scope: support.constant.property-value.css
+
+  east-asian-width-values:
+    - match: '\b(?:proportional-width|full-width){{b}}'
       scope: support.constant.property-value.css
 
   end-func:
@@ -1049,6 +1151,17 @@ contexts:
         - include: identifier
     - include: stray-paren
 
+  func-format:
+    - match: \b(format)(\()
+      captures:
+        1: support.function.format.css
+        2: punctuation.section.function.begin.css
+      push:
+        - include: end-func
+        - include: func-var
+        - include: string
+    - include: stray-paren
+
   func-gray:
     - match: \b(gray)(\()
       captures:
@@ -1139,6 +1252,18 @@ contexts:
           scope: support.constant.property-value.css
         - include: angle
         - include: color-stop
+    - include: stray-paren
+
+  func-local:
+    - match: \b(local)(\()
+      captures:
+        1: support.function.local.css
+        2: punctuation.section.function.begin.css
+      push:
+        - include: end-func
+        - include: func-var
+        - include: string
+        - include: identifier
     - include: stray-paren
 
   func-radial-gradient:
@@ -1325,6 +1450,10 @@ contexts:
       captures:
         0: constant.other.color.rgb-value.css
         1: punctuation.definition.constant.css
+
+  historical-lig-values:
+    - match: '\b(?:no-historical-ligatures|historical-ligatures){{b}}'
+      scope: support.constant.property-value.css
 
   identifier:
     - match: '{{identifier}}'
@@ -1702,6 +1831,18 @@ contexts:
     - include: func-calc
     - match: '{{number_zero_to_255}}'
       scope: constant.numeric.css
+
+  numeric-figure-values:
+    - match: '\b(?:oldstyle-nums|lining-nums){{b}}'
+      scope: support.constant.property-value.css
+
+  numeric-fraction-values:
+    - match: '\b(?:stacked-fractions|diagonal-fractions){{b}}'
+      scope: support.constant.property-value.css
+
+  numeric-spacing-values:
+    - match: '\b(?:tabular-nums|proportional-nums){{b}}'
+      scope: support.constant.property-value.css
 
   overflow-position:
     - match: '\b(?:un)?safe{{b}}'
@@ -2897,6 +3038,11 @@ contexts:
         - include: supports-condition-operator
         - include: properties
     - include: stray-paren
+
+  symbol:
+    - include: image
+    - include: string
+    - include: identifier
 
   supports-condition-operator:
     - match: \b(?:or|not|and){{b}}
