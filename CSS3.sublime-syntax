@@ -15,6 +15,7 @@ variables:
   column: '\|\|'
   combinator: '(?:{{column}}|>{1,3}|[+~])'
   custom_property_name: '--{{identifier}}'
+  decibel_unit: 'dB'
   escape: '\\(?:[^\n\r\f\h]|\h{1,6}{{whitespace}}?)'
   exponent: '[eE][+-]?\d+'
   frequency_unit: k?Hz
@@ -334,6 +335,11 @@ contexts:
     - match: '\b(?:last-)?baseline{{b}}'
       scope: support.constant.property-value.css
 
+  basic-shape:
+    - include: func-inset
+    - include: func-ellipse-circle
+    - include: func-polygon
+
   blend-mode:
     - match: '(?x)
         \b
@@ -371,6 +377,10 @@ contexts:
 
   box:
     - match: '\b(?:padding-box|content-box|border-box){{b}}'
+      scope: support.constant.property-value.css
+
+  caret-shape:
+    - match: '\b(?:underscore|block|bar|auto){{b}}'
       scope: support.constant.property-value.css
 
   color:
@@ -653,6 +663,18 @@ contexts:
   # counter-style:
   #   - include: func-symbols
   #   - include: identifier
+
+  decibel:
+    - include: func-calc
+    - match: '(?x)
+        (?:
+          ({{number}})({{decibel_unit}})|
+          ({{zero}})
+        )'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+        3: constant.numeric.css
 
   descriptors-counter-style:
     - include: descriptor-system
@@ -1089,6 +1111,10 @@ contexts:
         {{b}}'
       scope: support.constant.property-value.css
 
+  fill-rule:
+    - match: '\b(?:nonzero|evenodd){{b}}'
+      scope: support.constant.property-value.css
+
   font-feature-value-block:
     - match: '{'
       scope: punctuation.section.font-feature-value-block.begin.css
@@ -1235,7 +1261,7 @@ contexts:
   func-element:
     - match: \b(element)(\()
       captures:
-        1: support.function.cross-fade.css
+        1: support.function.element.css
         2: punctuation.section.function.begin.css
       push:
         - include: end-func
@@ -1243,6 +1269,19 @@ contexts:
         - match: '\b(?:start|last|first-except|first){{b}}'
           scope: support.constant.property-value.css
         - include: identifier
+
+  func-ellipse-circle:
+    - match: \b(ellipse|circle)(\()
+      captures:
+        1: support.function.ellipse-circle.css
+        2: punctuation.section.function.begin.css
+      push:
+        - include: end-func
+        - include: func-var
+        - match: '\bat{{b}}'
+          scope: support.constant.property-value.css
+        - include: shape-radius
+        - include: position
 
   func-format:
     - match: \b(format)(\()
@@ -1313,6 +1352,20 @@ contexts:
         - include: resolution
         - include: string
 
+  func-inset:
+    - match: \b(inset)(\()
+      captures:
+        1: support.function.inset.css
+        2: punctuation.section.function.begin.css
+      push:
+        - include: end-func
+        - include: func-var
+        - match: '\bround{{b}}'
+          scope: support.constant.property-value.css
+        - include: shape-arg
+        - match: '\/'
+          scope: keyword.operator.arithmetic.css
+
   func-leader:
     - match: \b(leader)(\()
       captures:
@@ -1349,6 +1402,17 @@ contexts:
         - include: func-var
         - include: string
         - include: identifier
+
+  func-polygon:
+    - match: \b(polygon)(\()
+      captures:
+        1: support.function.polygon.css
+        2: punctuation.section.function.begin.css
+      push:
+        - include: end-func
+        - include: func-var
+        - include: fill-rule
+        - include: shape-arg
 
   func-radial-gradient:
     - match: \b((?:repeating-)?radial-gradient)(\()
@@ -1513,6 +1577,11 @@ contexts:
         - include: percentage
         - include: color-adjuster-operator
 
+  geometry-box:
+    - match: '\b(?:view-box|stroke-box|fill-box){{b}}'
+      scope: support.constant.property-value.css
+    - include: shape-box
+
   gradient:
     - include: func-radial-gradient
     - include: func-linear-gradient
@@ -1618,6 +1687,18 @@ contexts:
     - match: '(?x)
         (?:
           ({{number_non_neg}})({{length_unit}})\b|
+          ({{zero}})
+        )'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+        3: constant.numeric.css
+
+  length-positive:
+    - include: func-calc
+    - match: '(?x)
+        (?:
+          ({{number_pos}})({{length_unit}})\b|
           ({{zero}})
         )'
       captures:
@@ -2082,10 +2163,35 @@ contexts:
     - include: property-box-suppress
     - include: property-break-before-after
     - include: property-break-inside
+    # - include: property-caret-color  # TODO: enable when <caret-color> is defined in CSS Basic User Interface Module Level 4
+    - include: property-caret-shape
+    - include: property-caret
+    - include: property-chains
+    - include: property-clear
+    - include: property-clip-path
+    - include: property-clip-rule
+    - include: property-color
+    - include: property-color-interpolation-filters
+    - include: property-columns
+    - include: property-column-count
+    - include: property-column-fill
+    - include: property-column-gap
+    - include: property-column-rule
+    - include: property-column-rule-color
+    - include: property-column-rule-style
+    - include: property-column-rule-width
+    - include: property-column-span
+    - include: property-column-width
     - include: property-content
+    - include: property-continue
+    - include: property-counter-set-reset-increment
+    - include: property-cue-before-after
+    - include: property-cursor
 
     - include: property-display
     - include: property-top-right-left-bottom
+
+
 
     # TODO: add rules for matching property/value pairs here
     - include: property-custom
@@ -2658,6 +2764,8 @@ contexts:
         - include: value-css-wide
         - include: percentage-non-negative
         - include: length-non-negative
+        - match: '\/'
+          scope: keyword.operator.arithmetic.css
     - include: stray-paren-or-semicolon
 
   # CSS Backgrounds and Borders Module Level 3
@@ -2829,6 +2937,275 @@ contexts:
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
+  # TODO: The spec is currently incomplete. It doesn't define what a
+  # <caret-color> is yet.
+  # CSS Basic User Interface Module Level 4
+  # property-caret-color:
+  #   - match: \b(caret-color)\s*(:)
+  #     captures:
+  #       1: support.constant.property-name.css
+  #       2: punctuation.separator.key-value.css
+  #     push:
+  #       - include: end-value
+  #       - include: value-css-wide
+  #       -
+  #   - include: stray-paren-or-semicolon
+
+  # CSS Basic User Interface Module Level 4
+  property-caret-shape:
+    - match: \b(caret-shape)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: caret-shape
+    - include: stray-paren-or-semicolon
+
+  # CSS Basic User Interface Module Level 4
+  property-caret:
+    - match: \b(caret)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: caret-shape
+        # - include: caret-color  # TODO: enable when this is defined in the spec
+    - include: stray-paren-or-semicolon
+
+  # CSS Template Layout Module
+  property-chains:
+    - match: \b(chains)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - match: '\bnone{{b}}|[@*]'
+          scope: support.constant.property-value.css
+        - include: value-css-wide
+        - include: identifier
+    - include: stray-paren-or-semicolon
+
+  # CSS Page Floats
+  property-clear:
+    - match: \b(clear)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '(?x)
+            \b
+            (?:
+              top|
+              right|
+              none|
+              left|
+              inline-start|
+              inline-end|
+              bottom|
+              both-inline|
+              both-block|
+              both|
+              block-start|
+              block-end
+            )
+            {{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Masking Module Level 1
+  property-clip-path:
+    - match: \b(clip-path)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: func-url
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
+        - include: geometry-box
+        - include: basic-shape
+    - include: stray-paren-or-semicolon
+
+  # CSS Masking Module Level 1
+  property-clip-rule:
+    - match: \b(clip-rule)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:nonzero|evenodd){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Color Module Level 4
+  property-color:
+    - match: \b(color)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: color
+    - include: stray-paren-or-semicolon
+
+  # Filter Effects Module Level 1
+  property-color-interpolation-filters:
+    - match: \b(color-interpolation-filters)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:sRGB|linearRGB|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Multi-column Layout Module
+  property-columns:
+    - match: \b(columns)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bauto{{b}}'
+          scope: support.constant.property-value.css
+        - include: length-positive
+    - include: stray-paren-or-semicolon
+
+  # CSS Multi-column Layout Module
+  property-column-count:
+    - match: \b(column-count)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bmatch{{b}}'
+          scope: support.constant.property-value.css
+        - include: integer-positive
+    - include: stray-paren-or-semicolon
+
+  # CSS Multi-column Layout Module
+  property-column-fill:
+    - match: \b(column-fill)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:balance|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Multi-column Layout Module
+  property-column-gap:
+    - match: \b(column-gap)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bnormal{{b}}'
+          scope: support.constant.property-value.css
+        - include: length-non-negative
+    - include: stray-paren-or-semicolon
+
+  # CSS Multi-column Layout Module
+  property-column-rule:
+    - match: \b(column-rule)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: line-style
+        - include: line-width
+        - include: color
+    - include: stray-paren-or-semicolon
+
+  # CSS Multi-column Layout Module
+  property-column-rule-color:
+    - match: \b(column-rule-color)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: color
+    - include: stray-paren-or-semicolon
+
+  # CSS Multi-column Layout Module
+  property-column-rule-style:
+    - match: \b(column-rule-style)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: line-style  # identical to <border-style>
+    - include: stray-paren-or-semicolon
+
+  # CSS Multi-column Layout Module
+  property-column-rule-width:
+    - match: \b(column-rule-width)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: line-width  # identical to <border-width>
+    - include: stray-paren-or-semicolon
+
+  # CSS Multi-column Layout Module
+  property-column-span:
+    - match: \b(column-span)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:none|auto|all){{b}}'
+          scope: support.constant.property-value.css
+        - include: integer-non-negative
+    - include: stray-paren-or-semicolon
+
+  # CSS Multi-column Layout Module
+  property-column-width:
+    - match: \b(column-width)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bauto{{b}}'
+          scope: support.constant.property-value.css
+        - include: length-positive
+    - include: stray-paren-or-semicolon
+
   # CSS Generated Content Module Level 3
   property-content:
     - match: \b(content)\s*(:)
@@ -2841,6 +3218,104 @@ contexts:
         - match: '\b(?:normal|none){{b}}'
           scope: support.constant.property-value.css
         - include: content-list
+    - include: stray-paren-or-semicolon
+
+  # CSS Overflow Module Level 4
+  property-continue:
+    - match: \b(continue)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:paginate|overflow|fragments|discard|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Lists and Counters Module Level 3
+  property-counter-set-reset-increment:
+    - match: \b(counter-set|counter-reset|counter-increment)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
+        - include: integer
+        - include: identifier
+    - include: stray-paren-or-semicolon
+
+  # CSS Speech Module
+  property-cue-before-after:
+    - match: \b(cue-before|cue-after|cue)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: func-url
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
+        - include: decibel
+    - include: stray-paren-or-semicolon
+
+  # CSS Basic User Interface Module Level 3
+  property-cursor:
+    - match: \b(cursor)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: func-url
+        - match: '(?x)
+            \b
+            (?:
+              zoom-out|
+              zoom-in|
+              wait|
+              w-resize|
+              vertical-text|
+              text|
+              sw-resize|
+              se-resize|
+              s-resize|
+              row-resize|
+              progress|
+              pointer|
+              nwse-resize|
+              nw-resize|
+              ns-resize|
+              not-allowed|
+              none|
+              no-drop|
+              nesw-resize|
+              ne-resize|
+              n-resize|
+              move|
+              help|
+              grabbing|
+              grab|
+              ew-resize|
+              e-resize|
+              default|
+              crosshair|
+              copy|
+              context-menu|
+              col-resize|
+              cell|
+              auto|
+              all-scroll|
+              alias
+            )
+            {{b}}'
+          scope: support.constant.property-value.css
+        - include: number
     - include: stray-paren-or-semicolon
 
   property-custom:
@@ -3081,6 +3556,8 @@ contexts:
       push:
         - include: end-value
         - include: value-css-wide
+        - match: '\bauto{{b}}'
+          scope: support.constant.property-value.css
         - include: percentage
         - include: length
     - include: stray-paren-or-semicolon
@@ -3590,6 +4067,21 @@ contexts:
         )
         {{b}}'
       scope: support.constant.property-value.css
+
+  shape-arg:
+    - include: percentage
+    - include: length
+
+  shape-box:
+    - include: box
+    - match: '\bmargin-box{{b}}'
+      scope: support.constant.property-value.css
+
+  shape-radius:
+    - match: '\b(?:farthest-side|closest-side){{b}}'
+      scope: support.constant.property-value.css
+    - include: percentage
+    - include: length
 
   side-or-corner:
     - match: '\b(?:top|right|left|bottom){{b}}'
