@@ -1,0 +1,25 @@
+/* SYNTAX TEST "Packages/CSS3/CSS3.sublime-syntax" */
+
+
+/* TEST C PROPERTIES */
+foo {
+	caret-shape: underscore;
+
+	chains: * a b c;
+	chains: top-half bottom-half;
+	chains: a b;
+	chains: @ a b c d e, f g h i j k;
+	chains: * a b c d e f g;
+	chains: a b c d e f;
+	chains: none;
+
+	clear: none;
+	clear: left;
+	clear: right;
+	clear: both;
+	clear: inline-start;
+	clear: inline-end;
+	clear: inherit;
+
+
+}
