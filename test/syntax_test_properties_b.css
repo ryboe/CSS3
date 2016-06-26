@@ -198,31 +198,214 @@ foo {
 	border-image-source: initial;
 	border-image-source: unset;
 
-	border-image-width: ;
-	border-left: ;
-	border-left-color: ;
-	border-left-style: ;
-	border-left-width: ;
-	border-radius: ;
-	border-right: ;
-	border-right-color: ;
-	border-right-style: ;
-	border-right-width: ;
-	border-style: ;
-	border-top: ;
-	border-top-color: ;
-	border-top-left-radius: ;
-	border-top-right-radius: ;
-	border-top-style: ;
-	border-top-width: ;
-	border-width: ;
-	bottom: ;
-	box-decoration-break: ;
-	box-shadow: ;
-	box-sizing: ;
-	box-snap: ;
-	box-suppress: ;
-	break-after: ;
-	break-before: ;
-	break-inside: ;
+	border-image-width: 3;
+	border-image-width: 2em 3em;
+	border-image-width: 5% 15% 10%;
+	border-image-width: 5% 2em 10% auto;
+	border-image-width: inherit;
+	border-image-width: initial;
+	border-image-width: unset;
+
+	border-left: 1px;
+	border-left: 2px dotted;
+	border-left: medium dashed green;
+
+	border-left-color: red;
+	border-left-color: rgb(255, 255, 0);
+	border-left-color: hsla(100%, 50%, 25%, 0.75);
+	border-left-color: transparent;
+	border-left-color: #ffbb00;
+	border-left-color: currentcolor;
+	border-left-color: inherit;
+
+	border-left-style: none;
+	border-left-style: hidden;
+	border-left-style: dotted;
+	border-left-style: dashed;
+	border-left-style: solid;
+	border-left-style: double;
+	border-left-style: groove;
+	border-left-style: ridge;
+	border-left-style: inset;
+	border-left-style: outset;
+	border-left-style: inherit;
+
+	border-left-width: 10em;
+	border-left-width: 3vmax;
+	border-left-width: 6px;
+	border-left-width: thin;
+	border-left-width: medium;
+	border-left-width: thick;
+	border-left-width: inherit;
+
+	border-radius: 10px;
+	border-radius: 10px 5%;
+	border-radius: 2px 4px 2px;
+	border-radius: 1px 0 3px 4px;
+	border-radius: 10px 5% / 20px;
+	border-radius: 10px 5% / 20px 30px;
+	border-radius: 10px 5px 2em / 20px 25px 30%;
+	border-radius: 10px 5% / 20px 25em 30px 35em;
+	border-radius: inherit;
+
+	border-right: 1px;
+	border-right: 2px dotted;
+	border-right: medium dashed green;
+
+	border-right-color: red;
+	border-right-color: rgb(255, 128, 0);
+	border-right-color: hsla(100%, 50%, 25%, 0.75);
+	border-right-color: #ffbb00;
+	border-right-color: currentcolor;
+	border-right-color: transparent;
+	border-right-color: inherit;
+
+	border-right-style: none;
+	border-right-style: hidden;
+	border-right-style: dotted;
+	border-right-style: dashed;
+	border-right-style: solid;
+	border-right-style: double;
+	border-right-style: groove;
+	border-right-style: ridge;
+	border-right-style: inset;
+	border-right-style: outset;
+	border-right-style: inherit;
+
+	border-right-width: 10em;
+	border-right-width: 3vmax;
+	border-right-width: 6px;
+	border-right-width: thin;
+	border-right-width: medium;
+	border-right-width: thick;
+	border-right-width: inherit;
+
+	border-style: dashed;
+	border-style: dotted solid;
+	border-style: hidden double dashed;
+	border-style: none solid dotted dashed;
+	border-style: inherit;
+	border-style: initial;
+	border-style: unset;
+
+	border-top: 1px;
+	border-top: 2px dotted;
+	border-top: medium dashed green;
+
+	border-top-color: red;
+	border-top-color: rgb(255, 128, 0);
+	border-top-color: hsla(100%, 50%, 25%, 0.75);
+	border-top-color: #ffbb00;
+	border-top-color: currentcolor;
+	border-top-color: transparent;
+	border-top-color: inherit;
+
+	border-top-left-radius: 3px;
+	border-top-left-radius: 0.5em 1em;
+	border-top-left-radius: inherit;
+
+	border-top-right-radius: 3px;
+	border-top-right-radius: 0.5em 1em;
+	border-top-right-radius: inherit;
+
+	border-top-style: none;
+	border-top-style: hidden;
+	border-top-style: dotted;
+	border-top-style: dashed;
+	border-top-style: solid;
+	border-top-style: double;
+	border-top-style: groove;
+	border-top-style: ridge;
+	border-top-style: inset;
+	border-top-style: outset;
+	border-top-style: inherit;
+
+	border-top-width: 10em;
+	border-top-width: 3vmax;
+	border-top-width: 6px;
+	border-top-width: thin;
+	border-top-width: medium;
+	border-top-width: thick;
+	border-top-width: inherit;
+
+	border-width: 5px;
+	border-width: 2px 1.5em;
+	border-width: 1px 2em 1.5cm;
+	border-width: 1px 2em 0 4rem;
+	border-width: inherit;
+
+	bottom: 3px;
+	bottom: 2.4em;
+	bottom: 10%;
+	bottom: auto;
+	bottom: inherit;
+
+	box-decoration-break: slice;
+	box-decoration-break: clone;
+	box-decoration-break: initial;
+	box-decoration-break: inherit;
+	box-decoration-break: unset;
+
+	box-shadow: 60px -16px teal;
+	box-shadow: 10px 5px 5px black;
+	box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+	box-shadow: inset 5em 1em gold;
+	box-shadow: 3px 3px red, -1em 0 0.4em olive;
+
+	box-sizing: content-box;
+	box-sizing: border-box;
+	box-sizing: inherit;
+	box-sizing: initial;
+	box-sizing: unset;
+
+	box-snap: none;
+	box-snap: block-start;
+	box-snap: block-end;
+	box-snap: center;
+	box-snap: baseline;
+	box-snap: last-baseline;
+	box-snap: inherit;
+	box-snap: revert;
+
+	box-suppress: discard;
+	box-suppress: show;
+	box-suppress: hide;
+	box-suppress: inherit;
+
+	break-after: auto;
+	break-after: always;
+	break-after: left;
+	break-after: right;
+	break-after: recto;
+	break-after: verso;
+	break-after: page;
+	break-after: column;
+	break-after: region;
+	break-after: avoid;
+	break-after: avoid-page;
+	break-after: avoid-column;
+	break-after: avoid-region;
+	break-after: inherit;
+
+	break-before: auto;
+	break-before: always;
+	break-before: left;
+	break-before: right;
+	break-before: recto;
+	break-before: verso;
+	break-before: page;
+	break-before: column;
+	break-before: region;
+	break-before: avoid;
+	break-before: avoid-page;
+	break-before: avoid-column;
+	break-before: avoid-region;
+	break-before: inherit;
+
+	break-inside: auto;
+	break-inside: avoid;
+	break-inside: avoid-page;
+	break-inside: avoid-column;
+	break-inside: avoid-region;
+	break-inside: inherit;
 }
