@@ -37,6 +37,7 @@ variables:
   number_zero_to_255: '\b(?:2[0-5][0-5](?:\.0+)?|1\d\d(?:\.\d+)?|[1-9]\d(?:\.\d+)?|\d(?:\.\d+)?)'
   number_zero_to_one: '\+?(?:0(?:\.\d+)?|1(?:\.0+)?|\.\d+)\b(?!\.)'
   optional_min_max_prefix: '\b(?:min-|max-)?'
+  optional_top_right_left_bottom: '(?:top-|right-|left-|bottom-)?'
   percentage_unit: '%'
   ratio: '({{integer_pos}})\s*(\/)\s*({{integer_pos}})'
   resolution_unit: dppx|dpi|dpcm
@@ -325,8 +326,51 @@ contexts:
               pop: true
             - include: viewport-descriptors
 
+  attachment:
+    - match: '\b(?:scroll|local|fixed){{b}}'
+      scope: support.constant.property-value.css
+
   baseline-position:
     - match: '\b(?:last-)?baseline{{b}}'
+      scope: support.constant.property-value.css
+
+  blend-mode:
+    - match: '(?x)
+        \b
+        (?:
+          soft-light|
+          screen|
+          saturation|
+          overlay|
+          normal|
+          multiply|
+          luminosity|
+          lighten|
+          hue|
+          hard-light|
+          exclusion|
+          difference|
+          darken|
+          color-dodge|
+          color-burn|
+          color
+        )
+        {{b}}'
+      scope: support.constant.property-value.css
+
+  bg-image:
+    - include: image
+    - match: '\bnone{{b}}'
+      scope: support.constant.property-value.css
+
+  bg-size:
+    - match: '\b(?:cover|contain|auto){{b}}'
+      scope: support.constant.property-value.css
+    - include: percentage-non-negative
+    - include: length-non-negative
+
+  box:
+    - match: '\b(?:padding-box|content-box|border-box){{b}}'
       scope: support.constant.property-value.css
 
   color:
@@ -1509,6 +1553,29 @@ contexts:
     - match: '{{integer_pos}}'
       scope: constant.numeric.css
 
+  line-style:
+    - match: '(?x)
+        \b
+        (?:
+          solid|
+          ridge|
+          outset|
+          none|
+          inset|
+          hidden|
+          groove|
+          double|
+          dotted|
+          dashed
+        )
+        {{b}}'
+      scope: support.constant.property-value.css
+
+  line-width:
+    - match: '\b(?:thin|thick|medium){{b}}'
+      scope: support.constant.property-value.css
+    - include: length-non-negative
+
   # This is based on the rule context.
   keyframes-block:
     - match: '(?=[fromt\d%])'  # to|from|<percentage>
@@ -1966,6 +2033,7 @@ contexts:
     # TODO: sort properties in reverse alphabetical order
     - include: property-align-content
     - include: property-align-items
+    - include: property-align-self
     - include: property-alignment-baseline
     - include: property-all
     - include: property-animation-delay
@@ -1978,12 +2046,42 @@ contexts:
     - include: property-animation-timing-function
     - include: property-animation
     - include: property-appearance
+    - include: property-backface-visibility
+    - include: property-background-attachment
+    - include: property-background-blend-mode
+    - include: property-background-clip
+    - include: property-background-color
+    - include: property-background-image
+    - include: property-background-origin
+    - include: property-background-position
+    - include: property-background-repeat
+    - include: property-background-size
+    - include: property-background
+    - include: property-baseline-shift
+    - include: property-bookmark-label
+    - include: property-bookmark-level
+    - include: property-bookmark-state
+    - include: property-border-top-right-left-bottom
+    - include: property-border-color
+    - include: property-border-radius
+    - include: property-border-style
+    - include: property-border-width
+    - include: property-border-boundary
+    - include: property-border-image-source
+    - include: property-border-image-slice
+    - include: property-border-image-width
+    - include: property-border-image-outset
+    - include: property-border-image-repeat
+    - include: property-border-image
+    - include: property-border
+    - include: property-box-decoration-break
 
     - include: property-box-shadow
 
     - include: property-content
 
     - include: property-display
+    - include: property-top-right-left-bottom
 
     # TODO: add rules for matching property/value pairs here
     - include: property-custom
@@ -1998,6 +2096,7 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - include: end-value
+        - include: value-css-wide
         - match: '\bnormal{{b}}'
           scope: support.constant.property-value.css
         - include: baseline-position
@@ -2220,6 +2319,360 @@ contexts:
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
+  # CSS Transforms Module Level 1
+  property-backface-visibility:
+    - match: \b(backface-visibility)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:visible|hidden){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Backgrounds and Borders Module Level 3
+  property-background-attachment:
+    - match: \b(background-attachment)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: attachment
+    - include: stray-paren-or-semicolon
+
+  # Compositing and Blending Level 1
+  property-background-blend-mode:
+    - match: \b(background-blend-mode)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: blend-mode
+    - include: stray-paren-or-semicolon
+
+  # CSS Backgrounds and Borders Module Level 3
+  property-background-clip:
+    - match: \b(background-clip)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: box
+    - include: stray-paren-or-semicolon
+
+  # CSS Backgrounds and Borders Module Level 3
+  property-background-color:
+    - match: \b(background-color)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: color
+    - include: stray-paren-or-semicolon
+
+  # CSS Backgrounds and Borders Module Level 3
+  property-background-image:
+    - match: \b(background-image)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: bg-image
+    - include: stray-paren-or-semicolon
+
+  # CSS Backgrounds and Borders Module Level 3
+  property-background-origin:
+    - match: \b(background-origin)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: box
+    - include: stray-paren-or-semicolon
+
+  # CSS Backgrounds and Borders Module Level 3
+  property-background-position:
+    - match: \b(background-position)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: position
+    - include: stray-paren-or-semicolon
+
+  # CSS Backgrounds and Borders Module Level 3
+  property-background-repeat:
+    - match: \b(background-repeat)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: repeat-style
+    - include: stray-paren-or-semicolon
+
+  # CSS Backgrounds and Borders Module Level 3
+  property-background-size:
+    - match: \b(background-size)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: bg-size
+    - include: stray-paren-or-semicolon
+
+  # CSS Backgrounds and Borders Module Level 3
+  property-background:
+    - match: \b(background)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: bg-image
+        - include: bg-size
+        - include: repeat-style
+        - include: box
+        - include: attachment
+        - include: color
+        - include: position
+    - include: stray-paren-or-semicolon
+
+  # CSS Inline Layout Module Level 3
+  property-baseline-shift:
+    - match: \b(baseline-shift)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:super|sub){{b}}'
+          scope: support.constant.property-value.css
+        - include: percentage
+        - include: length
+    - include: stray-paren-or-semicolon
+
+  # CSS Generated Content Module Level 3
+  property-bookmark-label:
+    - match: \b(bookmark-label)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: content-list
+    - include: stray-paren-or-semicolon
+
+  # CSS Generated Content Module Level 3
+  property-bookmark-level:
+    - match: \b(bookmark-level)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
+        - include: integer-positive
+    - include: stray-paren-or-semicolon
+
+  # CSS Generated Content Module Level 3
+  property-bookmark-state:
+    - match: \b(bookmark-state)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:open|closed){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Backgrounds and Borders Module Level 3
+  property-border:
+    - match: \b(border)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: color
+        - include: line-width
+        - include: line-style
+    - include: stray-paren-or-semicolon
+
+  # CSS Round Display Level 1
+  property-border-boundary:
+    - match: \b(border-boundary)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:parent|none|display){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Backgrounds and Borders Module Level 3
+  property-border-color:
+    - match: \b(border-{{optional_top_right_left_bottom}}color)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: color
+    - include: stray-paren-or-semicolon
+
+  # CSS Backgrounds and Borders Module Level 3
+  property-border-image-outset:
+    - match: \b(border-image-outset)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: length-non-negative
+        - include: number-non-negative
+    - include: stray-paren-or-semicolon
+
+  # CSS Backgrounds and Borders Module Level 3
+  property-border-image-slice:
+    - match: \b(border-image-slice)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bfill{{b}}'
+          scope: support.constant.property-value.css
+        - include: percentage-non-negative
+        - include: integer-non-negative
+    - include: stray-paren-or-semicolon
+
+  # CSS Backgrounds and Borders Module Level 3
+  property-border-image-source:
+    - match: \b(border-image-source)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
+        - include: image
+    - include: stray-paren-or-semicolon
+
+  # CSS Backgrounds and Borders Module Level 3
+  property-border-image-width:
+    - match: \b(border-image-width)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bauto{{b}}'
+          scope: support.constant.property-value.css
+        - include: percentage-non-negative
+        - include: length-non-negative
+        - include: number-non-negative
+    - include: stray-paren-or-semicolon
+
+  # CSS Backgrounds and Borders Module Level 3
+  property-border-radius:
+    - match: \b(border-(?:top-right-|top-left-|bottom-right-|bottom-left-)?radius)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: percentage-non-negative
+        - include: length-non-negative
+    - include: stray-paren-or-semicolon
+
+  # CSS Backgrounds and Borders Module Level 3
+  property-border-style:
+    - match: \b(border-{{optional_top_right_left_bottom}}style)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: line-style
+    - include: stray-paren-or-semicolon
+
+  # CSS Backgrounds and Borders Module Level 3
+  property-border-top-right-left-bottom:
+    - match: \b(border-(?:top|right|left|bottom))\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: color
+        - include: line-width
+        - include: line-style
+    - include: stray-paren-or-semicolon
+
+  # CSS Backgrounds and Borders Module Level 3
+  property-border-width:
+    - match: \b(border-{{optional_top_right_left_bottom}}width)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: line-width
+    - include: stray-paren-or-semicolon
+
+  # CSS Fragmentation Module Level 3
+  property-box-decoration-break:
+    - match: \b(box-decoration-break)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:slice|clone){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
   # CSS Backgrounds and Borders Module Level 3
   property-box-shadow:
     - match: \b(box-shadow)\s*(:)
@@ -2234,6 +2687,10 @@ contexts:
         - include: length
         - include: color
     - include: stray-paren-or-semicolon
+
+
+
+
 
   # CSS Generated Content Module Level 3
   property-content:
@@ -2478,6 +2935,19 @@ contexts:
         - include: display-legacy
     - include: stray-paren-or-semicolon
 
+  # CSS Positioned Layout Module Level 3
+  property-top-right-left-bottom:
+    - match: \b(top|right|left|bottom)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: percentage
+        - include: length
+    - include: stray-paren-or-semicolon
+
   # property-list matches a block of property-value pairs.
   # {
   #     property1: value1;
@@ -2513,6 +2983,20 @@ contexts:
         1: constant.numeric.css
         2: keyword.operator.arithmetic.css
         3: constant.numeric.css
+
+  repeat-style:
+    - match: '(?x)
+        \b
+        (?:
+          space|
+          round|
+          repeat-y|
+          repeat-x|
+          repeat|
+          no-repeat
+        )
+        {{b}}'
+      scope: support.constant.property-value.css
 
   resolution:
     - match: '({{integer_pos}})({{resolution_unit}})'
