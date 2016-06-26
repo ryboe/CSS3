@@ -406,6 +406,7 @@ contexts:
           wheat|
           violet|
           turquoise|
+          transparent|
           tomato|
           thistle|
           teal|
@@ -1990,7 +1991,7 @@ contexts:
     - include: func-calc
     - match: '(?x)
         (?:
-          ({{number}})({{percentage_unit}})\b|
+          ({{number}})({{percentage_unit}})|
           ({{zero}})
         )'
       captures:
@@ -2075,9 +2076,12 @@ contexts:
     - include: property-border-image
     - include: property-border
     - include: property-box-decoration-break
-
     - include: property-box-shadow
-
+    - include: property-box-sizing
+    - include: property-box-snap
+    - include: property-box-suppress
+    - include: property-break-before-after
+    - include: property-break-inside
     - include: property-content
 
     - include: property-display
@@ -2456,6 +2460,8 @@ contexts:
         - include: attachment
         - include: color
         - include: position
+        - match: '\/'
+          scope: keyword.operator.arithmetic_operator.css
     - include: stray-paren-or-semicolon
 
   # CSS Inline Layout Module Level 3
@@ -2552,6 +2558,25 @@ contexts:
     - include: stray-paren-or-semicolon
 
   # CSS Backgrounds and Borders Module Level 3
+  property-border-image:
+    - match: \b(border-image)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:stretch|space|round|repeat|none|fill|auto){{b}}'
+          scope: support.constant.property-value.css
+        - include: image
+        - include: percentage-non-negative
+        - include: length-non-negative
+        - include: integer-non-negative
+        - include: number-non-negative
+
+    - include: stray-paren-or-semicolon
+
+  # CSS Backgrounds and Borders Module Level 3
   property-border-image-outset:
     - match: \b(border-image-outset)\s*(:)
       captures:
@@ -2562,6 +2587,19 @@ contexts:
         - include: value-css-wide
         - include: length-non-negative
         - include: number-non-negative
+    - include: stray-paren-or-semicolon
+
+  # CSS Backgrounds and Borders Module Level 3
+  property-border-image-repeat:
+    - match: \b(border-image-repeat)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:stretch|space|round|repeat){{b}}'
+          scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
   # CSS Backgrounds and Borders Module Level 3
@@ -2688,9 +2726,108 @@ contexts:
         - include: color
     - include: stray-paren-or-semicolon
 
+  # CSS Basic User Interface Module Level 3
+  property-box-sizing:
+    - match: \b(box-sizing)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:content-box|border-box){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
 
+  # CSS Line Grid Module Level 1
+  property-box-snap:
+    - match: \b(box-snap)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '(?x)
+            \b
+            (?:
+              none|
+              last-baseline|
+              center|
+              block-start|
+              block-end|
+              baseline
+            )
+            {{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
 
+  # CSS Display Module Level 3
+  property-box-suppress:
+    - match: \b(box-suppress)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:show|hide|discard){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
 
+  # break-after and break-before are defined in two specs:
+  #     CSS Fragmentation Module Level 3
+  #     CSS Regions Module Level 1
+  property-break-before-after:
+    - match: \b(break-before|break-after)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '(?x)
+            \b
+            (?:
+              verso|
+              right|
+              region|
+              recto|
+              page|
+              left|
+              column|
+              avoid-region|
+              avoid-page|
+              avoid-column|
+              avoid|
+              auto|
+              always
+            )
+            {{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Regions Module Level 1
+  property-break-inside:
+    - match: \b(break-inside)\s*(:)
+      captures:
+        1: support.constant.property-break-inside.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '(?x)
+            \b
+            (?:
+              avoid-region|
+              avoid-page|
+              avoid-column|
+              avoid|
+              auto
+            )
+            {{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
 
   # CSS Generated Content Module Level 3
   property-content:

@@ -3,5 +3,226 @@
 
 /* TEST B PROPERTIES */
 foo {
+	backface-visibility: visible;
+	backface-visibility: hidden;
 
+	background: green;
+	background: url("test.jpg") repeat-y;
+	background: border-box red;
+	background: no-repeat center/80% url("../img/image.png");
+
+	background-attachment: scroll;
+	background-attachment: fixed;
+	background-attachment: local;
+	background-attachment: inherit;
+
+	background-blend-mode: normal;
+	background-blend-mode: darken, luminosity;
+	background-blend-mode: initial;
+	background-blend-mode: inherit;
+	background-blend-mode: unset;
+
+	background-clip: border-box;
+	background-clip: padding-box;
+	background-clip: content-box;
+	background-clip: inherit;
+	background-clip: initial;
+	background-clip: unset;
+
+	background-color: red;
+	background-color: #bbff00;
+	background-color: #bbff0077;
+	background-color: rgb(255, 255, 128);
+	background-color: hsla(50, 33%, 25%, 0.75);
+	background-color: currentcolor;
+	background-color: transparent;
+	background-color: inherit;
+	background-color: initial;
+	background-color: unset;
+
+	background-image: none;
+	background-image: url("http://www.example.com/bck.png");
+	background-image: inherit;
+
+	background-origin: border-box;
+	background-origin: padding-box;
+	background-origin: content-box;
+	background-origin: inherit;
+
+	background-position: top;
+	background-position: bottom;
+	background-position: left;
+	background-position: right;
+	background-position: center;
+	background-position: 25% 75%;
+	background-position: 0px 0px;
+	background-position: 1cm 2cm;
+	background-position: 10ch 8em;
+	background-position: 0px 0px, center;
+	background-position: inherit;
+	background-position: initial;
+	background-position: unset;
+
+	background-repeat: repeat-x;
+	background-repeat: repeat-y;
+	background-repeat: repeat;
+	background-repeat: space;
+	background-repeat: round;
+	background-repeat: no-repeat;
+	background-repeat: repeat space;
+	background-repeat: repeat repeat;
+	background-repeat: round space;
+	background-repeat: no-repeat round;
+	background-repeat: inherit;
+
+	background-size: cover;
+	background-size: contain;
+	background-size: 50%;
+	background-size: 3em;
+	background-size: 12px;
+	background-size: auto;
+	background-size: 50% auto;
+	background-size: 3em 25%;
+	background-size: auto 6px;
+	background-size: auto auto;
+	background-size: auto, auto;
+	background-size: 50%, 25%, 25%;
+	background-size: 6px, auto, contain;
+	background-size: inherit;
+	background-size: initial;
+	background-size: unset;
+
+	background-size: cover;
+	background-size: contain;
+	background-size: 50%;
+	background-size: 3em;
+	background-size: 12px;
+	background-size: auto;
+	background-size: 50% auto;
+	background-size: 3em 25%;
+	background-size: auto 6px;
+	background-size: auto auto;
+	background-size: auto, auto;
+	background-size: 50%, 25%, 25%;
+	background-size: 6px, auto, contain;
+	background-size: inherit;
+	background-size: initial;
+	background-size: unset;
+
+	baseline-shift: ;
+
+	bookmark-label: ;
+
+	bookmark-level: 1;
+	bookmark-level: 2;
+	bookmark-level: 3;
+
+	bookmark-state: ;
+
+	border: 1px;
+	border: 2px dotted;
+	border: medium dashed green;
+
+	border-bottom: 1px;
+	border-bottom: 2px dotted;
+	border-bottom: medium dashed blue;
+
+	border-bottom-color: red;
+	border-bottom-color: yellow;
+	border-bottom-color: #F5F6F7;
+
+	border-bottom-left-radius: 3px;
+	border-bottom-left-radius: 0.5em 1em;
+	border-bottom-left-radius: inherit;
+
+	border-bottom-right-radius: 3px;
+	border-bottom-right-radius: 0.5em 1em;
+	border-bottom-right-radius: inherit;
+
+	border-bottom-style: none;
+	border-bottom-style: hidden;
+	border-bottom-style: dotted;
+	border-bottom-style: dashed;
+	border-bottom-style: solid;
+	border-bottom-style: double;
+	border-bottom-style: groove;
+	border-bottom-style: ridge;
+	border-bottom-style: inset;
+	border-bottom-style: outset;
+	border-bottom-style: inherit;
+
+	border-bottom-width: 10em;
+	border-bottom-width: 3vmax;
+	border-bottom-width: 6px;
+	border-bottom-width: thin;
+	border-bottom-width: medium;
+	border-bottom-width: thick;
+	border-bottom-width: inherit;
+
+	border-boundary: ;
+
+	border-color: red;
+	border-color: red #f015ca;
+	border-color: red yellow green;
+	border-color: red yellow green blue;
+	border-color: inherit;
+
+	border-image: url("/images/border.png") 30 30 repeat;
+	border-image: url("/images/border.png") 30 30 stretch;
+
+	border-image-outset: 1.5;
+	border-image-outset: 1 1.2;
+	border-image-outset: 30px 2 45px;
+	border-image-outset: 7px 12px 14px 5px;
+	border-image-outset: inherit;
+
+	border-image-repeat: stretch;
+	border-image-repeat: round stretch;
+	border-image-repeat: inherit;
+	border-image-repeat: initial;
+	border-image-repeat: unset;
+
+	border-image-slice: 30%;
+	border-image-slice: 10% 30%;
+	border-image-slice: 30 30% 45;
+	border-image-slice: 7 12 14 5;
+	border-image-slice: 10% fill 7 12;
+	border-image-slice: inherit;
+	border-image-slice: initial;
+	border-image-slice: unset;
+
+	border-image-source: none;
+	border-image-source: url("image.jpg");
+	border-image-source: linear-gradient(to top, red, yellow);
+	border-image-source: inherit;
+	border-image-source: initial;
+	border-image-source: unset;
+
+	border-image-width: ;
+	border-left: ;
+	border-left-color: ;
+	border-left-style: ;
+	border-left-width: ;
+	border-radius: ;
+	border-right: ;
+	border-right-color: ;
+	border-right-style: ;
+	border-right-width: ;
+	border-style: ;
+	border-top: ;
+	border-top-color: ;
+	border-top-left-radius: ;
+	border-top-right-radius: ;
+	border-top-style: ;
+	border-top-width: ;
+	border-width: ;
+	bottom: ;
+	box-decoration-break: ;
+	box-shadow: ;
+	box-sizing: ;
+	box-snap: ;
+	box-suppress: ;
+	break-after: ;
+	break-before: ;
+	break-inside: ;
 }
