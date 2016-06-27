@@ -1111,8 +1111,22 @@ contexts:
         {{b}}'
       scope: support.constant.property-value.css
 
+  feature-tag-value:
+    - match: '\b(?:on|off){{b}}'
+      scope: support.constant.property-value.css
+    - include: string
+    - include: integer-non-negative
+
   fill-rule:
     - match: '\b(?:nonzero|evenodd){{b}}'
+      scope: support.constant.property-value.css
+
+  flex-direction:
+    - match: '\b(?:row-reverse|row|column-reverse|column){{b}}'
+      scope: support.constant.property-value.css
+
+  flex-wrap:
+    - match: '\b(?:wrap-reverse|wrap|nowrap){{b}}'
       scope: support.constant.property-value.css
 
   font-feature-value-block:
@@ -1158,6 +1172,23 @@ contexts:
         - include: font-feature-value-block
     - include: stray-brace
 
+  font-family-generic:
+    - match: '(?x)
+        \b
+        (?:
+          serif|
+          sans-serif|
+          monospace|
+          fantasy|
+          cursive
+        )
+        {{b}}'
+      scope: support.constant.property-value.css
+
+  font-family-name:
+    - include: string
+    - include: identifier
+
   frequency:
     - include: func-calc
     - match: '(?x)
@@ -1181,6 +1212,17 @@ contexts:
         - match: '\b(?:rgb|hwb|hsl){{b}}'
         - include: percentage
         - include: color
+
+  func-blur:
+    - match: \b(blur)(\()
+      captures:
+        1: support.function.blur.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.blur.css
+        - include: end-func
+        - include: func-var
+        - include: length-non-negative
 
   func-calc:
     - match: \b(calc)(\()
@@ -1258,6 +1300,18 @@ contexts:
         - include: number-zero-to-one
         - include: color
 
+  func-drop-shadow:
+    - match: \b(drop-shadow)(\()
+      captures:
+        1: support.function.drop-shadow.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.drop-shadow.css
+        - include: end-func
+        - include: func-var
+        - include: color
+        - include: length
+
   func-element:
     - match: \b(element)(\()
       captures:
@@ -1282,6 +1336,18 @@ contexts:
           scope: support.constant.property-value.css
         - include: shape-radius
         - include: position
+
+  func-filter:
+    - match: \b(sepia|saturate|opacity|invert|grayscale|contrast|brightness)(\()
+      captures:
+        1: support.function.filter.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.filter.css
+        - include: end-func
+        - include: func-var
+        - include: percentage-non-negative
+        - include: number-non-negative
 
   func-format:
     - match: \b(format)(\()
@@ -1315,6 +1381,17 @@ contexts:
         - include: angle
         - include: percentage-zero-to-100
         - include: number  # matches part of <hue> and <alpha-value>
+
+  func-hue-rotate:
+    - match: \b(hue-rotate)(\()
+      captures:
+        1: support.function.hue-rotate.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.hue-rotate.css
+        - include: end-func
+        - include: func-var
+        - include: angle
 
   func-hwb:
     - match: \b(hwb)(\()
@@ -1449,6 +1526,32 @@ contexts:
         - include: end-func
         - include: func-var
         - include: rgb-component  # matches <alpha-value> too
+
+  func-snap-block:
+    - match: \b(snap-block)(\()
+      captures:
+        1: support.function.snap-block.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.snap-block.css
+        - include: end-func
+        - include: func-var
+        - match: '\b(?:start|near|end){{b}}'
+          scope: support.constant.property-value.css
+        - include: length
+
+  func-snap-inline:
+    - match: \b(snap-inline)(\()
+      captures:
+        1: support.function.snap-inline.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.snap-inline.css
+        - include: end-func
+        - include: func-var
+        - match: '\b(?:right|near|left){{b}}'
+          scope: support.constant.property-value.css
+        - include: length
 
   func-steps:
     - match: \b(steps)(\()
@@ -2187,8 +2290,45 @@ contexts:
     - include: property-counter-set-reset-increment
     - include: property-cue-before-after
     - include: property-cursor
-
     - include: property-display
+    - include: property-dominant-baseline
+    - include: property-filter
+    - include: property-flex
+    - include: property-flex-basis
+    - include: property-flex-direction
+    - include: property-flex-flow
+    - include: property-flex-shrink-grow
+    - include: property-flex-wrap
+    - include: property-float
+    - include: property-float-defer
+    - include: property-float-offset
+    - include: property-float-reference
+    - include: property-flood-color
+    - include: property-flood-opacity
+    - include: property-flow
+    - include: property-flow-from
+    - include: property-flow-into
+    - include: property-font
+    - include: property-font-family
+    - include: property-font-feature-settings
+    - include: property-font-kerning
+    - include: property-font-language-override
+    - include: property-font-size
+    - include: property-font-size-adjust
+    - include: property-font-stretch
+    - include: property-font-style
+    - include: property-font-variant
+    - include: property-font-variant-alternates
+    - include: property-font-variant-caps
+    - include: property-font-variant-east-asian
+    - include: property-font-variant-ligatures
+    - include: property-font-variant-numeric
+    - include: property-font-variant-position
+    - include: property-font-weight
+    - include: property-footnote-display
+    - include: property-footnote-policy
+
+
     - include: property-top-right-left-bottom
 
 
@@ -3530,6 +3670,19 @@ contexts:
         {{b}}'  # "clip" won't match "clip-path"
       scope: support.constant.property-name.css invalid.deprecated.css
 
+  # CSS Writing Modes Level 3
+  property-direction:
+    - match: \b(direction)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:rtl|ltr){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
   # CSS Display Module Level 3
   property-display:
     - match: \b(display)\s*(:)
@@ -3546,6 +3699,674 @@ contexts:
         - include: display-box
         - include: display-legacy
     - include: stray-paren-or-semicolon
+
+  # CSS Inline Layout Module Level 3
+  property-dominant-baseline:
+    - match: \b(dominant-baseline)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - match: '(?x)
+            \b
+            (?:
+              text-top|
+              text-bottom|
+              middle|
+              mathematical|
+              ideographic|
+              hanging|
+              central|
+              auto|
+              alphabetic
+            )
+            {{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # Filter Effects Module Level 1
+  property-filter:
+    - match: \b(filter)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - include: end-value
+        - include: value-css-wide
+        - include: func-drop-shadow
+        - include: func-hue-rotate
+        - include: func-filter
+        - include: func-blur
+        - include: func-url
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Flexible Box Layout Module Level 1
+  property-flex:
+    - match: \b(flex)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.flex.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:none|content|auto){{b}}'
+          scope: support.constant.property-value.css
+        - include: percentage-non-negative
+        - include: length-non-negative
+        - include: number-non-negative
+    - include: stray-paren-or-semicolon
+
+  # CSS Flexible Box Layout Module Level 1
+  property-flex-basis:
+    - match: \b(flex-basis)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.flex-basis.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:content|auto){{b}}'
+          scope: support.constant.property-value.css
+        - include: percentage-non-negative
+        - include: length-non-negative
+    - include: stray-paren-or-semicolon
+
+  # CSS Flexible Box Layout Module Level 1
+  property-flex-direction:
+    - match: \b(flex-direction)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.flex-direction.css
+        - include: end-value
+        - include: value-css-wide
+        - include: flex-direction
+    - include: stray-paren-or-semicolon
+
+  # CSS Flexible Box Layout Module Level 1
+  property-flex-flow:
+    - match: \b(flex-flow)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.flex-flow.css
+        - include: end-value
+        - include: value-css-wide
+        - include: flex-direction
+        - include: flex-wrap
+    - include: stray-paren-or-semicolon
+
+  # CSS Flexible Box Layout Module Level 1
+  property-flex-shrink-grow:
+    - match: \b(flex-shrink|flex-grow)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.flex-shrink-grow.css
+        - include: end-value
+        - include: value-css-wide
+        - include: number-non-negative
+    - include: stray-paren-or-semicolon
+
+  # CSS Flexible Box Layout Module Level 1
+  property-flex-wrap:
+    - match: \b(flex-wrap)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.flex-wrap.css
+        - include: end-value
+        - include: value-css-wide
+        - include: flex-wrap
+    - include: stray-paren-or-semicolon
+
+  # CSS Page Floats
+  property-float:
+    - match: \b(float)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.float.css
+        - include: end-value
+        - include: value-css-wide
+        - include: func-snap-block
+        - include: func-snap-inline
+        - match: '(?x)
+            \b
+            (?:
+              top|
+              snap-inline|
+              snap-block|
+              right|
+              none|
+              left|
+              inline-start|
+              inline-end|
+              bottom|
+              block-start|
+              block-end
+            )
+            {{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Page Floats
+  property-float-defer:
+    - match: \b(float-defer)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.float-defer.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:none|last){{b}}'
+          scope: support.constant.property-value.css
+        - include: integer
+    - include: stray-paren-or-semicolon
+
+  # CSS Page Floats
+  property-float-offset:
+    - match: \b(float-offset)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.float-offset.css
+        - include: end-value
+        - include: value-css-wide
+        - include: percentage
+        - include: length
+    - include: stray-paren-or-semicolon
+
+  # CSS Page Floats
+  property-float-reference:
+    - match: \b(float-reference)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.float-reference.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:region|page|inline|column){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # Filter Effects Module Level 1
+  property-flood-color:
+    - match: \b(flood-color)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.flood-color.css
+        - include: end-value
+        - include: value-css-wide
+        - include: color
+    - include: stray-paren-or-semicolon
+
+  # Filter Effects Module Level 1
+  property-flood-opacity:
+    - match: \b(flood-opacity)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.flood-opacity.css
+        - include: end-value
+        - include: value-css-wide
+        - include: percentage
+        - include: number
+    - include: stray-paren-or-semicolon
+
+  # CSS Template Layout Module
+  property-flow:
+    - match: \b(flow)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.flow.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:same|auto){{b}}'
+          scope: support.constant.property-value.css
+        - include: string
+        - match: '\*'
+          scope: support.constant.property-value.css
+        - include: identifier
+    - include: stray-paren-or-semicolon
+
+  # CSS Regions Module Level 1
+  property-flow-from:
+    - match: \b(flow-from)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.flow-from.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:none|inherit){{b}}'
+          scope: support.constant.property-value.css
+        - include: identifier
+    - include: stray-paren-or-semicolon
+
+  # CSS Regions Module Level 1
+  property-flow-into:
+    - match: \b(flow-into)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.flow-into.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:none|element|content){{b}}'
+          scope: support.constant.property-value.css
+        - include: identifier
+    - include: stray-paren-or-semicolon
+
+  # CSS Fonts Module Level 3
+  property-font:
+    - match: \b(font)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.font.css
+        - include: end-value
+        - include: value-css-wide
+        - include: font-family-generic
+        - include: font-family-name
+        - match: '(?x)
+            \b
+            (?:
+              xx-small|
+              xx-large|
+              x-small|
+              x-large|
+              ultra-expanded|
+              ultra-condensed|
+              status-bar|
+              smaller|
+              small-caption|
+              small-caps|
+              small|
+              semi-expanded|
+              semi-condensed|
+              oblique|
+              normal|
+              message-box|
+              menu|
+              medium|
+              lighter|
+              larger|
+              large|
+              italic|
+              icon|
+              extra-expanded|
+              extra-condensed|
+              expanded|
+              condensed|
+              caption|
+              bolder|
+              bold|
+              [1-9]00
+            )
+            {{b}}'
+          scope: support.constant.property-value.css
+        - include: percentage-non-negative
+        - include: length-non-negative
+        - include: number-non-negative
+    - include: stray-paren-or-semicolon
+
+  # CSS Fonts Module Level 3
+  property-font-family:
+    - match: \b(font-family)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.font-family.css
+        - include: end-value
+        - include: value-css-wide
+        - include: font-family-generic
+        - include: font-family-name
+    - include: stray-paren-or-semicolon
+
+  # CSS Fonts Module Level 3
+  property-font-feature-settings:
+    - match: \b(font-feature-settings)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.font-feature-settings.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bnormal{{b}}'
+          scope: support.constant.property-value.css
+        - include: feature-tag-value
+    - include: stray-paren-or-semicolon
+
+  # CSS Fonts Module Level 3
+  property-font-kerning:
+    - match: \b(font-kerning)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.font-kerning.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:normal|none|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Fonts Module Level 3
+  property-font-language-override:
+    - match: \b(font-language-override)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.font-language-override.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bnormal{{b}}'
+          scope: support.constant.property-value.css
+        - include: string
+    - include: stray-paren-or-semicolon
+
+  # CSS Fonts Module Level 3
+  property-font-size:
+    - match: \b(font-size)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.font-size.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '(?x)
+            \b
+            (?:
+              xx-small|
+              xx-large|
+              x-small|
+              x-large|
+              smaller|
+              small|
+              medium|
+              larger|
+              large
+            )
+            {{b}}'
+          scope: support.constant.property-value.css
+        - include: percentage-non-negative
+        - include: length-non-negative
+    - include: stray-paren-or-semicolon
+
+  # CSS Fonts Module Level 3
+  property-font-size-adjust:
+    - match: \b(font-size-adjust)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.font-size-adjust.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
+        - include: number-non-negative
+    - include: stray-paren-or-semicolon
+
+  # CSS Fonts Module Level 3
+  property-font-stretch:
+    - match: \b(font-stretch)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.font-stretch.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '(?x)
+            \b
+            (?:
+              ultra-expanded|
+              ultra-condensed|
+              semi-expanded|
+              semi-condensed|
+              normal|
+              extra-expanded|
+              extra-condensed|
+              expanded|
+              condensed
+            )
+            {{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Fonts Module Level 3
+  property-font-style:
+    - match: \b(font-style)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.font-style.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:oblique|normal|italic){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Fonts Module Level 3
+  property-font-variant:
+    - match: \b(font-variant)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.font-variant.css
+        - include: end-value
+        - include: value-css-wide
+        - include: func-swash-styleset-stylistic-ornaments-character-variant-annotation
+        - match: '(?x)
+            \b
+            (?:
+              unicase|
+              titling-caps|
+              super|
+              sub|
+              small-caps|
+              slashed-zero|
+              ruby|
+              petite-caps|
+              ordinal|
+              normal|
+              none|
+              all-small-caps|
+              all-petite-caps
+            )
+            {{b}}'
+          scope: support.constant.property-value.css
+        - include: common-lig-values
+        - include: discretionary-lig-values
+        - include: historical-lig-values
+        - include: contextual-alt-values
+        - include: numeric-figure-values
+        - include: numeric-spacing-values
+        - include: numeric-fraction-values
+        - include: east-asian-variant-values
+        - include: east-asian-width-values
+    - include: stray-paren-or-semicolon
+
+  # CSS Fonts Module Level 3
+  property-font-variant-alternates:
+    - match: \b(font-variant-alternates)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.font-variant-alternates.css
+        - include: end-value
+        - include: value-css-wide
+        - include: func-swash-styleset-stylistic-ornaments-character-variant-annotation
+        - match: '\b(?:normal|historical-forms){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Fonts Module Level 3
+  property-font-variant-caps:
+    - match: \b(font-variant-caps)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.font-variant-caps.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '(?x)
+            \b
+            (?:
+              unicase|
+              titling-caps|
+              small-caps|
+              petite-caps|
+              normal|
+              all-small-caps|
+              all-petite-caps
+            )
+            {{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Fonts Module Level 3
+  property-font-variant-east-asian:
+    - match: \b(font-variant-east-asian)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.font-variant-east-asian.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:ruby|normal){{b}}'
+          scope: support.constant.property-value.css
+        - include: east-asian-width-values
+        - include: east-asian-variant-values
+    - include: stray-paren-or-semicolon
+
+  # CSS Fonts Module Level 3
+  property-font-variant-ligatures:
+    - match: \b(font-variant-ligatures)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.font-variant-ligatures.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:normal|none){{b}}'
+          scope: support.constant.property-value.css
+        - include: common-lig-values
+        - include: discretionary-lig-values
+        - include: historical-lig-values
+        - include: contextual-alt-values
+    - include: stray-paren-or-semicolon
+
+  # CSS Fonts Module Level 3
+  property-font-variant-numeric:
+    - match: \b(font-variant-numeric)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.font-variant-numeric.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:slashed-zero|ordinal|normal){{b}}'
+          scope: support.constant.property-value.css
+        - include: numeric-figure-values
+        - include: numeric-spacing-values
+        - include: numeric-fraction-values
+    - include: stray-paren-or-semicolon
+
+  # CSS Fonts Module Level 3
+  property-font-variant-position:
+    - match: \b(font-variant-position)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.font-variant-position.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:super|sub|normal){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Fonts Module Level 3
+  property-font-weight:
+    - match: \b(font-weight)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.font-weight.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:normal|lighter|bolder|bold|[1-9]00){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Generated Content for Paged Media Module
+  property-footnote-display:
+    - match: \b(footnote-display)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.footnote-display.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:inline|compact|block){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Generated Content for Paged Media Module
+  property-footnote-policy:
+    - match: \b(footnote-policy)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.footnote-policy.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:line|block|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+
+
+
 
   # CSS Positioned Layout Module Level 3
   property-top-right-left-bottom:
