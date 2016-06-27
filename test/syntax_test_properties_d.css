@@ -1,0 +1,51 @@
+/* SYNTAX TEST "Packages/CSS3/CSS3.sublime-syntax" */
+
+
+/* TEST D PROPERTIES */
+foo {
+	direction: ltr;
+	direction: rtl;
+	direction: inherit;
+	direction: initial;
+	direction: unset;
+
+	display: none;
+	display: inline;
+	display: block;
+	display: inline-block;
+	display: contents;
+	display: list-item;
+	display: inline-list-item;
+	display: table;
+	display: inline-table;
+	display: table-cell;
+	display: table-column;
+	display: table-column-group;
+	display: table-footer-group;
+	display: table-header-group;
+	display: table-row;
+	display: table-row-group;
+	display: table-caption;
+	display: flex;
+	display: inline-flex;
+	display: grid;
+	display: inline-grid;
+	display: ruby;
+	display: ruby-base;
+	display: ruby-text;
+	display: ruby-base-container;
+	display: ruby-text-container;
+	display: run-in;
+	display: inherit;
+	display: initial;
+	display: unset;
+
+	dominant-baseline: alphabetic ;
+	dominant-baseline: ideographic ;
+	dominant-baseline: middle;
+	dominant-baseline: text-top;
+	dominant-baseline: inherit;
+	dominant-baseline: initial;
+	dominant-baseline: unset;
+	dominant-baseline: revert;
+}
