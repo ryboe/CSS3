@@ -1,0 +1,276 @@
+/* SYNTAX TEST "Packages/CSS3/CSS3.sublime-syntax" */
+
+
+/* TEST G PROPERTIES */
+foo {
+	grid-area: auto;
+	grid-area: auto / auto;
+	grid-area: auto / auto / auto;
+	grid-area: auto / auto / auto / auto;
+	grid-area: somegridarea;
+	grid-area: 2;
+	grid-area: [linename1] 100px [linename2 linename3];
+	grid-area: somegridarea / 4;
+	grid-area: 2 / [linename1] 100px [linename2 linename3] / 4;
+	grid-area: [linename1] 100px [linename2 linename3] /
+	           somegridarea / 2 / 4;
+	grid-area: somegridarea 4;
+	grid-area: somegridarea 4 / somegridarea 6;
+	grid-area: somegridarea 4 / somegridarea 6 / somegridarea 3;
+	grid-area: somegridarea 4 / somegridarea 6 / somegridarea 3 / somegridarea 8;
+	grid-area: span 3;
+	grid-area: span somegridarea;
+	grid-area: 5 somegridarea span;
+	grid-area: span 3 / span 6;
+	grid-area: span somegridarea / span 4 / 3 somegridarea span;
+	grid-area: span 5 / span somegridarea / 2 somegridarea span /
+	           somegridarea span 6;
+	grid-area: inherit;
+	grid-area: initial;
+	grid-area: unset;
+
+	grid-auto-columns: min-content;
+	grid-auto-columns: max-content;
+	grid-auto-columns: auto;
+	grid-auto-columns: 100px;
+	grid-auto-columns: 20cm;
+	grid-auto-columns: 50vmax;
+	grid-auto-columns: 10%;
+	grid-auto-columns: 33.3%;
+	grid-auto-columns: 0.5fr;
+	grid-auto-columns: 3fr;
+	grid-auto-columns: minmax(1fr, 300px);
+	grid-auto-columns: minmax(max-content, 2fr);
+	grid-auto-columns: minmax(20%, 80vmax);
+	grid-auto-columns: inherit;
+	grid-auto-columns: initial;
+	grid-auto-columns: unset;
+
+	grid-auto-flow: row;
+	grid-auto-flow: column;
+	grid-auto-flow: dense;
+	grid-auto-flow: row dense;
+	grid-auto-flow: column dense;
+	grid-auto-flow: inherit;
+	grid-auto-flow: initial;
+	grid-auto-flow: unset;
+
+	grid-auto-rows: min-content;
+	grid-auto-rows: max-content;
+	grid-auto-rows: auto;
+	grid-auto-rows: 100px;
+	grid-auto-rows: 20cm;
+	grid-auto-rows: 50vmax;
+	grid-auto-rows: 10%;
+	grid-auto-rows: 33.3%;
+	grid-auto-rows: 0.5fr;
+	grid-auto-rows: 3fr;
+	grid-auto-rows: minmax(1fr, 300px);
+	grid-auto-rows: minmax(max-content, 2fr);
+	grid-auto-rows: minmax(20%, 80vmax);
+	grid-auto-rows: inherit;
+	grid-auto-rows: initial;
+	grid-auto-rows: unset;
+
+	grid-column: auto;
+	grid-column: auto / auto;
+	grid-column: somegridarea;
+	grid-column: somegridarea / someothergridarea;
+	grid-column: somegridarea 4;
+	grid-column: 4 somegridarea / 6;
+	grid-column: span 3;
+	grid-column: span somegridarea;
+	grid-column: 5 somegridarea span;
+	grid-column: span 3 / 6;
+	grid-column: span somegridarea / span someothergridarea;
+	grid-column: 5 somegridarea span / 2 span;
+	grid-column: inherit;
+	grid-column: initial;
+	grid-column: unset;
+
+	grid-column-end: auto;
+	grid-column-end: somegridarea;
+	grid-column-end: 2;
+	grid-column-end: somegridarea 4;
+	grid-column-end: span 3;
+	grid-column-end: span somegridarea;
+	grid-column-end: 5 somegridarea span;
+	grid-column-end: inherit;
+	grid-column-end: initial;
+	grid-column-end: unset;
+
+	grid-column-gap: 20px;
+	grid-column-gap: 1em;
+	grid-column-gap: 3vmin;
+	grid-column-gap: 0.5cm;
+	grid-column-gap: 10%;
+	grid-column-gap: inherit;
+	grid-column-gap: initial;
+	grid-column-gap: unset;
+
+	grid-column-start: auto;
+	grid-column-start: somegridarea;
+	grid-column-start: 2;
+	grid-column-start: somegridarea 4;
+	grid-column-start: span 3;
+	grid-column-start: span somegridarea;
+	grid-column-start: 5 somegridarea span;
+	grid-column-start: inherit;
+	grid-column-start: initial;
+	grid-column-start: unset;
+
+	grid-gap: 20px;
+	grid-gap: 1em;
+	grid-gap: 3vmin;
+	grid-gap: 0.5cm;
+	grid-gap: 16%;
+	grid-gap: 100%;
+	grid-gap: 20px 10px;
+	grid-gap: 1em 0.5em;
+	grid-gap: 3vmin 2vmax;
+	grid-gap: 0.5cm 2mm;
+	grid-gap: 16% 100%;
+	grid-gap: 21px 82%;
+	grid-gap: inherit;
+	grid-gap: initial;
+	grid-gap: unset;
+
+	grid-row: auto;
+	grid-row: auto / auto;
+	grid-row: somegridarea;
+	grid-row: somegridarea / someothergridarea;
+	grid-row: somegridarea 4;
+	grid-row: 4 somegridarea / 6;
+	grid-row: span 3;
+	grid-row: span somegridarea;
+	grid-row: 5 somegridarea span;
+	grid-row: span 3 / 6;
+	grid-row: span somegridarea / span someothergridarea;
+	grid-row: 5 somegridarea span / 2 span;
+	grid-row: inherit;
+	grid-row: initial;
+	grid-row: unset;
+
+	grid-row-end: auto;
+	grid-row-end: somegridarea;
+	grid-row-end: 2;
+	grid-row-end: somegridarea 4;
+	grid-row-end: span 3;
+	grid-row-end: span somegridarea;
+	grid-row-end: 5 somegridarea span;
+	grid-row-end: inherit;
+	grid-row-end: initial;
+	grid-row-end: unset;
+
+	grid-row-gap: 20px;
+	grid-row-gap: 1em;
+	grid-row-gap: 3vmin;
+	grid-row-gap: 0.5cm;
+	grid-row-gap: 10%;
+	grid-row-gap: inherit;
+	grid-row-gap: initial;
+	grid-row-gap: unset;
+
+	grid-row-start: auto;
+	grid-row-start: somegridarea;
+	grid-row-start: 2;
+	grid-row-start: somegridarea 4;
+	grid-row-start: span 3;
+	grid-row-start: span somegridarea;
+	grid-row-start: 5 somegridarea span;
+	grid-row-start: inherit;
+	grid-row-start: initial;
+	grid-row-start: unset;
+
+	grid-row-gap: 20px;
+	grid-row-gap: 1em;
+	grid-row-gap: 3vmin;
+	grid-row-gap: 0.5cm;
+	grid-row-gap: 10%;
+	grid-row-gap: inherit;
+	grid-row-gap: initial;
+	grid-row-gap: unset;
+
+	grid-row-start: auto;
+	grid-row-start: somegridarea;
+	grid-row-start: 2;
+	grid-row-start: somegridarea 4;
+	grid-row-start: span 3;
+	grid-row-start: span somegridarea;
+	grid-row-start: 5 somegridarea span;
+	grid-row-start: inherit;
+	grid-row-start: initial;
+	grid-row-start: unset;
+
+	grid-template: none;
+	grid-template: 100px 1fr;
+	grid-template: [linename] 100px;
+	grid-template: [linename1] 100px [linename2 linename3];
+	grid-template: 200px repeat(auto-fill, 100px) 300px;
+	grid-template: minmax(100px, max-content)
+	                       repeat(auto-fill, 200px) 20%;
+	grid-template: [linename1] 100px [linename2]
+	                       repeat(auto-fit, [linename3 linename4] 300px)
+	                       100px;
+	grid-template: [linename1 linename2] 100px
+	                       repeat(auto-fit, [linename1] 300px) [linename3];
+	grid-template: [linename1];
+	grid-template: repeat(4, [linename1]);
+	grid-template: repeat(4, [linename1 linename2]);
+	grid-template: repeat(auto-fill, [linename1]);
+	grid-template: auto 1fr / auto 1fr auto;
+	grid-template: [header-top] "a   a   a"     [header-bottom]
+	                 [main-top] "b   b   b" 1fr [main-bottom]
+	                          / auto 1fr auto;
+	grid-template: inherit;
+	grid-template: initial;
+	grid-template: unset;
+
+	grid-template-areas: none;
+	grid-template-areas: "a b";
+	grid-template-areas: "a b b"
+	                     "a c d";
+	grid-template-areas: inherit;
+	grid-template-areas: initial;
+	grid-template-areas: unset;
+
+	grid-template-columns: none;
+	grid-template-columns: 100px 1fr;
+	grid-template-columns: [linename] 100px;
+	grid-template-columns: [linename1] 100px [linename2 linename3];
+	grid-template-columns: 200px repeat(auto-fill, 100px) 300px;
+	grid-template-columns: minmax(100px, max-content)
+	                       repeat(auto-fill, 200px) 20%;
+	grid-template-columns: [linename1] 100px [linename2]
+	                       repeat(auto-fit, [linename3 linename4] 300px)
+	                       100px;
+	grid-template-columns: [linename1 linename2] 100px
+	                       repeat(auto-fit, [linename1] 300px) [linename3];
+	grid-template-columns: [linename1];
+	grid-template-columns: repeat(4, [linename1]);
+	grid-template-columns: repeat(4, [linename1 linename2]);
+	grid-template-columns: repeat(auto-fill, [linename1]);
+	grid-template-columns: inherit;
+	grid-template-columns: initial;
+	grid-template-columns: unset;
+
+	grid-template-rows: none;
+	grid-template-rows: 100px 1fr;
+	grid-template-rows: [linename] 100px;
+	grid-template-rows: [linename1] 100px [linename2 linename3];
+	grid-template-rows: 200px repeat(auto-fill, 100px) 300px;
+	grid-template-rows: minmax(100px, max-content)
+	                       repeat(auto-fill, 200px) 20%;
+	grid-template-rows: [linename1] 100px [linename2]
+	                       repeat(auto-fit, [linename3 linename4] 300px)
+	                       100px;
+	grid-template-rows: [linename1 linename2] 100px
+	                       repeat(auto-fit, [linename1] 300px) [linename3];
+	grid-template-rows: [linename1];
+	grid-template-rows: repeat(4, [linename1]);
+	grid-template-rows: repeat(4, [linename1 linename2]);
+	grid-template-rows: repeat(auto-fill, [linename1]);
+	grid-template-rows: inherit;
+	grid-template-rows: initial;
+	grid-template-rows: unset;
+}

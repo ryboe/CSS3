@@ -18,6 +18,7 @@ variables:
   decibel_unit: 'dB'
   escape: '\\(?:[^\n\r\f\h]|\h{1,6}{{whitespace}}?)'
   exponent: '[eE][+-]?\d+'
+  flex_unit: 'fr'
   frequency_unit: k?Hz
   generic_font_family: 'serif|sans-serif|monospace|fantasy|cursive'
   hex_color: '(#)(?:\h{8}|\h{6}|\h{3,4})\b'
@@ -101,6 +102,7 @@ contexts:
     - include: color
     - include: integer
     - include: number
+    - include: string
     - match: '{{identifier}}'
       scope: support.constant.property-value.css
 
@@ -112,6 +114,17 @@ contexts:
   arithmetic-operator:
     - match: '{{arithmetic_operator}}'
       scope: keyword.operator.arithmetic.css
+
+  attr-fallback:
+    - include: string
+    - include: color
+    - include: func-url
+    - include: frequency
+    - include: angle
+    - include: time
+    - include: percentage
+    - include: length
+    - include: number
 
   at-charset:
     - match: '(@)charset{{b}}'
@@ -330,6 +343,15 @@ contexts:
   attachment:
     - match: '\b(?:scroll|local|fixed){{b}}'
       scope: support.constant.property-value.css
+
+  auto-repeat:
+    - include: func-repeat
+
+  auto-track-list:
+    - include: line-names
+    - include: fixed-repeat
+    - include: auto-repeat
+    - include: fixed-size
 
   baseline-position:
     - match: '\b(?:last-)?baseline{{b}}'
@@ -729,7 +751,7 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: string
-        # Generic font familys, like 'serif', are not permitted in the
+        # Generic font families, like 'serif', are not permitted in the
         # font-family descriptor, only in the font-family property.
         - match: '\b(?:{{generic_font_family}}){{b}}'
           scope: invalid.illegal.font-family.css
@@ -1121,9 +1143,42 @@ contexts:
     - match: '\b(?:nonzero|evenodd){{b}}'
       scope: support.constant.property-value.css
 
+  fixed-breadth:
+    - include: percentage-non-negative
+    - include: length-non-negative
+
+  fixed-repeat:
+    - include: func-repeat
+
+  fixed-size:
+    - include: func-minmax
+    - include: fixed-breadth
+
+  flex:
+    - match: '(?x)
+        (?:
+          ({{number}})({{flex_unit}})\b|
+          ({{zero}})
+        )'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+        3: constant.numeric.css
+
   flex-direction:
     - match: '\b(?:row-reverse|row|column-reverse|column){{b}}'
       scope: support.constant.property-value.css
+
+  flex-non-negative:
+    - match: '(?x)
+        (?:
+          ({{number_non_neg}})({{flex_unit}})\b|
+          ({{zero}})
+        )'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+        3: constant.numeric.css
 
   flex-wrap:
     - match: '\b(?:wrap-reverse|wrap|nowrap){{b}}'
@@ -1201,6 +1256,25 @@ contexts:
         2: keyword.other.unit.css
         3: constant.numeric.css
 
+  func-attr:
+    - match: \b(attr)(\()
+      captures:
+        1: support.function.attr.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.attr.css
+        - include: end-func
+        - include: func-var
+        - include: type-or-unit
+        - match: '{{wq_name}}'
+          captures:
+            1: entity.other.attribute-name.namespace.css
+            2: entity.other.attribute-name.namespace.wildcard.css
+            3: punctuation.separator.namespace.css
+            4: entity.other.attribute-name.css
+            5: entity.other.attribute-name.wildcard.css
+        - include: attr-fallback
+
   func-blenda:
     - match: \b(blenda?)(\()
       captures:
@@ -1265,6 +1339,47 @@ contexts:
         - include: hex-color
         - include: number
         - include: color-adjuster-operator
+
+  func-content:
+    - match: \b(content)(\()
+      captures:
+        1: support.function.content.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.content.css
+        - include: end-func
+        - include: func-var
+        - match: '\b(?:text|marker|first-letter|before|after){{b}}'
+          scope: support.constant.property-value.css
+
+  func-counter:
+    - match: \b(counter)(\()
+      captures:
+        1: support.function.counter.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.counter.css
+        - include: end-func
+        - include: func-var
+        - include: func-symbols
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
+        - include: identifier
+
+  func-counters:
+    - match: \b(counters)(\()
+      captures:
+        1: support.function.counters.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.counters.css
+        - include: end-func
+        - include: func-var
+        - include: func-symbols
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
+        - include: string
+        - include: identifier
 
   func-cross-fade:
     - match: \b(cross-fade)(\()
@@ -1348,6 +1463,18 @@ contexts:
         - include: func-var
         - include: percentage-non-negative
         - include: number-non-negative
+
+  func-fit-content:
+    - match: \b(fit-content)(\()
+      captures:
+        1: support.function.fit-content.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.fit-content.css
+        - include: end-func
+        - include: func-var
+        - include: percentage
+        - include: length
 
   func-format:
     - match: \b(format)(\()
@@ -1480,6 +1607,21 @@ contexts:
         - include: string
         - include: identifier
 
+  func-minmax:
+    - match: \b(minmax)(\()
+      captures:
+        1: support.function.minmax.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.minmax.css
+        - include: end-func
+        - include: func-var
+        - match: '\b(?:min-content|max-content|auto){{b}}'
+          scope: support.constant.property-value.css
+        - include: flex-non-negative
+        - include: percentage-non-negative
+        - include: length-non-negative
+
   func-polygon:
     - match: \b(polygon)(\()
       captures:
@@ -1516,6 +1658,21 @@ contexts:
         - include: percentage
         - include: number
         - include: color-adjuster-operator
+
+  func-repeat:
+    - match: \b(repeat)(\()
+      captures:
+        1: support.function.repeat.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.repeat.css
+        - include: end-func
+        - include: func-var
+        - include: line-names
+        - include: track-size
+        - match: '\b(?:auto-fit|auto-fill){{b}}'
+          scope: support.constant.property-value.css
+        - include: integer-positive
 
   func-rgba:
     - match: \b(rgba?)(\()
@@ -1564,6 +1721,19 @@ contexts:
         - match: '\b(?:start|end){{b}}'
           scope: support.constant.property-value.css
         - include: integer-positive
+
+  func-string:
+    - match: \b(string)(\()
+      captures:
+        1: support.function.string.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.string.css
+        - include: end-func
+        - include: func-var
+        - match: '\b(?:start|last|first-except|first){{b}}'
+          scope: support.constant.property-value.css
+        - include: identifier
 
   func-swash-styleset-stylistic-ornaments-character-variant-annotation:
     - match: \b(swash|stylistic|styleset|ornaments|character-variant|annotation)(\()
@@ -1689,6 +1859,14 @@ contexts:
     - include: func-radial-gradient
     - include: func-linear-gradient
 
+  grid-line:
+    - match: '\b(?:span|auto){{b}}'
+      scope: support.constant.property-value.css
+    - include: integer
+    - match: '\/'
+      scope: keyword.operator.arithmetic.css
+    - include: identifier
+
   hex-color:
     - match: '{{hex_color}}'
       captures:
@@ -1808,6 +1986,15 @@ contexts:
         1: constant.numeric.css
         2: keyword.other.unit.css
         3: constant.numeric.css
+
+  line-names:
+    - match: '\['
+      scope: punctuation.section.line-names.begin.css
+      push:
+        - match: '\]'
+          scope: punctuation.section.line-names.end.css
+          pop: true
+        - include: identifier
 
   media-feature:
     - match: \(
@@ -2290,6 +2477,7 @@ contexts:
     - include: property-counter-set-reset-increment
     - include: property-cue-before-after
     - include: property-cursor
+    - include: property-direction
     - include: property-display
     - include: property-dominant-baseline
     - include: property-filter
@@ -2327,6 +2515,14 @@ contexts:
     - include: property-font-weight
     - include: property-footnote-display
     - include: property-footnote-policy
+    - include: property-grid-row-column-area
+    - include: property-grid-row-column-gap
+    - include: property-grid-auto-rows-columns
+    - include: property-grid-auto-flow
+    - include: property-grid-template-areas
+    - include: property-grid-template-rows-columns
+    - include: property-grid-template
+    - include: property-grid
 
 
     - include: property-top-right-left-bottom
@@ -3225,6 +3421,7 @@ contexts:
         - match: '\bauto{{b}}'
           scope: support.constant.property-value.css
         - include: length-positive
+        - include: integer-positive
     - include: stray-paren-or-semicolon
 
   # CSS Multi-column Layout Module
@@ -3236,7 +3433,7 @@ contexts:
       push:
         - include: end-value
         - include: value-css-wide
-        - match: '\bmatch{{b}}'
+        - match: '\bauto{{b}}'
           scope: support.constant.property-value.css
         - include: integer-positive
     - include: stray-paren-or-semicolon
@@ -3355,9 +3552,16 @@ contexts:
       push:
         - include: end-value
         - include: value-css-wide
+        - include: func-counters
+        - include: func-counter
+        - include: func-string
+        - include: func-attr
+        - include: image
         - match: '\b(?:normal|none){{b}}'
           scope: support.constant.property-value.css
         - include: content-list
+        - match: '\/'
+          scope: keyword.operator.arithmetic.css
     - include: stray-paren-or-semicolon
 
   # CSS Overflow Module Level 4
@@ -3375,13 +3579,14 @@ contexts:
 
   # CSS Lists and Counters Module Level 3
   property-counter-set-reset-increment:
-    - match: \b(counter-set|counter-reset|counter-increment)\s*(:)
+    - match: \b(counter-(?:set|reset|increment))\s*(:)
       captures:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - include: end-value
         - include: value-css-wide
+        - include: func-attr
         - match: '\bnone{{b}}'
           scope: support.constant.property-value.css
         - include: integer
@@ -3611,6 +3816,7 @@ contexts:
           grid-before|
           grid-auto-position|
           grid-after|
+          glyph-orientation-vertical|
           glyph-orientation-horizontal|
           font-smooth|
           float-displace|
@@ -3773,6 +3979,7 @@ contexts:
         - include: value-css-wide
         - match: '\b(?:content|auto){{b}}'
           scope: support.constant.property-value.css
+        - include: width
         - include: percentage-non-negative
         - include: length-non-negative
     - include: stray-paren-or-semicolon
@@ -4363,6 +4570,138 @@ contexts:
         - match: '\b(?:line|block|auto){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
+
+  # CSS Grid Layout Module Level 1
+  property-grid:
+    - match: \b(grid)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.grid.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:none|dense|auto-flow){{b}}'
+          scope: support.constant.property-value.css
+        - include: track-list
+        - include: auto-track-list
+        - include: string
+    - include: stray-paren-or-semicolon
+
+  # CSS Grid Layout Module Level 1
+  property-grid-row-column-area:
+    - match: '(?x)
+        \b
+        (
+          grid-row-start|
+          grid-row-end|
+          grid-row|
+          grid-column-start|
+          grid-column-end|
+          grid-column|
+          grid-area
+        )\s*
+        (:)'
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.grid-row-column-area.css
+        - include: end-value
+        - include: value-css-wide
+        - include: grid-line
+    - include: stray-paren-or-semicolon
+
+  # CSS Grid Layout Module Level 1
+  property-grid-row-column-gap:
+    - match: \b(grid-row-gap|grid-gap|grid-column-gap)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.grid-row-column-gap.css
+        - include: end-value
+        - include: value-css-wide
+        - include: percentage-non-negative
+        - include: length-non-negative
+    - include: stray-paren-or-semicolon
+
+  # CSS Grid Layout Module Level 1
+  property-grid-auto-flow:
+    - match: \b(grid-auto-flow)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.grid-auto-flow.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:row|dense|column){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Grid Layout Module Level 1
+  property-grid-auto-rows-columns:
+    - match: \b(grid-auto-rows|grid-auto-columns)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.grid-auto-rows-columns.css
+        - include: end-value
+        - include: value-css-wide
+        - include: track-size
+    - include: stray-paren-or-semicolon
+
+  # CSS Grid Layout Module Level 1
+  property-grid-template-areas:
+    - match: \b(grid-template-areas)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.grid-template-areas.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
+        - include: string
+    - include: stray-paren-or-semicolon
+
+  # CSS Grid Layout Module Level 1
+  property-grid-template-rows-columns:
+    - match: \b(grid-template-rows|grid-template-columns)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.grid-template-rows-columns.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
+        - include: track-list
+        - include: auto-track-list
+    - include: stray-paren-or-semicolon
+
+  # CSS Grid Layout Module Level 1
+  property-grid-template:
+    - match: \b(grid-template)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.grid-template.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
+        - include: track-list
+        - include: auto-track-list
+        - include: string
+    - include: stray-paren-or-semicolon
+
+
 
 
 
@@ -5068,6 +5407,46 @@ contexts:
         2: keyword.other.unit.css
         3: constant.numeric.css
 
+  track-list:
+    - include: track-repeat
+    - include: track-size
+    - include: line-names
+
+  track-repeat:
+    - include: func-repeat
+
+  track-size:
+    - include: func-minmax
+    - include: func-fit-content
+    - match: '\b(?:min-content|max-content|auto){{b}}'
+      scope: support.constant.property-value.css
+    - include: flex-non-negative
+    - include: percentage-non-negative
+    - include: length-non-negative
+
+  type-or-unit:
+    - match: '(?x)
+        \b
+        (?:
+          url|
+          time|
+          string|
+          number|
+          length|
+          integer|
+          frequency|
+          color|
+          angle|
+          {{angle_unit}}|
+          {{frequency_unit}}|
+          {{decibel_unit}}|
+          {{length_unit}}|
+          {{percentage_unit}}|
+          {{time_unit}}
+        )
+        {{b}}'
+      scope: support.constant.property-value.css
+
   # This context matches CSS-wide keywords and functions, like "inherit",
   # "var()", and "!important". It should be included in all property contexts.
   value-css-wide:
@@ -5091,3 +5470,8 @@ contexts:
       scope: support.constant.property-value.css
     - include: percentage-non-negative
     - include: length-non-negative
+
+  width:
+    - include: func-fit-content
+    - match: '\b(?:min-content|max-content|fit-content|fill){{b}}'
+      scope: support.constant.property-value.css

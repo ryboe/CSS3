@@ -3,7 +3,11 @@
 
 /* TEST C PROPERTIES */
 foo {
+	/* caret-color:; TBD. Waiting on spec to be updated */
+
 	caret-shape: underscore;
+
+    /* caret:; TBD. No examples in the spec*/
 
 	chains: * a b c;
 	chains: top-half bottom-half;
@@ -21,5 +25,202 @@ foo {
 	clear: inline-end;
 	clear: inherit;
 
+    clip-path: none;
+    clip-path: fill-box;
+    clip-path: stroke-box;
+    clip-path: view-box;
+    clip-path: url("resources.svg#c1");
+    clip-path: inset(100px 50px);
+    clip-path: circle(50px at 0 100px);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    clip-path: inherit;
+    clip-path: initial;
+    clip-path: unset;
+    clip-path: polygon(15px 99px, 30px 87px, 65px 99px, 85px 55px,122px 57px, 184px 73px, 198px 105px, 199px 150px,
+					   145px 159px, 155px 139px, 126px 120px, 112px 138px,
+					   80px 128px, 39px 126px, 24px 104px);
+    clip-path: url("#clip1");
+	clip-path: inset(10px 20px 30px 40px);
+	clip-path: url("#c1");
+	clip-path: url("path.svg#c1");
+	clip-path: polygon(5% 5%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
+	clip-path: circle(30px at 35px 35px);
+	clip-path: ellipse(65px 30px at 125px 40px);
+	clip-path: inset(10% 10% 10% 10% round 20%, 20%);
 
+    clip-rule: nonzero;
+    clip-rule: evenodd;
+    clip-rule: inherit;
+    clip-rule: revert;
+
+    color: red;
+    color: orange;
+    color: antiquewhite;
+    color: #0f0;
+    color: #00ff00;
+    color: rgba( 34, 12, 64, 0.3);
+    color: currentcolor;
+    color: inherit;
+    color: initial;
+    color: unset;
+
+    color-interpolation-filters:auto;
+    color-interpolation-filters: sRGB;
+    color-interpolation-filters: linearRGB;
+    color-interpolation-filters: inherit;
+    color-interpolation-filters: initial;
+    color-interpolation-filters: unset;
+
+    columns: 1em;
+    columns: 1;
+    columns: auto;
+    columns: 1 auto;
+    columns: auto 12em;
+    columns: auto auto;
+
+    column-count: 3;
+    column-count: auto;
+    column-count: inherit;
+    column-count: initial;
+    column-count: unset;
+
+    column-fill: auto;
+    column-fill: balance;
+    column-fill: inherit;
+    column-fill: initial;
+    column-fill: unset;
+
+    column-gap: normal;
+    column-gap: 3px;
+    column-gap: 2.5em;
+    column-gap: inherit;
+    column-gap: initial;
+    column-gap: unset;
+
+	column-rule: dotted;
+	column-rule: solid blue;
+	column-rule: solid 8px;
+	column-rule: thick inset blue;
+	column-rule: inherit;
+	column-rule: initial;
+	column-rule: unset;
+
+    column-rule-color: red;
+	column-rule-color: rgb(192, 56, 78);
+	column-rule-color: transparent;
+	column-rule-color: hsla(0, 100%, 50%, 0.6);
+	column-rule-color: inherit;
+	column-rule-color: initial;
+	column-rule-color: unset;
+
+    column-rule-style: none;
+	column-rule-style: hidden;
+	column-rule-style: dotted;
+	column-rule-style: dashed;
+	column-rule-style: solid;
+	column-rule-style: double;
+	column-rule-style: groove;
+	column-rule-style: ridge;
+	column-rule-style: inset;
+	column-rule-style: outset;
+	column-rule-style: inherit;
+	column-rule-style: initial;
+	column-rule-style: unset;
+
+    column-rule-width: thin;
+    column-rule-width: medium;
+    column-rule-width: thick;
+    column-rule-width: 1px;
+    column-rule-width: 2.5em;
+    column-rule-width: inherit;
+    column-rule-width: initial;
+    column-rule-width: unset;
+
+    column-span: none;
+	column-span: all;
+	column-span: inherit;
+	column-span: initial;
+	column-span: unset;
+
+    column-width: auto;
+    column-width: 6px;
+    column-width: 25em;
+    column-width: 0.3vw;
+    column-width: inherit;
+    column-width: initial;
+    column-width: unset;
+
+    content: normal;
+    content: none;
+    content: 'prefix';
+    content: url('http://www.example.com/test.png');
+    content: attr(value string);
+    content: open-quote;
+    content: close-quote;
+    content: no-open-quote;
+    content: no-close-quote;
+    content: inherit;
+    content: initial;
+    content: unset;
+    content: "Email address: ";
+    content:  "\2713 ";
+    content: attr(title) ": ";
+    content: attr(title);
+    content: "Name: ";
+    content: counter(my-counter);
+    content: url("image.jpg");
+    content: attr(data-visual-label) ": ";
+	content: attr(size px, auto);
+	content: attr(size px, inset);
+
+    continue: fragments;
+    continue: paginate ;
+    continue: discard ;
+    continue: inherit;
+    continue: unset;
+    continue: revert;
+
+    counter-set: list-item attr(value integer, 1);
+
+
+    counter-reset: counter-name;
+    counter-reset: counter-name -1;
+    counter-reset: counter1 1 counter2 4;
+    counter-reset: none;
+    counter-reset: inherit;
+    counter-reset: initial;
+    counter-reset: unset;
+
+    counter-increment: list-item -1;
+	counter-increment: none;
+	counter-increment: counter;
+	counter-increment: note-counter;
+	counter-increment: chapter;
+	counter-increment: section;
+	counter-increment: item;
+	counter-increment: count2;
+	counter-increment: list-item;
+
+    cue-before: url("../audio/ping.wav");
+    cue-before: url("/audio/bell.aiff") -3dB;
+    cue-before: url("../clips-1/pop.au") +6dB;
+    cue-before: url("./audio/caution.wav") +8dB;
+
+    cue-after: url("pop.au");
+    cue-after: url("dong.wav");
+    cue-after: url("../clips-2/pop.au") 6dB;
+
+    cue: url("pop.au");
+    cue: inherit;
+    cue: initial;
+    cue: unset;
+    cue: revert;
+
+    cursor: pointer;
+    cursor: auto;
+    cursor:  url("cursor1.png") 4 12, auto;
+    cursor:  url("cursor2.png") 2 2, pointer;
+    cursor: inherit;
+    cursor: initial;
+    cursor: unset;
 }
