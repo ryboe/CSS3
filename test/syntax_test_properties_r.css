@@ -1,0 +1,55 @@
+/* SYNTAX TEST "Packages/CSS3/CSS3.sublime-syntax" */
+
+
+/* TEST R PROPERTIES */
+foo {
+	region-fragment: auto;
+	region-fragment: break;
+
+	resize: none;
+	resize: both;
+	resize: horizontal;
+	resize: vertical;
+	resize: inherit;
+	resize: initial;
+	resize: unset;
+
+	rest:;
+
+	rest-after:;
+
+	rest-before:;
+
+	right: 3px;
+	right: 2.4em;
+	right: 10%;
+	right: auto;
+	right: inherit;
+	right: initial;
+	right: unset;
+
+	rotation: 180deg;
+	rotation: 45deg;
+
+	rotation-point: bottom left;
+
+	ruby-align: start;
+	ruby-align: center;
+	ruby-align: space-between;
+	ruby-align: space-around;
+	ruby-align: inherit;
+	ruby-align: initial;
+	ruby-align: unset;
+
+	ruby-merge:separate;
+	ruby-merge:collapse;
+
+	ruby-position: over;
+	ruby-position: under;
+	ruby-position: inter-character;
+	ruby-position: inherit;
+	ruby-position: initial;
+	ruby-position: unset;
+
+	running: chapter;
+}

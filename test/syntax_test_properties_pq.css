@@ -1,0 +1,159 @@
+/* SYNTAX TEST "Packages/CSS3/CSS3.sublime-syntax" */
+
+
+/* TEST P PROPERTIES */
+foo {
+	padding: 1em;
+	padding: 5% 10%;
+	padding: 1em 2em 2em;
+	padding: 2px 1em 0 1em;
+	padding: inherit;
+	padding: initial;
+	padding: unset;
+
+	padding-bottom: 0.5em;
+	padding-bottom: 0;
+	padding-bottom: 2cm;
+	padding-bottom: 10%;
+	padding-bottom: inherit;
+	padding-bottom: initial;
+	padding-bottom: unset;
+
+	padding-left: 0.5em;
+	padding-left: 0;
+	padding-left: 2cm;
+	padding-left: 10%;
+	padding-left: inherit;
+	padding-left: initial;
+	padding-left: unset;
+
+	padding-right: 0.5em;
+	padding-right: 0;
+	padding-right: 2cm;
+	padding-right: 10%;
+	padding-right: inherit;
+	padding-right: initial;
+	padding-right: unset;
+
+	padding-top: 0.5em;
+	padding-top: 0;
+	padding-top: 2cm;
+	padding-top: 10%;
+	padding-top: inherit;
+	padding-top: initial;
+	padding-top: unset;
+
+	padding: 1em;
+	padding: 5% 10%;
+	padding: 1em 2em 2em;
+	padding: 2px 1em 0 1em;
+	padding: inherit;
+	padding: initial;
+	padding: unset;
+
+	page: narrow;
+	page: rotated;
+	page: main;
+	page: index;
+
+	page-break-after: auto;
+	page-break-after: always;
+	page-break-after: avoid;
+	page-break-after: left;
+	page-break-after: right;
+	page-break-after: inherit;
+	page-break-after: initial;
+	page-break-after: unset;
+
+	page-break-before: auto;
+	page-break-before: always;
+	page-break-before: avoid;
+	page-break-before: left;
+	page-break-before: right;
+	page-break-before: inherit;
+	page-break-before: initial;
+	page-break-before: unset;
+
+	page-break-inside: auto;
+	page-break-inside: avoid;
+	page-break-inside: inherit;
+	page-break-inside: initial;
+	page-break-inside: unset;
+
+	pause: none;
+	pause: 20ms;
+	pause: 30ms 40ms;
+
+	pause-after: none;
+	pause-after: 20ms;
+	pause-after: 40ms ;
+	pause-after: 10ms;
+	pause-after: strong;
+
+	pause-before: 30ms;
+	pause-before: 20ms;
+	pause-before: none;
+
+	perspective: none;
+	perspective: 20px;
+	perspective: 3.5em;
+	perspective: inherit;
+	perspective: initial;
+	perspective: unset;
+
+	perspective-origin: 25% 75%;
+	perspective-origin: 10px 25px;
+	perspective-origin: left bottom;
+	perspective-origin: inherit;
+	perspective-origin: initial;
+	perspective-origin: unset;
+
+	polar-anchor: right top;
+	polar-anchor: right bottom;
+	polar-anchor: left bottom;
+	polar-anchor: left top;
+	polar-anchor: 50% 50%;
+
+	polar-angle: 45deg;
+	polar-angle: 135deg;
+	polar-angle: 225deg;
+	polar-angle: 315deg;
+	polar-angle: 0deg;
+	polar-angle: 180deg;
+	polar-angle: -45deg;
+
+	polar-distance: 90%;
+	polar-distance: 50%;
+	polar-distance: 20%;
+	polar-distance: 100%;
+	polar-distance: 100% closest-side;
+	polar-distance: 100% closest-corner;
+	polar-distance: 10px;
+
+	polar-origin: auto;
+	polar-origin: top left;
+	polar-origin: 50% 50%;
+	polar-origin: 10px 15px;
+
+	position: static;
+	position: relative;
+	position: absolute;
+	position: fixed;
+	position: sticky;
+	position: inherit;
+	position: initial;
+	position: unset;
+
+	presentation-level: increment ;
+	presentation-level: 0;
+	presentation-level: 1;
+	presentation-level: 2;
+	presentation-level: 3;
+
+	quotes: none;
+	quotes: "«" "»";
+	quotes: "«" "»" "‹" "›";
+	quotes: inherit;
+	quotes: initial;
+	quotes: unset;
+}
