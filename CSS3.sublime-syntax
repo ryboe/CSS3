@@ -2523,6 +2523,15 @@ contexts:
     - include: property-grid-template-rows-columns
     - include: property-grid-template
     - include: property-grid
+    - include: property-hanging-punctuation
+    - include: property-height
+    - include: property-hyphenate-character
+    - include: property-hyphenate-limit-chars
+    - include: property-hyphenate-limit-last
+    - include: property-hyphenate-limit-lines
+    - include: property-hyphenate-limit-zone
+    - include: property-hyphens
+
 
 
     - include: property-top-right-left-bottom
@@ -4699,6 +4708,123 @@ contexts:
         - include: track-list
         - include: auto-track-list
         - include: string
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Module Level 3
+  property-hanging-punctuation:
+    - match: \b(hanging-punctuation)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.hanging-punctuation.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:none|last|force-end|first|allow-end){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS basic box model
+  property-height:
+    - match: \b(height)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.height.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bauto{{b}}'
+          scope: support.constant.property-value.css
+        - include: percentage-non-negative
+        - include: length-non-negative
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Module Level 4
+  property-hyphenate-character:
+    - match: \b(hyphenate-character)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.hyphenate-character.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bauto{{b}}'
+          scope: support.constant.property-value.css
+        - include: string
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Module Level 4
+  property-hyphenate-limit-chars:
+    - match: \b(hyphenate-limit-chars)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.hyphenate-limit-chars.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bauto{{b}}'
+          scope: support.constant.property-value.css
+        - include: integer
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Module Level 4
+  property-hyphenate-limit-last:
+    - match: \b(hyphenate-limit-last)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.hyphenate-limit-last.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:spread|page|none|column|always){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Module Level 4
+  property-hyphenate-limit-lines:
+    - match: \b(hyphenate-limit-lines)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.hyphenate-limit-lines.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bno-limit{{b}}'
+          scope: support.constant.property-value.css
+        - include: integer
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Module Level 4
+  property-hyphenate-limit-zone:
+    - match: \b(hyphenate-limit-zone)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.hyphenate-limit-zone.css
+        - include: end-value
+        - include: value-css-wide
+        - include: percentage
+        - include: length
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Module Level 3
+  property-hyphens:
+    - match: \b(hyphens)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.hyphens.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:none|manual|auto){{b}}'
+          scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
 
