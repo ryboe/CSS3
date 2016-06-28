@@ -62,5 +62,176 @@ foo {
 
 	marker-start:;
 
+	mask-border:;
 
+	mask-border-mode:;
+
+	mask-border-outset:;
+
+	mask-border-repeat: stretch;
+
+	mask-border-slice: 25 fill;
+
+	mask-border-source: url("mask.png");
+
+	mask-clip: content-box;
+	mask-clip: padding-box;
+	mask-clip: border-box;
+	mask-clip: margin-box;
+	mask-clip: fill-box;
+	mask-clip: stroke-box;
+	mask-clip: view-box;
+	mask-clip: no-clip;
+	mask-clip: padding-box, no-clip;
+	mask-clip: view-box, fill-box, border-box;
+	mask-clip: inherit;
+	mask-clip: initial;
+	mask-clip: unset;
+
+	mask-composite: add;
+	mask-composite: subtract;
+	mask-composite: intersect;
+	mask-composite: exclude;
+	mask-composite: inherit;
+	mask-composite: initial;
+	mask-composite: unset;
+
+	mask-image: none;
+	mask-image: url("masks.svg#mask1");
+	mask-image: linear-gradient(rgba(0, 0, 0, 1.0), transparent);
+	mask-image: image(url("mask.png"), skyblue);
+	mask-image: image(url("mask.png"), skyblue), linear-gradient(rgba(0, 0, 0, 1.0), transparent);
+	mask-image: inherit;
+	mask-image: initial;
+	mask-image: unset;
+
+	mask-mode: alpha;
+	mask-mode: luminance;
+	mask-mode: match-source;
+	mask-mode: alpha, match-source;
+	mask-mode: inherit;
+	mask-mode: initial;
+	mask-mode: unset;
+
+	mask-origin: content-box;
+	mask-origin: padding-box;
+	mask-origin: border-box;
+	mask-origin: margin-box;
+	mask-origin: fill-box;
+	mask-origin: stroke-box;
+	mask-origin: view-box;
+	mask-origin: padding-box, content-box;
+	mask-origin: view-box, fill-box, border-box;
+	mask-origin: inherit;
+	mask-origin: initial;
+	mask-origin: unset;
+
+	mask-position: top;
+	mask-position: bottom;
+	mask-position: left;
+	mask-position: right;
+	mask-position: center;
+	mask-position: 25% 75%;
+	mask-position: 0px 0px;
+	mask-position: 1cm 2cm;
+	mask-position: 10ch 8em;
+	mask-position: 0px 0px, center;
+	mask-position: inherit;
+	mask-position: initial;
+	mask-position: unset;
+
+	mask-repeat: repeat-x;
+	mask-repeat: repeat-y;
+	mask-repeat: repeat;
+	mask-repeat: space;
+	mask-repeat: round;
+	mask-repeat: no-repeat;
+	mask-repeat: repeat space;
+	mask-repeat: repeat repeat;
+	mask-repeat: round space;
+	mask-repeat: no-repeat round;
+	mask-repeat: inherit;
+	mask-repeat: initial;
+	mask-repeat: unset;
+
+	mask-size: cover;
+	mask-size: contain;
+	mask-size: 50%;
+	mask-size: 3em;
+	mask-size: 12px;
+	mask-size: auto;
+	mask-size: 50% auto;
+	mask-size: 3em 25%;
+	mask-size: auto 6px;
+	mask-size: auto auto;
+	mask-size: auto, auto;
+	mask-size: 50%, 25%, 25%;
+	mask-size: 6px, auto, contain;
+	mask-size: inherit;
+	mask-size: initial;
+	mask-size: unset;
+
+	mask-type: luminance;
+	mask-type: alpha;
+	mask-type: inherit;
+	mask-type: initial;
+	mask-type: unset;
+
+	max-height: 3.5em;
+	max-height: 75%;
+	max-height: none;
+	max-height: max-content;
+	max-height: min-content;
+	max-height: fit-content;
+	max-height: inherit;
+	max-height: initial;
+	max-height: unset;
+
+	max-width: 3.5em;
+	max-width: 75%;
+	max-width: none;
+	max-width: max-content;
+	max-width: min-content;
+	max-width: fit-content;
+	max-width: inherit;
+	max-width: initial;
+	max-width: unset;
+
+	min-height: 3.5em;
+	min-height: 10%;
+	min-height: max-content;
+	min-height: min-content;
+	min-height: fit-content;
+	min-height: inherit;
+	min-height: initial;
+	min-height: unset;
+
+	min-width: 3.5em;
+	min-width: 10%;
+	min-width: max-content;
+	min-width: min-content;
+	min-width: fit-content;
+	min-width: inherit;
+	min-width: initial;
+	min-width: unset;
+
+	mix-blend-mode: normal;
+	mix-blend-mode: multiply;
+	mix-blend-mode: screen;
+	mix-blend-mode: overlay;
+	mix-blend-mode: darken;
+	mix-blend-mode: lighten;
+	mix-blend-mode: color-dodge;
+	mix-blend-mode: color-burn;
+	mix-blend-mode: hard-light;
+	mix-blend-mode: soft-light;
+	mix-blend-mode: difference;
+	mix-blend-mode: exclusion;
+	mix-blend-mode: hue;
+	mix-blend-mode: saturation;
+	mix-blend-mode: color;
+	mix-blend-mode: luminosity;
+	mix-blend-mode: initial;
+	mix-blend-mode: inherit;
+	mix-blend-mode: unset;
 }

@@ -637,6 +637,10 @@ contexts:
     - match: '\b(?:no-common-ligatures|common-ligatures){{b}}'
       scope: support.constant.property-value.css
 
+  compositing-operator:
+    - match: '\b(?:subtract|intersect|exclude|add){{b}}'
+      scope: support.constant.property-value.css
+
   content-distribution:
     - match: '(?x)
         \b
@@ -1622,6 +1626,18 @@ contexts:
         - include: percentage-non-negative
         - include: length-non-negative
 
+  func-path:
+    - match: \b(path)(\()
+      captures:
+        1: support.function.path.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.path.css
+        - include: end-func
+        - include: func-var
+        - include: fill-rule
+        - include: string
+
   func-polygon:
     - match: \b(polygon)(\()
       captures:
@@ -2032,6 +2048,16 @@ contexts:
     - include: func-select
     - include: func-url
     - match: '\bchild{{b}}'
+      scope: support.constant.property-value.css
+
+  mask-reference:
+    - include: func-url
+    - include: image
+    - match: '\bnone{{b}}'
+      scope: support.constant.property-value.css
+
+  masking-mode:
+    - match: '\b(?:match-source|luminance|alpha){{b}}'
       scope: support.constant.property-value.css
 
   media-feature:
@@ -2594,11 +2620,33 @@ contexts:
     - include: property-marker-start-segment-mid-end
     - include: property-marker-side
     - include: property-marker
+    - include: property-mask-border-mode
+    - include: property-mask-border-outset
+    - include: property-mask-border-repeat
+    - include: property-mask-border-source
+    - include: property-mask-border-slice
+    - include: property-mask-border-width
+    - include: property-mask-border
+    - include: property-mask-clip
+    - include: property-mask-composite
+    - include: property-mask-image
+    - include: property-mask-mode
+    - include: property-mask-origin
+    - include: property-mask-position
+    - include: property-mask-repeat
+    - include: property-mask-size
+    - include: property-mask-type
+    - include: property-mix-blend-mode
+    - include: property-motion-offset
+    - include: property-motion-path
+    - include: property-motion-rotation
+    - include: property-motion
 
 
 
     - include: property-top-right-left-bottom
     - include: property-grid
+    - include: property-width
 
 
 
@@ -4790,7 +4838,7 @@ contexts:
 
   # CSS basic box model
   property-height:
-    - match: \b(height)\s*(:)
+    - match: \b({{optional_min_max_prefix}}height)\s*(:)
       captures:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
@@ -4798,7 +4846,8 @@ contexts:
         - meta_content_scope: meta.property.height.css
         - include: end-value
         - include: value-css-wide
-        - match: '\bauto{{b}}'
+        - include: func-fit-content
+        - match: '\b(?:none|min-content|max-content|fit-content|fill|auto){{b}}'
           scope: support.constant.property-value.css
         - include: percentage-non-negative
         - include: length-non-negative
@@ -5299,6 +5348,316 @@ contexts:
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
+  # CSS Masking Module Level 1
+  property-mask-border:
+    - match: \b(mask-border)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.mask-border.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:stretch|space|round|repeat|luminance|fill|auto|alpha){{b}}'
+          scope: support.constant.property-value.css
+        - include: image
+        - include: percentage-non-negative
+        - include: length-non-negative
+        - include: number-non-negative
+    - include: stray-paren-or-semicolon
+
+  # CSS Masking Module Level 1
+  property-mask-border-mode:
+    - match: \b(mask-border-mode)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.mask-border-mode.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:luminance|alpha){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Masking Module Level 1
+  property-mask-border-outset:
+    - match: \b(mask-border-outset)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.mask-border-outset.css
+        - include: end-value
+        - include: value-css-wide
+        - include: length-non-negative
+        - include: number-non-negative
+    - include: stray-paren-or-semicolon
+
+  # CSS Masking Module Level 1
+  property-mask-border-repeat:
+    - match: \b(mask-border-repeat)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.mask-border-repeat.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:stretch|space|round|repeat){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Masking Module Level 1
+  property-mask-border-slice:
+    - match: \b(mask-border-slice)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.mask-border-slice.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bfill{{b}}'
+          scope: support.constant.property-value.css
+        - include: percentage-non-negative
+        - include: number-non-negative
+    - include: stray-paren-or-semicolon
+
+  # CSS Masking Module Level 1
+  property-mask-border-source:
+    - match: \b(mask-border-source)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.mask-border-source.css
+        - include: end-value
+        - include: value-css-wide
+        - include: image
+    - include: stray-paren-or-semicolon
+
+  # CSS Masking Module Level 1
+  property-mask-border-width:
+    - match: \b(mask-border-width)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.mask-border-width.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bauto{{b}}'
+          scope: support.constant.property-value.css
+        - include: percentage-non-negative
+        - include: length-non-negative
+        - include: number-non-negative
+    - include: stray-paren-or-semicolon
+
+  # CSS Masking Module Level 1
+  property-mask-clip:
+    - match: \b(mask-clip)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.mask-clip.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bno-clip{{b}}'
+          scope: support.constant.property-value.css
+        - include: geometry-box
+    - include: stray-paren-or-semicolon
+
+  # CSS Masking Module Level 1
+  property-mask-composite:
+    - match: \b(mask-composite)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.mask-composite.css
+        - include: end-value
+        - include: value-css-wide
+        - include: compositing-operator
+    - include: stray-paren-or-semicolon
+
+  # CSS Masking Module Level 1
+  property-mask-image:
+    - match: \b(mask-image)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.mask-image.css
+        - include: end-value
+        - include: value-css-wide
+        - include: mask-reference
+    - include: stray-paren-or-semicolon
+
+  # CSS Masking Module Level 1
+  property-mask-mode:
+    - match: \b(mask-mode)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.mask-mode.css
+        - include: end-value
+        - include: value-css-wide
+        - include: masking-mode
+    - include: stray-paren-or-semicolon
+
+  # CSS Masking Module Level 1
+  property-mask-origin:
+    - match: \b(mask-origin)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.mask-origin.css
+        - include: end-value
+        - include: value-css-wide
+        - include: geometry-box
+    - include: stray-paren-or-semicolon
+
+  # CSS Masking Module Level 1
+  property-mask-position:
+    - match: \b(mask-position)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.mask-position.css
+        - include: end-value
+        - include: value-css-wide
+        - include: position
+    - include: stray-paren-or-semicolon
+
+  # CSS Masking Module Level 1
+  property-mask-repeat:
+    - match: \b(mask-repeat)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.mask-repeat.css
+        - include: end-value
+        - include: value-css-wide
+        - include: repeat-style
+    - include: stray-paren-or-semicolon
+
+  # CSS Masking Module Level 1
+  property-mask-size:
+    - match: \b(mask-size)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.mask-size.css
+        - include: end-value
+        - include: value-css-wide
+        - include: bg-size
+    - include: stray-paren-or-semicolon
+
+  # CSS Masking Module Level 1
+  property-mask-type:
+    - match: \b(mask-type)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.mask-type.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:luminance|alpha){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # Compositing and Blending Level 1
+  property-mix-blend-mode:
+    - match: \b(mix-blend-mode)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.mix-blend-mode.css
+        - include: end-value
+        - include: value-css-wide
+        - include: blend-mode
+    - include: stray-paren-or-semicolon
+
+  # Motion Path Module Level 1
+  property-motion:
+    - match: \b(motion)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.motion.css
+        - include: end-value
+        - include: value-css-wide
+        - include: func-url
+        - include: func-path
+        - include: basic-shape
+        - match: '\b(?:reverse|none|auto){{b}}'
+          scope: support.constant.property-value.css
+        - include: geometry-box
+        - include: angle
+        - include: percentage
+        - include: length
+    - include: stray-paren-or-semicolon
+
+  # Motion Path Module Level 1
+  property-motion-offset:
+    - match: \b(motion-offset)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.motion-offset.css
+        - include: end-value
+        - include: value-css-wide
+        - include: percentage
+        - include: length
+    - include: stray-paren-or-semicolon
+
+  # Motion Path Module Level 1
+  property-motion-path:
+    - match: \b(motion-path)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.motion-path.css
+        - include: end-value
+        - include: value-css-wide
+        - include: func-url
+        - include: func-path
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
+        - include: geometry-box
+        - include: basic-shape
+    - include: stray-paren-or-semicolon
+
+  # Motion Path Module Level 1
+  property-motion-rotation:
+    - match: \b(motion-rotation)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.motion-rotation.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:reverse|auto){{b}}'
+          scope: support.constant.property-value.css
+        - include: angle
+    - include: stray-paren-or-semicolon
+
+
+
+
 
 
 
@@ -5318,6 +5677,28 @@ contexts:
         - include: percentage
         - include: length
     - include: stray-paren-or-semicolon
+
+
+
+  # CSS basic box model
+  property-width:
+    - match: \b({{optional_min_max_prefix}}width)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.width.css
+        - include: end-value
+        - include: value-css-wide
+        - include: func-fit-content
+        - match: '\b(?:none|min-content|max-content|fit-content|fill|auto){{b}}'
+          scope: support.constant.property-value.css
+        - include: percentage-non-negative
+        - include: length-non-negative
+    - include: stray-paren-or-semicolon
+
+
+
 
   # property-list matches a block of property-value pairs.
   # {
