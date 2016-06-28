@@ -1,0 +1,51 @@
+/* SYNTAX TEST "Packages/CSS3/CSS3.sublime-syntax" */
+
+
+/* TEST I PROPERTIES */
+foo {
+	image-orientation: 0deg;
+	image-orientation: 6.4deg;
+	image-orientation: -90deg;
+	image-orientation: from-image;
+	image-orientation: 90deg flip;
+	image-orientation: flip;
+	image-orientation: inherit;
+	image-orientation: initial;
+	image-orientation: unset;
+
+	image-rendering: auto;
+	image-rendering: crisp-edges;
+	image-rendering: pixelated;
+	image-rendering: inherit;
+	image-rendering: initial;
+	image-rendering: unset;
+
+	image-resolution: 300dpi;
+	image-resolution: from-image;
+	image-resolution: from-image 300dpi;
+	image-resolution: 300dpi from-image;
+	image-resolution: 300dpi snap;
+	image-resolution: snap from-image;
+
+	initial-letter: 2;
+	initial-letter: 3;
+	initial-letter: 3 3;
+	initial-letter: 3 2;
+	initial-letter: 3 1;
+	initial-letter: 2.51 3;
+
+	initial-letter-align: ideographic;
+	initial-letter-align: hebrew;
+	initial-letter-align: hanging;
+
+	initial-letter-wrap: first;
+	initial-letter-wrap: -40%;
+	initial-letter-wrap: none;
+	initial-letter-wrap: all;
+
+	isolation: auto;
+	isolation: isolate;
+	isolation: inherit;
+	isolation: initial;
+	isolation: unset;
+}
