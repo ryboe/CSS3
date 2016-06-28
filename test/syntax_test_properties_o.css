@@ -1,0 +1,92 @@
+/* SYNTAX TEST "Packages/CSS3/CSS3.sublime-syntax" */
+
+
+/* TEST O PROPERTIES */
+foo {
+	object-fit: fill;
+	object-fit: contain;
+	object-fit: cover;
+	object-fit: none;
+	object-fit: scale-down;
+	object-fit: inherit;
+	object-fit: initial;
+	object-fit: unset;
+
+	object-position: 100px 50px;
+	object-position: inherit;
+	object-position: initial;
+	object-position: unset;
+
+	offset-after:;
+
+	offset-anchor: center;
+
+	offset-before:;
+
+	offset-distance:;
+
+	offset-end:;
+
+	offset-path:;
+
+	offset-position:;
+
+	offset-rotation:;
+
+	offset-start:;
+
+	opacity: 1;
+	opacity: 1.0;
+	opacity: 0.6;
+	opacity: 0.0;
+	opacity: 0;
+	opacity: inherit;
+	opacity: initial;
+	opacity: unset;
+
+	order: 5;
+	order: -5;
+	order: inherit;
+	order: initial;
+	order: unset;
+
+	orphans:;
+
+	outline: 1px solid white;
+	outline: inherit;
+	outline: initial;
+	outline: unset;
+
+	outline-color: invert;
+	outline-color: red;
+	outline-color: inherit;
+	outline-color: initial;
+	outline-color: unset;
+
+	outline-offset: 3px;
+	outline-offset: 0.2em;
+	outline-offset: inherit;
+	outline-offset: initial;
+	outline-offset: unset;
+
+	outline-style: auto;
+	outline-style: none;
+	outline-style: dotted;
+	outline-style: dashed;
+	outline-style: solid;
+	outline-style: double;
+	outline-style: groove;
+	outline-style: ridge;
+	outline-style: inset;
+	outline-style: outset;
+	outline-style: inherit;
+	outline-style: initial;
+	outline-style: unset;
+
+	outline-width: thin;
+	outline-width: medium;
+	outline-width: thick;
+	outline-width: 1px;
+	outline-width: 0.1em;
+	outline-width: inherit;
+}

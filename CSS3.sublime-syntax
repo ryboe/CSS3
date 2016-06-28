@@ -397,6 +397,12 @@ contexts:
     - include: percentage-non-negative
     - include: length-non-negative
 
+  border-style:
+    - include: line-style
+
+  border-width:
+    - include: line-width
+
   box:
     - match: '\b(?:padding-box|content-box|border-box){{b}}'
       scope: support.constant.property-value.css
@@ -2641,11 +2647,31 @@ contexts:
     - include: property-motion-path
     - include: property-motion-rotation
     - include: property-motion
+    - include: property-nav-up-right-left-down
+    - include: property-object-fit
+    - include: property-object-position
+    - include: property-offset-anchor
+    - include: property-offset-distance
+    - include: property-offset-path
+    - include: property-offset-position
+    - include: property-offset-rotation
+    - include: property-offset-start-end-before-after
+    - include: property-opacity
+    - include: property-outline-color
+    - include: property-outline-offset
+    - include: property-outline-style
+    - include: property-outline-width
+    - include: property-outline
+    - include: property-overflow-wrap
+    - include: property-overflow-x-y
+    - include: property-overflow
 
 
 
     - include: property-top-right-left-bottom
     - include: property-grid
+    - include: property-order
+    - include: property-widows-orphans
     - include: property-width
 
 
@@ -3091,8 +3117,8 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: color
-        - include: line-width
-        - include: line-style
+        - include: border-width
+        - include: border-style
     - include: stray-paren-or-semicolon
 
   # CSS Round Display Level 1
@@ -3234,7 +3260,7 @@ contexts:
       push:
         - include: end-value
         - include: value-css-wide
-        - include: line-style
+        - include: border-style
     - include: stray-paren-or-semicolon
 
   # CSS Backgrounds and Borders Module Level 3
@@ -3247,8 +3273,8 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: color
-        - include: line-width
-        - include: line-style
+        - include: border-width
+        - include: border-style
     - include: stray-paren-or-semicolon
 
   # CSS Backgrounds and Borders Module Level 3
@@ -3260,7 +3286,7 @@ contexts:
       push:
         - include: end-value
         - include: value-css-wide
-        - include: line-width
+        - include: border-width
     - include: stray-paren-or-semicolon
 
   # CSS Fragmentation Module Level 3
@@ -5655,11 +5681,282 @@ contexts:
         - include: angle
     - include: stray-paren-or-semicolon
 
+  # CSS Basic User Interface Module Level 3
+  property-nav-up-right-left-down:
+    - match: \b(nav-up|nav-right|nav-left|nav-down)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.nav-up-right-left-down.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:root|current|auto){{b}}'
+          scope: support.constant.property-value.css
+        - include: string
+        - include: selector-id
+    - include: stray-paren-or-semicolon
 
+  # CSS Image Values and Replaced Content Module Level 3
+  property-object-fit:
+    - match: \b(object-fit)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.object-fit.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:scale-down|none|fill|cover|contain){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
 
+  # CSS Image Values and Replaced Content Module Level 3
+  property-object-position:
+    - match: \b(object-position)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.object-position.css
+        - include: end-value
+        - include: value-css-wide
+        - include: position
+    - include: stray-paren-or-semicolon
 
+  # CSS Round Display Level 1
+  property-offset-anchor:
+    - match: \b(offset-anchor)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.offset-anchor.css
+        - include: end-value
+        - include: value-css-wide
+        - include: position
+    - include: stray-paren-or-semicolon
 
+  # CSS Round Display Level 1
+  property-offset-distance:
+    - match: \b(offset-distance)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.offset-distance.css
+        - include: end-value
+        - include: value-css-wide
+        - include: extent-keyword
+        - include: percentage
+        - include: length
+    - include: stray-paren-or-semicolon
 
+  # CSS Round Display Level 1
+  property-offset-path:
+    - match: \b(offset-path)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.offset-path.css
+        - include: end-value
+        - include: value-css-wide
+        - include: func-url
+        - include: func-path
+        - include: basic-shape
+        - match: '\b(?:none|contain){{b}}'
+          scope: support.constant.property-value.css
+        - include: geometry-box
+        - include: angle
+    - include: stray-paren-or-semicolon
+
+  # CSS Round Display Level 1
+  property-offset-position:
+    - match: \b(offset-position)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.offset-position.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bauto{{b}}'
+          scope: support.constant.property-value.css
+        - include: position
+    - include: stray-paren-or-semicolon
+
+  # CSS Round Display Level 1
+  property-offset-rotation:
+    - match: \b(offset-rotation)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.offset-rotation.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:reverse|auto){{b}}'
+          scope: support.constant.property-value.css
+        - include: angle
+    - include: stray-paren-or-semicolon
+
+  # CSS Positioned Layout Module Level 3
+  property-offset-start-end-before-after:
+    - match: \b(offset-start|offset-end|offset-before|offset-after)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.offset-start-end-before-after.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bauto{{b}}'
+          scope: support.constant.property-value.css
+        - include: percentage
+        - include: length
+    - include: stray-paren-or-semicolon
+
+  # CSS Color Module Level 3
+  property-opacity:
+    - match: \b(opacity)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.opacity.css
+        - include: end-value
+        - include: value-css-wide
+        - include: number-zero-to-one
+    - include: stray-paren-or-semicolon
+
+  # CSS Flexible Box Layout Module Level 1
+  property-order:
+    - match: \b(order)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.order.css
+        - include: end-value
+        - include: value-css-wide
+        - include: integer
+    - include: stray-paren-or-semicolon
+
+  # CSS Basic User Interface Module Level 3
+  property-outline:
+    - match: \b(outline)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.outline.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:invert|auto){{b}}'
+          scope: support.constant.property-value.css
+        - include: border-width
+        - include: border-style
+        - include: color
+    - include: stray-paren-or-semicolon
+
+  # CSS Basic User Interface Module Level 3
+  property-outline-color:
+    - match: \b(outline-color)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.outline-color.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\binvert{{b}}'
+          scope: support.constant.property-value.css
+        - include: color
+    - include: stray-paren-or-semicolon
+
+  # CSS Basic User Interface Module Level 3
+  property-outline-offset:
+    - match: \b(outline-offset)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.outline-offset.css
+        - include: end-value
+        - include: value-css-wide
+        - include: length
+    - include: stray-paren-or-semicolon
+
+  # CSS Basic User Interface Module Level 3
+  property-outline-style:
+    - match: \b(outline-style)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.outline-style.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bauto{{b}}'
+          scope: support.constant.property-value.css
+        - include: border-style
+    - include: stray-paren-or-semicolon
+
+  # CSS Basic User Interface Module Level 3
+  property-outline-width:
+    - match: \b(outline-width)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.outline-width.css
+        - include: end-value
+        - include: value-css-wide
+        - include: border-width
+    - include: stray-paren-or-semicolon
+
+  # CSS Overflow Module Level 4
+  property-overflow:
+    - match: \b(overflow)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.overflow.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:visible|scroll|hidden|clip|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Module Level 3
+  property-overflow-wrap:
+    - match: \b(overflow-wrap)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.overflow-wrap.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:normal|break-word){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Overflow Module Level 4
+  property-overflow-x-y:
+    - match: \b(overflow-x|overflow-y)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.overflow-x-y.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:visible|scroll|hidden|clip|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
 
 
 
@@ -5678,6 +5975,19 @@ contexts:
         - include: length
     - include: stray-paren-or-semicolon
 
+
+  # CSS Fragmentation Module Level 3
+  property-widows-orphans:
+    - match: \b(widows|orphans)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.widows-orphans.css
+        - include: end-value
+        - include: value-css-wide
+        - include: integer-positive
+    - include: stray-paren-or-semicolon
 
 
   # CSS basic box model
