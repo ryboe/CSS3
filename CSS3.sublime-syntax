@@ -1324,6 +1324,17 @@ contexts:
         - include: number
         - include: arithmetic-operator
 
+  func-child:
+    - match: \b(child)(\()
+      captures:
+        1: support.function.child.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.child.css
+        - include: end-func
+        - include: func-var
+        - include: integer
+
   func-color:
     - match: \b(color)(\()
       captures:
@@ -2376,6 +2387,11 @@ contexts:
     - match: '{{number_non_neg}}'
       scope: constant.numeric.css
 
+  number-positive:
+    - include: func-calc
+    - match: '{{number_pos}}'
+      scope: constant.numeric.css
+
   number-zero-to-one:
     - include: func-calc
     - match: '{{number_zero_to_one}}'
@@ -2438,6 +2454,29 @@ contexts:
               pop: true
             - include: properties
     - include: stray-brace
+
+  page-size:
+    - match: '(?x)
+        \b
+        (?:
+          letter|
+          legal|
+          ledger|
+          B5|
+          B4|
+          A5|
+          A4|
+          A3
+        )
+        {{b}}'
+      scope: support.constant.property-value.css
+
+  paint:
+    - include: func-url
+    - include: func-child
+    - include: color
+    - match: '\b(?:none|context-stroke|context-fill|child){{b}}'
+      scope: support.constant.property-value.css
 
   percentage:
     - include: func-calc
@@ -2699,7 +2738,31 @@ contexts:
     - include: property-ruby-merge
     - include: property-ruby-position
     - include: property-running
-
+    - include: property-scroll-behavior
+    - include: property-scroll-snap-align
+    - include: property-scroll-snap-margin
+    - include: property-scroll-snap-padding
+    - include: property-scroll-snap-stop
+    - include: property-scroll-snap-type
+    - include: property-shape-image-threshold
+    - include: property-shape-inside
+    - include: property-shape-margin
+    - include: property-shape-outside
+    - include: property-string-set
+    - include: property-stroke-alignment
+    - include: property-stroke-dashadjust
+    - include: property-stroke-dasharray
+    - include: property-stroke-dashcorner
+    - include: property-stroke-dashoffset
+    - include: property-stroke-linecap
+    - include: property-stroke-linejoin
+    - include: property-stroke-miterlimit
+    - include: property-stroke-opacity
+    - include: property-stroke-width
+    - include: property-size
+    - include: property-speak-as
+    - include: property-speak
+    - include: property-stroke
 
 
     - include: property-top-right-left-bottom
@@ -6318,8 +6381,404 @@ contexts:
         - include: identifier
     - include: stray-paren-or-semicolon
 
+  # CSSOM View Module
+  property-scroll-behavior:
+    - match: \b(scroll-behavior)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.scroll-behavior.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:smooth|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
 
+  # CSS Scroll Snap Module Level 1
+  property-scroll-snap-align:
+    - match: \b(scroll-snap-align)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.scroll-snap-align.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:start|none|end|center){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
 
+  # CSS Scroll Snap Module Level 1
+  property-scroll-snap-margin:
+    - match: '(?x)
+        \b
+        (
+          scroll-snap-margin-top|
+          scroll-snap-margin-right|
+          scroll-snap-margin-left|
+          scroll-snap-margin-inline-start|
+          scroll-snap-margin-inline-end|
+          scroll-snap-margin-inline|
+          scroll-snap-margin-bottom|
+          scroll-snap-margin-block-start|
+          scroll-snap-margin-block-end|
+          scroll-snap-margin-block|
+          scroll-snap-margin
+        )
+        \s*(:)'
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.scroll-snap-margin.css
+        - include: end-value
+        - include: value-css-wide
+        - include: length
+    - include: stray-paren-or-semicolon
+
+  # CSS Scroll Snap Module Level 1
+  property-scroll-snap-padding:
+    - match: '(?x)
+        \b
+        (
+          scroll-snap-padding-top|
+          scroll-snap-padding-right|
+          scroll-snap-padding-left|
+          scroll-snap-padding-inline-start|
+          scroll-snap-padding-inline-end|
+          scroll-snap-padding-inline|
+          scroll-snap-padding-bottom|
+          scroll-snap-padding-block-start|
+          scroll-snap-padding-block-end|
+          scroll-snap-padding-block|
+          scroll-snap-padding
+        )
+        \s*(:)'
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.scroll-snap-padding.css
+        - include: end-value
+        - include: value-css-wide
+        - include: percentage
+        - include: length
+    - include: stray-paren-or-semicolon
+
+  # CSS Scroll Snap Module Level 1
+  property-scroll-snap-stop:
+    - match: \b(scroll-snap-stop)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.scroll-snap-stop.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:normal|always){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Scroll Snap Module Level 1
+  property-scroll-snap-type:
+    - match: \b(scroll-snap-type)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.scroll-snap-type.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:y|x|proximity|point|none|mandatory|inline|both|block){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Shapes Module Level 1
+  property-shape-image-threshold:
+    - match: \b(shape-image-threshold)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.shape-image-threshold.css
+        - include: end-value
+        - include: value-css-wide
+        - include: number-zero-to-one
+    - include: stray-paren-or-semicolon
+
+  # CSS Round Display Level 1
+  property-shape-inside:
+    - match: \b(shape-inside)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.shape-inside.css
+        - include: end-value
+        - include: value-css-wide
+        - include: basic-shape
+        - include: image
+        - match: '\b(?:shape-box|outside-shape|display|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Shapes Module Level 1
+  property-shape-margin:
+    - match: \b(shape-margin)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.shape-margin.css
+        - include: end-value
+        - include: value-css-wide
+        - include: percentage
+        - include: length
+    - include: stray-paren-or-semicolon
+
+  # CSS Shapes Module Level 1
+  property-shape-outside:
+    - match: \b(shape-outside)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.shape-outside.css
+        - include: end-value
+        - include: value-css-wide
+        - include: basic-shape
+        - include: image
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
+        - include: shape-box
+    - include: stray-paren-or-semicolon
+
+  # CSS Paged Media Module Level 3
+  property-size:
+    - match: \b(size)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.size.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:portrait|landscape|auto){{b}}'
+          scope: support.constant.property-value.css
+        - include: page-size
+        - include: length-non-negative
+    - include: stray-paren-or-semicolon
+
+  # CSS Speech Module
+  property-speak:
+    - match: \b(speak)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.speak.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:normal|none|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Speech Module
+  property-speak-as:
+    - match: \b(speak-as)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.speak-as.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:spell-out|normal|no-punctuation|literal-punctuation|digits){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # string-set is defined in two specs:
+  #     CSS Generated Content for Paged Media Module
+  #
+  property-string-set:
+    - match: \b(string-set)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.string-set.css
+        - include: end-value
+        - include: value-css-wide
+        - include: func-attr
+        - include: func-content
+        - include: func-url
+        # FIXME: spec does not list string-set values accurately
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
+        - include: content-list
+        - include: identifier
+    - include: stray-paren-or-semicolon
+
+  # SVG Strokes
+  property-stroke:
+    - match: \b(stroke)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.stroke.css
+        - include: end-value
+        - include: value-css-wide
+        - include: paint
+    - include: stray-paren-or-semicolon
+
+  # SVG Strokes
+  property-stroke-alignment:
+    - match: \b(stroke-alignment)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.stroke-alignment.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:outer|inner|center){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # SVG Strokes
+  property-stroke-dashadjust:
+    - match: \b(stroke-dashadjust)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.stroke-dashadjust.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:stretch|none|gaps|dashes|compress){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # SVG Strokes
+  property-stroke-dasharray:
+    - match: \b(stroke-dasharray)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.stroke-dasharray.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
+        - include: dasharray
+    - include: stray-paren-or-semicolon
+
+  dasharray:
+    - include: percentage-non-negative
+    - include: length-non-negative
+    - include: number-non-negative
+
+  # SVG Strokes
+  property-stroke-dashcorner:
+    - match: \b(stroke-dashcorner)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.stroke-dashcorner.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
+        - include: length
+    - include: stray-paren-or-semicolon
+
+  # SVG Strokes
+  property-stroke-dashoffset:
+    - match: \b(stroke-dashoffset)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.stroke-dashoffset.css
+        - include: end-value
+        - include: value-css-wide
+        - include: percentage
+        - include: length
+    - include: stray-paren-or-semicolon
+
+  # SVG Strokes
+  property-stroke-linecap:
+    - match: \b(stroke-linecap)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.stroke-linecap.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:square|round|butt){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # SVG Strokes
+  property-stroke-linejoin:
+    - match: \b(stroke-linejoin)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.stroke-linejoin.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:round|miter-clip|miter|bevel|arcs){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # SVG Strokes
+  property-stroke-miterlimit:
+    - match: \b(stroke-miterlimit)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.stroke-miterlimit.css
+        - include: end-value
+        - include: value-css-wide
+        # Technically, this is supposed to be a number greater than or equal to
+        # 1. number-positive is close enough.
+        - include: number-positive
+    - include: stray-paren-or-semicolon
+
+  # SVG Strokes
+  property-stroke-opacity:
+    - match: \b(stroke-opacity)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.stroke-opacity.css
+        - include: end-value
+        - include: value-css-wide
+        - include: number-zero-to-one
+    - include: stray-paren-or-semicolon
+
+  # SVG Strokes
+  property-stroke-width:
+    - match: \b(stroke-width)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.stroke-width.css
+        - include: end-value
+        - include: value-css-wide
+        - include: percentage-non-negative
+        - include: length-non-negative
+    - include: stray-paren-or-semicolon
 
 
 
