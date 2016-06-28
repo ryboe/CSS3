@@ -1,0 +1,18 @@
+/* SYNTAX TEST "Packages/CSS3/CSS3.sublime-syntax" */
+
+
+/* TEST J PROPERTIES */
+foo {
+	justify-content: flex-start;
+	justify-content: flex-end;
+	justify-content: center;
+	justify-content: space-between;
+	justify-content: space-around;
+	justify-content: inherit;
+	justify-content: initial;
+	justify-content: unset;
+
+	justify-items:;
+
+	justify-self:;
+}

@@ -2526,7 +2526,6 @@ contexts:
     - include: property-grid-template-areas
     - include: property-grid-template-rows-columns
     - include: property-grid-template
-    - include: property-grid
     - include: property-hanging-punctuation
     - include: property-height
     - include: property-hyphenate-character
@@ -2542,10 +2541,25 @@ contexts:
     - include: property-initial-letter-wrap
     - include: property-initial-letter
     - include: property-isolation
+    - include: property-justify-content
+    - include: property-justify-items
+    - include: property-justify-self
+    - include: property-letter-spacing
+    - include: property-lighting-color
+    - include: property-line-break
+    - include: property-line-grid
+    - include: property-line-height
+    - include: property-line-snap
+    - include: property-list-style-image
+    - include: property-list-style-position
+    - include: property-list-style-type
+    - include: property-list-style
+
 
 
 
     - include: property-top-right-left-bottom
+    - include: property-grid
 
 
 
@@ -4940,6 +4954,232 @@ contexts:
         - include: value-css-wide
         - include: isolation-mode
     - include: stray-paren-or-semicolon
+
+  # justify-content is defined in two specs:
+  #     CSS Flexible Box Layout Module Level 1
+  #     CSS Box Alignment Module Level 3
+  property-justify-content:
+    - match: \b(justify-content)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.justify-content.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:space-between|space-around|flex-start|flex-end|center){{b}}'
+          scope: support.constant.property-value.css
+        - include: baseline-position
+        - include: content-distribution
+        - include: overflow-position
+        - include: content-position
+    - include: stray-paren-or-semicolon
+
+  # CSS Box Alignment Module Level 3
+  property-justify-items:
+    - match: \b(justify-items)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.justify-items.css
+        - include: end-value
+        - include: value-css-wide
+        - include: baseline-position
+        - include: overflow-position
+        - include: self-position
+        - match: '(?x)
+            \b
+            (?:
+              stretch|
+              right|
+              normal|
+              legacy|
+              left|
+              center|
+              auto
+            )
+            {{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Box Alignment Module Level 3
+  property-justify-self:
+    - match: \b(justify-self)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.justify-self.css
+        - include: end-value
+        - include: value-css-wide
+        - include: baseline-position
+        - include: overflow-position
+        - include: self-position
+        - match: '\b(?:stretch|normal|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Module Level 3
+  property-letter-spacing:
+    - match: \b(letter-spacing)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.letter-spacing.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bnormal{{b}}'
+          scope: support.constant.property-value.css
+        - include: length
+    - include: stray-paren-or-semicolon
+
+  # CSS Filter Effects Module Level 1
+  property-lighting-color:
+    - match: \b(lighting-color)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.lighting-color.css
+        - include: end-value
+        - include: value-css-wide
+        - include: color
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Module Level 3
+  property-line-break:
+    - match: \b(line-break)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.line-break.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:strict|normal|loose|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Line Grid Module Level 1
+  property-line-grid:
+    - match: \b(line-grid)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.line-grid.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:match-parent|create){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS 2.1
+  property-line-height:
+    - match: \b(line-height)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.line-height.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bnormal{{b}}'
+          scope: support.constant.property-value.css
+        - include: percentage-non-negative
+        - include: length-non-negative
+        - include: number-non-negative
+    - include: stray-paren-or-semicolon
+
+  # CSS Line Grid Module Level 1
+  property-line-snap:
+    - match: \b(line-snap)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.line-snap.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:none|contain|baseline){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Lists and Counters Module Level 3
+  property-list-style:
+    - match: \b(list-style)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.list-style.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:outside|none|inside){{b}}'
+          scope: support.constant.property-value.css
+        - include: image
+        - include: string
+        - include: identifier
+    - include: stray-paren-or-semicolon
+
+  # CSS Lists and Counters Module Level 3
+  property-list-style-image:
+    - match: \b(list-style-image)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.list-style-image.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
+        - include: image
+    - include: stray-paren-or-semicolon
+
+  # CSS Lists and Counters Module Level 3
+  property-list-style-position:
+    - match: \b(list-style-position)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.list-style-position.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:outside|inside){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Lists and Counters Module Level 3
+  property-list-style-type:
+    - match: \b(list-style-type)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.list-style-type.css
+        - include: end-value
+        - include: value-css-wide
+        - include: func-symbols
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
+        - include: string
+        - include: identifier
+    - include: stray-paren-or-semicolon
+
+
+
+
+
+
+
+
+
+
+
 
   # CSS Positioned Layout Module Level 3
   property-top-right-left-bottom:
