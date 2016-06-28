@@ -1904,6 +1904,10 @@ contexts:
     - match: '{{integer_pos}}'
       scope: constant.numeric.css
 
+  isolation-mode:
+    - match: '\b(?:isolate|auto){{b}}'
+      scope: support.constant.property-value.css
+
   line-style:
     - match: '(?x)
         \b
@@ -2531,6 +2535,13 @@ contexts:
     - include: property-hyphenate-limit-lines
     - include: property-hyphenate-limit-zone
     - include: property-hyphens
+    - include: property-image-orientation
+    - include: property-image-rendering
+    - include: property-image-resolution
+    - include: property-initial-letter-align
+    - include: property-initial-letter-wrap
+    - include: property-initial-letter
+    - include: property-isolation
 
 
 
@@ -4827,11 +4838,108 @@ contexts:
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
+  # CSS Image Values and Replaced Content Module Level 3
+  property-image-orientation:
+    - match: \b(image-orientation)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.image-orientation.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:from-image|flip){{b}}'
+          scope: support.constant.property-value.css
+        - include: angle
+    - include: stray-paren-or-semicolon
 
+  # CSS Image Values and Replaced Content Module Level 3
+  property-image-rendering:
+    - match: \b(image-rendering)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.image-rendering.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:pixelated|crisp-edges|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
 
+  # CSS Image Values and Replaced Content Module Level 3
+  property-image-resolution:
+    - match: \b(image-resolution)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.image-resolution.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:snap|from-image){{b}}'
+          scope: support.constant.property-value.css
+        - include: resolution
+    - include: stray-paren-or-semicolon
 
+  # CSS Inline Layout Module Level 3
+  property-initial-letter:
+    - match: \b(initial-letter)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.initial-letter.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bnormal{{b}}'
+          scope: support.constant.property-value.css
+        - include: integer-positive
+        - include: number-non-negative
+    - include: stray-paren-or-semicolon
 
+  # CSS Inline Layout Module Level 3
+  property-initial-letter-align:
+    - match: \b(initial-letter-align)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.initial-letter-align.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:ideographic|hebrew|hanging|border-box|alphabetic){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
 
+  # CSS Inline Layout Module Level 3
+  property-initial-letter-wrap:
+    - match: \b(initial-letter-wrap)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.initial-letter-wrap.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:none|grid|first|all){{b}}'
+          scope: support.constant.property-value.css
+        - include: percentage
+        - include: length
+    - include: stray-paren-or-semicolon
+
+  # Compositing and Blending Level 1
+  property-isolation:
+    - match: \b(isolation)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.isolation.css
+        - include: end-value
+        - include: value-css-wide
+        - include: isolation-mode
+    - include: stray-paren-or-semicolon
 
   # CSS Positioned Layout Module Level 3
   property-top-right-left-bottom:
