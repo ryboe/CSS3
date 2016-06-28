@@ -1706,6 +1706,17 @@ contexts:
         - include: func-var
         - include: rgb-component  # matches <alpha-value> too
 
+  func-running:
+    - match: \b(running)(\()
+      captures:
+        1: support.function.running.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.running.css
+        - include: end-func
+        - include: func-var
+        - include: identifier
+
   func-select:
     - match: \b(select)(\()
       captures:
@@ -2665,6 +2676,29 @@ contexts:
     - include: property-overflow-wrap
     - include: property-overflow-x-y
     - include: property-overflow
+    - include: property-padding
+    - include: property-page
+    - include: property-page-break-before-after
+    - include: property-page-break-inside
+    - include: property-pause
+    - include: property-perspective
+    - include: property-perspective-origin
+    - include: property-polar-anchor
+    - include: property-polar-angle
+    - include: property-polar-distance
+    - include: property-polar-origin
+    - include: property-position
+    - include: property-presentation-level
+    - include: property-quotes
+    - include: property-region-fragment
+    - include: property-resize
+    - include: property-rest
+    - include: property-rotation
+    - include: property-rotation-point
+    - include: property-ruby-align
+    - include: property-ruby-merge
+    - include: property-ruby-position
+    - include: property-running
 
 
 
@@ -3050,7 +3084,7 @@ contexts:
         - include: color
         - include: position
         - match: '\/'
-          scope: keyword.operator.arithmetic_operator.css
+          scope: keyword.operator.arithmetic.css
     - include: stray-paren-or-semicolon
 
   # CSS Inline Layout Module Level 3
@@ -5957,6 +5991,343 @@ contexts:
         - match: '\b(?:visible|scroll|hidden|clip|auto){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
+
+  # CSS basic box model
+  property-padding:
+    - match: \b(padding-top|padding-right|padding-left|padding-bottom|padding)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.padding.css
+        - include: end-value
+        - include: value-css-wide
+        - include: percentage-non-negative
+        - include: length-non-negative
+    - include: stray-paren-or-semicolon
+
+  # CSS Paged Media Module Level 3
+  property-page:
+    - match: \b(page)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.page.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bauto{{b}}'
+          scope: support.constant.property-value.css
+        - include: identifier
+    - include: stray-paren-or-semicolon
+
+  # CSS 2.1
+  property-page-break-before-after:
+    - match: \b(page-break-before|page-break-after)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.page-break-before-after.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:right|left|avoid|auto|always){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS 2.1
+  property-page-break-inside:
+    - match: \b(page-break-inside)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.page-break-inside.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:avoid|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Speech Module
+  property-pause:
+    - match: \b(pause-before|pause-after|pause)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.pause.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:x-weak|x-strong|weak|strong|none|medium){{b}}'
+          scope: support.constant.property-value.css
+        - include: time
+    - include: stray-paren-or-semicolon
+
+  # CSS Transforms Module Level 1
+  property-perspective:
+    - match: \b(perspective)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.perspective.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
+        - include: length-positive
+    - include: stray-paren-or-semicolon
+
+  # CSS Transforms Module Level 1
+  property-perspective-origin:
+    - match: \b(perspective-origin)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.perspective-origin.css
+        - include: end-value
+        - include: value-css-wide
+        - include: position
+    - include: stray-paren-or-semicolon
+
+  # CSS Round Display Level 1
+  property-polar-anchor:
+    - match: \b(polar-anchor)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.polar-anchor.css
+        - include: end-value
+        - include: value-css-wide
+        - include: position
+    - include: stray-paren-or-semicolon
+
+  # CSS Round Display Level 1
+  property-polar-angle:
+    - match: \b(polar-angle)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.polar-angle.css
+        - include: end-value
+        - include: value-css-wide
+        - include: angle
+    - include: stray-paren-or-semicolon
+
+  # CSS Round Display Level 1
+  property-polar-distance:
+    - match: \b(polar-distance)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.polar-distance.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bcontain{{b}}'
+          scope: support.constant.property-value.css
+        - include: extent-keyword
+        - include: percentage
+        - include: length
+    - include: stray-paren-or-semicolon
+
+  # CSS Round Display Level 1
+  property-polar-origin:
+    - match: \b(polar-origin)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.polar-origin.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bauto{{b}}'
+          scope: support.constant.property-value.css
+        - include: position
+    - include: stray-paren-or-semicolon
+
+  # CSS Positioned Layout Module Level 3
+  property-position:
+    - match: \b(position)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.position.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:sticky|static|relative|fixed|absolute){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Presentation Levels Module
+  property-presentation-level:
+    - match: \b(presentation-level)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.presentation-level.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:same|increment){{b}}'
+          scope: support.constant.property-value.css
+        - include: integer
+    - include: stray-paren-or-semicolon
+
+  # CSS Generated Content Module Level 3
+  property-quotes:
+    - match: \b(quotes)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.quotes.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
+        - include: string
+    - include: stray-paren-or-semicolon
+
+  # CSS Regions Module Level 1
+  property-region-fragment:
+    - match: \b(region-fragment)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.region-fragment.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:break|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Basic User Interface Module Level 3
+  property-resize:
+    - match: \b(resize)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.resize.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:vertical|none|horizontal|both){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Speech Module
+  property-rest:
+    - match: \b(rest-before|rest-after|rest)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.rest.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:x-weak|x-strong|weak|strong|none|medium){{b}}'
+          scope: support.constant.property-value.css
+        - include: time
+    - include: stray-paren-or-semicolon
+
+  # CSS basic box model
+  property-rotation:
+    - match: \b(rotation)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.rotation.css
+        - include: end-value
+        - include: value-css-wide
+        - include: angle
+    - include: stray-paren-or-semicolon
+
+  # CSS basic box model
+  property-rotation-point:
+    - match: \b(rotation-point)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.rotation-point.css
+        - include: end-value
+        - include: value-css-wide
+        - include: position
+    - include: stray-paren-or-semicolon
+
+  # CSS Ruby Layout Module Level 1
+  property-ruby-align:
+    - match: \b(ruby-align)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.ruby-align.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:start|space-between|space-around|center){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Ruby Layout Module Level 1
+  property-ruby-merge:
+    - match: \b(ruby-merge)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.ruby-merge.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:separate|collapse|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Ruby Layout Module Level 1
+  property-ruby-position:
+    - match: \b(ruby-position)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.ruby-position.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:under|over|inter-character){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Generated Content for Paged Media Module
+  property-running:
+    - match: \b(running)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.running.css
+        - include: end-value
+        - include: value-css-wide
+        - include: identifier
+    - include: stray-paren-or-semicolon
+
+
+
+
+
+
+
+
+
+
+
 
 
 
