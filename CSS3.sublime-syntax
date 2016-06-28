@@ -1684,6 +1684,17 @@ contexts:
         - include: func-var
         - include: rgb-component  # matches <alpha-value> too
 
+  func-select:
+    - match: \b(select)(\()
+      captures:
+        1: support.function.select.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.select.css
+        - include: end-func
+        - include: func-var
+        - include: selector-simple-compound
+
   func-snap-block:
     - match: \b(snap-block)(\()
       captures:
@@ -1908,29 +1919,6 @@ contexts:
     - match: '\b(?:isolate|auto){{b}}'
       scope: support.constant.property-value.css
 
-  line-style:
-    - match: '(?x)
-        \b
-        (?:
-          solid|
-          ridge|
-          outset|
-          none|
-          inset|
-          hidden|
-          groove|
-          double|
-          dotted|
-          dashed
-        )
-        {{b}}'
-      scope: support.constant.property-value.css
-
-  line-width:
-    - match: '\b(?:thin|thick|medium){{b}}'
-      scope: support.constant.property-value.css
-    - include: length-non-negative
-
   # This is based on the rule context.
   keyframes-block:
     - match: '(?=[fromt\d%])'  # to|from|<percentage>
@@ -1954,6 +1942,18 @@ contexts:
   keyframes-name:
     - include: string
     - include: identifier
+
+  knockout-offset:
+    - include: percentage
+    - include: length
+    - include: number
+
+  knockout-shape:
+    - match: '\b(?:triangle|rectangle|inverted|ellipse|circle){{b}}'
+      scope: support.constant.property-value.css
+    - include: percentage
+    - include: length
+    - include: number
 
   length:
     - include: func-calc
@@ -1999,6 +1999,40 @@ contexts:
           scope: punctuation.section.line-names.end.css
           pop: true
         - include: identifier
+
+  line-style:
+    - match: '(?x)
+        \b
+        (?:
+          solid|
+          ridge|
+          outset|
+          none|
+          inset|
+          hidden|
+          groove|
+          double|
+          dotted|
+          dashed
+        )
+        {{b}}'
+      scope: support.constant.property-value.css
+
+  line-width:
+    - match: '\b(?:thin|thick|medium){{b}}'
+      scope: support.constant.property-value.css
+    - include: length-non-negative
+
+  marker-gap:
+    - include: percentage
+    - include: length
+    - include: number
+
+  marker-ref:
+    - include: func-select
+    - include: func-url
+    - match: '\bchild{{b}}'
+      scope: support.constant.property-value.css
 
   media-feature:
     - match: \(
@@ -2554,7 +2588,12 @@ contexts:
     - include: property-list-style-position
     - include: property-list-style-type
     - include: property-list-style
-
+    - include: property-margin
+    - include: property-marker-knockout
+    - include: property-marker-pattern
+    - include: property-marker-start-segment-mid-end
+    - include: property-marker-side
+    - include: property-marker
 
 
 
@@ -5170,11 +5209,95 @@ contexts:
         - include: identifier
     - include: stray-paren-or-semicolon
 
+  # CSS basic box model
+  property-margin:
+    - match: \b(margin-top|margin-right|margin-left|margin-bottom|margin)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.margin.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bauto{{b}}'
+          scope: support.constant.property-value.css
+        - include: percentage
+        - include: length
+    - include: stray-paren-or-semicolon
 
+  # SVG Markers
+  property-marker:
+    - match: \b(marker)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.marker.css
+        - include: end-value
+        - include: value-css-wide
+        - include: marker-ref
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
+        - include: percentage
+        - include: length
+    - include: stray-paren-or-semicolon
 
+  # SVG Markers
+  property-marker-knockout:
+    - match: \b(marker-knockout-right|marker-knockout-left)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.marker-knockout.css
+        - include: end-value
+        - include: value-css-wide
+        - include: knockout-shape
+        - include: knockout-offset
+    - include: stray-paren-or-semicolon
 
+  # SVG Markers
+  property-marker-pattern:
+    - match: \b(marker-pattern)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.marker-pattern.css
+        - include: end-value
+        - include: value-css-wide
+        - include: marker-gap
+        - include: marker-ref
+    - include: stray-paren-or-semicolon
 
+  # SVG Markers
+  property-marker-start-segment-mid-end:
+    - match: \b(marker-start|marker-segment|marker-mid|marker-end)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.marker-start-segment-mid-end.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
+        - include: marker-ref
+    - include: stray-paren-or-semicolon
 
+  # CSS Lists and Counters Module Level 3
+  property-marker-side:
+    - match: \b(marker-side)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.marker-side.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:list-item|list-container){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
 
 
 
