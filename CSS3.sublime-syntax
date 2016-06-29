@@ -43,6 +43,7 @@ variables:
   percentage_unit: '%'
   ratio: '({{integer_pos}})\s*(\/)\s*({{integer_pos}})'
   resolution_unit: dppx|dpi|dpcm
+  semitones_unit: 'st'
   time_unit: m?s
   # '?' is a literal character that is legal in a <urange>
   unicode_range: '[uU]\+[\?\h]{1,6}(?:-[\?\h]{1,6})?'
@@ -80,6 +81,11 @@ contexts:
         1: constant.numeric.css
         2: keyword.other.unit.css
         3: constant.numeric.css
+
+  animateable-feature:
+    - match: '\b(?:scroll-position|contents){{b}}'
+      scope: support.constant.property-value.css
+    - include: identifier
 
   any-value:
     # We don't want to try to write a regex with every possible valid value,
@@ -1628,6 +1634,17 @@ contexts:
         - include: string
         - include: identifier
 
+  func-matrix:
+    - match: \b(matrix(?:3d)?)(\()
+      captures:
+        1: support.function.matrix.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.matrix.css
+        - include: end-func
+        - include: func-var
+        - include: number
+
   func-minmax:
     - match: \b(minmax)(\()
       captures:
@@ -1654,6 +1671,17 @@ contexts:
         - include: func-var
         - include: string
         - include: fill-rule
+
+  func-perspective:
+    - match: \b(perspective)(\()
+      captures:
+        1: support.function.perspective.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.perspective.css
+        - include: end-func
+        - include: func-var
+        - include: length-positive
 
   func-polygon:
     - match: \b(polygon)(\()
@@ -1717,6 +1745,29 @@ contexts:
         - include: func-var
         - include: rgb-component  # matches <alpha-value> too
 
+  func-rotate:
+    - match: \b(rotate[XYZ]?)(\()
+      captures:
+        1: support.function.rotate.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.rotate.css
+        - include: end-func
+        - include: func-var
+        - include: angle
+
+  func-rotate-3d:
+    - match: \b(rotate3d)(\()
+      captures:
+        1: support.function.rotate-3d.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.rotate-3d.css
+        - include: end-func
+        - include: func-var
+        - include: angle
+        - include: number
+
   func-running:
     - match: \b(running)(\()
       captures:
@@ -1738,6 +1789,28 @@ contexts:
         - include: end-func
         - include: func-var
         - include: selector-simple-compound
+
+  func-scale:
+    - match: \b(scale(?:[XYZ]|3d)?)(\()
+      captures:
+        1: support.function.scale.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.scale.css
+        - include: end-func
+        - include: func-var
+        - include: number
+
+  func-skew:
+    - match: \b(skew[XY]?)(\()
+      captures:
+        1: support.function.skew.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.skew.css
+        - include: end-func
+        - include: func-var
+        - include: angle
 
   func-snap-block:
     - match: \b(snap-block)(\()
@@ -1868,6 +1941,29 @@ contexts:
         - include: func-var
         - include: percentage
 
+  func-translate:
+    - match: \b(translate(?:X|Y|3d)?)(\()
+      captures:
+        1: support.function.translate.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.translate.css
+        - include: end-func
+        - include: func-var
+        - include: percentage
+        - include: length
+
+  func-translate-z:
+    - match: \b(translateZ)(\()
+      captures:
+        1: support.function.translate-z.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.translate-z.css
+        - include: end-func
+        - include: func-var
+        - include: length
+
   func-url:
     - match: \b(url)(\()
       captures:
@@ -1904,6 +2000,11 @@ contexts:
         - include: func-var
         - include: percentage
         - include: color-adjuster-operator
+
+  generic-voice:
+    - match: '\b(?:young|old|neutral|male|female|child){{b}}'
+      scope: support.constant.property-value.css
+    - include: integer-positive
 
   geometry-box:
     - match: '\b(?:view-box|stroke-box|fill-box){{b}}'
@@ -2750,6 +2851,33 @@ contexts:
     - include: property-text-underline-position
     - include: property-text-wrap
     - include: property-top-right-left-bottom
+    - include: property-transform-box
+    - include: property-transform-origin
+    - include: property-transform-style
+    - include: property-transition-delay
+    - include: property-transition-duration
+    - include: property-transition-property
+    - include: property-transition-timing-function
+    - include: property-unicode-bidi
+    - include: property-user-select
+    - include: property-vertical-align
+    - include: property-voice-balance
+    - include: property-voice-duration
+    - include: property-voice-family
+    - include: property-voice-range-pitch
+    - include: property-voice-stress
+    - include: property-voice-volume
+    - include: property-white-space
+    - include: property-will-change
+    - include: property-word-break
+    - include: property-word-spacing
+    - include: property-word-wrap
+    - include: property-wrap-before-after
+    - include: property-wrap-flow
+    - include: property-wrap-inside
+    - include: property-wrap-through
+    - include: property-writing-mode
+    - include: property-z-index
 
     - include: property-all
     - include: property-animation
@@ -2791,6 +2919,9 @@ contexts:
     - include: property-size
     - include: property-speak
     - include: property-stroke
+    - include: property-transform
+    - include: property-transition
+    - include: property-visibility
     - include: property-grid
     - include: property-order
     - include: property-widows-orphans
@@ -7312,6 +7443,306 @@ contexts:
         - include: length
     - include: stray-paren-or-semicolon
 
+  # CSS Transforms Module Level 1
+  property-transform:
+    - match: \b(transform)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.transform.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
+        - include: transform-list
+    - include: stray-paren-or-semicolon
+
+  # CSS Transforms Module Level 1
+  property-transform-box:
+    - match: \b(transform-box)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.transform-box.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:view-box|fill-box|border-box){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Transforms Module Level 1
+  property-transform-origin:
+    - match: \b(transform-origin)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.transform-origin.css
+        - include: end-value
+        - include: value-css-wide
+        - include: position
+    - include: stray-paren-or-semicolon
+
+  # CSS Transforms Module Level 1
+  property-transform-style:
+    - match: \b(transform-style)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.transform-style.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:preserve-3d|flat|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Transitions
+  property-transition:
+    - match: \b(transition)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.transition.css
+        - include: end-value
+        - include: value-css-wide
+        - include: single-transition
+    - include: stray-paren-or-semicolon
+
+  # CSS Transitions
+  property-transition-delay:
+    - match: \b(transition-delay)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.transition-delay.css
+        - include: end-value
+        - include: value-css-wide
+        - include: time
+    - include: stray-paren-or-semicolon
+
+  # CSS Transitions
+  property-transition-duration:
+    - match: \b(transition-duration)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.transition-duration.css
+        - include: end-value
+        - include: value-css-wide
+        - include: time
+    - include: stray-paren-or-semicolon
+
+  # CSS Transitions
+  property-transition-property:
+    - match: \b(transition-property)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.transition-property.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:none|all){{b}}'
+          scope: support.constant.property-value.css
+        - include: identifier
+    - include: stray-paren-or-semicolon
+
+  # CSS Transitions
+  property-transition-timing-function:
+    - match: \b(transition-timing-function)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.transition-timing-function.css
+        - include: end-value
+        - include: value-css-wide
+        - include: single-timing-function
+    - include: stray-paren-or-semicolon
+
+  # CSS Writing Modes Level 3
+  property-unicode-bidi:
+    - match: \b(unicode-bidi)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.unicode-bidi.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:plaintext|normal|isolate-override|isolate|embed|bidi-override){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Basic User Interface Module Level 4
+  property-user-select:
+    - match: \b(user-select)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.user-select.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:text|none|contain|auto|all){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Inline Layout Module Level 3
+  property-vertical-align:
+    - match: \b(vertical-align)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.vertical-align.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '(?x)
+            \b
+            (?:
+              top|
+              text-top|
+              text-bottom|
+              middle|
+              mathematical|
+              ideographic|
+              central|
+              center|
+              bottom|
+              baseline|
+              alphabetic
+            )
+            {{b}}'
+          scope: support.constant.property-value.css
+        - include: baseline-shift
+    - include: stray-paren-or-semicolon
+
+  # CSS basic box model
+  property-visibility:
+    - match: \b(visibility)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.visibility.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:visible|hidden|collapse){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Speech Module
+  property-voice-balance:
+    - match: \b(voice-balance)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.voice-balance.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:rightwards|right|leftwards|left|center){{b}}'
+          scope: support.constant.property-value.css
+        - include: number
+    - include: stray-paren-or-semicolon
+
+  # CSS Speech Module
+  property-voice-duration:
+    - match: \b(voice-duration)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.voice-duration.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bauto{{b}}'
+          scope: support.constant.property-value.css
+        - include: time
+    - include: stray-paren-or-semicolon
+
+  # CSS Speech Module
+  property-voice-family:
+    - match: \b(voice-family)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.voice-family.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bpreserve{{b}}'
+          scope: support.constant.property-value.css
+        - include: generic-voice
+        - include: voice-name
+    - include: stray-paren-or-semicolon
+
+  # CSS Speech Module
+  property-voice-range-pitch:
+    - match: \b(voice-range|voice-pitch)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.voice-range-pitch.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:x-low|x-high|medium|low|high|absolute){{b}}'
+          scope: support.constant.property-value.css
+        - include: frequency
+        - include: semitones
+        - include: percentage
+    - include: stray-paren-or-semicolon
+
+  # CSS Speech Module
+  property-voice-stress:
+    - match: \b(voice-stress)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.voice-stress.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:strong|reduced|normal|none|moderate){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Speech Module
+  property-voice-volume:
+    - match: \b(voice-volume)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.voice-volume.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:x-soft|x-loud|soft|silent|medium|loud){{b}}'
+          scope: support.constant.property-value.css
+        - include: decibel
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Module Level 4
+  property-white-space:
+    - match: \b(white-space)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.white-space.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:pre-wrap-auto|pre-wrap|pre-line|pre|nowrap|normal){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
 
   # CSS Fragmentation Module Level 3
   property-widows-orphans:
@@ -7325,7 +7756,6 @@ contexts:
         - include: value-css-wide
         - include: integer-positive
     - include: stray-paren-or-semicolon
-
 
   # CSS basic box model
   property-width:
@@ -7344,8 +7774,150 @@ contexts:
         - include: length-non-negative
     - include: stray-paren-or-semicolon
 
+  # CSS Will Change Module Level 1
+  property-will-change:
+    - match: \b(will-change)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.will-change.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bauto{{b}}'
+          scope: support.constant.property-value.css
+        - include: animateable-feature
+    - include: stray-paren-or-semicolon
 
+  # CSS Text Module Level 3
+  property-word-break:
+    - match: \b(word-break)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.word-break.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:normal|keep-all|break-all){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
 
+  # CSS Text Module Level 3
+  property-word-spacing:
+    - match: \b(word-spacing)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.word-spacing.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bnormal{{b}}'
+          scope: support.constant.property-value.css
+        - include: percentage
+        - include: length
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Module Level 3
+  # This is identical to overflow-wrap.
+  property-word-wrap:
+    - match: \b(word-wrap)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.word-wrap.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:normal|break-word){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Module Level 4
+  property-wrap-before-after:
+    - match: \b(wrap-before|wrap-after)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.wrap-before-after.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:line|flex|avoid-line|avoid-flex|avoid|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Exclusions Module Level 1
+  property-wrap-flow:
+    - match: \b(wrap-flow)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.wrap-flow.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:start|minimum|maximum|end|clear|both|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Module Level 4
+  property-wrap-inside:
+    - match: \b(wrap-inside)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.wrap-inside.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:avoid|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Exclusions Module Level 1
+  property-wrap-through:
+    - match: \b(wrap-through)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.wrap-through.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:wrap|none){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Writing Modes Level 3
+  property-writing-mode:
+    - match: \b(writing-mode)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.writing-mode.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:vertical-rl|vertical-lr|sideways-rl|sideways-lr|horizontal-tb){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Positioned Layout Module Level 3
+  property-z-index:
+    - match: \b(z-index)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.z-index.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bauto{{b}}'
+          scope: support.constant.property-value.css
+        - include: integer
+    - include: stray-paren-or-semicolon
 
   # property-list matches a block of property-value pairs.
   # {
@@ -7853,6 +8425,18 @@ contexts:
         {{b}}'
       scope: support.constant.property-value.css
 
+  semitones:
+    - include: func-calc
+    - match: '(?x)
+        (?:
+          ({{number}})({{semitones_unit}})\b|
+          ({{zero}})
+        )'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+        3: constant.numeric.css
+
   shape-arg:
     - include: percentage
     - include: length
@@ -7916,6 +8500,8 @@ contexts:
       scope: support.constant.property-value.css
 
   single-timing-function:
+    - include: func-cubic-bezier
+    - include: func-steps
     - match: '(?x)
         \b
         (?:
@@ -7929,8 +8515,13 @@ contexts:
         )
         {{b}}'
       scope: support.constant.property-value.css
-    - include: func-cubic-bezier
-    - include: func-steps
+
+  single-transition:
+    - include: single-timing-function
+    - match: '\b(?:none|all){{b}}'
+      scope: support.constant.property-value.css
+    - include: time
+    - include: identifier
 
   size:
     - include: extent-keyword
@@ -8049,6 +8640,16 @@ contexts:
     - include: percentage-non-negative
     - include: length-non-negative
 
+  transform-list:
+    - include: func-matrix
+    - include: func-perspective
+    - include: func-rotate-3d
+    - include: func-rotate
+    - include: func-scale
+    - include: func-skew
+    - include: func-translate-z
+    - include: func-translate
+
   type-or-unit:
     - match: '(?x)
         \b
@@ -8095,6 +8696,10 @@ contexts:
       scope: support.constant.property-value.css
     - include: percentage-non-negative
     - include: length-non-negative
+
+  voice-name:
+    - include: string
+    - include: identifier
 
   width:
     - include: func-fit-content
