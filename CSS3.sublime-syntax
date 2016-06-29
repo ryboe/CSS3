@@ -2376,6 +2376,17 @@ contexts:
     - match: '\bchild{{b}}'
       scope: support.constant.property-value.css
 
+  mask-layer:
+    - include: mask-reference
+    - include: masking-mode
+    - include: bg-size
+    - include: repeat-style
+    - include: geometry-box
+    - match: 'bno-clip{{b}}'
+      scope: support.constant.property-value.css
+    - include: compositing-operator
+    - include: position
+
   mask-reference:
     - include: func-url
     - include: image
@@ -5920,6 +5931,19 @@ contexts:
         - include: value-css-wide
         - match: '\b(?:list-item|list-container){{b}}'
           scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Masking Module Level 1
+  property-mask:
+    - match: \b(mask)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.mask.css
+        - include: end-value
+        - include: value-css-wide
+        - include: mask-layer
     - include: stray-paren-or-semicolon
 
   # CSS Masking Module Level 1
