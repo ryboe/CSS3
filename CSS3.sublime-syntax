@@ -2836,6 +2836,7 @@ contexts:
     - include: property-align-items
     - include: property-align-self
     - include: property-alignment-baseline
+    - include: property-animation-composition
     - include: property-animation-delay
     - include: property-animation-direction
     - include: property-animation-duration
@@ -2884,6 +2885,7 @@ contexts:
     - include: property-clip-path
     - include: property-clip-rule
     - include: property-color-interpolation-filters
+    - include: property-color-rendering
     - include: property-column-count
     - include: property-column-fill
     - include: property-column-gap
@@ -2896,6 +2898,8 @@ contexts:
     - include: property-counter-set-reset-increment
     - include: property-cue-before-after
     - include: property-dominant-baseline
+    - include: property-fill-opacity
+    - include: property-fill-rule
     - include: property-flex-basis
     - include: property-flex-direction
     - include: property-flex-flow
@@ -2999,7 +3003,9 @@ contexts:
     - include: property-overflow-x-y
     - include: property-page-break-before-after
     - include: property-page-break-inside
+    - include: property-paint-order
     - include: property-perspective-origin
+    - include: property-pointer-events
     - include: property-polar-anchor
     - include: property-polar-angle
     - include: property-polar-distance
@@ -3022,6 +3028,9 @@ contexts:
     - include: property-shape-inside
     - include: property-shape-margin
     - include: property-shape-outside
+    - include: property-shape-rendering
+    - include: property-stop-color
+    - include: property-stop-opacity
     - include: property-string-set
     - include: property-stroke-alignment
     - include: property-stroke-dashadjust
@@ -3039,6 +3048,7 @@ contexts:
     - include: property-text-align
     - include: property-text-align-all
     - include: property-text-align-last
+    - include: property-text-anchor
     - include: property-text-combine-upright
     - include: property-text-decoration
     - include: property-text-decoration-color
@@ -3053,6 +3063,7 @@ contexts:
     - include: property-text-justify
     - include: property-text-orientation
     - include: property-text-overflow
+    - include: property-text-rendering
     - include: property-text-shadow
     - include: property-text-space-collapse
     - include: property-text-space-trim
@@ -3071,6 +3082,7 @@ contexts:
     - include: property-unicode-bidi
     - include: property-user-select
     - include: property-vertical-align
+    - include: property-vector-effect
     - include: property-voice-balance
     - include: property-voice-duration
     - include: property-voice-family
@@ -3104,12 +3116,14 @@ contexts:
     - include: property-cursor
     - include: property-direction
     - include: property-display
+    - include: property-fill
     - include: property-filter
     - include: property-flex
     - include: property-font
-    - include: property-height
     - include: property-float
     - include: property-flow
+    - include: property-height
+    - include: property-mask
     - include: property-motion
     - include: property-opacity
     - include: property-outline
@@ -6587,6 +6601,20 @@ contexts:
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
+  # SVG 2
+  property-paint-order:
+    - match: \b(paint-order)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.paint-order.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:stroke|normal|markers|fill){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
   # CSS Speech Module
   property-pause:
     - match: \b(pause-before|pause-after|pause)\s*(:)
@@ -6628,6 +6656,20 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: position
+    - include: stray-paren-or-semicolon
+
+  # SVG 2
+  property-pointer-events:
+    - match: \b(pointer-events)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.pointer-events.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:visibleStroke|visiblePainted|visibleFill|visible|stroke|painted|none|fill|bounding-box|all){{b}}'
+          scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
   # CSS Round Display Level 1
@@ -7029,6 +7071,20 @@ contexts:
         - include: shape-box
     - include: stray-paren-or-semicolon
 
+  # SVG 2
+  property-shape-rendering:
+    - match: \b(shape-rendering)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.shape-rendering.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:optimizeSpeed|geometricPrecision|crispEdges|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
   # CSS Paged Media Module Level 3
   property-size:
     - match: \b(size)\s*(:)
@@ -7073,9 +7129,35 @@ contexts:
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
+  # SVG 2
+  property-stop-color:
+    - match: \b(stop-color)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.stop-color.css
+        - include: end-value
+        - include: value-css-wide
+        - include: color
+    - include: stray-paren-or-semicolon
+
+  # SVG 2
+  property-stop-opacity:
+    - match: \b(stop-opacity)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.stop-opacity.css
+        - include: end-value
+        - include: value-css-wide
+        - include: number-zero-to-one
+    - include: stray-paren-or-semicolon
+
   # string-set is defined in two specs:
   #     CSS Generated Content for Paged Media Module
-  #
+  #     CSS Generated Content Module Level 3
   property-string-set:
     - match: \b(string-set)\s*(:)
       captures:
@@ -7359,6 +7441,20 @@ contexts:
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
+  # SVG 2
+  property-text-anchor:
+    - match: \b(text-anchor)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.text-anchor.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:start|middle|end){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
   # CSS Writing Modes Level 3
   property-text-combine-upright:
     - match: \b(text-combine-upright)\s*(:)
@@ -7616,6 +7712,20 @@ contexts:
         - include: value-css-wide
         - include: string
         - match: '\b(?:ellipsis|clip){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # SVG 2
+  property-text-rendering:
+    - match: \b(text-rendering)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.text-rendering.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:optimizeSpeed|optimizeLegibility|geometricPrecision|auto){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
@@ -7910,6 +8020,20 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:text|none|contain|auto|all){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # SVG 2
+  property-vector-effect:
+    - match: \b(vector-effect)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.vector-effect.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:none|non-scaling-stroke){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
