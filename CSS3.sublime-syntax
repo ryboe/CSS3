@@ -58,6 +58,7 @@ contexts:
   main:
     - include: at-font-feature-values
     - include: at-counter-style
+    - include: at-color-profile
     - include: at-custom-media
     - include: at-namespace
     - include: at-font-face
@@ -145,6 +146,23 @@ contexts:
         - match: '''utf-8''|''UTF-8''|"utf-8"|"UTF-8"'
           scope: string.quoted.charset.css
     - include: stray-semicolon
+
+  at-color-profile:
+    - match: '(@)color-profile{{b}}'
+      captures:
+        0: keyword.control.at-rule.color-profile.css
+        1: punctuation.definition.keyword.css
+      push:
+        - match: '}'
+          scope: punctuation.section.color-profile-descriptor-block.end.css
+          pop: true
+        - match: '{'
+          scope: punctuation.section.color-profile-descriptor-block.begin.css
+          push:
+            - match: '(?=})'
+              pop: true
+            - include: descriptors-color-profile
+    - include: stray-brace
 
   at-counter-style:
     - match: '(@)counter-style{{b}}'
@@ -363,6 +381,12 @@ contexts:
     - match: '\b(?:last-)?baseline{{b}}'
       scope: support.constant.property-value.css
 
+  baseline-shift:
+    - match: '\b(?:super|sub|baseline){{b}}'
+      scope: support.constant.property-value.css
+    - include: percentage
+    - include: length
+
   basic-shape:
     - include: func-inset
     - include: func-ellipse-circle
@@ -423,6 +447,7 @@ contexts:
     - include: func-hwb
     - include: func-gray
     - include: func-device-cmyk
+    - include: icc-color
     - include: color-named
     - include: color-adjuster
     - include: hex-color
@@ -714,6 +739,11 @@ contexts:
         2: keyword.other.unit.css
         3: constant.numeric.css
 
+  descriptors-color-profile:
+    - include: descriptor-color-profile-src
+    - include: descriptor-color-profile-rendering-intent
+    - include: descriptor-color-profile-name
+
   descriptors-counter-style:
     - include: descriptor-system
     - include: descriptor-negative
@@ -726,14 +756,14 @@ contexts:
     - include: descriptor-speak-as
 
   descriptors-font-face:
-    - include: descriptor-font-feature-settings
-    - include: descriptor-unicode-range
-    - include: descriptor-font-variant
-    - include: descriptor-font-stretch
-    - include: descriptor-font-family
-    - include: descriptor-font-weight
-    - include: descriptor-font-style
-    - include: descriptor-font-src
+    - include: descriptor-font-face-font-feature-settings
+    - include: descriptor-font-face-unicode-range
+    - include: descriptor-font-face-font-variant
+    - include: descriptor-font-face-font-stretch
+    - include: descriptor-font-face-font-family
+    - include: descriptor-font-face-font-weight
+    - include: descriptor-font-face-font-style
+    - include: descriptor-font-face-src
 
   descriptor-additive-symbols:
     - match: \b(additive-symbols)\s*(:)
@@ -758,12 +788,65 @@ contexts:
         - include: identifier
     - include: stray-paren-or-semicolon
 
-  descriptor-font-family:
+  # Additions to CSS Color 4
+  descriptor-color-profile-name:
+    - match: \b(name)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.descriptor.color-profile.name.css
+        - include: end-value
+        - include: value-css-wide
+        - include: identifier
+    - include: stray-paren-or-semicolon
+
+  # Additions to CSS Color 4
+  descriptor-color-profile-rendering-intent:
+    - match: \b(rendering-intent)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.descriptor.color-profile.rendering-intent.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '(?x)
+            \b
+            (?:
+              saturation|
+              relative-colorimetric|
+              perceptual|
+              auto|
+              absolute-colorimetric
+            )
+            {{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # Additions to CSS Color 4
+  descriptor-color-profile-src:
+    - match: \b(src)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.descriptor.color-profile.src.css
+        - include: end-value
+        - include: value-css-wide
+        - include: func-local
+        - include: func-url
+        - match: '\bsRGB{{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  descriptor-font-face-font-family:
     - match: \b(font-family)\s*(:)
       captures:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.descriptor.font-face.font-family.css
         - include: end-value
         - include: value-css-wide
         - include: string
@@ -774,12 +857,13 @@ contexts:
         - include: identifier
     - include: stray-paren-or-semicolon
 
-  descriptor-font-feature-settings:
+  descriptor-font-face-font-feature-settings:
     - match: \b(font-feature-settings)\s*(:)
       captures:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.descriptor.font-face.font-feature-settings.css
         - include: end-value
         - include: value-css-wide
         - include: string
@@ -788,25 +872,13 @@ contexts:
         - include: integer-non-negative
     - include: stray-paren-or-semicolon
 
-  descriptor-font-src:
-    - match: \b(src)\s*(:)
-      captures:
-        1: support.constant.property-name.css
-        2: punctuation.separator.key-value.css
-      push:
-        - include: end-value
-        - include: value-css-wide
-        - include: func-format
-        - include: func-local
-        - include: func-url
-    - include: stray-paren-or-semicolon
-
-  descriptor-font-stretch:
+  descriptor-font-face-font-stretch:
     - match: \b(font-stretch)\s*(:)
       captures:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.descriptor.font-face.font-stretch.css
         - include: end-value
         - include: value-css-wide
         - match: '(?x)
@@ -826,24 +898,26 @@ contexts:
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
-  descriptor-font-style:
+  descriptor-font-face-font-style:
     - match: \b(font-style)\s*(:)
       captures:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.descriptor.font-face.font-style.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:oblique|normal|italic){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
-  descriptor-font-variant:
+  descriptor-font-face-font-variant:
     - match: \b(font-variant)\s*(:)
       captures:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.descriptor.font-face.font-variant.css
         - include: end-value
         - include: value-css-wide
         - include: func-swash-styleset-stylistic-ornaments-character-variant-annotation
@@ -878,16 +952,44 @@ contexts:
         - include: numeric-fraction-values
     - include: stray-paren-or-semicolon
 
-  descriptor-font-weight:
+  descriptor-font-face-font-weight:
     - match: \b(font-weight)\s*(:)
       captures:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.descriptor.font-face.font-weight.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:normal|bold|[1-9]00){{b}}'
           scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  descriptor-font-face-src:
+    - match: \b(src)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.descriptor.font-face.src.css
+        - include: end-value
+        - include: value-css-wide
+        - include: func-format
+        - include: func-local
+        - include: func-url
+    - include: stray-paren-or-semicolon
+
+  descriptor-font-face-unicode-range:
+    - match: \b(unicode-range)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.descriptor.font-face.unicode-range.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '{{unicode_range}}'
+          scope: constant.numeric.unicode-range.css
     - include: stray-paren-or-semicolon
 
   descriptor-negative:
@@ -1031,18 +1133,6 @@ contexts:
           scope: support.constant.property-value.css
         - include: percentage-non-negative
         - include: number-non-negative
-    - include: stray-paren-or-semicolon
-
-  descriptor-unicode-range:
-    - match: \b(unicode-range)\s*(:)
-      captures:
-        1: support.constant.property-name.css
-        2: punctuation.separator.key-value.css
-      push:
-        - include: end-value
-        - include: value-css-wide
-        - match: '{{unicode_range}}'
-          scope: constant.numeric.unicode-range.css
     - include: stray-paren-or-semicolon
 
   discretionary-lig-values:
@@ -1341,6 +1431,32 @@ contexts:
         - include: func-var
         - include: integer
 
+  # Additions to CSS Color 4
+  # TODO: This function currently isn't clearly defined by the spec.
+  func-cielab:
+    - match: \b(cielab)(\()
+      captures:
+        1: support.function.cielab.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.cielab.css
+        - include: end-func
+        - include: func-var
+        - include: number
+
+  # Additions to CSS Color 4
+  # TODO: This function currently isn't clearly defined by the spec.
+  func-cielchab:
+    - match: \b(cielchab)(\()
+      captures:
+        1: support.function.cielchab.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.cielchab.css
+        - include: end-func
+        - include: func-var
+        - include: number
+
   func-color:
     - match: \b(color)(\()
       captures:
@@ -1430,6 +1546,32 @@ contexts:
         - include: func-var
         - include: number-zero-to-one
 
+  # Additions to CSS Color 4
+  # TODO: This function currently isn't clearly defined by the spec.
+  func-device-gray:
+    - match: \b(device-gray)(\()
+      captures:
+        1: support.function.device-gray.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.device-gray.css
+        - include: end-func
+        - include: func-var
+        - include: number
+
+  # Additions to CSS Color 4
+  # TODO: This function currently isn't clearly defined by the spec.
+  func-device-rgb:
+    - match: \b(device-rgb)(\()
+      captures:
+        1: support.function.device-rgb.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.device-rgb.css
+        - include: end-func
+        - include: func-var
+        - include: number
+
   func-device-cmyk:
     - match: \b(device-cmyk)(\()
       captures:
@@ -1441,6 +1583,19 @@ contexts:
         - include: percentage-zero-to-100
         - include: number-zero-to-one
         - include: color
+
+  # Additions to CSS Color 4
+  # TODO: This function currently isn't clearly defined by the spec.
+  func-device-nchannel:
+    - match: \b(device-nchannel)(\()
+      captures:
+        1: support.function.device-nchannel.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.device-nchannel.css
+        - include: end-func
+        - include: func-var
+        - include: number
 
   func-drop-shadow:
     - match: \b(drop-shadow)(\()
@@ -1558,6 +1713,21 @@ contexts:
         - include: angle
         - include: percentage-zero-to-100
         - include: number  # matches part of <hue> and <alpha-value>
+
+  # Additions to CSS Color 4
+  # TODO: This function currently isn't clearly defined by the spec.
+  func-icc-color:
+    - match: \b(icc-(?:named-)?color)(\()
+      captures:
+        1: support.function.icc-color.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.icc-color.css
+        - include: end-func
+        - include: func-var
+        - include: icc-color
+        - include: number
+        - include: identifier
 
   func-image:
     - match: \b(image)(\()
@@ -2036,6 +2206,14 @@ contexts:
   identifier:
     - match: '{{identifier}}'
       scope: string.unquoted.identifier.css
+
+  icc-color:
+    - include: func-icc-color
+    - include: func-cielab
+    - include: func-cielchab
+    - include: func-device-gray
+    - include: func-device-rgb
+    - include: func-device-nchannel
 
   image:
     - include: gradient
@@ -2651,8 +2829,10 @@ contexts:
     - include: property-bookmark-level
     - include: property-bookmark-state
     - include: property-border-top-right-left-bottom
+    - include: property-border-collapse
     - include: property-border-color
     - include: property-border-radius
+    - include: property-border-spacing
     - include: property-border-style
     - include: property-border-width
     - include: property-border-boundary
@@ -2987,7 +3167,9 @@ contexts:
         - include: self-position
     - include: stray-paren-or-semicolon
 
-  # CSS Inline Layout Module Level 3
+  # alignment-baseline is defined in two specs:
+  #     CSS Inline Layout Module Level 3
+  #     SVG 2
   property-alignment-baseline:
     - match: \b(alignment-baseline)\s*(:)
       captures:
@@ -3002,14 +3184,20 @@ contexts:
               top|
               text-top|
               text-bottom|
+              text-before-edge|
+              text-after-edge|
               middle|
               mathematical|
               ideographic|
+              hanging|
               central|
               center|
               bottom|
+              before-edge|
               baseline|
-              alphabetic
+              auto|
+              alphabetic|
+              after-edge
             )
             {{b}}'
           scope: support.constant.property-value.css
@@ -3306,7 +3494,9 @@ contexts:
           scope: keyword.operator.arithmetic.css
     - include: stray-paren-or-semicolon
 
-  # CSS Inline Layout Module Level 3
+  # baseline-shift is defined in two specs:
+  #     CSS Inline Layout Module Level 3
+  #     SVG 2
   property-baseline-shift:
     - match: \b(baseline-shift)\s*(:)
       captures:
@@ -3315,10 +3505,7 @@ contexts:
       push:
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:super|sub){{b}}'
-          scope: support.constant.property-value.css
-        - include: percentage
-        - include: length
+        - include: baseline-shift
     - include: stray-paren-or-semicolon
 
   # CSS Generated Content Module Level 3
@@ -3384,6 +3571,20 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:parent|none|display){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS 2.1
+  property-border-collapse:
+    - match: \b(border-collapse)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.border-collapse.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:separate|collapse){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
@@ -3504,6 +3705,19 @@ contexts:
           scope: keyword.operator.arithmetic.css
     - include: stray-paren-or-semicolon
 
+  # CSS 2.1
+  property-border-spacing:
+    - match: \b(border-spacing)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.border-spacing.css
+        - include: end-value
+        - include: value-css-wide
+        - include: length-non-negative
+    - include: stray-paren-or-semicolon
+
   # CSS Backgrounds and Borders Module Level 3
   property-border-style:
     - match: \b(border-{{optional_top_right_left_bottom}}style)\s*(:)
@@ -3564,7 +3778,7 @@ contexts:
       push:
         - include: end-value
         - include: value-css-wide
-        - match: '\binset{{b}}'
+        - match: '\b(?:none|inset){{b}}'
           scope: support.constant.property-value.css
         - include: length
         - include: color
@@ -3809,6 +4023,20 @@ contexts:
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
+  # SVG 2
+  property-color-rendering:
+    - match: \b(color-rendering)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.color-rendering.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:optimizeSpeed|optimizeQuality|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
   # CSS Multi-column Layout Module
   property-columns:
     - match: \b(columns)\s*(:)
@@ -4008,7 +4236,9 @@ contexts:
         - include: decibel
     - include: stray-paren-or-semicolon
 
-  # CSS Basic User Interface Module Level 3
+  # cursor is defined in two specs:
+  #     CSS Basic User Interface Module Level 3
+  #     SVG 2
   property-cursor:
     - match: \b(cursor)\s*(:)
       captures:
@@ -4276,7 +4506,9 @@ contexts:
         {{b}}'  # "clip" won't match "clip-path"
       scope: support.constant.property-name.css invalid.deprecated.css
 
-  # CSS Writing Modes Level 3
+  # direction is defined in two specs:
+  #     CSS Writing Modes Level 3
+  #     SVG 2
   property-direction:
     - match: \b(direction)\s*(:)
       captures:
@@ -4289,7 +4521,9 @@ contexts:
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
-  # CSS Display Module Level 3
+  # display is defined in two specs:
+  #     CSS Display Module Level 3
+  #     SVG 2
   property-display:
     - match: \b(display)\s*(:)
       captures:
@@ -4306,7 +4540,9 @@ contexts:
         - include: display-legacy
     - include: stray-paren-or-semicolon
 
-  # CSS Inline Layout Module Level 3
+  # dominant-baseline is defined in two specs:
+  #     CSS Inline Layout Module Level 3
+  #     SVG 2
   property-dominant-baseline:
     - match: \b(dominant-baseline)\s*(:)
       captures:
@@ -4329,6 +4565,46 @@ contexts:
               alphabetic
             )
             {{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # SVG 2
+  property-fill:
+    - match: \b(fill)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.fill.css
+        - include: end-value
+        - include: value-css-wide
+        - include: paint
+    - include: stray-paren-or-semicolon
+
+  # SVG 2
+  property-fill-opacity:
+    - match: \b(fill-opacity)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.fill-opacity.css
+        - include: end-value
+        - include: value-css-wide
+        - include: number-zero-to-one
+    - include: stray-paren-or-semicolon
+
+  # SVG 2
+  property-fill-rule:
+    - match: \b(fill-rule)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.fill-rule.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:nonzero|evenodd){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
@@ -5207,7 +5483,7 @@ contexts:
 
   # CSS Text Module Level 3
   property-hyphens:
-    - match: \b(hyphens)\s*(:)
+    - match: \b({{vendor_prefix}}hyphens)\s*(:)
       captures:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
@@ -8103,6 +8379,7 @@ contexts:
           last-of-type|
           last-child|
           invalid|
+          input-placeholder|
           indeterminate|
           in-range|
           hover|
@@ -8124,6 +8401,9 @@ contexts:
           active
         )
         {{b}}'
+        # TODO: Remove input-placeholder. It's non-standard, but commonly used.
+        # It has been replaced by :placeholder-shown, which is not widely
+        # supported yet.
       captures:
         0: entity.other.attribute-name.pseudo-class.css
         1: punctuation.definition.entity.css
@@ -8287,6 +8567,7 @@ contexts:
           region|
           placeholder|
           marker|
+          input-placeholder|
           inactive-selection|
           grammar-error|
           first-line|
@@ -8296,6 +8577,8 @@ contexts:
           after
         )
         {{b}}'
+      # TODO: Remove input-placeholder. It's non-standard, but commonly used. It
+      # has been replaced by ::placeholder, which is not widely supported yet.
       captures:
         0: entity.other.attribute-name.pseudo-element.css
         1: punctuation.definition.entity.css
