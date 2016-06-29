@@ -94,26 +94,87 @@ contexts:
     # valid unit, numeric type, and function. Any valid identifier after that is
     # assumed to be a valid property value.
     - include: value-css-wide  # includes "var()"
+    - include: func-attr
+    - include: func-blenda
+    - include: func-blur
+    - include: func-calc
+    - include: func-child
+    - include: func-cielab
+    - include: func-cielchab
+    - include: func-color-adjuster-rgb
+    - include: func-content
+    - include: func-counters
+    - include: func-counter
+    - include: func-cross-fade
     - include: func-cubic-bezier
+    - include: func-device-gray
+    - include: func-device-rgb
+    - include: func-device-cmyk
+    - include: func-device-nchannel
+    - include: func-drop-shadow
+    - include: func-element
+    - include: func-ellipse-circle
+    - include: func-filter
+    - include: func-fit-content
+    - include: func-format
+    - include: func-gray
+    - include: func-hsla
+    - include: func-hue-rotate
+    - include: func-hwb
+    - include: func-icc-color
+    - include: func-color
+    - include: func-image-set
+    - include: func-image
+    - include: func-inset
+    - include: func-leader
+    - include: func-linear-gradient
+    - include: func-local
+    - include: func-matrix
+    - include: func-minmax
+    - include: func-path
+    - include: func-perspective
+    - include: func-polygon
+    - include: func-radial-gradient
+    - include: func-red-green-blue-alpha-a
+    - include: func-repeat
+    - include: func-rgba
+    - include: func-rotate-3d
+    - include: func-rotate
+    - include: func-running
+    - include: func-select
+    - include: func-scale
+    - include: func-skew
+    - include: func-snap-block
+    - include: func-snap-inline
     - include: func-steps
-    # TODO: finish adding funcs here
+    - include: func-string
+    - include: func-swash-styleset-stylistic-ornaments-character-variant-annotation
+    - include: func-symbols
+    - include: func-target-counters
+    - include: func-target-text
+    - include: func-tint-shade-contrast
+    - include: func-translate-z
+    - include: func-translate
+    - include: func-url
+    - include: func-whiteness-saturation-lightness-hue-blackness
     - include: image
+    - include: string
     - include: angle
     - include: frequency
     - include: percentage
     - include: resolution
+    - include: decibel
+    - include: semitones
     - include: time
     - include: position
     - include: length
-    - include: an_plus_b
+    - include: an-plus-b
     - include: color
     - include: integer
     - include: number
-    - include: string
-    - match: '{{identifier}}'
-      scope: support.constant.property-value.css
+    - include: identifier
 
-  an_plus_b:
+  an-plus-b:
     - match: 'odd|even|{{an_plus_b}}'
       scope: constant.other.an-plus-b.css
     - include: integer
@@ -726,6 +787,11 @@ contexts:
   # counter-style:
   #   - include: func-symbols
   #   - include: identifier
+
+  dasharray:
+    - include: percentage-non-negative
+    - include: length-non-negative
+    - include: number-non-negative
 
   decibel:
     - include: func-calc
@@ -2831,7 +2897,9 @@ contexts:
 
   properties:
     - include: property-deprecated
-    # TODO: sort properties in reverse alphabetical order
+
+    # Properties with names that are two or more words are given a higher
+    # precedence because they are less likely to mismatch.
     - include: property-align-content
     - include: property-align-items
     - include: property-align-self
@@ -2859,20 +2927,20 @@ contexts:
     - include: property-bookmark-label
     - include: property-bookmark-level
     - include: property-bookmark-state
-    - include: property-border-top-right-left-bottom
+    - include: property-border-boundary
     - include: property-border-collapse
     - include: property-border-color
+    - include: property-border-image
+    - include: property-border-image-outset
+    - include: property-border-image-repeat
+    - include: property-border-image-slice
+    - include: property-border-image-source
+    - include: property-border-image-width
     - include: property-border-radius
     - include: property-border-spacing
     - include: property-border-style
+    - include: property-border-top-right-left-bottom
     - include: property-border-width
-    - include: property-border-boundary
-    - include: property-border-image-source
-    - include: property-border-image-slice
-    - include: property-border-image-width
-    - include: property-border-image-outset
-    - include: property-border-image-repeat
-    - include: property-border-image
     - include: property-box-decoration-break
     - include: property-box-shadow
     - include: property-box-sizing
@@ -2930,10 +2998,10 @@ contexts:
     - include: property-font-weight
     - include: property-footnote-display
     - include: property-footnote-policy
+    - include: property-grid-auto-flow
+    - include: property-grid-auto-rows-columns
     - include: property-grid-row-column-area
     - include: property-grid-row-column-gap
-    - include: property-grid-auto-rows-columns
-    - include: property-grid-auto-flow
     - include: property-grid-template-areas
     - include: property-grid-template-rows-columns
     - include: property-grid-template
@@ -2964,13 +3032,13 @@ contexts:
     - include: property-list-style
     - include: property-marker-knockout
     - include: property-marker-pattern
-    - include: property-marker-start-segment-mid-end
     - include: property-marker-side
+    - include: property-marker-start-segment-mid-end
     - include: property-mask-border-mode
     - include: property-mask-border-outset
     - include: property-mask-border-repeat
-    - include: property-mask-border-source
     - include: property-mask-border-slice
+    - include: property-mask-border-source
     - include: property-mask-border-width
     - include: property-mask-border
     - include: property-mask-clip
@@ -3012,12 +3080,10 @@ contexts:
     - include: property-polar-origin
     - include: property-presentation-level
     - include: property-region-fragment
-    - include: property-rotation
     - include: property-rotation-point
     - include: property-ruby-align
     - include: property-ruby-merge
     - include: property-ruby-position
-    - include: property-running
     - include: property-scroll-behavior
     - include: property-scroll-snap-align
     - include: property-scroll-snap-margin
@@ -3029,6 +3095,7 @@ contexts:
     - include: property-shape-margin
     - include: property-shape-outside
     - include: property-shape-rendering
+    - include: property-speak-as
     - include: property-stop-color
     - include: property-stop-opacity
     - include: property-string-set
@@ -3042,7 +3109,6 @@ contexts:
     - include: property-stroke-miterlimit
     - include: property-stroke-opacity
     - include: property-stroke-width
-    - include: property-speak-as
     - include: property-tab-size
     - include: property-table-layout
     - include: property-text-align
@@ -3071,7 +3137,6 @@ contexts:
     - include: property-text-transform
     - include: property-text-underline-position
     - include: property-text-wrap
-    - include: property-top-right-left-bottom
     - include: property-transform-box
     - include: property-transform-origin
     - include: property-transform-style
@@ -3081,8 +3146,8 @@ contexts:
     - include: property-transition-timing-function
     - include: property-unicode-bidi
     - include: property-user-select
-    - include: property-vertical-align
     - include: property-vector-effect
+    - include: property-vertical-align
     - include: property-voice-balance
     - include: property-voice-duration
     - include: property-voice-family
@@ -3101,6 +3166,7 @@ contexts:
     - include: property-writing-mode
     - include: property-z-index
 
+    # Single-word properties are given a lower precedence to avoid collisions.
     - include: property-all
     - include: property-animation
     - include: property-appearance
@@ -3119,41 +3185,42 @@ contexts:
     - include: property-fill
     - include: property-filter
     - include: property-flex
-    - include: property-font
     - include: property-float
     - include: property-flow
+    - include: property-font
+    - include: property-grid
     - include: property-height
+    - include: property-hyphens
+    - include: property-isolation
+    - include: property-margin
+    - include: property-marker
     - include: property-mask
     - include: property-motion
     - include: property-opacity
+    - include: property-order
     - include: property-outline
     - include: property-overflow
     - include: property-padding
     - include: property-page
     - include: property-pause
-    - include: property-hyphens
-    - include: property-isolation
-    - include: property-margin
-    - include: property-marker
     - include: property-perspective
     - include: property-position
     - include: property-quotes
     - include: property-resize
     - include: property-rest
+    - include: property-rotation
+    - include: property-running
     - include: property-size
     - include: property-speak
     - include: property-stroke
+    - include: property-top-right-left-bottom
     - include: property-transform
     - include: property-transition
     - include: property-visibility
-    - include: property-grid
-    - include: property-order
     - include: property-widows-orphans
     - include: property-width
 
-
-
-    # TODO: add rules for matching property/value pairs here
+    # User-defined properties
     - include: property-custom
 
   # align-content is defined in two specs:
@@ -7233,11 +7300,6 @@ contexts:
         - include: dasharray
     - include: stray-paren-or-semicolon
 
-  dasharray:
-    - include: percentage-non-negative
-    - include: length-non-negative
-    - include: number-non-negative
-
   # SVG Strokes
   property-stroke-dashcorner:
     - match: \b(stroke-dashcorner)\s*(:)
@@ -8685,7 +8747,7 @@ contexts:
         - include: end-func
         - match: '\bof{{b}}'
           scope: support.constant.property-value.css
-        - include: an_plus_b
+        - include: an-plus-b
         - include: selector
     - include: stray-paren
 
@@ -8708,7 +8770,7 @@ contexts:
       push:
         - meta_content_scope: meta.pseudo-class.nth.css
         - include: end-func
-        - include: an_plus_b
+        - include: an-plus-b
     - include: stray-paren
 
   selector-pseudo-class-scope-context:
