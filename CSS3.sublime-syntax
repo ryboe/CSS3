@@ -1472,6 +1472,7 @@ contexts:
         1: support.function.blenda.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.blenda.css
         - include: end-func
         - include: func-var
         - match: '\b(?:rgb|hwb|hsl){{b}}'
@@ -1495,6 +1496,7 @@ contexts:
         1: support.function.calc.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.calc.css
         - include: end-func
         - include: func-var
         - include: length
@@ -1548,6 +1550,7 @@ contexts:
         1: support.function.color.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.color.css
         - include: end-func
         - include: func-var
         - include: angle
@@ -1561,6 +1564,7 @@ contexts:
         1: support.function.color-adjuster-rgb.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.color-adjuster-rgb.css
         - include: end-func
         - include: func-var
         - include: percentage
@@ -1615,6 +1619,7 @@ contexts:
         1: support.function.cross-fade.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.cross-fade.css
         - include: end-func
         - include: func-var
         - include: image
@@ -1627,6 +1632,7 @@ contexts:
         1: support.function.cubic-bezier.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.cubic-bezier.css
         - include: end-func
         - include: func-var
         - include: number-zero-to-one
@@ -1663,6 +1669,7 @@ contexts:
         1: support.function.device-cmyk.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.device-cmyk.css
         - include: end-func
         - include: func-var
         - include: percentage-zero-to-100
@@ -1700,6 +1707,7 @@ contexts:
         1: support.function.element.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.element.css
         - include: end-func
         - include: func-var
         - match: '\b(?:start|last|first-except|first){{b}}'
@@ -1712,6 +1720,7 @@ contexts:
         1: support.function.ellipse-circle.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.ellipse-circle.css
         - include: end-func
         - include: func-var
         - match: '\bat{{b}}'
@@ -1749,6 +1758,7 @@ contexts:
         1: support.function.format.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.format.css
         - include: end-func
         - include: func-var
         - include: string
@@ -1759,6 +1769,7 @@ contexts:
         1: support.function.gray.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.gray.css
         - include: end-func
         - include: func-var
         - include: percentage-zero-to-100
@@ -1770,6 +1781,7 @@ contexts:
         1: support.function.hsla.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.hsla.css
         - include: end-func
         - include: func-var
         - include: angle
@@ -1793,6 +1805,7 @@ contexts:
         1: support.function.hwb.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.hwb.css
         - include: end-func
         - include: func-var
         - include: angle
@@ -1820,6 +1833,7 @@ contexts:
         1: support.function.image.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.image.css
         - include: end-func
         - include: func-var
         - include: image
@@ -1832,6 +1846,7 @@ contexts:
         1: support.function.image-set.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.image-set.css
         - include: end-func
         - include: func-var
         - include: image
@@ -1844,6 +1859,7 @@ contexts:
         1: support.function.inset.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.inset.css
         - include: end-func
         - include: func-var
         - match: '\bround{{b}}'
@@ -1858,6 +1874,7 @@ contexts:
         1: support.function.leader.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.leader.css
         - include: end-func
         - include: func-var
         - include: string
@@ -1870,6 +1887,7 @@ contexts:
         1: support.function.linear-gradient.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.linear-gradient.css
         - include: end-func
         - include: func-var
         - include: side-or-corner
@@ -1884,6 +1902,7 @@ contexts:
         1: support.function.local.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.local.css
         - include: end-func
         - include: func-var
         - include: string
@@ -1944,6 +1963,7 @@ contexts:
         1: support.function.polygon.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.polygon.css
         - include: end-func
         - include: func-var
         - include: fill-rule
@@ -1955,6 +1975,7 @@ contexts:
         1: support.function.radial-gradient.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.radial-gradient.css
         - include: end-func
         - include: func-var
         - match: '\b(?:ellipse|circle|at){{b}}'
@@ -1969,6 +1990,7 @@ contexts:
         1: support.function.red-green-blue-alpha-a.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.red-green-blue-alpha-a.css
         - include: end-func
         - include: func-var
         - include: percentage
@@ -1996,6 +2018,7 @@ contexts:
         1: support.function.rgba.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.rgba.css
         - include: end-func
         - include: func-var
         - include: rgb-component  # matches <alpha-value> too
@@ -2099,6 +2122,7 @@ contexts:
         1: support.function.steps.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.steps.css
         - include: end-func
         - include: func-var
         - match: '\b(?:start|end){{b}}'
@@ -2119,11 +2143,22 @@ contexts:
         - include: identifier
 
   func-swash-styleset-stylistic-ornaments-character-variant-annotation:
-    - match: \b(swash|stylistic|styleset|ornaments|character-variant|annotation)(\()
+    - match: '(?x)
+        \b
+        (
+          swash|
+          stylistic|
+          styleset|
+          ornaments|
+          character-variant|
+          annotation
+        )
+        (\()'
       captures:
         1: support.function.swash-styleset-stylistic-ornaments-character-variant-annotation.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.swash-styleset-stylistic-ornaments-character-variant-annotation.css
         - include: end-func
         - include: func-var
         - include: identifier
@@ -2135,6 +2170,7 @@ contexts:
         1: support.function.symbols.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.symbols.css
         - include: end-func
         - include: func-var
         - include: image
@@ -2158,6 +2194,7 @@ contexts:
         1: support.function.target-counters.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.target-counters.css
         - include: end-func
         - include: func-var
         - include: func-symbols
@@ -2171,6 +2208,7 @@ contexts:
         1: support.function.target-text.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.target-text.css
         - include: end-func
         - include: func-var
         - include: func-url
@@ -2192,6 +2230,7 @@ contexts:
         1: support.function.func-tint-shade-contrast.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.tint-shade-contrast.css
         - include: end-func
         - include: func-var
         - include: percentage
@@ -2225,6 +2264,7 @@ contexts:
         1: support.function.url.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.url.css
         - include: end-func
         - include: func-var
         - include: string
@@ -2235,6 +2275,7 @@ contexts:
         1: support.function.var.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.var.css
         - include: end-func
         - include: func-var
         - match: ','
@@ -2246,11 +2287,26 @@ contexts:
           scope: support.constant.property-name.custom.css
 
   func-whiteness-saturation-lightness-hue-blackness:
-    - match: \b(whiteness|w|saturation|s|lightness|l|hue|h|blackness|b)(\()
+    - match: '(?x)
+        \b
+        (
+          whiteness|
+          w|
+          saturation|
+          s|
+          lightness|
+          l|
+          hue|
+          h|
+          blackness|
+          b
+        )
+        (\()'
       captures:
         1: support.function.whiteness-saturation-lightness-hue-blackness.css
         2: punctuation.section.function.begin.css
       push:
+        - meta_content_scope: meta.function.whiteness-saturation-lightness-hue-blackness.css
         - include: end-func
         - include: func-var
         - include: percentage
