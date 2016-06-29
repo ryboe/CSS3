@@ -362,7 +362,7 @@ contexts:
           push:
             - match: '(?=})'
               pop: true
-            - include: viewport-descriptors
+            - include: descriptors-viewport
 
   attachment:
     - match: '\b(?:scroll|local|fixed){{b}}'
@@ -745,15 +745,15 @@ contexts:
     - include: descriptor-color-profile-name
 
   descriptors-counter-style:
-    - include: descriptor-system
-    - include: descriptor-negative
-    - include: descriptor-suffix-prefix
-    - include: descriptor-range
-    - include: descriptor-pad
-    - include: descriptor-fallback
-    - include: descriptor-symbols
-    - include: descriptor-additive-symbols
-    - include: descriptor-speak-as
+    - include: descriptor-counter-style-system
+    - include: descriptor-counter-style-negative
+    - include: descriptor-counter-style-suffix-prefix
+    - include: descriptor-counter-style-range
+    - include: descriptor-counter-style-pad
+    - include: descriptor-counter-style-fallback
+    - include: descriptor-counter-style-symbols
+    - include: descriptor-counter-style-additive-symbols
+    - include: descriptor-counter-style-speak-as
 
   descriptors-font-face:
     - include: descriptor-font-face-font-feature-settings
@@ -765,26 +765,139 @@ contexts:
     - include: descriptor-font-face-font-style
     - include: descriptor-font-face-src
 
-  descriptor-additive-symbols:
+  descriptors-viewport:
+    - include: descriptor-viewport-user-zoom
+    - include: descriptor-viewport-orientation
+    - include: descriptor-viewport-width-height
+    - include: descriptor-viewport-zoom
+
+  descriptor-counter-style-additive-symbols:
     - match: \b(additive-symbols)\s*(:)
       captures:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.counter-style.additive-symbols.css
         - include: end-value
         - include: value-css-wide
         - include: integer-non-negative
         - include: symbol
     - include: stray-paren-or-semicolon
 
-  descriptor-fallback:
+  descriptor-counter-style-fallback:
     - match: \b(fallback)\s*(:)
       captures:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.counter-style.fallback.css
         - include: end-value
         - include: value-css-wide
+        - include: identifier
+    - include: stray-paren-or-semicolon
+
+  descriptor-counter-style-negative:
+    - match: \b(negative)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.counter-style.negative.css
+        - include: end-value
+        - include: value-css-wide
+        - include: symbol
+    - include: stray-paren-or-semicolon
+
+  descriptor-counter-style-pad:
+    - match: \b(pad)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.counter-style.pad.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:infinite|auto){{b}}'
+          scope: support.constant.property-value.css
+        - include: integer
+        - include: symbol
+    - include: stray-paren-or-semicolon
+
+  descriptor-counter-style-range:
+    - match: \b(range)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.counter-style.range.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:infinite|auto){{b}}'
+          scope: support.constant.property-value.css
+        - include: integer
+    - include: stray-paren-or-semicolon
+
+  descriptor-counter-style-speak-as:
+    - match: \b(speak-as)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.counter-style.speak-as.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:words|spell-out|numbers|bullets|auto){{b}}'
+          scope: support.constant.property-value.css
+        - include: identifier
+    - include: stray-paren-or-semicolon
+
+  descriptor-counter-style-suffix-prefix:
+    - match: \b(suffix|prefix)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.counter-style.suffix-prefix.css
+        - include: end-value
+        - include: value-css-wide
+        - include: symbol
+    - include: stray-paren-or-semicolon
+
+  descriptor-counter-style-symbols:
+    - match: \b(symbols)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.counter-style.symbols.css
+        - include: end-value
+        - include: value-css-wide
+        - include: symbol
+    - include: stray-paren-or-semicolon
+
+  descriptor-counter-style-system:
+    - match: \b(system)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.counter-style.system.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '(?x)
+            \b
+            (?:
+              symbolic|
+              numeric|
+              fixed|
+              extends|
+              cyclic|
+              alphabetic|
+              additive
+            )
+            {{b}}'
+          scope: support.constant.property-value.css
+        - include: integer
         - include: identifier
     - include: stray-paren-or-semicolon
 
@@ -992,120 +1105,13 @@ contexts:
           scope: constant.numeric.unicode-range.css
     - include: stray-paren-or-semicolon
 
-  descriptor-negative:
-    - match: \b(negative)\s*(:)
-      captures:
-        1: support.constant.property-name.css
-        2: punctuation.separator.key-value.css
-      push:
-        - include: end-value
-        - include: value-css-wide
-        - include: symbol
-    - include: stray-paren-or-semicolon
-
-  descriptor-pad:
-    - match: \b(pad)\s*(:)
-      captures:
-        1: support.constant.property-name.css
-        2: punctuation.separator.key-value.css
-      push:
-        - include: end-value
-        - include: value-css-wide
-        - match: '\b(?:infinite|auto){{b}}'
-          scope: support.constant.property-value.css
-        - include: integer
-        - include: symbol
-    - include: stray-paren-or-semicolon
-
-  descriptor-range:
-    - match: \b(range)\s*(:)
-      captures:
-        1: support.constant.property-name.css
-        2: punctuation.separator.key-value.css
-      push:
-        - include: end-value
-        - include: value-css-wide
-        - match: '\b(?:infinite|auto){{b}}'
-          scope: support.constant.property-value.css
-        - include: integer
-    - include: stray-paren-or-semicolon
-
-  descriptor-suffix-prefix:
-    - match: \b(suffix|prefix)\s*(:)
-      captures:
-        1: support.constant.property-name.css
-        2: punctuation.separator.key-value.css
-      push:
-        - include: end-value
-        - include: value-css-wide
-        - include: symbol
-    - include: stray-paren-or-semicolon
-
-  descriptor-speak-as:
-    - match: \b(speak-as)\s*(:)
-      captures:
-        1: support.constant.property-name.css
-        2: punctuation.separator.key-value.css
-      push:
-        - include: end-value
-        - include: value-css-wide
-        - match: '\b(?:words|spell-out|numbers|bullets|auto){{b}}'
-          scope: support.constant.property-value.css
-        - include: identifier
-    - include: stray-paren-or-semicolon
-
-  descriptor-symbols:
-    - match: \b(symbols)\s*(:)
-      captures:
-        1: support.constant.property-name.css
-        2: punctuation.separator.key-value.css
-      push:
-        - include: end-value
-        - include: value-css-wide
-        - include: symbol
-    - include: stray-paren-or-semicolon
-
-  descriptor-system:
-    - match: \b(system)\s*(:)
-      captures:
-        1: support.constant.property-name.css
-        2: punctuation.separator.key-value.css
-      push:
-        - include: end-value
-        - include: value-css-wide
-        - match: '(?x)
-            \b
-            (?:
-              symbolic|
-              numeric|
-              fixed|
-              extends|
-              cyclic|
-              alphabetic|
-              additive
-            )
-            {{b}}'
-          scope: support.constant.property-value.css
-        - include: integer
-        - include: identifier
-    - include: stray-paren-or-semicolon
-
-  descriptor-viewport-height-width:
-    - match: '\b({{optional_min_max_prefix}}(?:width|height))\s*(:)'
-      captures:
-        1: support.constant.property-name.css
-        2: punctuation.separator.key-value.css
-      push:
-        - include: end-value
-        - include: viewport-length
-    - include: stray-paren-or-semicolon
-
   descriptor-viewport-orientation:
     - match: '\b(orientation)\s*(:)'
       captures:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.descriptor.viewport.orientation.css
         - include: end-value
         - match: '\b(?:portrait|landscape|auto){{b}}'
           scope: support.constant.property-value.css
@@ -1117,9 +1123,21 @@ contexts:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.descriptor.viewport.user-zoom.css
         - include: end-value
         - match: '\b(?:zoom|fixed){{b}}'
           scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  descriptor-viewport-width-height:
+    - match: '\b({{optional_min_max_prefix}}(?:width|height))\s*(:)'
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.descriptor.viewport.width-height.css
+        - include: end-value
+        - include: viewport-length
     - include: stray-paren-or-semicolon
 
   descriptor-viewport-zoom:
@@ -1128,6 +1146,7 @@ contexts:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.descriptor.viewport.zoom.css
         - include: end-value
         - match: '\bauto{{b}}'
           scope: support.constant.property-value.css
@@ -8967,12 +8986,6 @@ contexts:
       scope: keyword.other.important.css
     - match: '\b(?:unset|revert|inherit|initial){{b}}'
       scope: support.constant.property-value.css
-
-  viewport-descriptors:
-    - include: descriptor-viewport-user-zoom
-    - include: descriptor-viewport-orientation
-    - include: descriptor-viewport-height-width
-    - include: descriptor-viewport-zoom
 
   viewport-length:
     - match: '\b(?:extend-to-zoom|auto){{b}}'
