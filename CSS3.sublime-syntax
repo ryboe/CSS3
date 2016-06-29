@@ -776,9 +776,9 @@ contexts:
       push:
         - include: end-value
         - include: value-css-wide
+        - include: string
         - match: '\b(?:on|off|normal){{b}}'
           scope: support.constant.property-value.css
-        - include: string
         - include: integer-non-negative
     - include: stray-paren-or-semicolon
 
@@ -1144,9 +1144,9 @@ contexts:
       scope: support.constant.property-value.css
 
   feature-tag-value:
+    - include: string
     - match: '\b(?:on|off){{b}}'
       scope: support.constant.property-value.css
-    - include: string
     - include: integer-non-negative
 
   fill-rule:
@@ -1397,9 +1397,9 @@ contexts:
         - include: end-func
         - include: func-var
         - include: func-symbols
+        - include: string
         - match: '\bnone{{b}}'
           scope: support.constant.property-value.css
-        - include: string
         - include: identifier
 
   func-cross-fade:
@@ -1562,8 +1562,8 @@ contexts:
         - include: end-func
         - include: func-var
         - include: image
-        - include: color
         - include: string
+        - include: color
 
   func-image-set:
     - match: \b(image-set)(\()
@@ -1599,9 +1599,9 @@ contexts:
       push:
         - include: end-func
         - include: func-var
+        - include: string
         - match: '\b(?:space|solid|dotted){{b}}'
           scope: support.constant.property-value.css
-        - include: string
 
   func-linear-gradient:
     - match: \b((?:repeating-)?linear-gradient)(\()
@@ -1652,8 +1652,8 @@ contexts:
         - meta_content_scope: meta.function.path.css
         - include: end-func
         - include: func-var
-        - include: fill-rule
         - include: string
+        - include: fill-rule
 
   func-polygon:
     - match: \b(polygon)(\()
@@ -1810,6 +1810,7 @@ contexts:
         - include: end-func
         - include: func-var
         - include: image
+        - include: string
         - match: '(?x)
             \b
             (?:
@@ -1821,7 +1822,6 @@ contexts:
             )
             {{b}}'
           scope: support.constant.property-value.css
-        - include: string
 
   # This context matches target-counter() too.
   func-target-counters:
@@ -1846,6 +1846,7 @@ contexts:
         - include: end-func
         - include: func-var
         - include: func-url
+        - include: string
         - match: '(?x)
             \b
             (?:
@@ -1856,7 +1857,6 @@ contexts:
             )
             {{b}}'
           scope: support.constant.property-value.css
-        - include: string
 
   func-tint-shade-contrast:
     - match: \b(tint|shade|contrast)(\()
@@ -2527,7 +2527,6 @@ contexts:
     - include: property-align-items
     - include: property-align-self
     - include: property-alignment-baseline
-    - include: property-all
     - include: property-animation-delay
     - include: property-animation-direction
     - include: property-animation-duration
@@ -2536,8 +2535,6 @@ contexts:
     - include: property-animation-name
     - include: property-animation-play-state
     - include: property-animation-timing-function
-    - include: property-animation
-    - include: property-appearance
     - include: property-backface-visibility
     - include: property-background-attachment
     - include: property-background-blend-mode
@@ -2548,7 +2545,6 @@ contexts:
     - include: property-background-position
     - include: property-background-repeat
     - include: property-background-size
-    - include: property-background
     - include: property-baseline-shift
     - include: property-bookmark-label
     - include: property-bookmark-level
@@ -2565,7 +2561,6 @@ contexts:
     - include: property-border-image-outset
     - include: property-border-image-repeat
     - include: property-border-image
-    - include: property-border
     - include: property-box-decoration-break
     - include: property-box-shadow
     - include: property-box-sizing
@@ -2575,14 +2570,9 @@ contexts:
     - include: property-break-inside
     # - include: property-caret-color  # TODO: enable when <caret-color> is defined in CSS Basic User Interface Module Level 4
     - include: property-caret-shape
-    - include: property-caret
-    - include: property-chains
-    - include: property-clear
     - include: property-clip-path
     - include: property-clip-rule
-    - include: property-color
     - include: property-color-interpolation-filters
-    - include: property-columns
     - include: property-column-count
     - include: property-column-fill
     - include: property-column-gap
@@ -2592,31 +2582,21 @@ contexts:
     - include: property-column-rule-width
     - include: property-column-span
     - include: property-column-width
-    - include: property-content
-    - include: property-continue
     - include: property-counter-set-reset-increment
     - include: property-cue-before-after
-    - include: property-cursor
-    - include: property-direction
-    - include: property-display
     - include: property-dominant-baseline
-    - include: property-filter
-    - include: property-flex
     - include: property-flex-basis
     - include: property-flex-direction
     - include: property-flex-flow
     - include: property-flex-shrink-grow
     - include: property-flex-wrap
-    - include: property-float
     - include: property-float-defer
     - include: property-float-offset
     - include: property-float-reference
     - include: property-flood-color
     - include: property-flood-opacity
-    - include: property-flow
     - include: property-flow-from
     - include: property-flow-into
-    - include: property-font
     - include: property-font-family
     - include: property-font-feature-settings
     - include: property-font-kerning
@@ -2643,20 +2623,17 @@ contexts:
     - include: property-grid-template-rows-columns
     - include: property-grid-template
     - include: property-hanging-punctuation
-    - include: property-height
     - include: property-hyphenate-character
     - include: property-hyphenate-limit-chars
     - include: property-hyphenate-limit-last
     - include: property-hyphenate-limit-lines
     - include: property-hyphenate-limit-zone
-    - include: property-hyphens
     - include: property-image-orientation
     - include: property-image-rendering
     - include: property-image-resolution
     - include: property-initial-letter-align
     - include: property-initial-letter-wrap
     - include: property-initial-letter
-    - include: property-isolation
     - include: property-justify-content
     - include: property-justify-items
     - include: property-justify-self
@@ -2670,12 +2647,10 @@ contexts:
     - include: property-list-style-position
     - include: property-list-style-type
     - include: property-list-style
-    - include: property-margin
     - include: property-marker-knockout
     - include: property-marker-pattern
     - include: property-marker-start-segment-mid-end
     - include: property-marker-side
-    - include: property-marker
     - include: property-mask-border-mode
     - include: property-mask-border-outset
     - include: property-mask-border-repeat
@@ -2696,7 +2671,6 @@ contexts:
     - include: property-motion-offset
     - include: property-motion-path
     - include: property-motion-rotation
-    - include: property-motion
     - include: property-nav-up-right-left-down
     - include: property-object-fit
     - include: property-object-position
@@ -2706,32 +2680,21 @@ contexts:
     - include: property-offset-position
     - include: property-offset-rotation
     - include: property-offset-start-end-before-after
-    - include: property-opacity
     - include: property-outline-color
     - include: property-outline-offset
     - include: property-outline-style
     - include: property-outline-width
-    - include: property-outline
     - include: property-overflow-wrap
     - include: property-overflow-x-y
-    - include: property-overflow
-    - include: property-padding
-    - include: property-page
     - include: property-page-break-before-after
     - include: property-page-break-inside
-    - include: property-pause
-    - include: property-perspective
     - include: property-perspective-origin
     - include: property-polar-anchor
     - include: property-polar-angle
     - include: property-polar-distance
     - include: property-polar-origin
-    - include: property-position
     - include: property-presentation-level
-    - include: property-quotes
     - include: property-region-fragment
-    - include: property-resize
-    - include: property-rest
     - include: property-rotation
     - include: property-rotation-point
     - include: property-ruby-align
@@ -2759,13 +2722,75 @@ contexts:
     - include: property-stroke-miterlimit
     - include: property-stroke-opacity
     - include: property-stroke-width
-    - include: property-size
     - include: property-speak-as
+    - include: property-tab-size
+    - include: property-table-layout
+    - include: property-text-align
+    - include: property-text-align-all
+    - include: property-text-align-last
+    - include: property-text-combine-upright
+    - include: property-text-decoration
+    - include: property-text-decoration-color
+    - include: property-text-decoration-line
+    - include: property-text-decoration-skip
+    - include: property-text-decoration-style
+    - include: property-text-emphasis
+    - include: property-text-emphasis-color
+    - include: property-text-emphasis-position
+    - include: property-text-emphasis-style
+    - include: property-text-indent
+    - include: property-text-justify
+    - include: property-text-orientation
+    - include: property-text-overflow
+    - include: property-text-shadow
+    - include: property-text-space-collapse
+    - include: property-text-space-trim
+    - include: property-text-spacing
+    - include: property-text-transform
+    - include: property-text-underline-position
+    - include: property-text-wrap
+    - include: property-top-right-left-bottom
+
+    - include: property-all
+    - include: property-animation
+    - include: property-appearance
+    - include: property-background
+    - include: property-border
+    - include: property-caret
+    - include: property-chains
+    - include: property-clear
+    - include: property-color
+    - include: property-columns
+    - include: property-content
+    - include: property-continue
+    - include: property-cursor
+    - include: property-direction
+    - include: property-display
+    - include: property-filter
+    - include: property-flex
+    - include: property-font
+    - include: property-height
+    - include: property-float
+    - include: property-flow
+    - include: property-motion
+    - include: property-opacity
+    - include: property-outline
+    - include: property-overflow
+    - include: property-padding
+    - include: property-page
+    - include: property-pause
+    - include: property-hyphens
+    - include: property-isolation
+    - include: property-margin
+    - include: property-marker
+    - include: property-perspective
+    - include: property-position
+    - include: property-quotes
+    - include: property-resize
+    - include: property-rest
+    - include: property-size
     - include: property-speak
     - include: property-stroke
-
-
-    - include: property-top-right-left-bottom
     - include: property-grid
     - include: property-order
     - include: property-widows-orphans
@@ -4392,9 +4417,9 @@ contexts:
         - meta_content_scope: meta.property.flow.css
         - include: end-value
         - include: value-css-wide
+        - include: string
         - match: '\b(?:same|auto){{b}}'
           scope: support.constant.property-value.css
-        - include: string
         - match: '\*'
           scope: support.constant.property-value.css
         - include: identifier
@@ -4537,9 +4562,9 @@ contexts:
         - meta_content_scope: meta.property.font-language-override.css
         - include: end-value
         - include: value-css-wide
+        - include: string
         - match: '\bnormal{{b}}'
           scope: support.constant.property-value.css
-        - include: string
     - include: stray-paren-or-semicolon
 
   # CSS Fonts Module Level 3
@@ -4825,11 +4850,11 @@ contexts:
         - meta_content_scope: meta.property.grid.css
         - include: end-value
         - include: value-css-wide
+        - include: string
         - match: '\b(?:none|dense|auto-flow){{b}}'
           scope: support.constant.property-value.css
         - include: track-list
         - include: auto-track-list
-        - include: string
     - include: stray-paren-or-semicolon
 
   # CSS Grid Layout Module Level 1
@@ -4907,9 +4932,9 @@ contexts:
         - meta_content_scope: meta.property.grid-template-areas.css
         - include: end-value
         - include: value-css-wide
+        - include: string
         - match: '\bnone{{b}}'
           scope: support.constant.property-value.css
-        - include: string
     - include: stray-paren-or-semicolon
 
   # CSS Grid Layout Module Level 1
@@ -4938,11 +4963,11 @@ contexts:
         - meta_content_scope: meta.property.grid-template.css
         - include: end-value
         - include: value-css-wide
+        - include: string
         - match: '\bnone{{b}}'
           scope: support.constant.property-value.css
         - include: track-list
         - include: auto-track-list
-        - include: string
     - include: stray-paren-or-semicolon
 
   # CSS Text Module Level 3
@@ -4986,9 +5011,9 @@ contexts:
         - meta_content_scope: meta.property.hyphenate-character.css
         - include: end-value
         - include: value-css-wide
+        - include: string
         - match: '\bauto{{b}}'
           scope: support.constant.property-value.css
-        - include: string
     - include: stray-paren-or-semicolon
 
   # CSS Text Module Level 4
@@ -5328,10 +5353,10 @@ contexts:
         - meta_content_scope: meta.property.list-style.css
         - include: end-value
         - include: value-css-wide
+        - include: string
         - match: '\b(?:outside|none|inside){{b}}'
           scope: support.constant.property-value.css
         - include: image
-        - include: string
         - include: identifier
     - include: stray-paren-or-semicolon
 
@@ -5375,9 +5400,9 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: func-symbols
+        - include: string
         - match: '\bnone{{b}}'
           scope: support.constant.property-value.css
-        - include: string
         - include: identifier
     - include: stray-paren-or-semicolon
 
@@ -5788,9 +5813,9 @@ contexts:
         - meta_content_scope: meta.property.nav-up-right-left-down.css
         - include: end-value
         - include: value-css-wide
+        - include: string
         - match: '\b(?:root|current|auto){{b}}'
           scope: support.constant.property-value.css
-        - include: string
         - include: selector-id
     - include: stray-paren-or-semicolon
 
@@ -6252,9 +6277,9 @@ contexts:
         - meta_content_scope: meta.property.quotes.css
         - include: end-value
         - include: value-css-wide
+        - include: string
         - match: '\bnone{{b}}'
           scope: support.constant.property-value.css
-        - include: string
     - include: stray-paren-or-semicolon
 
   # CSS Regions Module Level 1
@@ -6780,15 +6805,497 @@ contexts:
         - include: length-non-negative
     - include: stray-paren-or-semicolon
 
+  # CSS Text Module Level 3
+  property-tab-size:
+    - match: \b(tab-size)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.tab-size.css
+        - include: end-value
+        - include: value-css-wide
+        - include: length-non-negative
+        - include: integer-non-negative
+    - include: stray-paren-or-semicolon
 
+  # CSS 2.1
+  property-table-layout:
+    - match: \b(table-layout)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.table-layout.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:fixed|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
 
+  # CSS Text Module Level 3
+  property-text-align:
+    - match: \b(text-align)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.text-align.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '(?x)
+            \b
+            (?:
+              start|
+              right|
+              match-parent|
+              left|
+              justify-all|
+              justify|
+              end|
+              center
+            )
+            {{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
 
+  # CSS Text Module Level 3
+  property-text-align-all:
+    - match: \b(text-align-all)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.text-align-all.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '(?x)
+            \b
+            (?:
+              start|
+              right|
+              match-parent|
+              left|
+              justify|
+              end|
+              center
+            )
+            {{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
 
+  # CSS Text Module Level 3
+  property-text-align-last:
+    - match: \b(text-align-last)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.text-align-last.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '(?x)
+            \b
+            (?:
+              start|
+              right|
+              left|
+              justify|
+              end|
+              center|
+              auto
+            )
+            {{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
 
+  # CSS Writing Modes Level 3
+  property-text-combine-upright:
+    - match: \b(text-combine-upright)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.text-combine-upright.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:none|digits|all){{b}}'
+          scope: support.constant.property-value.css
+        # Technically, this should be an integer in the range 2-4.
+        - include: integer-positive
+    - include: stray-paren-or-semicolon
 
+  # CSS Text Decoration Module Level 3
+  property-text-decoration:
+    - match: \b(text-decoration)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.text-decoration.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '(?x)
+            \b
+            (?:
+              wavy|
+              underline|
+              solid|
+              overline|
+              none|
+              line-through|
+              double|
+              dotted|
+              dashed|
+              blink
+            )
+            {{b}}'
+          scope: support.constant.property-value.css
+        - include: color
+    - include: stray-paren-or-semicolon
 
+  # CSS Text Decoration Module Level 3
+  property-text-decoration-color:
+    - match: \b(text-decoration-color)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.text-decoration-color.css
+        - include: end-value
+        - include: value-css-wide
+        - include: color
+    - include: stray-paren-or-semicolon
 
+  # CSS Text Decoration Module Level 3
+  property-text-decoration-line:
+    - match: \b(text-decoration-line)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.text-decoration-line.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '(?x)
+            \b
+            (?:
+              underline|
+              overline|
+              none|
+              line-through|
+              blink
+            )
+            {{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
 
+  # CSS Text Decoration Module Level 3
+  property-text-decoration-skip:
+    - match: \b(text-decoration-skip)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.text-decoration-skip.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '(?x)
+            \b
+            (?:
+              spaces|
+              objects|
+              none|
+              ink|
+              edges|
+              box-decoration
+            )
+            {{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Decoration Module Level 3
+  property-text-decoration-style:
+    - match: \b(text-decoration-style)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.text-decoration-style.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:wavy|solid|double|dotted|dashed){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Decoration Module Level 3
+  property-text-emphasis:
+    - match: \b(text-emphasis)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.text-emphasis.css
+        - include: end-value
+        - include: value-css-wide
+        - include: string
+        - include: color
+        - match: '(?x)
+            \b
+            (?:
+              triangle|
+              sesame|
+              open|
+              none|
+              filled|
+              double-circle|
+              dot|
+              circle
+            )
+            {{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Decoration Module Level 3
+  property-text-emphasis-color:
+    - match: \b(text-emphasis-color)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.text-emphasis-color.css
+        - include: end-value
+        - include: value-css-wide
+        - include: color
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Decoration Module Level 3
+  property-text-emphasis-position:
+    - match: \b(text-emphasis-position)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.text-emphasis-position.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:under|right|over|left){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Decoration Module Level 3
+  property-text-emphasis-style:
+    - match: \b(text-emphasis-style)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.text-emphasis-style.css
+        - include: end-value
+        - include: value-css-wide
+        - include: string
+        - match: '(?x)
+            \b
+            (?:
+              triangle|
+              sesame|
+              open|
+              none|
+              filled|
+              double-circle|
+              dot|
+              circle
+            )
+            {{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Module Level 3
+  property-text-indent:
+    - match: \b(text-indent)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.text-indent.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:hanging|each-line){{b}}'
+          scope: support.constant.property-value.css
+        - include: percentage
+        - include: length
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Module Level 3
+  property-text-justify:
+    - match: \b(text-justify)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.text-justify.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:none|inter-word|inter-character|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Writing Modes Level 3
+  property-text-orientation:
+    - match: \b(text-orientation)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.text-orientation.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:upright|sideways|mixed){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Basic User Interface Module Level 3
+  property-text-overflow:
+    - match: \b(text-overflow)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.text-overflow.css
+        - include: end-value
+        - include: value-css-wide
+        - include: string
+        - match: '\b(?:ellipsis|clip){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Decoration Module Level 3
+  property-text-shadow:
+    - match: \b(text-shadow)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.text-shadow.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
+        - include: color
+        - include: length
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Module Level 4
+  property-text-space-collapse:
+    - match: \b(text-space-collapse)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.text-space-collapse.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '(?x)
+            \b
+            (?:
+              preserve-trim|
+              preserve-spaces|
+              preserve-breaks|
+              preserve-auto|
+              preserve|
+              discard|
+              collapse
+            )
+            {{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Module Level 4
+  property-text-space-trim:
+    - match: \b(text-space-trim)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.text-space-trim.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:trim-inner|none|discard-before|discard-after){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Module Level 4
+  property-text-spacing:
+    - match: \b(text-spacing)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.text-spacing.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '(?x)
+            \b
+            (?:
+              trim-start|
+              trim-end|
+              trim-adjacent|
+              space-start|
+              space-end|
+              space-adjacent|
+              punctuation|
+              normal|
+              none|
+              no-compress|
+              ideograph-numeric|
+              ideograph-alpha|
+              allow-end
+            )
+            {{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Module Level 3
+  property-text-transform:
+    - match: \b(text-transform)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.text-transform.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:uppercase|none|lowercase|full-width|capitalize){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Decoration Module Level 3
+  property-text-underline-position:
+    - match: \b(text-underline-position)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.text-underline-position.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:under|right|left|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Module Level 4
+  property-text-wrap:
+    - match: \b(text-wrap)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.text-wrap.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:nowrap|normal|balance){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
 
   # CSS Positioned Layout Module Level 3
   property-top-right-left-bottom:
@@ -7399,9 +7906,9 @@ contexts:
     - include: number
 
   single-animation-name:
+    - include: string
     - match: '\bnone{{b}}'
       scope: support.constant.property-value.css
-    - include: string
     - include: identifier
 
   single-animation-play-state:
@@ -7501,8 +8008,8 @@ contexts:
     - include: stray-paren
 
   symbol:
-    - include: image
     - include: string
+    - include: image
     - include: identifier
 
   supports-condition-operator:
