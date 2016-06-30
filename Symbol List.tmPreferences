@@ -4,7 +4,7 @@
     <key>name</key>
     <string>Symbol List: Selector</string>
     <key>scope</key>
-    <string>source.css meta.selector.css</string>
+    <string>source.css meta.selector.css, source.css meta.at-rule</string>
     <key>settings</key>
     <dict>
         <key>showInSymbolList</key>
