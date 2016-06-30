@@ -13,12 +13,12 @@
 /*                 ^^^ constant.numeric.css */
 /*                    ^^ keyword.other.unit.css */
 /*                      ^ punctuation.section.media-feature.end.css */
-/*                        ^ punctuation.section.media-query.begin.css */
+/*                        ^ punctuation.section.at-media.begin.css */
   .facet_sidebar {
     display: none;
   }
 }
-/* <- punctuation.section.media-query.end.css */
+/* <- punctuation.section.at-media.end.css */
 
 @media (min-width: 700px) and (orientation: landscape) {}
 /* <- keyword.control.at-rule.media.css punctuation.definition.keyword.css */

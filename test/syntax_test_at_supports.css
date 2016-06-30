@@ -146,7 +146,14 @@
 /*                                ^^^ keyword.operator.logic.at-supports.css */
            (transform: rotate(10deg)) {}
 /*         ^ punctuation.section.supports-condition.begin.css */
-/*                                 ^^ punctuation.section.supports-condition.end.css */
+/*          ^^^^^^^^^ support.constant.property-name.css */
+/*                   ^ punctuation.separator.key-value.css */
+/*                     ^^^^^^ support.function.rotate.css */
+/*                           ^ punctuation.section.function.begin.css */
+/*                            ^^ meta.function.rotate.css constant.numeric.css */
+/*                              ^^^ meta.function.rotate.css keyword.other.unit.css */
+/*                                 ^ punctuation.section.function.end.css */
+/*                                  ^ punctuation.section.supports-condition.end.css */
 /*                                    ^ punctuation.section.at-supports.begin.css */
 /*                                     ^ punctuation.section.at-supports.end.css */
 
@@ -167,6 +174,13 @@
 /*                               ^^^ keyword.operator.logic.at-supports.css */
            (transform: rotate(10deg))) {}
 /*         ^ punctuation.section.supports-condition.begin.css */
+/*          ^^^^^^^^^ support.constant.property-name.css */
+/*                   ^ punctuation.separator.key-value.css */
+/*                     ^^^^^^ support.function.rotate.css */
+/*                           ^ punctuation.section.function.begin.css */
+/*                            ^^ meta.function.rotate.css constant.numeric.css */
+/*                              ^^^ meta.function.rotate.css keyword.other.unit.css */
+/*                                 ^ punctuation.section.function.end.css */
 /*                                  ^^ punctuation.section.supports-condition.end.css */
 /*                                     ^ punctuation.section.at-supports.begin.css */
 /*                                      ^ punctuation.section.at-supports.end.css */

@@ -376,7 +376,7 @@
 /*^^^^^^^^^^^^ keyword.control.at-rule.counter-style.css */
 /*            ^ -keyword.control.at-rule.counter-style.css */
 /*             ^^^^^^^^^^^^^^^^^^^ string.unquoted.identifier.css */
-/*                                 ^ punctuation.section.counter-style-declaration-list.begin.css */
+/*                                 ^ punctuation.section.at-counter-style.begin.css */
   system: additive;
 /*^^^^^^ support.constant.property-name.css */
 /*      ^ punctuation.separator.key-value.css */
@@ -412,4 +412,4 @@
 /*                                  ^ punctuation.terminator.rule.css */
   /* 마이너스 (followed by a space) */
 }
-/* <- punctuation.section.counter-style-declaration-list.end.css */
+/* <- punctuation.section.at-counter-style.end.css */
