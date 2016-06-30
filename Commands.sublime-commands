@@ -2,13 +2,5 @@
     {
         "caption": "CSS3: Convert RGB Color To Hex",
         "command": "css3_hex_convert",
-    },
-    {
-        "caption": "CSS3: Validate",
-        "command": "css3_validate_all",
-    },
-    {
-        "caption": "CSS3: Clear Gutter Marks",
-        "command": "css3_clear_gutter_marks",
-    },
+    }
 ]
