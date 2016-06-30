@@ -9,6 +9,8 @@
     <dict>
         <key>showInSymbolList</key>
         <integer>1</integer>
+
+        <!-- condense all whitespace to a single space -->
         <key>symbolTransformation</key>
         <string>s/\s+/ /g</string>
     </dict>
