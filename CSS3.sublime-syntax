@@ -215,10 +215,10 @@ contexts:
         1: punctuation.definition.keyword.css
       push:
         - match: '}'
-          scope: punctuation.section.color-profile-descriptor-block.end.css
+          scope: punctuation.section.at-color-profile.end.css
           pop: true
         - match: '{'
-          scope: punctuation.section.color-profile-descriptor-block.begin.css
+          scope: punctuation.section.at-color-profile.begin.css
           push:
             - match: '(?=})'
               pop: true
@@ -232,10 +232,10 @@ contexts:
         1: punctuation.definition.keyword.css
       push:
         - match: '}'
-          scope: punctuation.section.counter-style-declaration-list.end.css
+          scope: punctuation.section.at-counter-style.end.css
           pop: true
         - match: '{'
-          scope: punctuation.section.counter-style-declaration-list.begin.css
+          scope: punctuation.section.at-counter-style.begin.css
           push:
             - match: '(?=})'
               pop: true
@@ -265,10 +265,10 @@ contexts:
         1: punctuation.definition.keyword.css
       push:
         - match: '}'
-          scope: punctuation.section.font-face-descriptor-block.end.css
+          scope: punctuation.section.at-font-face.end.css
           pop: true
         - match: '{'
-          scope: punctuation.section.font-face-descriptor-block.begin.css
+          scope: punctuation.section.at-font-face.begin.css
           push:
             - match: '(?=})'
               pop: true
@@ -282,10 +282,10 @@ contexts:
         1: punctuation.definition.keyword.css
       push:
         - match: '}'
-          scope: punctuation.section.font-feature-values-rule.end.css
+          scope: punctuation.section.at-font-feature-values.end.css
           pop: true
         - match: '{'
-          scope: punctuation.section.font-feature-values-rule.begin.css
+          scope: punctuation.section.at-font-feature-values.begin.css
           push:
             - match: '(?=})'
               pop: true
@@ -315,10 +315,10 @@ contexts:
         1: punctuation.definition.keyword.css
       push:
         - match: '}'
-          scope: punctuation.section.keyframes-rule.end.css
+          scope: punctuation.section.at-keyframes.end.css
           pop: true
         - match: '{'
-          scope: punctuation.section.keyframes-rule.begin.css
+          scope: punctuation.section.at-keyframes.begin.css
           push:
             - match: '(?=})'
               pop: true
@@ -344,10 +344,10 @@ contexts:
         1: punctuation.definition.keyword.css
       push:
         - match: '}'
-          scope: punctuation.section.media-query.end.css
+          scope: punctuation.section.at-media.end.css
           pop: true
         - match: '{'
-          scope: punctuation.section.media-query.begin.css
+          scope: punctuation.section.at-media.begin.css
           push:
             - match: '(?=})'
               pop: true
@@ -3307,6 +3307,7 @@ contexts:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.property.align-items.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:stretch|normal){{b}}'
@@ -3325,6 +3326,7 @@ contexts:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.property.align-self.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:stretch|normal|auto){{b}}'
@@ -3343,6 +3345,7 @@ contexts:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.property.alignment-baseline.css
         - include: end-value
         - include: value-css-wide
         - match: '(?x)
@@ -3377,6 +3380,7 @@ contexts:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.property.all.css
         - include: end-value
         - include: value-css-wide
     - include: stray-paren-or-semicolon
@@ -3388,6 +3392,7 @@ contexts:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.property.animation.css
         - include: end-value
         - include: value-css-wide
         - include: single-animation-play-state
@@ -3406,6 +3411,7 @@ contexts:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.property.animation-composition.css
         - include: end-value
         - include: value-css-wide
         - include: single-animation-composition
@@ -3418,6 +3424,7 @@ contexts:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.property.animation-delay.css
         - include: end-value
         - include: value-css-wide
         - include: time
@@ -3430,6 +3437,7 @@ contexts:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.property.animation-direction.css
         - include: end-value
         - include: value-css-wide
         - include: single-animation-direction
@@ -3442,6 +3450,7 @@ contexts:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.property.animation-duration.css
         - include: end-value
         - include: value-css-wide
         - include: time
@@ -3454,6 +3463,7 @@ contexts:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.property.animation-fill-mode.css
         - include: end-value
         - include: value-css-wide
         - include: single-animation-fill-mode
@@ -3466,6 +3476,7 @@ contexts:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.property.animation-iteration-count.css
         - include: end-value
         - include: value-css-wide
         - include: single-animation-iteration-count
@@ -3478,6 +3489,7 @@ contexts:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.property.animation-name.css
         - include: end-value
         - include: value-css-wide
         - include: single-animation-name
@@ -3490,6 +3502,7 @@ contexts:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.property.animation-play-state.css
         - include: end-value
         - include: value-css-wide
         - include: single-animation-play-state
@@ -3502,6 +3515,7 @@ contexts:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.property.animation-timing-function.css
         - include: end-value
         - include: value-css-wide
         - include: single-timing-function
@@ -3514,6 +3528,7 @@ contexts:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.property.appearance .css
         - include: end-value
         - include: value-css-wide
         - match: \b(?:none|auto){{b}}
