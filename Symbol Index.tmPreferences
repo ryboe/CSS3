@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plist version="1.0">
+<dict>
+    <key>name</key>
+    <string>Symbol Index</string>
+    <key>scope</key>
+    <string>source.css entity.other.attribute-name.class.css, source.css entity.other.attribute-name.id.css</string>
+    <key>settings</key>
+    <dict>
+        <key>showInIndexedSymbolList</key>
+        <string>1</string>
+        <key>symbolIndexTransformation</key>
+        <string>/[#.]([A-Za-z0-9_~]+)/$1/;</string>
+    </dict>
+</dict>
+</plist>
