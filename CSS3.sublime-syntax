@@ -200,6 +200,7 @@ contexts:
         0: keyword.control.at-rule.charset.css
         1: punctuation.definition.keyword.css
       push:
+        - meta_scope: meta.at-rule.charset.css
         - match: ';'
           scope: punctuation.terminator.charset.css
           pop: true
@@ -214,6 +215,7 @@ contexts:
         0: keyword.control.at-rule.color-profile.css
         1: punctuation.definition.keyword.css
       push:
+        - meta_scope: meta.at-rule.color-profile.css
         - match: '}'
           scope: punctuation.section.at-color-profile.end.css
           pop: true
@@ -231,6 +233,7 @@ contexts:
         0: keyword.control.at-rule.counter-style.css
         1: punctuation.definition.keyword.css
       push:
+        - meta_scope: meta.at-rule.counter-style.css
         - match: '}'
           scope: punctuation.section.at-counter-style.end.css
           pop: true
@@ -249,6 +252,7 @@ contexts:
         0: keyword.control.at-rule.custom-media.css
         1: punctuation.definition.keyword.css
       push:
+        - meta_scope: meta.at-rule.custom-media.css
         - match: ';'
           scope: punctuation.terminator.custom-media.css
           pop: true
@@ -264,6 +268,7 @@ contexts:
         0: keyword.control.at-rule.font-face.css
         1: punctuation.definition.keyword.css
       push:
+        - meta_scope: meta.at-rule.font-face.css
         - match: '}'
           scope: punctuation.section.at-font-face.end.css
           pop: true
@@ -281,6 +286,7 @@ contexts:
         0: keyword.control.at-rule.font-feature-values.css
         1: punctuation.definition.keyword.css
       push:
+        - meta_scope: meta.at-rule.font-feature-values.css
         - match: '}'
           scope: punctuation.section.at-font-feature-values.end.css
           pop: true
@@ -300,6 +306,7 @@ contexts:
         0: keyword.control.at-rule.import.css
         1: punctuation.definition.keyword.css
       push:
+        - meta_scope: meta.at-rule.import.css
         - match: ';'
           scope: punctuation.terminator.at-import.css
           pop: true
@@ -314,6 +321,7 @@ contexts:
         0: keyword.control.at-rule.keyframes.css
         1: punctuation.definition.keyword.css
       push:
+        - meta_scope: meta.at-rule.keyframes.css
         - match: '}'
           scope: punctuation.section.at-keyframes.end.css
           pop: true
@@ -343,6 +351,7 @@ contexts:
         0: keyword.control.at-rule.media.css
         1: punctuation.definition.keyword.css
       push:
+        - meta_scope: meta.at-rule.media.css
         - match: '}'
           scope: punctuation.section.at-media.end.css
           pop: true
@@ -362,6 +371,7 @@ contexts:
         0: keyword.control.at-rule.namespace.css
         1: punctuation.definition.keyword.css
       push:
+        - meta_scope: meta.at-rule.namespace.css
         - match: ';'
           scope: punctuation.terminator.at-namespace.css
           pop: true
@@ -376,6 +386,7 @@ contexts:
         0: keyword.control.at-rule.page.css
         1: punctuation.definition.keyword.css
       push:
+        - meta_scope: meta.at-rule.page.css
         - match: '}'
           scope: punctuation.section.at-page.end.css
           pop: true
@@ -395,6 +406,7 @@ contexts:
         0: keyword.control.at-rule.supports.css
         1: punctuation.definition.keyword.css
       push:
+        - meta_scope: meta.at-rule.supports.css
         - match: '}'
           scope: punctuation.section.at-supports.end.css
           pop: true
@@ -415,6 +427,7 @@ contexts:
         0: keyword.control.at-rule.viewport.css
         1: punctuation.definition.keyword.css
       push:
+        - meta_scope: meta.at-rule.viewport.css
         - match: '}'
           scope: punctuation.section.at-viewport.end.css
           pop: true
