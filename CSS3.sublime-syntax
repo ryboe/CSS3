@@ -4154,7 +4154,7 @@ contexts:
 
   # CSS Masking Module Level 1
   property-clip-path:
-    - match: \b(clip-path)\s*(:)
+    - match: \b({{vendor_prefix}}clip-path)\s*(:)
       captures:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
@@ -8572,11 +8572,21 @@ contexts:
         - match: '}'
           scope: punctuation.section.property-list.end.css
           pop: true
-        - include: property-list
         - include: selector
+        - include: property-list
     - include: stray-brace
 
   selector:
+    # This match applies a single meta.selector.css scope to a comma-separated
+    # list of selectors, so that they appear as one entry in the Symbol List.
+    - match: '(?=[\w.:#-\[*])'
+      push:
+        - meta_content_scope: meta.selector.css
+        - match: '(?={)'
+          pop: true
+        - include: selector-list
+
+  selector-list:
     - include: selector-simple-compound
     - include: selector-combinator
 
@@ -8584,7 +8594,6 @@ contexts:
     - match: '\['
       scope: punctuation.section.attribute-selector.begin.css
       push:
-        - meta_scope: meta.selector.attribute.css
         - match: '\]'
           scope: punctuation.section.attribute-selector.end.css
           pop: true
@@ -8620,24 +8629,24 @@ contexts:
   selector-class:
     - match: '(\.){{identifier}}'
       captures:
-        0: meta.selector.class.css entity.other.attribute-name.class.css
+        0: entity.other.attribute-name.class.css
         1: punctuation.definition.entity.css
 
   selector-combinator:
     - match: '{{combinator}}(?![>+~|])'
-      scope: meta.selector.combinator.css keyword.operator.combinator.css
+      scope: keyword.operator.combinator.css
     - match: '{{combinator}}{2,}'
-      scope: meta.selector.combinator.css keyword.operator.combinator.css invalid.illegal.combinator.css
+      scope: keyword.operator.combinator.css invalid.illegal.combinator.css
 
   selector-id:
     - match: '(#){{identifier}}'
       captures:
-        0: meta.selector.id.css entity.other.attribute-name.id.css
+        0: entity.other.attribute-name.id.css
         1: punctuation.definition.entity.css
 
   selector-keyframes:
     - match: '\b(?:to|from){{b}}'
-      scope: meta.selector.keyframes.css entity.other.attribute-name.keyframes-selector.css
+      scope: entity.other.attribute-name.keyframes-selector.css
     - include: percentage-zero-to-100
 
   selector-page:
@@ -8647,7 +8656,7 @@ contexts:
   selector-page-pseudo-class:
     - match: '(:)(?:right|left|first|blank){{b}}'
       captures:
-        0: meta.selector.pseudo-class.css entity.other.attribute-name.pseudo-class.css
+        0: entity.other.attribute-name.pseudo-class.css
         1: punctuation.definition.entity.css
 
   selector-pseudo-class:
@@ -8706,7 +8715,7 @@ contexts:
         # It has been replaced by :placeholder-shown, which is not widely
         # supported yet.
       captures:
-        0: meta.selector.pseudo-class.css entity.other.attribute-name.pseudo-class.css
+        0: entity.other.attribute-name.pseudo-class.css
         1: punctuation.definition.entity.css
     - include: selector-pseudo-class-invalid
 
@@ -8723,7 +8732,7 @@ contexts:
         )
         {{b}}'
       captures:
-        0: meta.selector.pseudo-class.css entity.other.attribute-name.pseudo-class.css invalid.deprecated.css
+        0: css entity.other.attribute-name.pseudo-class.css invalid.deprecated.css
         1: punctuation.definition.entity.css
 
   selector-pseudo-class-dir:
@@ -8733,7 +8742,6 @@ contexts:
         2: punctuation.definition.entity.css
         3: punctuation.section.function.begin.css
       push:
-        - meta_scope: meta.selector.pseudo-class.css
         - meta_content_scope: meta.function.pseudo-class.dir.css
         - include: end-func
         - match: \b(?:rtl|ltr)\b
@@ -8747,7 +8755,6 @@ contexts:
         2: punctuation.definition.entity.css
         3: punctuation.section.function.begin.css
       push:
-        - meta_scope: meta.selector.pseudo-class.css
         - meta_content_scope: meta.function.pseudo-class.drop.css
         - include: end-func
         - match: \b(?:valid|invalid|active)\b
@@ -8771,7 +8778,6 @@ contexts:
         2: punctuation.definition.entity.css
         3: punctuation.section.function.begin.css
       push:
-        - meta_scope: meta.selector.pseudo-class.css
         - meta_content_scope: meta.function.pseudo-class.host.css
         - include: end-func
         - include: selector-simple-compound
@@ -8793,7 +8799,6 @@ contexts:
         2: punctuation.definition.entity.css
         3: punctuation.section.function.begin.css
       push:
-        - meta_scope: meta.selector.pseudo-class.css
         - meta_content_scope: meta.function.pseudo-class.lang.css
         - include: end-func
         - match: '[*a-zA-Z0-9-]+'
@@ -8807,10 +8812,9 @@ contexts:
         2: punctuation.definition.entity.css
         3: punctuation.section.function.begin.css
       push:
-        - meta_scope: meta.selector.pseudo-class.css
         - meta_content_scope: meta.function.pseudo-class.not-matches-has.css
         - include: end-func
-        - include: selector
+        - include: selector-list
     - include: stray-paren
 
   selector-pseudo-class-nth-child:
@@ -8820,13 +8824,12 @@ contexts:
         2: punctuation.definition.entity.css
         3: punctuation.section.function.begin.css
       push:
-        - meta_scope: meta.selector.pseudo-class.css
         - meta_content_scope: meta.function.pseudo-class.nth-child.css
         - include: end-func
         - match: '\bof{{b}}'
           scope: support.constant.property-value.css
         - include: an-plus-b
-        - include: selector
+        - include: selector-list
     - include: stray-paren
 
   selector-pseudo-class-nth-column-nth-type:
@@ -8846,7 +8849,6 @@ contexts:
         2: punctuation.definition.entity.css
         3: punctuation.section.function.begin.css
       push:
-        - meta_scope: meta.selector.pseudo-class.css
         - meta_content_scope: meta.function.pseudo-class.nth.css
         - include: end-func
         - include: an-plus-b
@@ -8859,10 +8861,9 @@ contexts:
         2: punctuation.definition.entity.css
         3: punctuation.section.function.begin.css
       push:
-        - meta_scope: meta.selector.pseudo-class.css
         - meta_content_scope: meta.function.pseudo-class.scope-context.css
         - include: end-func
-        - include: selector
+        - include: selector-list
     - include: stray-paren
 
   selector-pseudo-element:
@@ -8889,7 +8890,7 @@ contexts:
       # TODO: Remove input-placeholder. It's non-standard, but commonly used. It
       # has been replaced by ::placeholder, which is not widely supported yet.
       captures:
-        0: meta.selector.pseudo-element.css entity.other.attribute-name.pseudo-element.css
+        0: entity.other.attribute-name.pseudo-element.css
         1: punctuation.definition.entity.css
     - include: selector-pseudo-element-slotted
     - include: selector-pseudo-element-attr
@@ -8902,7 +8903,6 @@ contexts:
         2: punctuation.definition.entity.css
         3: punctuation.section.function.begin.css
       push:
-        - meta_scope: meta.selector.pseudo-element.css
         - meta_content_scope: meta.function.pseudo-element.attr.css
         - include: end-func
         # The <wq-name> pattern is close enough to the <namespace-attr> pattern
@@ -8933,7 +8933,6 @@ contexts:
         2: punctuation.definition.entity.css
         3: punctuation.section.function.begin.css
       push:
-        - meta_scope: meta.selector.pseudo-element.css
         - meta_content_scope: meta.function.pseudo-element.slotted.css
         - include: end-func
         - include: selector-simple-compound
@@ -8959,7 +8958,6 @@ contexts:
           {{ns_prefix}}(\*)
         )'
       captures:
-        0: meta.selector.type.css
         1: string.unquoted.namespace.css
         2: string.unquoted.namespace.wildcard.css
         3: punctuation.separator.namespace.css
@@ -9001,7 +8999,7 @@ contexts:
           acronym
         )
         {{b}}'
-      scope: meta.selector.type.css entity.name.tag.css invalid.deprecated.css
+      scope: entity.name.tag.css invalid.deprecated.css
 
   self-position:
     - match: '(?x)
