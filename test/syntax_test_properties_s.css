@@ -1,0 +1,131 @@
+/* SYNTAX TEST "Packages/CSS3/CSS3.sublime-syntax" */
+
+
+/* TEST S PROPERTIES */
+foo {
+	scroll-behavior: auto;
+	scroll-behavior: smooth;
+	scroll-behavior: inherit;
+	scroll-behavior: initial;
+	scroll-behavior: unset;
+
+	scroll-snap-align: center none;
+	scroll-snap-align: none start;
+
+	scroll-snap-margin:;
+
+	scroll-snap-margin-block:;
+
+	scroll-snap-margin-block-end:;
+
+	scroll-snap-margin-block-start:;
+
+	scroll-snap-margin-bottom:;
+
+	scroll-snap-margin-inline:;
+
+	scroll-snap-margin-inline-end:;
+
+	scroll-snap-margin-inline-start:;
+
+	scroll-snap-margin-left:;
+
+	scroll-snap-margin-right:;
+
+	scroll-snap-margin-top:;
+
+	scroll-snap-padding:;
+
+	scroll-snap-padding-block:;
+
+	scroll-snap-padding-block-end:;
+
+	scroll-snap-padding-block-start:;
+
+	scroll-snap-padding-bottom:;
+
+	scroll-snap-padding-inline:;
+
+	scroll-snap-padding-inline-end:;
+
+	scroll-snap-padding-inline-start:;
+
+	scroll-snap-padding-left:;
+
+	scroll-snap-padding-right:;
+
+	scroll-snap-padding-top:;
+
+	scroll-snap-padding-top:;
+
+	scroll-snap-stop:;
+
+	scroll-snap-type: none;
+	scroll-snap-type: mandatory;
+	scroll-snap-type: proximity;
+	scroll-snap-type: inherit;
+	scroll-snap-type: initial;
+	scroll-snap-type: unset;
+
+	shape-image-threshold: 0.7;
+	shape-image-threshold: inherit;
+	shape-image-threshold: initial;
+	shape-image-threshold: unset;
+
+	shape-inside: display;
+
+	shape-margin: 10px;
+	shape-margin: 20mm;
+	shape-margin: 60%;
+	shape-margin: inherit;
+	shape-margin: initial;
+	shape-margin: unset;
+
+	shape-outside: none;
+	shape-outside: margin-box;
+	shape-outside: content-box;
+	shape-outside: border-box;
+	shape-outside: padding-box;
+
+	shape-outside: circle();
+	shape-outside: ellipse();
+	shape-outside: inset(10px 10px 10px 10px);
+	shape-outside: polygon(10px 10px, 20px 20px, 30px 30px);
+	shape-outside: url("image.png");
+	shape-outside: initial;
+	shape-outside: inherit;
+	shape-outside: unset;
+
+	speak:;
+
+	speak-as:;
+
+	string-set: author attr(author);
+	string-set: title contents;
+	string-set: chapter contents;
+	string-set: heading content();
+	string-set: header content(before) ':' content(text);
+	string-set: header attr(title);
+
+	stroke:;
+
+	stroke-alignment:;
+
+	stroke-dashadjust:;
+
+	stroke-dasharray:;
+
+	stroke-dashcorner:;
+
+	stroke-dashoffset:;
+
+	stroke-linecap:;
+
+	stroke-linejoin:;
+
+	stroke-miterlimit:;
+
+	stroke-opacity:;
+
+	stroke-width:;
+}

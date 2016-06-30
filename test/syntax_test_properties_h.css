@@ -1,0 +1,35 @@
+/* SYNTAX TEST "Packages/CSS3/CSS3.sublime-syntax" */
+
+
+/* TEST H PROPERTIES */
+foo {
+	hanging-punctuation: allow-end;
+	hanging-punctuation: force-end;
+
+	height: auto;
+	height: 120px;
+	height: 10em;
+	height: 75%;
+	height: inherit;
+	height: initial;
+	height: unset;
+
+	hyphenate-character: "\2010";
+
+	hyphenate-limit-chars: auto 3;
+
+	hyphenate-limit-last: always;
+	hyphenate-limit-last: spread;
+	hyphenate-limit-last: none;
+	hyphenate-limit-last: always;
+
+	hyphenate-limit-lines:;
+	hyphenate-limit-zone:;
+
+	hyphens: none;
+	hyphens: manual;
+	hyphens: auto;
+	hyphens: inherit;
+	hyphens: initial;
+	hyphens: unset;
+}
