@@ -1,0 +1,275 @@
+/* SYNTAX TEST "Packages/CSS3/CSS3.sublime-syntax" */
+
+
+@keyframes foo {}
+/* <- keyword.control.at-rule.keyframes.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.keyframes.css */
+/*^^^^^^^^ keyword.control.at-rule.keyframes.css */
+/*        ^ -keyword.control.at-rule.keyframes.css */
+/*         ^^^ string.unquoted.identifier.css */
+/*            ^ -string.unquoted.identifier.css */
+/*             ^ punctuation.section.at-keyframes.begin.css */
+/*              ^ punctuation.section.at-keyframes.end.css */
+
+@keyframes "foo" {}
+/* <- keyword.control.at-rule.keyframes.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.keyframes.css */
+/*^^^^^^^^ keyword.control.at-rule.keyframes.css */
+/*        ^ -keyword.control.at-rule.keyframes.css */
+/*         ^ string.quoted.double.css punctuation.definition.string.begin.css */
+/*          ^^^ string.quoted.double.css */
+/*             ^ string.quoted.double.css punctuation.definition.string.end.css */
+/*               ^ punctuation.section.at-keyframes.begin.css */
+/*                ^ punctuation.section.at-keyframes.end.css */
+
+@keyframes FOO {}
+/* <- keyword.control.at-rule.keyframes.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.keyframes.css */
+/*^^^^^^^^ keyword.control.at-rule.keyframes.css */
+/*        ^ -keyword.control.at-rule.keyframes.css */
+/*         ^^^ string.unquoted.identifier.css */
+/*            ^ -string.unquoted.identifier.css */
+/*             ^ punctuation.section.at-keyframes.begin.css */
+/*              ^ punctuation.section.at-keyframes.end.css */
+
+@keyframes slide-right {
+/* <- keyword.control.at-rule.keyframes.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.keyframes.css */
+/*^^^^^^^^ keyword.control.at-rule.keyframes.css */
+/*        ^ -keyword.control.at-rule.keyframes.css */
+/*         ^^^^^^^^^^^ string.unquoted.identifier.css */
+/*                    ^ -string.unquoted.identifier.css */
+/*                     ^ punctuation.section.at-keyframes.begin.css */
+  from {
+/*^^^^ entity.other.attribute-name.keyframes-selector.css */
+/*    ^ -entity.other.attribute-name.keyframes-selector.css */
+/*     ^ punctuation.section.keyframes-declaration-list.begin.css */
+    margin-left: 0px;
+  }
+/*^ punctuation.section.keyframes-declaration-list.end.css */
+
+  50% {
+/*^^ constant.numeric.css */
+/*  ^ keyword.other.unit.css */
+/*   ^ -keyword.other.unit.css */
+/*    ^ punctuation.section.keyframes-declaration-list.begin.css */
+    margin-left: 110px;
+    opacity: 1;
+  }
+/*^ punctuation.section.keyframes-declaration-list.end.css */
+
+  50% {
+/*^^ constant.numeric.css */
+/*  ^ keyword.other.unit.css */
+/*   ^ -keyword.other.unit.css */
+/*    ^ punctuation.section.keyframes-declaration-list.begin.css */
+     opacity: 0.9;
+  }
+/*^ punctuation.section.keyframes-declaration-list.end.css */
+
+  to {
+/*^^ entity.other.attribute-name.keyframes-selector.css */
+/*  ^ -entity.other.attribute-name.keyframes-selector.css */
+/*   ^ punctuation.section.keyframes-declaration-list.begin.css */
+    margin-left: 200px;
+  }
+/*^ punctuation.section.keyframes-declaration-list.end.css */
+
+}
+/* <- punctuation.section.at-keyframes.end.css */
+
+@keyframes slide-right {
+/* <- keyword.control.at-rule.keyframes.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.keyframes.css */
+/*^^^^^^^^ keyword.control.at-rule.keyframes.css */
+/*        ^ -keyword.control.at-rule.keyframes.css */
+/*         ^^^^^^^^^^^ string.unquoted.identifier.css */
+/*                    ^ -string.unquoted.identifier.css */
+/*                     ^ punctuation.section.at-keyframes.begin.css */
+
+  50% {
+/*^^ constant.numeric.css */
+/*  ^ keyword.other.unit.css */
+/*   ^ -keyword.other.unit.css */
+/*    ^ punctuation.section.keyframes-declaration-list.begin.css */
+    margin-left: 110px;
+    opacity: 0.9;
+  }
+/*^ punctuation.section.keyframes-declaration-list.end.css */
+
+  to {
+/*^^ entity.other.attribute-name.keyframes-selector.css */
+/*  ^ -entity.other.attribute-name.keyframes-selector.css */
+/*   ^ punctuation.section.keyframes-declaration-list.begin.css */
+    margin-left: 200px;
+  }
+/*^ punctuation.section.keyframes-declaration-list.end.css */
+
+}
+/* <- punctuation.section.at-keyframes.end.css */
+
+@keyframes wobble {
+/* <- keyword.control.at-rule.keyframes.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.keyframes.css */
+/*^^^^^^^^ keyword.control.at-rule.keyframes.css */
+/*        ^ -keyword.control.at-rule.keyframes.css */
+/*         ^^^^^^ string.unquoted.identifier.css */
+/*               ^ -string.unquoted.identifier.css */
+/*                ^ punctuation.section.at-keyframes.begin.css */
+  0% {
+/*^ constant.numeric.css */
+/* ^ keyword.other.unit.css */
+/*  ^ -keyword.other.unit.css */
+/*   ^ punctuation.section.keyframes-declaration-list.begin.css */
+    left: 100px;
+  }
+/*^ punctuation.section.keyframes-declaration-list.end.css */
+
+  40% {
+/*^^ constant.numeric.css */
+/*  ^ keyword.other.unit.css */
+/*   ^ -keyword.other.unit.css */
+/*    ^ punctuation.section.keyframes-declaration-list.begin.css */
+    left: 150px;
+  }
+/*^ punctuation.section.keyframes-declaration-list.end.css */
+
+  60% {
+/*^^ constant.numeric.css */
+/*  ^ keyword.other.unit.css */
+/*   ^ -keyword.other.unit.css */
+/*    ^ punctuation.section.keyframes-declaration-list.begin.css */
+    left: 75px;
+  }
+/*^ punctuation.section.keyframes-declaration-list.end.css */
+
+  100% {
+/*^^^ constant.numeric.css */
+/*   ^ keyword.other.unit.css */
+/*    ^ -keyword.other.unit.css */
+/*     ^ punctuation.section.keyframes-declaration-list.begin.css */
+    left: 100px;
+  }
+/*^ punctuation.section.keyframes-declaration-list.end.css */
+}
+/* <- punctuation.section.at-keyframes.end.css */
+
+@keyframes bounce {
+/* <- keyword.control.at-rule.keyframes.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.keyframes.css */
+/*^^^^^^^^ keyword.control.at-rule.keyframes.css */
+/*        ^ -keyword.control.at-rule.keyframes.css */
+/*         ^^^^^^ string.unquoted.identifier.css */
+/*               ^ -string.unquoted.identifier.css */
+/*                ^ punctuation.section.at-keyframes.begin.css */
+
+  from {
+/*^^^^ entity.other.attribute-name.keyframes-selector.css */
+/*    ^ -entity.other.attribute-name.keyframes-selector.css */
+/*     ^ punctuation.section.keyframes-declaration-list.begin.css */
+    top: 100px;
+    animation-timing-function: ease-out;
+  }
+/*^ punctuation.section.keyframes-declaration-list.end.css */
+
+  25% {
+/*^^ constant.numeric.css */
+/*  ^ keyword.other.unit.css */
+/*   ^ -keyword.other.unit.css */
+/*    ^ punctuation.section.keyframes-declaration-list.begin.css */
+    top: 50px;
+    animation-timing-function: ease-in;
+  }
+/*^ punctuation.section.keyframes-declaration-list.end.css */
+
+  50% {
+/*^^ constant.numeric.css */
+/*  ^ keyword.other.unit.css */
+/*   ^ -keyword.other.unit.css */
+/*    ^ punctuation.section.keyframes-declaration-list.begin.css */
+    top: 100px;
+    animation-timing-function: ease-out;
+  }
+/*^ punctuation.section.keyframes-declaration-list.end.css */
+
+  75% {
+/*^^ constant.numeric.css */
+/*  ^ keyword.other.unit.css */
+/*   ^ -keyword.other.unit.css */
+/*    ^ punctuation.section.keyframes-declaration-list.begin.css */
+    top: 75px;
+    animation-timing-function: ease-in;
+  }
+/*^ punctuation.section.keyframes-declaration-list.end.css */
+
+  to {
+/*^^ entity.other.attribute-name.keyframes-selector.css */
+/*  ^ -entity.other.attribute-name.keyframes-selector.css */
+/*   ^ punctuation.section.keyframes-declaration-list.begin.css */
+    top: 100px;
+  }
+/*^ punctuation.section.keyframes-declaration-list.end.css */
+
+}
+/* <- punctuation.section.at-keyframes.end.css */
+
+@keyframes colorful-diagonal-slide {
+/* <- keyword.control.at-rule.keyframes.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.keyframes.css */
+/*^^^^^^^^ keyword.control.at-rule.keyframes.css */
+/*        ^ -keyword.control.at-rule.keyframes.css */
+/*         ^^^^^^^^^^^^^^^^^^^^^^^ string.unquoted.identifier.css */
+/*                                ^ -string.unquoted.identifier.css */
+/*                                 ^ punctuation.section.at-keyframes.begin.css */
+/*                                 ^ punctuation.section.at-keyframes.begin.css */
+
+  from {
+/*^^^^ entity.other.attribute-name.keyframes-selector.css */
+/*    ^ -entity.other.attribute-name.keyframes-selector.css */
+/*     ^ punctuation.section.keyframes-declaration-list.begin.css */
+    left: 0;
+    top: 0;
+  }
+/*^ punctuation.section.keyframes-declaration-list.end.css */
+
+  10% {
+/*^^ constant.numeric.css */
+/*  ^ keyword.other.unit.css */
+/*   ^ -keyword.other.unit.css */
+/*    ^ punctuation.section.keyframes-declaration-list.begin.css */
+    background-color: blue;
+  }
+/*^ punctuation.section.keyframes-declaration-list.end.css */
+
+  10% {
+/*^^ constant.numeric.css */
+/*  ^ keyword.other.unit.css */
+/*   ^ -keyword.other.unit.css */
+/*    ^ punctuation.section.keyframes-declaration-list.begin.css */
+    background-color: green;
+  }
+/*^ punctuation.section.keyframes-declaration-list.end.css */
+
+  25%, 75% {
+/*^^ constant.numeric.css */
+/*  ^ keyword.other.unit.css */
+/*     ^^ constant.numeric.css */
+/*       ^ keyword.other.unit.css */
+/*        ^ -keyword.other.unit.css */
+/*         ^ punctuation.section.keyframes-declaration-list.begin.css */
+    background-color: red;
+  }
+/*^ punctuation.section.keyframes-declaration-list.end.css */
+
+  100% {
+/*^^^ constant.numeric.css */
+/*   ^ keyword.other.unit.css */
+/*    ^ -keyword.other.unit.css */
+/*     ^ punctuation.section.keyframes-declaration-list.begin.css */
+    left: 100px;
+    top: 100px;
+  }
+/*^ punctuation.section.keyframes-declaration-list.end.css */
+
+}
+/* <- punctuation.section.at-keyframes.end.css */

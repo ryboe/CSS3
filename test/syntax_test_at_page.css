@@ -1,0 +1,632 @@
+/* SYNTAX TEST "Packages/CSS3/CSS3.sublime-syntax" */
+
+
+/* TEST EXAMPLE CODE FROM THE SPEC */
+/* https://drafts.csswg.org/css-page-3/#at-page-rule */
+@page :left {
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*   ^ -keyword.control.at-rule.page.css */
+/*    ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*     ^^^^ entity.other.attribute-name.pseudo-class.css */
+/*         ^ -entity.other.attribute-name.pseudo-class.css */
+/*          ^ punctuation.section.at-page.begin.css */
+margin-left: 3cm;
+margin-right: 4cm;
+}
+/* <- punctuation.section.at-page.end.css */
+
+@page :right {
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*   ^ -keyword.control.at-rule.page.css */
+/*    ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*     ^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*          ^ -entity.other.attribute-name.pseudo-class.css */
+/*           ^ punctuation.section.at-page.begin.css */
+margin-left: 4cm;
+margin-right: 3cm;
+}
+/* <- punctuation.section.at-page.end.css */
+
+@page { margin: 2cm } /* All margins set to 2cm */
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*   ^ -keyword.control.at-rule.page.css */
+/*    ^ punctuation.section.at-page.begin.css */
+/*                  ^ punctuation.section.at-page.end.css */
+
+@page :first {
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*   ^ -keyword.control.at-rule.page.css */
+/*    ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*     ^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*          ^ -entity.other.attribute-name.pseudo-class.css */
+/*           ^ punctuation.section.at-page.begin.css */
+margin-top: 10cm /* Top margin on first page 10cm */
+}
+/* <- punctuation.section.at-page.end.css */
+
+@page :blank {
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*   ^ -keyword.control.at-rule.page.css */
+/*    ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*     ^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*          ^ -entity.other.attribute-name.pseudo-class.css */
+/*           ^ punctuation.section.at-page.begin.css */
+  @top-center { content: "This page is intentionally left blank" }
+/*^ keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
+/* ^^^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
+/*           ^ -keyword.control.at-rule.page-margin-box.css */
+/*            ^ punctuation.section.page-margin-at-rule.begin.css */
+/*              ^^^^^^^ support.constant.property-name.css */
+/*                     ^ punctuation.separator.key-value.css */
+/*                       ^ string.quoted.double.css punctuation.definition.string.begin.css */
+/*                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ string.quoted.double.css */
+/*                                                             ^ string.quoted.double.css punctuation.definition.string.end.css */
+/*                                                               ^ punctuation.section.page-margin-at-rule.end.css */
+}
+/* <- punctuation.section.at-page.end.css */
+
+@page :blank {
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*   ^ -keyword.control.at-rule.page.css */
+/*    ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*     ^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*          ^ -entity.other.attribute-name.pseudo-class.css */
+/*           ^ punctuation.section.at-page.begin.css */
+  @top-center { content: none }
+/*^ keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
+/* ^^^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
+/*           ^ -keyword.control.at-rule.page-margin-box.css */
+/*            ^ punctuation.section.page-margin-at-rule.begin.css */
+/*              ^^^^^^^ support.constant.property-name.css */
+/*                     ^ punctuation.separator.key-value.css */
+/*                       ^^^^ support.constant.property-value.css */
+/*                            ^ punctuation.section.page-margin-at-rule.end.css */
+}
+/* <- punctuation.section.at-page.end.css */
+
+@page :right {
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*   ^ -keyword.control.at-rule.page.css */
+/*    ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*     ^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*          ^ -entity.other.attribute-name.pseudo-class.css */
+/*           ^ punctuation.section.at-page.begin.css */
+  @top-center { content: "Preliminary edition" }
+/*^ keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
+/* ^^^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
+/*           ^ -keyword.control.at-rule.page-margin-box.css */
+/*            ^ punctuation.section.page-margin-at-rule.begin.css */
+/*              ^^^^^^^ support.constant.property-name.css */
+/*                     ^ punctuation.separator.key-value.css */
+/*                       ^ string.quoted.double.css punctuation.definition.string.begin.css */
+/*                        ^^^^^^^^^^^^^^^^^^^ string.quoted.double.css */
+/*                                           ^ string.quoted.double.css punctuation.definition.string.end.css */
+/*                                             ^ punctuation.section.page-margin-at-rule.end.css */
+
+  @bottom-center { content: target-counter(page) }
+/*^ keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
+/* ^^^^^^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
+/*              ^ -keyword.control.at-rule.page-margin-box.css */
+/*               ^ punctuation.section.page-margin-at-rule.begin.css */
+/*                 ^^^^^^^ support.constant.property-name.css */
+/*                        ^ punctuation.separator.key-value.css */
+/*                          ^^^^^^^^^^^^^^ support.function.target-counters.css */
+/*                                        ^ punctuation.section.function.begin.css */
+/*                                         ^^^^ string.unquoted.identifier.css */
+/*                                             ^ punctuation.section.function.end.css */
+/*                                               ^ punctuation.section.page-margin-at-rule.end.css */
+}
+/* <- punctuation.section.at-page.end.css */
+
+@page { }
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*   ^ -keyword.control.at-rule.page.css */
+/*    ^ punctuation.section.at-page.begin.css */
+/*      ^ punctuation.section.at-page.end.css */
+
+@page :left { }
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*   ^ -keyword.control.at-rule.page.css */
+/*    ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*     ^^^^ entity.other.attribute-name.pseudo-class.css */
+/*         ^ -entity.other.attribute-name.pseudo-class.css */
+/*          ^ punctuation.section.at-page.begin.css */
+/*            ^ punctuation.section.at-page.end.css */
+
+@page :right { }
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*   ^ -keyword.control.at-rule.page.css */
+/*    ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*     ^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*          ^ -entity.other.attribute-name.pseudo-class.css */
+/*           ^ punctuation.section.at-page.begin.css */
+/*             ^ punctuation.section.at-page.end.css */
+@page LandscapeTable { }
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*   ^ -keyword.control.at-rule.page.css */
+/*    ^^^^^^^^^^^^^^ string.unquoted.identifier.css */
+/*                   ^ punctuation.section.at-page.begin.css */
+/*                     ^ punctuation.section.at-page.end.css */
+@page CompanyLetterHead:first { } /*  identifier and pseudo page. */
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*   ^ -keyword.control.at-rule.page.css */
+/*    ^^^^^^^^^^^^^^^^^ string.unquoted.identifier.css */
+/*                     ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*                      ^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*                            ^ punctuation.section.at-page.begin.css */
+/*                              ^ punctuation.section.at-page.end.css */
+@page:first { }
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*   ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*    ^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*         ^ -entity.other.attribute-name.pseudo-class.css */
+/*          ^ punctuation.section.at-page.begin.css */
+/*            ^ punctuation.section.at-page.end.css */
+@page toc, index { }
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*   ^ -keyword.control.at-rule.page.css */
+/*    ^^^ string.unquoted.identifier.css */
+/*         ^^^^^ string.unquoted.identifier.css */
+/*               ^ punctuation.section.at-page.begin.css */
+/*                 ^ punctuation.section.at-page.end.css */
+@page :blank:first { }
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*    ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*     ^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*          ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*           ^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*                ^ -entity.other.attribute-name.pseudo-class.css */
+/*                 ^ punctuation.section.at-page.begin.css */
+/*                   ^ punctuation.section.at-page.end.css */
+@page {
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*    ^ punctuation.section.at-page.begin.css */
+  @top-left { /* document name */ }
+/*^ keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
+/* ^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
+/*         ^ -keyword.control.at-rule.page-margin-box.css */
+/*          ^ punctuation.section.page-margin-at-rule.begin.css */
+/*            ^^^^^^^^^^^^^^^^^^^ comment.block.css */
+/*                                ^ punctuation.section.page-margin-at-rule.end.css */
+  @bottom-center { /* page number */}
+/*^ keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
+/* ^^^^^^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
+/*              ^ -keyword.control.at-rule.page-margin-box.css */
+/*               ^ punctuation.section.page-margin-at-rule.begin.css */
+/*                 ^^^^^^^^^^^^^^^^^ comment.block.css */
+/*                                  ^ punctuation.section.page-margin-at-rule.end.css */
+}
+/* <- punctuation.section.at-page.end.css */
+@page :left { @left-middle { /* page number in left margin */ }}
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*    ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*     ^^^^ entity.other.attribute-name.pseudo-class.css */
+/*          ^ punctuation.section.at-page.begin.css */
+/*            ^ keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
+/*             ^^^^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
+/*                        ^ -keyword.control.at-rule.page-margin-box.css */
+/*                         ^ punctuation.section.page-margin-at-rule.begin.css */
+/*                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ comment.block.css */
+/*                                                            ^ punctuation.section.page-margin-at-rule.end.css */
+/*                                                             ^ punctuation.section.at-page.end.css */
+
+@page :right{ @right-middle { /* page number in right margins of right pages */}}
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*    ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*     ^^^^ entity.other.attribute-name.pseudo-class.css */
+/*          ^ punctuation.section.at-page.begin.css */
+/*            ^ keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
+/*             ^^^^^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
+/*                         ^ -keyword.control.at-rule.page-margin-box.css */
+/*                          ^ punctuation.section.page-margin-at-rule.begin.css */
+/*                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ comment.block.css */
+/*                                                                             ^ punctuation.section.page-margin-at-rule.end.css */
+/*                                                                              ^ punctuation.section.at-page.end.css */
+
+@page :left { @bottom-left-corner { /* left page numbers */ }}
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*    ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*     ^^^^ entity.other.attribute-name.pseudo-class.css */
+/*          ^ punctuation.section.at-page.begin.css */
+/*            ^ keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
+/*             ^^^^^^^^^^^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
+/*                               ^ -keyword.control.at-rule.page-margin-box.css */
+/*                                ^ punctuation.section.page-margin-at-rule.begin.css */
+/*                                  ^^^^^^^^^^^^^^^^^^^^^^^ comment.block.css */
+/*                                                          ^ punctuation.section.page-margin-at-rule.end.css */
+/*                                                           ^ punctuation.section.at-page.end.css */
+@page :right { @bottom-right-corner { /* right page numbers */ }}
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*    ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*     ^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*           ^ punctuation.section.at-page.begin.css */
+/*             ^ keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
+/*              ^^^^^^^^^^^^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
+/*                                 ^ -keyword.control.at-rule.page-margin-box.css */
+/*                                  ^ punctuation.section.page-margin-at-rule.begin.css */
+/*                                    ^^^^^^^^^^^^^^^^^^^^^^^^ comment.block.css */
+/*                                                             ^ punctuation.section.page-margin-at-rule.end.css */
+/*                                                              ^ punctuation.section.at-page.end.css */
+@page :first { @bottom-left-corner { /* empty footer on 1st page */ }
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*    ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*     ^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*           ^ punctuation.section.at-page.begin.css */
+/*             ^ keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
+/*              ^^^^^^^^^^^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
+/*                                ^ -keyword.control.at-rule.page-margin-box.css */
+/*                                 ^ punctuation.section.page-margin-at-rule.begin.css */
+/*                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ comment.block.css */
+/*                                                                  ^ punctuation.section.page-margin-at-rule.end.css */
+@bottom-right-corner { /* empty footer */ } }
+/* <- keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page-margin-box.css */
+/*^^^^^^^^^^^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
+/*                  ^ -keyword.control.at-rule.page-margin-box.css */
+/*                   ^ punctuation.section.page-margin-at-rule.begin.css */
+/*                     ^^^^^^^^^^^^^^^^^^ comment.block.css */
+/*                                        ^ punctuation.section.page-margin-at-rule.end.css */
+/*                                          ^ punctuation.section.at-page.end.css */
+
+@page :left { } /* specificity = (0,0,1) */
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*    ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*     ^^^^ entity.other.attribute-name.pseudo-class.css */
+/*          ^ punctuation.section.at-page.begin.css */
+/*            ^ punctuation.section.at-page.end.css */
+
+@page :first { } /* specificity = (0,1,0) */
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*    ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*     ^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*           ^ punctuation.section.at-page.begin.css */
+/*             ^ punctuation.section.at-page.end.css */
+@page :blank:left { } /* specificity = (0,1,1) */
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*    ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*     ^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*          ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*           ^^^^ entity.other.attribute-name.pseudo-class.css */
+/*                ^ punctuation.section.at-page.begin.css */
+/*                  ^ punctuation.section.at-page.end.css */
+@page artsy { } /* specificity = (1,0,0) */
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*    ^^^^^ string.unquoted.identifier.css */
+/*          ^ punctuation.section.at-page.begin.css */
+/*            ^ punctuation.section.at-page.end.css */
+@page artsy:left { } /* specificity = (1,0,1) */
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*    ^^^^^ string.unquoted.identifier.css */
+/*         ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*          ^^^^ entity.other.attribute-name.pseudo-class.css */
+/*               ^ punctuation.section.at-page.begin.css */
+/*                 ^ punctuation.section.at-page.end.css */
+@page artsy:first { } /* specificity = (1,1,0) */
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*    ^^^^^ string.unquoted.identifier.css */
+/*         ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*          ^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*                ^ punctuation.section.at-page.begin.css */
+/*                  ^ punctuation.section.at-page.end.css */
+@page :left {
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*    ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*     ^^^^ entity.other.attribute-name.pseudo-class.css */
+/*          ^ punctuation.section.at-page.begin.css */
+  margin-left: 4cm;
+}
+/* <- punctuation.section.at-page.end.css */
+
+@page {
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*    ^ punctuation.section.at-page.begin.css */
+  margin-left: 3cm;
+}
+/* <- punctuation.section.at-page.end.css */
+
+@page :first {
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*    ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css */
+/*     ^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*           ^ punctuation.section.at-page.begin.css */
+  color: green;
+
+  @top-left {
+/*^ keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
+/* ^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
+/*         ^ -keyword.control.at-rule.page-margin-box.css */
+/*          ^ punctuation.section.page-margin-at-rule.begin.css */
+    content: "foo";
+    color: blue;
+  }
+/*^ punctuation.section.page-margin-at-rule.end.css */
+  @top-right {
+/*^ keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
+/* ^^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
+/*          ^ -keyword.control.at-rule.page-margin-box.css */
+/*           ^ punctuation.section.page-margin-at-rule.begin.css */
+    content: "bar";
+  }
+/*^ punctuation.section.page-margin-at-rule.end.css */
+}
+/* <- punctuation.section.at-page.end.css */
+
+@page { color: red;
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*    ^ punctuation.section.at-page.begin.css */
+  @top-center {
+/*^ keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
+/* ^^^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
+/*           ^ -keyword.control.at-rule.page-margin-box.css */
+/*            ^ punctuation.section.page-margin-at-rule.begin.css */
+    content: "Page " target-counter(page);
+  }
+/*^ punctuation.section.page-margin-at-rule.end.css */
+}
+/* <- punctuation.section.at-page.end.css */
+
+@page { margin: 25mm;}
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*    ^ punctuation.section.at-page.begin.css */
+/*                   ^ punctuation.section.at-page.end.css */
+@page { font-size: 14pt;}
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*    ^ punctuation.section.at-page.begin.css */
+/*                      ^ punctuation.section.at-page.end.css */
+
+@page {
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*    ^ punctuation.section.at-page.begin.css */
+  size: 8.5in 11in;
+  margin: 10%;
+
+  @top-left {
+/*^ keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
+/* ^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
+/*         ^ -keyword.control.at-rule.page-margin-box.css */
+/*          ^ punctuation.section.page-margin-at-rule.begin.css */
+    content: "Hamlet";
+  }
+/*^ punctuation.section.page-margin-at-rule.end.css */
+  @top-right {
+/*^ keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
+/* ^^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
+/*          ^ -keyword.control.at-rule.page-margin-box.css */
+/*           ^ punctuation.section.page-margin-at-rule.begin.css */
+    content: "Page " target-counter(page);
+  }
+/*^ punctuation.section.page-margin-at-rule.end.css */
+}
+/* <- punctuation.section.at-page.end.css */
+
+@page {
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*    ^ punctuation.section.at-page.begin.css */
+  @top-left-corner { content: " "; border: solid green; }
+/*^ keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
+/* ^^^^^^^^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
+/*                ^ -keyword.control.at-rule.page-margin-box.css */
+/*                 ^ punctuation.section.page-margin-at-rule.begin.css */
+/*                                                      ^ punctuation.section.page-margin-at-rule.end.css */
+  @top-right-corner { content: url("foo.png"); border: solid green; }
+/*^ keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
+/* ^^^^^^^^^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
+/*                 ^ -keyword.control.at-rule.page-margin-box.css */
+/*                  ^ punctuation.section.page-margin-at-rule.begin.css */
+/*                                                                  ^ punctuation.section.page-margin-at-rule.end.css */
+  @bottom-right-corner { content: target-counter(page); border: solid green; }
+/*^ keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
+/* ^^^^^^^^^^^^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
+/*                    ^ -keyword.control.at-rule.page-margin-box.css */
+/*                     ^ punctuation.section.page-margin-at-rule.begin.css */
+/*                                                                           ^ punctuation.section.page-margin-at-rule.end.css */
+  @bottom-left-corner { content: normal; border: solid green; }
+/*^ keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
+/* ^^^^^^^^^^^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
+/*                   ^ -keyword.control.at-rule.page-margin-box.css */
+/*                    ^ punctuation.section.page-margin-at-rule.begin.css */
+/*                                                            ^ punctuation.section.page-margin-at-rule.end.css */
+}
+/* <- punctuation.section.at-page.end.css */
+
+@page {
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*    ^ punctuation.section.at-page.begin.css */
+  @top-left { content: "Header in Left Cell (top-left)" }
+/*^ keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
+/* ^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
+/*         ^ -keyword.control.at-rule.page-margin-box.css */
+/*          ^ punctuation.section.page-margin-at-rule.begin.css */
+/*                                                      ^ punctuation.section.page-margin-at-rule.end.css */
+}
+/* <- punctuation.section.at-page.end.css */
+
+@page {
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*    ^ punctuation.section.at-page.begin.css */
+  @top-center { content: "Header in Center Cell (top-center)" }
+/*^ keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
+/* ^^^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
+/*           ^ -keyword.control.at-rule.page-margin-box.css */
+/*            ^ punctuation.section.page-margin-at-rule.begin.css */
+/*                                                            ^ punctuation.section.page-margin-at-rule.end.css */
+}
+/* <- punctuation.section.at-page.end.css */
+
+@page {
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*    ^ punctuation.section.at-page.begin.css */
+  @top-right { content: "Header in Right Cell (top-right)" }
+/*^ keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
+/* ^^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
+/*          ^ -keyword.control.at-rule.page-margin-box.css */
+/*           ^ punctuation.section.page-margin-at-rule.begin.css */
+/*                                                         ^ punctuation.section.page-margin-at-rule.end.css */
+}
+/* <- punctuation.section.at-page.end.css */
+
+@page {
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*    ^ punctuation.section.at-page.begin.css */
+  @top-left { content: "Left Cell (top-left)" }
+/*^ keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
+/* ^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
+/*         ^ -keyword.control.at-rule.page-margin-box.css */
+/*          ^ punctuation.section.page-margin-at-rule.begin.css */
+/*                                            ^ punctuation.section.page-margin-at-rule.end.css */
+  @top-center { content: "Header in Center Cell (top-center)" }
+/*^ keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
+/* ^^^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
+/*           ^ -keyword.control.at-rule.page-margin-box.css */
+/*            ^ punctuation.section.page-margin-at-rule.begin.css */
+/*                                                            ^ punctuation.section.page-margin-at-rule.end.css */
+}
+/* <- punctuation.section.at-page.end.css */
+
+@page {
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*    ^ punctuation.section.at-page.begin.css */
+  @top-center { content: "Header in Center Cell (top-center)" }
+/*^ keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
+/* ^^^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
+/*           ^ -keyword.control.at-rule.page-margin-box.css */
+/*            ^ punctuation.section.page-margin-at-rule.begin.css */
+/*                                                            ^ punctuation.section.page-margin-at-rule.end.css */
+  @top-right { content: "Right Cell (top-right)" }
+/*^ keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
+/* ^^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
+/*          ^ -keyword.control.at-rule.page-margin-box.css */
+/*           ^ punctuation.section.page-margin-at-rule.begin.css */
+/*                                               ^ punctuation.section.page-margin-at-rule.end.css */
+}
+/* <- punctuation.section.at-page.end.css */
+
+@page {
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*    ^ punctuation.section.at-page.begin.css */
+  @top-left { content: "Header in top-left with approx. twice as many words as right cell." }
+/*^ keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
+/* ^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
+/*         ^ -keyword.control.at-rule.page-margin-box.css */
+/*          ^ punctuation.section.page-margin-at-rule.begin.css */
+/*                                                                                          ^ punctuation.section.page-margin-at-rule.end.css */
+  @top-right { content: "Right cell (top-right)" }
+/*^ keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
+/* ^^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
+/*          ^ -keyword.control.at-rule.page-margin-box.css */
+/*           ^ punctuation.section.page-margin-at-rule.begin.css */
+/*                                               ^ punctuation.section.page-margin-at-rule.end.css */
+}
+/* <- punctuation.section.at-page.end.css */
+
+@page {
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*    ^ punctuation.section.at-page.begin.css */
+  margin: 10%;
+
+  @top-center {
+/*^ keyword.control.at-rule.page-margin-box.css punctuation.definition.keyword.css */
+/* ^^^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
+/*           ^ -keyword.control.at-rule.page-margin-box.css */
+/*            ^ punctuation.section.page-margin-at-rule.begin.css */
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 2em;
+    content: target-counter(page);
+  }
+/*^ punctuation.section.page-margin-at-rule.end.css */
+}
+/* <- punctuation.section.at-page.end.css */
+
+@page {
+/* <- keyword.control.at-rule.page.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.page.css */
+/*^^^ keyword.control.at-rule.page.css */
+/*    ^ punctuation.section.at-page.begin.css */
+  counter-increment: page 2;
+}
+/* <- punctuation.section.at-page.end.css */

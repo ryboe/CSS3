@@ -1,0 +1,81 @@
+/* SYNTAX TEST "Packages/CSS3/CSS3.sublime-syntax" */
+
+
+/* TEST L PROPERTIES */
+foo {
+	left: 3px;
+	left: 2.4em;
+	left: 10%;
+	left: auto;
+	left: inherit;
+	left: initial;
+	left: unset;
+
+	letter-spacing: 0.3em;
+	letter-spacing: 3px;
+	letter-spacing: .3px;
+	letter-spacing: normal;
+	letter-spacing: inherit;
+	letter-spacing: initial;
+	letter-spacing: unset;
+
+	lighting-color:;
+
+	line-break: auto;
+	line-break: loose;
+	line-break: normal;
+	line-break: strict;
+	line-break: inherit;
+	line-break: initial;
+	line-break: unset;
+
+	line-grid: create;
+	line-grid: match-parent;
+
+	line-height: normal;
+	line-height: 3.5;
+	line-height: 3em;
+	line-height: 34%;
+	line-height: inherit;
+	line-height: initial;
+	line-height: unset;
+
+	line-snap:baseline;
+	line-snap:none;
+
+	list-style: square;
+	list-style: url('../img/dino.png');
+	list-style: inside;
+	list-style: georgian inside;
+	list-style: lower-roman url('../img/dino.png') outside;
+	list-style: none;
+	list-style: inherit;
+	list-style: initial;
+	list-style: unset;
+
+	list-style-image: none;
+	list-style-image: url('starsolid.gif');
+	list-style-image: inherit;
+	list-style-image: initial;
+	list-style-image: unset;
+
+	list-style-position: inside;
+	list-style-position: outside;
+	list-style-position: inherit;
+	list-style-position: initial;
+	list-style-position: unset;
+
+	list-style-type: disc;
+	list-style-type: circle;
+	list-style-type: square;
+	list-style-type: decimal;
+	list-style-type: georgian;
+	list-style-type: cjk-ideographic;
+	list-style-type: kannada;
+	list-style-type: '-';
+	list-style-type: custom-counter-style;
+	list-style-type: none;
+	list-style-type: inherit;
+	list-style-type: initial;
+	list-style-type: unset;
+}

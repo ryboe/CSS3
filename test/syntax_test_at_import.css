@@ -1,0 +1,137 @@
+/* SYNTAX TEST "Packages/CSS3/CSS3.sublime-syntax" */
+
+
+/* TEST CODE SAMPLES FROM MDN */
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/@import */
+@import url("fineprint.css") print;
+/* <- keyword.control.at-rule.import.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.import.css */
+/*^^^^^ keyword.control.at-rule.import.css */
+/*     ^ -keyword.control.at-rule.import.css */
+/*      ^^^ support.function.url.css */
+/*         ^ punctuation.section.function.begin.css */
+/*          ^ string.quoted.double.css punctuation.definition.string.begin.css */
+/*           ^^^^^^^^^^^^^ string.quoted.double.css */
+/*                        ^ string.quoted.double.css punctuation.definition.string.end.css */
+/*                         ^ punctuation.section.function.end.css */
+/*                           ^^^^^ support.constant.media.css */
+/*                                ^ punctuation.terminator.at-import.css */
+
+@import url("bluish.css") projection, tv;
+/* <- keyword.control.at-rule.import.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.import.css */
+/*^^^^^ keyword.control.at-rule.import.css */
+/*     ^ -keyword.control.at-rule.import.css */
+/*      ^^^ support.function.url.css */
+/*         ^ punctuation.section.function.begin.css */
+/*          ^ string.quoted.double.css punctuation.definition.string.begin.css */
+/*           ^^^^^^^^^^ string.quoted.double.css */
+/*                     ^ string.quoted.double.css punctuation.definition.string.end.css */
+/*                      ^ punctuation.section.function.end.css */
+/*                        ^^^^^^^^^^ support.constant.media.css invalid.deprecated.css */
+/*                                    ^^ support.constant.media.css invalid.deprecated.css */
+/*                                      ^ punctuation.terminator.at-import.css */
+@import 'custom.css';
+/* <- keyword.control.at-rule.import.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.import.css */
+/*^^^^^ keyword.control.at-rule.import.css */
+/*     ^ -keyword.control.at-rule.import.css */
+/*      ^ string.quoted.single.css punctuation.definition.string.begin.css */
+/*       ^^^^^^^^^^ string.quoted.single.css */
+/*                 ^ string.quoted.single.css punctuation.definition.string.end.css */
+/*                  ^ punctuation.terminator.at-import.css */
+@import url("chrome://communicator/skin/");
+/* <- keyword.control.at-rule.import.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.import.css */
+/*^^^^^ keyword.control.at-rule.import.css */
+/*     ^ -keyword.control.at-rule.import.css */
+/*      ^^^ support.function.url.css */
+/*         ^ punctuation.section.function.begin.css */
+/*          ^ string.quoted.double.css punctuation.definition.string.begin.css */
+/*           ^^^^^^^^^^^^^^^^^^^^^^^^^^^ string.quoted.double.css */
+/*                                      ^ string.quoted.double.css punctuation.definition.string.end.css */
+/*                                       ^ punctuation.section.function.end.css */
+/*                                        ^ punctuation.terminator.at-import.css */
+@import "common.css" screen, projection;
+/* <- keyword.control.at-rule.import.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.import.css */
+/*^^^^^ keyword.control.at-rule.import.css */
+/*     ^ -keyword.control.at-rule.import.css */
+/*      ^ string.quoted.double.css punctuation.definition.string.begin.css */
+/*       ^^^^^^^^^^ string.quoted.double.css */
+/*                 ^ string.quoted.double.css punctuation.definition.string.end.css */
+/*                   ^^^^^^ support.constant.media.css */
+/*                           ^^^^^^^^^^ support.constant.media.css invalid.deprecated.css */
+/*                                     ^ punctuation.terminator.at-import.css */
+
+@import url('landscape.css') screen and (orientation:landscape);
+/* <- keyword.control.at-rule.import.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.import.css */
+/*^^^^^ keyword.control.at-rule.import.css */
+/*     ^ -keyword.control.at-rule.import.css */
+/*      ^^^ support.function.url.css */
+/*         ^ punctuation.section.function.begin.css */
+/*          ^ string.quoted.single.css punctuation.definition.string.begin.css */
+/*           ^^^^^^^^^^^^^ string.quoted.single.css */
+/*                        ^ string.quoted.single.css punctuation.definition.string.end.css */
+/*                         ^ punctuation.section.function.end.css */
+/*                           ^^^^^^ support.constant.media.css */
+/*                                  ^^^ keyword.operator.logic.media.css */
+/*                                      ^ punctuation.section.media-feature.begin.css */
+/*                                       ^^^^^^^^^^^ support.constant.property-name.css */
+/*                                                  ^ punctuation.separator.key-value.css */
+/*                                                   ^^^^^^^^^ support.constant.property-value.css */
+/*                                                            ^ punctuation.section.media-feature.end.css */
+/*                                                             ^ punctuation.terminator.at-import.css */
+
+
+/* TEST EXAMPLE CODE FROM THE SPEC */
+/* https://www.w3.org/TR/css-cascade-3/#at-ruledef-import */
+@import url("fineprint.css") print;
+/* <- keyword.control.at-rule.import.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.import.css */
+/*^^^^^ keyword.control.at-rule.import.css */
+/*     ^ -keyword.control.at-rule.import.css */
+/*      ^^^ support.function.url.css */
+/*         ^ punctuation.section.function.begin.css */
+/*          ^ string.quoted.double.css punctuation.definition.string.begin.css */
+/*           ^^^^^^^^^^^^^ string.quoted.double.css */
+/*                        ^ string.quoted.double.css punctuation.definition.string.end.css */
+/*                         ^ punctuation.section.function.end.css */
+/*                           ^^^^^ support.constant.media.css */
+/*                                ^ punctuation.terminator.at-import.css */
+
+@import url("bluish.css") projection, tv;
+/* <- keyword.control.at-rule.import.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.import.css */
+/*^^^^^ keyword.control.at-rule.import.css */
+/*     ^ -keyword.control.at-rule.import.css */
+/*      ^^^ support.function.url.css */
+/*         ^ punctuation.section.function.begin.css */
+/*          ^ string.quoted.double.css punctuation.definition.string.begin.css */
+/*           ^^^^^^^^^^ string.quoted.double.css */
+/*                     ^ string.quoted.double.css punctuation.definition.string.end.css */
+/*                      ^ punctuation.section.function.end.css */
+/*                        ^^^^^^^^^^ support.constant.media.css invalid.deprecated.css */
+/*                                    ^^ support.constant.media.css invalid.deprecated.css */
+/*                                      ^ punctuation.terminator.at-import.css */
+@import url("narrow.css") handheld and (max-width: 400px);
+/* <- keyword.control.at-rule.import.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.import.css */
+/*^^^^^ keyword.control.at-rule.import.css */
+/*     ^ -keyword.control.at-rule.import.css */
+/*      ^^^ support.function.url.css */
+/*         ^ punctuation.section.function.begin.css */
+/*          ^ string.quoted.double.css punctuation.definition.string.begin.css */
+/*           ^^^^^^^^^^ string.quoted.double.css */
+/*                     ^ string.quoted.double.css punctuation.definition.string.end.css */
+/*                      ^ punctuation.section.function.end.css */
+/*                        ^^^^^^^^ support.constant.media.css invalid.deprecated.css */
+/*                                 ^^^ keyword.operator.logic.media.css */
+/*                                     ^ punctuation.section.media-feature.begin.css */
+/*                                      ^^^^^^^^^ support.constant.property-name.css */
+/*                                               ^ punctuation.separator.key-value.css */
+/*                                                 ^^^ constant.numeric.css */
+/*                                                    ^^ keyword.other.unit.css */
+/*                                                      ^ punctuation.section.media-feature.end.css */
+/*                                                       ^ punctuation.terminator.at-import.css */

@@ -1,0 +1,115 @@
+/* SYNTAX TEST "Packages/CSS3/CSS3.sublime-syntax" */
+
+
+/* TEST F PROPERTIES */
+foo {
+	filter: url("filters.svg#filter-id");
+	filter: blur(5px);
+	filter: brightness(0.4);
+	filter: contrast(200%);
+	filter: drop-shadow(16px 16px 20px blue);
+	filter: grayscale(50%);
+	filter: hue-rotate(90deg);
+	filter: invert(75%);
+	filter: opacity(25%);
+	filter: saturate(30%);
+	filter: sepia(60%);
+	filter: contrast(175%) brightness(3%);
+	filter: inherit;
+	filter: initial;
+	filter: unset;
+
+	flex: none;
+	flex: 2;
+	flex: 10em;
+	flex: 30px;
+	flex: auto;
+	flex: content;
+	flex: 1 30px;
+	flex: 2 2;
+	flex: 2 2 10%;
+	flex: inherit;
+	flex: initial;
+	flex: unset;
+
+	flex-basis: 10em;
+	flex-basis: 3px;
+	flex-basis: auto;
+	flex-basis: fill;
+	flex-basis: max-content;
+	flex-basis: min-content;
+	flex-basis: fit-content;
+	flex-basis: content;
+	flex-basis: inherit;
+	flex-basis: initial;
+	flex-basis: unset;
+
+	flex-direction: row;
+	flex-direction: row-reverse;
+	flex-direction: column;
+	flex-direction: column-reverse;
+	flex-direction: inherit;
+	flex-direction: initial;
+	flex-direction: unset;
+
+	flex-flow: row;
+	flex-flow: row-reverse;
+	flex-flow: column;
+	flex-flow: column-reverse;
+	flex-flow: nowrap;
+	flex-flow: wrap;
+	flex-flow: wrap-reverse;
+	flex-flow: row nowrap;
+	flex-flow: column wrap;
+	flex-flow: column-reverse wrap-reverse;
+	flex-flow: inherit;
+	flex-flow: initial;
+	flex-flow: unset;
+
+	flex-grow: 3;
+	flex-grow: 0.6;
+	flex-grow: inherit;
+	flex-grow: initial;
+	flex-grow: unset;
+
+	flex-shrink: 2;
+	flex-shrink: 0.6;
+	flex-shrink: inherit;
+	flex-shrink: initial;
+	flex-shrink: unset;
+
+	flex-wrap: nowrap;
+	flex-wrap: wrap;
+	flex-wrap: wrap-reverse;
+	flex-wrap: inherit;
+	flex-wrap: initial;
+	flex-wrap: unset;
+
+	float: left;
+	float: right;
+	float: none;
+	float: inline-start;
+	float: inline-end;
+	float: inherit;
+	float: initial;
+	float: unset;
+
+	float-defer: 1;
+	float-defer: -2;
+	float-defer: last;
+	float-defer: 1000;
+	float-defer: -5;
+	float-defer: initial;
+
+	float-offset: 2em;
+	float-offset: 5px;
+	float-offset: unset;
+
+	float-reference: column;
+	float-reference: page;
+	float-reference: revert;
+
+	flood-color:;
+
+	flood-opacity: 75%;
+}

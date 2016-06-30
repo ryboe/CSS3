@@ -1,0 +1,26 @@
+/* SYNTAX TEST "Packages/CSS3/CSS3.sublime-syntax" */
+
+
+/* TEST N PROPERTIES */
+foo {
+	nav-down:#b1;
+	nav-down:#b2;
+	nav-down:#b3;
+	nav-down:#b4;
+
+	nav-left:#b1;
+	nav-left:#b2;
+	nav-left:#b3;
+	nav-left:#b4;
+	nav-left: #bar "sidebar";
+
+	nav-right:#b1;
+	nav-right:#b2;
+	nav-right:#b3;
+	nav-right:#b4;
+
+	nav-up:#b1;
+	nav-up:#b2;
+	nav-up:#b3;
+	nav-up:#b4;
+}
