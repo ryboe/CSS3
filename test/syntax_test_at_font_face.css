@@ -8,7 +8,7 @@
  /* <- keyword.control.at-rule.font-face.css */
 /*^^^^^^^^ keyword.control.at-rule.font-face.css */
 /*        ^ -keyword.control.at-rule.font-face.css */
-/*         ^ punctuation.section.font-face-descriptor-block.begin.css */
+/*         ^ punctuation.section.at-font-face.begin.css */
   font-family: Gentium;
 /*^^^^^^^^^^^ support.constant.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
@@ -25,14 +25,14 @@
 /*                                                ^ punctuation.section.function.end.css */
 /*                                                 ^ punctuation.terminator.rule.css */
 }
-/* <- punctuation.section.font-face-descriptor-block.end.css */
+/* <- punctuation.section.at-font-face.end.css */
 
 @font-face {
 /* <- keyword.control.at-rule.font-face.css punctuation.definition.keyword.css */
  /* <- keyword.control.at-rule.font-face.css */
 /*^^^^^^^^ keyword.control.at-rule.font-face.css */
 /*        ^ -keyword.control.at-rule.font-face.css */
-/*         ^ punctuation.section.font-face-descriptor-block.begin.css */
+/*         ^ punctuation.section.at-font-face.begin.css */
   font-family: bodytext;
 /*^^^^^^^^^^^ support.constant.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
@@ -68,14 +68,14 @@
 /*                                                  ^ punctuation.section.function.end.css */
 /*                                                   ^ punctuation.terminator.rule.css */
 }
-/* <- punctuation.section.font-face-descriptor-block.end.css */
+/* <- punctuation.section.at-font-face.end.css */
 
 @font-face {
 /* <- keyword.control.at-rule.font-face.css punctuation.definition.keyword.css */
  /* <- keyword.control.at-rule.font-face.css */
 /*^^^^^^^^ keyword.control.at-rule.font-face.css */
 /*        ^ -keyword.control.at-rule.font-face.css */
-/*         ^ punctuation.section.font-face-descriptor-block.begin.css */
+/*         ^ punctuation.section.at-font-face.begin.css */
   font-family: MyGentium;
 /*^^^^^^^^^^^ support.constant.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
@@ -97,14 +97,14 @@
 /*                       ^ punctuation.section.function.end.css */
 /*                        ^ punctuation.terminator.rule.css */
 }
-/* <- punctuation.section.font-face-descriptor-block.end.css */
+/* <- punctuation.section.at-font-face.end.css */
 
 @font-face {
 /* <- keyword.control.at-rule.font-face.css punctuation.definition.keyword.css */
  /* <- keyword.control.at-rule.font-face.css */
 /*^^^^^^^^ keyword.control.at-rule.font-face.css */
 /*        ^ -keyword.control.at-rule.font-face.css */
-/*         ^ punctuation.section.font-face-descriptor-block.begin.css */
+/*         ^ punctuation.section.at-font-face.begin.css */
   font-family: MyGentium;
 /*^^^^^^^^^^^ support.constant.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
@@ -137,14 +137,14 @@
 /*             ^^^^ support.constant.property-value.css */
 /*                 ^ punctuation.terminator.rule.css */
 }
-/* <- punctuation.section.font-face-descriptor-block.end.css */
+/* <- punctuation.section.at-font-face.end.css */
 
 @font-face {
 /* <- keyword.control.at-rule.font-face.css punctuation.definition.keyword.css */
  /* <- keyword.control.at-rule.font-face.css */
 /*^^^^^^^^ keyword.control.at-rule.font-face.css */
 /*        ^ -keyword.control.at-rule.font-face.css */
-/*         ^ punctuation.section.font-face-descriptor-block.begin.css */
+/*         ^ punctuation.section.at-font-face.begin.css */
   font-family: Headline;
 /*^^^^^^^^^^^ support.constant.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
@@ -172,14 +172,14 @@
 /*                                                    ^ punctuation.section.function.end.css */
 /*                                                     ^ punctuation.terminator.rule.css */
 }
-/* <- punctuation.section.font-face-descriptor-block.end.css */
+/* <- punctuation.section.at-font-face.end.css */
 
 @font-face {
 /* <- keyword.control.at-rule.font-face.css punctuation.definition.keyword.css */
  /* <- keyword.control.at-rule.font-face.css */
 /*^^^^^^^^ keyword.control.at-rule.font-face.css */
 /*        ^ -keyword.control.at-rule.font-face.css */
-/*         ^ punctuation.section.font-face-descriptor-block.begin.css */
+/*         ^ punctuation.section.at-font-face.begin.css */
   font-family: jpgothic;
 /*^^^^^^^^^^^ support.constant.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
@@ -202,14 +202,14 @@
 /*                                                           ^ punctuation.section.function.end.css */
 /*                                                            ^ punctuation.terminator.rule.css */
 }
-/* <- punctuation.section.font-face-descriptor-block.end.css */
+/* <- punctuation.section.at-font-face.end.css */
 
 @font-face {
 /* <- keyword.control.at-rule.font-face.css punctuation.definition.keyword.css */
  /* <- keyword.control.at-rule.font-face.css */
 /*^^^^^^^^ keyword.control.at-rule.font-face.css */
 /*        ^ -keyword.control.at-rule.font-face.css */
-/*         ^ punctuation.section.font-face-descriptor-block.begin.css */
+/*         ^ punctuation.section.at-font-face.begin.css */
   font-family: Hoefler Text Ornaments;
 /*^^^^^^^^^^^ support.constant.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
@@ -227,14 +227,14 @@
 /*                                ^ punctuation.section.function.end.css */
 /*                                 ^ punctuation.terminator.rule.css */
 }
-/* <- punctuation.section.font-face-descriptor-block.end.css */
+/* <- punctuation.section.at-font-face.end.css */
 
 @font-face {
 /* <- keyword.control.at-rule.font-face.css punctuation.definition.keyword.css */
  /* <- keyword.control.at-rule.font-face.css */
 /*^^^^^^^^ keyword.control.at-rule.font-face.css */
 /*        ^ -keyword.control.at-rule.font-face.css */
-/*         ^ punctuation.section.font-face-descriptor-block.begin.css */
+/*         ^ punctuation.section.at-font-face.begin.css */
   font-family: SectionHeader;
 /*^^^^^^^^^^^ support.constant.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
@@ -256,14 +256,14 @@
 /*             ^^^^ support.constant.property-value.css */
 /*                 ^ punctuation.terminator.rule.css */
 }
-/* <- punctuation.section.font-face-descriptor-block.end.css */
+/* <- punctuation.section.at-font-face.end.css */
 
 @font-face {
 /* <- keyword.control.at-rule.font-face.css punctuation.definition.keyword.css */
  /* <- keyword.control.at-rule.font-face.css */
 /*^^^^^^^^ keyword.control.at-rule.font-face.css */
 /*        ^ -keyword.control.at-rule.font-face.css */
-/*         ^ punctuation.section.font-face-descriptor-block.begin.css */
+/*         ^ punctuation.section.at-font-face.begin.css */
   font-family: MainText;
 /*^^^^^^^^^^^ support.constant.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
@@ -297,14 +297,14 @@
 /*                                         ^ punctuation.section.function.end.css */
 /*                                          ^ punctuation.terminator.rule.css */
 }
-/* <- punctuation.section.font-face-descriptor-block.end.css */
+/* <- punctuation.section.at-font-face.end.css */
 
 @font-face {
 /* <- keyword.control.at-rule.font-face.css punctuation.definition.keyword.css */
  /* <- keyword.control.at-rule.font-face.css */
 /*^^^^^^^^ keyword.control.at-rule.font-face.css */
 /*        ^ -keyword.control.at-rule.font-face.css */
-/*         ^ punctuation.section.font-face-descriptor-block.begin.css */
+/*         ^ punctuation.section.at-font-face.begin.css */
   font-family: BBCBengali;
 /*^^^^^^^^^^^ support.constant.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
@@ -335,14 +335,14 @@
 /*                                 ^ punctuation.terminator.rule.css */
 
 }
-/* <- punctuation.section.font-face-descriptor-block.end.css */
+/* <- punctuation.section.at-font-face.end.css */
 
 @font-face {
 /* <- keyword.control.at-rule.font-face.css punctuation.definition.keyword.css */
  /* <- keyword.control.at-rule.font-face.css */
 /*^^^^^^^^ keyword.control.at-rule.font-face.css */
 /*        ^ -keyword.control.at-rule.font-face.css */
-/*         ^ punctuation.section.font-face-descriptor-block.begin.css */
+/*         ^ punctuation.section.at-font-face.begin.css */
   font-family: MainText;
 /*^^^^^^^^^^^ support.constant.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
@@ -370,14 +370,14 @@
 /*                                                          ^ punctuation.section.function.end.css */
 /*                                                           ^ punctuation.terminator.rule.css */
 }
-/* <- punctuation.section.font-face-descriptor-block.end.css */
+/* <- punctuation.section.at-font-face.end.css */
 
 @font-face {
 /* <- keyword.control.at-rule.font-face.css punctuation.definition.keyword.css */
  /* <- keyword.control.at-rule.font-face.css */
 /*^^^^^^^^ keyword.control.at-rule.font-face.css */
 /*        ^ -keyword.control.at-rule.font-face.css */
-/*         ^ punctuation.section.font-face-descriptor-block.begin.css */
+/*         ^ punctuation.section.at-font-face.begin.css */
   font-family: MyGentium;
 /*^^^^^^^^^^^ support.constant.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
@@ -410,4 +410,4 @@
 /*             ^^^^ support.constant.property-value.css */
 /*                 ^ punctuation.terminator.rule.css */
 }
-/* <- punctuation.section.font-face-descriptor-block.end.css */
+/* <- punctuation.section.at-font-face.end.css */

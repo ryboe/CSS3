@@ -8,8 +8,8 @@
 /*        ^ -keyword.control.at-rule.keyframes.css */
 /*         ^^^ string.unquoted.identifier.css */
 /*            ^ -string.unquoted.identifier.css */
-/*             ^ punctuation.section.keyframes-rule.begin.css */
-/*              ^ punctuation.section.keyframes-rule.end.css */
+/*             ^ punctuation.section.at-keyframes.begin.css */
+/*              ^ punctuation.section.at-keyframes.end.css */
 
 @keyframes "foo" {}
 /* <- keyword.control.at-rule.keyframes.css punctuation.definition.keyword.css */
@@ -19,8 +19,8 @@
 /*         ^ string.quoted.double.css punctuation.definition.string.begin.css */
 /*          ^^^ string.quoted.double.css */
 /*             ^ string.quoted.double.css punctuation.definition.string.end.css */
-/*               ^ punctuation.section.keyframes-rule.begin.css */
-/*                ^ punctuation.section.keyframes-rule.end.css */
+/*               ^ punctuation.section.at-keyframes.begin.css */
+/*                ^ punctuation.section.at-keyframes.end.css */
 
 @keyframes FOO {}
 /* <- keyword.control.at-rule.keyframes.css punctuation.definition.keyword.css */
@@ -29,8 +29,8 @@
 /*        ^ -keyword.control.at-rule.keyframes.css */
 /*         ^^^ string.unquoted.identifier.css */
 /*            ^ -string.unquoted.identifier.css */
-/*             ^ punctuation.section.keyframes-rule.begin.css */
-/*              ^ punctuation.section.keyframes-rule.end.css */
+/*             ^ punctuation.section.at-keyframes.begin.css */
+/*              ^ punctuation.section.at-keyframes.end.css */
 
 @keyframes slide-right {
 /* <- keyword.control.at-rule.keyframes.css punctuation.definition.keyword.css */
@@ -39,7 +39,7 @@
 /*        ^ -keyword.control.at-rule.keyframes.css */
 /*         ^^^^^^^^^^^ string.unquoted.identifier.css */
 /*                    ^ -string.unquoted.identifier.css */
-/*                     ^ punctuation.section.keyframes-rule.begin.css */
+/*                     ^ punctuation.section.at-keyframes.begin.css */
   from {
 /*^^^^ entity.other.attribute-name.keyframes-selector.css */
 /*    ^ -entity.other.attribute-name.keyframes-selector.css */
@@ -76,7 +76,7 @@
 /*^ punctuation.section.keyframes-declaration-list.end.css */
 
 }
-/* <- punctuation.section.keyframes-rule.end.css */
+/* <- punctuation.section.at-keyframes.end.css */
 
 @keyframes slide-right {
 /* <- keyword.control.at-rule.keyframes.css punctuation.definition.keyword.css */
@@ -85,7 +85,7 @@
 /*        ^ -keyword.control.at-rule.keyframes.css */
 /*         ^^^^^^^^^^^ string.unquoted.identifier.css */
 /*                    ^ -string.unquoted.identifier.css */
-/*                     ^ punctuation.section.keyframes-rule.begin.css */
+/*                     ^ punctuation.section.at-keyframes.begin.css */
 
   50% {
 /*^^ constant.numeric.css */
@@ -106,7 +106,7 @@
 /*^ punctuation.section.keyframes-declaration-list.end.css */
 
 }
-/* <- punctuation.section.keyframes-rule.end.css */
+/* <- punctuation.section.at-keyframes.end.css */
 
 @keyframes wobble {
 /* <- keyword.control.at-rule.keyframes.css punctuation.definition.keyword.css */
@@ -115,7 +115,7 @@
 /*        ^ -keyword.control.at-rule.keyframes.css */
 /*         ^^^^^^ string.unquoted.identifier.css */
 /*               ^ -string.unquoted.identifier.css */
-/*                ^ punctuation.section.keyframes-rule.begin.css */
+/*                ^ punctuation.section.at-keyframes.begin.css */
   0% {
 /*^ constant.numeric.css */
 /* ^ keyword.other.unit.css */
@@ -152,7 +152,7 @@
   }
 /*^ punctuation.section.keyframes-declaration-list.end.css */
 }
-/* <- punctuation.section.keyframes-rule.end.css */
+/* <- punctuation.section.at-keyframes.end.css */
 
 @keyframes bounce {
 /* <- keyword.control.at-rule.keyframes.css punctuation.definition.keyword.css */
@@ -161,7 +161,7 @@
 /*        ^ -keyword.control.at-rule.keyframes.css */
 /*         ^^^^^^ string.unquoted.identifier.css */
 /*               ^ -string.unquoted.identifier.css */
-/*                ^ punctuation.section.keyframes-rule.begin.css */
+/*                ^ punctuation.section.at-keyframes.begin.css */
 
   from {
 /*^^^^ entity.other.attribute-name.keyframes-selector.css */
@@ -211,7 +211,7 @@
 /*^ punctuation.section.keyframes-declaration-list.end.css */
 
 }
-/* <- punctuation.section.keyframes-rule.end.css */
+/* <- punctuation.section.at-keyframes.end.css */
 
 @keyframes colorful-diagonal-slide {
 /* <- keyword.control.at-rule.keyframes.css punctuation.definition.keyword.css */
@@ -220,8 +220,8 @@
 /*        ^ -keyword.control.at-rule.keyframes.css */
 /*         ^^^^^^^^^^^^^^^^^^^^^^^ string.unquoted.identifier.css */
 /*                                ^ -string.unquoted.identifier.css */
-/*                                 ^ punctuation.section.keyframes-rule.begin.css */
-/*                                 ^ punctuation.section.keyframes-rule.begin.css */
+/*                                 ^ punctuation.section.at-keyframes.begin.css */
+/*                                 ^ punctuation.section.at-keyframes.begin.css */
 
   from {
 /*^^^^ entity.other.attribute-name.keyframes-selector.css */
@@ -272,4 +272,4 @@
 /*^ punctuation.section.keyframes-declaration-list.end.css */
 
 }
-/* <- punctuation.section.keyframes-rule.end.css */
+/* <- punctuation.section.at-keyframes.end.css */

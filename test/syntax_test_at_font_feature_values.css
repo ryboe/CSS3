@@ -10,7 +10,7 @@
 /*                  ^ -keyword.control.at-rule.font-feature-values.css */
 /*                   ^^^^^^^ string.unquoted.identifier.css */
 /*                           ^^^^ string.unquoted.identifier.css */
-/*                                ^ punctuation.section.font-feature-values-rule.begin.css */
+/*                                ^ punctuation.section.at-font-feature-values.begin.css */
   @swash {
 /*^ keyword.control.at-rule.feature-type.css punctuation.definition.keyword.css */
 /* ^^^^^ keyword.control.at-rule.feature-type.css */
@@ -29,7 +29,7 @@
   }
 /*^ punctuation.section.font-feature-value-block.end.css */
 }
-/* <- punctuation.section.font-feature-values-rule.end.css */
+/* <- punctuation.section.at-font-feature-values.end.css */
 
 @font-feature-values Bongo {
 /* <- keyword.control.at-rule.font-feature-values.css punctuation.definition.keyword.css */
@@ -37,7 +37,7 @@
 /*^^^^^^^^^^^^^^^^^^ keyword.control.at-rule.font-feature-values.css */
 /*                  ^ -keyword.control.at-rule.font-feature-values.css */
 /*                   ^^^^^ string.unquoted.identifier.css */
-/*                         ^ punctuation.section.font-feature-values-rule.begin.css */
+/*                         ^ punctuation.section.at-font-feature-values.begin.css */
   @swash { ornate: 1; }
 /*^ keyword.control.at-rule.feature-type.css punctuation.definition.keyword.css */
 /* ^^^^^ keyword.control.at-rule.feature-type.css */
@@ -74,7 +74,7 @@
 /*                                               ^ punctuation.terminator.rule.css */
 /*                                                 ^ punctuation.section.font-feature-value-block.end.css */
 }
-/* <- punctuation.section.font-feature-values-rule.end.css */
+/* <- punctuation.section.at-font-feature-values.end.css */
 
 @font-feature-values Mercury Serif {
 /* <- keyword.control.at-rule.font-feature-values.css punctuation.definition.keyword.css */
@@ -83,7 +83,7 @@
 /*                  ^ -keyword.control.at-rule.font-feature-values.css */
 /*                   ^^^^^^^ string.unquoted.identifier.css */
 /*                           ^^^^^ string.unquoted.identifier.css */
-/*                                 ^ punctuation.section.font-feature-values-rule.begin.css */
+/*                                 ^ punctuation.section.at-font-feature-values.begin.css */
   @styleset {
 /*^ keyword.control.at-rule.feature-type.css punctuation.definition.keyword.css */
 /* ^^^^^^^^ keyword.control.at-rule.feature-type.css */
@@ -102,7 +102,7 @@
   }
 /*^ punctuation.section.font-feature-value-block.end.css */
 }
-/* <- punctuation.section.font-feature-values-rule.end.css */
+/* <- punctuation.section.at-font-feature-values.end.css */
 
 @font-feature-values Mercury Serif {
 /* <- keyword.control.at-rule.font-feature-values.css punctuation.definition.keyword.css */
@@ -111,7 +111,7 @@
 /*                  ^ -keyword.control.at-rule.font-feature-values.css */
 /*                   ^^^^^^^ string.unquoted.identifier.css */
 /*                           ^^^^^ string.unquoted.identifier.css */
-/*                                 ^ punctuation.section.font-feature-values-rule.begin.css */
+/*                                 ^ punctuation.section.at-font-feature-values.begin.css */
   @styleset {
 /*^ keyword.control.at-rule.feature-type.css punctuation.definition.keyword.css */
 /* ^^^^^^^^ keyword.control.at-rule.feature-type.css */
@@ -125,7 +125,7 @@
   }
 /*^ punctuation.section.font-feature-value-block.end.css */
 }
-/* <- punctuation.section.font-feature-values-rule.end.css */
+/* <- punctuation.section.at-font-feature-values.end.css */
 
 @font-feature-values Taisho Gothic {
 /* <- keyword.control.at-rule.font-feature-values.css punctuation.definition.keyword.css */
@@ -134,7 +134,7 @@
 /*                  ^ -keyword.control.at-rule.font-feature-values.css */
 /*                   ^^^^^^ string.unquoted.identifier.css */
 /*                          ^^^^^^ string.unquoted.identifier.css */
-/*                                 ^ punctuation.section.font-feature-values-rule.begin.css */
+/*                                 ^ punctuation.section.at-font-feature-values.begin.css */
   @annotation { boxed: 1; circled: 4; }
 /*^ keyword.control.at-rule.feature-type.css punctuation.definition.keyword.css */
 /* ^^^^^^^^^^ keyword.control.at-rule.feature-type.css */
@@ -150,7 +150,7 @@
 /*                                  ^ punctuation.terminator.rule.css */
 /*                                    ^ punctuation.section.font-feature-value-block.end.css */
 }
-/* <- punctuation.section.font-feature-values-rule.end.css */
+/* <- punctuation.section.at-font-feature-values.end.css */
 
 @font-feature-values Otaru Kisa {
 /* <- keyword.control.at-rule.font-feature-values.css punctuation.definition.keyword.css */
@@ -159,7 +159,7 @@
 /*                  ^ -keyword.control.at-rule.font-feature-values.css */
 /*                   ^^^^^ string.unquoted.identifier.css */
 /*                         ^^^^ string.unquoted.identifier.css */
-/*                              ^ punctuation.section.font-feature-values-rule.begin.css */
+/*                              ^ punctuation.section.at-font-feature-values.begin.css */
   @annotation { circled: 1; black-boxed: 3; }
 /*^ keyword.control.at-rule.feature-type.css punctuation.definition.keyword.css */
 /* ^^^^^^^^^^ keyword.control.at-rule.feature-type.css */
@@ -175,7 +175,7 @@
 /*                                        ^ punctuation.terminator.rule.css */
 /*                                          ^ punctuation.section.font-feature-value-block.end.css */
 }
-/* <- punctuation.section.font-feature-values-rule.end.css */
+/* <- punctuation.section.at-font-feature-values.end.css */
 
 @font-feature-values Mars Serif {
 /* <- keyword.control.at-rule.font-feature-values.css punctuation.definition.keyword.css */
@@ -184,7 +184,7 @@
 /*                  ^ -keyword.control.at-rule.font-feature-values.css */
 /*                   ^^^^ string.unquoted.identifier.css */
 /*                        ^^^^^ string.unquoted.identifier.css */
-/*                              ^ punctuation.section.font-feature-values-rule.begin.css */
+/*                              ^ punctuation.section.at-font-feature-values.begin.css */
   @styleset {
 /*^ keyword.control.at-rule.feature-type.css punctuation.definition.keyword.css */
 /* ^^^^^^^^ keyword.control.at-rule.feature-type.css */
@@ -236,7 +236,7 @@
   }
 /*^ punctuation.section.font-feature-value-block.end.css */
 }
-/* <- punctuation.section.font-feature-values-rule.end.css */
+/* <- punctuation.section.at-font-feature-values.end.css */
 
 @font-feature-values MM Greek {
 /* <- keyword.control.at-rule.font-feature-values.css punctuation.definition.keyword.css */
@@ -245,7 +245,7 @@
 /*                  ^ -keyword.control.at-rule.font-feature-values.css */
 /*                   ^^ string.unquoted.identifier.css */
 /*                      ^^^^^ string.unquoted.identifier.css */
-/*                            ^ punctuation.section.font-feature-values-rule.begin.css */
+/*                            ^ punctuation.section.at-font-feature-values.begin.css */
   @character-variant { alpha-2: 1 2; }   /* implies cv01 = 2 */
 /*^ keyword.control.at-rule.feature-type.css punctuation.definition.keyword.css */
 /* ^^^^^^^^^^^^^^^^^ keyword.control.at-rule.feature-type.css */
@@ -334,7 +334,7 @@
 /*                                ^ punctuation.terminator.rule.css */
 /*                                  ^ punctuation.section.font-feature-value-block.end.css */
 }
-/* <- punctuation.section.font-feature-values-rule.end.css */
+/* <- punctuation.section.at-font-feature-values.end.css */
 
 @font-feature-values Athena Ruby {
 /* <- keyword.control.at-rule.font-feature-values.css punctuation.definition.keyword.css */
@@ -343,7 +343,7 @@
 /*                  ^ -keyword.control.at-rule.font-feature-values.css */
 /*                   ^^^^^^ string.unquoted.identifier.css */
 /*                          ^^^^ string.unquoted.identifier.css */
-/*                               ^ punctuation.section.font-feature-values-rule.begin.css */
+/*                               ^ punctuation.section.at-font-feature-values.begin.css */
   @character-variant {
 /*^ keyword.control.at-rule.feature-type.css punctuation.definition.keyword.css */
 /* ^^^^^^^^^^^^^^^^^ keyword.control.at-rule.feature-type.css */
@@ -394,4 +394,4 @@
   }
 /*^ punctuation.section.font-feature-value-block.end.css */
 }
-/* <- punctuation.section.font-feature-values-rule.end.css */
+/* <- punctuation.section.at-font-feature-values.end.css */
