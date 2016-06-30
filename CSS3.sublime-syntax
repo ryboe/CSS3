@@ -8594,6 +8594,7 @@ contexts:
     - match: '\['
       scope: punctuation.section.attribute-selector.begin.css
       push:
+        - meta_content_scope: meta.attribute-selector.css
         - match: '\]'
           scope: punctuation.section.attribute-selector.end.css
           pop: true
