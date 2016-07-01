@@ -16,7 +16,7 @@ The most complete CSS support for Sublime Text 3.
 
 ## Before & After
 
-![before and after](http://i.imgur.com/JUTJPZJ.gif)
+![before and after](http://i.imgur.com/H4yUEC6.jpg)
 
 ## Installation
 
@@ -37,12 +37,10 @@ The most complete CSS support for Sublime Text 3.
     | Linux    | `ctrl+shift+p` → Package Control: Disable Package → CSS              |
     | Windows  | `ctrl+shift+p` → Package Control: Disable Package → CSS              |
 
-    ![disabling the default CSS package](http://i.imgur.com/PVoavnb.gif)
+    ![disabling the default CSS package](http://i.imgur.com/JUTJPZJ.gif)
 
     Make sure you don't have any open files set to the default CSS syntax (bottom-right)
     or you may get an error message.
-
-    *Warning: may break other CSS plugins*
 
 4. (Recommended) Disable CSS completions in Emmet
 
@@ -60,9 +58,7 @@ The most complete CSS support for Sublime Text 3.
     * Open a `.css` file.
     * View → Syntax → Open all with current extension as... → CSS3
 
-    ![setting CSS3 as default](https://github.com/y0ssar1an/CSS3/raw/develop/screenshots/set_default.gif)
-
-    *Warning: may break other CSS plugins*
+    ![setting CSS3 as default](http://i.imgur.com/0xRQRFp.gif)
 
 ## Best Practices
 
@@ -74,5 +70,5 @@ The most complete CSS support for Sublime Text 3.
 If you think something's missing, make sure you're not asking for something
 on [this list of bad CSS properties](https://gist.github.com/y0ssar1an/bb95223148e486acbe7a#file-bad_css).
 If it's not on that list, open an issue and I'll investigate. I'll be monitoring
-the specs as they're updated on [the W3C feed](https://www.w3.org/Style/CSS/current-work.en.html),
+the specs as they're updated on [this W3C feed](https://www.w3.org/Style/CSS/current-work.en.html),
 but I still need your help. Let's keep bad code out of the Web!
