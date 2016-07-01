@@ -3,46 +3,38 @@ WELCOME TO 2.0!
 CSS3 has been rewritten from scratch using the awesome new sublime-syntax
 system. Here are the improvements:
 
+	FEATURES
+	- Variables
+	- HTML5 custom element selectors
+	- Bunch of new stuff from the spec that no browser supports and no one's
+	  ever heard of.
+	- Flags unbalanced parentheses and curly braces
+	- Completions are less noisy and more up-to-date.
+
 	CORRECTNESS
 	- Squashed a bunch of annoying highlighting bugs. You know the ones.
 	- Made another pass over all the W3C specs, so it's even more comprehensive
 	  than before.
-	- The new highlighter is, in general, way more likely to match text
-	  correctly, but it hasn't been "prod tested", if you know what I mean.
-	  Send me bug reports! (GitHub link at the bottom)
-
-	FEATURES
-	- Variables
-	- HTML5 custom element selectors
-	- A bunch of new stuff from the spec that no browser supports and no one's
-	  ever heard of. @custom-media? @color-profile? I have no idea what these
-	  do, but they're supported.
-	- Unbalanced parentheses and curly braces are VERY noticeable.
-	- Completions are less noisy and more up-to-date.
 
 	PERFORMANCE
-	- All the regexes have been written for Sublime's new custom regex engine,
-	  which is crazy fast. Both the regexes AND the regex engine are hugely
-	  faster. You will notice the difference when working with large CSS files.
-	- Removed the W3C Validator. It slowed things down because it was listening
-	  for an extremely common event (literally every keystroke). By itself, the
-	  slowdown wasn't noticeable, but if you had lots of plugins listening for
-	  the same event, it could become noticeable. I made the decision to remove
-	  it since not everybody was using it. If you're sad about this, don't
-	  worry! It will return as a separate package.
+	- All the regexes have been written for Sublime's new custom regex engine.
+	  Both the regexes AND the regex engine are much faster. You will notice
+	  the difference when working with large CSS files.
+	- Removed the W3C Validator. It slowed things down and not everybody used
+	  it. If you miss the validator, don't worry! It will release it as a
+	  separate package.
 
 IMPORTANT
 
-	1) Make sure you're running the latest version of Sublime Text 3 or it
-	might not work.
+	1) Make sure you're running the latest version of Sublime Text 3.
 
 	2) You should delete all the .sublime-settings files in your Packages/CSS3/
 	directory. All those settings were for the validator, which is gone.
 
-A PLEA FROM THE DEVELOPER
+BUG REPORTING
 
 	400+ properties. 41 specs. CSS is frickin' huge! I know stuff gets by me.
 	So please, if you notice some bad highlighting or incorrect completions,
-	please take a moment to open an issue:
+	please take a moment to open an issue. Thanks!
 
 		https://github.com/y0ssar1an/CSS3/issues
