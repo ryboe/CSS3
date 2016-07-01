@@ -16,8 +16,8 @@ The most complete CSS support for Sublime Text 3.
 
 ## Before & After
 
-![before and after 1](https://github.com/y0ssar1an/CSS3/raw/develop/screenshots/before_and_after1.png)
-![before and after 2](https://github.com/y0ssar1an/CSS3/raw/develop/screenshots/before_and_after2.png)
+![before and after 1](http://i.imgur.com/jTtQQvP.jpg)
+![before and after 2](http://i.imgur.com/yODiGrh.jpg)
 
 ## Installation
 
@@ -38,7 +38,7 @@ The most complete CSS support for Sublime Text 3.
     | Linux    | `ctrl+shift+p` → Package Control: Disable Package → CSS              |
     | Windows  | `ctrl+shift+p` → Package Control: Disable Package → CSS              |
 
-    ![disabling the default CSS package](https://github.com/y0ssar1an/CSS3/raw/develop/screenshots/disable_default.gif)
+    ![disabling the default CSS package](http://i.imgur.com/PVoavnb.gif)
 
     Make sure you don't have any open files set to the default CSS syntax (bottom-right)
     or you may get an error message.
