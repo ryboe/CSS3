@@ -11,10 +11,8 @@ Check the list of open issues to see if your issue already exists.
 
 ## Make your changes
 
-Fork the `develop` branch, not `master`. Master is the release branch that gets
-scanned every hour by the Package Control bot. To keep the package size small,
-development-specific files like tests and helper scripts are kept out of the
-`master` branch.
+Fork the `develop` branch, not `master`. `master` is the release branch that gets
+scanned every hour by the Package Control bot.
 
 ## Submit your PR
 
