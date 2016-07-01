@@ -16,8 +16,7 @@ The most complete CSS support for Sublime Text 3.
 
 ## Before & After
 
-![before and after 1](http://i.imgur.com/jTtQQvP.jpg)
-![before and after 2](http://i.imgur.com/yODiGrh.jpg)
+![before and after](http://i.imgur.com/JUTJPZJ.gif)
 
 ## Installation
 
