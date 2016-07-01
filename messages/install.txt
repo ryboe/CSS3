@@ -1,13 +1,16 @@
-Thank you for installing CSS3! It's strongly recommended that you disable the
-default CSS package, as its completions will interfere with the improved CSS3
-completions.
+Thank you for installing CSS3!
 
-Mac:           cmd+shift+p  -> Package Control: Disable Package -> CSS
-Linux/Windows: ctrl+shift+p -> Package Control: Disable Package -> CSS
+This plugin requires Sublime Text 3 build 3103 or greater.
 
-If you have Emmet installed, its completions will drown out the completions
-in CSS3. You can disable Emmet's completions by adding the following lines
-to your Emmet package settings:
+It's strongly recommended that you disable the default CSS package. Its
+completions will interfere with the improved CSS3 completions.
+
+	Mac:       cmd+shift+p  -> Package Control: Disable Package -> CSS
+	Linux/Win: ctrl+shift+p -> Package Control: Disable Package -> CSS
+
+If you have Emmet installed, its completions will drown out the completions in
+CSS3. You can disable Emmet's completions by adding the following lines to your
+Emmet package settings:
 
 	"show_css_completions": false,
 	"disable_tab_abbreviations_for_scopes": "source.css"
