@@ -83,6 +83,11 @@ contexts:
         2: keyword.other.unit.css
         3: constant.numeric.css
 
+  angular-color-stop:
+    - include: color
+    - include: angle
+    - include: percentage
+
   animateable-feature:
     - match: '\b(?:scroll-position|contents){{b}}'
       scope: support.constant.property-value.css
@@ -102,6 +107,7 @@ contexts:
     - include: func-cielab
     - include: func-cielchab
     - include: func-color-adjuster-rgb
+    - include: func-conic-gradient
     - include: func-content
     - include: func-counters
     - include: func-counter
@@ -1585,6 +1591,20 @@ contexts:
         - include: number
         - include: color-adjuster-operator
 
+  func-conic-gradient:
+    - match: \b((?:repeating-)?conic-gradient)(\()
+      captures:
+        1: support.function.conic-gradient.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_content_scope: meta.function.conic-gradient.css
+        - include: end-func
+        - include: func-var
+        - match: '\b(?:from|at){{b}}'
+          scope: support.constant.property-value.css
+        - include: position
+        - include: color-stop
+
   func-content:
     - match: \b(content)(\()
       captures:
@@ -2338,6 +2358,7 @@ contexts:
   gradient:
     - include: func-radial-gradient
     - include: func-linear-gradient
+    - include: func-conic-gradient
 
   grid-line:
     - match: '\b(?:span|auto){{b}}'
