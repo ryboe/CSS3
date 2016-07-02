@@ -54,7 +54,19 @@ The most complete CSS support for Sublime Text 3.
     "disable_tab_abbreviations_for_scopes": "source.css"
     ```
 
-5. (Recommended) Set CSS3 as the default language for `.css` files
+5. (Recommended) Enable completions inside completions
+
+    By default, Sublime will not offer completions inside completions. In other
+    words, the completions menu is suppressed when you're tabbing through a
+    snippet. This prevents a lot of CSS3 completions from appearing. Add these
+    keys to your User Settings to fix this:
+
+    ```
+    "auto_complete_commit_on_tab": true,
+    "auto_complete_with_fields": true,
+    ```
+
+6. (Recommended) Set CSS3 as the default language for `.css` files
     * Open a `.css` file.
     * View → Syntax → Open all with current extension as... → CSS3
 

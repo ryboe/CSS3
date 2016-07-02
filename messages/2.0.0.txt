@@ -3,38 +3,49 @@ WELCOME TO 2.0!
 CSS3 has been rewritten from scratch using the awesome new sublime-syntax
 system. Here are the improvements:
 
-	FEATURES
-	- Variables
-	- HTML5 custom element selectors
-	- Bunch of new stuff from the spec that no browser supports and no one's
-	  ever heard of.
-	- Flags unbalanced parentheses and curly braces
-	- Completions are less noisy and more up-to-date.
+    FEATURES
+    - Variables
+    - HTML5 custom element selectors
+    - Bunch of new stuff from the spec that no browser supports and no one's
+      ever heard of
+    - Flags unbalanced parentheses and curly braces
+    - Lots of new completions
+    - Completions are less noisy and more up-to-date
 
-	CORRECTNESS
-	- Squashed a bunch of annoying highlighting bugs. You know the ones.
-	- Made another pass over all the W3C specs, so it's even more comprehensive
-	  than before.
+    CORRECTNESS
+    - Squashed a bunch of annoying highlighting bugs. You know the ones.
+    - Made another pass over all the W3C specs, so it's even more comprehensive
+      than before
 
-	PERFORMANCE
-	- All the regexes have been written for Sublime's new custom regex engine.
-	  Both the regexes AND the regex engine are much faster. You will notice
-	  the difference when working with large CSS files.
-	- Removed the W3C Validator. It slowed things down and not everybody used
-	  it. If you miss the validator, don't worry! It will release it as a
-	  separate package.
+    PERFORMANCE
+    - All the regexes have been written for Sublime's new custom regex engine.
+      Both the regexes AND the regex engine are much faster. You will notice
+      the difference when working with large CSS files.
+    - Removed the W3C Validator. It slowed things down and not everybody used
+      it. Based on user feedback, I decided to release it as a separate package
+      (forthcoming).
 
 IMPORTANT
 
-	1) Make sure you're running the latest version of Sublime Text 3.
+    1) Make sure you're running the latest version of Sublime Text 3.
 
-	2) You should delete all the .sublime-settings files in your Packages/CSS3/
-	directory. All those settings were for the validator, which is gone.
+    2) You should delete all the .sublime-settings files in your Packages/CSS3/
+       directory. All those settings were for the validator, which is gone.
+       CSS3 2.0 has no knobs.
+
+    3) I recommend adding these two settings to your User Settings. By default, Sublime
+       will not offer completions inside other completions. In other words, the
+       completions menu is suppressed while you're tabbing through a snippet. This
+       can prevent a lot of the CSS3 completions from appearing. To fix this, set these
+       keys to true:
+
+            "auto_complete_commit_on_tab": true,
+            "auto_complete_with_fields": true,
 
 BUG REPORTING
 
-	400+ properties. 41 specs. CSS is frickin' huge! I know stuff gets by me.
-	So please, if you notice some bad highlighting or incorrect completions,
-	please take a moment to open an issue. Thanks!
+    400+ properties. 40+ specs. CSS is frickin' huge! I know stuff gets by me.
+    So if you notice something wrong, please take a moment to open an issue.
+    Thanks very much!
 
-		https://github.com/y0ssar1an/CSS3/issues
+        https://github.com/y0ssar1an/CSS3/issues
