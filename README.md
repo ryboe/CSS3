@@ -23,19 +23,17 @@ The most complete CSS support for Sublime Text 3.
 1. [Install Package Control](https://sublime.wbond.net/installation)
 2. Install CSS3
 
-    | Platform | Install Command                                                      |
-    | -------- | -------------------------------------------------------------------- |
-    | Mac      | `cmd+shift+p`&nbsp;&nbsp; → Package Control: Install Package → CSS3  |
-    | Linux    | `ctrl+shift+p` → Package Control: Install Package → CSS3             |
-    | Windows  | `ctrl+shift+p` → Package Control: Install Package → CSS3             |
+    | Platform      | Install Command                                                      |
+    | --------------| -------------------------------------------------------------------- |
+    | Mac           | `cmd+shift+p`&nbsp;&nbsp; → Package Control: Install Package → CSS3  |
+    | Linux/Windows | `ctrl+shift+p` → Package Control: Install Package → CSS3             |
 
 3. (Recommended) Disable the default CSS package
 
-    | Platform | Disable Command                                                      |
-    | -------- | -------------------------------------------------------------------- |
-    | Mac      | `cmd+shift+p`&nbsp;&nbsp; → Package Control: Disable Package → CSS   |
-    | Linux    | `ctrl+shift+p` → Package Control: Disable Package → CSS              |
-    | Windows  | `ctrl+shift+p` → Package Control: Disable Package → CSS              |
+    | Platform      | Disable Command                                                      |
+    | ------------- | -------------------------------------------------------------------- |
+    | Mac           | `cmd+shift+p`&nbsp;&nbsp; → Package Control: Disable Package → CSS   |
+    | Linux/Windows | `ctrl+shift+p` → Package Control: Disable Package → CSS              |
 
     ![disabling the default CSS package](http://i.imgur.com/JUTJPZJ.gif)
 
