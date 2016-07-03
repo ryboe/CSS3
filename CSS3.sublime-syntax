@@ -302,9 +302,10 @@ contexts:
         - match: '{'
           scope: punctuation.section.at-font-feature-values.begin.css
           push:
+            - meta_scope: meta.at-rule.font-feature-values.block.css
             - match: '(?=})'
               pop: true
-            - include: font-feature-value-rule
+            - include: font-feature-type-rule
         - include: string
         - include: identifier
     - include: stray-brace
@@ -403,6 +404,7 @@ contexts:
         - match: '{'
           scope: punctuation.section.at-page.begin.css
           push:
+            - meta_scope: meta.at-rule.page.block.css
             - match: '(?=})'
               pop: true
             - include: page-margin-box
@@ -444,6 +446,7 @@ contexts:
         - match: '{'
           scope: punctuation.section.at-viewport.begin.css
           push:
+            - meta_scope: meta.at-rule.viewport.block.css
             - match: '(?=})'
               pop: true
             - include: descriptors-viewport
@@ -1202,6 +1205,7 @@ contexts:
       push:
         - meta_scope: meta.descriptor.viewport.orientation.css
         - include: end-value
+        - include: value-css-wide
         - match: '\b(?:portrait|landscape|auto){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
@@ -1214,6 +1218,7 @@ contexts:
       push:
         - meta_scope: meta.descriptor.viewport.user-zoom.css
         - include: end-value
+        - include: value-css-wide
         - match: '\b(?:zoom|fixed){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
@@ -1226,6 +1231,7 @@ contexts:
       push:
         - meta_scope: meta.descriptor.viewport.width-height.css
         - include: end-value
+        - include: value-css-wide
         - include: viewport-length
     - include: stray-paren-or-semicolon
 
@@ -1237,6 +1243,7 @@ contexts:
       push:
         - meta_scope: meta.descriptor.viewport.zoom.css
         - include: end-value
+        - include: value-css-wide
         - match: '\bauto{{b}}'
           scope: support.constant.property-value.css
         - include: percentage-non-negative
@@ -1398,14 +1405,6 @@ contexts:
     - match: '\b(?:wrap-reverse|wrap|nowrap){{b}}'
       scope: support.constant.property-value.css
 
-  font-feature-value-block:
-    - match: '{'
-      scope: punctuation.section.font-feature-value-block.begin.css
-      push:
-        - match: '(?=})'
-          pop: true
-        - include: font-feature-value-definition
-
   font-feature-value-definition:
     - match: '\b({{identifier}})\s*(:)'
       captures:
@@ -1416,10 +1415,19 @@ contexts:
         - include: value-css-wide
         - include: integer
 
+  font-feature-type-block:
+    - match: '{'
+      scope: punctuation.section.font-feature-type-block.begin.css
+      push:
+        - meta_scope: meta.font-feature-type-block.css
+        - match: '(?=})'
+          pop: true
+        - include: font-feature-value-definition
+
   # This matches a feature_type (e.g. @swash) and a feature_value_block.
   #     |-----matches-------|
   #     @swash { ornate: 1; }
-  font-feature-value-rule:
+  font-feature-type-rule:
     - match: '(?x)
         (@)
         (?:
@@ -1436,9 +1444,9 @@ contexts:
         1: punctuation.definition.keyword.css
       push:
         - match: '}'
-          scope: punctuation.section.font-feature-value-block.end.css
+          scope: punctuation.section.font-feature-type-block.end.css
           pop: true
-        - include: font-feature-value-block
+        - include: font-feature-type-block
     - include: stray-brace
 
   font-family-generic:
@@ -2920,6 +2928,7 @@ contexts:
         - match: '{'
           scope: punctuation.section.page-margin-at-rule.begin.css
           push:
+            - meta_scope: meta.page-margin-box.css
             - match: '(?=})'
               pop: true
             - include: properties
