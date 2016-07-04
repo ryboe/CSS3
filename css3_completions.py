@@ -55,7 +55,11 @@ class CSS3Completions(sublime_plugin.EventListener):
             return get_function_completions(start, current_scopes)
 
         # AT-RULES
+        if view.match_selector(start, "source.css -meta.at-rule"):
+            return s.at_rules, sublime.INHIBIT_WORD_COMPLETIONS
 
+        if view.match_selector(start, "meta.at-rule.media.block.css, meta.at-rule.supports.block.css"):
+            return s.nestable_at_rules, sublime.INHIBIT_WORD_COMPLETIONS
 
         # AT-RULE BLOCKS
         if view.match_selector(start, "source.css meta.at-rule"):
@@ -65,7 +69,7 @@ class CSS3Completions(sublime_plugin.EventListener):
 
             if view.match_selector(start, "meta.at-rule.font-face.block.css"):
                 # @font-face
-                if view.match_selector(start, "-meta.descriptor.font-face"):
+                if view.match_selector(start, "source.css -meta.descriptor.font-face"):
                     return p.font_face_descriptors, sublime.INHIBIT_WORD_COMPLETIONS
                 return get_descriptor_completions(current_scopes, descriptors_for="font-face")
 
@@ -77,13 +81,17 @@ class CSS3Completions(sublime_plugin.EventListener):
 
             if view.match_selector(start, "meta.at-rule.viewport.block.css"):
                 # @viewport
-                if view.match_selector(start, "-meta.descriptor.viewport"):
+                if view.match_selector(start, "source.css -meta.descriptor.viewport"):
                     return p.viewport_descriptors, sublime.INHIBIT_WORD_COMPLETIONS
                 return get_descriptor_completions(current_scopes, descriptors_for="viewport")
 
             if view.match_selector(start, "meta.at-rule.page.block.css -meta.page-margin-box.css"):
                 # @top-right, etc.
-                return s.at_page_selectors, sublime.INHIBIT_WORD_COMPLETIONS
+                return s.page_margin_boxes, sublime.INHIBIT_WORD_COMPLETIONS
+
+            if view.match_selector(start, "meta.at-rule.page.css -meta.at-rule.page.block.css"):
+                # @page :left, etc.
+                return s.at_page_selectors
 
             if view.match_selector(start, "meta.at-rule.charset.css"):
                 # @charset

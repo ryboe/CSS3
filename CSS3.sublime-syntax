@@ -369,6 +369,7 @@ contexts:
         - match: '{'
           scope: punctuation.section.at-media.begin.css
           push:
+            - meta_scope: meta.at-rule.media.block.css
             - match: '(?=})'
               pop: true
             - include: nestable-at-rules
@@ -425,6 +426,7 @@ contexts:
         - match: '{'
           scope: punctuation.section.at-supports.begin.css
           push:
+            - meta_scope: meta.at-rule.supports.block.css
             - match: '(?=})'
               pop: true
             - include: nestable-at-rules
