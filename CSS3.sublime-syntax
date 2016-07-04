@@ -373,6 +373,7 @@ contexts:
             - match: '(?=})'
               pop: true
             - include: nestable-at-rules
+            - include: properties
             - include: rule
         - include: media-query-list
     - include: stray-brace
