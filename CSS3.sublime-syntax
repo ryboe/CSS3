@@ -2612,7 +2612,7 @@ contexts:
         (
           {{optional_min_max_prefix}}
           aspect-ratio
-        )\s*(:)'
+        )\s*(:)?'
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -2689,7 +2689,7 @@ contexts:
       push:
         - include: end-media-feature
         - include: value-css-wide
-        - match: washed|normal|dim
+        - match: '\b(?:washed|normal|dim){{b}}'
           scope: support.constant.property-value.css
 
   media-feature-monochrome-color-index:
@@ -8619,6 +8619,7 @@ contexts:
   rule:
     - match: '(?=[\w.:#-\[*])'
       push:
+        - meta_scope: meta.rule.css
         - match: '}'
           scope: punctuation.section.property-list.end.css
           pop: true
