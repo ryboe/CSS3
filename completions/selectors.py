@@ -22,7 +22,9 @@ at_page_selectors = [
     (":blank",),
     (":first",),
     (":left",),
+    (":recto",),
     (":right",),
+    (":verso",),
 ]
 
 page_margin_boxes = [
