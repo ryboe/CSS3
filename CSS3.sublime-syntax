@@ -8704,6 +8704,12 @@ contexts:
 
   selector-page:
     - include: selector-page-pseudo-class
+    # This rule prevents identifer from matching text after the ':' while you're
+    # typing a page selector like :left.
+    - match: ':'
+      push:
+        - match: '(?={)'
+          pop: true
     - include: identifier
 
   selector-page-pseudo-class:
