@@ -8,7 +8,7 @@
 /*       ^ -keyword.control.at-rule.viewport.css */
 /*        ^ punctuation.section.at-viewport.begin.css */
     width: auto;
-/*  ^^^^^ support.constant.property-name.css */
+/*  ^^^^^ support.type.property-name.css */
 /*       ^ punctuation.separator.key-value.css */
 /*         ^^^^ support.constant.property-value.css */
 /*             ^ punctuation.terminator.rule.css */
@@ -22,7 +22,7 @@
 /*       ^ -keyword.control.at-rule.viewport.css */
 /*        ^ punctuation.section.at-viewport.begin.css */
     width: 397px;
-/*  ^^^^^ support.constant.property-name.css */
+/*  ^^^^^ support.type.property-name.css */
 /*       ^ punctuation.separator.key-value.css */
 /*         ^^^ constant.numeric.css */
 /*            ^^ keyword.other.unit.css */
@@ -37,7 +37,7 @@
 /*           ^ -keyword.control.at-rule.viewport.css */
 /*            ^ punctuation.section.at-viewport.begin.css */
         width: 500px;
-/*      ^^^^^ support.constant.property-name.css */
+/*      ^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^^^ constant.numeric.css */
 /*                ^^ keyword.other.unit.css */
@@ -53,7 +53,7 @@
 /*       ^ -keyword.control.at-rule.viewport.css */
 /*        ^ punctuation.section.at-viewport.begin.css */
     width: extend-to-zoom 980px;
-/*  ^^^^^ support.constant.property-name.css */
+/*  ^^^^^ support.type.property-name.css */
 /*       ^ punctuation.separator.key-value.css */
 /*         ^^^^^^^^^^^^^^ support.constant.property-value.css */
 /*                       ^ -support.constant.property-value.css */
@@ -61,12 +61,12 @@
 /*                           ^^ keyword.other.unit.css */
 /*                             ^ punctuation.terminator.rule.css */
     min-zoom: 0.25;
-/*  ^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^ support.type.property-name.css */
 /*          ^ punctuation.separator.key-value.css */
 /*            ^^^^ constant.numeric.css */
 /*                ^ punctuation.terminator.rule.css */
     max-zoom: 5;
-/*  ^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^ support.type.property-name.css */
 /*          ^ punctuation.separator.key-value.css */
 /*            ^ constant.numeric.css */
 /*             ^ punctuation.terminator.rule.css */
@@ -80,7 +80,7 @@
 /*       ^ -keyword.control.at-rule.viewport.css */
 /*        ^ punctuation.section.at-viewport.begin.css */
     width: extend-to-zoom 500px;
-/*  ^^^^^ support.constant.property-name.css */
+/*  ^^^^^ support.type.property-name.css */
 /*       ^ punctuation.separator.key-value.css */
 /*         ^^^^^^^^^^^^^^ support.constant.property-value.css */
 /*                       ^ -support.constant.property-value.css */
@@ -88,7 +88,7 @@
 /*                           ^^ keyword.other.unit.css */
 /*                             ^ punctuation.terminator.rule.css */
     height: extend-to-zoom 600px;
-/*  ^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^ support.type.property-name.css */
 /*        ^ punctuation.separator.key-value.css */
 /*          ^^^^^^^^^^^^^^ support.constant.property-value.css */
 /*                        ^ -support.constant.property-value.css */
@@ -105,12 +105,12 @@
 /*       ^ -keyword.control.at-rule.viewport.css */
 /*        ^ punctuation.section.at-viewport.begin.css */
     zoom: 1.0;
-/*  ^^^^ support.constant.property-name.css */
+/*  ^^^^ support.type.property-name.css */
 /*      ^ punctuation.separator.key-value.css */
 /*        ^^^ constant.numeric.css */
 /*           ^ punctuation.terminator.rule.css */
     width: extend-to-zoom;
-/*  ^^^^^ support.constant.property-name.css */
+/*  ^^^^^ support.type.property-name.css */
 /*       ^ punctuation.separator.key-value.css */
 /*         ^^^^^^^^^^^^^^ support.constant.property-value.css */
 /*                       ^ punctuation.terminator.rule.css */
@@ -124,17 +124,17 @@
 /*       ^ -keyword.control.at-rule.viewport.css */
 /*        ^ punctuation.section.at-viewport.begin.css */
     zoom: 2.0;
-/*  ^^^^ support.constant.property-name.css */
+/*  ^^^^ support.type.property-name.css */
 /*      ^ punctuation.separator.key-value.css */
 /*        ^^^ constant.numeric.css */
 /*           ^ punctuation.terminator.rule.css */
     width: auto;
-/*  ^^^^^ support.constant.property-name.css */
+/*  ^^^^^ support.type.property-name.css */
 /*       ^ punctuation.separator.key-value.css */
 /*         ^^^^ support.constant.property-value.css */
 /*             ^ punctuation.terminator.rule.css */
     height: extend-to-zoom 100%;
-/*  ^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^ support.type.property-name.css */
 /*        ^ punctuation.separator.key-value.css */
 /*          ^^^^^^^^^^^^^^ support.constant.property-value.css */
 /*                         ^^^ constant.numeric.css */
@@ -150,18 +150,18 @@
 /*       ^ -keyword.control.at-rule.viewport.css */
 /*        ^ punctuation.section.at-viewport.begin.css */
     width: 480px;
-/*  ^^^^^ support.constant.property-name.css */
+/*  ^^^^^ support.type.property-name.css */
 /*       ^ punctuation.separator.key-value.css */
 /*         ^^^ constant.numeric.css */
 /*            ^^ keyword.other.unit.css */
 /*              ^ punctuation.terminator.rule.css */
     zoom: 2.0;
-/*  ^^^^ support.constant.property-name.css */
+/*  ^^^^ support.type.property-name.css */
 /*      ^ punctuation.separator.key-value.css */
 /*        ^^^ constant.numeric.css */
 /*           ^ punctuation.terminator.rule.css */
     user-zoom: zoom;
-/*  ^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^^^^ support.constant.property-value.css */
 /*                 ^ punctuation.terminator.rule.css */
@@ -175,7 +175,7 @@
 /*       ^ -keyword.control.at-rule.viewport.css */
 /*        ^ punctuation.section.at-viewport.begin.css */
     min-width: 1024px;
-/*  ^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^^^^ constant.numeric.css */
 /*                 ^^ keyword.other.unit.css */

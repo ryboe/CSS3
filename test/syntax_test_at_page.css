@@ -66,7 +66,7 @@ margin-top: 10cm /* Top margin on first page 10cm */
 /* ^^^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
 /*           ^ -keyword.control.at-rule.page-margin-box.css */
 /*            ^ punctuation.section.page-margin-at-rule.begin.css */
-/*              ^^^^^^^ support.constant.property-name.css */
+/*              ^^^^^^^ support.type.property-name.css */
 /*                     ^ punctuation.separator.key-value.css */
 /*                       ^ string.quoted.double.css punctuation.definition.string.begin.css */
 /*                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ string.quoted.double.css */
@@ -89,7 +89,7 @@ margin-top: 10cm /* Top margin on first page 10cm */
 /* ^^^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
 /*           ^ -keyword.control.at-rule.page-margin-box.css */
 /*            ^ punctuation.section.page-margin-at-rule.begin.css */
-/*              ^^^^^^^ support.constant.property-name.css */
+/*              ^^^^^^^ support.type.property-name.css */
 /*                     ^ punctuation.separator.key-value.css */
 /*                       ^^^^ support.constant.property-value.css */
 /*                            ^ punctuation.section.page-margin-at-rule.end.css */
@@ -110,7 +110,7 @@ margin-top: 10cm /* Top margin on first page 10cm */
 /* ^^^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
 /*           ^ -keyword.control.at-rule.page-margin-box.css */
 /*            ^ punctuation.section.page-margin-at-rule.begin.css */
-/*              ^^^^^^^ support.constant.property-name.css */
+/*              ^^^^^^^ support.type.property-name.css */
 /*                     ^ punctuation.separator.key-value.css */
 /*                       ^ string.quoted.double.css punctuation.definition.string.begin.css */
 /*                        ^^^^^^^^^^^^^^^^^^^ string.quoted.double.css */
@@ -122,7 +122,7 @@ margin-top: 10cm /* Top margin on first page 10cm */
 /* ^^^^^^^^^^^^^ keyword.control.at-rule.page-margin-box.css */
 /*              ^ -keyword.control.at-rule.page-margin-box.css */
 /*               ^ punctuation.section.page-margin-at-rule.begin.css */
-/*                 ^^^^^^^ support.constant.property-name.css */
+/*                 ^^^^^^^ support.type.property-name.css */
 /*                        ^ punctuation.separator.key-value.css */
 /*                          ^^^^^^^^^^^^^^ support.function.target-counters.css */
 /*                                        ^ punctuation.section.function.begin.css */

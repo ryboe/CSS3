@@ -2333,7 +2333,7 @@ contexts:
               pop: true
             - include: any-value  # <declaration-value>
         - match: '{{custom_property_name}}'
-          scope: support.constant.property-name.custom.css
+          scope: support.type.property-name.custom.css
 
   func-whiteness-saturation-lightness-hue-blackness:
     - match: '(?x)
@@ -3580,7 +3580,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_content_scope: meta.property-value.appearance .css
+        - meta_content_scope: meta.property-value.appearance.css
         - include: end-value
         - include: value-css-wide
         - match: \b(?:none|auto){{b}}
@@ -4530,7 +4530,7 @@ contexts:
   property-custom:
     - match: '({{custom_property_name}})\s*(:)'
       captures:
-        1: support.constant.property-name.custom.css
+        1: support.type.property-name.custom.css
         2: punctuation.separator.key-value.css
       push:
         - include: end-value
