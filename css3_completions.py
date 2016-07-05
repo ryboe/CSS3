@@ -59,15 +59,14 @@ class CSS3Completions(sublime_plugin.EventListener):
             return p.names, sublime.INHIBIT_WORD_COMPLETIONS
 
         # PROPERTY VALUES
-        # if view.match_selector(start, "source.css meta.property-value-pair"):
+        if view.match_selector(start, "source.css meta.property-value-pair"):
+            line = view.substr(sublime.Region(view.line(start).begin(), start))
+            matches = property_name_rx.search(line)
+            if matches:
+                prop_name = matches.group("prop_name")
+                return p.name_to_completions.get(prop_name, []) + v.all_values, sublime.INHIBIT_WORD_COMPLETIONS
 
-        #     region = view.line(point)
-        #     line = view.substr(region).strip()
-        #     matches = property_name_rx.search(line)
-        #     if matches is not None:
-        #         prop_name = matches.group("prop_name")
-        #         if prop_name in properties.value_for_name:
-        #             return properties.value_for_name[prop_name] + values.all_values, INHIBIT_BOTH
+            return []
 
         # INSIDE FUNCTIONS
         if view.match_selector(start, "source.css meta.function"):
