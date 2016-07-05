@@ -1,3 +1,4 @@
+from CSS3.completions import descriptors as d
 from CSS3.completions import properties as p
 from CSS3.completions import selectors as s
 from CSS3.completions import values as v
@@ -43,73 +44,145 @@ class CSS3Completions(sublime_plugin.EventListener):
         #         |--prefix--|
         # start ->text-decorat|<- current cursor location
         start = locations[0] - len(prefix)
-        current_scopes = view.scope_name(start).split()
+        current_scopes = get_current_scopes(view, start)
 
         # TODO
         # SELECTORS
         # if view.match_selector(start, "meta.selector.css"):
         #     pass
 
-        # FUNCTIONS
+        # PROPERTY NAMES
+        # The meta.property-value-pair.css scope is triggered when the ':'' has
+        # been typed. If the scope is not present, the user must be typing a
+        # property name, not a value.
+        if view.match_selector(start, "source.css meta.property-list.css -meta.property-value-pair"):
+            return p.names, sublime.INHIBIT_WORD_COMPLETIONS
+
+        # PROPERTY VALUES
+        # if view.match_selector(start, "source.css meta.property-value-pair"):
+
+        #     region = view.line(point)
+        #     line = view.substr(region).strip()
+        #     matches = property_name_rx.search(line)
+        #     if matches is not None:
+        #         prop_name = matches.group("prop_name")
+        #         if prop_name in properties.value_for_name:
+        #             return properties.value_for_name[prop_name] + values.all_values, INHIBIT_BOTH
+
+        # INSIDE FUNCTIONS
         if view.match_selector(start, "source.css meta.function"):
             return get_function_completions(start, current_scopes)
 
-        # AT-RULES
-        if view.match_selector(start, "source.css -meta.at-rule"):
+        # OUTSIDE AT-RULES
+        if view.match_selector(start, "source.css -meta.at-rule -meta.property-list.css"):
             return s.at_rules, sublime.INHIBIT_WORD_COMPLETIONS
 
-        if view.match_selector(start, "meta.at-rule.media.block.css, meta.at-rule.supports.block.css"):
-            return s.nestable_at_rules, sublime.INHIBIT_WORD_COMPLETIONS
-
-        # AT-RULE BLOCKS
+        # INSIDE AT-RULES
         if view.match_selector(start, "source.css meta.at-rule"):
-            if view.match_selector(start, "meta.at-rule.keyframes.block.css -meta.keyframes-declaration-list.css"):
-                # @keyframes selector
-                return s.keyframes_selector, sublime.INHIBIT_WORD_COMPLETIONS
+            return handle_completions_inside_at_rules(view, start)
 
-            if view.match_selector(start, "meta.at-rule.font-face.block.css"):
-                # @font-face
-                if view.match_selector(start, "source.css -meta.descriptor.font-face"):
-                    return p.font_face_descriptors, sublime.INHIBIT_WORD_COMPLETIONS
-                return get_descriptor_completions(current_scopes, descriptors_for="font-face")
 
-            if view.match_selector(start, "meta.at-rule.font-feature-values.block.css"):
-                # @font-feature-values
-                if view.match_selector(start, "-meta.font-feature-type-block.css"):
-                    return s.font_feature_types, sublime.INHIBIT_WORD_COMPLETIONS
-                return []
+def get_current_scopes(view, location):
+    return view.scope_name(location).split()
 
-            if view.match_selector(start, "meta.at-rule.viewport.block.css"):
-                # @viewport
-                if view.match_selector(start, "source.css -meta.descriptor.viewport"):
-                    return p.viewport_descriptors, sublime.INHIBIT_WORD_COMPLETIONS
-                return get_descriptor_completions(current_scopes, descriptors_for="viewport")
 
-            if view.match_selector(start, "meta.at-rule.page.block.css -meta.page-margin-box.css"):
-                # @top-right, etc.
-                return s.page_margin_boxes, sublime.INHIBIT_WORD_COMPLETIONS
+def handle_completions_inside_at_rules(view, location):
+    current_scopes = get_current_scopes(view, location)
 
-            if view.match_selector(start, "meta.at-rule.page.css -meta.at-rule.page.block.css"):
-                # @page :left, etc.
-                return s.at_page_selectors
+    if should_offer_at_rule_completions(view, location):
+        return s.nestable_at_rules, sublime.INHIBIT_WORD_COMPLETIONS
 
-            if view.match_selector(start, "meta.at-rule.charset.css"):
-                # @charset
-                return [('"UTF-8";',)], sublime.INHIBIT_WORD_COMPLETIONS
+    if view.match_selector(location, "meta.at-rule.keyframes.block.css -meta.keyframes-declaration-list.css"):
+        # @keyframes selector
+        return s.keyframes_selector, sublime.INHIBIT_WORD_COMPLETIONS
 
-            if view.match_selector(start, "meta.at-rule.counter-style.block.css"):
-                # @counter-style
-                if view.match_selector(start, "-meta.descriptor.counter-style"):
-                    return p.counter_style_descriptors, sublime.INHIBIT_WORD_COMPLETIONS
-                return get_descriptor_completions(current_scopes, descriptors_for="counter-style")
+    if view.match_selector(location, "meta.at-rule.font-face.block.css"):
+        # @font-face
+        if view.match_selector(location, "source.css -meta.descriptor.font-face"):
+            return d.font_face_descriptors, sublime.INHIBIT_WORD_COMPLETIONS
+        return get_descriptor_completions(current_scopes, descriptors_for="font-face")
 
-            if view.match_selector(start, "meta.at-rule.color-profile.block.css"):
-                if view.match_selector(start, "-meta.descriptor.color-profile"):
-                    # @color-profile decriptor names
-                    return p.color_profile_descriptors, sublime.INHIBIT_WORD_COMPLETIONS
+    if view.match_selector(location, "meta.at-rule.font-feature-values.block.css"):
+        # @font-feature-values
+        if view.match_selector(location, "-meta.font-feature-type-block.css"):
+            return s.font_feature_types, sublime.INHIBIT_WORD_COMPLETIONS
+        return []
 
-                # @color-profile descriptor values
-                return get_descriptor_completions(current_scopes, descriptors_for="color-profile")
+    if view.match_selector(location, "meta.at-rule.viewport.block.css"):
+        # @viewport
+        if view.match_selector(location, "source.css -meta.descriptor.viewport"):
+            return d.viewport_descriptors, sublime.INHIBIT_WORD_COMPLETIONS
+        return get_descriptor_completions(current_scopes, descriptors_for="viewport")
+
+    if view.match_selector(location, "meta.at-rule.page.block.css -meta.page-margin-box.css"):
+        # @top-right, etc.
+        return s.page_margin_boxes, sublime.INHIBIT_WORD_COMPLETIONS
+
+    if view.match_selector(location, "meta.at-rule.page.css -meta.at-rule.page.block.css"):
+        # @page :left, etc.
+        return s.at_page_selectors
+
+    if view.match_selector(location, "meta.at-rule.charset.css"):
+        # @charset
+        return [('"UTF-8";',)], sublime.INHIBIT_WORD_COMPLETIONS
+
+    if view.match_selector(location, "meta.at-rule.counter-style.block.css"):
+        # @counter-style
+        if view.match_selector(location, "-meta.descriptor.counter-style"):
+            return d.counter_style_descriptors, sublime.INHIBIT_WORD_COMPLETIONS
+        return get_descriptor_completions(current_scopes, descriptors_for="counter-style")
+
+    if view.match_selector(location, "meta.at-rule.color-profile.block.css"):
+        if view.match_selector(location, "-meta.descriptor.color-profile"):
+            return d.color_profile_descriptors, sublime.INHIBIT_WORD_COMPLETIONS
+
+        return get_descriptor_completions(current_scopes, descriptors_for="color-profile")
+
+
+scopes_that_forbid_nested_at_rules = (
+    "meta.property-list.css, "
+    "meta.at-rule.font-face.block.css, "
+    "meta.at-rule.keyframes.block.css, "
+    "meta.at-rule.font-feature-values.block.css, "
+    "meta.at-rule.viewport.block.css, "
+    "meta.at-rule.color-profile.block.css, "
+    "meta.at-rule.counter-style.block.css, "
+    "meta.at-rule.page.block.css"
+)
+
+
+def should_offer_at_rule_completions(view, location):
+    """Return True if the given location should offer @-rules as completions.
+
+    @media and @supports can have @-rules nested inside them.
+
+    Example:
+        @media screen {
+            @media (min-width: 480px) {
+                ...
+            }
+        }
+
+    For the other @-rules, however, nested @-rules don't make sense.
+
+    Example:
+        @media screen {
+            @keyframes {
+                @media???
+            }
+        }
+
+    Args:
+        view (sublime.View):
+        location (int): the integer position of the
+
+    This function returns True if we're in an @media or @supports scope, but NOT
+    in any other scope.
+    """
+    if not view.match_selector(location, "meta.at-rule.media.block.css, meta.at-rule.supports.block.css"):
+        return False
+
+    return not view.match_selector(location, scopes_that_forbid_nested_at_rules)
 
 
 def get_descriptor_completions(current_scopes, descriptors_for):
@@ -180,6 +253,11 @@ def get_name(scopes, prefix):
             return scope.split(".")[name_index]
 
     return ""
+
+
+
+
+
 
     # PROPERTY NAME COMPLETIONS
 
