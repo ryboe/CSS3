@@ -3278,6 +3278,7 @@ contexts:
     - include: property-animation
     - include: property-appearance
     - include: property-background
+    - include: property-bleed
     - include: property-border
     - include: property-caret
     - include: property-chains
@@ -3301,6 +3302,7 @@ contexts:
     - include: property-isolation
     - include: property-margin
     - include: property-marker
+    - include: property-marks
     - include: property-mask
     - include: property-motion
     - include: property-opacity
@@ -3740,6 +3742,21 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: baseline-shift
+    - include: stray-paren-or-semicolon
+
+  # CSS Paged Media Module Level 3
+  property-bleed:
+    - match: \b(bleed)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.bleed.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bauto{{b}}'
+          scope: support.constant.property-value.css
+        - include: length
     - include: stray-paren-or-semicolon
 
   # CSS Generated Content Module Level 3
@@ -4205,7 +4222,7 @@ contexts:
 
   # CSS Masking Module Level 1
   property-clip-path:
-    - match: \b({{vendor_prefix}}clip-path)\s*(:)
+    - match: ({{vendor_prefix}}\bclip-path)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -5717,7 +5734,7 @@ contexts:
 
   # CSS Text Module Level 3
   property-hyphens:
-    - match: \b({{vendor_prefix}}hyphens)\s*(:)
+    - match: ({{vendor_prefix}}\bhyphens)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -6134,6 +6151,20 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:list-item|list-container){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Paged Media Module Level 3
+  property-marks:
+    - match: \b(marks)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property.marks.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:none|cross|crop){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
