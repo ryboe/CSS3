@@ -8713,7 +8713,7 @@ contexts:
     - include: identifier
 
   selector-page-pseudo-class:
-    - match: '(:)(?:right|left|first|blank){{b}}'
+    - match: '(:)(?:verso|right|recto|left|first|blank){{b}}'
       captures:
         0: entity.other.attribute-name.pseudo-class.css
         1: punctuation.definition.entity.css
