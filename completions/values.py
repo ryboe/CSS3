@@ -59,7 +59,7 @@ var          = ("var()", "var(--${1:name})")
 w            = ("w()", "w(${1}${2:100}%)")
 whiteness    = ("whiteness()", "whiteness(${1}${2:100}%)")
 
-
+all_values = [("inherit",), ("initial",), ("revert",), ("unset",), var]
 
 
 

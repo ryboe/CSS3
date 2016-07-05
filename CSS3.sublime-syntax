@@ -3341,7 +3341,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_content_scope: meta.property-value.align-content.css
+        - meta_scope: meta.property-value-pair.align-content.css
         - include: end-value
         - include: value-css-wide
         - match: '\bnormal{{b}}'

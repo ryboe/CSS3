@@ -386,6 +386,43 @@ names = [
     ("z-index", "z-index: ${1};"),
 ]
 
+baseline_position = [
+    ("baseline",),
+    ("last-baseline",),
+]
+
+content_distribution = [
+    ("space-around",),
+    ("space-between",),
+    ("space-evenly",),
+    ("stretch",),
+]
+
+content_position = [
+    ("center",),
+    ("end",),
+    ("flex-end",),
+    ("flex-start",),
+    ("left",),
+    ("right",),
+    ("start",),
+]
+
+overflow_position = [
+    ("safe",),
+    ("unsafe",),
+]
+
+name_to_completions = {
+    "align-content": [("normal",)] + baseline_position + content_distribution + content_position + overflow_position,
+}
+
+
+def sort_completions():
+    for name in name_to_completions:
+        name_to_completions[name].sort()
+
+sort_completions()
 
 
 
