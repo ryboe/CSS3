@@ -8785,7 +8785,7 @@ contexts:
         )
         {{b}}'
       captures:
-        0: css entity.other.attribute-name.pseudo-class.css invalid.deprecated.css
+        0: entity.other.attribute-name.pseudo-class.css invalid.deprecated.css
         1: punctuation.definition.entity.css
 
   selector-pseudo-class-dir:
