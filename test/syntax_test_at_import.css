@@ -78,7 +78,7 @@
 /*                           ^^^^^^ support.constant.media.css */
 /*                                  ^^^ keyword.operator.logic.media.css */
 /*                                      ^ punctuation.section.media-feature.begin.css */
-/*                                       ^^^^^^^^^^^ support.constant.property-name.css */
+/*                                       ^^^^^^^^^^^ support.type.property-name.css */
 /*                                                  ^ punctuation.separator.key-value.css */
 /*                                                   ^^^^^^^^^ support.constant.property-value.css */
 /*                                                            ^ punctuation.section.media-feature.end.css */
@@ -129,7 +129,7 @@
 /*                        ^^^^^^^^ support.constant.media.css invalid.deprecated.css */
 /*                                 ^^^ keyword.operator.logic.media.css */
 /*                                     ^ punctuation.section.media-feature.begin.css */
-/*                                      ^^^^^^^^^ support.constant.property-name.css */
+/*                                      ^^^^^^^^^ support.type.property-name.css */
 /*                                               ^ punctuation.separator.key-value.css */
 /*                                                 ^^^ constant.numeric.css */
 /*                                                    ^^ keyword.other.unit.css */

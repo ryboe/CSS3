@@ -10,12 +10,12 @@
 /*        ^ -keyword.control.at-rule.font-face.css */
 /*         ^ punctuation.section.at-font-face.begin.css */
   font-family: Gentium;
-/*^^^^^^^^^^^ support.constant.property-name.css */
+/*^^^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^^^^^^^ string.unquoted.identifier.css */
 /*                    ^ punctuation.terminator.rule.css */
   src: url("http://example.com/fonts/Gentium.woff");
-/*^^^ support.constant.property-name.css */
+/*^^^ support.type.property-name.css */
 /*   ^ punctuation.separator.key-value.css */
 /*     ^^^ support.function.url.css */
 /*        ^ punctuation.section.function.begin.css */
@@ -34,12 +34,12 @@
 /*        ^ -keyword.control.at-rule.font-face.css */
 /*         ^ punctuation.section.at-font-face.begin.css */
   font-family: bodytext;
-/*^^^^^^^^^^^ support.constant.property-name.css */
+/*^^^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^^^^^^^^ string.unquoted.identifier.css */
 /*                     ^ punctuation.terminator.rule.css */
   src: url("ideal-sans-serif.woff") format("woff"),
-/*^^^ support.constant.property-name.css */
+/*^^^ support.type.property-name.css */
 /*   ^ punctuation.separator.key-value.css */
 /*     ^^^ support.function.url.css */
 /*        ^ punctuation.section.function.begin.css */
@@ -77,12 +77,12 @@
 /*        ^ -keyword.control.at-rule.font-face.css */
 /*         ^ punctuation.section.at-font-face.begin.css */
   font-family: MyGentium;
-/*^^^^^^^^^^^ support.constant.property-name.css */
+/*^^^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^^^^^^^^^ string.unquoted.identifier.css */
 /*                      ^ punctuation.terminator.rule.css */
   src: local(Gentium),    /* use locally available Gentium */
-/*^^^ support.constant.property-name.css */
+/*^^^ support.type.property-name.css */
 /*   ^ punctuation.separator.key-value.css */
 /*     ^^^^^ support.function.local.css */
 /*          ^ punctuation.section.function.begin.css */
@@ -106,12 +106,12 @@
 /*        ^ -keyword.control.at-rule.font-face.css */
 /*         ^ punctuation.section.at-font-face.begin.css */
   font-family: MyGentium;
-/*^^^^^^^^^^^ support.constant.property-name.css */
+/*^^^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^^^^^^^^^ string.unquoted.identifier.css */
 /*                      ^ punctuation.terminator.rule.css */
   src: local(Gentium Bold),    /* full font name */
-/*^^^ support.constant.property-name.css */
+/*^^^ support.type.property-name.css */
 /*   ^ punctuation.separator.key-value.css */
 /*     ^^^^^ support.function.local.css */
 /*          ^ punctuation.section.function.begin.css */
@@ -132,7 +132,7 @@
 /*                           ^ punctuation.section.function.end.css */
 /*                            ^ punctuation.terminator.rule.css */
   font-weight: bold;
-/*^^^^^^^^^^^ support.constant.property-name.css */
+/*^^^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^^^^ support.constant.property-value.css */
 /*                 ^ punctuation.terminator.rule.css */
@@ -146,12 +146,12 @@
 /*        ^ -keyword.control.at-rule.font-face.css */
 /*         ^ punctuation.section.at-font-face.begin.css */
   font-family: Headline;
-/*^^^^^^^^^^^ support.constant.property-name.css */
+/*^^^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^^^^^^^^ string.unquoted.identifier.css */
 /*                     ^ punctuation.terminator.rule.css */
   src: local(Futura-Medium),
-/*^^^ support.constant.property-name.css */
+/*^^^ support.type.property-name.css */
 /*   ^ punctuation.separator.key-value.css */
 /*     ^^^^^ support.function.local.css */
 /*          ^ punctuation.section.function.begin.css */
@@ -181,12 +181,12 @@
 /*        ^ -keyword.control.at-rule.font-face.css */
 /*         ^ punctuation.section.at-font-face.begin.css */
   font-family: jpgothic;
-/*^^^^^^^^^^^ support.constant.property-name.css */
+/*^^^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^^^^^^^^ string.unquoted.identifier.css */
 /*                     ^ punctuation.terminator.rule.css */
   src: local(HiraKakuPro-W3), local(Meiryo), local(IPAPGothic);
-/*^^^ support.constant.property-name.css */
+/*^^^ support.type.property-name.css */
 /*   ^ punctuation.separator.key-value.css */
 /*     ^^^^^ support.function.local.css */
 /*          ^ punctuation.section.function.begin.css */
@@ -211,7 +211,7 @@
 /*        ^ -keyword.control.at-rule.font-face.css */
 /*         ^ punctuation.section.at-font-face.begin.css */
   font-family: Hoefler Text Ornaments;
-/*^^^^^^^^^^^ support.constant.property-name.css */
+/*^^^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^^^^^^^ string.unquoted.identifier.css */
 /*                     ^^^^ string.unquoted.identifier.css */
@@ -219,7 +219,7 @@
 /*                                   ^ punctuation.terminator.rule.css */
   /* has the same font properties as Hoefler Text Regular */
   src: local(HoeflerText-Ornaments);
-/*^^^ support.constant.property-name.css */
+/*^^^ support.type.property-name.css */
 /*   ^ punctuation.separator.key-value.css */
 /*     ^^^^^ support.function.local.css */
 /*          ^ punctuation.section.function.begin.css */
@@ -236,12 +236,12 @@
 /*        ^ -keyword.control.at-rule.font-face.css */
 /*         ^ punctuation.section.at-font-face.begin.css */
   font-family: SectionHeader;
-/*^^^^^^^^^^^ support.constant.property-name.css */
+/*^^^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^^^^^^^^^^^^^ string.unquoted.identifier.css */
 /*                          ^ punctuation.terminator.rule.css */
   src: local("Arial Lihavoitu");  /* Finnish fullname for Arial Bold, should fail */
-/*^^^ support.constant.property-name.css */
+/*^^^ support.type.property-name.css */
 /*   ^ punctuation.separator.key-value.css */
 /*     ^^^^^ support.function.local.css */
 /*          ^ punctuation.section.function.begin.css */
@@ -251,7 +251,7 @@
 /*                            ^ punctuation.section.function.end.css */
 /*                             ^ punctuation.terminator.rule.css */
   font-weight: bold;
-/*^^^^^^^^^^^ support.constant.property-name.css */
+/*^^^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^^^^ support.constant.property-value.css */
 /*                 ^ punctuation.terminator.rule.css */
@@ -265,12 +265,12 @@
 /*        ^ -keyword.control.at-rule.font-face.css */
 /*         ^ punctuation.section.at-font-face.begin.css */
   font-family: MainText;
-/*^^^^^^^^^^^ support.constant.property-name.css */
+/*^^^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^^^^^^^^ string.unquoted.identifier.css */
 /*                     ^ punctuation.terminator.rule.css */
   src: url("gentium.eot");                     /* for use with older user agents */
-/*^^^ support.constant.property-name.css */
+/*^^^ support.type.property-name.css */
 /*   ^ punctuation.separator.key-value.css */
 /*     ^^^ support.function.url.css */
 /*        ^ punctuation.section.function.begin.css */
@@ -281,7 +281,7 @@
 /*                       ^ punctuation.terminator.rule.css */
 
   src: local("Gentium"), url("gentium.woff");  /* Overrides src definition */
-/*^^^ support.constant.property-name.css */
+/*^^^ support.type.property-name.css */
 /*   ^ punctuation.separator.key-value.css */
 /*     ^^^^^ support.function.local.css */
 /*          ^ punctuation.section.function.begin.css */
@@ -306,12 +306,12 @@
 /*        ^ -keyword.control.at-rule.font-face.css */
 /*         ^ punctuation.section.at-font-face.begin.css */
   font-family: BBCBengali;
-/*^^^^^^^^^^^ support.constant.property-name.css */
+/*^^^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^^^^^^^^^^ string.unquoted.identifier.css */
 /*                       ^ punctuation.terminator.rule.css */
   src: url("fonts/BBCBengali.woff") format("woff");
-/*^^^ support.constant.property-name.css */
+/*^^^ support.type.property-name.css */
 /*   ^ punctuation.separator.key-value.css */
 /*     ^^^ support.function.url.css */
 /*        ^ punctuation.section.function.begin.css */
@@ -328,7 +328,7 @@
 /*                                                ^ punctuation.terminator.rule.css */
 
   unicode-range: U+00-FF, U+980-9FF;
-/*^^^^^^^^^^^^^ support.constant.property-name.css */
+/*^^^^^^^^^^^^^ support.type.property-name.css */
 /*             ^ punctuation.separator.key-value.css */
 /*               ^^^^^^^ constant.numeric.unicode-range.css */
 /*                        ^^^^^^^^^ constant.numeric.unicode-range.css */
@@ -344,12 +344,12 @@
 /*        ^ -keyword.control.at-rule.font-face.css */
 /*         ^ punctuation.section.at-font-face.begin.css */
   font-family: MainText;
-/*^^^^^^^^^^^ support.constant.property-name.css */
+/*^^^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^^^^^^^^ string.unquoted.identifier.css */
 /*                     ^ punctuation.terminator.rule.css */
   src: url("http://example.com/font.woff");
-/*^^^ support.constant.property-name.css */
+/*^^^ support.type.property-name.css */
 /*   ^ punctuation.separator.key-value.css */
 /*     ^^^ support.function.url.css */
 /*        ^ punctuation.section.function.begin.css */
@@ -359,7 +359,7 @@
 /*                                       ^ punctuation.section.function.end.css */
 /*                                        ^ punctuation.terminator.rule.css */
   font-variant: oldstyle-nums proportional-nums styleset(1,3);
-/*^^^^^^^^^^^^ support.constant.property-name.css */
+/*^^^^^^^^^^^^ support.type.property-name.css */
 /*            ^ punctuation.separator.key-value.css */
 /*              ^^^^^^^^^^^^^ support.constant.property-value.css */
 /*                            ^^^^^^^^^^^^^^^^^ support.constant.property-value.css */
@@ -379,12 +379,12 @@
 /*        ^ -keyword.control.at-rule.font-face.css */
 /*         ^ punctuation.section.at-font-face.begin.css */
   font-family: MyGentium;
-/*^^^^^^^^^^^ support.constant.property-name.css */
+/*^^^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^^^^^^^^^ string.unquoted.identifier.css */
 /*                      ^ punctuation.terminator.rule.css */
   src: local(Gentium Bold),    /* full font name */
-/*^^^ support.constant.property-name.css */
+/*^^^ support.type.property-name.css */
 /*   ^ punctuation.separator.key-value.css */
 /*     ^^^^^ support.function.local.css */
 /*          ^ punctuation.section.function.begin.css */
@@ -405,7 +405,7 @@
 /*                           ^ punctuation.section.function.end.css */
 /*                            ^ punctuation.terminator.rule.css */
   font-weight: bold;
-/*^^^^^^^^^^^ support.constant.property-name.css */
+/*^^^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^^^^ support.constant.property-value.css */
 /*                 ^ punctuation.terminator.rule.css */

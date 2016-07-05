@@ -4,293 +4,293 @@
 /* TEST A PROPERTIES */
 foo {
     align-content: flex-start;
-/*  ^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^ support.type.property-name.css */
 /*               ^ punctuation.separator.key-value.css */
 /*                 ^^^^^^^^^^ support.constant.property-value.css */
 /*                           ^ punctuation.terminator.rule.css */
     align-content: flex-end;
-/*  ^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^ support.type.property-name.css */
 /*               ^ punctuation.separator.key-value.css */
 /*                 ^^^^^^^^ support.constant.property-value.css */
 /*                         ^ punctuation.terminator.rule.css */
     align-content: center;
-/*  ^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^ support.type.property-name.css */
 /*               ^ punctuation.separator.key-value.css */
 /*                 ^^^^^^ support.constant.property-value.css */
 /*                       ^ punctuation.terminator.rule.css */
     align-content: space-between;
-/*  ^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^ support.type.property-name.css */
 /*               ^ punctuation.separator.key-value.css */
 /*                 ^^^^^^^^^^^^^ support.constant.property-value.css */
 /*                              ^ punctuation.terminator.rule.css */
     align-content: space-around;
-/*  ^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^ support.type.property-name.css */
 /*               ^ punctuation.separator.key-value.css */
 /*                 ^^^^^^^^^^^^ support.constant.property-value.css */
 /*                             ^ punctuation.terminator.rule.css */
     align-content: stretch;
-/*  ^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^ support.type.property-name.css */
 /*               ^ punctuation.separator.key-value.css */
 /*                 ^^^^^^^ support.constant.property-value.css */
 /*                        ^ punctuation.terminator.rule.css */
     align-content: inherit;
-/*  ^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^ support.type.property-name.css */
 /*               ^ punctuation.separator.key-value.css */
 /*                 ^^^^^^^ support.constant.property-value.css */
 /*                        ^ punctuation.terminator.rule.css */
     align-content: initial;
-/*  ^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^ support.type.property-name.css */
 /*               ^ punctuation.separator.key-value.css */
 /*                 ^^^^^^^ support.constant.property-value.css */
 /*                        ^ punctuation.terminator.rule.css */
     align-content: revert;
-/*  ^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^ support.type.property-name.css */
 /*               ^ punctuation.separator.key-value.css */
 /*                 ^^^^^^ support.constant.property-value.css */
 /*                       ^ punctuation.terminator.rule.css */
     align-content: unset;
-/*  ^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^ support.type.property-name.css */
 /*               ^ punctuation.separator.key-value.css */
 /*                 ^^^^^ support.constant.property-value.css */
 /*                      ^ punctuation.terminator.rule.css */
     align-content: var(--foo);
-/*  ^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^ support.type.property-name.css */
 /*               ^ punctuation.separator.key-value.css */
 /*                 ^^^ support.function.var.css */
 /*                    ^ punctuation.section.function.begin.css */
-/*                     ^^^^^ support.constant.property-name.custom.css
+/*                     ^^^^^ support.type.property-name.custom.css
 /*                          ^ punctuation.section.function.end.css */
 /*                           ^ punctuation.terminator.rule.css */
 
     align-items: flex-start;
-/*  ^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^ support.type.property-name.css */
 /*             ^ punctuation.separator.key-value.css */
 /*               ^^^^^^^^^^ support.constant.property-value.css */
 /*                         ^ punctuation.terminator.rule.css */
     align-items: flex-end;
-/*  ^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^ support.type.property-name.css */
 /*             ^ punctuation.separator.key-value.css */
 /*               ^^^^^^^^ support.constant.property-value.css */
 /*                       ^ punctuation.terminator.rule.css */
     align-items: center;
-/*  ^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^ support.type.property-name.css */
 /*             ^ punctuation.separator.key-value.css */
 /*               ^^^^^^ support.constant.property-value.css */
 /*                     ^ punctuation.terminator.rule.css */
     align-items: baseline;
-/*  ^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^ support.type.property-name.css */
 /*             ^ punctuation.separator.key-value.css */
 /*               ^^^^^^^^ support.constant.property-value.css */
 /*                       ^ punctuation.terminator.rule.css */
     align-items: stretch;
-/*  ^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^ support.type.property-name.css */
 /*             ^ punctuation.separator.key-value.css */
 /*               ^^^^^^^ support.constant.property-value.css */
 /*                      ^ punctuation.terminator.rule.css */
     align-items: inherit;
-/*  ^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^ support.type.property-name.css */
 /*             ^ punctuation.separator.key-value.css */
 /*               ^^^^^^^ support.constant.property-value.css */
 /*                      ^ punctuation.terminator.rule.css */
     align-items: initial;
-/*  ^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^ support.type.property-name.css */
 /*             ^ punctuation.separator.key-value.css */
 /*               ^^^^^^^ support.constant.property-value.css */
 /*                      ^ punctuation.terminator.rule.css */
     align-items: revert;
-/*  ^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^ support.type.property-name.css */
 /*             ^ punctuation.separator.key-value.css */
 /*               ^^^^^^ support.constant.property-value.css */
 /*                     ^ punctuation.terminator.rule.css */
     align-items: unset;
-/*  ^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^ support.type.property-name.css */
 /*             ^ punctuation.separator.key-value.css */
 /*               ^^^^^ support.constant.property-value.css */
 /*                    ^ punctuation.terminator.rule.css */
     align-items: var(--foo);
-/*  ^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^ support.type.property-name.css */
 /*             ^ punctuation.separator.key-value.css */
 /*               ^^^ support.function.var.css */
 /*                  ^ punctuation.section.function.begin.css */
-/*                   ^^^^^ support.constant.property-name.custom.css
+/*                   ^^^^^ support.type.property-name.custom.css
 /*                        ^ punctuation.section.function.end.css */
 /*                         ^ punctuation.terminator.rule.css */
 
     align-self: auto;
-/*  ^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^ support.type.property-name.css */
 /*            ^ punctuation.separator.key-value.css */
 /*              ^^^^ support.constant.property-value.css */
 /*                  ^ punctuation.terminator.rule.css */
     align-self: flex-start;
-/*  ^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^ support.type.property-name.css */
 /*            ^ punctuation.separator.key-value.css */
 /*              ^^^^^^^^^^ support.constant.property-value.css */
 /*                        ^ punctuation.terminator.rule.css */
     align-self: flex-end;
-/*  ^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^ support.type.property-name.css */
 /*            ^ punctuation.separator.key-value.css */
 /*              ^^^^^^^^ support.constant.property-value.css */
 /*                      ^ punctuation.terminator.rule.css */
     align-self: center;
-/*  ^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^ support.type.property-name.css */
 /*            ^ punctuation.separator.key-value.css */
 /*              ^^^^^^ support.constant.property-value.css */
 /*                    ^ punctuation.terminator.rule.css */
     align-self: baseline;
-/*  ^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^ support.type.property-name.css */
 /*            ^ punctuation.separator.key-value.css */
 /*              ^^^^^^^^ support.constant.property-value.css */
 /*                      ^ punctuation.terminator.rule.css */
     align-self: stretch;
-/*  ^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^ support.type.property-name.css */
 /*            ^ punctuation.separator.key-value.css */
 /*              ^^^^^^^ support.constant.property-value.css */
 /*                     ^ punctuation.terminator.rule.css */
     align-self: inherit;
-/*  ^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^ support.type.property-name.css */
 /*            ^ punctuation.separator.key-value.css */
 /*              ^^^^^^^ support.constant.property-value.css */
 /*                     ^ punctuation.terminator.rule.css */
     align-self: initial;
-/*  ^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^ support.type.property-name.css */
 /*            ^ punctuation.separator.key-value.css */
 /*              ^^^^^^^ support.constant.property-value.css */
 /*                     ^ punctuation.terminator.rule.css */
     align-self: revert;
-/*  ^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^ support.type.property-name.css */
 /*            ^ punctuation.separator.key-value.css */
 /*              ^^^^^^ support.constant.property-value.css */
 /*                    ^ punctuation.terminator.rule.css */
     align-self: unset;
-/*  ^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^ support.type.property-name.css */
 /*            ^ punctuation.separator.key-value.css */
 /*              ^^^^^ support.constant.property-value.css */
 /*                   ^ punctuation.terminator.rule.css */
     align-self: var(--foo);
-/*  ^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^ support.type.property-name.css */
 /*            ^ punctuation.separator.key-value.css */
 /*              ^^^ support.function.var.css */
 /*                 ^ punctuation.section.function.begin.css */
-/*                  ^^^^^ support.constant.property-name.custom.css
+/*                  ^^^^^ support.type.property-name.custom.css
 /*                       ^ punctuation.section.function.end.css */
 /*                        ^ punctuation.terminator.rule.css */
 
     alignment-baseline: baseline;
-/*  ^^^^^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                    ^ punctuation.separator.key-value.css */
 /*                      ^^^^^^^^ support.constant.property-value.css */
 /*                              ^ punctuation.terminator.rule.css */
     alignment-baseline: text-bottom;
-/*  ^^^^^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                    ^ punctuation.separator.key-value.css */
 /*                      ^^^^^^^^^^^ support.constant.property-value.css */
 /*                                 ^ punctuation.terminator.rule.css */
     alignment-baseline: alphabetic;
-/*  ^^^^^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                    ^ punctuation.separator.key-value.css */
 /*                      ^^^^^^^^^^ support.constant.property-value.css */
 /*                                ^ punctuation.terminator.rule.css */
     alignment-baseline: ideographic;
-/*  ^^^^^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                    ^ punctuation.separator.key-value.css */
 /*                      ^^^^^^^^^^^ support.constant.property-value.css */
 /*                                 ^ punctuation.terminator.rule.css */
     alignment-baseline: middle;
-/*  ^^^^^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                    ^ punctuation.separator.key-value.css */
 /*                      ^^^^^^ support.constant.property-value.css */
 /*                            ^ punctuation.terminator.rule.css */
     alignment-baseline: central;
-/*  ^^^^^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                    ^ punctuation.separator.key-value.css */
 /*                      ^^^^^^^ support.constant.property-value.css */
 /*                             ^ punctuation.terminator.rule.css */
     alignment-baseline: mathematical;
-/*  ^^^^^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                    ^ punctuation.separator.key-value.css */
 /*                      ^^^^^^^^^^^^ support.constant.property-value.css */
 /*                                  ^ punctuation.terminator.rule.css */
     alignment-baseline: text-top;
-/*  ^^^^^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                    ^ punctuation.separator.key-value.css */
 /*                      ^^^^^^^^ support.constant.property-value.css */
 /*                              ^ punctuation.terminator.rule.css */
     alignment-baseline: bottom;
-/*  ^^^^^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                    ^ punctuation.separator.key-value.css */
 /*                      ^^^^^^ support.constant.property-value.css */
 /*                            ^ punctuation.terminator.rule.css */
     alignment-baseline: center;
-/*  ^^^^^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                    ^ punctuation.separator.key-value.css */
 /*                      ^^^^^^ support.constant.property-value.css */
 /*                            ^ punctuation.terminator.rule.css */
     alignment-baseline: top;
-/*  ^^^^^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                    ^ punctuation.separator.key-value.css */
 /*                      ^^^ support.constant.property-value.css */
 /*                         ^ punctuation.terminator.rule.css */
     alignment-baseline: inherit;
-/*  ^^^^^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                    ^ punctuation.separator.key-value.css */
 /*                      ^^^^^^^ support.constant.property-value.css */
 /*                             ^ punctuation.terminator.rule.css */
     alignment-baseline: initial;
-/*  ^^^^^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                    ^ punctuation.separator.key-value.css */
 /*                      ^^^^^^^ support.constant.property-value.css */
 /*                             ^ punctuation.terminator.rule.css */
     alignment-baseline: revert;
-/*  ^^^^^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                    ^ punctuation.separator.key-value.css */
 /*                      ^^^^^^ support.constant.property-value.css */
 /*                            ^ punctuation.terminator.rule.css */
     alignment-baseline: unset;
-/*  ^^^^^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                    ^ punctuation.separator.key-value.css */
 /*                      ^^^^^ support.constant.property-value.css */
 /*                           ^ punctuation.terminator.rule.css */
     alignment-baseline: var(--foo);
-/*  ^^^^^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                    ^ punctuation.separator.key-value.css */
 /*                      ^^^ support.function.var.css */
 /*                         ^ punctuation.section.function.begin.css */
-/*                          ^^^^^ support.constant.property-name.custom.css
+/*                          ^^^^^ support.type.property-name.custom.css
 /*                               ^ punctuation.section.function.end.css */
 /*                                ^ punctuation.terminator.rule.css */
 
 
     all: inherit;
-/*  ^^^ support.constant.property-name.css */
+/*  ^^^ support.type.property-name.css */
 /*     ^ punctuation.separator.key-value.css */
 /*       ^^^^^^^ support.constant.property-value.css */
 /*              ^ punctuation.terminator.rule.css */
     all: initial;
-/*  ^^^ support.constant.property-name.css */
+/*  ^^^ support.type.property-name.css */
 /*     ^ punctuation.separator.key-value.css */
 /*       ^^^^^^^ support.constant.property-value.css */
 /*              ^ punctuation.terminator.rule.css */
     all: revert;
-/*  ^^^ support.constant.property-name.css */
+/*  ^^^ support.type.property-name.css */
 /*     ^ punctuation.separator.key-value.css */
 /*       ^^^^^^ support.constant.property-value.css */
 /*             ^ punctuation.terminator.rule.css */
     all: unset;
-/*  ^^^ support.constant.property-name.css */
+/*  ^^^ support.type.property-name.css */
 /*     ^ punctuation.separator.key-value.css */
 /*       ^^^^^ support.constant.property-value.css */
 /*            ^ punctuation.terminator.rule.css */
     all: var(--foo);
-/*  ^^^ support.constant.property-name.css */
+/*  ^^^ support.type.property-name.css */
 /*     ^ punctuation.separator.key-value.css */
 /*       ^^^ support.function.var.css */
 /*          ^ punctuation.section.function.begin.css */
-/*           ^^^^^ support.constant.property-name.custom.css
+/*           ^^^^^ support.type.property-name.custom.css
 /*                ^ punctuation.section.function.end.css */
 /*                 ^ punctuation.terminator.rule.css */
 
     animation: 3s ease-in 1s 2 reverse both paused slidein;
-/*  ^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^ constant.numeric.css */
 /*              ^ keyword.other.unit.css */
@@ -304,7 +304,7 @@ foo {
 /*                                                 ^^^^^^^ string.unquoted.identifier.css */
 /*                                                        ^ punctuation.terminator.rule.css */
     animation: 3s linear 1s slidein;
-/*  ^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^ constant.numeric.css */
 /*              ^ keyword.other.unit.css */
@@ -314,14 +314,14 @@ foo {
 /*                          ^^^^^^^ string.unquoted.identifier.css */
 /*                                 ^ punctuation.terminator.rule.css */
     animation: 3s slidein;
-/*  ^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^ constant.numeric.css */
 /*              ^ keyword.other.unit.css */
 /*                ^^^^^^^ string.unquoted.identifier.css */
 /*                       ^ punctuation.terminator.rule.css */
     animation: 4s linear 0s infinite alternate move_eye;
-/*  ^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^ constant.numeric.css */
 /*              ^ keyword.other.unit.css */
@@ -333,7 +333,7 @@ foo {
 /*                                             ^^^^^^^^ string.unquoted.identifier.css */
 /*                                                     ^ punctuation.terminator.rule.css */
     animation: 3s none backwards;
-/*  ^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^ constant.numeric.css */
 /*              ^ keyword.other.unit.css */
@@ -341,50 +341,50 @@ foo {
 /*                     ^^^^^^^^^ support.constant.property-value.css */
 /*                              ^ punctuation.terminator.rule.css */
     animation: 3s backwards;
-/*  ^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^ constant.numeric.css */
 /*              ^ keyword.other.unit.css */
 /*                ^^^^^^^^^ support.constant.property-value.css */
 /*                         ^ punctuation.terminator.rule.css */
     animation: initial;
-/*  ^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^^^^^^^ support.constant.property-value.css */
 /*                    ^ punctuation.terminator.rule.css */
     animation: inherit;
-/*  ^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^^^^^^^ support.constant.property-value.css */
 /*                    ^ punctuation.terminator.rule.css */
     animation: revert;
-/*  ^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^^^^^^ support.constant.property-value.css */
 /*                   ^ punctuation.terminator.rule.css */
     animation: unset;
-/*  ^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^^^^^ support.constant.property-value.css */
 /*                  ^ punctuation.terminator.rule.css */
     animation: var(--foo);
-/*  ^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^^^ support.function.var.css */
 /*                ^ punctuation.section.function.begin.css */
-/*                 ^^^^^ support.constant.property-name.custom.css
+/*                 ^^^^^ support.type.property-name.custom.css
 /*                      ^ punctuation.section.function.end.css */
 /*                       ^ punctuation.terminator.rule.css */
 
 
     animation-delay: 3s;
-/*  ^^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                 ^ punctuation.separator.key-value.css */
 /*                   ^ constant.numeric.css */
 /*                    ^ keyword.other.unit.css */
 /*                     ^ punctuation.terminator.rule.css */
     animation-delay: 2s, 4ms;
-/*  ^^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                 ^ punctuation.separator.key-value.css */
 /*                   ^ constant.numeric.css */
 /*                    ^ keyword.other.unit.css */
@@ -392,32 +392,32 @@ foo {
 /*                        ^^ keyword.other.unit.css */
 /*                          ^ punctuation.terminator.rule.css */
     animation-delay: initial;
-/*  ^^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                 ^ punctuation.separator.key-value.css */
 /*                   ^^^^^^^ support.constant.property-value.css */
 /*                          ^ punctuation.terminator.rule.css */
 
     animation-delay: inherit;
-/*  ^^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                 ^ punctuation.separator.key-value.css */
 /*                   ^^^^^^^ support.constant.property-value.css */
 /*                          ^ punctuation.terminator.rule.css */
     animation-delay: revert;
-/*  ^^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                 ^ punctuation.separator.key-value.css */
 /*                   ^^^^^^ support.constant.property-value.css */
 /*                         ^ punctuation.terminator.rule.css */
     animation-delay: unset;
-/*  ^^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                 ^ punctuation.separator.key-value.css */
 /*                   ^^^^^ support.constant.property-value.css */
 /*                        ^ punctuation.terminator.rule.css */
     animation-delay: var(--foo);
-/*  ^^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                 ^ punctuation.separator.key-value.css */
 /*                   ^^^ support.function.var.css */
 /*                      ^ punctuation.section.function.begin.css */
-/*                       ^^^^^ support.constant.property-name.custom.css
+/*                       ^^^^^ support.type.property-name.custom.css
 /*                            ^ punctuation.section.function.end.css */
 /*                             ^ punctuation.terminator.rule.css */
 
@@ -432,11 +432,11 @@ foo {
     animation-direction: revert;
     animation-direction: unset;
     animation-direction: var(--foo);
-/*  ^^^^^^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                     ^ punctuation.separator.key-value.css */
 /*                       ^^^ support.function.var.css */
 /*                          ^ punctuation.section.function.begin.css */
-/*                           ^^^^^ support.constant.property-name.custom.css
+/*                           ^^^^^ support.type.property-name.custom.css
 /*                                ^ punctuation.section.function.end.css */
 /*                                 ^ punctuation.terminator.rule.css */
 
@@ -450,11 +450,11 @@ foo {
     animation-duration: revert;
     animation-duration: unset;
     animation-duration: var(--foo);
-/*  ^^^^^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                    ^ punctuation.separator.key-value.css */
 /*                      ^^^ support.function.var.css */
 /*                         ^ punctuation.section.function.begin.css */
-/*                          ^^^^^ support.constant.property-name.custom.css
+/*                          ^^^^^ support.type.property-name.custom.css
 /*                               ^ punctuation.section.function.end.css */
 /*                                ^ punctuation.terminator.rule.css */
 
@@ -470,11 +470,11 @@ foo {
     animation-fill-mode: revert;
     animation-fill-mode: unset;
     animation-fill-mode: var(--foo);
-/*  ^^^^^^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                     ^ punctuation.separator.key-value.css */
 /*                       ^^^ support.function.var.css */
 /*                          ^ punctuation.section.function.begin.css */
-/*                           ^^^^^ support.constant.property-name.custom.css
+/*                           ^^^^^ support.type.property-name.custom.css
 /*                                ^ punctuation.section.function.end.css */
 /*                                 ^ punctuation.terminator.rule.css */
 
@@ -488,11 +488,11 @@ foo {
     animation-iteration-count: revert;
     animation-iteration-count: unset;
     animation-iteration-count: var(--foo);
-/*  ^^^^^^^^^^^^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                           ^ punctuation.separator.key-value.css */
 /*                             ^^^ support.function.var.css */
 /*                                ^ punctuation.section.function.begin.css */
-/*                                 ^^^^^ support.constant.property-name.custom.css
+/*                                 ^^^^^ support.type.property-name.custom.css
 /*                                      ^ punctuation.section.function.end.css */
 /*                                       ^ punctuation.terminator.rule.css */
 
@@ -509,11 +509,11 @@ foo {
     animation-name: revert;
     animation-name: unset;
     animation-name: var(--foo);
-/*  ^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                ^ punctuation.separator.key-value.css */
 /*                  ^^^ support.function.var.css */
 /*                     ^ punctuation.section.function.begin.css */
-/*                      ^^^^^ support.constant.property-name.custom.css
+/*                      ^^^^^ support.type.property-name.custom.css
 /*                           ^ punctuation.section.function.end.css */
 /*                            ^ punctuation.terminator.rule.css */
 
@@ -526,11 +526,11 @@ foo {
     animation-play-state: revert;
     animation-play-state: unset;
     animation-play-state: var(--foo);
-/*  ^^^^^^^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                      ^ punctuation.separator.key-value.css */
 /*                        ^^^ support.function.var.css */
 /*                           ^ punctuation.section.function.begin.css */
-/*                            ^^^^^ support.constant.property-name.custom.css
+/*                            ^^^^^ support.type.property-name.custom.css
 /*                                 ^ punctuation.section.function.end.css */
 /*                                  ^ punctuation.terminator.rule.css */
 
@@ -550,11 +550,11 @@ foo {
     animation-timing-function: revert;
     animation-timing-function: unset;
     animation-timing-function: var(--foo);
-/*  ^^^^^^^^^^^^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                           ^ punctuation.separator.key-value.css */
 /*                             ^^^ support.function.var.css */
 /*                                ^ punctuation.section.function.begin.css */
-/*                                 ^^^^^ support.constant.property-name.custom.css
+/*                                 ^^^^^ support.type.property-name.custom.css
 /*                                      ^ punctuation.section.function.end.css */
 /*                                       ^ punctuation.terminator.rule.css */
 
@@ -566,11 +566,11 @@ foo {
     appearance: revert;
     appearance: unset;
     appearance: var(--foo);
-/*  ^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^ support.type.property-name.css */
 /*            ^ punctuation.separator.key-value.css */
 /*              ^^^ support.function.var.css */
 /*                 ^ punctuation.section.function.begin.css */
-/*                  ^^^^^ support.constant.property-name.custom.css
+/*                  ^^^^^ support.type.property-name.custom.css
 /*                       ^ punctuation.section.function.end.css */
 /*                        ^ punctuation.terminator.rule.css */
 

@@ -34,7 +34,7 @@
 /*       ^ -keyword.control.at-rule.supports.css */
 /*        ^ punctuation.section.supports-condition.begin.css */
 /*         ^ meta.supports-condition.css */
-/*          ^^^^^^^ support.constant.property-name.css */
+/*          ^^^^^^^ support.type.property-name.css */
 /*                 ^ punctuation.separator.key-value.css */
 /*                   ^^^^ support.constant.property-value.css */
 /*                       ^ -support.constant.property-value.css */
@@ -54,7 +54,7 @@
 /*           ^ -keyword.operator.logic.at-supports.css */
 /*            ^ punctuation.section.supports-condition.begin.css */
 /*             ^ meta.supports-condition.css */
-/*              ^^^^^^^ support.constant.property-name.css */
+/*              ^^^^^^^ support.type.property-name.css */
 /*                     ^ punctuation.separator.key-value.css */
 /*                       ^^^^ support.constant.property-value.css */
 /*                           ^ -support.constant.property-value.css */
@@ -72,7 +72,7 @@
 /*^^^^^^^ keyword.control.at-rule.supports.css */
 /*       ^ -keyword.control.at-rule.supports.css */
 /*        ^ punctuation.section.supports-condition.begin.css */
-/*          ^^^^^^^^^^ support.constant.property-name.css */
+/*          ^^^^^^^^^^ support.type.property-name.css */
 /*                    ^ punctuation.separator.key-value.css */
 /*                      ^ constant.numeric.css */
 /*                        ^ constant.numeric.css */
@@ -84,7 +84,7 @@
 /*                                            ^^ keyword.operator.logic.at-supports.css */
           ( -moz-box-shadow: 0 0 2px black inset ) or
 /*        ^ punctuation.section.supports-condition.begin.css */
-/*               ^^^^^^^^^^ support.constant.property-name.css */
+/*               ^^^^^^^^^^ support.type.property-name.css */
 /*                         ^ punctuation.separator.key-value.css */
 /*                           ^ constant.numeric.css */
 /*                             ^ constant.numeric.css */
@@ -96,7 +96,7 @@
 /*                                                 ^^ keyword.operator.logic.at-supports.css */
           ( -webkit-box-shadow: 0 0 2px black inset ) or
 /*        ^ punctuation.section.supports-condition.begin.css */
-/*                  ^^^^^^^^^^ support.constant.property-name.css */
+/*                  ^^^^^^^^^^ support.type.property-name.css */
 /*                            ^ punctuation.separator.key-value.css */
 /*                              ^ constant.numeric.css */
 /*                                ^ constant.numeric.css */
@@ -108,7 +108,7 @@
 /*                                                    ^^ keyword.operator.logic.at-supports.css */
           ( -o-box-shadow: 0 0 2px black inset ) {
 /*        ^ punctuation.section.supports-condition.begin.css */
-/*             ^^^^^^^^^^ support.constant.property-name.css */
+/*             ^^^^^^^^^^ support.type.property-name.css */
 /*                       ^ punctuation.separator.key-value.css */
 /*                         ^ constant.numeric.css */
 /*                           ^ constant.numeric.css */
@@ -139,14 +139,14 @@
 /*                                      ^^ keyword.operator.logic.at-supports.css */
            (animation-name: foo)) and
 /*         ^ punctuation.section.supports-condition.begin.css */
-/*          ^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*          ^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                        ^ punctuation.separator.key-value.css */
 /*                          ^^^ string.unquoted.identifier.css */
 /*                             ^^ punctuation.section.supports-condition.end.css */
 /*                                ^^^ keyword.operator.logic.at-supports.css */
            (transform: rotate(10deg)) {}
 /*         ^ punctuation.section.supports-condition.begin.css */
-/*          ^^^^^^^^^ support.constant.property-name.css */
+/*          ^^^^^^^^^ support.type.property-name.css */
 /*                   ^ punctuation.separator.key-value.css */
 /*                     ^^^^^^ support.function.rotate.css */
 /*                           ^ punctuation.section.function.begin.css */
@@ -167,14 +167,14 @@
 /*                                   ^ punctuation.section.supports-condition.end.css */
           ((animation-name: foo) and
 /*        ^^ punctuation.section.supports-condition.begin.css */
-/*          ^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*          ^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                        ^ punctuation.separator.key-value.css */
 /*                          ^^^ string.unquoted.identifier.css */
 /*                             ^ punctuation.section.supports-condition.end.css */
 /*                               ^^^ keyword.operator.logic.at-supports.css */
            (transform: rotate(10deg))) {}
 /*         ^ punctuation.section.supports-condition.begin.css */
-/*          ^^^^^^^^^ support.constant.property-name.css */
+/*          ^^^^^^^^^ support.type.property-name.css */
 /*                   ^ punctuation.separator.key-value.css */
 /*                     ^^^^^^ support.function.rotate.css */
 /*                           ^ punctuation.section.function.begin.css */
@@ -191,7 +191,7 @@
 /*^^^^^^^ keyword.control.at-rule.supports.css */
 /*       ^ -keyword.control.at-rule.supports.css */
 /*        ^^ punctuation.section.supports-condition.begin.css */
-/*          ^^^^^^^ support.constant.property-name.css */
+/*          ^^^^^^^ support.type.property-name.css */
 /*                 ^ punctuation.separator.key-value.css */
 /*                   ^^^^ support.constant.property-value.css */
 /*                       ^^ punctuation.section.supports-condition.end.css */
@@ -204,7 +204,7 @@
 /*^^^^^^^ keyword.control.at-rule.supports.css */
 /*       ^ -keyword.control.at-rule.supports.css */
 /*        ^ punctuation.section.supports-condition.begin.css */
-/*         ^^^^^^^ support.constant.property-name.css */
+/*         ^^^^^^^ support.type.property-name.css */
 /*                ^ punctuation.separator.key-value.css */
 /*                  ^^^^ support.constant.property-value.css */
 /*                      ^ -support.constant.property-value.css */

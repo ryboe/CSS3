@@ -15,19 +15,19 @@
 /*^ keyword.control.at-rule.feature-type.css punctuation.definition.keyword.css */
 /* ^^^^^ keyword.control.at-rule.feature-type.css */
 /*      ^ -keyword.control.at-rule.feature-type.css */
-/*       ^ punctuation.section.font-feature-value-block.begin.css */
+/*       ^ punctuation.section.font-feature-type-block.begin.css */
     delicate: 1;
-/*  ^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^ support.type.property-name.css */
 /*          ^ punctuation.separator.key-value.css */
 /*            ^ constant.numeric.css */
 /*             ^ punctuation.terminator.rule.css */
     flowing: 2;
-/*  ^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^ support.type.property-name.css */
 /*         ^ punctuation.separator.key-value.css */
 /*           ^ constant.numeric.css */
 /*            ^ punctuation.terminator.rule.css */
   }
-/*^ punctuation.section.font-feature-value-block.end.css */
+/*^ punctuation.section.font-feature-type-block.end.css */
 }
 /* <- punctuation.section.at-font-feature-values.end.css */
 
@@ -42,37 +42,37 @@
 /*^ keyword.control.at-rule.feature-type.css punctuation.definition.keyword.css */
 /* ^^^^^ keyword.control.at-rule.feature-type.css */
 /*      ^ -keyword.control.at-rule.feature-type.css */
-/*       ^ punctuation.section.font-feature-value-block.begin.css */
-/*         ^^^^^^ support.constant.property-name.css */
+/*       ^ punctuation.section.font-feature-type-block.begin.css */
+/*         ^^^^^^ support.type.property-name.css */
 /*               ^ punctuation.separator.key-value.css */
 /*                 ^ constant.numeric.css */
 /*                  ^ punctuation.terminator.rule.css */
-/*                    ^ punctuation.section.font-feature-value-block.end.css */
+/*                    ^ punctuation.section.font-feature-type-block.end.css */
   @swash { double-loops: 1; }
 /*^ keyword.control.at-rule.feature-type.css punctuation.definition.keyword.css */
 /* ^^^^^ keyword.control.at-rule.feature-type.css */
 /*      ^ -keyword.control.at-rule.feature-type.css */
-/*       ^ punctuation.section.font-feature-value-block.begin.css */
-/*         ^^^^^^^^^^^^ support.constant.property-name.css */
+/*       ^ punctuation.section.font-feature-type-block.begin.css */
+/*         ^^^^^^^^^^^^ support.type.property-name.css */
 /*                     ^ punctuation.separator.key-value.css */
 /*                       ^ constant.numeric.css */
 /*                        ^ punctuation.terminator.rule.css */
-/*                          ^ punctuation.section.font-feature-value-block.end.css */
+/*                          ^ punctuation.section.font-feature-type-block.end.css */
   @styleset { double-W: 14; sharp-terminals: 16 1; }
 /*^ keyword.control.at-rule.feature-type.css punctuation.definition.keyword.css */
 /* ^^^^^^^^ keyword.control.at-rule.feature-type.css */
 /*         ^ -keyword.control.at-rule.feature-type.css */
-/*          ^ punctuation.section.font-feature-value-block.begin.css */
-/*            ^^^^^^^^ support.constant.property-name.css */
+/*          ^ punctuation.section.font-feature-type-block.begin.css */
+/*            ^^^^^^^^ support.type.property-name.css */
 /*                    ^ punctuation.separator.key-value.css */
 /*                      ^^ constant.numeric.css */
 /*                        ^ punctuation.terminator.rule.css */
-/*                          ^^^^^^^^^^^^^^^ support.constant.property-name.css */
+/*                          ^^^^^^^^^^^^^^^ support.type.property-name.css */
 /*                                         ^ punctuation.separator.key-value.css */
 /*                                           ^^ constant.numeric.css */
 /*                                              ^ constant.numeric.css */
 /*                                               ^ punctuation.terminator.rule.css */
-/*                                                 ^ punctuation.section.font-feature-value-block.end.css */
+/*                                                 ^ punctuation.section.font-feature-type-block.end.css */
 }
 /* <- punctuation.section.at-font-feature-values.end.css */
 
@@ -88,19 +88,19 @@
 /*^ keyword.control.at-rule.feature-type.css punctuation.definition.keyword.css */
 /* ^^^^^^^^ keyword.control.at-rule.feature-type.css */
 /*         ^ -keyword.control.at-rule.feature-type.css */
-/*          ^ punctuation.section.font-feature-value-block.begin.css */
+/*          ^ punctuation.section.font-feature-type-block.begin.css */
     stacked-g: 3; /* "two-storey" versions of g, a */
-/*  ^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^ constant.numeric.css */
 /*              ^ punctuation.terminator.rule.css */
     stacked-a: 4;
-/*  ^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^ constant.numeric.css */
 /*              ^ punctuation.terminator.rule.css */
   }
-/*^ punctuation.section.font-feature-value-block.end.css */
+/*^ punctuation.section.font-feature-type-block.end.css */
 }
 /* <- punctuation.section.at-font-feature-values.end.css */
 
@@ -116,14 +116,14 @@
 /*^ keyword.control.at-rule.feature-type.css punctuation.definition.keyword.css */
 /* ^^^^^^^^ keyword.control.at-rule.feature-type.css */
 /*         ^ -keyword.control.at-rule.feature-type.css */
-/*          ^ punctuation.section.font-feature-value-block.begin.css */
+/*          ^ punctuation.section.font-feature-type-block.begin.css */
     geometric-m: 7; /* alternate version of m */
-/*  ^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^ support.type.property-name.css */
 /*             ^ punctuation.separator.key-value.css */
 /*               ^ constant.numeric.css */
 /*                ^ punctuation.terminator.rule.css */
   }
-/*^ punctuation.section.font-feature-value-block.end.css */
+/*^ punctuation.section.font-feature-type-block.end.css */
 }
 /* <- punctuation.section.at-font-feature-values.end.css */
 
@@ -139,16 +139,16 @@
 /*^ keyword.control.at-rule.feature-type.css punctuation.definition.keyword.css */
 /* ^^^^^^^^^^ keyword.control.at-rule.feature-type.css */
 /*           ^ -keyword.control.at-rule.feature-type.css */
-/*            ^ punctuation.section.font-feature-value-block.begin.css */
-/*              ^^^^^ support.constant.property-name.css */
+/*            ^ punctuation.section.font-feature-type-block.begin.css */
+/*              ^^^^^ support.type.property-name.css */
 /*                   ^ punctuation.separator.key-value.css */
 /*                     ^ constant.numeric.css */
 /*                      ^ punctuation.terminator.rule.css */
-/*                        ^^^^^^^ support.constant.property-name.css */
+/*                        ^^^^^^^ support.type.property-name.css */
 /*                               ^ punctuation.separator.key-value.css */
 /*                                 ^ constant.numeric.css */
 /*                                  ^ punctuation.terminator.rule.css */
-/*                                    ^ punctuation.section.font-feature-value-block.end.css */
+/*                                    ^ punctuation.section.font-feature-type-block.end.css */
 }
 /* <- punctuation.section.at-font-feature-values.end.css */
 
@@ -164,16 +164,16 @@
 /*^ keyword.control.at-rule.feature-type.css punctuation.definition.keyword.css */
 /* ^^^^^^^^^^ keyword.control.at-rule.feature-type.css */
 /*           ^ -keyword.control.at-rule.feature-type.css */
-/*            ^ punctuation.section.font-feature-value-block.begin.css */
-/*              ^^^^^^^ support.constant.property-name.css */
+/*            ^ punctuation.section.font-feature-type-block.begin.css */
+/*              ^^^^^^^ support.type.property-name.css */
 /*                     ^ punctuation.separator.key-value.css */
 /*                       ^ constant.numeric.css */
 /*                        ^ punctuation.terminator.rule.css */
-/*                          ^^^^^^^^^^^ support.constant.property-name.css */
+/*                          ^^^^^^^^^^^ support.type.property-name.css */
 /*                                     ^ punctuation.separator.key-value.css */
 /*                                       ^ constant.numeric.css */
 /*                                        ^ punctuation.terminator.rule.css */
-/*                                          ^ punctuation.section.font-feature-value-block.end.css */
+/*                                          ^ punctuation.section.font-feature-type-block.end.css */
 }
 /* <- punctuation.section.at-font-feature-values.end.css */
 
@@ -189,52 +189,52 @@
 /*^ keyword.control.at-rule.feature-type.css punctuation.definition.keyword.css */
 /* ^^^^^^^^ keyword.control.at-rule.feature-type.css */
 /*         ^ -keyword.control.at-rule.feature-type.css */
-/*          ^ punctuation.section.font-feature-value-block.begin.css */
+/*          ^ punctuation.section.font-feature-type-block.begin.css */
     alt-g: 1;        /* implies ss01 = 1 */
-/*  ^^^^^ support.constant.property-name.css */
+/*  ^^^^^ support.type.property-name.css */
 /*       ^ punctuation.separator.key-value.css */
 /*         ^ constant.numeric.css */
 /*          ^ punctuation.terminator.rule.css */
     curly-quotes: 3; /* implies ss03 = 1 */
-/*  ^^^^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^^^^ support.type.property-name.css */
 /*              ^ punctuation.separator.key-value.css */
 /*                ^ constant.numeric.css */
 /*                 ^ punctuation.terminator.rule.css */
     code: 4 5;       /* implies ss04 = 1, ss05 = 1 */
-/*  ^^^^ support.constant.property-name.css */
+/*  ^^^^ support.type.property-name.css */
 /*      ^ punctuation.separator.key-value.css */
 /*        ^ constant.numeric.css */
 /*          ^ constant.numeric.css */
 /*           ^ punctuation.terminator.rule.css */
   }
-/*^ punctuation.section.font-feature-value-block.end.css */
+/*^ punctuation.section.font-feature-type-block.end.css */
 
   @styleset {
 /*^ keyword.control.at-rule.feature-type.css punctuation.definition.keyword.css */
 /* ^^^^^^^^ keyword.control.at-rule.feature-type.css */
 /*         ^ -keyword.control.at-rule.feature-type.css */
-/*          ^ punctuation.section.font-feature-value-block.begin.css */
+/*          ^ punctuation.section.font-feature-type-block.begin.css */
     dumb: 125;        /* >99, ignored */
-/*  ^^^^ support.constant.property-name.css */
+/*  ^^^^ support.type.property-name.css */
 /*      ^ punctuation.separator.key-value.css */
 /*        ^^^ constant.numeric.css */
 /*           ^ punctuation.terminator.rule.css */
   }
-/*^ punctuation.section.font-feature-value-block.end.css */
+/*^ punctuation.section.font-feature-type-block.end.css */
 
   @swash {
 /*^ keyword.control.at-rule.feature-type.css punctuation.definition.keyword.css */
 /* ^^^^^ keyword.control.at-rule.feature-type.css */
 /*      ^ -keyword.control.at-rule.feature-type.css */
-/*       ^ punctuation.section.font-feature-value-block.begin.css */
+/*       ^ punctuation.section.font-feature-type-block.begin.css */
     swishy: 3 5;     /* more than 1 value for swash, syntax error */
-/*  ^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^ support.type.property-name.css */
 /*        ^ punctuation.separator.key-value.css */
 /*          ^ constant.numeric.css */
 /*            ^ constant.numeric.css */
 /*             ^ punctuation.terminator.rule.css */
   }
-/*^ punctuation.section.font-feature-value-block.end.css */
+/*^ punctuation.section.font-feature-type-block.end.css */
 }
 /* <- punctuation.section.at-font-feature-values.end.css */
 
@@ -250,89 +250,89 @@
 /*^ keyword.control.at-rule.feature-type.css punctuation.definition.keyword.css */
 /* ^^^^^^^^^^^^^^^^^ keyword.control.at-rule.feature-type.css */
 /*                  ^ -keyword.control.at-rule.feature-type.css */
-/*                   ^ punctuation.section.font-feature-value-block.begin.css */
-/*                     ^^^^^^^ support.constant.property-name.css */
+/*                   ^ punctuation.section.font-feature-type-block.begin.css */
+/*                     ^^^^^^^ support.type.property-name.css */
 /*                            ^ punctuation.separator.key-value.css */
 /*                              ^ constant.numeric.css */
 /*                                ^ constant.numeric.css */
 /*                                 ^ punctuation.terminator.rule.css */
-/*                                   ^ punctuation.section.font-feature-value-block.end.css */
+/*                                   ^ punctuation.section.font-feature-type-block.end.css */
   @character-variant { beta-3: 2 3; }    /* implies cv02 = 3 */
 /*^ keyword.control.at-rule.feature-type.css punctuation.definition.keyword.css */
 /* ^^^^^^^^^^^^^^^^^ keyword.control.at-rule.feature-type.css */
 /*                  ^ -keyword.control.at-rule.feature-type.css */
-/*                   ^ punctuation.section.font-feature-value-block.begin.css */
-/*                     ^^^^^^ support.constant.property-name.css */
+/*                   ^ punctuation.section.font-feature-type-block.begin.css */
+/*                     ^^^^^^ support.type.property-name.css */
 /*                           ^ punctuation.separator.key-value.css */
 /*                             ^ constant.numeric.css */
 /*                               ^ constant.numeric.css */
 /*                                ^ punctuation.terminator.rule.css */
-/*                                  ^ punctuation.section.font-feature-value-block.end.css */
+/*                                  ^ punctuation.section.font-feature-type-block.end.css */
   @character-variant { epsilon: 5 3 6; } /* more than 2 values, syntax error, definition ignored */
 /*^ keyword.control.at-rule.feature-type.css punctuation.definition.keyword.css */
 /* ^^^^^^^^^^^^^^^^^ keyword.control.at-rule.feature-type.css */
 /*                  ^ -keyword.control.at-rule.feature-type.css */
-/*                   ^ punctuation.section.font-feature-value-block.begin.css */
-/*                     ^^^^^^^ support.constant.property-name.css */
+/*                   ^ punctuation.section.font-feature-type-block.begin.css */
+/*                     ^^^^^^^ support.type.property-name.css */
 /*                            ^ punctuation.separator.key-value.css */
 /*                              ^ constant.numeric.css */
 /*                                ^ constant.numeric.css */
 /*                                  ^ constant.numeric.css */
 /*                                   ^ punctuation.terminator.rule.css */
-/*                                     ^ punctuation.section.font-feature-value-block.end.css */
+/*                                     ^ punctuation.section.font-feature-type-block.end.css */
   @character-variant { gamma: 12; }      /* implies cv12 = 1 */
 /*^ keyword.control.at-rule.feature-type.css punctuation.definition.keyword.css */
 /* ^^^^^^^^^^^^^^^^^ keyword.control.at-rule.feature-type.css */
 /*                  ^ -keyword.control.at-rule.feature-type.css */
-/*                   ^ punctuation.section.font-feature-value-block.begin.css */
-/*                     ^^^^^ support.constant.property-name.css */
+/*                   ^ punctuation.section.font-feature-type-block.begin.css */
+/*                     ^^^^^ support.type.property-name.css */
 /*                          ^ punctuation.separator.key-value.css */
 /*                            ^^ constant.numeric.css */
 /*                              ^ punctuation.terminator.rule.css */
-/*                                ^ punctuation.section.font-feature-value-block.end.css */
+/*                                ^ punctuation.section.font-feature-type-block.end.css */
   @character-variant { zeta:   20 3; }   /* implies cv20 = 3 */
 /*^ keyword.control.at-rule.feature-type.css punctuation.definition.keyword.css */
 /* ^^^^^^^^^^^^^^^^^ keyword.control.at-rule.feature-type.css */
 /*                  ^ -keyword.control.at-rule.feature-type.css */
-/*                   ^ punctuation.section.font-feature-value-block.begin.css */
-/*                     ^^^^ support.constant.property-name.css */
+/*                   ^ punctuation.section.font-feature-type-block.begin.css */
+/*                     ^^^^ support.type.property-name.css */
 /*                         ^ punctuation.separator.key-value.css */
 /*                             ^^ constant.numeric.css */
 /*                                ^ constant.numeric.css */
 /*                                 ^ punctuation.terminator.rule.css */
-/*                                   ^ punctuation.section.font-feature-value-block.end.css */
+/*                                   ^ punctuation.section.font-feature-type-block.end.css */
   @character-variant { zeta-2: 20 2; }   /* implies cv20 = 2 */
 /*^ keyword.control.at-rule.feature-type.css punctuation.definition.keyword.css */
 /* ^^^^^^^^^^^^^^^^^ keyword.control.at-rule.feature-type.css */
 /*                  ^ -keyword.control.at-rule.feature-type.css */
-/*                   ^ punctuation.section.font-feature-value-block.begin.css */
-/*                     ^^^^^^ support.constant.property-name.css */
+/*                   ^ punctuation.section.font-feature-type-block.begin.css */
+/*                     ^^^^^^ support.type.property-name.css */
 /*                           ^ punctuation.separator.key-value.css */
 /*                             ^^ constant.numeric.css */
 /*                                ^ constant.numeric.css */
 /*                                 ^ punctuation.terminator.rule.css */
-/*                                   ^ punctuation.section.font-feature-value-block.end.css */
+/*                                   ^ punctuation.section.font-feature-type-block.end.css */
   @character-variant { silly: 105; }     /* >99, ignored */
 /*^ keyword.control.at-rule.feature-type.css punctuation.definition.keyword.css */
 /* ^^^^^^^^^^^^^^^^^ keyword.control.at-rule.feature-type.css */
 /*                  ^ -keyword.control.at-rule.feature-type.css */
-/*                   ^ punctuation.section.font-feature-value-block.begin.css */
-/*                     ^^^^^ support.constant.property-name.css */
+/*                   ^ punctuation.section.font-feature-type-block.begin.css */
+/*                     ^^^^^ support.type.property-name.css */
 /*                          ^ punctuation.separator.key-value.css */
 /*                            ^^^ constant.numeric.css */
 /*                               ^ punctuation.terminator.rule.css */
-/*                                 ^ punctuation.section.font-feature-value-block.end.css */
+/*                                 ^ punctuation.section.font-feature-type-block.end.css */
   @character-variant { dumb: 323 3; }    /* >99, ignored */
 /*^ keyword.control.at-rule.feature-type.css punctuation.definition.keyword.css */
 /* ^^^^^^^^^^^^^^^^^ keyword.control.at-rule.feature-type.css */
 /*                  ^ -keyword.control.at-rule.feature-type.css */
-/*                   ^ punctuation.section.font-feature-value-block.begin.css */
-/*                     ^^^^ support.constant.property-name.css */
+/*                   ^ punctuation.section.font-feature-type-block.begin.css */
+/*                     ^^^^ support.type.property-name.css */
 /*                         ^ punctuation.separator.key-value.css */
 /*                           ^^^ constant.numeric.css */
 /*                               ^ constant.numeric.css */
 /*                                ^ punctuation.terminator.rule.css */
-/*                                  ^ punctuation.section.font-feature-value-block.end.css */
+/*                                  ^ punctuation.section.font-feature-type-block.end.css */
 }
 /* <- punctuation.section.at-font-feature-values.end.css */
 
@@ -348,50 +348,50 @@
 /*^ keyword.control.at-rule.feature-type.css punctuation.definition.keyword.css */
 /* ^^^^^^^^^^^^^^^^^ keyword.control.at-rule.feature-type.css */
 /*                  ^ -keyword.control.at-rule.feature-type.css */
-/*                   ^ punctuation.section.font-feature-value-block.begin.css */
+/*                   ^ punctuation.section.font-feature-type-block.begin.css */
     leo-B: 2 1;
-/*  ^^^^^ support.constant.property-name.css */
+/*  ^^^^^ support.type.property-name.css */
 /*       ^ punctuation.separator.key-value.css */
 /*         ^ constant.numeric.css */
 /*           ^ constant.numeric.css */
 /*            ^ punctuation.terminator.rule.css */
     leo-M: 13 3;
-/*  ^^^^^ support.constant.property-name.css */
+/*  ^^^^^ support.type.property-name.css */
 /*       ^ punctuation.separator.key-value.css */
 /*         ^^ constant.numeric.css */
 /*            ^ constant.numeric.css */
 /*             ^ punctuation.terminator.rule.css */
     leo-alt-N: 14 1;
-/*  ^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^^ constant.numeric.css */
 /*                ^ constant.numeric.css */
 /*                 ^ punctuation.terminator.rule.css */
     leo-N: 14 2;
-/*  ^^^^^ support.constant.property-name.css */
+/*  ^^^^^ support.type.property-name.css */
 /*       ^ punctuation.separator.key-value.css */
 /*         ^^ constant.numeric.css */
 /*            ^ constant.numeric.css */
 /*             ^ punctuation.terminator.rule.css */
     leo-T: 20 1;
-/*  ^^^^^ support.constant.property-name.css */
+/*  ^^^^^ support.type.property-name.css */
 /*       ^ punctuation.separator.key-value.css */
 /*         ^^ constant.numeric.css */
 /*            ^ constant.numeric.css */
 /*             ^ punctuation.terminator.rule.css */
     leo-U: 21 2;
-/*  ^^^^^ support.constant.property-name.css */
+/*  ^^^^^ support.type.property-name.css */
 /*       ^ punctuation.separator.key-value.css */
 /*         ^^ constant.numeric.css */
 /*            ^ constant.numeric.css */
 /*             ^ punctuation.terminator.rule.css */
     leo-alt-U: 21 4;
-/*  ^^^^^^^^^ support.constant.property-name.css */
+/*  ^^^^^^^^^ support.type.property-name.css */
 /*           ^ punctuation.separator.key-value.css */
 /*             ^^ constant.numeric.css */
 /*                ^ constant.numeric.css */
 /*                 ^ punctuation.terminator.rule.css */
   }
-/*^ punctuation.section.font-feature-value-block.end.css */
+/*^ punctuation.section.font-feature-type-block.end.css */
 }
 /* <- punctuation.section.at-font-feature-values.end.css */
