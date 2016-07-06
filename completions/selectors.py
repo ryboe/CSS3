@@ -7,6 +7,7 @@ nestable_at_rules = [
     ("@media", "@media ${1:media-query-list} {\n\t${2}\n}"),
     ("@page", "@page ${1} {\n\t${2}\n}"),
     ("@viewport", "@viewport ${1} {\n\t${2}\n}"),
+    ("@supports", "@supports ${1} {\n\t${2}\n}"),
 ]
 
 at_rules = [
@@ -15,7 +16,6 @@ at_rules = [
     ("@custom-media", "@custom-media --${1:name} ${2:media-query-list};"),
     ("@import", "@import ${1:path} ${2:media-query-list};"),
     ("@namespace", "@namespace ${1};"),
-    ("@supports", "@supports ${1} {\n\t${2}\n}"),
 ] + nestable_at_rules
 
 at_page_selectors = [

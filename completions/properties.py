@@ -1,3 +1,5 @@
+from CSS3.completions import types as t
+
 # PROPERTIES
 names = [
     ("-moz-clip-path", "-moz-clip-path: ${1};"),
@@ -386,46 +388,60 @@ names = [
     ("z-index", "z-index: ${1};"),
 ]
 
-baseline_position = [
-    ("baseline",),
-    ("last-baseline",),
-]
-
-content_distribution = [
-    ("space-around",),
-    ("space-between",),
-    ("space-evenly",),
-    ("stretch",),
-]
-
-content_position = [
-    ("center",),
-    ("end",),
-    ("flex-end",),
-    ("flex-start",),
-    ("left",),
-    ("right",),
-    ("start",),
-]
-
-overflow_position = [
-    ("safe",),
-    ("unsafe",),
-]
-
 name_to_completions = {
-    "align-content": [("normal",)] + baseline_position + content_distribution + content_position + overflow_position,
+    "align-content": [
+        ("normal",),
+    ] + t.baseline_position + t.content_distribution + t.content_position + t.overflow_position,
+    "align-items": [
+        ("normal",),
+        ("stretch",),
+    ] + t.baseline_position + t.overflow_position + t.self_position,
+    "align-self": [
+        ("auto",),
+        ("normal",),
+        ("stretch",),
+    ] + t.baseline_position + t.overflow_position + t.self_position,
+    "alignment-baseline": [
+        ("after-edge",),
+        ("alphabetic",),
+        ("auto",),
+        ("baseline",),
+        ("before-edge",),
+        ("bottom",),
+        ("center",),
+        ("central",),
+        ("hanging",),
+        ("ideographic",),
+        ("mathematical",),
+        ("middle",),
+        ("text-after-edge",),
+        ("text-before-edge",),
+        ("text-bottom",),
+        ("text-top",),
+        ("top",),
+    ],
+    "animation": (
+        t.single_animation_direction +
+        t.single_animation_fill_mode +
+        t.single_animation_iteration_count +
+        t.single_animation_name +
+        t.single_animation_play_state +
+        t.single_timing_function
+    ),
 }
 
 
-def sort_completions():
+def sort_and_uniq_completions():
     for name in name_to_completions:
+        name_to_completions[name] = list(set(name_to_completions[name]))
         name_to_completions[name].sort()
 
-sort_completions()
+
+sort_and_uniq_completions()
 
 
 
+# OLD NAMES
 # names = [
 #     ("-moz-box-sizing", "-moz-box-sizing: ${0};"), ": ${1};)),
 #     ("-moz-column-count", "-moz-column-count: ${0};"),
@@ -995,6 +1011,7 @@ sort_completions()
 #     ("zoom", "zoom: ${0}; "),
 # ]
 
+# OLD STUFF
 # name_to_value = {
 #     "-moz-box-sizing": [("border-box",), ("content-box",)],
 #     "-moz-column-count": [("auto",), v.integer, v.calc],
