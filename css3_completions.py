@@ -1,7 +1,8 @@
 from CSS3.completions import descriptors as d
+from CSS3.completions import functions as f
 from CSS3.completions import properties as p
 from CSS3.completions import selectors as s
-from CSS3.completions import values as v
+from CSS3.completions import types as t
 import re
 import sublime
 import sublime_plugin
@@ -64,7 +65,7 @@ class CSS3Completions(sublime_plugin.EventListener):
             matches = property_name_rx.search(line)
             if matches:
                 prop_name = matches.group("prop_name")
-                return p.name_to_completions.get(prop_name, []) + v.all_values, sublime.INHIBIT_WORD_COMPLETIONS
+                return p.name_to_completions.get(prop_name, []) + t.all_values, sublime.INHIBIT_WORD_COMPLETIONS
 
             return []
 
@@ -190,10 +191,10 @@ def get_descriptor_completions(current_scopes, descriptors_for):
     descriptor_name = get_name(current_scopes, prefix="meta.descriptor.{}".format(descriptors_for))
     if descriptor_name:
         # There is a separate completions dictionary for every @-rule.
-        completions_dict = v.at_rule_to_completions_dict[descriptors_for]
-        completions = completions_dict.get(descriptor_name, []) + [v.var]
+        completions_dict = d.at_rule_to_completions_dict[descriptors_for]
+        completions = completions_dict.get(descriptor_name, []) + [t.var]
 
-        if descriptor_name in v.allow_word_completions:
+        if descriptor_name in f.allow_word_completions:
             return completions
 
     return completions, sublime.INHIBIT_WORD_COMPLETIONS
@@ -210,9 +211,9 @@ def get_function_completions(current_scopes):
             func_name = "::attr"
 
         # Append the var() completion to every set of completions.
-        completions = v.func_name_to_completions.get(func_name, []) + [v.var]
+        completions = f.func_name_to_completions.get(func_name, []) + [t.var]
 
-        if func_name in v.allow_word_completions:
+        if func_name in f.allow_word_completions:
             # If the function takes an identifier as an argument, the
             # identifier will be in the local symbol index. Therefore,
             # we don't want to inhibit word completions.
