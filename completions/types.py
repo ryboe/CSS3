@@ -113,6 +113,19 @@ all_values = [("inherit",), ("initial",), ("revert",), ("unset",), var]
 # translateZ   = ("translateZ()", "translateZ(${1:length})")
 
 # TYPES
+counter_style_name = ("<counter-style-name>", "$1")
+family_name = ("<family-name>", "$1")
+font_face_name = ("<font-face-name>", "local($1)")
+identifier = ("<identifier>", "$1")
+integer = ("<integer>", "${1:0}")
+length = ("<length>", "$1")
+number = ("<number>", "$1")
+percentage = ("<percentage>", "$1%")
+string = ("<string>", "'$1'")
+urange = ("<urange>", "U+$1")
+
+
+# COMPOSITE TYPES
 baseline_position = [
     ("baseline",),
     ("last-baseline",),
@@ -334,6 +347,7 @@ east_asian_variant_values = [
     ("traditional",),
 ]
 east_asian_width_values = [("full-width",), ("proportional-width",)]
+feature_tag_value = [integer, ("off",), ("on",), string]
 gradient = [
     conic_gradient,
     repeating_conic_gradient,
@@ -397,6 +411,8 @@ single_timing_function = [
     ("step-end",),
     ("step-start",),
 ]
+symbol = image + [identifier, string]
+
 
 font_variant = (
     common_lig_values + discretionary_lig_values + historical_lig_values +
