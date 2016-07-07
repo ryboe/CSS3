@@ -251,6 +251,8 @@ contexts:
             - match: '(?=})'
               pop: true
             - include: descriptors-counter-style
+        - match: '\b(?:unset|revert|none|initial|inherit|decimal){{b}}'
+          scope: invalid.illegal.counter-style-name.css
         - include: identifier
     - include: stray-brace
 
@@ -964,8 +966,6 @@ contexts:
         - meta_scope: meta.descriptor.counter-style.pad.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:infinite|auto){{b}}'
-          scope: support.constant.property-value.css
         - include: integer
         - include: symbol
     - include: stray-paren-or-semicolon
