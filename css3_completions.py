@@ -40,6 +40,9 @@ class CSS3Completions(sublime_plugin.EventListener):
             # Which values do we offer? foo's or bar's?
             return []
 
+        if view.match_selector(locations[0], "comment.block.css"):
+            return []
+
         # The start position of the prefix determines which completions are
         # offered.
         #         |--prefix--|
