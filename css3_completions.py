@@ -38,7 +38,7 @@ class CSS3Completions(sublime_plugin.EventListener):
             #     }
             #
             # Which values do we offer? foo's or bar's?
-            return []
+            return [], sublime.INHIBIT_WORD_COMPLETIONS
 
         if view.match_selector(locations[0], "comment.block.css"):
             return []
@@ -68,7 +68,10 @@ class CSS3Completions(sublime_plugin.EventListener):
             matches = property_name_rx.search(line)
             if matches:
                 prop_name = matches.group("prop_name")
-                return p.name_to_completions.get(prop_name, []) + t.all_values, sublime.INHIBIT_WORD_COMPLETIONS
+                completions = p.name_to_completions.get(prop_name, []) + t.all_values,
+                if prop_name in p.allow_word_completions:
+                    return completions
+                return completions, sublime.INHIBIT_WORD_COMPLETIONS
 
             return []
 

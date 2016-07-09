@@ -34,6 +34,7 @@ icc_named_color = ("icc-named-color()", "icc-named-color(${1:name}, ${2:named-co
 image_func   = ("image()", "image(${1})")
 image_set    = ("image-set()", "image-set(${1})")
 l            = ("l()", "l(${1}${2:100}%)")
+leader       = ("leader()", "leader(${1})")
 lightness    = ("lightness()", "lightness(${1}${2:100}%)")
 linear_gradient = ("linear-gradient()", "linear-gradient(${1})")
 local        = ("local()", "local(${1})")
@@ -53,6 +54,9 @@ styleset     = ("styleset()", "styleset(${1})")
 stylistic    = ("stylistic()", "stylistic(${1})")
 swash        = ("swash()", "swash(${1})")
 symbols      = ("symbols()", "symbols(${1})")
+target_counter  = ("target-counter()", "target-counter(${1})")
+target_counters = ("target-counters()", "target-counters(${1})")
+target_text  = ("target-text()", "target-text(${1})")
 tint         = ("tint()", "tint(${1:100}%)")
 url          = ("url()", "url('${1:quoted-string}')")
 var          = ("var()", "var(--${1:name})")
@@ -114,22 +118,61 @@ all_values = [("inherit",), ("initial",), ("revert",), ("unset",), var]
 
 # TYPES
 counter_style_name = ("<counter-style-name>", "$1")
+hex_color = ("<hex-color>", "#$1")
 family_name = ("<family-name>", "$1")
 font_face_name = ("<font-face-name>", "local($1)")
+flex = ("<flex>", "$1fr")
+frequency = ("<frequency>", "$1Hz")
 identifier = ("<identifier>", "$1")
 integer = ("<integer>", "${1:0}")
 length = ("<length>", "$1")
 number = ("<number>", "$1")
 percentage = ("<percentage>", "$1%")
+resolution = ("<resolution>", "$1")
 string = ("<string>", "'$1'")
+time = ("<time>", "$1")
 urange = ("<urange>", "U+$1")
 
 
 # COMPOSITE TYPES
+attachment = [("fixed",), ("local",), ("scroll",)]
 baseline_position = [
     ("baseline",),
     ("last-baseline",),
 ]
+baseline_shift = [
+    ("baseline",),
+    ("sub",),
+    ("super",),
+    length,
+    percentage,
+]
+bg_size = [
+    ("auto",),
+    ("contain",),
+    ("cover",),
+    length,
+    percentage,
+]
+blend_mode = [
+    ("color",),
+    ("color-burn",),
+    ("color-dodge",),
+    ("darken",),
+    ("difference",),
+    ("exclusion",),
+    ("hard-light",),
+    ("hue",),
+    ("lighten",),
+    ("luminosity",),
+    ("multiply",),
+    ("normal",),
+    ("overlay",),
+    ("saturation ",),
+    ("screen",),
+    ("soft-light",),
+]
+box = [("border-box",), ("content-box",), ("padding-box",)]
 color = [
     ("aliceblue",),
     ("antiquewhite",),
@@ -317,6 +360,7 @@ color = [
     w,
     whiteness,
 ]
+color_stop = [percentage, length] + color
 common_lig_values = [("common-ligatures",), ("no-common-ligatures",)]
 content_distribution = [
     ("space-around",),
@@ -334,6 +378,10 @@ content_position = [
     ("start",),
 ]
 contextual_alt_values = [("contextual",), ("no-contextual",)]
+counter_style = [
+    counter_style_name,
+    symbols,
+]
 discretionary_lig_values = [
     ("discretionary-ligatures",),
     ("no-discretionary-ligatures",),
@@ -347,7 +395,14 @@ east_asian_variant_values = [
     ("traditional",),
 ]
 east_asian_width_values = [("full-width",), ("proportional-width",)]
+extent_keyword = [
+    ("closest-corner",),
+    ("closest-side",),
+    ("farthest-corner",),
+    ("farthest-side",),
+]
 feature_tag_value = [integer, ("off",), ("on",), string]
+fill_rule = [("evenodd",), ("nonzero",)]
 gradient = [
     conic_gradient,
     repeating_conic_gradient,
@@ -385,7 +440,24 @@ position = [
     ("left",),
     ("right",),
     ("top",),
+    length,
+    percentage,
 ]
+quote = [
+    ("close-quote",),
+    ("no-close-quote",),
+    ("no-open-quote",),
+    ("open-quote",),
+]
+repeat_style = [
+    ("no-repeat",),
+    ("repeat",),
+    ("repeat-x",),
+    ("repeat-y",),
+    ("round",),
+    ("space",),
+]
+rgb_component = [number, percentage]
 self_position = [
     ("center",),
     ("end",),
@@ -397,10 +469,19 @@ self_position = [
     ("self-start",),
     ("start",),
 ]
+shape_arg = [length, percentage]
+shape_radius = [
+    ("closest-side",),
+    ("farthest-side",),
+    length,
+    percentage,
+]
+side_or_corner = [("bottom",), ("left",), ("right",), ("top",)]
+single_animation_composition = [("accumulate",), ("add",), ("replace",)]
 single_animation_direction = [("alternate",), ("alternate-reverse",), ("normal",), ("reverse",)]
 single_animation_fill_mode = [("backwards",), ("both",), ("forwards",), ("none",)]
 single_animation_iteration_count = [("infinite",)]
-single_animation_name = [("none",)]
+single_animation_name = [("none",), identifier]
 single_animation_play_state = [("paused",), ("running",)]
 single_timing_function = [
     ("ease",),
@@ -411,9 +492,31 @@ single_timing_function = [
     ("step-end",),
     ("step-start",),
 ]
+size = [length, percentage] + extent_keyword
 symbol = image + [identifier, string]
+target = [target_counter, target_counters, target_text]
+track_size = [
+    ("auto",),
+    ("max-content",),
+    ("min-content",),
+    fit_content,
+    flex,
+    length,
+    minmax,
+    percentage
+]
 
-
+# MORE COMPOSITE TYPES
+# These have to be at the bottom because they include composite types defined
+# above.
+bg_image = [("none",)] + image
+content_list = [
+    ("contents",),
+    ("document-url",),
+    leader,
+    url,
+    string,
+] + quote + target
 font_variant = (
     common_lig_values + discretionary_lig_values + historical_lig_values +
     east_asian_variant_values + east_asian_width_values +
