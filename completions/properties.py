@@ -428,7 +428,43 @@ name_to_completions = {
         t.single_animation_play_state +
         t.single_timing_function
     ),
+    "animation-composition": t.single_animation_composition,
+    "animation-delay": [t.time],
+    "animation-direction": t.single_animation_direction,
+    "animation-duration": [t.time],
+    "animation-fill-mode": t.single_animation_fill_mode,
+    "animation-iteration-count": t.single_animation_iteration_count,
+    "animation-name": t.single_animation_name,
+    "animation-play-state": t.single_animation_play_state,
+    "animation-timing-function": t.single_timing_function,
+    "appearance": [("auto",), ("none",)],
+    "backface-visibility": [("hidden",), ("visible",)],
+    "background-attachment": t.attachment,
+    "background-blend-mode": t.blend_mode,
+    "background-clip": t.box,
+    "background-color": t.color,
+    "background-image": t.bg_image,
+    "background-origin": t.box,
+    "background-position": t.position,
+    "background-repeat": t.repeat_style,
+    "background-size": t.bg_size,
+    "background": (
+        t.attachment +
+        t.bg_image +
+        t.bg_size +
+        t.box +
+        t.color +
+        t.position +
+        t.repeat_style
+    ),
+    "baseline-shift": t.baseline_shift,
+    "bleed": [("auto",), t.length],
+    "bookmark-label": t.content_list,
 }
+
+allow_word_completions = frozenset((
+    "animation-name",
+))
 
 
 def sort_and_uniq_completions():
