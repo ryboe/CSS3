@@ -1,4 +1,6 @@
 from CSS3.completions import types as t
+from CSS3.completions import util
+import sublime
 
 # PROPERTIES
 names = [
@@ -881,6 +883,16 @@ allow_word_completions = frozenset((
 ))
 
 
+def get_values(current_scopes):
+    property_name = util.get_name_from_scopes_with_prefix(current_scopes, prefix="meta.property-value-pair.")
+    completions = name_to_completions.get(property_name, []) + [t.var]
+
+    if property_name and property_name in allow_word_completions:
+        return completions
+
+    return completions, sublime.INHIBIT_WORD_COMPLETIONS
+
+
 def sort_and_uniq_completions():
     for name in name_to_completions:
         name_to_completions[name] = list(set(name_to_completions[name]))
@@ -890,7 +902,7 @@ def sort_and_uniq_completions():
 sort_and_uniq_completions()
 
 
-
+# TODO: delete this
 # OLD NAMES
 # names = [
 #     ("-moz-box-sizing", "-moz-box-sizing: ${0};"), ": ${1};)),
@@ -1461,6 +1473,7 @@ sort_and_uniq_completions()
 #     ("zoom", "zoom: ${0}; "),
 # ]
 
+# TODO: delete this
 # OLD STUFF
 # name_to_value = {
 #     "-moz-box-sizing": [("border-box",), ("content-box",)],

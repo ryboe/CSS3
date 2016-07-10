@@ -1,4 +1,7 @@
+from CSS3.completions import functions
 from CSS3.completions import types as t
+from CSS3.completions import util
+import sublime
 
 # DESCRIPTOR NAMES
 color_profile_descriptors = [
@@ -42,7 +45,7 @@ viewport_descriptors = [
 ]
 
 # DESCRIPTOR VALUES
-color_profile_descriptor_to_completions = {
+color_profile_values = {
     "rendering-intent": [
         ("absolute-colorimetric",),
         ("auto",),
@@ -52,7 +55,7 @@ color_profile_descriptor_to_completions = {
     ],
     "src": [("sRGB",), t.local, t.url],
 }
-counter_style_descriptor_to_completions = {
+counter_style_values = {
     "additive-symbols": t.integer + t.symbol,
     "negative": t.symbol,
     "pad": t.integer + t.symbol,
@@ -79,7 +82,7 @@ counter_style_descriptor_to_completions = {
         t.counter_style_name,
     ] + t.integer,
 }
-font_face_descriptor_to_completions = {
+font_face_values = {
     "font-family": [
         ("cursive",),
         ("fantasy",),
@@ -149,7 +152,7 @@ font_face_descriptor_to_completions = {
     ],
     "unicode-range": [t.urange],
 }
-viewport_descriptor_to_completions = {
+viewport_descriptor_values = {
     "height": [("auto",), ("extend-to-zoom",)] + t.length + t.percentage,
     "max-height": [("auto",), ("extend-to-zoom",)] + t.length + t.percentage,
     "max-width": [("auto",), ("extend-to-zoom",)] + t.length + t.percentage,
@@ -163,20 +166,35 @@ viewport_descriptor_to_completions = {
     "zoom": [("auto",)] + t.number + t.percentage,
 }
 
-at_rule_to_completions_dict = {
-    "color-profile": color_profile_descriptor_to_completions,
-    "counter-style": counter_style_descriptor_to_completions,
-    "font-face": font_face_descriptor_to_completions,
-    "viewport": viewport_descriptor_to_completions,
+# descriptor_values maps @-rules to the dictionary containing the completions
+# for their descriptors' values.
+descriptor_values = {
+    "color-profile": color_profile_values,
+    "counter-style": counter_style_values,
+    "font-face": font_face_values,
+    "viewport": viewport_descriptor_values,
 }
+
+
+def get_values(current_scopes, descriptors_for):
+    descriptor_name = util.get_name_from_scopes_with_prefix(current_scopes, prefix="meta.descriptor.{}".format(descriptors_for))
+
+    # There is a separate completions dictionary for every @-rule.
+    completions_dict = descriptor_values.get(descriptors_for, {})
+    completions = completions_dict.get(descriptor_name, []) + [t.var]
+
+    if descriptor_name and descriptor_name in functions.allow_word_completions:
+        return completions
+
+    return completions, sublime.INHIBIT_WORD_COMPLETIONS
 
 
 def sort_and_uniq_completions():
     completions_dicts = (
-        color_profile_descriptor_to_completions,
-        counter_style_descriptor_to_completions,
-        font_face_descriptor_to_completions,
-        viewport_descriptor_to_completions,
+        color_profile_values,
+        counter_style_values,
+        font_face_values,
+        viewport_descriptor_values,
     )
 
     for completions_dict in completions_dicts:

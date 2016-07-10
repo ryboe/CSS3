@@ -1,4 +1,6 @@
 from CSS3.completions import types as t
+from CSS3.completions import util
+import sublime
 
 # This dict maps function names to their completions. It includes pseudo-class
 # and pseudo-element functions like :nth-child() and ::attr().
@@ -182,6 +184,21 @@ allow_word_completions = frozenset((
     "target-counters",
     "var",
 ))
+
+
+def get_completions(current_scopes):
+    func_name = util.get_name_from_scopes_with_prefix(current_scopes, prefix="meta.function.")
+
+    # Append the var() completion to every set of completions.
+    completions = func_name_to_completions.get(func_name, []) + [t.var]
+
+    if func_name and func_name in allow_word_completions:
+        # If the function takes an identifier as an argument, the
+        # identifier will be in the local symbol index. Therefore,
+        # we don't want to inhibit word completions.
+        return completions
+
+    return completions, sublime.INHIBIT_WORD_COMPLETIONS
 
 
 def sort_and_uniq_completions():
