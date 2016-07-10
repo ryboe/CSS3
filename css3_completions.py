@@ -3,12 +3,8 @@ from CSS3.completions import functions as f
 from CSS3.completions import properties as p
 from CSS3.completions import selectors as s
 from CSS3.completions import types as t
-import re
 import sublime
 import sublime_plugin
-
-# TODO: do i need this? probably
-property_name_rx = re.compile(r"(?:-webkit-|-ms-|-moz-)?(?P<prop_name>[a-zA-Z-]+)\s*:")
 
 
 class CSS3Completions(sublime_plugin.EventListener):
@@ -62,22 +58,25 @@ class CSS3Completions(sublime_plugin.EventListener):
         if view.match_selector(start, "source.css meta.property-list.css -meta.property-value-pair"):
             return p.names, sublime.INHIBIT_WORD_COMPLETIONS
 
-        # PROPERTY VALUES
-        if view.match_selector(start, "source.css meta.property-value-pair"):
-            line = view.substr(sublime.Region(view.line(start).begin(), start))
-            matches = property_name_rx.search(line)
-            if matches:
-                prop_name = matches.group("prop_name")
-                completions = p.name_to_completions.get(prop_name, []) + t.all_values,
-                if prop_name in p.allow_word_completions:
-                    return completions
-                return completions, sublime.INHIBIT_WORD_COMPLETIONS
-
-            return []
-
         # INSIDE FUNCTIONS
         if view.match_selector(start, "source.css meta.function"):
-            return get_function_completions(start, current_scopes)
+            return get_functions(current_scopes)
+
+        # PROPERTY VALUES
+        if view.match_selector(start, "source.css meta.property-value-pair"):
+            return get_property_values(current_scopes)
+
+
+            # line = view.substr(sublime.Region(view.line(start).begin(), start))
+            # matches = property_name_rx.search(line)
+            # if matches:
+            #     prop_name = matches.group("prop_name")
+            #     completions = p.name_to_completions.get(prop_name, []) + t.all_values
+            #     if prop_name in p.allow_word_completions:
+            #         return completions
+            #     return completions, sublime.INHIBIT_WORD_COMPLETIONS
+
+            # return []
 
         # OUTSIDE AT-RULES
         if view.match_selector(start, "source.css -meta.at-rule -meta.property-list.css"):
@@ -106,7 +105,7 @@ def handle_completions_inside_at_rules(view, location):
         # @font-face
         if view.match_selector(location, "source.css -meta.descriptor.font-face"):
             return d.font_face_descriptors, sublime.INHIBIT_WORD_COMPLETIONS
-        return get_descriptor_completions(current_scopes, descriptors_for="font-face")
+        return get_descriptors(current_scopes, descriptors_for="font-face")
 
     if view.match_selector(location, "meta.at-rule.font-feature-values.block.css"):
         # @font-feature-values
@@ -118,7 +117,7 @@ def handle_completions_inside_at_rules(view, location):
         # @viewport
         if view.match_selector(location, "source.css -meta.descriptor.viewport"):
             return d.viewport_descriptors, sublime.INHIBIT_WORD_COMPLETIONS
-        return get_descriptor_completions(current_scopes, descriptors_for="viewport")
+        return get_descriptors(current_scopes, descriptors_for="viewport")
 
     if view.match_selector(location, "meta.at-rule.page.block.css -meta.page-margin-box.css"):
         # @top-right, etc.
@@ -136,13 +135,13 @@ def handle_completions_inside_at_rules(view, location):
         # @counter-style
         if view.match_selector(location, "-meta.descriptor.counter-style"):
             return d.counter_style_descriptors, sublime.INHIBIT_WORD_COMPLETIONS
-        return get_descriptor_completions(current_scopes, descriptors_for="counter-style")
+        return get_descriptors(current_scopes, descriptors_for="counter-style")
 
     if view.match_selector(location, "meta.at-rule.color-profile.block.css"):
         if view.match_selector(location, "-meta.descriptor.color-profile"):
             return d.color_profile_descriptors, sublime.INHIBIT_WORD_COMPLETIONS
 
-        return get_descriptor_completions(current_scopes, descriptors_for="color-profile")
+        return get_descriptors(current_scopes, descriptors_for="color-profile")
 
 
 scopes_that_forbid_nested_at_rules = (
@@ -191,39 +190,43 @@ def should_offer_at_rule_completions(view, location):
     return not view.match_selector(location, scopes_that_forbid_nested_at_rules)
 
 
-def get_descriptor_completions(current_scopes, descriptors_for):
-    completions = []
-
-    descriptor_name = get_name(current_scopes, prefix="meta.descriptor.{}".format(descriptors_for))
-    if descriptor_name:
-        # There is a separate completions dictionary for every @-rule.
-        completions_dict = d.at_rule_to_completions_dict[descriptors_for]
-        completions = completions_dict.get(descriptor_name, []) + [t.var]
-
-        if descriptor_name in f.allow_word_completions:
-            return completions
+def get_property_values(current_scopes):
+    property_name = get_name(current_scopes, prefix="meta.property-value-pair.")
+    completions = p.name_to_completions.get(property_name, []) + [t.var]
+    if property_name and property_name in p.allow_word_completions:
+        return completions
 
     return completions, sublime.INHIBIT_WORD_COMPLETIONS
 
 
-def get_function_completions(current_scopes):
+def get_descriptors(current_scopes, descriptors_for):
     completions = []
 
-    func_name = get_name(current_scopes, prefix="meta.function")
-    if func_name:
-        # Handle the case where the ::attr() pseudo-element and attr() function
-        # have the same name.
-        if func_name == "attr" and any("pseudo-element" in s for s in current_scopes):
-            func_name = "::attr"
+    descriptor_name = get_name(current_scopes, prefix="meta.descriptor.{}".format(descriptors_for))
 
-        # Append the var() completion to every set of completions.
-        completions = f.func_name_to_completions.get(func_name, []) + [t.var]
+    # There is a separate completions dictionary for every @-rule.
+    completions_dict = d.at_rule_to_completions_dict.get(descriptors_for, {})
+    completions = completions_dict.get(descriptor_name, []) + [t.var]
 
-        if func_name in f.allow_word_completions:
-            # If the function takes an identifier as an argument, the
-            # identifier will be in the local symbol index. Therefore,
-            # we don't want to inhibit word completions.
-            return completions
+    if descriptor_name and descriptor_name in f.allow_word_completions:
+        return completions
+
+    return completions, sublime.INHIBIT_WORD_COMPLETIONS
+
+
+def get_functions(current_scopes):
+    completions = []
+
+    func_name = get_name(current_scopes, prefix="meta.function.")
+
+    # Append the var() completion to every set of completions.
+    completions = f.func_name_to_completions.get(func_name, []) + [t.var]
+
+    if func_name and func_name in f.allow_word_completions:
+        # If the function takes an identifier as an argument, the
+        # identifier will be in the local symbol index. Therefore,
+        # we don't want to inhibit word completions.
+        return completions
 
     return completions, sublime.INHIBIT_WORD_COMPLETIONS
 
