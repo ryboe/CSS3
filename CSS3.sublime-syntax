@@ -8887,7 +8887,7 @@ contexts:
         # supported yet.
       captures:
         0: entity.other.attribute-name.pseudo-class.css
-        1: punctuation.definition.entity.css
+        1: punctuation.definition.entity.pseudo-class.css
     - include: selector-pseudo-class-invalid
 
   selector-pseudo-class-deprecated:
@@ -8904,17 +8904,18 @@ contexts:
         {{b}}'
       captures:
         0: entity.other.attribute-name.pseudo-class.css invalid.deprecated.css
-        1: punctuation.definition.entity.css
+        1: punctuation.definition.entity.pseudo-class.css
 
   selector-pseudo-class-dir:
     - match: ((:)dir)(\()
       captures:
         1: entity.other.attribute-name.pseudo-class.css
-        2: punctuation.definition.entity.css
+        2: punctuation.definition.entity.pseudo-class.css
         3: punctuation.section.function.begin.css
       push:
         - meta_scope: meta.function.pseudo-class.dir.css
         - include: end-func
+        - include: func-var
         - match: \b(?:rtl|ltr)\b
           scope: support.constant.property-value.css
     - include: stray-paren
@@ -8923,11 +8924,12 @@ contexts:
     - match: ((:)drop)(\()
       captures:
         1: entity.other.attribute-name.pseudo-class.css
-        2: punctuation.definition.entity.css
+        2: punctuation.definition.entity.pseudo-class.css
         3: punctuation.section.function.begin.css
       push:
         - meta_scope: meta.function.pseudo-class.drop.css
         - include: end-func
+        - include: func-var
         - match: \b(?:valid|invalid|active)\b
           scope: support.constant.property-value.css
     - include: stray-paren
@@ -8946,7 +8948,7 @@ contexts:
     - match: ((:)host(?:-context)?)(\()
       captures:
         1: entity.other.attribute-name.pseudo-class.css
-        2: punctuation.definition.entity.css
+        2: punctuation.definition.entity.pseudo-class.css
         3: punctuation.section.function.begin.css
       push:
         - meta_scope: meta.function.pseudo-class.host.css
@@ -8961,17 +8963,18 @@ contexts:
     - match: '(:)[\w-]+'
       captures:
         # Don't apply a scope to the whole match so it won't be highlighted.
-        1: punctuation.definition.entity.css
+        1: punctuation.definition.entity.pseudo-class.css
 
   selector-pseudo-class-lang:
     - match: ((:)lang)(\()
       captures:
         1: entity.other.attribute-name.pseudo-class.css
-        2: punctuation.definition.entity.css
+        2: punctuation.definition.entity.pseudo-class.css
         3: punctuation.section.function.begin.css
       push:
         - meta_scope: meta.function.pseudo-class.lang.css
         - include: end-func
+        - include: func-var
         - match: '[*a-zA-Z0-9-]+'
           scope: support.constant.property-value.css
     - include: stray-paren
@@ -8980,7 +8983,7 @@ contexts:
     - match: '((:)(?:not|matches|has))(\()'
       captures:
         1: entity.other.attribute-name.pseudo-class.css
-        2: punctuation.definition.entity.css
+        2: punctuation.definition.entity.pseudo-class.css
         3: punctuation.section.function.begin.css
       push:
         - meta_scope: meta.function.pseudo-class.not-matches-has.css
@@ -8992,11 +8995,12 @@ contexts:
     - match: '((:)(?:nth-last-child|nth-child))(\()'
       captures:
         1: entity.other.attribute-name.pseudo-class.css
-        2: punctuation.definition.entity.css
+        2: punctuation.definition.entity.pseudo-class.css
         3: punctuation.section.function.begin.css
       push:
         - meta_scope: meta.function.pseudo-class.nth-child.css
         - include: end-func
+        - include: func-var
         - match: '\bof{{b}}'
           scope: support.constant.property-value.css
         - include: an-plus-b
@@ -9017,11 +9021,12 @@ contexts:
       (\()'
       captures:
         1: entity.other.attribute-name.pseudo-class.css
-        2: punctuation.definition.entity.css
+        2: punctuation.definition.entity.pseudo-class.css
         3: punctuation.section.function.begin.css
       push:
         - meta_scope: meta.function.pseudo-class.nth.css
         - include: end-func
+        - include: func-var
         - include: an-plus-b
     - include: stray-paren
 
@@ -9029,7 +9034,7 @@ contexts:
     - match: ((:)scope-context)(\()
       captures:
         1: entity.other.attribute-name.pseudo-class.css
-        2: punctuation.definition.entity.css
+        2: punctuation.definition.entity.pseudo-class.css
         3: punctuation.section.function.begin.css
       push:
         - meta_scope: meta.function.pseudo-class.scope-context.css
@@ -9062,7 +9067,7 @@ contexts:
       # has been replaced by ::placeholder, which is not widely supported yet.
       captures:
         0: entity.other.attribute-name.pseudo-element.css
-        1: punctuation.definition.entity.css
+        1: punctuation.definition.entity.pseudo-element.css
     - include: selector-pseudo-element-slotted
     - include: selector-pseudo-element-attr
     - include: selector-pseudo-element-invalid
@@ -9071,13 +9076,14 @@ contexts:
     - match: '((::)attr)(\()'
       captures:
         1: entity.other.attribute-name.pseudo-element.css
-        2: punctuation.definition.entity.css
+        2: punctuation.definition.entity.pseudo-element.css
         3: punctuation.section.function.begin.css
       push:
         # The attr-pseudo-element name is necessary to distinguish from the
         # other attr() function.
         - meta_scope: meta.function.pseudo-element.attr-pseudo-element.css
         - include: end-func
+        - include: func-var
         # The <wq-name> pattern is close enough to the <namespace-attr> pattern
         # defined in Non-element Selectors Module Level 1.
         # https://drafts.csswg.org/selectors-nonelement/#attribute-node-selectors
@@ -9097,13 +9103,13 @@ contexts:
     - match: '(::)[\w-]+'
       captures:
         # Don't apply a scope to the whole match so it won't be highlighted.
-        1: punctuation.definition.entity.css
+        1: punctuation.definition.entity.pseudo-element.css
 
   selector-pseudo-element-slotted:
     - match: '((::)slotted)(\()'
       captures:
         1: entity.other.attribute-name.pseudo-element.css
-        2: punctuation.definition.entity.css
+        2: punctuation.definition.entity.pseudo-element.css
         3: punctuation.section.function.begin.css
       push:
         - meta_scope: meta.function.pseudo-element.slotted.css

@@ -850,7 +850,7 @@ name_to_completions = {
         t.fit_content,
     ] + t.length + t.percentage,
     "hyphenate-character": [
-        ("auto"),
+        ("auto",),
         t.string,
     ],
     "hyphenate-limit-chars": [("auto",)] + t.integer,
@@ -864,6 +864,7 @@ name_to_completions = {
     "hyphenate-limit-lines": [("no-limit",)] + t.integer,
     "hyphenate-limit-zone": t.length + t.percentage,
     "hyphens": [("auto",), ("manual",), ("none",)],
+
 }
 
 allow_word_completions = frozenset((
