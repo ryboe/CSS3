@@ -1,4 +1,5 @@
 # FUNCTIONS
+# These functions are here instead of functions.py to avoid a circular import.
 a            = ("a()", "a($1)")
 alpha        = ("alpha()", "alpha($1)")
 annotation   = ("annotation()", "annotation($1)")
@@ -8,14 +9,17 @@ blackness    = ("blackness()", "blackness($1${2:0}%)")
 blend        = ("blend()", "blend(${1:<color>} ${2:0}%${3})")
 blenda       = ("blenda()", "blenda(${1:<color>} ${2:0}%${3})")
 blue         = ("blue()", "blue(${1:0})")
+blur         = ("blur()", "blur(${1:<length>})")
+brightness   = ("brightness()", "brightness($1)")
 calc         = ("calc()", "calc($1)")
 character_variant = ("character-variant()", "character-variant($1)")
+child        = ("child()", "child(${1:0})")
 cielab       = ("cielab()", "cielab(${1:<lightness>}, ${2:a}, ${3:b})")
 cielchab     = ("cielchab()", "cielchab(${1:<lightness>}, ${2:<chroma>}, ${3:<hue>})")
 circle       = ("circle()", "circle($1)")
 color_func   = ("color()", "color(${1:<color-or-hue>} ${2:color-adjuster})")
 conic_gradient = ("conic-gradient()", "conic-gradient(${1:from ${2:<angle>}}${3: at ${4:<position>}}${5})")
-contrast     = ("contrast()", "contrast(${1:0}%)")
+contrast     = ("contrast()", "contrast($1)")
 counter      = ("counter()", "counter(${1:<identifier>})")
 counters     = ("counters()", "counters(${1:<identifier>}, '${2:<string>}'$3)")
 cross_fade   = ("cross-fade()", "cross-fade(${1:<mixing-image>}${2:, ${3:<final-image>}})")
@@ -24,40 +28,51 @@ device_cmyk  = ("device-cmyk()", "device-cmyk(${1:0}, ${2:0}, ${3:0}, ${4:0}${5:
 device_gray  = ("device-gray()", "device-gray(${1:0})")
 device_nchannel = ("device-nchannel()", "device-nchannel(${1:0})")
 device_rgb   = ("device-rgb()", "device-rgb(${1:0}, ${2:0}, ${3:0})")
+drop_shadow  = ("drop-shadow()", "drop-shadow(${1:<length>} ${2:<length>})")
 element      = ("element()", "element(#${1:id})")
 ellipse      = ("ellipse()", "ellipse($1)")
+filter_func  = ("filter()", "filter($1)")
 fit_content  = ("fit-content()", "fit-content($1)")
 format_func  = ("format()", 'format("$1")')
 gray         = ("gray()", "gray($1${2:, ${3:1.0}}})")
+grayscale    = ("grayscale()", "grayscale($1)")
 green        = ("green()", "green(${1:0})")
 h            = ("h()", "h($1${2:<angle>})")
 hsl          = ("hsl()", "hsl(${1:<hue>}, ${2:0}%, ${3:0}%)")
 hsla         = ("hsla()", "hsla(${1:<hue>}, ${2:0}%, ${3:0}%, ${4:1.0})")
 hue          = ("hue()", "hue($1{2:<angle>})")
+hue_rotate   = ("hue-rotate()", "hue-rotate(${1:<angle>})")
 hwb          = ("hwb()", "hwb(${1:<hue>}, ${2:0}%, ${3:0}%${4:, ${5:1.0}})")
 icc_color_func = ("icc-color()", "icc-color(${1:name}, ${2:0})")
 icc_named_color = ("icc-named-color()", "icc-named-color(${1:name}, ${2:<named-colo>r})")
 image_func   = ("image()", "image($1)")
 image_set    = ("image-set()", "image-set($1)")
 inset        = ("inset()", "inset($1)")
+invert       = ("invert()", "invert($1)")
 l            = ("l()", "l($1${2:0}%)")
 leader       = ("leader()", "leader($1)")
 lightness    = ("lightness()", "lightness($1${2:0}%)")
 linear_gradient = ("linear-gradient()", "linear-gradient($1)")
 local        = ("local()", "local($1)")
 minmax       = ("minmax()", "minmax(${1:<min>}, ${2:<max>})")
+opacity      = ("opacity()", "opacity($1)")
 ornaments    = ("ornaments()", "ornaments($1)")
 polygon      = ("polygon()", "polygon($1)")
 radial_gradient = ("radial-gradient()", "radial-gradient($1)")
 red          = ("red()", "red(${1:0})")
+repeat       = ("repeat()", "repeat($1)")
 repeating_conic_gradient = ("repeating-conic-gradient()", "repeating-conic-gradient($1)")
 repeating_linear_gradient = ("repeating-linear-gradient()", "repeating-linear-gradient($1)")
 repeating_radial_gradient = ("repeating-radial-gradient()", "repeating-radial-gradient($1)")
 rgb          = ("rgb()", "rgb(${1:0}, ${2:0}, ${3:0})")
 rgba         = ("rgba()", "rgba(${1:0}, ${2:0}, ${3:0}, ${4:1.0})")
 s            = ("s()", "s($1${2:0}%)")
+saturate     = ("saturate()", "saturate($1)")
 saturation   = ("saturation()", "saturation($1${2:0}%)")
+sepia        = ("sepia()", "sepia($1)")
 shade        = ("shade()", "shade(${1:0}%)")
+snap_block   = ("snap-block()", "snap-block(${1:<length>})")
+snap_inline  = ("snap-inline()", "snap-inline(${1:<length>})")
 steps        = ("steps()", "steps($1)")
 styleset     = ("styleset()", "styleset($1)")
 stylistic    = ("stylistic()", "stylistic($1)")
@@ -76,43 +91,24 @@ all_values = [("inherit",), ("initial",), ("revert",), ("unset",), var]
 
 
 # OLD FUNCTIONS
-# blur         = ("blur()", "blur(${1:length})")
-# brightness   = ("brightness()", "brightness($1)")
-# calc         = ("calc()", "calc($1)")
-# child        = ("child()", "child(${1:integer})")
 # content      = ("content()", "content($1)")
 # path         = ("path()", "path(${1:string})")
-# drop_shadow  = ("drop-shadow()", "drop-shadow(${1:length} ${2:length})")
-# filter_func  = ("filter()", "filter($1)")
-# grayscale    = ("grayscale()", "grayscale($1)")
-# hue_rotate   = ("hue-rotate()", "hue-rotate(${1:angle})")
-# inset        = ("inset()", "inset($1)")
-# invert       = ("invert()", "invert($1)")
 # matrix       = ("matrix()", "matrix(${1:0}, ${2:0}, ${3:0}, ${4:0}, ${5:0}, ${6:0})")
 # matrix3d     = ("matrix3d()", "matrix3d(${1:0}, ${2:0}, ${3:0}, ${4:0}, ${5:0}, ${6:0}, ${7:0}, ${8:0}, ${9:0}, ${10:0}, ${11:0}, ${12:0}, ${13:0}, ${14:0}, ${15:0}, ${16:0})")
-# opacity      = ("opacity()", "opacity($1)")
-# path         = ("path()", "path($1)")
 # perspective  = ("perspective()", "perspective(${1:length})")
-# polygon      = ("polygon()", "polygon($1)")
-# repeat       = ("repeat()", "repeat($1)")
 # rotate       = ("rotate()", "rotate(${1:angle})")
 # rotate3d     = ("rotate3d()", "rotate3d(${1:0}, ${2:0}, ${3:0}, ${4:angle})")
 # rotateX      = ("rotateX()", "rotateX(${1:angle})")
 # rotateY      = ("rotateY()", "rotateY(${1:angle})")
 # rotateZ      = ("rotateZ()", "rotateZ(${1:angle})")
-# saturate     = ("saturate()", "saturate($1)")
 # scale        = ("scale()", "scale(${1:0}${2:, ${3:0}})")
 # scale3d      = ("scale3d()", "scale3d(${1:0}, ${2:0}, ${3:0})")
 # scaleX       = ("scaleX()", "scaleX(${1:0})")
 # scaleY       = ("scaleY()", "scaleY(${1:0})")
 # scaleZ       = ("scaleZ()", "scaleZ(${1:0})")
-# sepia        = ("sepia()", "sepia($1)")
 # skew         = ("skew()", "skew(${1:angle}${2:, ${3:angle}})")
 # skewX        = ("skewX()", "skewX(${1:angle})")
 # skewY        = ("skewY()", "skewY(${1:angle})")
-# snap_block   = ("snap-block()", "snap-block($1)")
-# snap_inline  = ("snap-inline()", "snap-inline($1)")
-# steps        = ("steps()", "steps($1)")
 # toggle       = ("toggle()", "toggle($1)")
 # translate    = ("translate()", "translate(${1:length}${2:, ${3:length}})")
 # translate3d  = ("translate3d()", "translate3d(${1:length}, ${2:length}, ${3:length})")
@@ -126,6 +122,7 @@ hex_color = ("<hex-color>", "#$1")
 family_name = ("<family-name>", "${1:<family-name>}")
 font_face_name = ("<font-face-name>", "local($1)")
 identifier = ("<identifier>", "${1:<identifier>}")
+line_names = ("<line-names>", "[${1:<identifier>}]")
 string = ("<string>", "'$1'")
 urange = ("<urange>", "U+$1")
 
@@ -144,6 +141,7 @@ time = [("<time>", "${1:0}s"), calc]
 
 # COMPOSITE TYPES
 attachment = [("fixed",), ("local",), ("scroll",)]
+auto_repeat = [repeat]
 baseline_position = [
     ("baseline",),
     ("last-baseline",),
@@ -411,6 +409,38 @@ discretionary_lig_values = [
     ("discretionary-ligatures",),
     ("no-discretionary-ligatures",),
 ]
+display_box = [("contents",), ("none",)]
+display_inside = [
+    ("flex",),
+    ("flow",),
+    ("flow-root",),
+    ("grid",),
+    ("ruby",),
+    ("table",),
+]
+display_internal = [
+    ("ruby-base",),
+    ("ruby-base-container",),
+    ("ruby-text",),
+    ("ruby-text-container",),
+    ("table-caption",),
+    ("table-cell",),
+    ("table-column",),
+    ("table-column-group",),
+    ("table-footer-group",),
+    ("table-header-group",),
+    ("table-row",),
+    ("table-row-group",),
+]
+display_legacy = [
+    ("inline-block",),
+    ("inline-flex",),
+    ("inline-grid",),
+    ("inline-list-item",),
+    ("inline-table",),
+]
+display_listitem = [("flow",), ("flow-root",), ("list-item",)]
+display_outside = [("block",), ("inline",), ("run-in",)]
 east_asian_variant_values = [
     ("jis04",),
     ("jis78",),
@@ -428,6 +458,19 @@ extent_keyword = [
 ]
 feature_tag_value = [("off",), ("on",), string] + integer
 fill_rule = [("evenodd",), ("nonzero",)]
+flex_direction = [("column",), ("column-reverse",), ("row",), ("row-reverse",)]
+flex_wrap = [("nowrap",), ("wrap",), ("wrap-reverse",)]
+font_family_generic = [
+    ("cursive",),
+    ("fantasy",),
+    ("monospace",),
+    ("sans-serif",),
+    ("serif",),
+]
+font_family_name = [identifier, string]
+fixed_breadth = length + percentage
+fixed_repeat = [repeat]
+fixed_size = [minmax] + fixed_breadth
 gradient = [
     conic_gradient,
     repeating_conic_gradient,
@@ -436,6 +479,7 @@ gradient = [
     radial_gradient,
     repeating_radial_gradient,
 ]
+grid_line = [("auto",), ("span",)] + identifier + integer
 historical_lig_values = [("no-historical-ligatures",), ("historical-ligatures",)]
 icc_color = [
     cielab,
@@ -472,6 +516,14 @@ overflow_position = [
 numeric_figure_values = [("lining-nums",), ("oldstyle-nums",)]
 numeric_fraction_values = [("diagonal-fractions",), ("stacked-fractions",)]
 numeric_spacing_values = [("proportional-nums",), ("tabular-nums",)]
+paint = [
+    ("child",),
+    ("context-fill",),
+    ("context-stroke",),
+    ("none",),
+    child,
+    url,
+] + color
 position = [
     ("bottom",),
     ("center",),
@@ -529,17 +581,25 @@ single_timing_function = [
 size = extent_keyword + length + percentage
 symbol = [identifier, string] + image
 target = [target_counter, target_counters, target_text]
-track_size = [
+track_breadth = [
     ("auto",),
     ("max-content",),
     ("min-content",),
-    fit_content,
-    minmax,
 ] + flex + length + percentage
+track_repeat = [repeat]
+track_size = [fit_content, minmax] + track_breadth
+width = [
+    ("fill",),
+    ("fit-content",),
+    ("max-content",),
+    ("min-content",),
+    fit_content,
+]
 
 # MORE COMPOSITE TYPES
 # These have to be at the bottom because they include composite types defined
 # above.
+auto_track_list = [line_names] + auto_repeat + fixed_repeat + fixed_size
 bg_image = [("none",)] + image
 content_list = [
     ("contents",),
@@ -554,7 +614,7 @@ font_variant = (
     numeric_figure_values + numeric_fraction_values + numeric_spacing_values
 )
 geometry_box = [("fill-box",), ("stroke-box",), ("view-box",)] + shape_box
-
+track_list = [line_names] + track_repeat + track_size
 
 
 
