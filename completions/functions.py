@@ -165,9 +165,9 @@ func_name_to_completions = {
 # the local symbol list, as arguments. Their completions should be returned
 # without inhibiting word completions.
 allow_word_completions = frozenset((
-    "::attr",
     "additive-symbols",
     "attr",
+    "attr-pseudo-element",
     "counter",
     "counters",
     "element",
