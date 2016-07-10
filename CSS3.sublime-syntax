@@ -109,6 +109,7 @@ contexts:
     - include: func-color-adjuster-rgb
     - include: func-conic-gradient
     - include: func-content
+    - include: func-contrast
     - include: func-counters
     - include: func-counter
     - include: func-cross-fade
@@ -158,7 +159,7 @@ contexts:
     - include: func-symbols
     - include: func-target-counters
     - include: func-target-text
-    - include: func-tint-shade-contrast
+    - include: func-tint-shade
     - include: func-translate-z
     - include: func-translate
     - include: func-url
@@ -546,7 +547,8 @@ contexts:
 
   color-adjuster:
     - include: func-color-adjuster-rgb
-    - include: func-tint-shade-contrast
+    - include: func-tint-shade
+    - include: func-contrast
     - include: func-blenda
     - include: func-whiteness-saturation-lightness-hue-blackness
     - include: func-red-green-blue-alpha-a
@@ -1634,6 +1636,22 @@ contexts:
         - match: '\b(?:text|marker|first-letter|before|after){{b}}'
           scope: support.constant.property-value.css
 
+  # This function is defined in two specs:
+  #     CSS Color Module Level 4
+  #     Filter Effects Module Level 1
+  # It matches a superset of both definitions of contrast().
+  func-contrast:
+    - match: \b(contrast)(\()
+      captures:
+        1: support.function.contrast.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_scope: meta.function.contrast.css
+        - include: end-func
+        - include: func-var
+        - include: percentage-non-negative
+        - include: number-non-negative
+
   func-counter:
     - match: \b(counter)(\()
       captures:
@@ -2274,13 +2292,13 @@ contexts:
             {{b}}'
           scope: support.constant.property-value.css
 
-  func-tint-shade-contrast:
-    - match: \b(tint|shade|contrast)(\()
+  func-tint-shade:
+    - match: \b(tint|shade)(\()
       captures:
-        1: support.function.func-tint-shade-contrast.css
+        1: support.function.func-tint-shade.css
         2: punctuation.section.function.begin.css
       push:
-        - meta_scope: meta.function.tint-shade-contrast.css
+        - meta_scope: meta.function.tint-shade.css
         - include: end-func
         - include: func-var
         - include: percentage
@@ -5154,7 +5172,7 @@ contexts:
         - meta_scope: meta.property-value-pair.flow-from.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:none|inherit){{b}}'
+        - match: '\bnone{{b}}'
           scope: support.constant.property-value.css
         - include: identifier
     - include: stray-paren-or-semicolon
