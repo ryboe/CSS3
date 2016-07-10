@@ -1379,6 +1379,7 @@ contexts:
     - include: fixed-breadth
 
   flex:
+    - include: func-calc
     - match: '(?x)
         (?:
           ({{number}})({{flex_unit}})\b|
@@ -4183,7 +4184,7 @@ contexts:
   #     push:
   #       - include: end-value
   #       - include: value-css-wide
-  #       -
+  #       - include: caret-color
   #   - include: stray-paren-or-semicolon
 
   # CSS Basic User Interface Module Level 4
@@ -8690,6 +8691,7 @@ contexts:
       scope: support.constant.property-value.css
 
   resolution:
+    - include: func-calc
     - match: '({{integer_pos}})({{resolution_unit}})'
       captures:
         1: constant.numeric.css
