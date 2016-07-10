@@ -1,59 +1,5 @@
-# @-rules that can appear inside other @-rules.
-nestable_at_rules = [
-    ("@counter-style", "@counter-style ${1:name} {\n\t${2}\n}"),
-    ("@font-face", "@font-face {\n\t${1}\n}"),
-    ("@font-feature-values", "@font-feature-values ${1:font-family} {\n\t${2}\n}"),
-    ("@keyframes", "@keyframes ${1:name} {\n\t${2}\n}"),
-    ("@media", "@media ${1:media-query-list} {\n\t${2}\n}"),
-    ("@page", "@page ${1} {\n\t${2}\n}"),
-    ("@viewport", "@viewport ${1} {\n\t${2}\n}"),
-    ("@supports", "@supports ${1} {\n\t${2}\n}"),
-]
+import sublime
 
-at_rules = [
-    ("@charset", '@charset "UTF-8";'),
-    ("@color-profile", "@color-profile {\n\t${2}\n}"),
-    ("@custom-media", "@custom-media --${1:name} ${2:media-query-list};"),
-    ("@import", "@import ${1:path} ${2:media-query-list};"),
-    ("@namespace", "@namespace ${1};"),
-] + nestable_at_rules
-
-at_page_selectors = [
-    (":blank",),
-    (":first",),
-    (":left",),
-    (":recto",),
-    (":right",),
-    (":verso",),
-]
-
-page_margin_boxes = [
-    ("@bottom-center", "@bottom-center {\n\t${1}\n}"),
-    ("@bottom-left", "@bottom-left {\n\t${1}\n}"),
-    ("@bottom-left-corner", "@bottom-left-corner {\n\t${1}\n}"),
-    ("@bottom-right", "@bottom-right {\n\t${1}\n}"),
-    ("@bottom-right-corner", "@bottom-right-corner {\n\t${1}\n}"),
-    ("@left-bottom", "@left-bottom {\n\t${1}\n}"),
-    ("@left-middle", "@left-middle {\n\t${1}\n}"),
-    ("@left-top", "@left-top {\n\t${1}\n}"),
-    ("@right-bottom", "@right-bottom {\n\t${1}\n}"),
-    ("@right-middle", "@right-middle {\n\t${1}\n}"),
-    ("@right-top", "@right-top {\n\t${1}\n}"),
-    ("@top-center", "@top-center {\n\t${1}\n}"),
-    ("@top-left", "@top-left {\n\t${1}\n}"),
-    ("@top-left-corner", "@top-left-corner {\n\t${1}\n}"),
-    ("@top-right", "@top-right {\n\t${1}\n}"),
-    ("@top-right-corner", "@top-right-corner {\n\t${1}\n}"),
-]
-
-font_feature_types = [
-    ("@annotation", "@annotation {\n\t${1}\n}"),
-    ("@character-variant", "@character-variant {\n\t${1}\n}"),
-    ("@ornaments", "@ornaments {\n\t${1}\n}"),
-    ("@styleset", "@styleset {\n\t${1}\n}"),
-    ("@stylistic", "@stylistic {\n\t${1}\n}"),
-    ("@swash", "@swash {\n\t${1}\n}"),
-]
 
 html_tags = [
     ("a",),
@@ -171,11 +117,6 @@ html_tags = [
     ("wbr",),
 ]
 
-keyframes_selector = [
-    ("from", "from {\n\t${1}\n}"),
-    ("to", "to {\n\t${1}\n}"),
-]
-
 pseudo_classes = [
     ("active",),
     ("any-link",),
@@ -258,4 +199,15 @@ pseudo_elements = [
     # TODO: vendor prefixed pseudo-elements here
 ]
 
-at_rules.sort()
+
+def get_completions(view, location):
+    if view.match_selector(location - 1, "punctuation.definition.entity.pseudo-element.css"):
+        return pseudo_elements, sublime.INHIBIT_WORD_COMPLETIONS
+
+    if view.match_selector(location - 1, "punctuation.definition.entity.pseudo-class.css"):
+        return pseudo_classes, sublime.INHIBIT_WORD_COMPLETIONS
+
+    # If we're not in a class, id, pseudo-class, or pseudo-element, offer HTML
+    # tags as completions.
+    if view.match_selector(location, "source.css -entity.other.attribute-name."):
+        return html_tags

@@ -1,5 +1,5 @@
 # FUNCTIONS
-# These functions are here instead of functions.py to avoid a circular import.
+# These completions are here instead of functions.py to avoid a circular import.
 a            = ("a()", "a($1)")
 alpha        = ("alpha()", "alpha($1)")
 annotation   = ("annotation()", "annotation($1)")
@@ -126,37 +126,15 @@ line_names = ("<line-names>", "[${1:<identifier>}]")
 string = ("<string>", "'$1'")
 urange = ("<urange>", "U+$1")
 
-angle = [("<angle>", "${1:<angle>}"), calc]
-decibel = [("<decibel>", "${1:0}dB"), calc]
-flex = [("<flex>", "${1:0}fr"), calc]
-frequency = [("<frequency>", "${1:0}Hz"), calc]
-integer = [("<integer>", "${1:0}"), calc]
-length = [("<length>", "${1:<length>}"), calc]
-number = [("<number>", "${1:0}"), calc]
-percentage = [("<percentage>", "${1:0}%"), calc]
-resolution = [("<resolution>", "${1:<resolution>}"), calc]
-semitones = [("<semitones>", "${1:0}st"), calc]
-time = [("<time>", "${1:0}s"), calc]
-
-
 # COMPOSITE TYPES
+angle = [("<angle>", "${1:<angle>}"), calc]
 attachment = [("fixed",), ("local",), ("scroll",)]
 auto_repeat = [repeat]
 baseline_position = [
     ("baseline",),
     ("last-baseline",),
 ]
-baseline_shift = [
-    ("baseline",),
-    ("sub",),
-    ("super",)
-] + length + percentage
 basic_shape = [circle, ellipse, inset, polygon]
-bg_size = [
-    ("auto",),
-    ("contain",),
-    ("cover",),
-] + length + percentage
 blend_mode = [
     ("color",),
     ("color-burn",),
@@ -187,7 +165,6 @@ border_style = [
     ("ridge",),
     ("solid",),
 ]
-border_width = [("medium",), ("thick",), ("thin",)] + length
 box = [("border-box",), ("content-box",), ("padding-box",)]
 # caret_color = []  # TODO: write this when <caret-color> is defined in the spec
 caret_shape = [
@@ -383,7 +360,6 @@ color = [
     w,
     whiteness,
 ]
-color_stop = color + length + percentage
 common_lig_values = [("common-ligatures",), ("no-common-ligatures",)]
 content_distribution = [
     ("space-around",),
@@ -405,6 +381,7 @@ counter_style = [
     counter_style_name,
     symbols,
 ]
+decibel = [("<decibel>", "${1:0}dB"), calc]
 discretionary_lig_values = [
     ("discretionary-ligatures",),
     ("no-discretionary-ligatures",),
@@ -456,8 +433,9 @@ extent_keyword = [
     ("farthest-corner",),
     ("farthest-side",),
 ]
-feature_tag_value = [("off",), ("on",), string] + integer
 fill_rule = [("evenodd",), ("nonzero",)]
+fixed_repeat = [repeat]
+flex = [("<flex>", "${1:0}fr"), calc]
 flex_direction = [("column",), ("column-reverse",), ("row",), ("row-reverse",)]
 flex_wrap = [("nowrap",), ("wrap",), ("wrap-reverse",)]
 font_family_generic = [
@@ -468,9 +446,7 @@ font_family_generic = [
     ("serif",),
 ]
 font_family_name = [identifier, string]
-fixed_breadth = length + percentage
-fixed_repeat = [repeat]
-fixed_size = [minmax] + fixed_breadth
+frequency = [("<frequency>", "${1:0}Hz"), calc]
 gradient = [
     conic_gradient,
     repeating_conic_gradient,
@@ -479,7 +455,6 @@ gradient = [
     radial_gradient,
     repeating_radial_gradient,
 ]
-grid_line = [("auto",), ("span",), identifier] + integer
 historical_lig_values = [("no-historical-ligatures",), ("historical-ligatures",)]
 icc_color = [
     cielab,
@@ -496,6 +471,8 @@ image = [
     image_set,
     url,
 ] + gradient
+integer = [("<integer>", "${1:0}"), calc]
+length = [("<length>", "${1:<length>}"), calc]
 line_style = [
     ("dashed",),
     ("dotted",),
@@ -513,6 +490,7 @@ overflow_position = [
     ("safe",),
     ("unsafe",),
 ]
+number = [("<number>", "${1:0}"), calc]
 numeric_figure_values = [("lining-nums",), ("oldstyle-nums",)]
 numeric_fraction_values = [("diagonal-fractions",), ("stacked-fractions",)]
 numeric_spacing_values = [("proportional-nums",), ("tabular-nums",)]
@@ -524,6 +502,7 @@ paint = [
     child,
     url,
 ] + color
+percentage = [("<percentage>", "${1:0}%"), calc]
 position = [
     ("bottom",),
     ("center",),
@@ -545,6 +524,7 @@ repeat_style = [
     ("round",),
     ("space",),
 ]
+resolution = [("<resolution>", "${1:<resolution>}"), calc]
 rgb_component = number + percentage
 self_position = [
     ("center",),
@@ -557,6 +537,7 @@ self_position = [
     ("self-start",),
     ("start",),
 ]
+semitones = [("<semitones>", "${1:0}st"), calc]
 shape_arg = length + percentage
 shape_box = [("margin-box",)] + box
 shape_radius = [("closest-side",), ("farthest-side",)] + length + percentage
@@ -581,6 +562,7 @@ single_timing_function = [
 size = extent_keyword + length + percentage
 symbol = [identifier, string] + image
 target = [target_counter, target_counters, target_text]
+time = [("<time>", "${1:0}s"), calc]
 track_breadth = [
     ("auto",),
     ("max-content",),
@@ -595,12 +577,19 @@ width = [
     ("min-content",),
     fit_content,
 ]
-
-# MORE COMPOSITE TYPES
-# These have to be at the bottom because they include composite types defined
-# above.
-auto_track_list = [line_names] + auto_repeat + fixed_repeat + fixed_size
+baseline_shift = [
+    ("baseline",),
+    ("sub",),
+    ("super",)
+] + length + percentage
 bg_image = [("none",)] + image
+bg_size = [
+    ("auto",),
+    ("contain",),
+    ("cover",),
+] + length + percentage
+border_width = [("medium",), ("thick",), ("thin",)] + length
+color_stop = color + length + percentage
 content_list = [
     ("contents",),
     ("document-url",),
@@ -608,18 +597,20 @@ content_list = [
     url,
     string,
 ] + quote + target
+feature_tag_value = [("off",), ("on",), string] + integer
+fixed_breadth = length + percentage
+fixed_size = [minmax] + fixed_breadth
 font_variant = (
     common_lig_values + discretionary_lig_values + historical_lig_values +
     east_asian_variant_values + east_asian_width_values +
     numeric_figure_values + numeric_fraction_values + numeric_spacing_values
 )
 geometry_box = [("fill-box",), ("stroke-box",), ("view-box",)] + shape_box
+grid_line = [("auto",), ("span",), identifier] + integer
 track_list = [line_names] + track_repeat + track_size
+auto_track_list = [line_names] + auto_repeat + fixed_repeat + fixed_size
 
-
-
-
-
+# TODO: delete this
 # OLD TYPES
 # angle       = ("<angle>", "${1:<angle>}")
 # basic_shape = [inset, circle, ellipse, polygon]
@@ -646,4 +637,3 @@ track_list = [line_names] + track_repeat + track_size
 # time        = ("<time>", "${1:<time>}")
 # transform   = [matrix, matrix3d, perspective, rotate, rotate3d, rotateX, rotateY, rotateZ, scale, scale3d, scaleX, scaleY, scaleZ, skew, skewX, skewY, translate, translate3d, translateX, translateY, translateZ]
 # urange      = ("<urange>", "U+$1")
-
