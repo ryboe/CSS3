@@ -22,7 +22,8 @@ class CSS3Completions(sublime_plugin.EventListener):
             locations (list: int): The integer positions of cursors.
 
         Returns:
-            A list of (<label>, <completion>) tuples or None. <label> is what
+            A list of (<label>, <completion>) tuples or None, and a flag that
+            determines whether word completions are offered. <label> is what
             will appear in the completions menu. <completion> is the snippet
             that will be inserted.
         """
@@ -46,49 +47,49 @@ class CSS3Completions(sublime_plugin.EventListener):
         start = locations[0] - len(prefix)
         current_scopes = get_current_scopes(view, start)
 
-        # TODO
-        # SELECTORS
-        # if view.match_selector(start, "meta.selector.css"):
-        #     pass
-
-        # PROPERTY NAMES
-        # The meta.property-value-pair.css scope is triggered when the ':'' has
-        # been typed. If the scope is not present, the user must be typing a
-        # property name, not a value.
-        if view.match_selector(start, "source.css meta.property-list.css -meta.property-value-pair"):
-            return p.names, sublime.INHIBIT_WORD_COMPLETIONS
-
         # INSIDE FUNCTIONS
         if view.match_selector(start, "source.css meta.function"):
             return get_functions(current_scopes)
 
-        # PROPERTY VALUES
-        if view.match_selector(start, "source.css meta.property-value-pair"):
-            return get_property_values(current_scopes)
-
-
-            # line = view.substr(sublime.Region(view.line(start).begin(), start))
-            # matches = property_name_rx.search(line)
-            # if matches:
-            #     prop_name = matches.group("prop_name")
-            #     completions = p.name_to_completions.get(prop_name, []) + t.all_values
-            #     if prop_name in p.allow_word_completions:
-            #         return completions
-            #     return completions, sublime.INHIBIT_WORD_COMPLETIONS
-
-            # return []
-
         # OUTSIDE AT-RULES
-        if view.match_selector(start, "source.css -meta.at-rule -meta.property-list.css"):
+        if (
+            view.match_selector(start, "source.css -meta.at-rule -meta.property-list.css") and
+            view.match_selector(start - 1, "punctuation.definition.keyword.css")
+        ):
             return s.at_rules, sublime.INHIBIT_WORD_COMPLETIONS
 
         # INSIDE AT-RULES
         if view.match_selector(start, "source.css meta.at-rule"):
             return handle_completions_inside_at_rules(view, start)
 
+        # PROPERTY NAMES
+        if property_name_scope(view, start):
+            return p.names, sublime.INHIBIT_WORD_COMPLETIONS
+
+        # PROPERTY VALUES
+        if view.match_selector(start, "source.css meta.property-value-pair"):
+            return get_property_values(current_scopes)
+
+        # SELECTORS
+        if view.match_selector(start, "meta.selector.css"):
+            return handle_selector_completions(view, start)
+
 
 def get_current_scopes(view, location):
     return view.scope_name(location).split()
+
+
+def handle_selector_completions(view, location):
+    if view.match_selector(location - 1, "punctuation.definition.entity.pseudo-element.css"):
+        return s.pseudo_elements, sublime.INHIBIT_WORD_COMPLETIONS
+
+    if view.match_selector(location - 1, "punctuation.definition.entity.pseudo-class.css"):
+        return s.pseudo_classes, sublime.INHIBIT_WORD_COMPLETIONS
+
+    # If we're not in a class, id, pseudo-class, or pseudo-element, offer HTML
+    # tags as completions.
+    if view.match_selector(location, "source.css -entity.other.attribute-name."):
+        return s.html_tags
 
 
 def handle_completions_inside_at_rules(view, location):
@@ -154,6 +155,24 @@ scopes_that_forbid_nested_at_rules = (
     "meta.at-rule.counter-style.block.css, "
     "meta.at-rule.page.block.css"
 )
+
+
+def property_name_scope(view, location):
+    """Return True if the given location has a scope that should offer property
+    names as completions.
+
+    When we're inside a property list or a page margin box, the
+    meta.property-value-pair.css scope is triggered when the ':' is typed. If
+    that scope is not present, the user is typing a property name, not a value.
+
+    Args:
+        view (sublime.View): required for the view.match_selector() method.
+        location (int): cursor position in the text (determines current scope).
+    """
+    return (
+        view.match_selector(location, "source.css meta.property-list.css -meta.property-value-pair") or
+        view.match_selector(location, "source.css meta.page-margin-box.css -meta.property-value-pair")
+    )
 
 
 def should_offer_at_rule_completions(view, location):

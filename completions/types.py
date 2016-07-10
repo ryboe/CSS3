@@ -479,7 +479,7 @@ gradient = [
     radial_gradient,
     repeating_radial_gradient,
 ]
-grid_line = [("auto",), ("span",)] + identifier + integer
+grid_line = [("auto",), ("span",), identifier] + integer
 historical_lig_values = [("no-historical-ligatures",), ("historical-ligatures",)]
 icc_color = [
     cielab,
