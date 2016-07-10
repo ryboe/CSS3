@@ -8,12 +8,16 @@ blackness    = ("blackness()", "blackness($1${2:0}%)")
 blend        = ("blend()", "blend(${1:<color>} ${2:0}%${3})")
 blenda       = ("blenda()", "blenda(${1:<color>} ${2:0}%${3})")
 blue         = ("blue()", "blue(${1:0})")
+calc         = ("calc()", "calc($1)")
 character_variant = ("character-variant()", "character-variant($1)")
 cielab       = ("cielab()", "cielab(${1:<lightness>}, ${2:a}, ${3:b})")
 cielchab     = ("cielchab()", "cielchab(${1:<lightness>}, ${2:<chroma>}, ${3:<hue>})")
+circle       = ("circle()", "circle($1)")
 color_func   = ("color()", "color(${1:<color-or-hue>} ${2:color-adjuster})")
 conic_gradient = ("conic-gradient()", "conic-gradient(${1:from ${2:<angle>}}${3: at ${4:<position>}}${5})")
 contrast     = ("contrast()", "contrast(${1:0}%)")
+counter      = ("counter()", "counter(${1:<identifier>})")
+counters     = ("counters()", "counters(${1:<identifier>}, '${2:<string>}'$3)")
 cross_fade   = ("cross-fade()", "cross-fade(${1:<mixing-image>}${2:, ${3:<final-image>}})")
 cubic_bezier = ("cubic-bezier()", "cubic-bezier($1)")
 device_cmyk  = ("device-cmyk()", "device-cmyk(${1:0}, ${2:0}, ${3:0}, ${4:0}${5:, ${6:1.0}}${7:, ${8:<color>}})")
@@ -21,6 +25,7 @@ device_gray  = ("device-gray()", "device-gray(${1:0})")
 device_nchannel = ("device-nchannel()", "device-nchannel(${1:0})")
 device_rgb   = ("device-rgb()", "device-rgb(${1:0}, ${2:0}, ${3:0})")
 element      = ("element()", "element(#${1:id})")
+ellipse      = ("ellipse()", "ellipse($1)")
 fit_content  = ("fit-content()", "fit-content($1)")
 format_func  = ("format()", 'format("$1")')
 gray         = ("gray()", "gray($1${2:, ${3:1.0}}})")
@@ -34,6 +39,7 @@ icc_color_func = ("icc-color()", "icc-color(${1:name}, ${2:0})")
 icc_named_color = ("icc-named-color()", "icc-named-color(${1:name}, ${2:<named-colo>r})")
 image_func   = ("image()", "image($1)")
 image_set    = ("image-set()", "image-set($1)")
+inset        = ("inset()", "inset($1)")
 l            = ("l()", "l($1${2:0}%)")
 leader       = ("leader()", "leader($1)")
 lightness    = ("lightness()", "lightness($1${2:0}%)")
@@ -41,6 +47,7 @@ linear_gradient = ("linear-gradient()", "linear-gradient($1)")
 local        = ("local()", "local($1)")
 minmax       = ("minmax()", "minmax(${1:<min>}, ${2:<max>})")
 ornaments    = ("ornaments()", "ornaments($1)")
+polygon      = ("polygon()", "polygon($1)")
 radial_gradient = ("radial-gradient()", "radial-gradient($1)")
 red          = ("red()", "red(${1:0})")
 repeating_conic_gradient = ("repeating-conic-gradient()", "repeating-conic-gradient($1)")
@@ -73,14 +80,9 @@ all_values = [("inherit",), ("initial",), ("revert",), ("unset",), var]
 # brightness   = ("brightness()", "brightness($1)")
 # calc         = ("calc()", "calc($1)")
 # child        = ("child()", "child(${1:integer})")
-# circle       = ("circle()", "circle($1)")
 # content      = ("content()", "content($1)")
-# counter      = ("counter()", "counter(${1:ident}${2:, ${3:list-style-type}})")
-# counters     = ("counters()", "counters(${1:ident}, \"${2:string}\"${3:, ${4:list-style-type}})")
-# cubic_bezier = ("cubic-bezier()", "cubic-bezier(${1:0}, ${2:0}, ${3:0}, ${4:0})")
 # path         = ("path()", "path(${1:string})")
 # drop_shadow  = ("drop-shadow()", "drop-shadow(${1:length} ${2:length})")
-# ellipse      = ("ellipse()", "ellipse($1)")
 # filter_func  = ("filter()", "filter($1)")
 # grayscale    = ("grayscale()", "grayscale($1)")
 # hue_rotate   = ("hue-rotate()", "hue-rotate(${1:angle})")
@@ -119,22 +121,25 @@ all_values = [("inherit",), ("initial",), ("revert",), ("unset",), var]
 # translateZ   = ("translateZ()", "translateZ(${1:length})")
 
 # TYPES
-angle = ("<angle>", "${1:<angle>}")
 counter_style_name = ("<counter-style-name>", "${1:<counter-style-name>}")
 hex_color = ("<hex-color>", "#$1")
 family_name = ("<family-name>", "${1:<family-name>}")
 font_face_name = ("<font-face-name>", "local($1)")
-flex = ("<flex>", "${1:0}fr")
-frequency = ("<frequency>", "${1:0}Hz")
 identifier = ("<identifier>", "${1:<identifier>}")
-integer = ("<integer>", "${1:0}")
-length = ("<length>", "${1:<length>}")
-number = ("<number>", "${1:0}")
-percentage = ("<percentage>", "${1:0}%")
-resolution = ("<resolution>", "${1:<resolution>}")
 string = ("<string>", "'$1'")
-time = ("<time>", "${1:0}s")
 urange = ("<urange>", "U+$1")
+
+angle = [("<angle>", "${1:<angle>}"), calc]
+decibel = [("<decibel>", "${1:0}dB"), calc]
+flex = [("<flex>", "${1:0}fr"), calc]
+frequency = [("<frequency>", "${1:0}Hz"), calc]
+integer = [("<integer>", "${1:0}"), calc]
+length = [("<length>", "${1:<length>}"), calc]
+number = [("<number>", "${1:0}"), calc]
+percentage = [("<percentage>", "${1:0}%"), calc]
+resolution = [("<resolution>", "${1:<resolution>}"), calc]
+semitones = [("<semitones>", "${1:0}st"), calc]
+time = [("<time>", "${1:0}s"), calc]
 
 
 # COMPOSITE TYPES
@@ -146,17 +151,14 @@ baseline_position = [
 baseline_shift = [
     ("baseline",),
     ("sub",),
-    ("super",),
-    length,
-    percentage,
-]
+    ("super",)
+] + length + percentage
+basic_shape = [circle, ellipse, inset, polygon]
 bg_size = [
     ("auto",),
     ("contain",),
     ("cover",),
-    length,
-    percentage,
-]
+] + length + percentage
 blend_mode = [
     ("color",),
     ("color-burn",),
@@ -187,8 +189,15 @@ border_style = [
     ("ridge",),
     ("solid",),
 ]
-border_width = [("medium",), ("thick",), ("thin",), length]
+border_width = [("medium",), ("thick",), ("thin",)] + length
 box = [("border-box",), ("content-box",), ("padding-box",)]
+# caret_color = []  # TODO: write this when <caret-color> is defined in the spec
+caret_shape = [
+    ("auto",),
+    ("bar",),
+    ("block",),
+    ("underscore",),
+]
 color = [
     ("aliceblue",),
     ("antiquewhite",),
@@ -376,7 +385,7 @@ color = [
     w,
     whiteness,
 ]
-color_stop = [percentage, length] + color
+color_stop = color + length + percentage
 common_lig_values = [("common-ligatures",), ("no-common-ligatures",)]
 content_distribution = [
     ("space-around",),
@@ -417,7 +426,7 @@ extent_keyword = [
     ("farthest-corner",),
     ("farthest-side",),
 ]
-feature_tag_value = [integer, ("off",), ("on",), string]
+feature_tag_value = [("off",), ("on",), string] + integer
 fill_rule = [("evenodd",), ("nonzero",)]
 gradient = [
     conic_gradient,
@@ -443,6 +452,19 @@ image = [
     image_set,
     url,
 ] + gradient
+line_style = [
+    ("dashed",),
+    ("dotted",),
+    ("double",),
+    ("groove",),
+    ("hidden",),
+    ("inset",),
+    ("none",),
+    ("outset",),
+    ("ridge",),
+    ("solid",),
+]
+line_width = [("medium",), ("thick",), ("thin",)] + length
 overflow_position = [
     ("safe",),
     ("unsafe",),
@@ -456,9 +478,7 @@ position = [
     ("left",),
     ("right",),
     ("top",),
-    length,
-    percentage,
-]
+] + length + percentage
 quote = [
     ("close-quote",),
     ("no-close-quote",),
@@ -473,7 +493,7 @@ repeat_style = [
     ("round",),
     ("space",),
 ]
-rgb_component = [number, percentage]
+rgb_component = number + percentage
 self_position = [
     ("center",),
     ("end",),
@@ -485,18 +505,14 @@ self_position = [
     ("self-start",),
     ("start",),
 ]
-shape_arg = [length, percentage]
-shape_radius = [
-    ("closest-side",),
-    ("farthest-side",),
-    length,
-    percentage,
-]
+shape_arg = length + percentage
+shape_box = [("margin-box",)] + box
+shape_radius = [("closest-side",), ("farthest-side",)] + length + percentage
 side_or_corner = [("bottom",), ("left",), ("right",), ("top",)]
 single_animation_composition = [("accumulate",), ("add",), ("replace",)]
 single_animation_direction = [("alternate",), ("alternate-reverse",), ("normal",), ("reverse",)]
 single_animation_fill_mode = [("backwards",), ("both",), ("forwards",), ("none",)]
-single_animation_iteration_count = [("infinite",), number]
+single_animation_iteration_count = [("infinite",)] + number
 single_animation_name = [("none",), identifier]
 single_animation_play_state = [("paused",), ("running",)]
 single_timing_function = [
@@ -510,19 +526,16 @@ single_timing_function = [
     cubic_bezier,
     steps,
 ]
-size = [length, percentage] + extent_keyword
-symbol = image + [identifier, string]
+size = extent_keyword + length + percentage
+symbol = [identifier, string] + image
 target = [target_counter, target_counters, target_text]
 track_size = [
     ("auto",),
     ("max-content",),
     ("min-content",),
     fit_content,
-    flex,
-    length,
     minmax,
-    percentage
-]
+] + flex + length + percentage
 
 # MORE COMPOSITE TYPES
 # These have to be at the bottom because they include composite types defined
@@ -540,6 +553,7 @@ font_variant = (
     east_asian_variant_values + east_asian_width_values +
     numeric_figure_values + numeric_fraction_values + numeric_spacing_values
 )
+geometry_box = [("fill-box",), ("stroke-box",), ("view-box",)] + shape_box
 
 
 

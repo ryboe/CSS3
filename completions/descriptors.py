@@ -53,11 +53,11 @@ color_profile_descriptor_to_completions = {
     "src": [("sRGB",), t.local, t.url],
 }
 counter_style_descriptor_to_completions = {
-    "additive-symbols": [t.integer] + t.symbol,
+    "additive-symbols": t.integer + t.symbol,
     "negative": t.symbol,
-    "pad": [t.integer] + t.symbol,
+    "pad": t.integer + t.symbol,
     "prefix": t.symbol,
-    "range": [("auto",), ("infinite",), t.integer],
+    "range": [("auto",), ("infinite",)] + t.integer,
     "speak-as": [
         ("<counter-style-name>", "$1"),
         ("auto",),
@@ -77,8 +77,7 @@ counter_style_descriptor_to_completions = {
         ("numeric",),
         ("symbolic",),
         t.counter_style_name,
-        t.integer,
-    ],
+    ] + t.integer,
 }
 font_face_descriptor_to_completions = {
     "font-family": [
@@ -151,17 +150,17 @@ font_face_descriptor_to_completions = {
     "unicode-range": [t.urange],
 }
 viewport_descriptor_to_completions = {
-    "height": [("auto",), ("extend-to-zoom",), t.length, t.percentage],
-    "max-height": [("auto",), ("extend-to-zoom",), t.length, t.percentage],
-    "max-width": [("auto",), ("extend-to-zoom",), t.length, t.percentage],
-    "max-zoom": [("auto",), t.number, t.percentage],
-    "min-height": [("auto",), ("extend-to-zoom",), t.length, t.percentage],
-    "min-width": [("auto",), ("extend-to-zoom",), t.length, t.percentage],
-    "min-zoom": [("auto",), t.number, t.percentage],
+    "height": [("auto",), ("extend-to-zoom",)] + t.length + t.percentage,
+    "max-height": [("auto",), ("extend-to-zoom",)] + t.length + t.percentage,
+    "max-width": [("auto",), ("extend-to-zoom",)] + t.length + t.percentage,
+    "max-zoom": [("auto",)] + t.number + t.percentage,
+    "min-height": [("auto",), ("extend-to-zoom",)] + t.length + t.percentage,
+    "min-width": [("auto",), ("extend-to-zoom",)] + t.length + t.percentage,
+    "min-zoom": [("auto",)] + t.number + t.percentage,
     "orientation": [("auto",), ("landscape",), ("portrait",)],
     "user-zoom": [("fixed",), ("zoom",)],
-    "width": [("auto",), ("extend-to-zoom",), t.length, t.percentage],
-    "zoom": [("auto",), t.number, t.percentage],
+    "width": [("auto",), ("extend-to-zoom",)] + t.length + t.percentage,
+    "zoom": [("auto",)] + t.number + t.percentage,
 }
 
 at_rule_to_completions_dict = {
