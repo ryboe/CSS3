@@ -1,30 +1,29 @@
 
-def get_current_scopes(view, location):
+def get_scopes(view, location):
+    """Return the scopes at the given location.
+
+    >>> get_scopes(123)
+    ['source.css', 'foo.bar.baz.css']
+    """
     return view.scope_name(location).split()
 
 
-def get_name_from_scopes_with_prefix(scopes, prefix):
-    """
-    Scans a list of scopes and returns the name of the function or descriptor
-    with the given prefix. If there are multiple matches, only the name from the
-    highest-precedence (rightmost) scope will be returned. If there are no
-    scopes with the given prefix, an empty string is returned.
+def scope_name(scopes, prefix):
+    """Extract the "foo" name from a list of scopes like
+    ['source.css', 'meta.property-value.foo.css'].
 
-    Args:
-        scopes (list: str): e.g. ['source.css', 'foo.bar.baz.css']
-        prefix (str): e.g. 'foo.bar'
-
-    Returns:
-        The
+    If there are multiple matches, only the name from the highest-precedence
+    (rightmost) scope will be returned. If there are no scopes with the given
+    prefix, an empty string is returned.
 
     >>> scopes = ['source.css', 'meta.function.foo.css']
-    >>> get_name(scopes, prefix='meta.function')
+    >>> scope_name(scopes, prefix='meta.function')
     'foo'
     >>> scopes = ['source.css', 'meta.descriptor.color-profile.bar.css']
-    >>> get_name(scopes, prefix='meta.descriptor.color-profile')
+    >>> scope_name(scopes, prefix='meta.descriptor.color-profile')
     'bar'
     >>> scopes = ['source.css', 'meta.function.baz.css']
-    >>> get_name(scopes, prefix='meta.descriptor.color-profile')
+    >>> scope_name(scopes, prefix='meta.descriptor.color-profile')
     ''
     """
     name_index = -2

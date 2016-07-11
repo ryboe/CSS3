@@ -866,7 +866,17 @@ name_to_completions = {
     "hyphenate-limit-lines": [("no-limit",)] + t.integer,
     "hyphenate-limit-zone": t.length + t.percentage,
     "hyphens": [("auto",), ("manual",), ("none",)],
-
+    "image-orientation": [("flip",), ("from-image",)] + t.angle,
+    "image-rendering": [("auto",), ("crisp-edges",), ("pixelated",)],
+    "image-resolution": [("from-image",), ("snap",)] + t.resolution,
+    "initial-letter": [("normal",)] + t.integer + t.number,
+    "initial-letter-align": [
+        ("alphabetic",),
+        ("border-box",),
+        ("hanging",),
+        ("hebrew",),
+        ("ideographic",),
+    ],
 }
 
 allow_word_completions = frozenset((
@@ -883,8 +893,8 @@ allow_word_completions = frozenset((
 ))
 
 
-def get_values(current_scopes):
-    property_name = util.get_name_from_scopes_with_prefix(current_scopes, prefix="meta.property-value-pair.")
+def get_values(scopes):
+    property_name = util.scope_name(scopes, prefix="meta.property-value.")
     completions = name_to_completions.get(property_name, []) + [t.var]
 
     if property_name and property_name in allow_word_completions:

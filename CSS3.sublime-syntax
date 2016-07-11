@@ -3360,7 +3360,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.align-content.css
+        - meta_content_scope: meta.property-value.align-content.css
         - include: end-value
         - include: value-css-wide
         - match: '\bnormal{{b}}'
@@ -3380,7 +3380,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.align-items.css
+        - meta_content_scope: meta.property-value.align-items.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:stretch|normal){{b}}'
@@ -3399,7 +3399,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.align-self.css
+        - meta_content_scope: meta.property-value.align-self.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:stretch|normal|auto){{b}}'
@@ -3418,7 +3418,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.alignment-baseline.css
+        - meta_content_scope: meta.property-value.alignment-baseline.css
         - include: end-value
         - include: value-css-wide
         - match: '(?x)
@@ -3453,7 +3453,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.all.css
+        - meta_content_scope: meta.property-value.all.css
         - include: end-value
         - include: value-css-wide
     - include: stray-paren-or-semicolon
@@ -3465,7 +3465,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.animation.css
+        - meta_content_scope: meta.property-value.animation.css
         - include: end-value
         - include: value-css-wide
         - include: single-animation-play-state
@@ -3484,7 +3484,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.animation-composition.css
+        - meta_content_scope: meta.property-value.animation-composition.css
         - include: end-value
         - include: value-css-wide
         - include: single-animation-composition
@@ -3497,7 +3497,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.animation-delay.css
+        - meta_content_scope: meta.property-value.animation-delay.css
         - include: end-value
         - include: value-css-wide
         - include: time
@@ -3510,7 +3510,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.animation-direction.css
+        - meta_content_scope: meta.property-value.animation-direction.css
         - include: end-value
         - include: value-css-wide
         - include: single-animation-direction
@@ -3523,7 +3523,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.animation-duration.css
+        - meta_content_scope: meta.property-value.animation-duration.css
         - include: end-value
         - include: value-css-wide
         - include: time
@@ -3536,7 +3536,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.animation-fill-mode.css
+        - meta_content_scope: meta.property-value.animation-fill-mode.css
         - include: end-value
         - include: value-css-wide
         - include: single-animation-fill-mode
@@ -3549,7 +3549,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.animation-iteration-count.css
+        - meta_content_scope: meta.property-value.animation-iteration-count.css
         - include: end-value
         - include: value-css-wide
         - include: single-animation-iteration-count
@@ -3562,7 +3562,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.animation-name.css
+        - meta_content_scope: meta.property-value.animation-name.css
         - include: end-value
         - include: value-css-wide
         - include: single-animation-name
@@ -3575,7 +3575,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.animation-play-state.css
+        - meta_content_scope: meta.property-value.animation-play-state.css
         - include: end-value
         - include: value-css-wide
         - include: single-animation-play-state
@@ -3588,7 +3588,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.animation-timing-function.css
+        - meta_content_scope: meta.property-value.animation-timing-function.css
         - include: end-value
         - include: value-css-wide
         - include: single-timing-function
@@ -3601,7 +3601,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.appearance.css
+        - meta_content_scope: meta.property-value.appearance.css
         - include: end-value
         - include: value-css-wide
         - match: \b(?:none|auto){{b}}
@@ -3615,7 +3615,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.backface-visibility.css
+        - meta_content_scope: meta.property-value.backface-visibility.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:visible|hidden){{b}}'
@@ -3629,7 +3629,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.background-attachment.css
+        - meta_content_scope: meta.property-value.background-attachment.css
         - include: end-value
         - include: value-css-wide
         - include: attachment
@@ -3642,7 +3642,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.background-blend-mode.css
+        - meta_content_scope: meta.property-value.background-blend-mode.css
         - include: end-value
         - include: value-css-wide
         - include: blend-mode
@@ -3655,7 +3655,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.background-clip.css
+        - meta_content_scope: meta.property-value.background-clip.css
         - include: end-value
         - include: value-css-wide
         - include: box
@@ -3668,7 +3668,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.background-color.css
+        - meta_content_scope: meta.property-value.background-color.css
         - include: end-value
         - include: value-css-wide
         - include: color
@@ -3681,7 +3681,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.background-image.css
+        - meta_content_scope: meta.property-value.background-image.css
         - include: end-value
         - include: value-css-wide
         - include: bg-image
@@ -3694,7 +3694,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.background-origin.css
+        - meta_content_scope: meta.property-value.background-origin.css
         - include: end-value
         - include: value-css-wide
         - include: box
@@ -3707,7 +3707,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.background-position.css
+        - meta_content_scope: meta.property-value.background-position.css
         - include: end-value
         - include: value-css-wide
         - include: position
@@ -3720,7 +3720,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.background-repeat.css
+        - meta_content_scope: meta.property-value.background-repeat.css
         - include: end-value
         - include: value-css-wide
         - include: repeat-style
@@ -3733,7 +3733,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.background-size.css
+        - meta_content_scope: meta.property-value.background-size.css
         - include: end-value
         - include: value-css-wide
         - include: bg-size
@@ -3746,7 +3746,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.background.css
+        - meta_content_scope: meta.property-value.background.css
         - include: end-value
         - include: value-css-wide
         - include: bg-image
@@ -3769,7 +3769,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.baseline-shift.css
+        - meta_content_scope: meta.property-value.baseline-shift.css
         - include: end-value
         - include: value-css-wide
         - include: baseline-shift
@@ -3782,7 +3782,7 @@ contexts:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.bleed.css
+        - meta_content_scope: meta.property-value.bleed.css
         - include: end-value
         - include: value-css-wide
         - match: '\bauto{{b}}'
@@ -3797,7 +3797,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.bookmark-label.css
+        - meta_content_scope: meta.property-value.bookmark-label.css
         - include: end-value
         - include: value-css-wide
         - include: content-list
@@ -3810,7 +3810,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.bookmark-level.css
+        - meta_content_scope: meta.property-value.bookmark-level.css
         - include: end-value
         - include: value-css-wide
         - match: '\bnone{{b}}'
@@ -3825,7 +3825,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.bookmark-state.css
+        - meta_content_scope: meta.property-value.bookmark-state.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:open|closed){{b}}'
@@ -3839,7 +3839,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.border.css
+        - meta_content_scope: meta.property-value.border.css
         - include: end-value
         - include: value-css-wide
         - include: color
@@ -3854,7 +3854,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.border-boundary.css
+        - meta_content_scope: meta.property-value.border-boundary.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:parent|none|display){{b}}'
@@ -3868,7 +3868,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.border-collapse.css
+        - meta_content_scope: meta.property-value.border-collapse.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:separate|collapse){{b}}'
@@ -3882,7 +3882,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.border-color.css
+        - meta_content_scope: meta.property-value.border-color.css
         - include: end-value
         - include: value-css-wide
         - include: color
@@ -3895,7 +3895,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.border-image.css
+        - meta_content_scope: meta.property-value.border-image.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:stretch|space|round|repeat|none|fill|auto){{b}}'
@@ -3914,7 +3914,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.border-image-outset.css
+        - meta_content_scope: meta.property-value.border-image-outset.css
         - include: end-value
         - include: value-css-wide
         - include: length-non-negative
@@ -3928,7 +3928,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.border-image-repeat.css
+        - meta_content_scope: meta.property-value.border-image-repeat.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:stretch|space|round|repeat){{b}}'
@@ -3942,7 +3942,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.border-image-slice.css
+        - meta_content_scope: meta.property-value.border-image-slice.css
         - include: end-value
         - include: value-css-wide
         - match: '\bfill{{b}}'
@@ -3958,7 +3958,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.border-image-source.css
+        - meta_content_scope: meta.property-value.border-image-source.css
         - include: end-value
         - include: value-css-wide
         - match: '\bnone{{b}}'
@@ -3973,7 +3973,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.border-image-width.css
+        - meta_content_scope: meta.property-value.border-image-width.css
         - include: end-value
         - include: value-css-wide
         - match: '\bauto{{b}}'
@@ -3990,7 +3990,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.border-radius.css
+        - meta_content_scope: meta.property-value.border-radius.css
         - include: end-value
         - include: value-css-wide
         - include: percentage-non-negative
@@ -4006,7 +4006,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.border-spacing.css
+        - meta_content_scope: meta.property-value.border-spacing.css
         - include: end-value
         - include: value-css-wide
         - include: length-non-negative
@@ -4019,7 +4019,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.border-style.css
+        - meta_content_scope: meta.property-value.border-style.css
         - include: end-value
         - include: value-css-wide
         - include: border-style
@@ -4032,7 +4032,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.border-top-right-left-bottom.css
+        - meta_content_scope: meta.property-value.border-top-right-left-bottom.css
         - include: end-value
         - include: value-css-wide
         - include: color
@@ -4047,7 +4047,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.border-width.css
+        - meta_content_scope: meta.property-value.border-width.css
         - include: end-value
         - include: value-css-wide
         - include: border-width
@@ -4060,7 +4060,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.box-decoration-break.css
+        - meta_content_scope: meta.property-value.box-decoration-break.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:slice|clone){{b}}'
@@ -4074,7 +4074,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.box-shadow.css
+        - meta_content_scope: meta.property-value.box-shadow.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:none|inset){{b}}'
@@ -4090,7 +4090,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.box-sizing.css
+        - meta_content_scope: meta.property-value.box-sizing.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:content-box|border-box){{b}}'
@@ -4104,7 +4104,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.box-snap.css
+        - meta_content_scope: meta.property-value.box-snap.css
         - include: end-value
         - include: value-css-wide
         - match: '(?x)
@@ -4128,7 +4128,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.box-suppress.css
+        - meta_content_scope: meta.property-value.box-suppress.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:show|hide|discard){{b}}'
@@ -4144,7 +4144,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.break-before-after.css
+        - meta_content_scope: meta.property-value.break-before-after.css
         - include: end-value
         - include: value-css-wide
         - match: '(?x)
@@ -4175,7 +4175,7 @@ contexts:
         1: support.constant.property-break-inside.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.break-inside.css
+        - meta_content_scope: meta.property-value.break-inside.css
         - include: end-value
         - include: value-css-wide
         - match: '(?x)
@@ -4212,7 +4212,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.caret-shape.css
+        - meta_content_scope: meta.property-value.caret-shape.css
         - include: end-value
         - include: value-css-wide
         - include: caret-shape
@@ -4225,7 +4225,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.caret.css
+        - meta_content_scope: meta.property-value.caret.css
         - include: end-value
         - include: value-css-wide
         - include: caret-shape
@@ -4239,7 +4239,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.chains.css
+        - meta_content_scope: meta.property-value.chains.css
         - include: end-value
         - match: '\bnone{{b}}|[@*]'
           scope: support.constant.property-value.css
@@ -4254,7 +4254,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.clear.css
+        - meta_content_scope: meta.property-value.clear.css
         - include: end-value
         - include: value-css-wide
         - match: '(?x)
@@ -4284,7 +4284,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.clip-path.css
+        - meta_content_scope: meta.property-value.clip-path.css
         - include: end-value
         - include: value-css-wide
         - include: func-url
@@ -4301,7 +4301,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.clip-rule.css
+        - meta_content_scope: meta.property-value.clip-rule.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:nonzero|evenodd){{b}}'
@@ -4315,7 +4315,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.color.css
+        - meta_content_scope: meta.property-value.color.css
         - include: end-value
         - include: value-css-wide
         - include: color
@@ -4328,7 +4328,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.color-interpolation-filters.css
+        - meta_content_scope: meta.property-value.color-interpolation-filters.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:sRGB|linearRGB|auto){{b}}'
@@ -4342,7 +4342,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.color-rendering.css
+        - meta_content_scope: meta.property-value.color-rendering.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:optimizeSpeed|optimizeQuality|auto){{b}}'
@@ -4356,7 +4356,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.columns.css
+        - meta_content_scope: meta.property-value.columns.css
         - include: end-value
         - include: value-css-wide
         - match: '\bauto{{b}}'
@@ -4372,7 +4372,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.column-count.css
+        - meta_content_scope: meta.property-value.column-count.css
         - include: end-value
         - include: value-css-wide
         - match: '\bauto{{b}}'
@@ -4387,7 +4387,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.column-fill.css
+        - meta_content_scope: meta.property-value.column-fill.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:balance|auto){{b}}'
@@ -4401,7 +4401,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.column-gap.css
+        - meta_content_scope: meta.property-value.column-gap.css
         - include: end-value
         - include: value-css-wide
         - match: '\bnormal{{b}}'
@@ -4416,7 +4416,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.column-rule.css
+        - meta_content_scope: meta.property-value.column-rule.css
         - include: end-value
         - include: value-css-wide
         - include: line-style
@@ -4431,7 +4431,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.column-rule-color.css
+        - meta_content_scope: meta.property-value.column-rule-color.css
         - include: end-value
         - include: value-css-wide
         - include: color
@@ -4444,7 +4444,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.column-rule-style.css
+        - meta_content_scope: meta.property-value.column-rule-style.css
         - include: end-value
         - include: value-css-wide
         - include: line-style  # identical to <border-style>
@@ -4457,7 +4457,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.column-rule-width.css
+        - meta_content_scope: meta.property-value.column-rule-width.css
         - include: end-value
         - include: value-css-wide
         - include: line-width  # identical to <border-width>
@@ -4470,7 +4470,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.column-span.css
+        - meta_content_scope: meta.property-value.column-span.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:none|auto|all){{b}}'
@@ -4485,7 +4485,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.column-width.css
+        - meta_content_scope: meta.property-value.column-width.css
         - include: end-value
         - include: value-css-wide
         - match: '\bauto{{b}}'
@@ -4500,7 +4500,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.content.css
+        - meta_content_scope: meta.property-value.content.css
         - include: end-value
         - include: value-css-wide
         - include: func-counters
@@ -4522,7 +4522,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.continue.css
+        - meta_content_scope: meta.property-value.continue.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:paginate|overflow|fragments|discard|auto){{b}}'
@@ -4536,7 +4536,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.counter-set-reset-increment.css
+        - meta_content_scope: meta.property-value.counter-set-reset-increment.css
         - include: end-value
         - include: value-css-wide
         - include: func-attr
@@ -4553,7 +4553,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.cue-before-after.css
+        - meta_content_scope: meta.property-value.cue-before-after.css
         - include: end-value
         - include: value-css-wide
         - include: func-url
@@ -4571,7 +4571,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.cursor.css
+        - meta_content_scope: meta.property-value.cursor.css
         - include: end-value
         - include: value-css-wide
         - include: func-url
@@ -4626,7 +4626,7 @@ contexts:
         1: support.type.property-name.custom.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.custom.css
+        - meta_content_scope: meta.property-value.custom.css
         - include: end-value
         - include: value-css-wide
         - include: any-value
@@ -4841,7 +4841,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.direction.css
+        - meta_content_scope: meta.property-value.direction.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:rtl|ltr){{b}}'
@@ -4857,7 +4857,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.display.css
+        - meta_content_scope: meta.property-value.display.css
         - include: end-value
         - include: value-css-wide
         - include: display-outside
@@ -4877,7 +4877,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.dominant-baseline.css
+        - meta_content_scope: meta.property-value.dominant-baseline.css
         - include: end-value
         - include: value-css-wide
         - match: '(?x)
@@ -4904,7 +4904,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.fill.css
+        - meta_content_scope: meta.property-value.fill.css
         - include: end-value
         - include: value-css-wide
         - include: paint
@@ -4917,7 +4917,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.fill-opacity.css
+        - meta_content_scope: meta.property-value.fill-opacity.css
         - include: end-value
         - include: value-css-wide
         - include: number-zero-to-one
@@ -4930,7 +4930,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.fill-rule.css
+        - meta_content_scope: meta.property-value.fill-rule.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:nonzero|evenodd){{b}}'
@@ -4944,7 +4944,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.filter.css
+        - meta_content_scope: meta.property-value.filter.css
         - include: end-value
         - include: value-css-wide
         - include: func-drop-shadow
@@ -4963,7 +4963,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.flex.css
+        - meta_content_scope: meta.property-value.flex.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:none|content|auto){{b}}'
@@ -4980,7 +4980,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.flex-basis.css
+        - meta_content_scope: meta.property-value.flex-basis.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:content|auto){{b}}'
@@ -4997,7 +4997,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.flex-direction.css
+        - meta_content_scope: meta.property-value.flex-direction.css
         - include: end-value
         - include: value-css-wide
         - include: flex-direction
@@ -5010,7 +5010,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.flex-flow.css
+        - meta_content_scope: meta.property-value.flex-flow.css
         - include: end-value
         - include: value-css-wide
         - include: flex-direction
@@ -5024,7 +5024,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.flex-shrink-grow.css
+        - meta_content_scope: meta.property-value.flex-shrink-grow.css
         - include: end-value
         - include: value-css-wide
         - include: number-non-negative
@@ -5037,7 +5037,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.flex-wrap.css
+        - meta_content_scope: meta.property-value.flex-wrap.css
         - include: end-value
         - include: value-css-wide
         - include: flex-wrap
@@ -5050,7 +5050,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.float.css
+        - meta_content_scope: meta.property-value.float.css
         - include: end-value
         - include: value-css-wide
         - include: func-snap-block
@@ -5081,7 +5081,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.float-defer.css
+        - meta_content_scope: meta.property-value.float-defer.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:none|last){{b}}'
@@ -5096,7 +5096,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.float-offset.css
+        - meta_content_scope: meta.property-value.float-offset.css
         - include: end-value
         - include: value-css-wide
         - include: percentage
@@ -5110,7 +5110,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.float-reference.css
+        - meta_content_scope: meta.property-value.float-reference.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:region|page|inline|column){{b}}'
@@ -5124,7 +5124,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.flood-color.css
+        - meta_content_scope: meta.property-value.flood-color.css
         - include: end-value
         - include: value-css-wide
         - include: color
@@ -5137,7 +5137,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.flood-opacity.css
+        - meta_content_scope: meta.property-value.flood-opacity.css
         - include: end-value
         - include: value-css-wide
         - include: percentage
@@ -5151,7 +5151,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.flow.css
+        - meta_content_scope: meta.property-value.flow.css
         - include: end-value
         - include: value-css-wide
         - include: string
@@ -5169,7 +5169,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.flow-from.css
+        - meta_content_scope: meta.property-value.flow-from.css
         - include: end-value
         - include: value-css-wide
         - match: '\bnone{{b}}'
@@ -5184,7 +5184,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.flow-into.css
+        - meta_content_scope: meta.property-value.flow-into.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:none|element|content){{b}}'
@@ -5199,7 +5199,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.font.css
+        - meta_content_scope: meta.property-value.font.css
         - include: end-value
         - include: value-css-wide
         - include: font-family-generic
@@ -5253,7 +5253,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.font-family.css
+        - meta_content_scope: meta.property-value.font-family.css
         - include: end-value
         - include: value-css-wide
         - include: font-family-generic
@@ -5267,7 +5267,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.font-feature-settings.css
+        - meta_content_scope: meta.property-value.font-feature-settings.css
         - include: end-value
         - include: value-css-wide
         - match: '\bnormal{{b}}'
@@ -5282,7 +5282,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.font-kerning.css
+        - meta_content_scope: meta.property-value.font-kerning.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:normal|none|auto){{b}}'
@@ -5296,7 +5296,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.font-language-override.css
+        - meta_content_scope: meta.property-value.font-language-override.css
         - include: end-value
         - include: value-css-wide
         - include: string
@@ -5311,7 +5311,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.font-size.css
+        - meta_content_scope: meta.property-value.font-size.css
         - include: end-value
         - include: value-css-wide
         - match: '(?x)
@@ -5340,7 +5340,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.font-size-adjust.css
+        - meta_content_scope: meta.property-value.font-size-adjust.css
         - include: end-value
         - include: value-css-wide
         - match: '\bnone{{b}}'
@@ -5355,7 +5355,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.font-stretch.css
+        - meta_content_scope: meta.property-value.font-stretch.css
         - include: end-value
         - include: value-css-wide
         - match: '(?x)
@@ -5382,7 +5382,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.font-style.css
+        - meta_content_scope: meta.property-value.font-style.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:oblique|normal|italic){{b}}'
@@ -5396,7 +5396,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.font-variant.css
+        - meta_content_scope: meta.property-value.font-variant.css
         - include: end-value
         - include: value-css-wide
         - include: func-swash-styleset-stylistic-ornaments-character-variant-annotation
@@ -5437,7 +5437,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.font-variant-alternates.css
+        - meta_content_scope: meta.property-value.font-variant-alternates.css
         - include: end-value
         - include: value-css-wide
         - include: func-swash-styleset-stylistic-ornaments-character-variant-annotation
@@ -5452,7 +5452,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.font-variant-caps.css
+        - meta_content_scope: meta.property-value.font-variant-caps.css
         - include: end-value
         - include: value-css-wide
         - match: '(?x)
@@ -5477,7 +5477,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.font-variant-east-asian.css
+        - meta_content_scope: meta.property-value.font-variant-east-asian.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:ruby|normal){{b}}'
@@ -5493,7 +5493,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.font-variant-ligatures.css
+        - meta_content_scope: meta.property-value.font-variant-ligatures.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:normal|none){{b}}'
@@ -5511,7 +5511,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.font-variant-numeric.css
+        - meta_content_scope: meta.property-value.font-variant-numeric.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:slashed-zero|ordinal|normal){{b}}'
@@ -5528,7 +5528,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.font-variant-position.css
+        - meta_content_scope: meta.property-value.font-variant-position.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:super|sub|normal){{b}}'
@@ -5542,7 +5542,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.font-weight.css
+        - meta_content_scope: meta.property-value.font-weight.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:normal|lighter|bolder|bold|[1-9]00){{b}}'
@@ -5556,7 +5556,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.footnote-display.css
+        - meta_content_scope: meta.property-value.footnote-display.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:inline|compact|block){{b}}'
@@ -5570,7 +5570,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.footnote-policy.css
+        - meta_content_scope: meta.property-value.footnote-policy.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:line|block|auto){{b}}'
@@ -5584,7 +5584,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.grid.css
+        - meta_content_scope: meta.property-value.grid.css
         - include: end-value
         - include: value-css-wide
         - include: string
@@ -5612,7 +5612,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.grid-row-column-area.css
+        - meta_content_scope: meta.property-value.grid-row-column-area.css
         - include: end-value
         - include: value-css-wide
         - include: grid-line
@@ -5625,7 +5625,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.grid-row-column-gap.css
+        - meta_content_scope: meta.property-value.grid-row-column-gap.css
         - include: end-value
         - include: value-css-wide
         - include: percentage-non-negative
@@ -5639,7 +5639,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.grid-auto-flow.css
+        - meta_content_scope: meta.property-value.grid-auto-flow.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:row|dense|column){{b}}'
@@ -5653,7 +5653,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.grid-auto-rows-columns.css
+        - meta_content_scope: meta.property-value.grid-auto-rows-columns.css
         - include: end-value
         - include: value-css-wide
         - include: track-size
@@ -5666,7 +5666,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.grid-template-areas.css
+        - meta_content_scope: meta.property-value.grid-template-areas.css
         - include: end-value
         - include: value-css-wide
         - include: string
@@ -5681,7 +5681,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.grid-template-rows-columns.css
+        - meta_content_scope: meta.property-value.grid-template-rows-columns.css
         - include: end-value
         - include: value-css-wide
         - match: '\bnone{{b}}'
@@ -5697,7 +5697,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.grid-template.css
+        - meta_content_scope: meta.property-value.grid-template.css
         - include: end-value
         - include: value-css-wide
         - include: string
@@ -5714,7 +5714,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.hanging-punctuation.css
+        - meta_content_scope: meta.property-value.hanging-punctuation.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:none|last|force-end|first|allow-end){{b}}'
@@ -5728,7 +5728,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.height.css
+        - meta_content_scope: meta.property-value.height.css
         - include: end-value
         - include: value-css-wide
         - include: func-fit-content
@@ -5745,7 +5745,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.hyphenate-character.css
+        - meta_content_scope: meta.property-value.hyphenate-character.css
         - include: end-value
         - include: value-css-wide
         - include: string
@@ -5760,7 +5760,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.hyphenate-limit-chars.css
+        - meta_content_scope: meta.property-value.hyphenate-limit-chars.css
         - include: end-value
         - include: value-css-wide
         - match: '\bauto{{b}}'
@@ -5775,7 +5775,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.hyphenate-limit-last.css
+        - meta_content_scope: meta.property-value.hyphenate-limit-last.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:spread|page|none|column|always){{b}}'
@@ -5789,7 +5789,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.hyphenate-limit-lines.css
+        - meta_content_scope: meta.property-value.hyphenate-limit-lines.css
         - include: end-value
         - include: value-css-wide
         - match: '\bno-limit{{b}}'
@@ -5804,7 +5804,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.hyphenate-limit-zone.css
+        - meta_content_scope: meta.property-value.hyphenate-limit-zone.css
         - include: end-value
         - include: value-css-wide
         - include: percentage
@@ -5818,7 +5818,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.hyphens.css
+        - meta_content_scope: meta.property-value.hyphens.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:none|manual|auto){{b}}'
@@ -5832,7 +5832,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.image-orientation.css
+        - meta_content_scope: meta.property-value.image-orientation.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:from-image|flip){{b}}'
@@ -5847,7 +5847,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.image-rendering.css
+        - meta_content_scope: meta.property-value.image-rendering.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:pixelated|crisp-edges|auto){{b}}'
@@ -5861,7 +5861,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.image-resolution.css
+        - meta_content_scope: meta.property-value.image-resolution.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:snap|from-image){{b}}'
@@ -5876,7 +5876,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.initial-letter.css
+        - meta_content_scope: meta.property-value.initial-letter.css
         - include: end-value
         - include: value-css-wide
         - match: '\bnormal{{b}}'
@@ -5892,7 +5892,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.initial-letter-align.css
+        - meta_content_scope: meta.property-value.initial-letter-align.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:ideographic|hebrew|hanging|border-box|alphabetic){{b}}'
@@ -5906,7 +5906,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.initial-letter-wrap.css
+        - meta_content_scope: meta.property-value.initial-letter-wrap.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:none|grid|first|all){{b}}'
@@ -5922,7 +5922,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.isolation.css
+        - meta_content_scope: meta.property-value.isolation.css
         - include: end-value
         - include: value-css-wide
         - include: isolation-mode
@@ -5937,7 +5937,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.justify-content.css
+        - meta_content_scope: meta.property-value.justify-content.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:space-between|space-around|flex-start|flex-end|center){{b}}'
@@ -5955,7 +5955,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.justify-items.css
+        - meta_content_scope: meta.property-value.justify-items.css
         - include: end-value
         - include: value-css-wide
         - include: baseline-position
@@ -5983,7 +5983,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.justify-self.css
+        - meta_content_scope: meta.property-value.justify-self.css
         - include: end-value
         - include: value-css-wide
         - include: baseline-position
@@ -6000,7 +6000,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.letter-spacing.css
+        - meta_content_scope: meta.property-value.letter-spacing.css
         - include: end-value
         - include: value-css-wide
         - match: '\bnormal{{b}}'
@@ -6015,7 +6015,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.lighting-color.css
+        - meta_content_scope: meta.property-value.lighting-color.css
         - include: end-value
         - include: value-css-wide
         - include: color
@@ -6028,7 +6028,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.line-break.css
+        - meta_content_scope: meta.property-value.line-break.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:strict|normal|loose|auto){{b}}'
@@ -6042,7 +6042,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.line-grid.css
+        - meta_content_scope: meta.property-value.line-grid.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:match-parent|create){{b}}'
@@ -6056,7 +6056,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.line-height.css
+        - meta_content_scope: meta.property-value.line-height.css
         - include: end-value
         - include: value-css-wide
         - match: '\bnormal{{b}}'
@@ -6073,7 +6073,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.line-snap.css
+        - meta_content_scope: meta.property-value.line-snap.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:none|contain|baseline){{b}}'
@@ -6087,7 +6087,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.list-style.css
+        - meta_content_scope: meta.property-value.list-style.css
         - include: end-value
         - include: value-css-wide
         - include: string
@@ -6104,7 +6104,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.list-style-image.css
+        - meta_content_scope: meta.property-value.list-style-image.css
         - include: end-value
         - include: value-css-wide
         - match: '\bnone{{b}}'
@@ -6119,7 +6119,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.list-style-position.css
+        - meta_content_scope: meta.property-value.list-style-position.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:outside|inside){{b}}'
@@ -6133,7 +6133,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.list-style-type.css
+        - meta_content_scope: meta.property-value.list-style-type.css
         - include: end-value
         - include: value-css-wide
         - include: func-symbols
@@ -6150,7 +6150,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.margin.css
+        - meta_content_scope: meta.property-value.margin.css
         - include: end-value
         - include: value-css-wide
         - match: '\bauto{{b}}'
@@ -6166,7 +6166,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.marker.css
+        - meta_content_scope: meta.property-value.marker.css
         - include: end-value
         - include: value-css-wide
         - include: marker-ref
@@ -6183,7 +6183,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.marker-knockout.css
+        - meta_content_scope: meta.property-value.marker-knockout.css
         - include: end-value
         - include: value-css-wide
         - include: knockout-shape
@@ -6197,7 +6197,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.marker-pattern.css
+        - meta_content_scope: meta.property-value.marker-pattern.css
         - include: end-value
         - include: value-css-wide
         - include: marker-gap
@@ -6211,7 +6211,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.marker-start-segment-mid-end.css
+        - meta_content_scope: meta.property-value.marker-start-segment-mid-end.css
         - include: end-value
         - include: value-css-wide
         - match: '\bnone{{b}}'
@@ -6226,7 +6226,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.marker-side.css
+        - meta_content_scope: meta.property-value.marker-side.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:list-item|list-container){{b}}'
@@ -6240,7 +6240,7 @@ contexts:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.marks.css
+        - meta_content_scope: meta.property-value.marks.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:none|cross|crop){{b}}'
@@ -6254,7 +6254,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.mask.css
+        - meta_content_scope: meta.property-value.mask.css
         - include: end-value
         - include: value-css-wide
         - include: mask-layer
@@ -6267,7 +6267,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.mask-border.css
+        - meta_content_scope: meta.property-value.mask-border.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:stretch|space|round|repeat|luminance|fill|auto|alpha){{b}}'
@@ -6285,7 +6285,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.mask-border-mode.css
+        - meta_content_scope: meta.property-value.mask-border-mode.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:luminance|alpha){{b}}'
@@ -6299,7 +6299,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.mask-border-outset.css
+        - meta_content_scope: meta.property-value.mask-border-outset.css
         - include: end-value
         - include: value-css-wide
         - include: length-non-negative
@@ -6313,7 +6313,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.mask-border-repeat.css
+        - meta_content_scope: meta.property-value.mask-border-repeat.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:stretch|space|round|repeat){{b}}'
@@ -6327,7 +6327,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.mask-border-slice.css
+        - meta_content_scope: meta.property-value.mask-border-slice.css
         - include: end-value
         - include: value-css-wide
         - match: '\bfill{{b}}'
@@ -6343,7 +6343,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.mask-border-source.css
+        - meta_content_scope: meta.property-value.mask-border-source.css
         - include: end-value
         - include: value-css-wide
         - include: image
@@ -6356,7 +6356,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.mask-border-width.css
+        - meta_content_scope: meta.property-value.mask-border-width.css
         - include: end-value
         - include: value-css-wide
         - match: '\bauto{{b}}'
@@ -6373,7 +6373,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.mask-clip.css
+        - meta_content_scope: meta.property-value.mask-clip.css
         - include: end-value
         - include: value-css-wide
         - match: '\bno-clip{{b}}'
@@ -6388,7 +6388,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.mask-composite.css
+        - meta_content_scope: meta.property-value.mask-composite.css
         - include: end-value
         - include: value-css-wide
         - include: compositing-operator
@@ -6401,7 +6401,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.mask-image.css
+        - meta_content_scope: meta.property-value.mask-image.css
         - include: end-value
         - include: value-css-wide
         - include: mask-reference
@@ -6414,7 +6414,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.mask-mode.css
+        - meta_content_scope: meta.property-value.mask-mode.css
         - include: end-value
         - include: value-css-wide
         - include: masking-mode
@@ -6427,7 +6427,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.mask-origin.css
+        - meta_content_scope: meta.property-value.mask-origin.css
         - include: end-value
         - include: value-css-wide
         - include: geometry-box
@@ -6440,7 +6440,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.mask-position.css
+        - meta_content_scope: meta.property-value.mask-position.css
         - include: end-value
         - include: value-css-wide
         - include: position
@@ -6453,7 +6453,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.mask-repeat.css
+        - meta_content_scope: meta.property-value.mask-repeat.css
         - include: end-value
         - include: value-css-wide
         - include: repeat-style
@@ -6466,7 +6466,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.mask-size.css
+        - meta_content_scope: meta.property-value.mask-size.css
         - include: end-value
         - include: value-css-wide
         - include: bg-size
@@ -6479,7 +6479,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.mask-type.css
+        - meta_content_scope: meta.property-value.mask-type.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:luminance|alpha){{b}}'
@@ -6493,7 +6493,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.mix-blend-mode.css
+        - meta_content_scope: meta.property-value.mix-blend-mode.css
         - include: end-value
         - include: value-css-wide
         - include: blend-mode
@@ -6506,7 +6506,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.motion.css
+        - meta_content_scope: meta.property-value.motion.css
         - include: end-value
         - include: value-css-wide
         - include: func-url
@@ -6527,7 +6527,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.motion-offset.css
+        - meta_content_scope: meta.property-value.motion-offset.css
         - include: end-value
         - include: value-css-wide
         - include: percentage
@@ -6541,7 +6541,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.motion-path.css
+        - meta_content_scope: meta.property-value.motion-path.css
         - include: end-value
         - include: value-css-wide
         - include: func-url
@@ -6559,7 +6559,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.motion-rotation.css
+        - meta_content_scope: meta.property-value.motion-rotation.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:reverse|auto){{b}}'
@@ -6574,7 +6574,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.nav-up-right-left-down.css
+        - meta_content_scope: meta.property-value.nav-up-right-left-down.css
         - include: end-value
         - include: value-css-wide
         - include: string
@@ -6590,7 +6590,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.object-fit.css
+        - meta_content_scope: meta.property-value.object-fit.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:scale-down|none|fill|cover|contain){{b}}'
@@ -6604,7 +6604,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.object-position.css
+        - meta_content_scope: meta.property-value.object-position.css
         - include: end-value
         - include: value-css-wide
         - include: position
@@ -6617,7 +6617,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.offset-anchor.css
+        - meta_content_scope: meta.property-value.offset-anchor.css
         - include: end-value
         - include: value-css-wide
         - include: position
@@ -6630,7 +6630,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.offset-distance.css
+        - meta_content_scope: meta.property-value.offset-distance.css
         - include: end-value
         - include: value-css-wide
         - include: extent-keyword
@@ -6645,7 +6645,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.offset-path.css
+        - meta_content_scope: meta.property-value.offset-path.css
         - include: end-value
         - include: value-css-wide
         - include: func-url
@@ -6664,7 +6664,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.offset-position.css
+        - meta_content_scope: meta.property-value.offset-position.css
         - include: end-value
         - include: value-css-wide
         - match: '\bauto{{b}}'
@@ -6679,7 +6679,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.offset-rotation.css
+        - meta_content_scope: meta.property-value.offset-rotation.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:reverse|auto){{b}}'
@@ -6694,7 +6694,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.offset-start-end-before-after.css
+        - meta_content_scope: meta.property-value.offset-start-end-before-after.css
         - include: end-value
         - include: value-css-wide
         - match: '\bauto{{b}}'
@@ -6710,7 +6710,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.opacity.css
+        - meta_content_scope: meta.property-value.opacity.css
         - include: end-value
         - include: value-css-wide
         - include: number-zero-to-one
@@ -6723,7 +6723,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.order.css
+        - meta_content_scope: meta.property-value.order.css
         - include: end-value
         - include: value-css-wide
         - include: integer
@@ -6736,7 +6736,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.outline.css
+        - meta_content_scope: meta.property-value.outline.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:invert|auto){{b}}'
@@ -6753,7 +6753,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.outline-color.css
+        - meta_content_scope: meta.property-value.outline-color.css
         - include: end-value
         - include: value-css-wide
         - match: '\binvert{{b}}'
@@ -6768,7 +6768,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.outline-offset.css
+        - meta_content_scope: meta.property-value.outline-offset.css
         - include: end-value
         - include: value-css-wide
         - include: length
@@ -6781,7 +6781,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.outline-style.css
+        - meta_content_scope: meta.property-value.outline-style.css
         - include: end-value
         - include: value-css-wide
         - match: '\bauto{{b}}'
@@ -6796,7 +6796,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.outline-width.css
+        - meta_content_scope: meta.property-value.outline-width.css
         - include: end-value
         - include: value-css-wide
         - include: border-width
@@ -6809,7 +6809,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.overflow.css
+        - meta_content_scope: meta.property-value.overflow.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:visible|scroll|hidden|clip|auto){{b}}'
@@ -6823,7 +6823,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.overflow-wrap.css
+        - meta_content_scope: meta.property-value.overflow-wrap.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:normal|break-word){{b}}'
@@ -6837,7 +6837,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.overflow-x-y.css
+        - meta_content_scope: meta.property-value.overflow-x-y.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:visible|scroll|hidden|clip|auto){{b}}'
@@ -6851,7 +6851,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.padding.css
+        - meta_content_scope: meta.property-value.padding.css
         - include: end-value
         - include: value-css-wide
         - include: percentage-non-negative
@@ -6865,7 +6865,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.page.css
+        - meta_content_scope: meta.property-value.page.css
         - include: end-value
         - include: value-css-wide
         - match: '\bauto{{b}}'
@@ -6880,7 +6880,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.page-break-before-after.css
+        - meta_content_scope: meta.property-value.page-break-before-after.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:right|left|avoid|auto|always){{b}}'
@@ -6894,7 +6894,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.page-break-inside.css
+        - meta_content_scope: meta.property-value.page-break-inside.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:avoid|auto){{b}}'
@@ -6908,7 +6908,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.paint-order.css
+        - meta_content_scope: meta.property-value.paint-order.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:stroke|normal|markers|fill){{b}}'
@@ -6922,7 +6922,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.pause.css
+        - meta_content_scope: meta.property-value.pause.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:x-weak|x-strong|weak|strong|none|medium){{b}}'
@@ -6937,7 +6937,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.perspective.css
+        - meta_content_scope: meta.property-value.perspective.css
         - include: end-value
         - include: value-css-wide
         - match: '\bnone{{b}}'
@@ -6952,7 +6952,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.perspective-origin.css
+        - meta_content_scope: meta.property-value.perspective-origin.css
         - include: end-value
         - include: value-css-wide
         - include: position
@@ -6965,7 +6965,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.pointer-events.css
+        - meta_content_scope: meta.property-value.pointer-events.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:visibleStroke|visiblePainted|visibleFill|visible|stroke|painted|none|fill|bounding-box|all){{b}}'
@@ -6979,7 +6979,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.polar-anchor.css
+        - meta_content_scope: meta.property-value.polar-anchor.css
         - include: end-value
         - include: value-css-wide
         - include: position
@@ -6992,7 +6992,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.polar-angle.css
+        - meta_content_scope: meta.property-value.polar-angle.css
         - include: end-value
         - include: value-css-wide
         - include: angle
@@ -7005,7 +7005,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.polar-distance.css
+        - meta_content_scope: meta.property-value.polar-distance.css
         - include: end-value
         - include: value-css-wide
         - match: '\bcontain{{b}}'
@@ -7022,7 +7022,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.polar-origin.css
+        - meta_content_scope: meta.property-value.polar-origin.css
         - include: end-value
         - include: value-css-wide
         - match: '\bauto{{b}}'
@@ -7037,7 +7037,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.position.css
+        - meta_content_scope: meta.property-value.position.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:sticky|static|relative|fixed|absolute){{b}}'
@@ -7051,7 +7051,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.presentation-level.css
+        - meta_content_scope: meta.property-value.presentation-level.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:same|increment){{b}}'
@@ -7066,7 +7066,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.quotes.css
+        - meta_content_scope: meta.property-value.quotes.css
         - include: end-value
         - include: value-css-wide
         - include: string
@@ -7081,7 +7081,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.region-fragment.css
+        - meta_content_scope: meta.property-value.region-fragment.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:break|auto){{b}}'
@@ -7095,7 +7095,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.resize.css
+        - meta_content_scope: meta.property-value.resize.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:vertical|none|horizontal|both){{b}}'
@@ -7109,7 +7109,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.rest.css
+        - meta_content_scope: meta.property-value.rest.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:x-weak|x-strong|weak|strong|none|medium){{b}}'
@@ -7124,7 +7124,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.rotation.css
+        - meta_content_scope: meta.property-value.rotation.css
         - include: end-value
         - include: value-css-wide
         - include: angle
@@ -7137,7 +7137,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.rotation-point.css
+        - meta_content_scope: meta.property-value.rotation-point.css
         - include: end-value
         - include: value-css-wide
         - include: position
@@ -7150,7 +7150,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.ruby-align.css
+        - meta_content_scope: meta.property-value.ruby-align.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:start|space-between|space-around|center){{b}}'
@@ -7164,7 +7164,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.ruby-merge.css
+        - meta_content_scope: meta.property-value.ruby-merge.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:separate|collapse|auto){{b}}'
@@ -7178,7 +7178,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.ruby-position.css
+        - meta_content_scope: meta.property-value.ruby-position.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:under|over|inter-character){{b}}'
@@ -7192,7 +7192,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.running.css
+        - meta_content_scope: meta.property-value.running.css
         - include: end-value
         - include: value-css-wide
         - include: identifier
@@ -7205,7 +7205,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.scroll-behavior.css
+        - meta_content_scope: meta.property-value.scroll-behavior.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:smooth|auto){{b}}'
@@ -7219,7 +7219,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.scroll-snap-align.css
+        - meta_content_scope: meta.property-value.scroll-snap-align.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:start|none|end|center){{b}}'
@@ -7248,7 +7248,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.scroll-snap-margin.css
+        - meta_content_scope: meta.property-value.scroll-snap-margin.css
         - include: end-value
         - include: value-css-wide
         - include: length
@@ -7276,7 +7276,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.scroll-snap-padding.css
+        - meta_content_scope: meta.property-value.scroll-snap-padding.css
         - include: end-value
         - include: value-css-wide
         - include: percentage
@@ -7290,7 +7290,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.scroll-snap-stop.css
+        - meta_content_scope: meta.property-value.scroll-snap-stop.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:normal|always){{b}}'
@@ -7304,7 +7304,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.scroll-snap-type.css
+        - meta_content_scope: meta.property-value.scroll-snap-type.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:y|x|proximity|point|none|mandatory|inline|both|block){{b}}'
@@ -7318,7 +7318,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.shape-image-threshold.css
+        - meta_content_scope: meta.property-value.shape-image-threshold.css
         - include: end-value
         - include: value-css-wide
         - include: number-zero-to-one
@@ -7331,7 +7331,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.shape-inside.css
+        - meta_content_scope: meta.property-value.shape-inside.css
         - include: end-value
         - include: value-css-wide
         - include: basic-shape
@@ -7347,7 +7347,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.shape-margin.css
+        - meta_content_scope: meta.property-value.shape-margin.css
         - include: end-value
         - include: value-css-wide
         - include: percentage
@@ -7361,7 +7361,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.shape-outside.css
+        - meta_content_scope: meta.property-value.shape-outside.css
         - include: end-value
         - include: value-css-wide
         - include: basic-shape
@@ -7378,7 +7378,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.shape-rendering.css
+        - meta_content_scope: meta.property-value.shape-rendering.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:optimizeSpeed|geometricPrecision|crispEdges|auto){{b}}'
@@ -7392,7 +7392,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.size.css
+        - meta_content_scope: meta.property-value.size.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:portrait|landscape|auto){{b}}'
@@ -7408,7 +7408,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.speak.css
+        - meta_content_scope: meta.property-value.speak.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:normal|none|auto){{b}}'
@@ -7422,7 +7422,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.speak-as.css
+        - meta_content_scope: meta.property-value.speak-as.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:spell-out|normal|no-punctuation|literal-punctuation|digits){{b}}'
@@ -7436,7 +7436,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.stop-color.css
+        - meta_content_scope: meta.property-value.stop-color.css
         - include: end-value
         - include: value-css-wide
         - include: color
@@ -7449,7 +7449,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.stop-opacity.css
+        - meta_content_scope: meta.property-value.stop-opacity.css
         - include: end-value
         - include: value-css-wide
         - include: number-zero-to-one
@@ -7464,7 +7464,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.string-set.css
+        - meta_content_scope: meta.property-value.string-set.css
         - include: end-value
         - include: value-css-wide
         - include: func-attr
@@ -7484,7 +7484,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.stroke.css
+        - meta_content_scope: meta.property-value.stroke.css
         - include: end-value
         - include: value-css-wide
         - include: paint
@@ -7497,7 +7497,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.stroke-alignment.css
+        - meta_content_scope: meta.property-value.stroke-alignment.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:outer|inner|center){{b}}'
@@ -7511,7 +7511,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.stroke-dashadjust.css
+        - meta_content_scope: meta.property-value.stroke-dashadjust.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:stretch|none|gaps|dashes|compress){{b}}'
@@ -7525,7 +7525,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.stroke-dasharray.css
+        - meta_content_scope: meta.property-value.stroke-dasharray.css
         - include: end-value
         - include: value-css-wide
         - match: '\bnone{{b}}'
@@ -7540,7 +7540,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.stroke-dashcorner.css
+        - meta_content_scope: meta.property-value.stroke-dashcorner.css
         - include: end-value
         - include: value-css-wide
         - match: '\bnone{{b}}'
@@ -7555,7 +7555,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.stroke-dashoffset.css
+        - meta_content_scope: meta.property-value.stroke-dashoffset.css
         - include: end-value
         - include: value-css-wide
         - include: percentage
@@ -7569,7 +7569,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.stroke-linecap.css
+        - meta_content_scope: meta.property-value.stroke-linecap.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:square|round|butt){{b}}'
@@ -7583,7 +7583,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.stroke-linejoin.css
+        - meta_content_scope: meta.property-value.stroke-linejoin.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:round|miter-clip|miter|bevel|arcs){{b}}'
@@ -7597,7 +7597,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.stroke-miterlimit.css
+        - meta_content_scope: meta.property-value.stroke-miterlimit.css
         - include: end-value
         - include: value-css-wide
         # Technically, this is supposed to be a number greater than or equal to
@@ -7612,7 +7612,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.stroke-opacity.css
+        - meta_content_scope: meta.property-value.stroke-opacity.css
         - include: end-value
         - include: value-css-wide
         - include: number-zero-to-one
@@ -7625,7 +7625,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.stroke-width.css
+        - meta_content_scope: meta.property-value.stroke-width.css
         - include: end-value
         - include: value-css-wide
         - include: percentage-non-negative
@@ -7639,7 +7639,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.tab-size.css
+        - meta_content_scope: meta.property-value.tab-size.css
         - include: end-value
         - include: value-css-wide
         - include: length-non-negative
@@ -7653,7 +7653,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.table-layout.css
+        - meta_content_scope: meta.property-value.table-layout.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:fixed|auto){{b}}'
@@ -7667,7 +7667,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.text-align.css
+        - meta_content_scope: meta.property-value.text-align.css
         - include: end-value
         - include: value-css-wide
         - match: '(?x)
@@ -7693,7 +7693,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.text-align-all.css
+        - meta_content_scope: meta.property-value.text-align-all.css
         - include: end-value
         - include: value-css-wide
         - match: '(?x)
@@ -7718,7 +7718,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.text-align-last.css
+        - meta_content_scope: meta.property-value.text-align-last.css
         - include: end-value
         - include: value-css-wide
         - match: '(?x)
@@ -7743,7 +7743,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.text-anchor.css
+        - meta_content_scope: meta.property-value.text-anchor.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:start|middle|end){{b}}'
@@ -7757,7 +7757,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.text-combine-upright.css
+        - meta_content_scope: meta.property-value.text-combine-upright.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:none|digits|all){{b}}'
@@ -7773,7 +7773,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.text-decoration.css
+        - meta_content_scope: meta.property-value.text-decoration.css
         - include: end-value
         - include: value-css-wide
         - match: '(?x)
@@ -7802,7 +7802,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.text-decoration-color.css
+        - meta_content_scope: meta.property-value.text-decoration-color.css
         - include: end-value
         - include: value-css-wide
         - include: color
@@ -7815,7 +7815,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.text-decoration-line.css
+        - meta_content_scope: meta.property-value.text-decoration-line.css
         - include: end-value
         - include: value-css-wide
         - match: '(?x)
@@ -7838,7 +7838,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.text-decoration-skip.css
+        - meta_content_scope: meta.property-value.text-decoration-skip.css
         - include: end-value
         - include: value-css-wide
         - match: '(?x)
@@ -7862,7 +7862,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.text-decoration-style.css
+        - meta_content_scope: meta.property-value.text-decoration-style.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:wavy|solid|double|dotted|dashed){{b}}'
@@ -7876,7 +7876,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.text-emphasis.css
+        - meta_content_scope: meta.property-value.text-emphasis.css
         - include: end-value
         - include: value-css-wide
         - include: string
@@ -7904,7 +7904,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.text-emphasis-color.css
+        - meta_content_scope: meta.property-value.text-emphasis-color.css
         - include: end-value
         - include: value-css-wide
         - include: color
@@ -7917,7 +7917,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.text-emphasis-position.css
+        - meta_content_scope: meta.property-value.text-emphasis-position.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:under|right|over|left){{b}}'
@@ -7931,7 +7931,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.text-emphasis-style.css
+        - meta_content_scope: meta.property-value.text-emphasis-style.css
         - include: end-value
         - include: value-css-wide
         - include: string
@@ -7958,7 +7958,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.text-indent.css
+        - meta_content_scope: meta.property-value.text-indent.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:hanging|each-line){{b}}'
@@ -7974,7 +7974,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.text-justify.css
+        - meta_content_scope: meta.property-value.text-justify.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:none|inter-word|inter-character|auto){{b}}'
@@ -7988,7 +7988,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.text-orientation.css
+        - meta_content_scope: meta.property-value.text-orientation.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:upright|sideways|mixed){{b}}'
@@ -8002,7 +8002,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.text-overflow.css
+        - meta_content_scope: meta.property-value.text-overflow.css
         - include: end-value
         - include: value-css-wide
         - include: string
@@ -8017,7 +8017,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.text-rendering.css
+        - meta_content_scope: meta.property-value.text-rendering.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:optimizeSpeed|optimizeLegibility|geometricPrecision|auto){{b}}'
@@ -8031,7 +8031,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.text-shadow.css
+        - meta_content_scope: meta.property-value.text-shadow.css
         - include: end-value
         - include: value-css-wide
         - match: '\bnone{{b}}'
@@ -8047,7 +8047,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.text-space-collapse.css
+        - meta_content_scope: meta.property-value.text-space-collapse.css
         - include: end-value
         - include: value-css-wide
         - match: '(?x)
@@ -8072,7 +8072,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.text-space-trim.css
+        - meta_content_scope: meta.property-value.text-space-trim.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:trim-inner|none|discard-before|discard-after){{b}}'
@@ -8086,7 +8086,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.text-spacing.css
+        - meta_content_scope: meta.property-value.text-spacing.css
         - include: end-value
         - include: value-css-wide
         - match: '(?x)
@@ -8117,7 +8117,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.text-transform.css
+        - meta_content_scope: meta.property-value.text-transform.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:uppercase|none|lowercase|full-width|capitalize){{b}}'
@@ -8131,7 +8131,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.text-underline-position.css
+        - meta_content_scope: meta.property-value.text-underline-position.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:under|right|left|auto){{b}}'
@@ -8145,7 +8145,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.text-wrap.css
+        - meta_content_scope: meta.property-value.text-wrap.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:nowrap|normal|balance){{b}}'
@@ -8159,7 +8159,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.top-right-left-bottom.css
+        - meta_content_scope: meta.property-value.top-right-left-bottom.css
         - include: end-value
         - include: value-css-wide
         - match: '\bauto{{b}}'
@@ -8175,7 +8175,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.transform.css
+        - meta_content_scope: meta.property-value.transform.css
         - include: end-value
         - include: value-css-wide
         - match: '\bnone{{b}}'
@@ -8190,7 +8190,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.transform-box.css
+        - meta_content_scope: meta.property-value.transform-box.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:view-box|fill-box|border-box){{b}}'
@@ -8204,7 +8204,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.transform-origin.css
+        - meta_content_scope: meta.property-value.transform-origin.css
         - include: end-value
         - include: value-css-wide
         - include: position
@@ -8217,7 +8217,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.transform-style.css
+        - meta_content_scope: meta.property-value.transform-style.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:preserve-3d|flat|auto){{b}}'
@@ -8231,7 +8231,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.transition.css
+        - meta_content_scope: meta.property-value.transition.css
         - include: end-value
         - include: value-css-wide
         - include: single-transition
@@ -8244,7 +8244,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.transition-delay.css
+        - meta_content_scope: meta.property-value.transition-delay.css
         - include: end-value
         - include: value-css-wide
         - include: time
@@ -8257,7 +8257,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.transition-duration.css
+        - meta_content_scope: meta.property-value.transition-duration.css
         - include: end-value
         - include: value-css-wide
         - include: time
@@ -8270,7 +8270,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.transition-property.css
+        - meta_content_scope: meta.property-value.transition-property.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:none|all){{b}}'
@@ -8285,7 +8285,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.transition-timing-function.css
+        - meta_content_scope: meta.property-value.transition-timing-function.css
         - include: end-value
         - include: value-css-wide
         - include: single-timing-function
@@ -8298,7 +8298,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.unicode-bidi.css
+        - meta_content_scope: meta.property-value.unicode-bidi.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:plaintext|normal|isolate-override|isolate|embed|bidi-override){{b}}'
@@ -8312,7 +8312,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.user-select.css
+        - meta_content_scope: meta.property-value.user-select.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:text|none|contain|auto|all){{b}}'
@@ -8326,7 +8326,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.vector-effect.css
+        - meta_content_scope: meta.property-value.vector-effect.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:none|non-scaling-stroke){{b}}'
@@ -8340,7 +8340,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.vertical-align.css
+        - meta_content_scope: meta.property-value.vertical-align.css
         - include: end-value
         - include: value-css-wide
         - match: '(?x)
@@ -8370,7 +8370,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.visibility.css
+        - meta_content_scope: meta.property-value.visibility.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:visible|hidden|collapse){{b}}'
@@ -8384,7 +8384,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.voice-balance.css
+        - meta_content_scope: meta.property-value.voice-balance.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:rightwards|right|leftwards|left|center){{b}}'
@@ -8399,7 +8399,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.voice-duration.css
+        - meta_content_scope: meta.property-value.voice-duration.css
         - include: end-value
         - include: value-css-wide
         - match: '\bauto{{b}}'
@@ -8414,7 +8414,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.voice-family.css
+        - meta_content_scope: meta.property-value.voice-family.css
         - include: end-value
         - include: value-css-wide
         - match: '\bpreserve{{b}}'
@@ -8430,7 +8430,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.voice-range-pitch.css
+        - meta_content_scope: meta.property-value.voice-range-pitch.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:x-low|x-high|medium|low|high|absolute){{b}}'
@@ -8447,7 +8447,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.voice-stress.css
+        - meta_content_scope: meta.property-value.voice-stress.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:strong|reduced|normal|none|moderate){{b}}'
@@ -8461,7 +8461,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.voice-volume.css
+        - meta_content_scope: meta.property-value.voice-volume.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:x-soft|x-loud|soft|silent|medium|loud){{b}}'
@@ -8476,7 +8476,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.white-space.css
+        - meta_content_scope: meta.property-value.white-space.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:pre-wrap-auto|pre-wrap|pre-line|pre|nowrap|normal){{b}}'
@@ -8490,7 +8490,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.widows-orphans.css
+        - meta_content_scope: meta.property-value.widows-orphans.css
         - include: end-value
         - include: value-css-wide
         - include: integer-positive
@@ -8503,7 +8503,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.width.css
+        - meta_content_scope: meta.property-value.width.css
         - include: end-value
         - include: value-css-wide
         - include: func-fit-content
@@ -8520,7 +8520,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.will-change.css
+        - meta_content_scope: meta.property-value.will-change.css
         - include: end-value
         - include: value-css-wide
         - match: '\bauto{{b}}'
@@ -8535,7 +8535,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.word-break.css
+        - meta_content_scope: meta.property-value.word-break.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:normal|keep-all|break-all){{b}}'
@@ -8549,7 +8549,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.word-spacing.css
+        - meta_content_scope: meta.property-value.word-spacing.css
         - include: end-value
         - include: value-css-wide
         - match: '\bnormal{{b}}'
@@ -8566,7 +8566,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.word-wrap.css
+        - meta_content_scope: meta.property-value.word-wrap.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:normal|break-word){{b}}'
@@ -8580,7 +8580,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.wrap-before-after.css
+        - meta_content_scope: meta.property-value.wrap-before-after.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:line|flex|avoid-line|avoid-flex|avoid|auto){{b}}'
@@ -8594,7 +8594,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.wrap-flow.css
+        - meta_content_scope: meta.property-value.wrap-flow.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:start|minimum|maximum|end|clear|both|auto){{b}}'
@@ -8608,7 +8608,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.wrap-inside.css
+        - meta_content_scope: meta.property-value.wrap-inside.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:avoid|auto){{b}}'
@@ -8622,7 +8622,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.wrap-through.css
+        - meta_content_scope: meta.property-value.wrap-through.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:wrap|none){{b}}'
@@ -8636,7 +8636,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.writing-mode.css
+        - meta_content_scope: meta.property-value.writing-mode.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:vertical-rl|vertical-lr|sideways-rl|sideways-lr|horizontal-tb){{b}}'
@@ -8650,7 +8650,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.property-value-pair.z-index.css
+        - meta_content_scope: meta.property-value.z-index.css
         - include: end-value
         - include: value-css-wide
         - match: '\bauto{{b}}'

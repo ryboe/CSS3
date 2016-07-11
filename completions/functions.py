@@ -186,8 +186,8 @@ allow_word_completions = frozenset((
 ))
 
 
-def get_completions(current_scopes):
-    func_name = util.get_name_from_scopes_with_prefix(current_scopes, prefix="meta.function.")
+def get_completions(scopes):
+    func_name = util.scope_name(scopes, prefix="meta.function.")
 
     # Append the var() completion to every set of completions.
     completions = func_name_to_completions.get(func_name, []) + [t.var]
