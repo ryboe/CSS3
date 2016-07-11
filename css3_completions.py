@@ -46,7 +46,7 @@ class CSS3Completions(sublime_plugin.EventListener):
         #         |--prefix--|
         # start ->text-decorat|<- current cursor location
         start = locations[0] - len(prefix)
-        current_scopes = util.get_current_scopes(view, start)
+        current_scopes = util.get_scopes(view, start)
 
         # INSIDE FUNCTIONS
         if view.match_selector(start, "source.css meta.function"):
@@ -55,7 +55,7 @@ class CSS3Completions(sublime_plugin.EventListener):
         # TOP-LEVEL AT-RULES
         # When the user starts typing an @-rule, it will first match as a
         # selector. The @-rule scope isn't applied until the entire @-rule name
-        # is typed. To distinguish @-rules from selectors, we check if the
+        # is typed. To distinguish @-rules from selectors, we also check if the
         # start location is preceded by an '@' symbol.
         if (
             view.match_selector(start, "source.css -meta.at-rule -meta.property-list.css") and
@@ -64,16 +64,26 @@ class CSS3Completions(sublime_plugin.EventListener):
             return at_rules.all_at_rules, sublime.INHIBIT_WORD_COMPLETIONS
 
         # NESTABLE AT-RULES
+        # Only @media and @supports can have @-rules nested inside them. To
+        # prevent the completions menu from offering @-rules that don't make
+        # sense in a nested context, we only offer the subset of nestable
+        # @-rules here.
         if (
-            view.match_selector(start, "source.css meta.at-rule") and
+            view.match_selector(start, "source.css meta.at-rule.") and
             view.substr(start - 1) == "@" and
             at_rules.supports_nested_at_rules(view, start)
         ):
             return at_rules.nestable_at_rules, sublime.INHIBIT_WORD_COMPLETIONS
 
         # PROPERTY VALUES
-        if view.match_selector(start, "source.css meta.property-value-pair"):
-            return properties.get_values(current_scopes)
+        if view.match_selector(start - 1, "source.css meta.property-value."):
+            # The current character position could be at the semicolon, which
+            # is one character past the "meta.property-value." content scope:
+            #     text-decoration: |;
+            #                     ^ meta.property-value.text-decoration.css
+            # So we need to step back one character (start - 1).
+            scopes = util.get_scopes(view, start - 1)
+            return properties.get_values(scopes)
 
         # PROPERTY NAMES
         # When we're inside a property list or a page margin box, the
@@ -81,8 +91,8 @@ class CSS3Completions(sublime_plugin.EventListener):
         # If that scope is not present, the user is typing a property name, not
         # a value.
         if (
-            view.match_selector(start, "source.css meta.property-list.css -meta.property-value-pair") or
-            view.match_selector(start, "source.css meta.page-margin-box.css -meta.property-value-pair")
+            view.match_selector(start, "meta.property-list.css -meta.property-value.") or
+            view.match_selector(start, "meta.page-margin-box.css -meta.property-value.")
         ):
             return properties.names, sublime.INHIBIT_WORD_COMPLETIONS
 
@@ -92,13 +102,13 @@ class CSS3Completions(sublime_plugin.EventListener):
 
         # @keyframes properties and values
         if view.match_selector(start, "meta.keyframes-declaration-list.css"):
-            if view.match_selector(start, "source.css -meta.property-value-pair"):
+            if view.match_selector(start, "source.css -meta.property-value."):
                 return properties.names, sublime.INHIBIT_WORD_COMPLETIONS
             return properties.get_values(current_scopes)
 
         # @font-face
         if view.match_selector(start, "meta.at-rule.font-face.block.css"):
-            if view.match_selector(start, "source.css -meta.descriptor.font-face"):
+            if view.match_selector(start, "source.css -meta.descriptor.font-face."):
                 return descriptors.font_face, sublime.INHIBIT_WORD_COMPLETIONS
             return descriptors.get_values(current_scopes, descriptors_for="font-face")
 

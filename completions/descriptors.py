@@ -182,8 +182,8 @@ descriptor_to_values = {
 }
 
 
-def get_values(current_scopes, descriptors_for):
-    descriptor_name = util.get_name_from_scopes_with_prefix(current_scopes, prefix="meta.descriptor.{}".format(descriptors_for))
+def get_values(scopes, descriptors_for):
+    descriptor_name = util.scope_name(scopes, prefix="meta.descriptor.{}".format(descriptors_for))
 
     # There is a separate completions dictionary for every @-rule.
     completions_dict = descriptor_to_values.get(descriptors_for, {})
