@@ -4,12 +4,13 @@ from CSS3.completions import util
 import sublime
 
 # DESCRIPTOR NAMES
-color_profile_descriptors = [
+color_profile = [
     ("name", "name: ${1:<identifier>};"),
     ("rendering-intent", "rendering-intent: ${1};"),
     ("src", "src: ${1};"),
 ]
-counter_style_descriptors = [
+
+counter_style = [
     ("additive-symbols", "additive-symbols: ${1};"),
     ("fallback", "fallback: ${1:<counter-style-name>};"),
     ("negative", "negative: ${1};"),
@@ -21,7 +22,8 @@ counter_style_descriptors = [
     ("symbols", "symbols: ${1};"),
     ("system", "system: ${1};"),
 ]
-font_face_descriptors = [
+
+font_face = [
     ("font-family", "font-family: ${1:<family-name>};"),
     ("font-feature-settings", "font-feature-settings: ${1};"),
     ("font-stretch", "font-stretch: ${1};"),
@@ -30,7 +32,8 @@ font_face_descriptors = [
     ("font-weight", "font-weight: ${1};"),
     ("src", "src: ${1};"),
 ]
-viewport_descriptors = [
+
+viewport = [
     ("height", "height: ${1:<viewport-length>} ${2:<viewport-length>};"),
     ("max-height", "height: ${1:<viewport-length>};"),
     ("max-width", "width: ${1:<viewport-length>};"),
@@ -55,6 +58,7 @@ color_profile_values = {
     ],
     "src": [("sRGB",), t.local, t.url],
 }
+
 counter_style_values = {
     "additive-symbols": t.integer + t.symbol,
     "negative": t.symbol,
@@ -82,6 +86,7 @@ counter_style_values = {
         t.counter_style_name,
     ] + t.integer,
 }
+
 font_face_values = {
     "font-family": [
         ("cursive",),
@@ -152,7 +157,8 @@ font_face_values = {
     ],
     "unicode-range": [t.urange],
 }
-viewport_descriptor_values = {
+
+viewport_values = {
     "height": [("auto",), ("extend-to-zoom",)] + t.length + t.percentage,
     "max-height": [("auto",), ("extend-to-zoom",)] + t.length + t.percentage,
     "max-width": [("auto",), ("extend-to-zoom",)] + t.length + t.percentage,
@@ -166,13 +172,13 @@ viewport_descriptor_values = {
     "zoom": [("auto",)] + t.number + t.percentage,
 }
 
-# descriptor_values maps @-rules to the dictionary containing the completions
+# descriptor_to_values maps @-rules to the dictionary containing the completions
 # for their descriptors' values.
-descriptor_values = {
+descriptor_to_values = {
     "color-profile": color_profile_values,
     "counter-style": counter_style_values,
     "font-face": font_face_values,
-    "viewport": viewport_descriptor_values,
+    "viewport": viewport_values,
 }
 
 
@@ -180,7 +186,7 @@ def get_values(current_scopes, descriptors_for):
     descriptor_name = util.get_name_from_scopes_with_prefix(current_scopes, prefix="meta.descriptor.{}".format(descriptors_for))
 
     # There is a separate completions dictionary for every @-rule.
-    completions_dict = descriptor_values.get(descriptors_for, {})
+    completions_dict = descriptor_to_values.get(descriptors_for, {})
     completions = completions_dict.get(descriptor_name, []) + [t.var]
 
     if descriptor_name and descriptor_name in functions.allow_word_completions:
@@ -194,7 +200,7 @@ def sort_and_uniq_completions():
         color_profile_values,
         counter_style_values,
         font_face_values,
-        viewport_descriptor_values,
+        viewport_values,
     )
 
     for completions_dict in completions_dicts:

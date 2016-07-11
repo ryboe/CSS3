@@ -1,4 +1,5 @@
 from CSS3.completions import at_rules
+from CSS3.completions import descriptors
 from CSS3.completions import functions
 from CSS3.completions import properties
 from CSS3.completions import selectors
@@ -52,19 +53,31 @@ class CSS3Completions(sublime_plugin.EventListener):
             return functions.get_completions(current_scopes)
 
         # TOP-LEVEL AT-RULES
+        # When the user starts typing an @-rule, it will first match as a
+        # selector. The @-rule scope isn't applied until the entire @-rule name
+        # is typed. To distinguish @-rules from selectors, we check if the
+        # start location is preceded by an '@' symbol.
         if (
             view.match_selector(start, "source.css -meta.at-rule -meta.property-list.css") and
-            view.match_selector(start - 1, "punctuation.definition.keyword.css")
+            view.substr(start - 1) == "@"
         ):
-            return at_rules.at_rules, sublime.INHIBIT_WORD_COMPLETIONS
+            return at_rules.all_at_rules, sublime.INHIBIT_WORD_COMPLETIONS
 
-        # NESTED AT-RULES
-        if view.match_selector(start, "source.css meta.at-rule"):
-            return at_rules.get_completions(view, start)
+        # NESTABLE AT-RULES
+        if (
+            view.match_selector(start, "source.css meta.at-rule") and
+            view.substr(start - 1) == "@" and
+            at_rules.supports_nested_at_rules(view, start)
+        ):
+            return at_rules.nestable_at_rules, sublime.INHIBIT_WORD_COMPLETIONS
 
-        # PROPERTY NAMES.
+        # PROPERTY VALUES
+        if view.match_selector(start, "source.css meta.property-value-pair"):
+            return properties.get_values(current_scopes)
+
+        # PROPERTY NAMES
         # When we're inside a property list or a page margin box, the
-        # meta.property-value-pair.css scope is triggered when the ':'is typed.
+        # meta.property-value-pair.css scope is triggered when the ':' is typed.
         # If that scope is not present, the user is typing a property name, not
         # a value.
         if (
@@ -73,9 +86,58 @@ class CSS3Completions(sublime_plugin.EventListener):
         ):
             return properties.names, sublime.INHIBIT_WORD_COMPLETIONS
 
-        # PROPERTY VALUES
-        if view.match_selector(start, "source.css meta.property-value-pair"):
+        # @keyframes selector
+        if view.match_selector(start, "meta.at-rule.keyframes.block.css -meta.keyframes-declaration-list.css"):
+            return selectors.keyframes, sublime.INHIBIT_WORD_COMPLETIONS
+
+        # @keyframes properties and values
+        if view.match_selector(start, "meta.keyframes-declaration-list.css"):
+            if view.match_selector(start, "source.css -meta.property-value-pair"):
+                return properties.names, sublime.INHIBIT_WORD_COMPLETIONS
             return properties.get_values(current_scopes)
+
+        # @font-face
+        if view.match_selector(start, "meta.at-rule.font-face.block.css"):
+            if view.match_selector(start, "source.css -meta.descriptor.font-face"):
+                return descriptors.font_face, sublime.INHIBIT_WORD_COMPLETIONS
+            return descriptors.get_values(current_scopes, descriptors_for="font-face")
+
+        # @font-feature-values
+        if view.match_selector(start, "meta.at-rule.font-feature-values.block.css"):
+            if view.match_selector(start, "-meta.font-feature-type-block.css"):
+                return at_rules.font_feature_types, sublime.INHIBIT_WORD_COMPLETIONS
+            return []
+
+        # @viewport
+        if view.match_selector(start, "meta.at-rule.viewport.block.css"):
+            if view.match_selector(start, "source.css -meta.descriptor.viewport"):
+                return descriptors.viewport, sublime.INHIBIT_WORD_COMPLETIONS
+            return descriptors.get_values(current_scopes, descriptors_for="viewport")
+
+        # @top-right, etc.
+        if view.match_selector(start, "meta.at-rule.page.block.css -meta.page-margin-box.css"):
+            return at_rules.page_margin_boxes, sublime.INHIBIT_WORD_COMPLETIONS
+
+        # @page :left, etc.
+        if view.match_selector(start, "meta.at-rule.page.css -meta.at-rule.page.block.css"):
+            return selectors.at_page
+
+        # @charset
+        if view.match_selector(start, "meta.at-rule.charset.css"):
+            return [('"UTF-8";',)], sublime.INHIBIT_WORD_COMPLETIONS
+
+        # @counter-style
+        if view.match_selector(start, "meta.at-rule.counter-style.block.css"):
+            if view.match_selector(start, "-meta.descriptor.counter-style"):
+                return descriptors.counter_style, sublime.INHIBIT_WORD_COMPLETIONS
+            return descriptors.get_values(current_scopes, descriptors_for="counter-style")
+
+        # @color-profile
+        if view.match_selector(start, "meta.at-rule.color-profile.block.css"):
+            if view.match_selector(start, "-meta.descriptor.color-profile"):
+                return descriptors.color_profile, sublime.INHIBIT_WORD_COMPLETIONS
+
+            return descriptors.get_values(current_scopes, descriptors_for="color-profile")
 
         # SELECTORS
         if view.match_selector(start, "meta.selector.css"):

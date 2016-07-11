@@ -1,6 +1,15 @@
 import sublime
 
 
+at_page = [
+    (":blank",),
+    (":first",),
+    (":left",),
+    (":recto",),
+    (":right",),
+    (":verso",),
+]
+
 html_tags = [
     ("a",),
     ("abbr",),
@@ -115,6 +124,11 @@ html_tags = [
     ("var",),
     ("video",),
     ("wbr",),
+]
+
+keyframes = [
+    ("from", "from {\n\t${1}\n}"),
+    ("to", "to {\n\t${1}\n}"),
 ]
 
 pseudo_classes = [
