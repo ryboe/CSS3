@@ -1,4 +1,8 @@
 
+def get_current_scopes(view, location):
+    return view.scope_name(location).split()
+
+
 def get_name_from_scopes_with_prefix(scopes, prefix):
     """
     Scans a list of scopes and returns the name of the function or descriptor
@@ -30,7 +34,3 @@ def get_name_from_scopes_with_prefix(scopes, prefix):
             return scope.split(".")[name_index]
 
     return ""
-
-
-def get_current_scopes(view, location):
-    return view.scope_name(location).split()
