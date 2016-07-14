@@ -2944,13 +2944,14 @@ contexts:
         0: keyword.control.at-rule.page-margin-box.css
         1: punctuation.definition.keyword.css
       push:
+        - meta_scope: meta.page-margin-box.css
         - match: '}'
           scope: punctuation.section.page-margin-at-rule.end.css
           pop: true
         - match: '{'
           scope: punctuation.section.page-margin-at-rule.begin.css
           push:
-            - meta_scope: meta.page-margin-box.css
+            - meta_scope: meta.property-list.css
             - match: '(?=})'
               pop: true
             - include: properties
