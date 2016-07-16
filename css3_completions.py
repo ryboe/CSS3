@@ -69,21 +69,31 @@ class CSS3Completions(sublime_plugin.EventListener):
 
         # @-RULES
         if view.substr(start - 1) == "@":
-            if view.match_selector(start, "meta.at-rule.page.block.css"):
-                return at_rules.page_margin_boxes, sublime.INHIBIT_WORD_COMPLETIONS
+            return get_at_rule_completions(view, start)
 
-            if view.match_selector(start, "meta.font-feature-type-block.css"):
-                return at_rules.font_feature_types, sublime.INHIBIT_WORD_COMPLETIONS
+        # @COLOR-PROFILE DESCRIPTOR VALUES
+        if view.match_selector(start - 1, "source.css meta.descriptor."):
+            return descriptors.get_values(current_scopes, descriptors_for="color-profile")
 
-            if at_rules.supports_nested(view, start):
-                return at_rules.nestable, sublime.INHIBIT_WORD_COMPLETIONS
-
-            if view.match_selector(start, "source.css -meta.at-rule."):
-                return at_rules.all_rules, sublime.INHIBIT_WORD_COMPLETIONS
-
-            return [], sublime.INHIBIT_WORD_COMPLETIONS
+        # @COLOR-PROFILE DESCRIPTOR NAMES
+        if view.match_selector(start, "meta.at-rule.color-profile.block.css -meta.descriptor.color-profile."):
+            return descriptors.color_profile, sublime.INHIBIT_WORD_COMPLETIONS
 
 
+def get_at_rule_completions(view, location):
+    if view.match_selector(location, "meta.at-rule.page.block.css"):
+        return at_rules.page_margin_boxes, sublime.INHIBIT_WORD_COMPLETIONS
+
+    if view.match_selector(location, "meta.font-feature-type-block.css"):
+        return at_rules.font_feature_types, sublime.INHIBIT_WORD_COMPLETIONS
+
+    if at_rules.supports_nested(view, location):
+        return at_rules.nestable, sublime.INHIBIT_WORD_COMPLETIONS
+
+    if view.match_selector(location, "source.css -meta.at-rule."):
+        return at_rules.all_rules, sublime.INHIBIT_WORD_COMPLETIONS
+
+    return [], sublime.INHIBIT_WORD_COMPLETIONS
 
 
 
@@ -93,9 +103,7 @@ class CSS3Completions(sublime_plugin.EventListener):
 
 
 
-
-
-
+    # TODO: delete this
         # TOP-LEVEL AT-RULES
         # When the user starts typing an @-rule, it will first match as a
         # selector. The @-rule scope isn't applied until the entire @-rule name,
