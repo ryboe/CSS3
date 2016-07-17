@@ -1,4 +1,3 @@
-from CSS3.completions import functions
 from CSS3.completions import types as t
 from CSS3.completions import util
 import sublime
@@ -9,7 +8,6 @@ color_profile = [
     ("rendering-intent", "rendering-intent: ${1};"),
     ("src", "src: ${1};"),
 ]
-
 counter_style = [
     ("additive-symbols", "additive-symbols: ${1};"),
     ("fallback", "fallback: ${1:<counter-style-name>};"),
@@ -22,7 +20,6 @@ counter_style = [
     ("symbols", "symbols: ${1};"),
     ("system", "system: ${1};"),
 ]
-
 font_face = [
     ("font-family", "font-family: ${1:<family-name>};"),
     ("font-feature-settings", "font-feature-settings: ${1};"),
@@ -32,15 +29,14 @@ font_face = [
     ("font-weight", "font-weight: ${1};"),
     ("src", "src: ${1};"),
 ]
-
 viewport = [
     ("height", "height: ${1:<viewport-length>} ${2:<viewport-length>};"),
-    ("max-height", "height: ${1:<viewport-length>};"),
-    ("max-width", "width: ${1:<viewport-length>};"),
-    ("max-zoom", "zoom: ${1};"),
-    ("min-height", "height: ${1:<viewport-length>};"),
-    ("min-width", "width: ${1:<viewport-length>};"),
-    ("min-zoom", "zoom: ${1};"),
+    ("max-height", "max-height: ${1:<viewport-length>};"),
+    ("max-width", "max-width: ${1:<viewport-length>};"),
+    ("max-zoom", "max-zoom: ${1};"),
+    ("min-height", "min-height: ${1:<viewport-length>};"),
+    ("min-width", "min-width: ${1:<viewport-length>};"),
+    ("min-zoom", "min-zoom: ${1};"),
     ("orientation", "orientation: ${1};"),
     ("user-zoom", "user-zoom: ${1};"),
     ("width", "width: ${1:<viewport-length>} ${2:<viewport-length>};"),
@@ -58,12 +54,10 @@ color_profile_values = {
     ],
     "src": [("sRGB",), t.local, t.url],
 }
-
 counter_style_values = {
     "additive-symbols": t.integer + t.symbol,
     "negative": t.symbol,
     "pad": t.integer + t.symbol,
-    "prefix": t.symbol,
     "range": [("auto",), ("infinite",)] + t.integer,
     "speak-as": [
         ("<counter-style-name>", "$1"),
@@ -73,7 +67,7 @@ counter_style_values = {
         ("spell-out",),
         ("words",),
     ],
-    "suffix": t.symbol,
+    "suffix-prefix": t.symbol,
     "symbols": t.symbol,
     "system": [
         ("additive",),
@@ -86,16 +80,8 @@ counter_style_values = {
         t.counter_style_name,
     ] + t.integer,
 }
-
 font_face_values = {
-    "font-family": [
-        ("cursive",),
-        ("fantasy",),
-        ("monospace",),
-        ("sans-serif",),
-        ("serif",),
-        t.family_name,
-    ],
+    "font-family": [t.family_name],
     "font-feature-settings": [("normal",)] + t.feature_tag_value,
     "font-stretch": [
         ("condensed",),
@@ -157,23 +143,29 @@ font_face_values = {
     ],
     "unicode-range": [t.urange],
 }
-
 viewport_values = {
-    "height": [("auto",), ("extend-to-zoom",)] + t.length + t.percentage,
-    "max-height": [("auto",), ("extend-to-zoom",)] + t.length + t.percentage,
-    "max-width": [("auto",), ("extend-to-zoom",)] + t.length + t.percentage,
-    "max-zoom": [("auto",)] + t.number + t.percentage,
-    "min-height": [("auto",), ("extend-to-zoom",)] + t.length + t.percentage,
-    "min-width": [("auto",), ("extend-to-zoom",)] + t.length + t.percentage,
-    "min-zoom": [("auto",)] + t.number + t.percentage,
     "orientation": [("auto",), ("landscape",), ("portrait",)],
     "user-zoom": [("fixed",), ("zoom",)],
-    "width": [("auto",), ("extend-to-zoom",)] + t.length + t.percentage,
+    "width-height": [("auto",), ("extend-to-zoom",)] + t.length + t.percentage,
     "zoom": [("auto",)] + t.number + t.percentage,
 }
 
-# descriptor_to_values maps @-rules to the dictionary containing the completions
-# for their descriptors' values.
+allow_word_completions = frozenset((
+    "additive-symbols",
+    "fallback",
+    "font-family",
+    "name",
+    "negative",
+    "pad",
+    "prefix",
+    "speak-as",
+    "suffix",
+    "symbols",
+    "system",
+))
+
+# descriptor_to_values maps @-rules to the completions for their descriptors'
+# values.
 descriptor_to_values = {
     "color-profile": color_profile_values,
     "counter-style": counter_style_values,
@@ -183,15 +175,19 @@ descriptor_to_values = {
 
 
 def get_values(scopes, descriptors_for):
-    descriptor_name = util.scope_name(scopes, prefix="meta.descriptor.{}".format(descriptors_for))
+    descriptor_name = util.scope_name(scopes, prefix="meta.descriptor.{}.".format(descriptors_for))
 
     # There is a separate completions dictionary for every @-rule.
     completions_dict = descriptor_to_values.get(descriptors_for, {})
     completions = completions_dict.get(descriptor_name, []) + [t.var]
 
-    if descriptor_name and descriptor_name in functions.allow_word_completions:
+    print(completions)
+
+    if descriptor_name and descriptor_name in allow_word_completions:
+        print("NO INHIBIT")
         return completions
 
+    print("INHIBIT")
     return completions, sublime.INHIBIT_WORD_COMPLETIONS
 
 
