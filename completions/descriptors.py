@@ -1,5 +1,4 @@
 from CSS3.completions import types as t
-from CSS3.completions import util
 import sublime
 
 # DESCRIPTOR NAMES
@@ -174,20 +173,14 @@ descriptor_to_values = {
 }
 
 
-def get_values(scopes, descriptors_for):
-    descriptor_name = util.scope_name(scopes, prefix="meta.descriptor.{}.".format(descriptors_for))
-
+def get_values(descriptor_type, descriptor_name):
     # There is a separate completions dictionary for every @-rule.
-    completions_dict = descriptor_to_values.get(descriptors_for, {})
+    completions_dict = descriptor_to_values.get(descriptor_type, {})
     completions = completions_dict.get(descriptor_name, []) + [t.var]
 
-    print(completions)
-
-    if descriptor_name and descriptor_name in allow_word_completions:
-        print("NO INHIBIT")
+    if descriptor_name in allow_word_completions:
         return completions
 
-    print("INHIBIT")
     return completions, sublime.INHIBIT_WORD_COMPLETIONS
 
 

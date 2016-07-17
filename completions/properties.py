@@ -1,5 +1,4 @@
 from CSS3.completions import types as t
-from CSS3.completions import util
 import sublime
 
 # PROPERTIES
@@ -893,11 +892,10 @@ allow_word_completions = frozenset((
 ))
 
 
-def get_values(scopes):
-    property_name = util.scope_name(scopes, prefix="meta.property-value.")
+def get_values(property_name):
     completions = name_to_completions.get(property_name, []) + [t.var]
 
-    if property_name and property_name in allow_word_completions:
+    if property_name in allow_word_completions:
         return completions
 
     return completions, sublime.INHIBIT_WORD_COMPLETIONS
