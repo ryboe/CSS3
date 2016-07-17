@@ -2,7 +2,7 @@
 <plist version="1.0">
 <dict>
     <key>scope</key>
-    <string>source.css entity.other.attribute-name.class.css, source.css entity.other.attribute-name.id.css</string>
+    <string>entity.other.attribute-name.class.css, entity.other.attribute-name.id.css</string>
     <key>settings</key>
     <dict>
         <key>showInIndexedSymbolList</key>
