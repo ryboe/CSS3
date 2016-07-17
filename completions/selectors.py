@@ -1,5 +1,3 @@
-import sublime
-
 
 at_page = [
     (":blank",),
@@ -212,16 +210,3 @@ pseudo_elements = [
 
     # TODO: vendor prefixed pseudo-elements here
 ]
-
-
-def get_completions(view, location):
-    if view.match_selector(location - 1, "punctuation.definition.entity.pseudo-element.css"):
-        return pseudo_elements, sublime.INHIBIT_WORD_COMPLETIONS
-
-    if view.match_selector(location - 1, "punctuation.definition.entity.pseudo-class.css"):
-        return pseudo_classes, sublime.INHIBIT_WORD_COMPLETIONS
-
-    # If we're not in a class, id, pseudo-class, or pseudo-element, offer HTML
-    # tags as completions.
-    if view.match_selector(location, "source.css -entity.other.attribute-name."):
-        return html_tags

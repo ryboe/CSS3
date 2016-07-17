@@ -1,5 +1,4 @@
 from CSS3.completions import types as t
-from CSS3.completions import util
 import sublime
 
 # This dict maps function names to their completions. It includes pseudo-class
@@ -49,8 +48,8 @@ func_name_to_completions = {
     "color": t.angle + t.color + t.number,
     "color-adjuster-rgb": [t.hex_color] + t.number + t.percentage,
     "conic-gradient": [
-        ("at",),
-        ("from",),
+        ("at", "at "),
+        ("from", "from "),
     ] + t.color_stop + t.position,
     "content": [
         ("after",),
@@ -78,7 +77,7 @@ func_name_to_completions = {
         ("start",),
         t.identifier,
     ],
-    "ellipse-circle": [("at",)] + t.shape_radius + t.position,
+    "ellipse-circle": [("at", "at ")] + t.shape_radius + t.position,
     "filter": t.number + t.percentage,
     "fit-content": t.length + t.percentage,
     "format": [t.string],
@@ -94,19 +93,19 @@ func_name_to_completions = {
     "image-set": [t.string] + t.image + t.resolution,
     "inset": [("round",)] + t.shape_arg,
     "leader": [("dotted",), ("solid",), ("space",), t.string],
-    "linear-gradient": [("to",)] + t.angle + t.color_stop + t.side_or_corner,
+    "linear-gradient": [("to", "to ")] + t.angle + t.color_stop + t.side_or_corner,
     "local": [t.identifier, t.string],
     # "matches": [],  # TODO: matches takes a selector list as an arg. should it have completions?
     "matrix": t.number,
     "minmax": [("auto",), ("min-content",), ("max-content",)] + t.flex + t.length + t.percentage,
     # "not": [],      # TODO: not takes a selector list as an arg. should it have completions?
-    "nth-child": [("of",)],
-    "nth-last-child": [("of",)],
+    "nth-child": [("of", "of ")],
+    "nth-last-child": [("of", "of ")],
     "path": [t.string] + t.fill_rule,
     "perspective": t.length,
     "polygon": t.fill_rule + t.shape_arg,
     "radial-gradient": [
-        ("at",),
+        ("at", "at "),
         ("circle",),
         ("ellipse",),
     ] + t.color_stop + t.position + t.size,
@@ -176,13 +175,11 @@ allow_word_completions = frozenset((
 ))
 
 
-def get_completions(scopes):
-    func_name = util.scope_name(scopes, prefix="meta.function.")
-
+def get_completions(func_name):
     # Append the var() completion to every set of completions.
     completions = func_name_to_completions.get(func_name, []) + [t.var]
 
-    if func_name and func_name in allow_word_completions:
+    if func_name in allow_word_completions:
         # If the function takes an identifier as an argument, the
         # identifier will be in the local symbol index. Therefore,
         # we don't want to inhibit word completions.
