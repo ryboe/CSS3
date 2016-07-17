@@ -2,7 +2,7 @@
 <plist version="1.0">
 <dict>
     <key>scope</key>
-    <string>source.css meta.selector.css, source.css meta.at-rule</string>
+    <string>meta.selector.css, source.css meta.at-rule</string>
     <key>settings</key>
     <dict>
         <key>showInSymbolList</key>
