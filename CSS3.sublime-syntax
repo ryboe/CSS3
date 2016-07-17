@@ -2456,21 +2456,13 @@ contexts:
   keyframes-block:
     - match: '(?=[fromt\d%])'  # to|from|<percentage>
       push:
+        - meta_scope: meta.keyframes-block.css
         - match: '}'
-          scope: punctuation.section.keyframes-declaration-list.end.css
+          scope: punctuation.section.property-list.end.css
           pop: true
-        - include: keyframes-declaration-list
+        - include: property-list
         - include: selector-keyframes
     - include: stray-brace
-
-  keyframes-declaration-list:
-    - match: '{'
-      scope: punctuation.section.keyframes-declaration-list.begin.css
-      push:
-        - meta_scope: meta.keyframes-declaration-list.css
-        - match: '(?=})'
-          pop: true
-        - include: properties
 
   keyframes-name:
     - include: string
