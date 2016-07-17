@@ -1,8 +1,3 @@
-from CSS3.completions import descriptors
-from CSS3.completions import properties
-from CSS3.completions import selectors
-from CSS3.completions import util
-import sublime
 
 font_feature_types = [
     ("@annotation", "@annotation {\n\t${1}\n}"),
@@ -20,7 +15,7 @@ nestable = [
     ("@keyframes", "@keyframes ${1:name} {\n\t${2}\n}"),
     ("@media", "@media ${1:media-query-list} {\n\t${2}\n}"),
     ("@page", "@page ${1} {\n\t${2}\n}"),
-    ("@viewport", "@viewport ${1} {\n\t${2}\n}"),
+    ("@viewport", "@viewport {\n\t${1}\n}"),
     ("@supports", "@supports ${1} {\n\t${2}\n}"),
 ]
 page_margin_boxes = [
@@ -66,9 +61,10 @@ scopes_that_forbid_nested_at_rules = (
 
 
 def supports_nested(view, location):
-    """Returns True if location is in @media or @supports, but NOT any other scope.
+    """Returns True if location is in @media or @supports, but NOT any other
+    scope.
 
-    @media and @supports can have @-rules nested inside
+    @media and @supports can have @-rules nested inside.
     """
     if not view.match_selector(location, "meta.at-rule.media.block.css, meta.at-rule.supports.block.css"):
         return False
