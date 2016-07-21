@@ -2584,6 +2584,7 @@ contexts:
     - match: \(
       scope: punctuation.section.media-feature.begin.css
       push:
+        - meta_scope: meta.media-feature.css
         # Note that this is different from media-feature-end, which matches
         # just before the closing paren.
         - match: \)
@@ -2629,6 +2630,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.property-value.aspect-ratio.css
         - include: end-media-feature
         - include: value-css-wide
         - include: ratio
@@ -2640,6 +2642,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.property-value.color-gamut.css
         - include: end-media-feature
         - include: value-css-wide
         - match: \b(?:srgb|rec2020|p3)\b
@@ -2666,6 +2669,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.property-value.media-feature-grid.css
         - include: end-media-feature
         - include: value-css-wide
         - match: \b(?:0|1)\b
@@ -2677,6 +2681,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.property-value.hover.css
         - include: end-media-feature
         - include: value-css-wide
         - match: '\b(?:on-demand|none|hover){{b}}'
@@ -2688,6 +2693,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.property-value.inverted-colors.css
         - include: end-media-feature
         - include: value-css-wide
         - match: '\b(?:none|inverted){{b}}'
@@ -2699,6 +2705,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.property-value.light-level.css
         - include: end-media-feature
         - include: value-css-wide
         - match: '\b(?:washed|normal|dim){{b}}'
@@ -2719,6 +2726,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.property-value.monochrome-color-index.css
         - include: end-media-feature
         - include: value-css-wide
         - include: integer-non-negative
@@ -2730,6 +2738,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.property-value.orientation.css
         - include: end-media-feature
         - include: value-css-wide
         - match: '\b(?:portrait|landscape){{b}}'
@@ -2741,6 +2750,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.property-value.overflow-block.css
         - include: end-media-feature
         - include: value-css-wide
         - match: '\b(?:scroll|paged|optional-paged|none){{b}}'
@@ -2752,6 +2762,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.property-value.overflow-inline.css
         - include: end-media-feature
         - include: value-css-wide
         - match: '\b(?:scroll|none){{b}}'
@@ -2763,6 +2774,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.property-value.pointer.css
         - include: end-media-feature
         - include: value-css-wide
         - match: '\b(?:none|fine|coarse){{b}}'
@@ -2785,6 +2797,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.property-value.resolution.css
         - include: end-media-feature
         - include: value-css-wide
         - include: resolution
@@ -2796,6 +2809,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.property-value.scan.css
         - include: end-media-feature
         - include: value-css-wide
         - match: '\b(?:progressive|interlace){{b}}'
@@ -2807,6 +2821,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.property-value.scripting.css
         - include: end-media-feature
         - include: value-css-wide
         - match: '\b(?:none|initial-only|enabled){{b}}'
@@ -2818,6 +2833,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.property-value.update.css
         - include: end-media-feature
         - include: value-css-wide
         - match: '\b(?:normal|none|slow){{b}}'
@@ -2836,6 +2852,7 @@ contexts:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
+        - meta_content_scope: meta.property-value.width-height.css
         - include: end-media-feature
         - include: value-css-wide
         - include: length-non-negative
