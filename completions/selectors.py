@@ -1,11 +1,11 @@
 
 at_page = [
-    (":blank",),
-    (":first",),
-    (":left",),
-    (":recto",),
-    (":right",),
-    (":verso",),
+    (":blank", ":blank "),
+    (":first", ":first "),
+    (":left", ":left "),
+    (":recto", ":recto "),
+    (":right", ":right "),
+    (":verso", ":verso "),
 ]
 
 html_tags = [
