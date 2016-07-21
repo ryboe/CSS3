@@ -3,6 +3,7 @@ from CSS3.completions import descriptors
 from CSS3.completions import functions
 from CSS3.completions import properties
 from CSS3.completions import selectors
+from CSS3.completions import types
 from CSS3.completions import util
 import sublime
 import sublime_plugin
@@ -73,6 +74,10 @@ class CSS3Completions(sublime_plugin.EventListener):
         if view.substr(start - 1) == "@":
             return handle_at_rule_completions(view, start)
 
+        # @-IMPORT
+        if view.match_selector(start, "meta.at-rule.import.css -meta.media-feature.css"):
+            return types.media_types + [types.string, types.url], sublime.INHIBIT_WORD_COMPLETIONS
+
         # DESCRIPTOR VALUES
         if view.match_selector(start - 1, "source.css meta.descriptor."):
             return handle_descriptor_value_completions(view, start - 1)
@@ -92,6 +97,20 @@ class CSS3Completions(sublime_plugin.EventListener):
         # @COLOR-PROFILE DESCRIPTOR NAMES
         if view.match_selector(start, "meta.at-rule.color-profile.block.css -meta.descriptor.color-profile."):
             return descriptors.color_profile, sublime.INHIBIT_WORD_COMPLETIONS
+
+        # @NAMESPACE VALUES
+        if view.match_selector(start, "meta.at-rule.namespace.css"):
+            return at_rules.namespace_values
+
+        # MEDIA FEATURES
+        if view.match_selector(start, "meta.media-feature.css -meta.property-value."):
+            return properties.media_features, sublime.INHIBIT_WORD_COMPLETIONS
+
+        # MEDIA TYPES
+        # FIXME: This will not offer completions for media types nested in other
+        # @media blocks because of the "-meta.at-rule.media.block.css" selector.
+        if view.match_selector(start, "meta.at-rule.media.css -meta.at-rule.media.block.css"):
+            return types.media_types, sublime.INHIBIT_WORD_COMPLETIONS
 
         # KEYFRAMES SELECTOR
         # Special case: Keyframes selectors are not scoped with "meta.selector.css"
@@ -150,7 +169,7 @@ def handle_function_completions(view, location):
     name_index = -2
     func_name = scope.split(".")[name_index]
 
-    return functions.get_values(func_name)
+    return functions.get_completions(func_name)
 
 
 def handle_property_value_completions(view, location):

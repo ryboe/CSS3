@@ -1,3 +1,4 @@
+from CSS3.completions import types as t
 
 font_feature_types = [
     ("@annotation", "@annotation {\n\t${1}\n}"),
@@ -7,6 +8,7 @@ font_feature_types = [
     ("@stylistic", "@stylistic {\n\t${1}\n}"),
     ("@swash", "@swash {\n\t${1}\n}"),
 ]
+namespace_values = [t.identifier, t.string, t.url]
 nestable = [
     # @-rules that can appear inside other @-rules.
     ("@counter-style", "@counter-style ${1:name} {\n\t${2}\n}"),
@@ -14,7 +16,7 @@ nestable = [
     ("@font-feature-values", "@font-feature-values ${1:font-family} {\n\t${2}\n}"),
     ("@keyframes", "@keyframes ${1:name} {\n\t${2}\n}"),
     ("@media", "@media ${1:media-query-list} {\n\t${2}\n}"),
-    ("@page", "@page ${1} {\n\t${2}\n}"),
+    ("@page", "@page ${1}{\n\t${2}\n}"),
     ("@viewport", "@viewport {\n\t${1}\n}"),
     ("@supports", "@supports ${1} {\n\t${2}\n}"),
 ]
@@ -46,7 +48,6 @@ all_rules = [
 ] + nestable
 
 all_rules.sort()
-
 
 scopes_that_forbid_nested_at_rules = (
     "meta.property-list.css, "

@@ -389,6 +389,42 @@ names = [
     ("z-index", "z-index: ${1};"),
 ]
 
+media_features = [
+    ("any-hover", "any-hover: $0"),
+    ("any-pointer", "any-pointer: $0"),
+    ("aspect-ratio", "aspect-ratio: $1/"),
+    ("color", "color: $0"),
+    ("color-gamut", "color-gamut: $0"),
+    ("color-index", "color-index: $0"),
+    ("grid", "grid: $0"),
+    ("hover", "hover: $0"),
+    ("inverted-colors", "inverted-colors: $0"),
+    ("light-level", "light-level: $0"),
+    ("max-aspect-ratio", "max-aspect-ratio: $0"),
+    ("max-color", "max-color: $0"),
+    ("max-color-index", "max-color-index: $0"),
+    ("max-height", "max-height: $0"),
+    ("max-monochrome", "max-monochrome: $0"),
+    ("max-resolution", "max-resolution: $0"),
+    ("max-width", "max-width: $0"),
+    ("min-aspect-ratio", "min-aspect-ratio: $0"),
+    ("min-color", "min-color: $0"),
+    ("min-color-index", "min-color-index: $0"),
+    ("min-height", "min-height: $0"),
+    ("min-monochrome", "min-monochrome: $0"),
+    ("min-resolution", "min-resolution: $0"),
+    ("min-width", "min-width: $0"),
+    ("monochrome", "monochrome: $0"),
+    ("orientation", "orientation: $0"),
+    ("overflow-block", "overflow-block: $0"),
+    ("overflow-inline", "overflow-inline: $0"),
+    ("pointer", "pointer: $0"),
+    ("resolution", "resolution: $0"),
+    ("scan", "scan: $0"),
+    ("scripting", "scripting: $0"),
+    ("update", "update: $0"),
+]
+
 name_to_completions = {
     "align-content": [
         ("normal",),
@@ -546,6 +582,7 @@ name_to_completions = {
     "clip-path": [("none",), t.url] + t.basic_shape + t.geometry_box,
     "clip-rule": [("evenodd",), ("nonzero",)],
     "color": t.color,
+    "color-gamut": [("p3",), ("rec2020",), ("srgb",)],
     "color-interpolation-filters": [("auto",), ("linearRGB",), ("sRGB",)],
     "color-rendering": [("auto",), ("optimizeQuality",), ("optimizeSpeed",)],
     "columns": [("auto",)] + t.integer + t.length,
@@ -850,6 +887,7 @@ name_to_completions = {
         ("none",),
         t.fit_content,
     ] + t.length + t.percentage,
+    "hover": [("hover",), ("none",)],
     "hyphenate-character": [
         ("auto",),
         t.string,
@@ -876,6 +914,23 @@ name_to_completions = {
         ("hebrew",),
         ("ideographic",),
     ],
+
+
+    "inverted-colors": [("inverted",), ("none",)],
+    "light-level": [("dim",), ("normal",), ("washed",)],
+    "media-feature-grid": [("0",), ("1",)],
+    "monochrome-color-index": t.integer,
+    "orientation": [("landscape",), ("portrait",)],
+    "overflow-block": [("none",), ("optional-paged",), ("paged",), ("scroll",)],
+    "overflow-inline": [("none",), ("scroll",)],
+    "pointer": [("coarse",), ("fine",), ("none",)],
+    "resolution": [("infinite",)] + t.resolution,
+    "scan": [("interlace",), ("progressive",)],
+    "scripting": [("enabled",), ("initial-only",), ("none",)],
+    "update": [("fast",), ("none",), ("slow",)],
+    # width-height is a media-feature. Do not confuse it with the width and
+    # height properties.
+    "width-height": t.length,
 }
 
 allow_word_completions = frozenset((
