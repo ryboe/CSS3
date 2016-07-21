@@ -8825,20 +8825,26 @@ contexts:
     - include: percentage-zero-to-100
 
   selector-page:
-    - include: selector-page-pseudo-class
     # This rule prevents identifier from matching text after the ':' while you're
     # typing a page selector like :left.
     - match: ':'
+      scope: entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.css
       push:
+        - include: selector-page-pseudo-class
+        - meta_scope: meta.selector.page.css
         - match: '(?={)'
           pop: true
     - include: identifier
 
   selector-page-pseudo-class:
-    - match: '(:)(?:verso|right|recto|left|first|blank){{b}}'
-      captures:
-        0: entity.other.attribute-name.pseudo-class.css
-        1: punctuation.definition.entity.css
+    - match: '(?:verso|right|recto|left|first|blank){{b}}'
+      scope: entity.other.attribute-name.pseudo-class.css
+
+  # selector-page-pseudo-class:
+  #   - match: '(:)(?:verso|right|recto|left|first|blank){{b}}'
+  #     captures:
+  #       0: entity.other.attribute-name.pseudo-class.css
+  #       1: punctuation.definition.entity.css
 
   selector-pseudo-class:
     # Match pseudo-class functions first to avoid collisions between
