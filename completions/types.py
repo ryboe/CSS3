@@ -82,7 +82,7 @@ target_counter  = ("target-counter()", "target-counter($1)")
 target_counters = ("target-counters()", "target-counters($1)")
 target_text  = ("target-text()", "target-text($1)")
 tint         = ("tint()", "tint(${1:0}%)")
-url          = ("url()", "url('${1:quoted-string}')")
+url          = ("url()", "url('${1}')")
 var          = ("var()", "var(--${1:name})")
 w            = ("w()", "w($1${2:0}%)")
 whiteness    = ("whiteness()", "whiteness($1${2:0}%)")
@@ -489,6 +489,15 @@ line_width = [("medium",), ("thick",), ("thin",)] + length
 overflow_position = [
     ("safe",),
     ("unsafe",),
+]
+media_types = [
+    ("all", "all"),
+    ("and", "and "),
+    ("not", "not "),
+    ("only", "only "),
+    ("print", "print"),
+    ("screen", "screen"),
+    ("speech", "speech"),
 ]
 number = [("<number>", "${1:0}"), calc]
 numeric_figure_values = [("lining-nums",), ("oldstyle-nums",)]
