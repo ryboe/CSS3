@@ -6088,6 +6088,7 @@ contexts:
         - meta_content_scope: meta.property-value.list-style.css
         - include: end-value
         - include: value-css-wide
+        - include: func-symbols
         - include: string
         - match: '\b(?:outside|none|inside){{b}}'
           scope: support.constant.property-value.css
