@@ -2565,7 +2565,7 @@ contexts:
     - include: bg-size
     - include: repeat-style
     - include: geometry-box
-    - match: 'bno-clip{{b}}'
+    - match: '\bno-clip{{b}}'
       scope: support.constant.property-value.css
     - include: compositing-operator
     - include: position
