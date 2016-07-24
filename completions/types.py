@@ -19,6 +19,7 @@ cielchab     = ("cielchab()", "cielchab(${1:<lightness>}, ${2:<chroma>}, ${3:<hu
 circle       = ("circle()", "circle($1)")
 color_func   = ("color()", "color(${1:<color-or-hue>} ${2:color-adjuster})")
 conic_gradient = ("conic-gradient()", "conic-gradient(${1:from ${2:<angle>}}${3: at ${4:<position>}}${5})")
+content      = ("content()", "content($1)")
 contrast     = ("contrast()", "contrast($1)")
 counter      = ("counter()", "counter(${1:<identifier>})")
 counters     = ("counters()", "counters(${1:<identifier>}, '${2:<string>}'$3)")
@@ -54,9 +55,13 @@ leader       = ("leader()", "leader($1)")
 lightness    = ("lightness()", "lightness($1${2:0}%)")
 linear_gradient = ("linear-gradient()", "linear-gradient($1)")
 local        = ("local()", "local($1)")
+matrix       = ("matrix()", "matrix(${1:0}, ${2:0}, ${3:0}, ${4:0}, ${5:0}, ${6:0})")
+matrix3d     = ("matrix3d()", "matrix3d(${1:0}, ${2:0}, ${3:0}, ${4:0}, ${5:0}, ${6:0}, ${7:0}, ${8:0}, ${9:0}, ${10:0}, ${11:0}, ${12:0}, ${13:0}, ${14:0}, ${15:0}, ${16:0})")
 minmax       = ("minmax()", "minmax(${1:<min>}, ${2:<max>})")
 opacity      = ("opacity()", "opacity($1)")
 ornaments    = ("ornaments()", "ornaments($1)")
+path         = ("path()", "path('$1')")
+perspective  = ("perspective()", "perspective(${1:length})")
 polygon      = ("polygon()", "polygon($1)")
 radial_gradient = ("radial-gradient()", "radial-gradient($1)")
 red          = ("red()", "red(${1:0})")
@@ -66,11 +71,25 @@ repeating_linear_gradient = ("repeating-linear-gradient()", "repeating-linear-gr
 repeating_radial_gradient = ("repeating-radial-gradient()", "repeating-radial-gradient($1)")
 rgb          = ("rgb()", "rgb(${1:0}, ${2:0}, ${3:0})")
 rgba         = ("rgba()", "rgba(${1:0}, ${2:0}, ${3:0}, ${4:1.0})")
+rotate       = ("rotate()", "rotate(${1:angle})")
+rotate3d     = ("rotate3d()", "rotate3d(${1:0}, ${2:0}, ${3:0}, ${4:angle})")
+rotateX      = ("rotateX()", "rotateX(${1:angle})")
+rotateY      = ("rotateY()", "rotateY(${1:angle})")
+rotateZ      = ("rotateZ()", "rotateZ(${1:angle})")
 s            = ("s()", "s($1${2:0}%)")
 saturate     = ("saturate()", "saturate($1)")
 saturation   = ("saturation()", "saturation($1${2:0}%)")
+scale        = ("scale()", "scale(${1:0}${2:, ${3:0}})")
+scale3d      = ("scale3d()", "scale3d(${1:0}, ${2:0}, ${3:0})")
+scaleX       = ("scaleX()", "scaleX(${1:0})")
+scaleY       = ("scaleY()", "scaleY(${1:0})")
+scaleZ       = ("scaleZ()", "scaleZ(${1:0})")
+select       = ("select()", "select($1)")
 sepia        = ("sepia()", "sepia($1)")
 shade        = ("shade()", "shade(${1:0}%)")
+skew         = ("skew()", "skew(${1:angle}${2:, ${3:angle}})")
+skewX        = ("skewX()", "skewX(${1:angle})")
+skewY        = ("skewY()", "skewY(${1:angle})")
 snap_block   = ("snap-block()", "snap-block(${1:<length>})")
 snap_inline  = ("snap-inline()", "snap-inline(${1:<length>})")
 steps        = ("steps()", "steps($1)")
@@ -82,6 +101,11 @@ target_counter  = ("target-counter()", "target-counter($1)")
 target_counters = ("target-counters()", "target-counters($1)")
 target_text  = ("target-text()", "target-text($1)")
 tint         = ("tint()", "tint(${1:0}%)")
+translate    = ("translate()", "translate(${1:length}${2:, ${3:length}})")
+translate3d  = ("translate3d()", "translate3d(${1:length}, ${2:length}, ${3:length})")
+translateX   = ("translateX()", "translateX(${1:length})")
+translateY   = ("translateY()", "translateY(${1:length})")
+translateZ   = ("translateZ()", "translateZ(${1:length})")
 url          = ("url()", "url('${1}')")
 var          = ("var()", "var(--${1:name})")
 w            = ("w()", "w($1${2:0}%)")
@@ -89,32 +113,6 @@ whiteness    = ("whiteness()", "whiteness($1${2:0}%)")
 
 all_values = [("inherit",), ("initial",), ("revert",), ("unset",), var]
 
-
-# OLD FUNCTIONS
-# content      = ("content()", "content($1)")
-# path         = ("path()", "path(${1:string})")
-# matrix       = ("matrix()", "matrix(${1:0}, ${2:0}, ${3:0}, ${4:0}, ${5:0}, ${6:0})")
-# matrix3d     = ("matrix3d()", "matrix3d(${1:0}, ${2:0}, ${3:0}, ${4:0}, ${5:0}, ${6:0}, ${7:0}, ${8:0}, ${9:0}, ${10:0}, ${11:0}, ${12:0}, ${13:0}, ${14:0}, ${15:0}, ${16:0})")
-# perspective  = ("perspective()", "perspective(${1:length})")
-# rotate       = ("rotate()", "rotate(${1:angle})")
-# rotate3d     = ("rotate3d()", "rotate3d(${1:0}, ${2:0}, ${3:0}, ${4:angle})")
-# rotateX      = ("rotateX()", "rotateX(${1:angle})")
-# rotateY      = ("rotateY()", "rotateY(${1:angle})")
-# rotateZ      = ("rotateZ()", "rotateZ(${1:angle})")
-# scale        = ("scale()", "scale(${1:0}${2:, ${3:0}})")
-# scale3d      = ("scale3d()", "scale3d(${1:0}, ${2:0}, ${3:0})")
-# scaleX       = ("scaleX()", "scaleX(${1:0})")
-# scaleY       = ("scaleY()", "scaleY(${1:0})")
-# scaleZ       = ("scaleZ()", "scaleZ(${1:0})")
-# skew         = ("skew()", "skew(${1:angle}${2:, ${3:angle}})")
-# skewX        = ("skewX()", "skewX(${1:angle})")
-# skewY        = ("skewY()", "skewY(${1:angle})")
-# toggle       = ("toggle()", "toggle($1)")
-# translate    = ("translate()", "translate(${1:length}${2:, ${3:length}})")
-# translate3d  = ("translate3d()", "translate3d(${1:length}, ${2:length}, ${3:length})")
-# translateX   = ("translateX()", "translateX(${1:length})")
-# translateY   = ("translateY()", "translateY(${1:length})")
-# translateZ   = ("translateZ()", "translateZ(${1:length})")
 
 # TYPES
 counter_style_name = ("<counter-style-name>", "${1:<counter-style-name>}")
@@ -128,6 +126,7 @@ urange = ("<urange>", "U+$1")
 
 # COMPOSITE TYPES
 angle = [("<angle>", "${1:<angle>}"), calc]
+animateable_feature = [("contents",), ("scroll-position",), identifier]
 attachment = [("fixed",), ("local",), ("scroll",)]
 auto_repeat = [repeat]
 baseline_position = [
@@ -361,6 +360,7 @@ color = [
     whiteness,
 ]
 common_lig_values = [("common-ligatures",), ("no-common-ligatures",)]
+compositing_operator = [("add",), ("exclude",), ("intersect",), ("subtract",)]
 content_distribution = [
     ("space-around",),
     ("space-between",),
@@ -472,6 +472,7 @@ image = [
     url,
 ] + gradient
 integer = [("<integer>", "${1:0}"), calc]
+isolation_mode = [("auto",), ("isolate",)]
 length = [("<length>", "${1:<length>}"), calc]
 line_style = [
     ("dashed",),
@@ -490,6 +491,9 @@ overflow_position = [
     ("safe",),
     ("unsafe",),
 ]
+marker_ref = [("child",), select, url]
+mask_reference = [("none",), url] + image
+masking_mode = [("alpha",), ("luminance",), ("match-source",)]
 media_types = [
     ("all", "all"),
     ("and", "and "),
@@ -503,6 +507,16 @@ number = [("<number>", "${1:0}"), calc]
 numeric_figure_values = [("lining-nums",), ("oldstyle-nums",)]
 numeric_fraction_values = [("diagonal-fractions",), ("stacked-fractions",)]
 numeric_spacing_values = [("proportional-nums",), ("tabular-nums",)]
+page_size = [
+    ("A3",),
+    ("A4",),
+    ("A5",),
+    ("B4",),
+    ("B5",),
+    ("ledger",),
+    ("legal",),
+    ("letter",),
+]
 paint = [
     ("child",),
     ("context-fill",),
@@ -606,6 +620,7 @@ content_list = [
     url,
     string,
 ] + quote + target
+dasharray = length + number + percentage
 feature_tag_value = [("off",), ("on",), string] + integer
 fixed_breadth = length + percentage
 fixed_size = [minmax] + fixed_breadth
@@ -614,10 +629,65 @@ font_variant = (
     east_asian_variant_values + east_asian_width_values +
     numeric_figure_values + numeric_fraction_values + numeric_spacing_values
 )
+generic_voice = [
+    ("child",),
+    ("female",),
+    ("male",),
+    ("neutral",),
+    ("old",),
+    ("young",),
+] + integer
 geometry_box = [("fill-box",), ("stroke-box",), ("view-box",)] + shape_box
 grid_line = [("auto",), ("span",), identifier] + integer
+knockout_offset = length + number + percentage
+knockout_shape = [
+    ("circle",),
+    ("ellipse",),
+    ("inverted",),
+    ("rectangle",),
+    ("triangle",),
+] + length + number + percentage
+marker_gap = length + number + percentage
+mask_layer = [("no-clip",)] + (
+    bg_size +
+    compositing_operator +
+    geometry_box +
+    mask_reference +
+    masking_mode +
+    position +
+    repeat_style
+)
+single_transition = [
+    ("all",),
+    ("none",),
+    identifier,
+] + single_timing_function + time
 track_list = [line_names] + track_repeat + track_size
 auto_track_list = [line_names] + auto_repeat + fixed_repeat + fixed_size
+transform_list = [
+    matrix,
+    matrix3d,
+    perspective,
+    rotate,
+    rotateX,
+    rotateY,
+    rotateZ,
+    rotate3d,
+    scale,
+    scaleX,
+    scaleY,
+    scaleZ,
+    scale3d,
+    skew,
+    skewX,
+    skewY,
+    translate,
+    translate3d,
+    translateX,
+    translateY,
+    translateZ,
+]
+voice_name = [identifier, string]
 
 # TODO: delete this
 # OLD TYPES
