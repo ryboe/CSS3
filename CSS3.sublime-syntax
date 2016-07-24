@@ -2967,19 +2967,7 @@ contexts:
     - include: stray-brace
 
   page-size:
-    - match: '(?x)
-        \b
-        (?:
-          letter|
-          legal|
-          ledger|
-          B5|
-          B4|
-          A5|
-          A4|
-          A3
-        )
-        {{b}}'
+    - match: '\b(?:letter|legal|ledger|B5|B4|A5|A4|A3){{b}}'
       scope: support.constant.property-value.css
 
   paint:
