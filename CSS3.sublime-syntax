@@ -8829,12 +8829,6 @@ contexts:
     - match: '(?:verso|right|recto|left|first|blank){{b}}'
       scope: entity.other.attribute-name.pseudo-class.css
 
-  # selector-page-pseudo-class:
-  #   - match: '(:)(?:verso|right|recto|left|first|blank){{b}}'
-  #     captures:
-  #       0: entity.other.attribute-name.pseudo-class.css
-  #       1: punctuation.definition.entity.css
-
   selector-pseudo-class:
     # Match pseudo-class functions first to avoid collisions between
     # pseudo-classes like :drop and :drop().
