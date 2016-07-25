@@ -4,42 +4,42 @@ import sublime
 # DESCRIPTOR NAMES
 color_profile = [
     ("name", "name: ${1:<identifier>};"),
-    ("rendering-intent", "rendering-intent: ${1};"),
-    ("src", "src: ${1};"),
+    ("rendering-intent", "rendering-intent: $1;"),
+    ("src", "src: $1;"),
 ]
 counter_style = [
-    ("additive-symbols", "additive-symbols: ${1};"),
+    ("additive-symbols", "additive-symbols: $1;"),
     ("fallback", "fallback: ${1:<counter-style-name>};"),
-    ("negative", "negative: ${1};"),
-    ("pad", "pad: ${1};"),
+    ("negative", "negative: $1;"),
+    ("pad", "pad: $1;"),
     ("prefix", "prefix: ${1:<symbol>};"),
-    ("range", "range: ${1};"),
-    ("speak-as", "speak-as: ${1};"),
+    ("range", "range: $1;"),
+    ("speak-as", "speak-as: $1;"),
     ("suffix", "suffix: ${1:<symbol>};"),
-    ("symbols", "symbols: ${1};"),
-    ("system", "system: ${1};"),
+    ("symbols", "symbols: $1;"),
+    ("system", "system: $1;"),
 ]
 font_face = [
     ("font-family", "font-family: ${1:<family-name>};"),
-    ("font-feature-settings", "font-feature-settings: ${1};"),
-    ("font-stretch", "font-stretch: ${1};"),
-    ("font-style", "font-style: ${1};"),
-    ("font-variant", "font-variant: ${1};"),
-    ("font-weight", "font-weight: ${1};"),
-    ("src", "src: ${1};"),
+    ("font-feature-settings", "font-feature-settings: $1;"),
+    ("font-stretch", "font-stretch: $1;"),
+    ("font-style", "font-style: $1;"),
+    ("font-variant", "font-variant: $1;"),
+    ("font-weight", "font-weight: $1;"),
+    ("src", "src: $1;"),
 ]
 viewport = [
     ("height", "height: ${1:<viewport-length>} ${2:<viewport-length>};"),
     ("max-height", "max-height: ${1:<viewport-length>};"),
     ("max-width", "max-width: ${1:<viewport-length>};"),
-    ("max-zoom", "max-zoom: ${1};"),
+    ("max-zoom", "max-zoom: $1;"),
     ("min-height", "min-height: ${1:<viewport-length>};"),
     ("min-width", "min-width: ${1:<viewport-length>};"),
-    ("min-zoom", "min-zoom: ${1};"),
-    ("orientation", "orientation: ${1};"),
-    ("user-zoom", "user-zoom: ${1};"),
+    ("min-zoom", "min-zoom: $1;"),
+    ("orientation", "orientation: $1;"),
+    ("user-zoom", "user-zoom: $1;"),
     ("width", "width: ${1:<viewport-length>} ${2:<viewport-length>};"),
-    ("zoom", "zoom: ${1};"),
+    ("zoom", "zoom: $1;"),
 ]
 
 # DESCRIPTOR VALUES

@@ -6,8 +6,8 @@ annotation   = ("annotation()", "annotation($1)")
 attr         = ("attr()", "attr(${1:name})")
 b            = ("b()", "b($1${2:0}%)")
 blackness    = ("blackness()", "blackness($1${2:0}%)")
-blend        = ("blend()", "blend(${1:<color>} ${2:0}%${3})")
-blenda       = ("blenda()", "blenda(${1:<color>} ${2:0}%${3})")
+blend        = ("blend()", "blend(${1:<color>} ${2:0}%$3)")
+blenda       = ("blenda()", "blenda(${1:<color>} ${2:0}%$3)")
 blue         = ("blue()", "blue(${1:0})")
 blur         = ("blur()", "blur(${1:<length>})")
 brightness   = ("brightness()", "brightness($1)")
@@ -18,7 +18,7 @@ cielab       = ("cielab()", "cielab(${1:<lightness>}, ${2:a}, ${3:b})")
 cielchab     = ("cielchab()", "cielchab(${1:<lightness>}, ${2:<chroma>}, ${3:<hue>})")
 circle       = ("circle()", "circle($1)")
 color_func   = ("color()", "color(${1:<color-or-hue>} ${2:color-adjuster})")
-conic_gradient = ("conic-gradient()", "conic-gradient(${1:from ${2:<angle>}}${3: at ${4:<position>}}${5})")
+conic_gradient = ("conic-gradient()", "conic-gradient($1)")
 content      = ("content()", "content($1)")
 contrast     = ("contrast()", "contrast($1)")
 counter      = ("counter()", "counter(${1:<identifier>})")
@@ -106,7 +106,7 @@ translate3d  = ("translate3d()", "translate3d(${1:length}, ${2:length}, ${3:leng
 translateX   = ("translateX()", "translateX(${1:length})")
 translateY   = ("translateY()", "translateY(${1:length})")
 translateZ   = ("translateZ()", "translateZ(${1:length})")
-url          = ("url()", "url('${1}')")
+url          = ("url()", "url('$1')")
 var          = ("var()", "var(--${1:name})")
 w            = ("w()", "w($1${2:0}%)")
 whiteness    = ("whiteness()", "whiteness($1${2:0}%)")
@@ -495,13 +495,13 @@ marker_ref = [("child",), select, url]
 mask_reference = [("none",), url] + image
 masking_mode = [("alpha",), ("luminance",), ("match-source",)]
 media_types = [
-    ("all", "all"),
+    ("all", "all "),
     ("and", "and "),
     ("not", "not "),
     ("only", "only "),
-    ("print", "print"),
-    ("screen", "screen"),
-    ("speech", "speech"),
+    ("print", "print "),
+    ("screen", "screen "),
+    ("speech", "speech "),
 ]
 number = [("<number>", "${1:0}"), calc]
 numeric_figure_values = [("lining-nums",), ("oldstyle-nums",)]
@@ -612,7 +612,7 @@ bg_size = [
     ("cover",),
 ] + length + percentage
 border_width = [("medium",), ("thick",), ("thin",)] + length
-color_stop = color + length + percentage
+color_stop = angle + color + percentage
 content_list = [
     ("contents",),
     ("document-url",),

@@ -125,8 +125,9 @@ html_tags = [
 ]
 
 keyframes = [
-    ("from", "from {\n\t${1}\n}"),
-    ("to", "to {\n\t${1}\n}"),
+    ("from", "from {\n\t$1\n}\n"),
+    ("to", "to {\n\t$1\n}\n"),
+    ("<percentage>", "${1:0}% {\n\t$2\n}\n"),
 ]
 
 pseudo_classes = [
