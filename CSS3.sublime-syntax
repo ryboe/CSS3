@@ -56,19 +56,12 @@ variables:
 
 contexts:
   main:
-    - include: at-font-feature-values
-    - include: at-counter-style
+    - include: nestable-at-rules
     - include: at-color-profile
     - include: at-custom-media
     - include: at-namespace
-    - include: at-font-face
-    - include: at-keyframes
-    - include: at-supports
-    - include: at-viewport
     - include: at-charset
     - include: at-import
-    - include: at-media
-    - include: at-page
     - include: rule
 
   angle:
