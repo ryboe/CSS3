@@ -67,20 +67,25 @@ class CSS3Completions(sublime_plugin.EventListener):
         if view.match_selector(start, "meta.property-list.css -meta.property-value."):
             return properties.names, sublime.INHIBIT_WORD_COMPLETIONS
 
-        if view.match_selector(start, "meta.at-rule.page.css -meta.at-rule.page.block.css"):
-            return selectors.at_page, sublime.INHIBIT_WORD_COMPLETIONS
-
         # @-RULES
         if view.substr(start - 1) == "@":
             return handle_at_rule_completions(view, start)
 
-        # @-IMPORT
+        # @IMPORT
         if view.match_selector(start, "meta.at-rule.import.css -meta.media-feature.css"):
             return types.media_types + [types.string, types.url], sublime.INHIBIT_WORD_COMPLETIONS
 
         # DESCRIPTOR VALUES
         if view.match_selector(start - 1, "source.css meta.descriptor."):
             return handle_descriptor_value_completions(view, start - 1)
+
+        # @PAGE PROPERTY NAMES
+        if view.match_selector(start, "meta.at-rule.page.block.css"):
+            return properties.names, sublime.INHIBIT_WORD_COMPLETIONS
+
+        # @PAGE SELECTORS, e.g. :left, :recto
+        if view.match_selector(start, "meta.selector.page.css"):
+            return selectors.at_page, sublime.INHIBIT_WORD_COMPLETIONS
 
         # @FONT-FACE DESCRIPTOR NAMES
         if view.match_selector(start, "meta.at-rule.font-face.block.css -meta.descriptor.font-face."):
@@ -114,7 +119,7 @@ class CSS3Completions(sublime_plugin.EventListener):
 
         # KEYFRAMES SELECTOR
         # Special case: Keyframes selectors are not scoped with "meta.selector.css"
-        if view.match_selector(start, "meta.keyframes-block.css -meta.property-list.css"):
+        if view.match_selector(start, "meta.at-rule.keyframes.block.css -meta.property-list.css"):
             return selectors.keyframes, sublime.INHIBIT_WORD_COMPLETIONS
 
         # SELECTORS
