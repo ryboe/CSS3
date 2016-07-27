@@ -1492,6 +1492,7 @@ name_to_completions = {
     "z-index": [("auto",)] + t.integer,
 }
 
+
 allow_word_completions = frozenset((
     "animation",
     "animation-name",
@@ -1530,8 +1531,25 @@ def sort_and_uniq_completions():
         name_to_completions[name] = list(set(name_to_completions[name]))
         name_to_completions[name].sort()
 
-
 sort_and_uniq_completions()
+
+# This is identical to the property names list, except that it does not insert
+# the trailing semicolon.
+supports_conditions = []
+
+
+def populate_supports_conditions_list():
+    """Populate the completions list for @supports conditions.
+
+    An @supports condition is looks like this: (display: flex). All the property
+    names should be offered as completions, but the inserted text should not
+    have a trailing semicolon.
+    """
+    global supports_conditions
+    for label, completion in names:
+        supports_conditions.append((label, completion.rstrip(";")))
+
+populate_supports_conditions_list()
 
 
 # TODO: delete this

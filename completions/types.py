@@ -583,6 +583,7 @@ single_timing_function = [
     steps,
 ]
 size = extent_keyword + length + percentage
+supports_condition_operator = [("and",), ("not",), ("or",)]
 symbol = [identifier, string] + image
 target = [target_counter, target_counters, target_text]
 time = [("<time>", "${1:0}s"), calc]
