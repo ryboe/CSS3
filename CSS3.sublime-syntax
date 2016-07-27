@@ -8814,7 +8814,7 @@ contexts:
       push:
         - include: selector-page-pseudo-class
         - meta_scope: meta.selector.page.css
-        - match: '(?={)'
+        - match: '(?=[:{])'
           pop: true
     - include: identifier
 
