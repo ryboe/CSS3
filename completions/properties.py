@@ -1547,7 +1547,10 @@ def populate_supports_conditions_list():
     """
     global supports_conditions
     for label, completion in names:
-        supports_conditions.append((label, completion.rstrip(";")))
+        # strip trailing semicolon and replace $1 with $0
+        completion = completion.rstrip("1;")
+        completion += "0"
+        supports_conditions.append((label, completion))
 
 populate_supports_conditions_list()
 
