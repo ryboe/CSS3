@@ -117,6 +117,14 @@ class CSS3Completions(sublime_plugin.EventListener):
         if view.match_selector(start, "meta.at-rule.media.css -meta.at-rule.media.block.css"):
             return types.media_types, sublime.INHIBIT_WORD_COMPLETIONS
 
+        # @SUPPORTS CONDITIONS
+        if view.match_selector(start, "meta.supports-condition.css"):
+            return properties.supports_conditions, sublime.INHIBIT_WORD_COMPLETIONS
+
+        # @SUPPORTS CONDITION OPERATORS
+        if view.match_selector(start, "meta.at-rule.supports.css -meta.at-rule.supports.block.css"):
+            return types.supports_condition_operator, sublime.INHIBIT_WORD_COMPLETIONS
+
         # KEYFRAMES SELECTOR
         # Special case: Keyframes selectors are not scoped with "meta.selector.css"
         if view.match_selector(start, "meta.at-rule.keyframes.block.css -meta.property-list.css"):
