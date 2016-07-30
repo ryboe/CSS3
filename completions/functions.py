@@ -45,7 +45,13 @@ func_name_to_completions = {
     "child": t.integer,
     "cielab": t.number,
     "cielchab": t.number,
-    "color": t.angle + t.color + t.number,
+    "color": [
+        ("dgi-p3",),
+        ("rec2020",),
+        ("srgb",),
+        t.identifier,
+        t.string
+    ] + t.color + t.number + t.percentage,
     "color-adjuster-rgb": [t.hex_color] + t.number + t.percentage,
     "conic-gradient": [
         ("at", "at "),
@@ -157,6 +163,7 @@ func_name_to_completions = {
 allow_word_completions = frozenset((
     "attr",
     "attr-pseudo-element",
+    "color",
     "counter",
     "counters",
     "element",
@@ -180,9 +187,6 @@ def get_completions(func_name):
     completions = func_name_to_completions.get(func_name, []) + [t.var]
 
     if func_name in allow_word_completions:
-        # If the function takes an identifier as an argument, the
-        # identifier will be in the local symbol index. Therefore,
-        # we don't want to inhibit word completions.
         return completions
 
     return completions, sublime.INHIBIT_WORD_COMPLETIONS
