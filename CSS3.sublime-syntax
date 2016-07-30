@@ -30,6 +30,8 @@ variables:
   integer_pos: '\+?(?:[1-9]\d+|[1-9])'
   integer_zero_to_255: '\b(?:2[0-5][0-5]|1\d\d|[1-9]\d|\d)\b'
   length_unit: r?em|ex|ch|vw|vh|vmin|vmax|cm|mm|q|in|pc|pt|px
+  moz: '(?:-moz-)?'
+  ms: '(?:-ms-)?'
   not_followed_by_dash: '(?!-)'
   ns_prefix: '(?:{{identifier}}|(\*))?(\|)'
   number: '[+-]?(?:\d+\.\d+|\.\d+|\d+)(?:{{exponent}})?'
@@ -50,6 +52,7 @@ variables:
   # '' is how you escape a single ' in YAML
   url_char: '[a-zA-Z0-9\-\._~:/\?#\[\]''@!$&()\*\+\%,;=]'
   vendor_prefix: '(?:-webkit-|-ms-|-moz-)?'
+  webkit: '(?:-webkit-)?'
   whitespace: '[ \t\n]'
   wq_name: '({{ns_prefix}})?({{identifier}}|(\*))'
   zero: \b0\b
@@ -167,9 +170,11 @@ contexts:
     - include: semitones
     - include: time
     - include: position
+    - include: flex
     - include: length
     - include: an-plus-b
     - include: color
+    - include: ratio
     - include: integer
     - include: number
     - include: identifier
@@ -226,6 +231,7 @@ contexts:
             - match: '(?=})'
               pop: true
             - include: descriptors-color-profile
+        - include: identifier
     - include: stray-brace
 
   at-counter-style:
@@ -433,7 +439,7 @@ contexts:
     - include: stray-brace
 
   at-viewport:
-    - match: '(@){{vendor_prefix}}viewport{{b}}'
+    - match: '(@){{ms}}viewport{{b}}'
       captures:
         0: keyword.control.at-rule.viewport.css
         1: punctuation.definition.keyword.css
@@ -533,6 +539,7 @@ contexts:
     - include: func-hwb
     - include: func-gray
     - include: func-device-cmyk
+    - include: func-color
     - include: icc-color
     - include: color-named
     - include: color-adjuster
@@ -834,7 +841,6 @@ contexts:
   descriptors-color-profile:
     - include: descriptor-color-profile-src
     - include: descriptor-color-profile-rendering-intent
-    - include: descriptor-color-profile-name
 
   descriptors-counter-style:
     - include: descriptor-counter-style-system
@@ -863,20 +869,7 @@ contexts:
     - include: descriptor-viewport-width-height
     - include: descriptor-viewport-zoom
 
-  # Additions to CSS Color 4
-  descriptor-color-profile-name:
-    - match: \b(name)\s*(:)
-      captures:
-        1: support.type.property-name.css
-        2: punctuation.separator.key-value.css
-      push:
-        - meta_scope: meta.descriptor.color-profile.name.css
-        - include: end-value
-        - include: value-css-wide
-        - include: identifier
-    - include: stray-paren-or-semicolon
-
-  # Additions to CSS Color 4
+  # CSS Color Module Level 4
   descriptor-color-profile-rendering-intent:
     - match: \b(rendering-intent)\s*(:)
       captures:
@@ -892,14 +885,13 @@ contexts:
               saturation|
               relative-colorimetric|
               perceptual|
-              auto|
               absolute-colorimetric
             )
             {{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
-  # Additions to CSS Color 4
+  # CSS Color Module Level 4
   descriptor-color-profile-src:
     - match: \b(src)\s*(:)
       captures:
@@ -911,8 +903,6 @@ contexts:
         - include: value-css-wide
         - include: func-local
         - include: func-url
-        - match: '\bsRGB{{b}}'
-          scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
   descriptor-counter-style-additive-symbols:
@@ -1584,10 +1574,13 @@ contexts:
         - meta_scope: meta.function.color.css
         - include: end-func
         - include: func-var
-        - include: angle
-        - include: number
-        - include: color-adjuster
+        - include: string
+        - match: '\b(?:srgb|rec2020|dgi-p3){{b}}'
+          scope: support.constant.property-value.css
         - include: color
+        - include: percentage
+        - include: number
+        - include: identifier
 
   func-color-adjuster-rgb:
     - match: \b(rgb)(\()
@@ -3248,6 +3241,7 @@ contexts:
     - include: property-text-overflow
     - include: property-text-rendering
     - include: property-text-shadow
+    - include: property-text-size-adjust
     - include: property-text-space-collapse
     - include: property-text-space-trim
     - include: property-text-spacing
@@ -3587,7 +3581,7 @@ contexts:
 
   # CSS Basic User Interface Module Level 4
   property-appearance:
-    - match: ({{vendor_prefix}}\bappearance)\s*(:)
+    - match: ((?:-webkit-|-moz-)?\bappearance)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -4270,7 +4264,7 @@ contexts:
 
   # CSS Masking Module Level 1
   property-clip-path:
-    - match: ({{vendor_prefix}}\bclip-path)\s*(:)
+    - match: ({{webkit}}\bclip-path)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -4358,7 +4352,7 @@ contexts:
 
   # CSS Multi-column Layout Module
   property-column-count:
-    - match: \b(column-count)\s*(:)
+    - match: ((?:-webkit-|-moz-)?\bcolumn-count)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -4373,7 +4367,7 @@ contexts:
 
   # CSS Multi-column Layout Module
   property-column-fill:
-    - match: \b(column-fill)\s*(:)
+    - match: ((?:-webkit-|-moz-)?\bcolumn-fill)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -4387,7 +4381,7 @@ contexts:
 
   # CSS Multi-column Layout Module
   property-column-gap:
-    - match: \b(column-gap)\s*(:)
+    - match: ((?:-webkit-|-moz-)?\bcolumn-gap)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -4402,7 +4396,7 @@ contexts:
 
   # CSS Multi-column Layout Module
   property-column-rule:
-    - match: \b(column-rule)\s*(:)
+    - match: ((?:-webkit-|-moz-)?\bcolumn-rule)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -4417,7 +4411,7 @@ contexts:
 
   # CSS Multi-column Layout Module
   property-column-rule-color:
-    - match: \b(column-rule-color)\s*(:)
+    - match: ((?:-webkit-|-moz-)?\bcolumn-rule-color)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -4430,7 +4424,7 @@ contexts:
 
   # CSS Multi-column Layout Module
   property-column-rule-style:
-    - match: \b(column-rule-style)\s*(:)
+    - match: ((?:-webkit-|-moz-)?\bcolumn-rule-style)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -4443,7 +4437,7 @@ contexts:
 
   # CSS Multi-column Layout Module
   property-column-rule-width:
-    - match: \b(column-rule-width)\s*(:)
+    - match: ((?:-webkit-|-moz-)?\bcolumn-rule-width)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -4471,7 +4465,7 @@ contexts:
 
   # CSS Multi-column Layout Module
   property-column-width:
-    - match: \b(column-width)\s*(:)
+    - match: ((?:-webkit-|-moz-)?\bcolumn-width)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -5155,7 +5149,7 @@ contexts:
 
   # CSS Regions Module Level 1
   property-flow-from:
-    - match: \b(flow-from)\s*(:)
+    - match: ({{ms}}\bflow-from)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -5170,7 +5164,7 @@ contexts:
 
   # CSS Regions Module Level 1
   property-flow-into:
-    - match: \b(flow-into)\s*(:)
+    - match: ({{ms}}\bflow-into)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -5588,15 +5582,18 @@ contexts:
   # CSS Grid Layout Module Level 1
   property-grid-row-column-area:
     - match: '(?x)
-        \b
         (
-          grid-row-start|
-          grid-row-end|
-          grid-row|
-          grid-column-start|
-          grid-column-end|
-          grid-column|
-          grid-area
+          {{ms}}
+          \b
+          (?:
+            grid-row-start|
+            grid-row-end|
+            grid-row|
+            grid-column-start|
+            grid-column-end|
+            grid-column|
+            grid-area
+          )
         )\s*
         (:)'
       captures:
@@ -5746,7 +5743,7 @@ contexts:
 
   # CSS Text Module Level 4
   property-hyphenate-limit-chars:
-    - match: \b(hyphenate-limit-chars)\s*(:)
+    - match: ({{ms}}\bhyphenate-limit-chars)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -5775,7 +5772,7 @@ contexts:
 
   # CSS Text Module Level 4
   property-hyphenate-limit-lines:
-    - match: \b(hyphenate-limit-lines)\s*(:)
+    - match: ({{ms}}\bhyphenate-limit-lines)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -5790,7 +5787,7 @@ contexts:
 
   # CSS Text Module Level 4
   property-hyphenate-limit-zone:
-    - match: \b(hyphenate-limit-zone)\s*(:)
+    - match: ({{ms}}\bhyphenate-limit-zone)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -5804,7 +5801,7 @@ contexts:
 
   # CSS Text Module Level 3
   property-hyphens:
-    - match: ({{vendor_prefix}}\bhyphens)\s*(:)
+    - match: ((?:-webkit-|-ms-)?\bhyphens)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -7291,7 +7288,7 @@ contexts:
 
   # CSS Scroll Snap Module Level 1
   property-scroll-snap-type:
-    - match: \b(scroll-snap-type)\s*(:)
+    - match: ({{ms}}\bscroll-snap-type)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -7626,7 +7623,7 @@ contexts:
 
   # CSS Text Module Level 3
   property-tab-size:
-    - match: \b(tab-size)\s*(:)
+    - match: ({{moz}}\btab-size)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -7705,7 +7702,7 @@ contexts:
 
   # CSS Text Module Level 3
   property-text-align-last:
-    - match: \b(text-align-last)\s*(:)
+    - match: ((?:-moz-|-ms-)?\btext-align-last)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -7961,7 +7958,7 @@ contexts:
 
   # CSS Text Module Level 3
   property-text-justify:
-    - match: \b(text-justify)\s*(:)
+    - match: ({{ms}}\btext-justify)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -8030,6 +8027,21 @@ contexts:
           scope: support.constant.property-value.css
         - include: color
         - include: length
+    - include: stray-paren-or-semicolon
+
+  # CSS Mobile Text Size Adjustment Module Level 1
+  property-text-size-adjust:
+    - match: ({{vendor_prefix}}\btext-size-adjust)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.text-size-adjust.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:none|auto){{b}}'
+          scope: support.constant.property-value.css
+        - include: percentage
     - include: stray-paren-or-semicolon
 
   # CSS Text Module Level 4
@@ -8118,7 +8130,7 @@ contexts:
 
   # CSS Text Decoration Module Level 3
   property-text-underline-position:
-    - match: \b(text-underline-position)\s*(:)
+    - match: ({{ms}}\btext-underline-position)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -8299,7 +8311,7 @@ contexts:
 
   # CSS Basic User Interface Module Level 4
   property-user-select:
-    - match: \b(user-select)\s*(:)
+    - match: ({{vendor_prefix}}\buser-select)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -8553,7 +8565,7 @@ contexts:
   # CSS Text Module Level 3
   # This is identical to overflow-wrap.
   property-word-wrap:
-    - match: \b(word-wrap)\s*(:)
+    - match: ({{ms}}\bword-wrap)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -8581,7 +8593,7 @@ contexts:
 
   # CSS Exclusions Module Level 1
   property-wrap-flow:
-    - match: \b(wrap-flow)\s*(:)
+    - match: ({{ms}}\bwrap-flow)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -8609,7 +8621,7 @@ contexts:
 
   # CSS Exclusions Module Level 1
   property-wrap-through:
-    - match: \b(wrap-through)\s*(:)
+    - match: ({{ms}}\bwrap-through)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -8623,7 +8635,7 @@ contexts:
 
   # CSS Writing Modes Level 3
   property-writing-mode:
-    - match: \b(writing-mode)\s*(:)
+    - match: ((?:-webkit-|-ms-)?\bwriting-mode)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -8829,7 +8841,6 @@ contexts:
     - include: selector-pseudo-class-deprecated
     - match: '(?x)
         (:)
-        {{vendor_prefix}}
         (?:
           visited|
           valid|
@@ -8858,8 +8869,8 @@ contexts:
           hover|
           host|
           future|
-          focus-within|
           focus|
+          focus-within|
           first-of-type|
           first-child|
           enabled|
@@ -8871,7 +8882,10 @@ contexts:
           checked|
           blank|
           any-link|
-          active
+          active|
+          -webkit-input-placeholder|
+          -ms-input-placeholder|
+          -moz-any-link
         )
         {{b}}'
         # TODO: Remove input-placeholder. It's non-standard, but commonly used.
@@ -9037,7 +9051,6 @@ contexts:
   selector-pseudo-element:
     - match: '(?x)
         (::)
-        {{vendor_prefix}}
         (?:
           spelling-error|
           shadow|
@@ -9045,18 +9058,19 @@ contexts:
           region|
           placeholder|
           marker|
-          input-placeholder|
           inactive-selection|
           grammar-error|
           first-line|
           first-letter|
           content|
           before|
-          after
+          after|
+          -webkit-input-placeholder|
+          -ms-input-placeholder|
+          -moz-selection|
+          -moz-placeholder
         )
         {{b}}'
-      # TODO: Remove input-placeholder. It's non-standard, but commonly used. It
-      # has been replaced by ::placeholder, which is not widely supported yet.
       captures:
         0: entity.other.attribute-name.pseudo-element.css
         1: punctuation.definition.entity.pseudo-element.css
@@ -9299,18 +9313,6 @@ contexts:
   stray-paren:
     - match: \)
       scope: invalid.illegal.stray-paren.css
-
-  # TODO: delete this after you're sure the stray matching isn't overzealous.
-  # you won't know this until after you've implemented most properties.
-  # "overzealous" means that getting it to work will make it so that a single
-  # bad property will cause stray matches throughout the rest of the file.
-  # ideally, the stray matches should stop at the end of the current block.
-  # stray-paren-or-semicolon:
-  #   - match: '[;)]'
-  #     scope: invalid.illegal.stray.css
-  #     push:
-  #       - match: '(?=})'
-  #         pop: true
 
   stray-paren-or-semicolon:
     - include: stray-semicolon
