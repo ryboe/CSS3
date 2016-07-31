@@ -38,7 +38,7 @@ variables:
   number_non_neg: '\+?(?:\d+\.\d+|\.\d+|\d+)(?:{{exponent}})?'
   number_pos: '\+?(?:\d+\.\d*[1-9]\d*|\.\d*[1-9]\d*|[1-9]\d*)(?:{{exponent}})?'
   number_zero_to_100: '(?:\b100(?:\.0+)?|\b[1-9]\d(?:\.\d+)?|\b\d(?:\.\d+)?|\.\d+)'
-  number_zero_to_255: '\b(?:2[0-5][0-5](?:\.0+)?|1\d\d(?:\.\d+)?|[1-9]\d(?:\.\d+)?|\d(?:\.\d+)?)'
+  number_zero_to_255: '\b(?:2[0-4]\d(?:\.0+)?|25[0-5](?:\.0+)?|1\d\d(?:\.\d+)?|[1-9]\d(?:\.\d+)?|\d(?:\.\d+)?)'
   number_zero_to_one: '\+?(?:0(?:\.\d+)?|1(?:\.0+)?|\.\d+)\b(?!\.)'
   optional_min_max_prefix: '\b(?:min-|max-)?'
   optional_top_right_left_bottom: '(?:top-|right-|left-|bottom-)?'
@@ -66,6 +66,10 @@ contexts:
     - include: at-charset
     - include: at-import
     - include: rule
+
+  alpha-value:
+    - include: percentage-zero-to-100
+    - include: number-zero-to-one
 
   angle:
     - include: func-calc
@@ -2091,7 +2095,8 @@ contexts:
         - meta_scope: meta.function.rgba.css
         - include: end-func
         - include: func-var
-        - include: rgb-component  # matches <alpha-value> too
+        - include: rgb-component
+        - include: alpha-value
 
   func-rotate:
     - match: \b(rotate[XYZ]?)(\()
