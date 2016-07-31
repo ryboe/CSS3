@@ -106,18 +106,19 @@ contexts:
     - include: func-child
     - include: func-cielab
     - include: func-cielchab
+    - include: func-color
     - include: func-color-adjuster-rgb
     - include: func-conic-gradient
     - include: func-content
     - include: func-contrast
-    - include: func-counters
     - include: func-counter
+    - include: func-counters
     - include: func-cross-fade
     - include: func-cubic-bezier
-    - include: func-device-gray
-    - include: func-device-rgb
     - include: func-device-cmyk
+    - include: func-device-gray
     - include: func-device-nchannel
+    - include: func-device-rgb
     - include: func-drop-shadow
     - include: func-element
     - include: func-ellipse-circle
@@ -126,13 +127,12 @@ contexts:
     - include: func-format
     - include: func-gray
     - include: func-hsla
-    - include: func-hue-rotate
     - include: func-hue
+    - include: func-hue-rotate
     - include: func-hwb
     - include: func-icc-color
-    - include: func-color
-    - include: func-image-set
     - include: func-image
+    - include: func-image-set
     - include: func-inset
     - include: func-leader
     - include: func-linear-gradient
@@ -146,8 +146,8 @@ contexts:
     - include: func-red-green-blue-alpha-a
     - include: func-repeat
     - include: func-rgba
-    - include: func-rotate3d
     - include: func-rotate
+    - include: func-rotate3d
     - include: func-running
     - include: func-select
     - include: func-scale
@@ -161,9 +161,10 @@ contexts:
     - include: func-target-counters
     - include: func-target-text
     - include: func-tint-shade
-    - include: func-translate-z
     - include: func-translate
+    - include: func-translate-z
     - include: func-url
+    - include: func-var
     - include: func-whiteness-saturation-lightness-blackness
     - include: image
     - include: string
