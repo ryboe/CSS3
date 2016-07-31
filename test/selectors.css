@@ -179,7 +179,6 @@ div:first-line {}
 /* pseudo-classes */
 
 :dir(ltr) {}
-:dir(auto) {}
 :drop() {}              /* (active\s+)?(valid\s+)?(invalid+)? */
 :drop(valid) {}              /* (active\s+)?(valid\s+)?(invalid+)? */
 :drop(valid active invalid) {}
@@ -540,7 +539,7 @@ div:visited {}
 
 p.note:target {}
 *:target { color: red; }
-*:target::before { content: url(target.png); }
+*:target::before { content: url('target.png'); }
 
 /* :scope pseudo-class */
 
