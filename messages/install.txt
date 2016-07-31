@@ -2,29 +2,30 @@ Thank you for installing CSS3!
 
 This plugin requires Sublime Text 3 build 3103 or greater.
 
-It's strongly recommended that you disable the default CSS package. Its
-completions will interfere with the improved CSS3 completions.
+I strongly recommended disabling the default CSS package. Its completions will
+interfere with the improved CSS3 completions.
 
     Mac:       cmd+shift+p  -> Package Control: Disable Package -> CSS
     Linux/Win: ctrl+shift+p -> Package Control: Disable Package -> CSS
 
-If you have Emmet installed, its completions will drown out the completions in
-CSS3. You can disable Emmet's completions by adding the following lines to your
-Emmet package settings:
-
-    "show_css_completions": false,
-    "disable_tab_abbreviations_for_scopes": "source.css"
-
-I recommend adding these two settings to your User Settings. By default, Sublime
-will not offer completions inside other completions. In other words, the
-completions menu is suppressed while you're tabbing through a snippet. This
-can prevent a lot of the CSS3 completions from appearing. To fix this, set these
-keys to true:
+I also strongly recommend adding these two settings to your User Settings (the
+general settings, not the package settings). By default, Sublime will not offer
+completions inside other completions. In other words, the completions menu is
+suppressed when you're tabbing through a snippet. This blocks most of the CSS3
+completions from appearing. To fix this, set these keys to true:
 
     "auto_complete_commit_on_tab": true,
     "auto_complete_with_fields": true,
 
+If you have Emmet installed, its completions will drown out the carefully
+researched, standards-based completions in CSS3. You can disable Emmet's
+completions by adding the following lines to your Emmet package settings:
+
+    "show_css_completions": false,
+    "disable_tab_abbreviations_for_scopes": "source.css"
+
+
 That's it. Enjoy the plugin. If you have any problems, please open an issue on
-GitHub and I'll fix it as soon as I can.
+GitHub. Thanks!
 
     https://github.com/y0ssar1an/CSS3/issues

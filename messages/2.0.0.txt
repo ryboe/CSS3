@@ -6,21 +6,21 @@ system. Here are the improvements:
     FEATURES
     - Variables
     - HTML5 custom element selectors
-    - Bunch of new stuff from the spec that no browser supports and no one's
-      ever heard of
+    - Bunch of new stuff from the spec that no one's ever heard of
     - Flags unbalanced parentheses and curly braces
     - Lots of new completions
     - Completions are less noisy and more up-to-date
 
     CORRECTNESS
     - Squashed a bunch of annoying highlighting bugs. You know the ones.
-    - Made another pass over all the W3C specs, so it's even more comprehensive
-      than before
+    - Made another pass over the W3C specs. It's even more comprehensive than
+      before
 
     PERFORMANCE
-    - All the regexes have been written for Sublime's new custom regex engine.
-      Both the regexes AND the regex engine are much faster. You will notice
-      the difference when working with large CSS files.
+    - The syntax highlighter is a massive set of regexes. All those regexes have
+      been written for Sublime's new custom regex engine. Both the regexes AND
+      the regex engine are much faster. You will notice the difference when
+      working with large CSS files.
     - Removed the W3C Validator. It slowed things down and not everybody used
       it. Based on user feedback, I decided to release it as a separate package
       (forthcoming).
@@ -33,11 +33,11 @@ IMPORTANT
        directory. All those settings were for the validator, which is gone.
        CSS3 2.0 has no knobs.
 
-    3) I recommend adding these two settings to your User Settings. By default, Sublime
-       will not offer completions inside other completions. In other words, the
-       completions menu is suppressed while you're tabbing through a snippet. This
-       can prevent a lot of the CSS3 completions from appearing. To fix this, set these
-       keys to true:
+    3) I recommend adding these two settings to your User Settings (the general
+       settings, not the package settings). By default, Sublime will not offer
+       completions when you're inside another completion. This will block most
+       of the completions offered by this plugin, and sorta kills the whole
+       experience. To fix this, set these keys to true:
 
             "auto_complete_commit_on_tab": true,
             "auto_complete_with_fields": true,
