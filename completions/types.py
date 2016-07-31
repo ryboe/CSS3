@@ -165,7 +165,6 @@ border_style = [
     ("solid",),
 ]
 box = [("border-box",), ("content-box",), ("padding-box",)]
-# caret_color = []  # TODO: write this when <caret-color> is defined in the spec
 caret_shape = [
     ("auto",),
     ("bar",),

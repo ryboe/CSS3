@@ -1325,7 +1325,7 @@ contexts:
 
   end-value:
     # end on } if this is the last property-value pair in the block.
-    # end on ) if we're inside an @supports condition.  # TODO: is this a good idea?
+    # end on ) if we're inside an @supports condition.
     - match: ';|(?=[}\)])'
       scope: punctuation.terminator.rule.css
       pop: true
