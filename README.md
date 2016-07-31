@@ -8,8 +8,9 @@ The most complete CSS support for Sublime Text 3.
 * __Absurdly Complete__: I basically mined the entire set of draft specs
   and supported everything. Some of this stuff won't be implemented in browsers
   for *years*. With very few exceptions, if it's in the spec, it's supported.
-* __Productive__: Offers a full set of completions for every property. The
-  completions are highly specific to what you're writing.
+* __Productive__: Offers a full set of completions for properties, descriptors,
+  @-rules, functions, and selectors. The completions are highly specific to what
+  you're writing.
 * __Modern__: Bad, old CSS is flagged. Unnecessarily prefixed properties aren't
   highlighted. Catches lots of mistakes. Encourages best practices.
 * __Faithful__: Follows the W3C specs extremely closely.
@@ -40,19 +41,7 @@ The most complete CSS support for Sublime Text 3.
     Make sure you don't have any open files set to the default CSS syntax (bottom-right)
     or you may get an error message.
 
-4. (Recommended) Disable CSS completions in Emmet
-
-    If you have Emmet installed, its completions will drown out the
-    carefully researched, standards-based completions offered by this package.
-    You can disable Emmet completions by adding these two lines to your Emmet
-    Package settings.
-
-    ```
-    "show_css_completions": false,
-    "disable_tab_abbreviations_for_scopes": "source.css"
-    ```
-
-5. (Recommended) Enable completions inside completions
+4. (Strongly Recommended) Enable completions inside completions
 
     By default, Sublime will not offer completions inside completions. In other
     words, the completions menu is suppressed when you're tabbing through a
@@ -62,6 +51,18 @@ The most complete CSS support for Sublime Text 3.
     ```
     "auto_complete_commit_on_tab": true,
     "auto_complete_with_fields": true,
+    ```
+
+5. (Recommended) Disable CSS completions in Emmet
+
+    If you have Emmet installed, its completions will drown out the
+    carefully researched, standards-based completions offered by this package.
+    You can disable Emmet completions by adding these two lines to your Emmet
+    Package settings.
+
+    ```
+    "show_css_completions": false,
+    "disable_tab_abbreviations_for_scopes": "source.css"
     ```
 
 6. (Recommended) Set CSS3 as the default language for `.css` files
@@ -79,6 +80,8 @@ The most complete CSS support for Sublime Text 3.
 
 If you think something's missing, make sure you're not asking for something
 on [this list of bad CSS properties](https://gist.github.com/y0ssar1an/bb95223148e486acbe7a#file-bad_css).
-If it's not on that list, open an issue and I'll investigate. I'll be monitoring
-the specs as they're updated on [this W3C feed](https://www.w3.org/Style/CSS/current-work.en.html),
+If it's not on that list, open an issue and I'll investigate. *Definitely* check
+out the [CONTRIBUTING](https://github.com/y0ssar1an/CSS3/blob/master/CONTRIBUTING.md)
+guidelines before submitting your PR. It could save you a lot of time. I'll be
+monitoring the specs as they're updated on [this W3C feed](https://www.w3.org/Style/CSS/current-work.en.html),
 but I still need your help. Let's keep bad code out of the Web!
