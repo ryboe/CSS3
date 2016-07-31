@@ -1,0 +1,22 @@
+<snippet>
+	<content><![CDATA[
+# ${1:Spec Name}
+property-${2:name}:
+  - match: \b(${2:name})\s*(:)
+    captures:
+      1: support.constant.property-name.css
+      2: punctuation.separator.key-value.css
+    push:
+      - meta_content_scope: meta.property-value.${2:name}.css
+      - include: end-value
+      - include: value-css-wide
+      ${3:- match: '\b${4:(?:${5})}\{\{b\}\}'
+        scope: support.constant.property-value.css}
+      ${6:- include: ${7}}
+  - include: stray-paren-or-semicolon
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>newprop</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.yaml</scope>
+</snippet>
