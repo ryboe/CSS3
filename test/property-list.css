@@ -3270,7 +3270,7 @@
     font: 900 14pt/16pt "Heisei Mincho W9", serif;
     font: 800 14pt/16.5pt "Li Sung", serif;
 
-    /* TODO: add these properties. they're currently matching idents, which is wrong */
+    /* TODO: add these properties? they're currently matching idents, which is wrong */
     font: -moz-button;
     font: -moz-info;
     font: -moz-desktop;
