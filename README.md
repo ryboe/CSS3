@@ -14,8 +14,8 @@ The most complete CSS support for Sublime Text 3.
 * __Modern__: Bad, old CSS is flagged. Unnecessarily prefixed properties aren't
   highlighted. Catches lots of mistakes. Encourages best practices.
 * __Faithful__: Follows the W3C specs extremely closely.
-* __Fast__: CSS3 has been designed for Sublime's new custom regex engine, and is
-  therefore crazy fast. The syntax highlighting typically takes less than 100ms,
+* __Fast__: CSS3 has been designed for Sublime's new custom regex engine,
+  which is crazy fast. The syntax highlighting typically takes less than 100ms,
   even for very large CSS files.
 
 
