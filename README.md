@@ -7,13 +7,17 @@ The most complete CSS support for Sublime Text 3.
 
 * __Absurdly Complete__: I basically mined the entire set of draft specs
   and supported everything. Some of this stuff won't be implemented in browsers
-  for *years*. With very few exceptions, if it's in the spec, it's supported.
+  for *years*. With few exceptions, if it's in the spec, it's supported.
 * __Productive__: Offers a full set of completions for properties, descriptors,
   @-rules, functions, and selectors. The completions are highly specific to what
   you're writing.
 * __Modern__: Bad, old CSS is flagged. Unnecessarily prefixed properties aren't
   highlighted. Catches lots of mistakes. Encourages best practices.
 * __Faithful__: Follows the W3C specs extremely closely.
+* __Fast__: CSS3 has been designed for Sublime's new custom regex engine, and is
+  therefore crazy fast. The syntax highlighting typically takes less than 100ms,
+  even for very large CSS files.
+
 
 ## Before & After
 
