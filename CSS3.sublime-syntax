@@ -3072,6 +3072,7 @@ contexts:
     - include: property-box-suppress
     - include: property-break-before-after
     - include: property-break-inside
+    - include: property-caption-side
     - include: property-caret-color
     - include: property-caret-shape
     - include: property-clip-path
@@ -4191,6 +4192,20 @@ contexts:
               auto
             )
             {{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS 2.1
+  property-caption-side:
+    - match: \b(caption-side)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.caption-side.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:top|bottom){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
@@ -8802,7 +8817,7 @@ contexts:
 
   resolution:
     - include: func-calc
-    - match: '({{integer_pos}})({{resolution_unit}})'
+    - match: '({{number_non_neg}})({{resolution_unit}})'
       captures:
         1: constant.numeric.css
         2: keyword.other.unit.css
