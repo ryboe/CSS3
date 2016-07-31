@@ -317,9 +317,9 @@ media features
 @media (resolution: 100dppx) {}
 @media (scan: interlace) {}
 @media (scan: progressive) {}
-@media (update-frequency: none) {}
-@media (update-frequency: slow) {}
-@media (update-frequency: normal) {}
+@media (update: none) {}
+@media (update: slow) {}
+@media (update: normal) {}
 @media (overflow-block: none) {}
 @media (overflow-block: scroll) {}
 @media (overflow-block: optional-paged) {}
