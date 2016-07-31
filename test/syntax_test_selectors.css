@@ -90,21 +90,21 @@
 /*^^^^^^^^ -entity.other.attribute-name.pseudo-element.css */
 
 /* TEST VENDOR PREFIXED PSEUDO-ELEMENTS */
-::-moz-content {}
+::-moz-placeholder {}
 /* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.pseudo-element.css */
  /* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.pseudo-element.css */
-/*^^^^^^^^^^^^ entity.other.attribute-name.pseudo-element.css */
-/*            ^ -entity.other.attribute-name.pseudo-element.css */
-::-ms-content {}
+/*^^^^^^^^^^^^^^^^ entity.other.attribute-name.pseudo-element.css */
+/*                ^ -entity.other.attribute-name.pseudo-element.css */
+::-ms-input-placeholder {}
 /* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.pseudo-element.css */
  /* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.pseudo-element.css */
-/*^^^^^^^^^^^ entity.other.attribute-name.pseudo-element.css */
-/*           ^ -entity.other.attribute-name.pseudo-element.css */
-::-webkit-content {}
+/*^^^^^^^^^^^^^^^^^^^^^ entity.other.attribute-name.pseudo-element.css */
+/*                     ^ -entity.other.attribute-name.pseudo-element.css */
+::-webkit-input-placeholder {}
 /* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.pseudo-element.css */
  /* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.pseudo-element.css */
-/*^^^^^^^^^^^^^^^ entity.other.attribute-name.pseudo-element.css */
-/*               ^ -entity.other.attribute-name.pseudo-element.css */
+/*^^^^^^^^^^^^^^^^^^^^^^^^^ entity.other.attribute-name.pseudo-element.css */
+/*                         ^ -entity.other.attribute-name.pseudo-element.css */
 
 /* TEST PSEUDO-CLASSES */
 :visited {}
