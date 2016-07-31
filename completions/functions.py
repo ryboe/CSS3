@@ -92,6 +92,7 @@ func_name_to_completions = {
     # "host": [],          # TODO: host takes a selector list as an arg. should it have completions?
     # "host-context": [],  # TODO: host-context takes a selector list as an arg. should it have completions?
     "hsla": t.angle + t.number + t.percentage,
+    "hue": t.angle,
     "hue-rotate": t.angle,
     "hwb": t.angle + t.number + t.percentage,
     "icc-color": [t.identifier] + t.icc_color + t.number,
@@ -154,7 +155,7 @@ func_name_to_completions = {
     "tint-shade": t.percentage,
     "translate": t.length + t.percentage,
     "translate-z": t.length,
-    "whiteness-saturation-lightness-hue-blackness": t.percentage,
+    "whiteness-saturation-lightness-blackness": t.percentage,
 }
 
 # Some functions take identifiers, or other symbols that are likely to be in

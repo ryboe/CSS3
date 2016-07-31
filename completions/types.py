@@ -41,7 +41,7 @@ green        = ("green()", "green(${1:0})")
 h            = ("h()", "h(${1}${2:<angle>})")
 hsl          = ("hsl()", "hsl(${1:<hue>}, ${2:0}%, ${3:0}%)")
 hsla         = ("hsla()", "hsla(${1:<hue>}, ${2:0}%, ${3:0}%, ${4:1.0})")
-hue          = ("hue()", "hue(${1}{2:<angle>})")
+hue          = ("hue()", "hue(${1}${2:<angle>})")
 hue_rotate   = ("hue-rotate()", "hue-rotate(${1:<angle>})")
 hwb          = ("hwb()", "hwb(${1:<hue>}, ${2:0}%, ${3:0}%${4:, ${5:1.0}})")
 icc_color_func = ("icc-color()", "icc-color(${1:name}, ${2:0})")
@@ -393,6 +393,7 @@ display_inside = [
     ("flow-root",),
     ("grid",),
     ("ruby",),
+    ("subgrid",),
     ("table",),
 ]
 display_internal = [
