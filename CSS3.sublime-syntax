@@ -37,7 +37,7 @@ variables:
   number: '[+-]?(?:\d+\.\d+|\.\d+|\d+)(?:{{exponent}})?'
   number_non_neg: '\+?(?:\d+\.\d+|\.\d+|\d+)(?:{{exponent}})?'
   number_pos: '\+?(?:\d+\.\d*[1-9]\d*|\.\d*[1-9]\d*|[1-9]\d*)(?:{{exponent}})?'
-  number_zero_to_100: '\b(?:100(?:\.0+)?|[1-9]\d(?:\.\d+)?|\d(?:\.\d+)?|\.\d+)'
+  number_zero_to_100: '(?:\b100(?:\.0+)?|\b[1-9]\d(?:\.\d+)?|\b\d(?:\.\d+)?|\.\d+)'
   number_zero_to_255: '\b(?:2[0-5][0-5](?:\.0+)?|1\d\d(?:\.\d+)?|[1-9]\d(?:\.\d+)?|\d(?:\.\d+)?)'
   number_zero_to_one: '\+?(?:0(?:\.\d+)?|1(?:\.0+)?|\.\d+)\b(?!\.)'
   optional_min_max_prefix: '\b(?:min-|max-)?'
@@ -72,7 +72,7 @@ contexts:
     - match: '(?x)
         (?:
           ({{number}})({{angle_unit}})\b|
-          ({{zero}})
+          ({{zero}})(?![-.\w%])
         )'
       captures:
         1: constant.numeric.css
@@ -123,6 +123,7 @@ contexts:
     - include: func-gray
     - include: func-hsla
     - include: func-hue-rotate
+    - include: func-hue
     - include: func-hwb
     - include: func-icc-color
     - include: func-color
@@ -159,7 +160,7 @@ contexts:
     - include: func-translate-z
     - include: func-translate
     - include: func-url
-    - include: func-whiteness-saturation-lightness-hue-blackness
+    - include: func-whiteness-saturation-lightness-blackness
     - include: image
     - include: string
     - include: angle
@@ -534,15 +535,15 @@ contexts:
       scope: support.constant.property-value.css
 
   color:
-    - include: func-rgba
     - include: func-hsla
     - include: func-hwb
     - include: func-gray
     - include: func-device-cmyk
     - include: func-color
+    - include: color-adjuster
+    - include: func-rgba
     - include: icc-color
     - include: color-named
-    - include: color-adjuster
     - include: hex-color
 
   color-adjuster:
@@ -550,7 +551,8 @@ contexts:
     - include: func-tint-shade
     - include: func-contrast
     - include: func-blenda
-    - include: func-whiteness-saturation-lightness-hue-blackness
+    - include: func-hue
+    - include: func-whiteness-saturation-lightness-blackness
     - include: func-red-green-blue-alpha-a
 
   color-adjuster-operator:
@@ -790,6 +792,7 @@ contexts:
     - include: quote
     - include: func-leader
     - include: target
+    - include: func-content
     - include: func-url
     - include: string
 
@@ -831,7 +834,7 @@ contexts:
     - match: '(?x)
         (?:
           ({{number}})({{decibel_unit}})|
-          ({{zero}})
+          ({{zero}})(?![-.\w%])
         )'
       captures:
         1: constant.numeric.css
@@ -1251,6 +1254,7 @@ contexts:
         \b
         (?:
           table|
+          subgrid|
           ruby|
           grid|
           flow-root|
@@ -1368,7 +1372,7 @@ contexts:
     - match: '(?x)
         (?:
           ({{number}})({{flex_unit}})\b|
-          ({{zero}})
+          ({{zero}})(?![-.\w%])
         )'
       captures:
         1: constant.numeric.css
@@ -1383,7 +1387,7 @@ contexts:
     - match: '(?x)
         (?:
           ({{number_non_neg}})({{flex_unit}})\b|
-          ({{zero}})
+          ({{zero}})(?![-.\w%])
         )'
       captures:
         1: constant.numeric.css
@@ -1460,7 +1464,7 @@ contexts:
     - match: '(?x)
         (?:
           ({{number}})({{frequency_unit}})\b|
-          ({{zero}})
+          ({{zero}})(?![-.\w%])
         )'
       captures:
         1: constant.numeric.css
@@ -1608,7 +1612,7 @@ contexts:
         - match: '\b(?:from|at){{b}}'
           scope: support.constant.property-value.css
         - include: position
-        - include: color-stop
+        - include: angular-color-stop
 
   func-content:
     - match: \b(content)(\()
@@ -1766,7 +1770,7 @@ contexts:
         - include: func-var
         - match: '\b(?:start|last|first-except|first){{b}}'
           scope: support.constant.property-value.css
-        - include: identifier
+        - include: selector-id
 
   func-ellipse-circle:
     - match: \b(ellipse|circle)(\()
@@ -1842,6 +1846,18 @@ contexts:
         - include: percentage-zero-to-100
         - include: number  # matches part of <hue> and <alpha-value>
 
+  func-hue:
+    - match: \b(hue|h)(\()
+      captures:
+        1: support.function.hue.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_scope: meta.function.hue.css
+        - include: end-func
+        - include: func-var
+        - include: color-adjuster-operator
+        - include: angle
+
   func-hue-rotate:
     - match: \b(hue-rotate)(\()
       captures:
@@ -1862,8 +1878,8 @@ contexts:
         - meta_scope: meta.function.hwb.css
         - include: end-func
         - include: func-var
-        - include: angle
         - include: percentage-zero-to-100
+        - include: angle
         - include: number  # matches part of <hue> and <alpha-value>
 
   # Additions to CSS Color 4
@@ -2340,7 +2356,7 @@ contexts:
         - match: '{{custom_property_name}}'
           scope: support.type.property-name.custom.css
 
-  func-whiteness-saturation-lightness-hue-blackness:
+  func-whiteness-saturation-lightness-blackness:
     - match: '(?x)
         \b
         (
@@ -2350,17 +2366,15 @@ contexts:
           s|
           lightness|
           l|
-          hue|
-          h|
           blackness|
           b
         )
         (\()'
       captures:
-        1: support.function.whiteness-saturation-lightness-hue-blackness.css
+        1: support.function.whiteness-saturation-lightness-blackness.css
         2: punctuation.section.function.begin.css
       push:
-        - meta_scope: meta.function.whiteness-saturation-lightness-hue-blackness.css
+        - meta_scope: meta.function.whiteness-saturation-lightness-blackness.css
         - include: end-func
         - include: func-var
         - include: percentage
@@ -2471,7 +2485,7 @@ contexts:
     - match: '(?x)
         (?:
           ({{number}})({{length_unit}})\b|
-          ({{zero}})
+          ({{zero}})(?![-.\w%])
         )'
       captures:
         1: constant.numeric.css
@@ -2483,7 +2497,7 @@ contexts:
     - match: '(?x)
         (?:
           ({{number_non_neg}})({{length_unit}})\b|
-          ({{zero}})
+          ({{zero}})(?![-.\w%])
         )'
       captures:
         1: constant.numeric.css
@@ -2495,7 +2509,7 @@ contexts:
     - match: '(?x)
         (?:
           ({{number_pos}})({{length_unit}})\b|
-          ({{zero}})
+          ({{zero}})(?![-.\w%])
         )'
       captures:
         1: constant.numeric.css
@@ -2968,7 +2982,7 @@ contexts:
     - match: '(?x)
         (?:
           ({{number}})({{percentage_unit}})|
-          ({{zero}})
+          ({{zero}})(?![-.\w%])
         )'
       captures:
         1: constant.numeric.css
@@ -2980,7 +2994,7 @@ contexts:
     - match: '(?x)
         (?:
           ({{number_non_neg}})({{percentage_unit}})|
-          ({{zero}})
+          ({{zero}})(?![-.\w%])
         )'
       captures:
         1: constant.numeric.css
@@ -2992,7 +3006,7 @@ contexts:
     - match: '(?x)
         (?:
           ({{number_zero_to_100}})({{percentage_unit}})|
-          ({{zero}})
+          ({{zero}})(?![-.\w%])
         )'
       captures:
         1: constant.numeric.css
@@ -3058,10 +3072,11 @@ contexts:
     - include: property-box-suppress
     - include: property-break-before-after
     - include: property-break-inside
-    # - include: property-caret-color  # TODO: enable when <caret-color> is defined in CSS Basic User Interface Module Level 4
+    - include: property-caret-color
     - include: property-caret-shape
     - include: property-clip-path
     - include: property-clip-rule
+    - include: property-color-adjust
     - include: property-color-interpolation-filters
     - include: property-color-rendering
     - include: property-column-count
@@ -3098,6 +3113,7 @@ contexts:
     - include: property-font-size-adjust
     - include: property-font-stretch
     - include: property-font-style
+    - include: property-font-synthesis
     - include: property-font-variant
     - include: property-font-variant-alternates
     - include: property-font-variant-caps
@@ -3160,6 +3176,7 @@ contexts:
     - include: property-mask-repeat
     - include: property-mask-size
     - include: property-mask-type
+    - include: property-max-lines
     - include: property-mix-blend-mode
     - include: property-motion-offset
     - include: property-motion-path
@@ -3263,6 +3280,7 @@ contexts:
     - include: property-voice-duration
     - include: property-voice-family
     - include: property-voice-range-pitch
+    - include: property-voice-rate
     - include: property-voice-stress
     - include: property-voice-volume
     - include: property-white-space
@@ -4176,19 +4194,20 @@ contexts:
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
-  # TODO: The spec is currently incomplete. It doesn't define what a
-  # <caret-color> is yet.
   # CSS Basic User Interface Module Level 4
-  # property-caret-color:
-  #   - match: \b(caret-color)\s*(:)
-  #     captures:
-  #       1: support.type.property-name.css
-  #       2: punctuation.separator.key-value.css
-  #     push:
-  #       - include: end-value
-  #       - include: value-css-wide
-  #       - include: caret-color
-  #   - include: stray-paren-or-semicolon
+  property-caret-color:
+    - match: \b(caret-color)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.caret-color.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bauto{{b}}'
+          scope: support.constant.property-value.css
+        - include: color
+    - include: stray-paren-or-semicolon
 
   # CSS Basic User Interface Module Level 4
   property-caret-shape:
@@ -4213,8 +4232,10 @@ contexts:
         - meta_content_scope: meta.property-value.caret.css
         - include: end-value
         - include: value-css-wide
+        - match: '\bauto{{b}}'
+          scope: support.constant.property-value.css
         - include: caret-shape
-        # - include: caret-color  # TODO: enable when this is defined in the spec
+        - include: color
     - include: stray-paren-or-semicolon
 
   # CSS Template Layout Module
@@ -4304,6 +4325,20 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: color
+    - include: stray-paren-or-semicolon
+
+  # CSS Color Module Level 4
+  property-color-adjust:
+    - match: \b(color-adjust)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.color-adjust.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:exact|economy){{b}}'
+          scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
   # Filter Effects Module Level 1
@@ -5375,6 +5410,20 @@ contexts:
     - include: stray-paren-or-semicolon
 
   # CSS Fonts Module Level 3
+  property-font-synthesis:
+    - match: \b(font-synthesis)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.font-synthesis.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:weight|style|none){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Fonts Module Level 3
   property-font-variant:
     - match: \b(font-variant)\s*(:)
       captures:
@@ -5562,7 +5611,9 @@ contexts:
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
-  # CSS Grid Layout Module Level 1
+  # grid is defined in two specs:
+  #     CSS Grid Layout Module Level 1
+  #     CSS Template Layout Module
   property-grid:
     - match: \b(grid)\s*(:)
       captures:
@@ -5647,7 +5698,10 @@ contexts:
         - include: track-size
     - include: stray-paren-or-semicolon
 
-  # CSS Grid Layout Module Level 1
+
+  # grid-template-areas is defined in two specs:
+  #     CSS Grid Layout Module Level 1
+  #     CSS Template Layout Module
   property-grid-template-areas:
     - match: \b(grid-template-areas)\s*(:)
       captures:
@@ -5662,7 +5716,9 @@ contexts:
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
-  # CSS Grid Layout Module Level 1
+  # grid-template-rows and grid-template-columns are defined in two specs:
+  #     CSS Grid Layout Module Level 1
+  #     CSS Template Layout Module
   property-grid-template-rows-columns:
     - match: \b(grid-template-rows|grid-template-columns)\s*(:)
       captures:
@@ -5678,7 +5734,9 @@ contexts:
         - include: auto-track-list
     - include: stray-paren-or-semicolon
 
-  # CSS Grid Layout Module Level 1
+  # grid-template is defined in two specs:
+  #     CSS Grid Layout Module Level 1
+  #     CSS Template Layout Module
   property-grid-template:
     - match: \b(grid-template)\s*(:)
       captures:
@@ -6473,6 +6531,21 @@ contexts:
         - include: value-css-wide
         - match: '\b(?:luminance|alpha){{b}}'
           scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Overflow Module Level 4
+  property-max-lines:
+    - match: \b(max-lines)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.max-lines.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
+        - include: integer-positive
     - include: stray-paren-or-semicolon
 
   # Compositing and Blending Level 1
@@ -8445,6 +8518,21 @@ contexts:
     - include: stray-paren-or-semicolon
 
   # CSS Speech Module
+  property-voice-rate:
+    - match: \b(voice-rate)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.voice-rate.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:x-slow|x-fast|slow|normal|medium|fast){{b}}'
+          scope: support.constant.property-value.css
+        - include: percentage-non-negative
+    - include: stray-paren-or-semicolon
+
+  # CSS Speech Module
   property-voice-stress:
     - match: \b(voice-stress)\s*(:)
       captures:
@@ -9075,6 +9163,7 @@ contexts:
         0: entity.other.attribute-name.pseudo-element.css
         1: punctuation.definition.entity.pseudo-element.css
     - include: selector-pseudo-element-slotted
+    - include: selector-pseudo-element-slot-blank
     - include: selector-pseudo-element-attr
     - include: selector-pseudo-element-invalid
 
@@ -9110,6 +9199,19 @@ contexts:
       captures:
         # Don't apply a scope to the whole match so it won't be highlighted.
         1: punctuation.definition.entity.pseudo-element.css
+
+  selector-pseudo-element-slot-blank:
+    - match: '((::)(?:slot|blank))(\()'
+      captures:
+        1: entity.other.attribute-name.pseudo-element.css
+        2: punctuation.definition.entity.pseudo-element.css
+        3: punctuation.section.function.begin.css
+      push:
+        - meta_scope: meta.function.pseudo-element.slot-blank.css
+        - include: end-func
+        - match: '[a-z*.]'
+          scope: string.unquoted.identifier.css
+    - include: stray-paren
 
   selector-pseudo-element-slotted:
     - match: '((::)slotted)(\()'
@@ -9208,7 +9310,7 @@ contexts:
     - match: '(?x)
         (?:
           ({{number}})({{semitones_unit}})\b|
-          ({{zero}})
+          ({{zero}})(?![-.\w%])
         )'
       captures:
         1: constant.numeric.css
@@ -9382,7 +9484,7 @@ contexts:
     - match: '(?x)
         (?:
           ({{number}})({{time_unit}})\b|
-          ({{zero}})
+          ({{zero}})(?![-.\w%])
         )'
       captures:
         1: constant.numeric.css
