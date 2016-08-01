@@ -111,7 +111,7 @@ be using `tool/newfunc_css3.sublime-snippet`. You will add the function
 completion to the top of `completions/types.py`:
 
 ```py
-my-awesome-func = ("my-awesome-func()", "my-awesome-func(${1})")
+my_awesome_func = ("my-awesome-func()", "my-awesome-func(${1})")
 ```
 
 For the function values (when the cursor is between the parentheses), you will
