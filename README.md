@@ -1,6 +1,8 @@
 CSS3
 ====
 
+[![Join the chat at https://gitter.im/y0ssar1an/CSS3](https://badges.gitter.im/y0ssar1an/CSS3.svg)](https://gitter.im/y0ssar1an/CSS3?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 The most complete CSS support for Sublime Text 3.
 
 ## Features
