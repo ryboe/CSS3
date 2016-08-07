@@ -40,11 +40,11 @@ page_margin_boxes = [
 ]
 all_rules = [
     # @-rules that can appear at the top level only.
-    ("@charset", "@charset 'UTF-8';\n"),
+    ("@charset", "@charset 'UTF-8';"),
     ("@color-profile", "@color-profile ${1} {\n\t${2}\n}"),
-    ("@custom-media", "@custom-media --${1:name} ${2:media-query-list};\n"),
-    ("@import", "@import ${1:path} ${2:media-query-list};\n"),
-    ("@namespace", "@namespace ${1};\n"),
+    ("@custom-media", "@custom-media --${1:name} ${2:media-query-list};"),
+    ("@import", "@import ${1:path} ${2:media-query-list};"),
+    ("@namespace", "@namespace ${1};"),
 ] + nestable
 
 all_rules.sort()
