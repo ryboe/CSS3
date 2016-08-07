@@ -1,7 +1,7 @@
 %YAML 1.2
 ---
 name: CSS3
-file_extensions: [css, css.erb]
+file_extensions: [css, css.erb, css.liquid]
 scope: source.css
 
 variables:
