@@ -59,6 +59,7 @@ variables:
 
 contexts:
   main:
+    - include: comment
     - include: nestable-at-rules
     - include: at-color-profile
     - include: at-custom-media
