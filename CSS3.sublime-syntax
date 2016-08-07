@@ -8843,7 +8843,7 @@ contexts:
   #     property2: value2;
   # }
   rule:
-    - match: '(?=[\w.:#-\[*])'
+    - match: '(?=[\w.:#\[*-])'
       push:
         - meta_scope: meta.rule.css
         - match: '}'
