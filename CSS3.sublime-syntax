@@ -3099,6 +3099,7 @@ contexts:
     - include: property-counter-set-reset-increment
     - include: property-cue-before-after
     - include: property-dominant-baseline
+    - include: property-empty-cells
     - include: property-fill-opacity
     - include: property-fill-rule
     - include: property-flex-basis
@@ -4936,6 +4937,20 @@ contexts:
               alphabetic
             )
             {{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS2.1
+  property-empty-cells:
+    - match: \b(empty-cells)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.empty-cells.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:show|hide){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
