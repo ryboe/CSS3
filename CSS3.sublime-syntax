@@ -1528,15 +1528,13 @@ contexts:
         2: punctuation.section.function.begin.css
       push:
         - meta_scope: meta.function.calc.css
+        - match: '\('
+          push:
+            - match: '\)'
+              pop: true
+            - include: value-calc
         - include: end-func
-        - include: func-var
-        - include: length
-        - include: frequency
-        - include: angle
-        - include: time
-        - include: percentage
-        - include: number
-        - include: arithmetic-operator
+        - include: value-calc
 
   func-child:
     - match: \b(child)(\()
@@ -9577,6 +9575,16 @@ contexts:
         )
         {{b}}'
       scope: support.constant.property-value.css
+
+  value-calc:
+    - include: func-var
+    - include: length
+    - include: frequency
+    - include: angle
+    - include: time
+    - include: percentage
+    - include: number
+    - include: arithmetic-operator
 
   # This context matches CSS-wide keywords and functions, like "inherit",
   # "var()", and "!important". It should be included in all property contexts.
