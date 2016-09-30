@@ -945,8 +945,9 @@ name_to_completions = {
     "grid-template-rows-columns": [("none",)] + t.auto_track_list + t.track_list,
     "grid-template": [
         ("none",),
+        t.line_names,
         t.string,
-    ] + t.auto_track_list + t.track_list,
+    ] + t.fixed_size + t.track_size,
     "hanging-punctuation": [
         ("allow-end",),
         ("first",),

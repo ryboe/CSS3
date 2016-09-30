@@ -5784,8 +5784,9 @@ contexts:
         - include: string
         - match: '\bnone{{b}}'
           scope: support.constant.property-value.css
-        - include: track-list
-        - include: auto-track-list
+        - include: track-size
+        - include: line-names
+        - include: fixed-size
     - include: stray-paren-or-semicolon
 
   # CSS Text Module Level 3
