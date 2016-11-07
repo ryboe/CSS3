@@ -3219,9 +3219,9 @@ contexts:
     - include: property-ruby-merge
     - include: property-ruby-position
     - include: property-scroll-behavior
+    - include: property-scroll-padding
     - include: property-scroll-snap-align
     - include: property-scroll-snap-margin
-    - include: property-scroll-snap-padding
     - include: property-scroll-snap-stop
     - include: property-scroll-snap-type
     - include: property-shape-image-threshold
@@ -7310,6 +7310,35 @@ contexts:
     - include: stray-paren-or-semicolon
 
   # CSS Scroll Snap Module Level 1
+  property-scroll-padding:
+    - match: '(?x)
+        \b
+        (
+          scroll-padding-top|
+          scroll-padding-right|
+          scroll-padding-left|
+          scroll-padding-inline-start|
+          scroll-padding-inline-end|
+          scroll-padding-inline|
+          scroll-padding-bottom|
+          scroll-padding-block-start|
+          scroll-padding-block-end|
+          scroll-padding-block|
+          scroll-padding
+        )
+        \s*(:)'
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.scroll-padding.css
+        - include: end-value
+        - include: value-css-wide
+        - include: percentage
+        - include: length
+    - include: stray-paren-or-semicolon
+
+  # CSS Scroll Snap Module Level 1
   property-scroll-snap-align:
     - match: \b(scroll-snap-align)\s*(:)
       captures:
@@ -7352,35 +7381,6 @@ contexts:
     - include: stray-paren-or-semicolon
 
   # CSS Scroll Snap Module Level 1
-  property-scroll-snap-padding:
-    - match: '(?x)
-        \b
-        (
-          scroll-snap-padding-top|
-          scroll-snap-padding-right|
-          scroll-snap-padding-left|
-          scroll-snap-padding-inline-start|
-          scroll-snap-padding-inline-end|
-          scroll-snap-padding-inline|
-          scroll-snap-padding-bottom|
-          scroll-snap-padding-block-start|
-          scroll-snap-padding-block-end|
-          scroll-snap-padding-block|
-          scroll-snap-padding
-        )
-        \s*(:)'
-      captures:
-        1: support.type.property-name.css
-        2: punctuation.separator.key-value.css
-      push:
-        - meta_content_scope: meta.property-value.scroll-snap-padding.css
-        - include: end-value
-        - include: value-css-wide
-        - include: percentage
-        - include: length
-    - include: stray-paren-or-semicolon
-
-  # CSS Scroll Snap Module Level 1
   property-scroll-snap-stop:
     - match: \b(scroll-snap-stop)\s*(:)
       captures:
@@ -7404,7 +7404,7 @@ contexts:
         - meta_content_scope: meta.property-value.scroll-snap-type.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:y|x|proximity|point|none|mandatory|inline|both|block){{b}}'
+        - match: '\b(?:y|x|proximity|none|mandatory|inline|both|block){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
