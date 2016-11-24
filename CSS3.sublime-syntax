@@ -8797,11 +8797,12 @@ contexts:
         - meta_scope: meta.property-list.css
         - match: '(?=})'
           pop: true
-        - match: '(?=&)'
+        - match: '(?=@nest|@media|&)'
           push:
             - match: '(?=})'
               scope: punctuation.section.property-list.end.css
               pop: true
+            - include: at-media
             - include: rule
         - include: properties
 
@@ -8863,7 +8864,7 @@ contexts:
   #     property2: value2;
   # }
   rule:
-    - match: '(?=[\w.:#\[*-&])'
+    - match: '(?=[\w.:#\[*-&]|@nest)'
       push:
         - meta_scope: meta.rule.css
         - match: '}'
@@ -8876,7 +8877,7 @@ contexts:
   selector:
     # This match applies a single meta.selector.css scope to a comma-separated
     # list of selectors, so that they appear as one entry in the Symbol List.
-    - match: '(?=[\w.:#\[*-&])'
+    - match: '(?=[\w.:#\[*-&]|@nest)'
       push:
         - meta_content_scope: meta.selector.css
         - match: '(?={)'
@@ -8951,6 +8952,10 @@ contexts:
   selector-nesting:
     - match: '&'
       scope: entity.name.tag.nesting-selector.css
+    - match: '(@)nest{{b}}'
+      captures:
+        0: keyword.control.at-rule.nest.css
+        1: punctuation.definition.keyword.css
 
   selector-page:
     # This rule prevents identifier from matching text after the ':' while you're
