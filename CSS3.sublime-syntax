@@ -8797,6 +8797,12 @@ contexts:
         - meta_scope: meta.property-list.css
         - match: '(?=})'
           pop: true
+        - match: '(?=&)'
+          push:
+            - match: '(?=})'
+              scope: punctuation.section.property-list.end.css
+              pop: true
+            - include: rule
         - include: properties
 
   prototype:
@@ -8857,20 +8863,20 @@ contexts:
   #     property2: value2;
   # }
   rule:
-    - match: '(?=[\w.:#\[*-])'
+    - match: '(?=[\w.:#\[*-&])'
       push:
         - meta_scope: meta.rule.css
         - match: '}'
           scope: punctuation.section.property-list.end.css
           pop: true
-        - include: selector
         - include: property-list
+        - include: selector
     - include: stray-brace
 
   selector:
     # This match applies a single meta.selector.css scope to a comma-separated
     # list of selectors, so that they appear as one entry in the Symbol List.
-    - match: '(?=[\w.:#-\[*])'
+    - match: '(?=[\w.:#\[*-&])'
       push:
         - meta_content_scope: meta.selector.css
         - match: '(?={)'
@@ -8878,6 +8884,7 @@ contexts:
         - include: selector-list
 
   selector-list:
+    - include: selector-nesting
     - include: selector-simple-compound
     - include: selector-combinator
 
@@ -8940,6 +8947,10 @@ contexts:
     - match: '\b(?:to|from){{b}}'
       scope: entity.other.attribute-name.keyframes-selector.css
     - include: percentage-zero-to-100
+
+  selector-nesting:
+    - match: '&'
+      scope: entity.name.tag.nesting-selector.css
 
   selector-page:
     # This rule prevents identifier from matching text after the ':' while you're
