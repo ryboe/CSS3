@@ -1,0 +1,349 @@
+/* SYNTAX TEST "Packages/CSS3/CSS3.sublime-syntax" */
+
+/* From PostCSS-cssnext page: http://cssnext.io/features/#nesting */
+a {
+/* <- meta.rule.css meta.selector.css entity.name.tag.css */
+/*^ meta.rule.css punctuation.section.property-list.begin.css */
+  /* direct nesting (& MUST be the first part of selector)*/
+  & span {
+/*^ meta.rule.css meta.selector.css entity.name.tag.nesting-selector.css */
+/* ^ meta.rule.css meta.selector.css */
+/*  ^^^^ meta.rule.css meta.selector.css entity.name.tag.css */
+/*      ^ meta.rule.css meta.selector.css */
+/*       ^ meta.rule.css punctuation.section.property-list.begin.css*/
+    color: white;
+/*  ^^^^^ meta.rule.css support.type.property-name.css -meta.selector.css */
+/*       ^ meta.rule.css punctuation.separator.key-value.css -meta.selector.css */
+/*         ^^^^^ meta.rule.css support.constant.color.w3c-color-name.css */
+/*              ^ meta.rule.css punctuation.terminator.rule.css -meta.selector.css */
+  }
+/*^ meta.rule.css punctuation.section.property-list.end.css -meta.selector.css */
+
+  /* @nest rule (for complex nesting) */
+  @nest span & {
+/*^ meta.rule.css meta.selector.css keyword.control.at-rule.nest.css punctuation.definition.keyword.css */
+/* ^^^^ meta.rule.css meta.selector.css keyword.control.at-rule.nest.css */
+/*      ^^^^ meta.rule.css meta.selector.css entity.name.tag.css */
+/*           ^ meta.rule.css meta.selector.css entity.name.tag.nesting-selector.css */
+/*             ^ meta.rule.css punctuation.section.property-list.begin.css*/
+    color: blue;
+/*  ^^^^^ meta.rule.css support.type.property-name.css -meta.selector.css */
+/*       ^ meta.rule.css punctuation.separator.key-value.css -meta.selector.css */
+/*         ^^^^ meta.rule.css support.constant.color.w3c-color-name.css */
+/*             ^ meta.rule.css punctuation.terminator.rule.css -meta.selector.css */
+  }
+/*^ meta.rule.css punctuation.section.property-list.end.css -meta.selector.css */
+
+  /* media query automatic nesting */
+  @media (min-width: 30em) {
+/*^ keyword.control.at-rule.media.css punctuation.definition.keyword.css */
+/* ^^^^^ keyword.control.at-rule.media.css */
+/*      ^ -keyword.control.at-rule.media.css */
+/*       ^ punctuation.section.media-feature.begin.css */
+/*        ^^^^^^^^^ support.type.property-name.css */
+/*                 ^ punctuation.separator.key-value.css */
+/*                   ^^ constant.numeric.css */
+/*                     ^^ keyword.other.unit.css */
+/*                       ^ punctuation.section.media-feature.end.css */
+/*                         ^ punctuation.section.at-media.begin.css */
+    color: yellow;
+/*  ^^^^^ meta.rule.css support.type.property-name.css -meta.selector.css */
+/*       ^ meta.rule.css punctuation.separator.key-value.css -meta.selector.css */
+/*         ^^^^^^ meta.rule.css support.constant.color.w3c-color-name.css */
+/*               ^ meta.rule.css punctuation.terminator.rule.css -meta.selector.css */
+  }
+/*^ meta.rule.css punctuation.section.at-media.end.css -meta.selector.css */
+}
+/* <- meta.rule.css punctuation.section.property-list.end.css -meta.selector.css */
+
+/* From Tab Atkins preliminary spec: http://tabatkins.github.io/specs/css-nesting/ */
+table.colortable {
+/* <- meta.rule.css meta.selector.css entity.name.tag.css */
+ /* <- meta.rule.css meta.selector.css entity.name.tag.css */
+/*^^^ meta.rule.css meta.selector.css entity.name.tag.css */
+/*   ^ meta.rule.css meta.selector.css entity.other.attribute-name.class.css punctuation.definition.entity.css */
+/*    ^^^^^^^^^^ meta.rule.css meta.selector.css entity.other.attribute-name.class.css */
+/*              ^ meta.rule.css meta.selector.css */
+/*               ^ meta.rule.css punctuation.section.property-list.begin.css */
+  & td {
+/*^ meta.rule.css meta.selector.css entity.name.tag.nesting-selector.css */
+/* ^ meta.rule.css meta.selector.css */
+/*  ^^ meta.rule.css meta.selector.css entity.name.tag.css */
+/*    ^ meta.rule.css meta.selector.css */
+/*     ^ meta.rule.css punctuation.section.property-list.begin.css*/
+    text-align:center;
+/*  ^^^^^^^^^^ meta.rule.css support.type.property-name.css -meta.selector.css */
+/*            ^ meta.rule.css punctuation.separator.key-value.css -meta.selector.css */
+/*             ^^^^^^ meta.rule.css support.constant.property-value.css -meta.selector.css */
+/*                   ^ meta.rule.css punctuation.terminator.rule.css -meta.selector.css */
+    &.c { text-transform:uppercase }
+/*  ^ meta.rule.css meta.selector.css entity.name.tag.nesting-selector.css */
+/*   ^ meta.rule.css meta.selector.css entity.other.attribute-name.class.css punctuation.definition.entity.css */
+/*    ^ meta.rule.css meta.selector.css entity.other.attribute-name.class.css */
+/*     ^ meta.rule.css meta.selector.css */
+/*      ^ meta.rule.css punctuation.section.property-list.begin.css */
+/*        ^^^^^^^^^^^^^^ meta.rule.css support.type.property-name.css -meta.selector.css */
+/*                      ^ meta.rule.css punctuation.separator.key-value.css -meta.selector.css */
+/*                       ^^^^^^^^^ meta.rule.css support.constant.property-value.css -meta.selector.css */
+/*                                 ^ meta.rule.css punctuation.section.property-list.end.css -meta.selector.css */
+    &:first-child, &:first-child + td { border:1px solid black }
+/*  ^ meta.rule.css meta.selector.css entity.name.tag.nesting-selector.css */
+/*   ^ meta.rule.css meta.selector.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.pseudo-class.css */
+/*    ^^^^^^^^^^^ meta.rule.css meta.selector.css entity.other.attribute-name.pseudo-class.css */
+/*                 ^ meta.rule.css meta.selector.css entity.name.tag.nesting-selector.css */
+/*                  ^ meta.rule.css meta.selector.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.pseudo-class.css */
+/*                   ^^^^^^^^^^^ meta.rule.css meta.selector.css entity.other.attribute-name.pseudo-class.css */
+/*                               ^ meta.rule.css meta.selector.css keyword.operator.combinator.css */
+/*                                 ^^ meta.rule.css meta.selector.css entity.name.tag.css */
+/*                                    ^ meta.rule.css punctuation.section.property-list.begin.css */
+/*                                      ^^^^^^ meta.rule.css support.type.property-name.css -meta.selector.css */
+/*                                            ^ meta.rule.css punctuation.separator.key-value.css -meta.selector.css */
+/*                                             ^ meta.rule.css constant.numeric.css -meta.selector.css */
+/*                                              ^^ meta.rule.css keyword.other.unit.css -meta.selector.css */
+/*                                                 ^^^^^ meta.rule.css support.constant.property-value.css -meta.selector.css */
+/*                                                       ^^^^^ meta.rule.css support.constant.color.w3c-color-name.css */
+/*                                                             ^ meta.rule.css punctuation.section.property-list.end.css -meta.selector.css */
+
+  }
+/*^ meta.rule.css punctuation.section.property-list.end.css -meta.selector.css */
+  & th {
+/*^ meta.rule.css meta.selector.css entity.name.tag.nesting-selector.css */
+/* ^ meta.rule.css meta.selector.css */
+/*  ^^ meta.rule.css meta.selector.css entity.name.tag.css */
+/*    ^ meta.rule.css meta.selector.css */
+/*     ^ meta.rule.css punctuation.section.property-list.begin.css*/
+    text-align:center;
+/*  ^^^^^^^^^^ meta.rule.css support.type.property-name.css -meta.selector.css */
+/*            ^ meta.rule.css punctuation.separator.key-value.css -meta.selector.css */
+/*             ^^^^^^ meta.rule.css support.constant.property-value.css -meta.selector.css */
+/*                   ^ meta.rule.css punctuation.terminator.rule.css -meta.selector.css */
+    background:black;
+/*  ^^^^^^^^^^ meta.rule.css support.type.property-name.css -meta.selector.css */
+/*            ^ meta.rule.css punctuation.separator.key-value.css -meta.selector.css */
+/*             ^^^^^ meta.rule.css support.constant.color.w3c-color-name.css */
+/*                  ^ meta.rule.css punctuation.terminator.rule.css -meta.selector.css */
+    color:white;
+/*  ^^^^^ meta.rule.css support.type.property-name.css -meta.selector.css */
+/*       ^ meta.rule.css punctuation.separator.key-value.css -meta.selector.css */
+/*        ^^^^^ meta.rule.css support.constant.color.w3c-color-name.css */
+/*             ^ meta.rule.css punctuation.terminator.rule.css -meta.selector.css */
+  }
+/*^ meta.rule.css punctuation.section.property-list.end.css -meta.selector.css */
+}
+/* <- meta.rule.css punctuation.section.property-list.end.css -meta.selector.css */
+
+a, b {
+/* <- meta.rule.css meta.selector.css entity.name.tag.css */
+ /* <- meta.rule.css meta.selector.css */
+/* ^ meta.rule.css meta.selector.css entity.name.tag.css */
+/*  ^ meta.rule.css meta.selector.css */
+/*   ^ meta.rule.css punctuation.section.property-list.begin.css*/
+  & c { color: blue; }
+/*^ meta.rule.css meta.selector.css entity.name.tag.nesting-selector.css */
+/* ^ meta.rule.css meta.selector.css */
+/*  ^ meta.rule.css meta.selector.css entity.name.tag.css */
+/*   ^ meta.rule.css meta.selector.css */
+/*    ^ meta.rule.css punctuation.section.property-list.begin.css*/
+/*      ^^^^^ meta.rule.css support.type.property-name.css -meta.selector.css */
+/*           ^ meta.rule.css punctuation.separator.key-value.css -meta.selector.css */
+/*             ^^^^ meta.rule.css support.constant.color.w3c-color-name.css */
+/*                 ^ meta.rule.css punctuation.terminator.rule.css -meta.selector.css */
+/*                   ^ meta.rule.css punctuation.section.property-list.end.css -meta.selector.css */
+}
+/* <- meta.rule.css punctuation.section.property-list.end.css -meta.selector.css */
+
+.foo {
+/* <- meta.rule.css meta.selector.css entity.other.attribute-name.class.css punctuation.definition.entity.css */
+ /* <- meta.rule.css meta.selector.css entity.other.attribute-name.class.css */
+/*^^ meta.rule.css meta.selector.css entity.other.attribute-name.class.css */
+/*   ^ meta.rule.css punctuation.section.property-list.begin.css*/
+  color: blue;
+/*^^^^^ meta.rule.css support.type.property-name.css -meta.selector.css */
+/*     ^ meta.rule.css punctuation.separator.key-value.css -meta.selector.css */
+/*       ^^^^ meta.rule.css support.constant.color.w3c-color-name.css */
+/*           ^ meta.rule.css punctuation.terminator.rule.css -meta.selector.css */
+  & > .bar { color: red; }
+/*^ meta.rule.css meta.selector.css entity.name.tag.nesting-selector.css */
+/* ^ meta.rule.css meta.selector.css */
+/*  ^ meta.rule.css meta.selector.css keyword.operator.combinator.css */
+/*    ^ meta.rule.css meta.selector.css entity.other.attribute-name.class.css punctuation.definition.entity.css */
+/*     ^^^ meta.rule.css meta.selector.css entity.other.attribute-name.class.css */
+/*         ^ meta.rule.css punctuation.section.property-list.begin.css*/
+/*           ^^^^^ meta.rule.css support.type.property-name.css -meta.selector.css */
+/*                ^ meta.rule.css punctuation.separator.key-value.css -meta.selector.css */
+/*                  ^^^ meta.rule.css support.constant.color.w3c-color-name.css */
+/*                     ^ meta.rule.css punctuation.terminator.rule.css -meta.selector.css */
+/*                       ^ meta.rule.css punctuation.section.property-list.end.css -meta.selector.css */
+}
+/* <- meta.rule.css punctuation.section.property-list.end.css -meta.selector.css */
+
+.foo {
+/* <- meta.rule.css meta.selector.css entity.other.attribute-name.class.css punctuation.definition.entity.css */
+ /* <- meta.rule.css meta.selector.css entity.other.attribute-name.class.css */
+/*^^ meta.rule.css meta.selector.css entity.other.attribute-name.class.css */
+/*   ^ meta.rule.css punctuation.section.property-list.begin.css*/
+  color: blue;
+/*^^^^^ meta.rule.css support.type.property-name.css -meta.selector.css */
+/*     ^ meta.rule.css punctuation.separator.key-value.css -meta.selector.css */
+/*       ^^^^ meta.rule.css support.constant.color.w3c-color-name.css */
+/*           ^ meta.rule.css punctuation.terminator.rule.css -meta.selector.css */
+  &.bar { color: red; }
+/*^ meta.rule.css meta.selector.css entity.name.tag.nesting-selector.css */
+/* ^ meta.rule.css meta.selector.css entity.other.attribute-name.class.css punctuation.definition.entity.css */
+/*  ^^^ meta.rule.css meta.selector.css entity.other.attribute-name.class.css */
+/*      ^ meta.rule.css punctuation.section.property-list.begin.css*/
+/*        ^^^^^ meta.rule.css support.type.property-name.css -meta.selector.css */
+/*             ^ meta.rule.css punctuation.separator.key-value.css -meta.selector.css */
+/*               ^^^ meta.rule.css support.constant.color.w3c-color-name.css */
+/*                  ^ meta.rule.css punctuation.terminator.rule.css -meta.selector.css */
+/*                    ^ meta.rule.css punctuation.section.property-list.end.css -meta.selector.css */
+}
+/* <- meta.rule.css punctuation.section.property-list.end.css -meta.selector.css */
+
+.foo, .bar {
+/* <- meta.rule.css meta.selector.css entity.other.attribute-name.class.css punctuation.definition.entity.css */
+ /* <- meta.rule.css meta.selector.css entity.other.attribute-name.class.css */
+/*^^ meta.rule.css meta.selector.css entity.other.attribute-name.class.css */
+/*    ^ meta.rule.css meta.selector.css entity.other.attribute-name.class.css punctuation.definition.entity.css */
+/*     ^^^ meta.rule.css meta.selector.css entity.other.attribute-name.class.css */
+/*         ^ meta.rule.css punctuation.section.property-list.begin.css*/
+  color: blue;
+/*^^^^^ meta.rule.css support.type.property-name.css -meta.selector.css */
+/*     ^ meta.rule.css punctuation.separator.key-value.css -meta.selector.css */
+/*       ^^^^ meta.rule.css support.constant.color.w3c-color-name.css */
+/*           ^ meta.rule.css punctuation.terminator.rule.css -meta.selector.css */
+  & + .baz, &.qux { color: red; }
+/*^ meta.rule.css meta.selector.css entity.name.tag.nesting-selector.css */
+/*  ^ meta.rule.css meta.selector.css keyword.operator.combinator.css */
+/*    ^ meta.rule.css meta.selector.css entity.other.attribute-name.class.css punctuation.definition.entity.css */
+/*     ^^^ meta.rule.css meta.selector.css entity.other.attribute-name.class.css */
+/*          ^ meta.rule.css meta.selector.css entity.name.tag.nesting-selector.css */
+/*           ^ meta.rule.css meta.selector.css entity.other.attribute-name.class.css punctuation.definition.entity.css */
+/*            ^^^ meta.rule.css meta.selector.css entity.other.attribute-name.class.css */
+/*                ^ meta.rule.css punctuation.section.property-list.begin.css*/
+/*                  ^^^^^ meta.rule.css support.type.property-name.css -meta.selector.css */
+/*                       ^ meta.rule.css punctuation.separator.key-value.css -meta.selector.css */
+/*                         ^^^ meta.rule.css support.constant.color.w3c-color-name.css */
+/*                            ^ meta.rule.css punctuation.terminator.rule.css -meta.selector.css */
+/*                              ^ meta.rule.css punctuation.section.property-list.end.css -meta.selector.css */
+}
+/* <- meta.rule.css punctuation.section.property-list.end.css -meta.selector.css */
+
+.foo {
+/* <- meta.rule.css meta.selector.css entity.other.attribute-name.class.css punctuation.definition.entity.css */
+ /* <- meta.rule.css meta.selector.css entity.other.attribute-name.class.css */
+/*^^ meta.rule.css meta.selector.css entity.other.attribute-name.class.css */
+/*   ^ meta.rule.css punctuation.section.property-list.begin.css*/
+  color: red;
+/*^^^^^ meta.rule.css support.type.property-name.css -meta.selector.css */
+/*     ^ meta.rule.css punctuation.separator.key-value.css -meta.selector.css */
+/*       ^^^ meta.rule.css support.constant.color.w3c-color-name.css */
+/*          ^ meta.rule.css punctuation.terminator.rule.css -meta.selector.css */
+  @nest & > .bar {
+/*^ meta.rule.css meta.selector.css keyword.control.at-rule.nest.css punctuation.definition.keyword.css */
+/* ^^^^ meta.rule.css meta.selector.css keyword.control.at-rule.nest.css */
+/*      ^ meta.rule.css meta.selector.css entity.name.tag.nesting-selector.css */
+/*        ^ meta.rule.css meta.selector.css keyword.operator.combinator.css */
+/*          ^ meta.rule.css meta.selector.css entity.other.attribute-name.class.css punctuation.definition.entity.css */
+/*           ^^^ meta.rule.css meta.selector.css entity.other.attribute-name.class.css */
+    color: blue;
+/*  ^^^^^ meta.rule.css support.type.property-name.css -meta.selector.css */
+/*       ^ meta.rule.css punctuation.separator.key-value.css -meta.selector.css */
+/*         ^^^^ meta.rule.css support.constant.color.w3c-color-name.css */
+/*             ^ meta.rule.css punctuation.terminator.rule.css -meta.selector.css */
+  }
+/*^ meta.rule.css punctuation.section.property-list.end.css -meta.selector.css */
+}
+/* <- meta.rule.css punctuation.section.property-list.end.css -meta.selector.css */
+
+.foo {
+/* <- meta.rule.css meta.selector.css entity.other.attribute-name.class.css punctuation.definition.entity.css */
+ /* <- meta.rule.css meta.selector.css entity.other.attribute-name.class.css */
+/*^^ meta.rule.css meta.selector.css entity.other.attribute-name.class.css */
+/*   ^ meta.rule.css punctuation.section.property-list.begin.css*/
+  color: red;
+/*^^^^^ meta.rule.css support.type.property-name.css -meta.selector.css */
+/*     ^ meta.rule.css punctuation.separator.key-value.css -meta.selector.css */
+/*       ^^^ meta.rule.css support.constant.color.w3c-color-name.css */
+/*          ^ meta.rule.css punctuation.terminator.rule.css -meta.selector.css */
+  @nest .parent & {
+/*^ meta.rule.css meta.selector.css keyword.control.at-rule.nest.css punctuation.definition.keyword.css */
+/* ^^^^ meta.rule.css meta.selector.css keyword.control.at-rule.nest.css */
+/*      ^ meta.rule.css meta.selector.css entity.other.attribute-name.class.css punctuation.definition.entity.css */
+/*       ^^^^^^ meta.rule.css meta.selector.css entity.other.attribute-name.class.css */
+/*              ^ meta.rule.css meta.selector.css entity.name.tag.nesting-selector.css */
+/*                ^ meta.rule.css punctuation.section.property-list.begin.css*/
+    color: blue;
+/*  ^^^^^ meta.rule.css support.type.property-name.css -meta.selector.css */
+/*       ^ meta.rule.css punctuation.separator.key-value.css -meta.selector.css */
+/*         ^^^^ meta.rule.css support.constant.color.w3c-color-name.css */
+/*             ^ meta.rule.css punctuation.terminator.rule.css -meta.selector.css */
+  }
+/*^ meta.rule.css punctuation.section.property-list.end.css -meta.selector.css */
+}
+/* <- meta.rule.css punctuation.section.property-list.end.css -meta.selector.css */
+
+.foo {
+/* <- meta.rule.css meta.selector.css entity.other.attribute-name.class.css punctuation.definition.entity.css */
+ /* <- meta.rule.css meta.selector.css entity.other.attribute-name.class.css */
+/*^^ meta.rule.css meta.selector.css entity.other.attribute-name.class.css */
+/*   ^ meta.rule.css punctuation.section.property-list.begin.css*/
+  color: red;
+/*^^^^^ meta.rule.css support.type.property-name.css -meta.selector.css */
+/*     ^ meta.rule.css punctuation.separator.key-value.css -meta.selector.css */
+/*       ^^^ meta.rule.css support.constant.color.w3c-color-name.css */
+/*          ^ meta.rule.css punctuation.terminator.rule.css -meta.selector.css */
+  @nest :not(&) {
+/*^ meta.rule.css meta.selector.css keyword.control.at-rule.nest.css punctuation.definition.keyword.css */
+/* ^^^^ meta.rule.css meta.selector.css keyword.control.at-rule.nest.css */
+/*      ^ meta.rule.css meta.selector.css entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.pseudo-class.css */
+/*       ^^^ meta.rule.css meta.selector.css entity.other.attribute-name.pseudo-class.css */
+/*          ^ meta.rule.css meta.selector.css punctuation.section.function.begin.css */
+/*           ^ meta.rule.css meta.selector.css entity.name.tag.nesting-selector.css */
+/*            ^ meta.rule.css meta.selector.css punctuation.section.function.end.css */
+    color: blue;
+/*  ^^^^^ meta.rule.css support.type.property-name.css -meta.selector.css */
+/*       ^ meta.rule.css punctuation.separator.key-value.css -meta.selector.css */
+/*         ^^^^ meta.rule.css support.constant.color.w3c-color-name.css */
+/*             ^ meta.rule.css punctuation.terminator.rule.css -meta.selector.css */
+  }
+/*^ meta.rule.css punctuation.section.property-list.end.css -meta.selector.css */
+}
+/* <- meta.rule.css punctuation.section.property-list.end.css -meta.selector.css */
+
+/* INVALID */
+.foo {
+  color: red;
+  .bar { color: blue; }
+}
+/* Invalid because there’s no nesting selector */
+
+.foo {
+  color: red;
+  .bar & { color:blue; }
+}
+/* Invalid because & isn’t in the first compound selector */
+
+.foo {
+  color: red;
+  &.bar, .baz { color: blue; }
+}
+/* Invalid because the second selector in the list doesn’t
+   contain a nesting selector. */
+
+.foo {
+  color: red;
+  @nest .bar {
+    color: blue;
+  }
+}
+/* Invalid because there’s no nesting selector */
+
+.foo {
+  color: red;
+  @nest & .bar, .baz {
+    color: blue;
+  }
+}
+/* Invalid because not all selectors in the list
+   contain a nesting selector */
