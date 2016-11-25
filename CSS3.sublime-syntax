@@ -62,6 +62,7 @@ contexts:
     - include: comment
     - include: nestable-at-rules
     - include: at-color-profile
+    - include: at-custom-selector
     - include: at-custom-media
     - include: at-namespace
     - include: at-charset
@@ -277,6 +278,20 @@ contexts:
           scope: support.constant.property-value.css
         - include: media-feature
         - include: media-feature-custom
+    - include: stray-semicolon
+
+  at-custom-selector:
+    - match: '(@)custom-selector{{b}}'
+      captures:
+        0: keyword.control.at-rule.custom-selector.css
+        1: punctuation.definition.keyword.css
+      push:
+        - meta_scope: meta.at-rule.custom-selector.css
+        - match: ';'
+          scope: punctuation.terminator.custom-selector.css
+          pop: true
+        - include: selector-custom
+        - include: selector-list
     - include: stray-semicolon
 
   at-font-face:
@@ -8886,6 +8901,7 @@ contexts:
 
   selector-list:
     - include: selector-nesting
+    - include: selector-custom
     - include: selector-simple-compound
     - include: selector-combinator
 
@@ -8937,6 +8953,12 @@ contexts:
       scope: keyword.operator.combinator.css
     - match: '{{combinator}}{2,}'
       scope: keyword.operator.combinator.css invalid.illegal.combinator.css
+
+  selector-custom:
+    - match: '(:--){{identifier}}'
+      captures:
+        0: string.unquoted.custom-selector.css
+        1: punctuation.definition.entity.css
 
   selector-id:
     - match: '(#){{identifier}}'

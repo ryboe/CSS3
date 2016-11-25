@@ -1,0 +1,52 @@
+/* SYNTAX TEST "Packages/CSS3/CSS3.sublime-syntax" */
+
+/* From PostCSS-cssnext page: http://cssnext.io/features/#custom-selectors */
+@custom-selector :--button button, .button;
+/* <- keyword.control.at-rule.custom-selector.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.custom-selector.css */
+/*^^^^^^^^^^^^^^ keyword.control.at-rule.custom-selector.css */
+/*              ^ -keyword.control.at-rule.custom-selector.css */
+/*               ^^^ string.unquoted.custom-selector.css punctuation.definition.entity.css */
+/*                  ^^^^^^ string.unquoted.custom-selector.css */
+/*                         ^^^^^^ entity.name.tag.css */
+/*                                 ^ entity.other.attribute-name.class.css punctuation.definition.entity.css */
+/*                                  ^^^^^^ entity.other.attribute-name.class.css */
+/*                                        ^ punctuation.terminator.custom-selector.css */
+@custom-selector :--enter :hover, :focus;
+/* <- keyword.control.at-rule.custom-selector.css punctuation.definition.keyword.css */
+ /* <- keyword.control.at-rule.custom-selector.css */
+/*^^^^^^^^^^^^^^ keyword.control.at-rule.custom-selector.css */
+/*              ^ -keyword.control.at-rule.custom-selector.css */
+/*               ^^^ string.unquoted.custom-selector.css punctuation.definition.entity.css */
+/*                  ^^^^^ string.unquoted.custom-selector.css */
+/*                        ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.pseudo-class.css */
+/*                         ^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*                                ^ entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.pseudo-class.css */
+/*                                 ^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*                                      ^ punctuation.terminator.custom-selector.css */
+
+:--button {
+/* <- string.unquoted.custom-selector.css punctuation.definition.entity.css */
+ /* <- string.unquoted.custom-selector.css punctuation.definition.entity.css */
+/*^ string.unquoted.custom-selector.css punctuation.definition.entity.css */
+/* ^^^^^^ string.unquoted.custom-selector.css */
+/*        ^ punctuation.section.property-list.begin.css */
+  /* styles for your buttons */
+}
+/* <- punctuation.section.property-list.end.css */
+:--button:--enter {
+/* <- string.unquoted.custom-selector.css punctuation.definition.entity.css */
+ /* <- string.unquoted.custom-selector.css punctuation.definition.entity.css */
+/*^ string.unquoted.custom-selector.css punctuation.definition.entity.css */
+/* ^^^^^^ string.unquoted.custom-selector.css */
+/*       ^^^ string.unquoted.custom-selector.css punctuation.definition.entity.css */
+/*          ^^^^^ string.unquoted.custom-selector.css */
+/*                ^ punctuation.section.property-list.begin.css */
+  /*
+    hover/focus styles for your button
+
+    Read more about :enter proposal
+    http://discourse.specifiction.org/t/a-common-pseudo-class-for-hover-and-focus/877
+   */
+}
+/* <- punctuation.section.property-list.end.css */
