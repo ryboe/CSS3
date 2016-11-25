@@ -64,7 +64,7 @@ class CSS3Completions(sublime_plugin.EventListener):
             return handle_property_value_completions(view, start - 1)
 
         # PROPERTY NAMES
-        if view.match_selector(start, "meta.declaration-list.css -meta.property-value."):
+        if view.match_selector(start, "meta.declaration-list.css -meta.selector.css -meta.property-value."):
             return properties.names, sublime.INHIBIT_WORD_COMPLETIONS
 
         # @-RULES

@@ -4,6 +4,7 @@
 			{ "key": "setting.auto_match_enabled", "operator": "equal", "operand": true },
 			{ "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
 			{ "key": "selector", "operator": "equal", "operand": "meta.declaration-list.css, meta.at-rule.color-profile.block.css, meta.at-rule.counter-style.block.css, meta.at-rule.font-face.block.css, meta.font-feature-type-block.css, meta.at-rule.page.block.css -meta.page-margin-box.css, meta.at-rule.viewport.block.css", "match_all": true },
+			{ "key": "selector", "operator": "not_equal", "operand": "meta.selector.css", "match_all": true },
 			{ "key": "following_text", "operator": "regex_contains", "operand": "^(?:\t| |\\}|$)", "match_all": true }
 		]
 	},
