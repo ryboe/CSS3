@@ -30,10 +30,10 @@
  /* <- string.unquoted.custom-selector.css punctuation.definition.entity.css */
 /*^ string.unquoted.custom-selector.css punctuation.definition.entity.css */
 /* ^^^^^^ string.unquoted.custom-selector.css */
-/*        ^ punctuation.section.property-list.begin.css */
+/*        ^ punctuation.section.declaration-list.begin.css */
   /* styles for your buttons */
 }
-/* <- punctuation.section.property-list.end.css */
+/* <- punctuation.section.declaration-list.end.css */
 :--button:--enter {
 /* <- string.unquoted.custom-selector.css punctuation.definition.entity.css */
  /* <- string.unquoted.custom-selector.css punctuation.definition.entity.css */
@@ -41,7 +41,7 @@
 /* ^^^^^^ string.unquoted.custom-selector.css */
 /*       ^^^ string.unquoted.custom-selector.css punctuation.definition.entity.css */
 /*          ^^^^^ string.unquoted.custom-selector.css */
-/*                ^ punctuation.section.property-list.begin.css */
+/*                ^ punctuation.section.declaration-list.begin.css */
   /*
     hover/focus styles for your button
 
@@ -49,4 +49,4 @@
     http://discourse.specifiction.org/t/a-common-pseudo-class-for-hover-and-focus/877
    */
 }
-/* <- punctuation.section.property-list.end.css */
+/* <- punctuation.section.declaration-list.end.css */

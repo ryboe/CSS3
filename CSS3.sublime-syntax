@@ -845,6 +845,30 @@ contexts:
   #   - include: func-symbols
   #   - include: identifier
 
+  # declaration-list matches a block of property-value pairs, or nested blocks.
+  # foo {
+  #     property1: value1;
+  #     property2: value2;
+  #     & bar {
+  #         property3: value3;
+  #     }
+  # }
+  declaration-list:
+    - match: '{'
+      scope: punctuation.section.declaration-list.begin.css
+      push:
+        - meta_scope: meta.declaration-list.css
+        - match: '(?=})'
+          pop: true
+        - match: '(?=@nest|@media|&)'
+          push:
+            - match: '(?=})'
+              scope: punctuation.section.declaration-list.end.css
+              pop: true
+            - include: at-media
+            - include: rule
+        - include: properties
+
   dasharray:
     - include: percentage-non-negative
     - include: length-non-negative
@@ -2478,9 +2502,9 @@ contexts:
       push:
         - meta_scope: meta.keyframes-block.css
         - match: '}'
-          scope: punctuation.section.property-list.end.css
+          scope: punctuation.section.declaration-list.end.css
           pop: true
-        - include: property-list
+        - include: declaration-list
         - include: selector-keyframes
     - include: stray-brace
 
@@ -2980,7 +3004,7 @@ contexts:
         - match: '{'
           scope: punctuation.section.page-margin-at-rule.begin.css
           push:
-            - meta_scope: meta.property-list.css
+            - meta_scope: meta.declaration-list.css
             - match: '(?=})'
               pop: true
             - include: properties
@@ -8800,27 +8824,6 @@ contexts:
         - include: integer
     - include: stray-paren-or-semicolon
 
-  # property-list matches a block of property-value pairs.
-  # {
-  #     property1: value1;
-  #     property2: value2;
-  # }
-  property-list:
-    - match: '{'
-      scope: punctuation.section.property-list.begin.css
-      push:
-        - meta_scope: meta.property-list.css
-        - match: '(?=})'
-          pop: true
-        - match: '(?=@nest|@media|&)'
-          push:
-            - match: '(?=})'
-              scope: punctuation.section.property-list.end.css
-              pop: true
-            - include: at-media
-            - include: rule
-        - include: properties
-
   prototype:
     - include: comment
 
@@ -8873,7 +8876,7 @@ contexts:
     - include: percentage-zero-to-100
     - include: number-zero-to-255
 
-  # A rule is a selector and a property list.
+  # A rule is a selector and a declaration list.
   # selector {
   #     property1: value1;
   #     property2: value2;
@@ -8883,9 +8886,9 @@ contexts:
       push:
         - meta_scope: meta.rule.css
         - match: '}'
-          scope: punctuation.section.property-list.end.css
+          scope: punctuation.section.declaration-list.end.css
           pop: true
-        - include: property-list
+        - include: declaration-list
         - include: selector
     - include: stray-brace
 

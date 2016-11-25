@@ -50,7 +50,7 @@ all_rules = [
 all_rules.sort()
 
 scopes_that_forbid_nested_at_rules = (
-    "meta.property-list.css, "
+    "meta.declaration-list.css, "
     "meta.at-rule.font-face.block.css, "
     "meta.at-rule.keyframes.block.css, "
     "meta.at-rule.font-feature-values.block.css, "

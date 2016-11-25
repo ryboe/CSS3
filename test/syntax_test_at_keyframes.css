@@ -43,37 +43,37 @@
   from {
 /*^^^^ entity.other.attribute-name.keyframes-selector.css */
 /*    ^ -entity.other.attribute-name.keyframes-selector.css */
-/*     ^ punctuation.section.property-list.begin.css */
+/*     ^ punctuation.section.declaration-list.begin.css */
     margin-left: 0px;
   }
-/*^ punctuation.section.property-list.end.css */
+/*^ punctuation.section.declaration-list.end.css */
 
   50% {
 /*^^ constant.numeric.css */
 /*  ^ keyword.other.unit.css */
 /*   ^ -keyword.other.unit.css */
-/*    ^ punctuation.section.property-list.begin.css */
+/*    ^ punctuation.section.declaration-list.begin.css */
     margin-left: 110px;
     opacity: 1;
   }
-/*^ punctuation.section.property-list.end.css */
+/*^ punctuation.section.declaration-list.end.css */
 
   50% {
 /*^^ constant.numeric.css */
 /*  ^ keyword.other.unit.css */
 /*   ^ -keyword.other.unit.css */
-/*    ^ punctuation.section.property-list.begin.css */
+/*    ^ punctuation.section.declaration-list.begin.css */
      opacity: 0.9;
   }
-/*^ punctuation.section.property-list.end.css */
+/*^ punctuation.section.declaration-list.end.css */
 
   to {
 /*^^ entity.other.attribute-name.keyframes-selector.css */
 /*  ^ -entity.other.attribute-name.keyframes-selector.css */
-/*   ^ punctuation.section.property-list.begin.css */
+/*   ^ punctuation.section.declaration-list.begin.css */
     margin-left: 200px;
   }
-/*^ punctuation.section.property-list.end.css */
+/*^ punctuation.section.declaration-list.end.css */
 
 }
 /* <- punctuation.section.at-keyframes.end.css */
@@ -91,19 +91,19 @@
 /*^^ constant.numeric.css */
 /*  ^ keyword.other.unit.css */
 /*   ^ -keyword.other.unit.css */
-/*    ^ punctuation.section.property-list.begin.css */
+/*    ^ punctuation.section.declaration-list.begin.css */
     margin-left: 110px;
     opacity: 0.9;
   }
-/*^ punctuation.section.property-list.end.css */
+/*^ punctuation.section.declaration-list.end.css */
 
   to {
 /*^^ entity.other.attribute-name.keyframes-selector.css */
 /*  ^ -entity.other.attribute-name.keyframes-selector.css */
-/*   ^ punctuation.section.property-list.begin.css */
+/*   ^ punctuation.section.declaration-list.begin.css */
     margin-left: 200px;
   }
-/*^ punctuation.section.property-list.end.css */
+/*^ punctuation.section.declaration-list.end.css */
 
 }
 /* <- punctuation.section.at-keyframes.end.css */
@@ -120,37 +120,37 @@
 /*^ constant.numeric.css */
 /* ^ keyword.other.unit.css */
 /*  ^ -keyword.other.unit.css */
-/*   ^ punctuation.section.property-list.begin.css */
+/*   ^ punctuation.section.declaration-list.begin.css */
     left: 100px;
   }
-/*^ punctuation.section.property-list.end.css */
+/*^ punctuation.section.declaration-list.end.css */
 
   40% {
 /*^^ constant.numeric.css */
 /*  ^ keyword.other.unit.css */
 /*   ^ -keyword.other.unit.css */
-/*    ^ punctuation.section.property-list.begin.css */
+/*    ^ punctuation.section.declaration-list.begin.css */
     left: 150px;
   }
-/*^ punctuation.section.property-list.end.css */
+/*^ punctuation.section.declaration-list.end.css */
 
   60% {
 /*^^ constant.numeric.css */
 /*  ^ keyword.other.unit.css */
 /*   ^ -keyword.other.unit.css */
-/*    ^ punctuation.section.property-list.begin.css */
+/*    ^ punctuation.section.declaration-list.begin.css */
     left: 75px;
   }
-/*^ punctuation.section.property-list.end.css */
+/*^ punctuation.section.declaration-list.end.css */
 
   100% {
 /*^^^ constant.numeric.css */
 /*   ^ keyword.other.unit.css */
 /*    ^ -keyword.other.unit.css */
-/*     ^ punctuation.section.property-list.begin.css */
+/*     ^ punctuation.section.declaration-list.begin.css */
     left: 100px;
   }
-/*^ punctuation.section.property-list.end.css */
+/*^ punctuation.section.declaration-list.end.css */
 }
 /* <- punctuation.section.at-keyframes.end.css */
 
@@ -166,49 +166,49 @@
   from {
 /*^^^^ entity.other.attribute-name.keyframes-selector.css */
 /*    ^ -entity.other.attribute-name.keyframes-selector.css */
-/*     ^ punctuation.section.property-list.begin.css */
+/*     ^ punctuation.section.declaration-list.begin.css */
     top: 100px;
     animation-timing-function: ease-out;
   }
-/*^ punctuation.section.property-list.end.css */
+/*^ punctuation.section.declaration-list.end.css */
 
   25% {
 /*^^ constant.numeric.css */
 /*  ^ keyword.other.unit.css */
 /*   ^ -keyword.other.unit.css */
-/*    ^ punctuation.section.property-list.begin.css */
+/*    ^ punctuation.section.declaration-list.begin.css */
     top: 50px;
     animation-timing-function: ease-in;
   }
-/*^ punctuation.section.property-list.end.css */
+/*^ punctuation.section.declaration-list.end.css */
 
   50% {
 /*^^ constant.numeric.css */
 /*  ^ keyword.other.unit.css */
 /*   ^ -keyword.other.unit.css */
-/*    ^ punctuation.section.property-list.begin.css */
+/*    ^ punctuation.section.declaration-list.begin.css */
     top: 100px;
     animation-timing-function: ease-out;
   }
-/*^ punctuation.section.property-list.end.css */
+/*^ punctuation.section.declaration-list.end.css */
 
   75% {
 /*^^ constant.numeric.css */
 /*  ^ keyword.other.unit.css */
 /*   ^ -keyword.other.unit.css */
-/*    ^ punctuation.section.property-list.begin.css */
+/*    ^ punctuation.section.declaration-list.begin.css */
     top: 75px;
     animation-timing-function: ease-in;
   }
-/*^ punctuation.section.property-list.end.css */
+/*^ punctuation.section.declaration-list.end.css */
 
   to {
 /*^^ entity.other.attribute-name.keyframes-selector.css */
 /*  ^ -entity.other.attribute-name.keyframes-selector.css */
-/*   ^ punctuation.section.property-list.begin.css */
+/*   ^ punctuation.section.declaration-list.begin.css */
     top: 100px;
   }
-/*^ punctuation.section.property-list.end.css */
+/*^ punctuation.section.declaration-list.end.css */
 
 }
 /* <- punctuation.section.at-keyframes.end.css */
@@ -226,29 +226,29 @@
   from {
 /*^^^^ entity.other.attribute-name.keyframes-selector.css */
 /*    ^ -entity.other.attribute-name.keyframes-selector.css */
-/*     ^ punctuation.section.property-list.begin.css */
+/*     ^ punctuation.section.declaration-list.begin.css */
     left: 0;
     top: 0;
   }
-/*^ punctuation.section.property-list.end.css */
+/*^ punctuation.section.declaration-list.end.css */
 
   10% {
 /*^^ constant.numeric.css */
 /*  ^ keyword.other.unit.css */
 /*   ^ -keyword.other.unit.css */
-/*    ^ punctuation.section.property-list.begin.css */
+/*    ^ punctuation.section.declaration-list.begin.css */
     background-color: blue;
   }
-/*^ punctuation.section.property-list.end.css */
+/*^ punctuation.section.declaration-list.end.css */
 
   10% {
 /*^^ constant.numeric.css */
 /*  ^ keyword.other.unit.css */
 /*   ^ -keyword.other.unit.css */
-/*    ^ punctuation.section.property-list.begin.css */
+/*    ^ punctuation.section.declaration-list.begin.css */
     background-color: green;
   }
-/*^ punctuation.section.property-list.end.css */
+/*^ punctuation.section.declaration-list.end.css */
 
   25%, 75% {
 /*^^ constant.numeric.css */
@@ -256,20 +256,20 @@
 /*     ^^ constant.numeric.css */
 /*       ^ keyword.other.unit.css */
 /*        ^ -keyword.other.unit.css */
-/*         ^ punctuation.section.property-list.begin.css */
+/*         ^ punctuation.section.declaration-list.begin.css */
     background-color: red;
   }
-/*^ punctuation.section.property-list.end.css */
+/*^ punctuation.section.declaration-list.end.css */
 
   100% {
 /*^^^ constant.numeric.css */
 /*   ^ keyword.other.unit.css */
 /*    ^ -keyword.other.unit.css */
-/*     ^ punctuation.section.property-list.begin.css */
+/*     ^ punctuation.section.declaration-list.begin.css */
     left: 100px;
     top: 100px;
   }
-/*^ punctuation.section.property-list.end.css */
+/*^ punctuation.section.declaration-list.end.css */
 
 }
 /* <- punctuation.section.at-keyframes.end.css */

@@ -64,7 +64,7 @@ class CSS3Completions(sublime_plugin.EventListener):
             return handle_property_value_completions(view, start - 1)
 
         # PROPERTY NAMES
-        if view.match_selector(start, "meta.property-list.css -meta.property-value."):
+        if view.match_selector(start, "meta.declaration-list.css -meta.property-value."):
             return properties.names, sublime.INHIBIT_WORD_COMPLETIONS
 
         # @-RULES
@@ -127,7 +127,7 @@ class CSS3Completions(sublime_plugin.EventListener):
 
         # KEYFRAMES SELECTOR
         # Special case: Keyframes selectors are not scoped with "meta.selector.css"
-        if view.match_selector(start, "meta.at-rule.keyframes.block.css -meta.property-list.css"):
+        if view.match_selector(start, "meta.at-rule.keyframes.block.css -meta.declaration-list.css"):
             return selectors.keyframes, sublime.INHIBIT_WORD_COMPLETIONS
 
         # SELECTORS
@@ -209,7 +209,7 @@ def handle_selector_completions(view, location):
     if view.match_selector(location - 1, "punctuation.definition.entity.pseudo-class.css"):
         return selectors.pseudo_classes, sublime.INHIBIT_WORD_COMPLETIONS
 
-    if view.match_selector(location, "meta.at-rule.keyframes.block.css -meta.property-list.css"):
+    if view.match_selector(location, "meta.at-rule.keyframes.block.css -meta.declaration-list.css"):
         return selectors.keyframes, sublime.INHIBIT_WORD_COMPLETIONS
 
     # If we're not in a class, id, pseudo-class, or pseudo-element, offer HTML
