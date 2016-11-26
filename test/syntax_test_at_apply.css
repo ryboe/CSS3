@@ -1,0 +1,132 @@
+/* SYNTAX TEST "Packages/CSS3/CSS3.sublime-syntax" */
+
+
+/* From Tab Atkins preliminary spec: http://tabatkins.github.io/specs/css-apply-rule/#using */
+:root {
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.pseudo-class.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^ entity.other.attribute-name.pseudo-class.css */
+/*    ^ punctuation.section.declaration-list.begin.css */
+  --toolbar-theme: {
+/*^^^^^^^^^^^^^^^ support.type.property-name.css */
+/*               ^ punctuation.separator.key-value.css */
+/*                 ^ punctuation.section.declaration-list.begin.css */
+    background-color: hsl(120, 70%, 95%);
+/*  ^^^^^^^^^^^^^^^^ support.type.property-name.css */
+/*                  ^ punctuation.separator.key-value.css */
+    border-radius: 4px;
+    border: 1px solid var(--theme-color late);
+  };
+/*^ punctuation.section.declaration-list.end.css */
+/* ^ punctuation.terminator.custom-property.css */
+  --toolbar-title-theme: {
+/*^^^^^^^^^^^^^^^^^^^^^ support.type.property-name.css */
+/*                     ^ punctuation.separator.key-value.css */
+/*                       ^ punctuation.section.declaration-list.begin.css */
+    color: green;
+/*  ^^^^^ support.type.property-name.css */
+/*       ^ punctuation.separator.key-value.css */
+  };
+/*^ punctuation.section.declaration-list.end.css */
+/* ^ punctuation.terminator.custom-property.css */
+}
+/* <- punctuation.section.declaration-list.end.css */
+
+.toolbar {
+/* <- entity.other.attribute-name.class.css punctuation.definition.entity.css */
+ /* <- entity.other.attribute-name.class.css */
+/*^^^^^^ entity.other.attribute-name.class.css */
+/*       ^ punctuation.section.declaration-list.begin.css */
+  @apply --toolbar-theme;
+/*^ keyword.control.at-rule.apply.css punctuation.definition.keyword.css */
+/* ^^^^^ keyword.control.at-rule.apply.css */
+/*       ^^^^^^^^^^^^^^^ support.type.property-name.custom.css
+/*                      ^ punctuation.terminator.rule.css */
+}
+/* <- punctuation.section.declaration-list.end.css */
+.toolbar > .title {
+/*                ^ punctuation.section.declaration-list.begin.css */
+  @apply --toolbar-title-theme;
+/*^ keyword.control.at-rule.apply.css punctuation.definition.keyword.css */
+/* ^^^^^ keyword.control.at-rule.apply.css */
+/*       ^^^^^^^^^^^^^^^^^^^^^ support.type.property-name.custom.css
+/*                            ^ punctuation.terminator.rule.css */
+}
+/* <- punctuation.section.declaration-list.end.css */
+
+.warning {
+/*       ^ punctuation.section.declaration-list.begin.css */
+  --toolbar-title-theme: {
+/*^^^^^^^^^^^^^^^^^^^^^ support.type.property-name.css */
+/*                     ^ punctuation.separator.key-value.css */
+/*                       ^ punctuation.section.declaration-list.begin.css */
+
+    color: red;
+/*  ^^^^^ support.type.property-name.css */
+/*       ^ punctuation.separator.key-value.css */
+    font-weight: bold;
+/*  ^^^^^^^^^^^ support.type.property-name.css */
+/*             ^ punctuation.separator.key-value.css */
+  };
+/*^ punctuation.section.declaration-list.end.css */
+/* ^ punctuation.terminator.custom-property.css */
+}
+/* <- punctuation.section.declaration-list.end.css */
+
+.foo {
+/*   ^ punctuation.section.declaration-list.begin.css */
+  --my-theme: {
+/*^^^^^^^^^^ support.type.property-name.css */
+/*          ^ punctuation.separator.key-value.css */
+/*            ^ punctuation.section.declaration-list.begin.css */
+    color: red;
+/*  ^^^^^ support.type.property-name.css */
+/*       ^ punctuation.separator.key-value.css */
+    background: white;
+/*  ^^^^^^^^^^ support.type.property-name.css */
+/*            ^ punctuation.separator.key-value.css */
+  };
+/*^ punctuation.section.declaration-list.end.css */
+/* ^ punctuation.terminator.custom-property.css */
+}
+#bar {
+/*   ^ punctuation.section.declaration-list.begin.css */
+  --my-theme: {
+/*^^^^^^^^^^ support.type.property-name.css */
+/*          ^ punctuation.separator.key-value.css */
+/*            ^ punctuation.section.declaration-list.begin.css */
+    color: blue;
+/*  ^^^^^ support.type.property-name.css */
+/*       ^ punctuation.separator.key-value.css */
+  };
+/*^ punctuation.section.declaration-list.end.css */
+/* ^ punctuation.terminator.custom-property.css */
+}
+/* <- punctuation.section.declaration-list.end.css */
+
+.foo {
+/*   ^ punctuation.section.declaration-list.begin.css */
+  color: blue;
+/*^^^^^ support.type.property-name.css */
+/*     ^ punctuation.separator.key-value.css */
+  @apply --foo-styles;
+/*^ keyword.control.at-rule.apply.css punctuation.definition.keyword.css */
+/* ^^^^^ keyword.control.at-rule.apply.css */
+/*       ^^^^^^^^^^^^ support.type.property-name.custom.css
+/*                   ^ punctuation.terminator.rule.css */
+}
+/* <- punctuation.section.declaration-list.end.css */
+
+/* INVALID */
+
+.foo {
+  color: blue;
+}
+
+@apply --top-level-is-invalid;
+
+@keyframes foo {
+  from { color: red; }
+  to { color: blue; }
+  @apply --this-is-not-a-style-rule;
+}
