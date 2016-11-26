@@ -3,13 +3,15 @@ CSS3
 
 [![Join the chat at https://gitter.im/y0ssar1an/CSS3](https://badges.gitter.im/y0ssar1an/CSS3.svg)](https://gitter.im/y0ssar1an/CSS3?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-The most complete CSS support for Sublime Text 3.
+The most complete CSS and PostCSS-cssnext support for Sublime Text.
 
 ## Features
 
 * __Absurdly Complete__: I basically mined the entire set of draft specs
   and supported everything. Some of this stuff won't be implemented in browsers
   for *years*. With few exceptions, if it's in the spec, it's supported.
+* __Future Proof__: [PostCSS-cssnext](http://cssnext.io) is fully supported. If
+  you use [cssnext](http://cssnext.io), you can use tomorrow's CSS today.
 * __Productive__: Offers a full set of completions for properties, descriptors,
   @-rules, functions, and selectors. The completions are highly specific to what
   you're writing.
