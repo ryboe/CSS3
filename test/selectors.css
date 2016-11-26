@@ -47,18 +47,14 @@ div:first-line {}
 
 ::after {}
 ::before {}
-::choices {}
 ::content {}
 ::first-letter {}
 ::first-line:hover {}
 ::grammar-error {}
 ::placeholder {}
-::repeat-index {}
-::repeat-item {}
 ::selection {}
 ::shadow {}
 ::spelling-error {}
-::value {}
 
 /* -moz- prefixed pseudo-classes */
 
@@ -625,11 +621,6 @@ div:required {}
 :required {}
 div:optional {}
 :optional {}
-
-/* :user-error */
-
-input:user-error {}
-:user-error {}
 
 /* the rest */
 
