@@ -11,13 +11,13 @@ The most complete CSS and PostCSS-cssnext support for Sublime Text.
   everything. Some of this stuff won't be implemented in browsers for *years*.
   If it's in the spec, it's supported.
 * __Future Proof__: [PostCSS-cssnext](http://cssnext.io) is fully supported. If
-  you use [cssnext](http://cssnext.io), you can use tomorrow's CSS today.
+  you use [cssnext](http://cssnext.io), you can use futuristic CSS like...
   - nesting
   - custom selectors
   - custom properties
   - custom media queries
   - @apply
-  - ...and more
+  - lots more
 * __Productive__: Offers a full set of completions for properties, descriptors,
   @-rules, functions, and selectors. The completions are highly specific to what
   you're writing.
