@@ -7,11 +7,17 @@ The most complete CSS and PostCSS-cssnext support for Sublime Text.
 
 ## Features
 
-* __Absurdly Complete__: I basically mined the entire set of draft specs
-  and supported everything. Some of this stuff won't be implemented in browsers
-  for *years*. With few exceptions, if it's in the spec, it's supported.
+* __Absurdly Complete__: I mined the entire set of draft specs and supported
+  everything. Some of this stuff won't be implemented in browsers for *years*.
+  If it's in the spec, it's supported.
 * __Future Proof__: [PostCSS-cssnext](http://cssnext.io) is fully supported. If
   you use [cssnext](http://cssnext.io), you can use tomorrow's CSS today.
+  - nesting
+  - custom selectors
+  - custom properties
+  - custom media queries
+  - @apply
+  - ...and more
 * __Productive__: Offers a full set of completions for properties, descriptors,
   @-rules, functions, and selectors. The completions are highly specific to what
   you're writing.
