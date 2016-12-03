@@ -1,0 +1,36 @@
+VERSION 2.1.0 CHANGES
+
+The highlighter now fully supports PostCSS-cssnext. This is a CSS preprocessor
+that converts next-gen CSS into browser-supported CSS. It lets you write wacky
+things like this:
+
+    /* BEFORE NESTING */
+    table.colortable td {
+      text-align:center;
+    }
+    table.colortable td.c {
+      text-transform:uppercase;
+    }
+    table.colortable td:first-child, table.colortable td:first-child+td {
+      border:1px solid black;
+    }
+
+    /* AFTER NESTING */
+    table.colortable {
+      & td {
+        text-align:center;
+        &.c {
+          text-transform:uppercase;
+        }
+        &:first-child, &:first-child + td {
+          border:1px solid black;
+        }
+      }
+    }
+
+Check out cssnext.io for the full list of features.
+
+To be clear, CSS3 *does not* install cssnext. It's just supported by the
+highlighter if you want to use it.
+
+Thank you to ihodev and nirfse for helping me test this!
