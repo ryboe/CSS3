@@ -43,7 +43,7 @@ The most complete CSS and PostCSS-cssnext support for Sublime Text.
     | Mac           | `cmd+shift+p`&nbsp;&nbsp; → Package Control: Install Package → CSS3  |
     | Linux/Windows | `ctrl+shift+p` → Package Control: Install Package → CSS3             |
 
-3. (Recommended) Disable the default CSS package
+3. (Required) Disable the default CSS package
 
     | Platform      | Disable Command                                                      |
     | ------------- | -------------------------------------------------------------------- |

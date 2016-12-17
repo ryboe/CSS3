@@ -2,8 +2,7 @@ Thank you for installing CSS3!
 
 This plugin requires Sublime Text 3 build 3103 or greater.
 
-I strongly recommended disabling the default CSS package. Its completions will
-interfere with the improved CSS3 completions.
+You must disable the default CSS package. It will interfere with CSS3.
 
     Mac:       cmd+shift+p  -> Package Control: Disable Package -> CSS
     Linux/Win: ctrl+shift+p -> Package Control: Disable Package -> CSS
