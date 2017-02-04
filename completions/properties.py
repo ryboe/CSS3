@@ -73,7 +73,6 @@ names = [
     ("box-shadow", "box-shadow: ${1};"),
     ("box-sizing", "box-sizing: ${1};"),
     ("box-snap", "box-snap: ${1};"),
-    ("box-suppress", "box-suppress: ${1};"),
     ("break-after", "break-after: ${1};"),
     ("break-before", "break-before: ${1};"),
     ("break-inside", "break-inside: ${1};"),
@@ -611,7 +610,6 @@ name_to_completions = {
         ("last-baseline",),
         ("none",),
     ],
-    "box-suppress": [("discard",), ("hide",), ("show",)],
     "break-before-after": [
         ("always",),
         ("auto",),

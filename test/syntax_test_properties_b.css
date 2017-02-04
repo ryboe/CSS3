@@ -367,11 +367,6 @@ foo {
 	box-snap: inherit;
 	box-snap: revert;
 
-	box-suppress: discard;
-	box-suppress: show;
-	box-suppress: hide;
-	box-suppress: inherit;
-
 	break-after: auto;
 	break-after: always;
 	break-after: left;

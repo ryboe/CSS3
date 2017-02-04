@@ -3128,7 +3128,6 @@ contexts:
     - include: property-box-shadow
     - include: property-box-sizing
     - include: property-box-snap
-    - include: property-box-suppress
     - include: property-break-before-after
     - include: property-break-inside
     - include: property-caption-side
@@ -4182,20 +4181,6 @@ contexts:
               baseline
             )
             {{b}}'
-          scope: support.constant.property-value.css
-    - include: stray-paren-or-semicolon
-
-  # CSS Display Module Level 3
-  property-box-suppress:
-    - match: \b(box-suppress)\s*(:)
-      captures:
-        1: support.type.property-name.css
-        2: punctuation.separator.key-value.css
-      push:
-        - meta_content_scope: meta.property-value.box-suppress.css
-        - include: end-value
-        - include: value-css-wide
-        - match: '\b(?:show|hide|discard){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 

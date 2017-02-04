@@ -1734,11 +1734,6 @@
     box-snap: unset;
     box-snap: none;
 
-    box-suppress: initial;
-    box-suppress: show;
-    box-suppress: discard;
-    box-suppress: hide;
-
     break-after: initial;
     break-after: inherit;
     break-after: unset;
