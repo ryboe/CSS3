@@ -186,9 +186,6 @@ pseudo_classes = [
     ("user-invalid",),
     ("valid",),
     ("visited",),
-    ("-moz-any-link",),
-    ("-ms-input-placeholder",),
-    ("-webkit-input-placeholder",),
 ]
 
 pseudo_elements = [
@@ -208,8 +205,4 @@ pseudo_elements = [
     ("shadow",),
     ("slotted()", "slotted(${1})"),
     ("spelling-error",),
-    ("-moz-placeholder",),
-    ("-moz-selection",),
-    ("-ms-input-placeholder",),
-    ("-webkit-input-placeholder",),
 ]

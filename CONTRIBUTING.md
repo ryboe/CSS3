@@ -77,14 +77,6 @@ Pressing TAB again will jump over the semicolon to the end of the snippet. If
 `<snippet>` is omitted (e.g. `("my-awesome-property",)`), the inserted snippet
 will be the same text as the label.
 
-If there are any relevant vendor prefixed versions of your property, make
-sure to add those as well.
-
-```py
-("-moz-my-awesome-property", "-moz-my-awesome-property: ${1};"),
-("-webkit-my-awesome-property", "-webkit-my-awesome-property: ${1};"),
-```
-
 Now add the property values completions to the `name_to_completions` dictionary.
 
 ```py

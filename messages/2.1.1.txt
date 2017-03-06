@@ -1,0 +1,24 @@
+VERSION 2.1.1 CHANGES
+
+To remove some noise from the tab completions menu, I've removed all completions
+with vendor prefixes. You won't see properties like these in the completions
+menu anymore.
+
+    -ms-user-select
+    -moz-appearance
+    -webkit-appearance
+
+The syntax highlighter will still highlight them just fine, however.
+
+In a modern workflow, you shouldn't have to bother with writing vendor-prefixed
+properties by hand. You should let Autoprefixer do that for you. You are
+encouraged to use Autoprefixer to automatically fill in vendor-prefixed
+properties, selectors, etc.
+
+Here's how to install it:
+
+Linux / Windows
+ctrl+shift+p > Package Control: Install Package > Autoprefixer
+
+Mac
+cmd+shift+p  > Package Control: Install Package > Autoprefixer
