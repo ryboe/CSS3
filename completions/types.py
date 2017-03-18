@@ -35,6 +35,7 @@ ellipse      = ("ellipse()", "ellipse(${1})")
 filter_func  = ("filter()", "filter(${1})")
 fit_content  = ("fit-content()", "fit-content(${1})")
 format_func  = ("format()", 'format("${1}")')
+frames       = ("frames()", 'frames(${1})')
 gray         = ("gray()", "gray(${1}${2:, ${3:1.0}}})")
 grayscale    = ("grayscale()", "grayscale(${1})")
 green        = ("green()", "green(${1:0})")
@@ -381,6 +382,13 @@ counter_style = [
     counter_style_name,
     symbols,
 ]
+cubic_bezier_timing_function = [
+    ("ease",),
+    ("ease-in",),
+    ("ease-in-out",),
+    ("ease-out",),
+    cubic_bezier,
+]
 decibel = [("<decibel>", "${1:0}dB"), calc]
 discretionary_lig_values = [
     ("discretionary-ligatures",),
@@ -447,6 +455,7 @@ font_family_generic = [
     ("serif",),
 ]
 font_family_name = [identifier, string]
+frames_timing_function = [frames]
 frequency = [("<frequency>", "${1:0}Hz"), calc]
 gradient = [
     conic_gradient,
@@ -572,17 +581,8 @@ single_animation_fill_mode = [("backwards",), ("both",), ("forwards",), ("none",
 single_animation_iteration_count = [("infinite",)] + number
 single_animation_name = [("none",), identifier]
 single_animation_play_state = [("paused",), ("running",)]
-single_timing_function = [
-    ("ease",),
-    ("ease-in",),
-    ("ease-in-out",),
-    ("ease-out",),
-    ("linear",),
-    ("step-end",),
-    ("step-start",),
-    cubic_bezier,
-    steps,
-]
+steps_timing_function = [("step-end",), ("step-start",), steps]
+single_timing_function = [("linear",)] + cubic_bezier_timing_function + frames_timing_function + steps_timing_function
 size = extent_keyword + length + percentage
 supports_condition_operator = [("and",), ("not",), ("or",)]
 symbol = [identifier, string] + image

@@ -849,6 +849,12 @@ contexts:
     - match: '\b(?:no-contextual|contextual){{b}}'
       scope: support.constant.property-value.css
 
+  cubic-bezier-timing-function:
+    - include: func-cubic-bezier
+    - match: '\b(?:ease-out|ease-in-out|ease-in|ease){{b}}'
+      scope: support.constant.property-value.css
+
+
   # NOTE: Do not implement counter-style. symbols() is a very specific match,
   # while <identifier> is very nonspecific. Lumping them together will cause
   # mismatches, either because the precedence of symbols() is too low or because
@@ -1519,6 +1525,9 @@ contexts:
     - include: string
     - include: identifier
 
+  frames-timing-function:
+    - include: func-frames
+
   frequency:
     - include: func-calc
     - match: '(?x)
@@ -1878,6 +1887,17 @@ contexts:
         - include: end-func
         - include: func-var
         - include: string
+
+  func-frames:
+    - match: \b(frames)(\()
+      captures:
+        1: support.function.frames.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_scope: meta.function.frames.css
+        - include: end-func
+        - include: func-var
+        - include: integer-positive
 
   func-gray:
     - match: \b(gray)(\()
@@ -3107,6 +3127,11 @@ contexts:
     - include: property-background-repeat
     - include: property-background-size
     - include: property-baseline-shift
+    - include: property-block-step-align
+    - include: property-block-step-insert
+    - include: property-block-step-round
+    - include: property-block-step-size
+    - include: property-block-step
     - include: property-bookmark-label
     - include: property-bookmark-level
     - include: property-bookmark-state
@@ -3211,6 +3236,7 @@ contexts:
     - include: property-line-break
     - include: property-line-grid
     - include: property-line-height
+    - include: property-line-height-step
     - include: property-line-snap
     - include: property-list-style-image
     - include: property-list-style-position
@@ -3370,6 +3396,7 @@ contexts:
     - include: property-clear
     - include: property-color
     - include: property-columns
+    - include: property-contain
     - include: property-content
     - include: property-continue
     - include: property-cursor
@@ -3854,6 +3881,78 @@ contexts:
         - match: '\bauto{{b}}'
           scope: support.constant.property-value.css
         - include: length
+    - include: stray-paren-or-semicolon
+
+  # CSS Rhythmic Sizing
+  property-block-step:
+    - match: \b(block-step)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.block-step.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:up|start|padding|none|nearest|margin|end|down|center|auto){{b}}'
+          scope: support.constant.property-value.css
+        - include: length-non-negative
+    - include: stray-paren-or-semicolon
+
+  # CSS Rhythmic Sizing
+  property-block-step-align:
+    - match: \b(block-step-align)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.block-step-align.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:start|end|center|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Rhythmic Sizing
+  property-block-step-insert:
+    - match: \b(block-step-insert)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.block-step-insert.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:padding|margin){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Rhythmic Sizing
+  property-block-step-round:
+    - match: \b(block-step-round)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.block-step-round.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:up|nearest|down){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Rhythmic Sizing
+  property-block-step-size:
+    - match: \b(block-step-size)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.block-step-size.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
+        - include: length-non-negative
     - include: stray-paren-or-semicolon
 
   # CSS Generated Content Module Level 3
@@ -4573,6 +4672,20 @@ contexts:
         - match: '\bauto{{b}}'
           scope: support.constant.property-value.css
         - include: length-positive
+    - include: stray-paren-or-semicolon
+
+  # CSS Containment Module Level 1
+  property-contain:
+    - match: \b(contain)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.contain.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:style|strict|size|paint|none|layout|content){{b}}'
+          scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
   # CSS Generated Content Module Level 3
@@ -6206,6 +6319,21 @@ contexts:
         - include: percentage-non-negative
         - include: length-non-negative
         - include: number-non-negative
+    - include: stray-paren-or-semicolon
+
+  # CSS Rhythmic Sizing
+  property-line-height-step:
+    - match: \b(line-height-step)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.line-height-step.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
+        - include: length-non-negative
     - include: stray-paren-or-semicolon
 
   # CSS Line Grid Module Level 1
@@ -9527,20 +9655,10 @@ contexts:
       scope: support.constant.property-value.css
 
   single-timing-function:
-    - include: func-cubic-bezier
-    - include: func-steps
-    - match: '(?x)
-        \b
-        (?:
-          step-start|
-          step-end|
-          linear|
-          ease-out|
-          ease-in-out|
-          ease-in|
-          ease
-        )
-        {{b}}'
+    - include: frames-timing-function
+    - include: cubic-bezier-timing-function
+    - include: step-timing-function
+    - match: '\blinear{{b}}'
       scope: support.constant.property-value.css
 
   single-transition:
@@ -9554,6 +9672,10 @@ contexts:
     - include: extent-keyword
     - include: percentage-non-negative
     - include: length-non-negative
+
+  step-timing-function:
+    - include: func-steps
+    - match: '\b(?:step-start|step-end){{b}}'
 
   stray-brace:
     - match: '}'
