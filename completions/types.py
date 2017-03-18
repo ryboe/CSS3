@@ -132,6 +132,7 @@ auto_repeat = [repeat]
 baseline_position = [
     ("baseline",),
     ("last-baseline",),
+    ("first-baseline",),
 ]
 basic_shape = [circle, ellipse, inset, polygon]
 blend_mode = [

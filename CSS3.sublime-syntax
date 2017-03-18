@@ -505,7 +505,7 @@ contexts:
     - include: fixed-size
 
   baseline-position:
-    - match: '\b(?:last-)?baseline{{b}}'
+    - match: '\b(?:last-|first-)?baseline{{b}}'
       scope: support.constant.property-value.css
 
   baseline-shift:
@@ -3260,6 +3260,9 @@ contexts:
     - include: property-page-break-inside
     - include: property-paint-order
     - include: property-perspective-origin
+    - include: property-place-content
+    - include: property-place-items
+    - include: property-place-self
     - include: property-pointer-events
     - include: property-polar-anchor
     - include: property-polar-angle
@@ -4210,8 +4213,7 @@ contexts:
               avoid-page|
               avoid-column|
               avoid|
-              auto|
-              always
+              auto
             )
             {{b}}'
           scope: support.constant.property-value.css
@@ -6080,7 +6082,7 @@ contexts:
         - meta_content_scope: meta.property-value.justify-content.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:space-between|space-around|flex-start|flex-end|center){{b}}'
+        - match: '\b(?:flex-start|flex-end|center){{b}}'
           scope: support.constant.property-value.css
         - include: baseline-position
         - include: content-distribution
@@ -7112,6 +7114,55 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: position
+    - include: stray-paren-or-semicolon
+
+  # CSS Box Alignment Module Level 3
+  property-place-content:
+    - match: \b(place-content)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.place-content.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bnormal{{b}}'
+          scope: support.constant.property-value.css
+        - include: baseline-position
+        - include: content-distribution
+        - include: content-position
+    - include: stray-paren-or-semicolon
+
+  # CSS Box Alignment Module Level 3
+  property-place-items:
+    - match: \b(place-items)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.place-items.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:stretch|normal|auto){{b}}'
+          scope: support.constant.property-value.css
+        - include: baseline-position
+        - include: self-position
+    - include: stray-paren-or-semicolon
+
+  # CSS Box Alignment Module Level 3
+  property-place-self:
+    - match: \b(place-self)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.place-self.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:stretch|normal|auto){{b}}'
+          scope: support.constant.property-value.css
+        - include: baseline-position
+        - include: self-position
     - include: stray-paren-or-semicolon
 
   # SVG 2

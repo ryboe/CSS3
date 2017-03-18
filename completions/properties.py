@@ -275,6 +275,9 @@ names = [
     ("pause-before", "pause-before: ${1};"),
     ("perspective", "perspective: ${1};"),
     ("perspective-origin", "perspective-origin: ${1};"),
+    ("place-content", "place-content: ${1};"),
+    ("place-items", "place-items: ${1};"),
+    ("place-self", "place-self: ${1};"),
     ("pointer-events", "pointer-events: ${1};"),
     ("polar-anchor", "polar-anchor: ${1};"),
     ("polar-angle", "polar-angle: ${1};"),
@@ -1103,6 +1106,28 @@ name_to_completions = {
     ] + t.time,
     "perspective": [("none",)] + t.length,
     "perspective-origin": t.position,
+    "place-content":
+        [("normal",)] +
+        t.baseline_position +
+        t.content_distribution +
+        t.overflow_position +
+        t.content_position,
+    "place-items": [
+        ("auto",),
+        ("normal",),
+        ("stretch",),
+    ] + (
+        t.baseline_position +
+        t.self_position
+    ),
+    "place-self": [
+        ("auto",),
+        ("normal",),
+        ("stretch",),
+    ] + (
+        t.baseline_position +
+        t.self_position
+    ),
     "pointer": [("coarse",), ("fine",), ("none",)],
     "pointer-events": [
         ("all",),
