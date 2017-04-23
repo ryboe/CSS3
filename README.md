@@ -67,15 +67,17 @@ The most complete CSS and PostCSS-cssnext support for Sublime Text.
     "auto_complete_with_fields": true,
     ```
 
-5. (Recommended) Disable CSS completions in Emmet
+5. (Recommended) Hide or disable CSS completions from Emmet
 
     If you have Emmet installed, its completions will drown out the
     carefully researched, standards-based completions offered by this package.
-    You can disable Emmet completions by adding these two lines to your Emmet
-    Package settings.
-
+    You can hide Emmet completions without disabling them by adding this line to
+    your Emmet package settings.
+    ```json
+    "show_css_completions": false
     ```
-    "show_css_completions": false,
+    You can disable Emmet completions entirely by adding this line.
+    ```json
     "disable_tab_abbreviations_for_scopes": "source.css"
     ```
 
