@@ -62,7 +62,7 @@ The most complete CSS and PostCSS-cssnext support for Sublime Text.
     snippet. This prevents a lot of CSS3 completions from appearing. Add these
     keys to your User Settings to fix this:
 
-    ```
+    ```json
     "auto_complete_commit_on_tab": true,
     "auto_complete_with_fields": true,
     ```
