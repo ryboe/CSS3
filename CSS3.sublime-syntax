@@ -1984,6 +1984,9 @@ contexts:
         - meta_scope: meta.function.image.css
         - include: end-func
         - include: func-var
+        - include: func-url
+        - match: '\b(?:rtl|ltr){{b}}'
+          scope: support.constant.property-value.css
         - include: image
         - include: string
         - include: color
@@ -3052,9 +3055,9 @@ contexts:
   paint:
     - include: func-url
     - include: func-child
-    - include: color
     - match: '\b(?:none|context-stroke|context-fill|child){{b}}'
       scope: support.constant.property-value.css
+    - include: image
 
   percentage:
     - include: func-calc
@@ -3176,8 +3179,15 @@ contexts:
     - include: property-cue-before-after
     - include: property-dominant-baseline
     - include: property-empty-cells
+    - include: property-fill-break
+    - include: property-fill-color
+    - include: property-fill-image
     - include: property-fill-opacity
+    - include: property-fill-origin
+    - include: property-fill-position
+    - include: property-fill-repeat
     - include: property-fill-rule
+    - include: property-fill-size
     - include: property-flex-basis
     - include: property-flex-direction
     - include: property-flex-flow
@@ -3315,15 +3325,24 @@ contexts:
     - include: property-stop-color
     - include: property-stop-opacity
     - include: property-string-set
+    - include: property-stroke-align
     - include: property-stroke-alignment
+    - include: property-stroke-break
+    - include: property-stroke-color
     - include: property-stroke-dashadjust
     - include: property-stroke-dasharray
     - include: property-stroke-dashcorner
+    - include: property-stroke-dash-corner
+    - include: property-stroke-dash-justify
     - include: property-stroke-dashoffset
+    - include: property-stroke-image
     - include: property-stroke-linecap
     - include: property-stroke-linejoin
     - include: property-stroke-miterlimit
     - include: property-stroke-opacity
+    - include: property-stroke-origin
+    - include: property-stroke-position
+    - include: property-stroke-repeat
     - include: property-stroke-width
     - include: property-tab-size
     - include: property-table-layout
@@ -5136,6 +5155,52 @@ contexts:
         - meta_content_scope: meta.property-value.fill.css
         - include: end-value
         - include: value-css-wide
+        - include: bg-image
+        - include: bg-size
+        - include: repeat-style
+        - include: box
+        - include: attachment
+        - include: color
+        - include: position
+    - include: stray-paren-or-semicolon
+
+  # CSS Fill and Stroke Module Level 3
+  property-fill-break:
+    - match: \b(fill-break)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.fill-break.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:slice|clone|bounding-box){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Fill and Stroke Module Level 3
+  property-fill-color:
+    - match: \b(fill-color)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.fill-color.css
+        - include: end-value
+        - include: value-css-wide
+        - include: color
+    - include: stray-paren-or-semicolon
+
+  # CSS Fill and Stroke Module Level 3
+  property-fill-image:
+    - match: \b(fill-image)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.fill-image.css
+        - include: end-value
+        - include: value-css-wide
         - include: paint
     - include: stray-paren-or-semicolon
 
@@ -5152,6 +5217,46 @@ contexts:
         - include: number-zero-to-one
     - include: stray-paren-or-semicolon
 
+  # CSS Fill and Stroke Module Level 3
+  property-fill-origin:
+    - match: \b(fill-origin)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.fill-origin.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:stroke-box|padding-box|match-parent|fill-box|content-box|border-box){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Fill and Stroke Module Level 3
+  property-fill-position:
+    - match: \b(fill-position)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.fill-position.css
+        - include: end-value
+        - include: value-css-wide
+        - include: position
+    - include: stray-paren-or-semicolon
+
+  # CSS Fill and Stroke Module Level 3
+  property-fill-repeat:
+    - match: \b(fill-repeat)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.fill-repeat.css
+        - include: end-value
+        - include: value-css-wide
+        - include: repeat-style
+    - include: stray-paren-or-semicolon
+
   # SVG 2
   property-fill-rule:
     - match: \b(fill-rule)\s*(:)
@@ -5162,8 +5267,20 @@ contexts:
         - meta_content_scope: meta.property-value.fill-rule.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:nonzero|evenodd){{b}}'
-          scope: support.constant.property-value.css
+        - include: fill-rule
+    - include: stray-paren-or-semicolon
+
+  # CSS Fill and Stroke Module Level 3
+  property-fill-size:
+    - match: \b(fill-size)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.fill-size.css
+        - include: end-value
+        - include: value-css-wide
+        - include: bg-size
     - include: stray-paren-or-semicolon
 
   # Filter Effects Module Level 1
@@ -6195,7 +6312,7 @@ contexts:
         - meta_content_scope: meta.property-value.justify-content.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:flex-start|flex-end|center){{b}}'
+        - match: '\bnormal{{b}}'
           scope: support.constant.property-value.css
         - include: baseline-position
         - include: content-distribution
@@ -6241,11 +6358,11 @@ contexts:
         - meta_content_scope: meta.property-value.justify-self.css
         - include: end-value
         - include: value-css-wide
+        - match: '\b(?:stretch|normal|auto){{b}}'
+          scope: support.constant.property-value.css
         - include: baseline-position
         - include: overflow-position
         - include: self-position
-        - match: '\b(?:stretch|normal|auto){{b}}'
-          scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
   # CSS Text Module Level 3
@@ -7259,6 +7376,7 @@ contexts:
         - include: baseline-position
         - include: content-distribution
         - include: content-position
+        - include: overflow-position
     - include: stray-paren-or-semicolon
 
   # CSS Box Alignment Module Level 3
@@ -7822,7 +7940,29 @@ contexts:
         - meta_content_scope: meta.property-value.stroke.css
         - include: end-value
         - include: value-css-wide
-        - include: paint
+        - include: bg-image
+        - include: bg-size
+        - include: repeat-style
+        - include: box
+        - include: attachment
+        - include: color
+        - include: position
+        - match: '\/'
+          scope: keyword.operator.arithmetic.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Fill and Stroke Module Level 3
+  property-stroke-align:
+    - match: \b(stroke-align)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.stroke-align.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:outer|inner|center){{b}}'
+          scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
   # SVG Strokes
@@ -7837,6 +7977,33 @@ contexts:
         - include: value-css-wide
         - match: '\b(?:outer|inner|center){{b}}'
           scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Fill and Stroke Module Level 3
+  property-stroke-break:
+    - match: \b(stroke-break)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.stroke-break.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:slice|clone|bounding-box){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Fill and Stroke Module Level 3
+  property-stroke-color:
+    - match: \b(stroke-color)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.stroke-color.css
+        - include: end-value
+        - include: value-css-wide
+        - include: color
     - include: stray-paren-or-semicolon
 
   # SVG Strokes
@@ -7854,6 +8021,7 @@ contexts:
     - include: stray-paren-or-semicolon
 
   # SVG Strokes
+  # CSS Fill and Stroke Module Level 3
   property-stroke-dasharray:
     - match: \b(stroke-dasharray)\s*(:)
       captures:
@@ -7883,6 +8051,35 @@ contexts:
         - include: length
     - include: stray-paren-or-semicolon
 
+  # CSS Fill and Stroke Module Level 3
+  property-stroke-dash-corner:
+    - match: \b(stroke-dash-corner)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.stroke-dash-corner.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
+        - include: length
+    - include: stray-paren-or-semicolon
+
+  # CSS Fill and Stroke Module Level 3
+  property-stroke-dash-justify:
+    - match: \b(stroke-dash-justify)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.stroke-dash-justify.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:stretch|none|gaps|dashes|compress){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
   # SVG Strokes
   property-stroke-dashoffset:
     - match: \b(stroke-dashoffset)\s*(:)
@@ -7895,6 +8092,19 @@ contexts:
         - include: value-css-wide
         - include: percentage
         - include: length
+    - include: stray-paren-or-semicolon
+
+  # CSS Fill and Stroke Module Level 3
+  property-stroke-image:
+    - match: \b(stroke-image)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.stroke-image.css
+        - include: end-value
+        - include: value-css-wide
+        - include: paint
     - include: stray-paren-or-semicolon
 
   # SVG Strokes
@@ -7912,6 +8122,7 @@ contexts:
     - include: stray-paren-or-semicolon
 
   # SVG Strokes
+  # CSS Fill and Stroke Module Level 3
   property-stroke-linejoin:
     - match: \b(stroke-linejoin)\s*(:)
       captures:
@@ -7921,7 +8132,7 @@ contexts:
         - meta_content_scope: meta.property-value.stroke-linejoin.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:round|miter-clip|miter|bevel|arcs){{b}}'
+        - match: '\b(?:stupid|round|miter-clip|miter|fallback|crop|bevel|arcs){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
@@ -7951,6 +8162,46 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: number-zero-to-one
+    - include: stray-paren-or-semicolon
+
+  # CSS Fill and Stroke Module Level 3
+  property-stroke-origin:
+    - match: \b(stroke-origin)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.stroke-origin.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:stroke-box|padding-box|match-parent|fill-box|content-box|border-box){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Fill and Stroke Module Level 3
+  property-stroke-position:
+    - match: \b(stroke-position)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.stroke-position.css
+        - include: end-value
+        - include: value-css-wide
+        - include: position
+    - include: stray-paren-or-semicolon
+
+  # CSS Fill and Stroke Module Level 3
+  property-stroke-repeat:
+    - match: \b(stroke-repeat)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.stroke-repeat.css
+        - include: end-value
+        - include: value-css-wide
+        - include: repeat-style
     - include: stray-paren-or-semicolon
 
   # SVG Strokes

@@ -613,6 +613,7 @@ bg_size = [
     ("contain",),
     ("cover",),
 ] + length + percentage
+background = bg_image + position + bg_size + repeat_style + attachment + box + color
 border_width = [("medium",), ("thick",), ("thin",)] + length
 color_stop = angle + color + percentage
 content_list = [
