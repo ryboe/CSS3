@@ -555,9 +555,13 @@ contexts:
     - include: length-non-negative
 
   border-style:
+    - match: \blogical{{b}}
+      scope: support.constant.property-value.css
     - include: line-style
 
   border-width:
+    - match: \blogical{{b}}
+      scope: support.constant.property-value.css
     - include: line-width
 
   box:
@@ -2882,6 +2886,8 @@ contexts:
         - meta_content_scope: meta.property-value.resolution.css
         - include: end-media-feature
         - include: value-css-wide
+        - match: \binfinite{{b}}
+          scope: support.constant.property-value.css
         - include: resolution
         - include: media-feature-range-operator
 
@@ -2918,7 +2924,7 @@ contexts:
         - meta_content_scope: meta.property-value.update.css
         - include: end-media-feature
         - include: value-css-wide
-        - match: '\b(?:normal|none|slow){{b}}'
+        - match: '\b(?:slow|none|fast){{b}}'
           scope: support.constant.property-value.css
 
   # may appear as "(width: 480px)" or "(width >= 480px)"
@@ -3125,11 +3131,13 @@ contexts:
     - include: property-background-clip
     - include: property-background-color
     - include: property-background-image
+    - include: property-background-image-transform
     - include: property-background-origin
     - include: property-background-position
     - include: property-background-repeat
     - include: property-background-size
     - include: property-baseline-shift
+    - include: property-block-inline-size
     - include: property-block-step-align
     - include: property-block-step-insert
     - include: property-block-step-round
@@ -3139,6 +3147,10 @@ contexts:
     - include: property-bookmark-level
     - include: property-bookmark-state
     - include: property-border-boundary
+    - include: property-border-block-inline
+    - include: property-border-block-inline-color
+    - include: property-border-block-inline-style
+    - include: property-border-block-inline-width
     - include: property-border-collapse
     - include: property-border-color
     - include: property-border-image
@@ -3146,6 +3158,7 @@ contexts:
     - include: property-border-image-repeat
     - include: property-border-image-slice
     - include: property-border-image-source
+    - include: property-border-image-transform
     - include: property-border-image-width
     - include: property-border-radius
     - include: property-border-spacing
@@ -3238,6 +3251,7 @@ contexts:
     - include: property-initial-letter-align
     - include: property-initial-letter-wrap
     - include: property-initial-letter
+    - include: property-inset-block-inline
     - include: property-justify-content
     - include: property-justify-items
     - include: property-justify-self
@@ -3252,6 +3266,7 @@ contexts:
     - include: property-list-style-position
     - include: property-list-style-type
     - include: property-list-style
+    - include: property-margin-block-inline
     - include: property-marker-knockout
     - include: property-marker-pattern
     - include: property-marker-side
@@ -3292,6 +3307,7 @@ contexts:
     - include: property-outline-width
     - include: property-overflow-wrap
     - include: property-overflow-x-y
+    - include: property-padding-block-inline
     - include: property-page-break-before-after
     - include: property-page-break-inside
     - include: property-paint-order
@@ -3799,6 +3815,20 @@ contexts:
         - include: bg-image
     - include: stray-paren-or-semicolon
 
+  # CSS Logical Properties and Values Level 1
+  property-background-image-transform:
+    - match: \b(background-image-transform)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.background-image-transform.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:rotate|physical|logical){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
   # CSS Backgrounds and Borders Module Level 3
   property-background-origin:
     - match: \b(background-origin)\s*(:)
@@ -3900,6 +3930,22 @@ contexts:
         - match: '\bauto{{b}}'
           scope: support.constant.property-value.css
         - include: length
+    - include: stray-paren-or-semicolon
+
+  # CSS Logical Properties and Values Level 1
+  property-block-inline-size:
+    - match: '{{optional_min_max_prefix}}(?:block-size|inline-size)\s*(:)'
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.block-inline-size.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bauto{{b}}'
+          scope: support.constant.property-value.css
+        - include: length-non-negative
+        - include: percentage-non-negative
     - include: stray-paren-or-semicolon
 
   # CSS Rhythmic Sizing
@@ -4031,6 +4077,60 @@ contexts:
         - include: border-style
     - include: stray-paren-or-semicolon
 
+  # CSS Logical Properties and Values Level 1
+  property-border-block-inline:
+    - match: \b(border-block-inline)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.border-block-inline.css
+        - include: end-value
+        - include: value-css-wide
+        - include: line-style
+        - include: line-width
+        - include: color
+    - include: stray-paren-or-semicolon
+
+  # CSS Logical Properties and Values Level 1
+  property-border-block-inline-color:
+    - match: \b(border-inline-start-color|border-inline-end-color|border-inline-color|border-block-start-color|border-block-end-color|border-block-color)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.border-block-inline-color.css
+        - include: end-value
+        - include: value-css-wide
+        - include: color
+    - include: stray-paren-or-semicolon
+
+  # CSS Logical Properties and Values Level 1
+  property-border-block-inline-style:
+    - match: \b(border-inline-style|border-inline-start-style|border-inline-end-style|border-block-style|border-block-start-style|border-block-end-style)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.border-block-inline-style.css
+        - include: end-value
+        - include: value-css-wide
+        - include: line-style
+    - include: stray-paren-or-semicolon
+
+  # CSS Logical Properties and Values Level 1
+  property-border-block-inline-width:
+    - match: \b(border-inline-width|border-inline-start-width|border-inline-end-width|border-block-width|border-block-start-width|border-block-end-width)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.border-block-inline-width.css
+        - include: end-value
+        - include: value-css-wide
+        - include: line-width
+    - include: stray-paren-or-semicolon
+
   # CSS Round Display Level 1
   property-border-boundary:
     - match: \b(border-boundary)\s*(:)
@@ -4148,6 +4248,20 @@ contexts:
         - match: '\bnone{{b}}'
           scope: support.constant.property-value.css
         - include: image
+    - include: stray-paren-or-semicolon
+
+  # CSS Logical Properties and Values Level 1
+  property-border-image-transform:
+    - match: \b(border-image-transform)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.border-image-transform.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:rotate|physical|logical){{b}}'
+          scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
   # CSS Backgrounds and Borders Module Level 3
@@ -4370,7 +4484,7 @@ contexts:
         - meta_content_scope: meta.property-value.caption-side.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:top|bottom){{b}}'
+        - match: '\b(?:top|inline-start|inline-end|bottom){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
@@ -6287,6 +6401,22 @@ contexts:
         - include: length
     - include: stray-paren-or-semicolon
 
+  # CSS Logical Properties and Values Level 1
+  property-inset-block-inline:
+    - match: \b(inset-inline-start|inset-inline-end|inset-inline|inset-block-start|inset-block-end|inset-block|inset)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.inset-block-inline.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bauto{{b}}'
+          scope: support.constant.property-value.css
+        - include: percentage
+        - include: length
+    - include: stray-paren-or-semicolon
+
   # Compositing and Blending Level 1
   property-isolation:
     - match: \b(isolation)\s*(:)
@@ -6539,6 +6669,22 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.margin.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:logical|auto){{b}}'
+          scope: support.constant.property-value.css
+        - include: percentage
+        - include: length
+    - include: stray-paren-or-semicolon
+
+  # CSS Logical Properties and Values Level 1
+  property-margin-block-inline:
+    - match: \b(margin-inline-start|margin-inline-end|margin-inline|margin-block-start|margin-block-end|margin-block)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.margin-block-inline.css
         - include: end-value
         - include: value-css-wide
         - match: '\bauto{{b}}'
@@ -7257,6 +7403,22 @@ contexts:
         - meta_content_scope: meta.property-value.padding.css
         - include: end-value
         - include: value-css-wide
+        - include: \blogical{{b}}
+          scope: support.constant.property-value.css
+        - include: percentage-non-negative
+        - include: length-non-negative
+    - include: stray-paren-or-semicolon
+
+  # CSS Logical Properties and Values Level 1
+  property-padding-block-inline:
+    - match: \b(padding-inline-start|padding-inline-end|padding-inline|padding-block-start|padding-block-end|padding-block)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.padding-block-inline.css
+        - include: end-value
+        - include: value-css-wide
         - include: percentage-non-negative
         - include: length-non-negative
     - include: stray-paren-or-semicolon
@@ -7286,7 +7448,7 @@ contexts:
         - meta_content_scope: meta.property-value.page-break-before-after.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:right|left|avoid|auto|always){{b}}'
+        - match: '\b(?:verso|right|recto|left|avoid|auto|always){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
@@ -7551,7 +7713,7 @@ contexts:
         - meta_content_scope: meta.property-value.resize.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:vertical|none|horizontal|both){{b}}'
+        - match: '\b(?:vertical|none|inline|horizontal|both|block){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
@@ -8763,7 +8925,7 @@ contexts:
         - meta_content_scope: meta.property-value.top-right-left-bottom.css
         - include: end-value
         - include: value-css-wide
-        - match: '\bauto{{b}}'
+        - match: '\b(?:inline-start|inline-end|block-start|block-end|auto){{b}}'
           scope: support.constant.property-value.css
         - include: percentage
         - include: length
