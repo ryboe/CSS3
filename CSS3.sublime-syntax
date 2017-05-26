@@ -7403,7 +7403,7 @@ contexts:
         - meta_content_scope: meta.property-value.padding.css
         - include: end-value
         - include: value-css-wide
-        - include: \blogical{{b}}
+        - match: \blogical{{b}}
           scope: support.constant.property-value.css
         - include: percentage-non-negative
         - include: length-non-negative
