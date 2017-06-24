@@ -3431,6 +3431,7 @@ contexts:
     - include: property-clear
     - include: property-color
     - include: property-columns
+    - include: property-composes
     - include: property-contain
     - include: property-content
     - include: property-continue
@@ -3736,7 +3737,7 @@ contexts:
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
-  # CSS Transforms Module Level 1
+  # CSS Transforms Module Level 2
   property-backface-visibility:
     - match: \b(backface-visibility)\s*(:)
       captures:
@@ -4805,6 +4806,23 @@ contexts:
         - match: '\bauto{{b}}'
           scope: support.constant.property-value.css
         - include: length-positive
+    - include: stray-paren-or-semicolon
+
+  # Nonstandard CSS Modules Spec
+  # https://github.com/css-modules/css-modules
+  property-composes:
+    - match: \b(composes)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.composes.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bfrom{{b}}'
+          scope: support.constant.property-value.css
+        - include: string
+        - include: identifier
     - include: stray-paren-or-semicolon
 
   # CSS Containment Module Level 1

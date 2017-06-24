@@ -130,6 +130,7 @@ names = [
     ("column-span", "column-span: ${1};"),
     ("column-width", "column-width: ${1};"),
     ("columns", "columns: ${1};"),
+    ("composes", "composes: ${1};"),
     ("contain", "contain: ${1};"),
     ("content", "content: ${1};"),
     ("continue", "continue: ${1};"),
@@ -699,6 +700,7 @@ name_to_completions = {
     "column-rule-width": t.line_width,
     "column-span": [("all",), ("auto",), ("none",)] + t.integer,
     "column-width": [("auto",)] + t.length,
+    "composes": [("from",), t.string],
     "contain": [
         ("content",),
         ("layout",),
@@ -1703,6 +1705,7 @@ allow_word_completions = frozenset((
     "animation",
     "animation-name",
     "chains",
+    "composes",
     "counter-set-reset-increment",
     "custom",
     "flow",
