@@ -32,6 +32,11 @@ class CSS3Completions(sublime_plugin.EventListener):
             a list of every word in the current file greater than four
             characters long.
         """
+        if not view.match_selector(locations[0], "source.css"):
+            return []
+
+        if view.match_selector(locations[0], "comment.block.css"):
+            return []
 
         # If there's multiple cursors, we can't offer completions.
         #     body {
@@ -41,9 +46,6 @@ class CSS3Completions(sublime_plugin.EventListener):
         # Which values do we offer? foo's or bar's?
         if len(locations) > 1:
             return [], sublime.INHIBIT_WORD_COMPLETIONS
-
-        if view.match_selector(locations[0], "comment.block.css"):
-            return []
 
         # start determines which completions are offered.
         #         |--prefix--|
