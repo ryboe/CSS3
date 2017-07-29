@@ -93,6 +93,10 @@ class CSS3Completions(sublime_plugin.EventListener):
         if view.match_selector(start, "meta.at-rule.font-face.block.css -meta.descriptor.font-face."):
             return descriptors.font_face, sublime.INHIBIT_WORD_COMPLETIONS
 
+        # @FONT-PALETTE-VALUES DESCRIPTOR NAMES
+        if view.match_selector(start, "meta.at-rule.font-palette-values.block.css -meta.descriptor.font-palette-values."):
+            return descriptors.font_palette_values, sublime.INHIBIT_WORD_COMPLETIONS
+
         # @VIEWPORT DESCRIPTOR NAMES
         if view.match_selector(start, "meta.at-rule.viewport.block.css -meta.descriptor.viewport."):
             return descriptors.viewport, sublime.INHIBIT_WORD_COMPLETIONS

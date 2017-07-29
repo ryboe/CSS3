@@ -19,6 +19,7 @@ counter_style = [
     ("system", "system: ${1};"),
 ]
 font_face = [
+    ("font-display", "font-display: ${1};"),
     ("font-family", "font-family: ${1:<family-name>};"),
     ("font-feature-settings", "font-feature-settings: ${1};"),
     ("font-stretch", "font-stretch: ${1};"),
@@ -26,6 +27,10 @@ font_face = [
     ("font-variant", "font-variant: ${1};"),
     ("font-weight", "font-weight: ${1};"),
     ("src", "src: ${1};"),
+]
+font_palette_values = [
+    ("font-family", "font-family: ${1};"),
+    ("base-palette", "base-palette: ${1};"),
 ]
 viewport = [
     ("height", "height: ${1:<viewport-length>} ${2:<viewport-length>};"),
@@ -49,7 +54,7 @@ color_profile_values = {
         ("relative-colorimetric",),
         ("saturation",),
     ],
-    "src": [t.local, t.url],
+    "src": [t.local, t.format_func, t.url],
 }
 counter_style_values = {
     "additive-symbols": t.integer + t.symbol,
@@ -78,6 +83,13 @@ counter_style_values = {
     ] + t.integer,
 }
 font_face_values = {
+    "font-display": [
+        ("auto",),
+        ("block",),
+        ("fallback",),
+        ("optional",),
+        ("swap",),
+    ],
     "font-family": [t.family_name],
     "font-feature-settings": [("normal",)] + t.feature_tag_value,
     "font-stretch": [
@@ -90,8 +102,8 @@ font_face_values = {
         ("semi-expanded",),
         ("ultra-condensed",),
         ("ultra-expanded",),
-    ],
-    "font-style": [("italic",), ("normal",), ("oblique",)],
+    ] + t.percentage,
+    "font-style": [("italic",), ("normal",), ("oblique",)] + t.angle,
     "font-variant": [
         ("all-petite-caps",),
         ("all-small-caps",),

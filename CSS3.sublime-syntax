@@ -347,6 +347,26 @@ contexts:
         - include: identifier
     - include: stray-brace
 
+  at-font-palette-values:
+    - match: '(@)font-palette-values{{b}}'
+      captures:
+        0: keyword.control.at-rule.font-palette-values.css
+        1: punctuation.definition.keyword.css
+      push:
+        - meta_scope: meta.at-rule.font-palette-values.css
+        - match: '}'
+          scope: punctuation.section.at-font-palette-values.end.css
+          pop: true
+        - match: '{'
+          scope: punctuation.section.at-font-palette-values.begin.css
+          push:
+            - meta_scope: meta.at-rule.font-palette-values.block.css
+            - match: '(?=})'
+              pop: true
+            - include: descriptors-font-palette-values
+        - include: identifier
+    - include: stray-brace
+
   at-import:
     - match: '(@)import{{b}}'
       captures:
@@ -931,10 +951,16 @@ contexts:
     - include: descriptor-font-face-unicode-range
     - include: descriptor-font-face-font-variant
     - include: descriptor-font-face-font-stretch
+    - include: descriptor-font-face-font-display
     - include: descriptor-font-face-font-family
     - include: descriptor-font-face-font-weight
     - include: descriptor-font-face-font-style
     - include: descriptor-font-face-src
+
+  descriptors-font-palette-values:
+    - include: descriptor-font-palette-values-font-family
+    - include: descriptor-font-palette-values-base-palette
+    - include: descriptor-font-palette-values-integer
 
   descriptors-viewport:
     - include: descriptor-viewport-user-zoom
@@ -1106,6 +1132,19 @@ contexts:
         - include: identifier
     - include: stray-paren-or-semicolon
 
+  descriptor-font-face-font-display:
+    - match: \b(font-face-font-display)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.font-face-font-display.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:swap|optional|fallback|block|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
   descriptor-font-face-font-family:
     - match: \b(font-family)\s*(:)
       captures:
@@ -1162,6 +1201,7 @@ contexts:
             )
             {{b}}'
           scope: support.constant.property-value.css
+        - include: percentage-non-negative
     - include: stray-paren-or-semicolon
 
   descriptor-font-face-font-style:
@@ -1175,6 +1215,7 @@ contexts:
         - include: value-css-wide
         - match: '\b(?:oblique|normal|italic){{b}}'
           scope: support.constant.property-value.css
+        - include: angle
     - include: stray-paren-or-semicolon
 
   descriptor-font-face-font-variant:
@@ -1256,6 +1297,33 @@ contexts:
         - include: value-css-wide
         - match: '{{unicode_range}}'
           scope: constant.numeric.unicode-range.css
+    - include: stray-paren-or-semicolon
+
+  descriptor-font-palette-values-font-family:
+    - include: descriptor-font-face-font-family
+
+  descriptor-font-palette-values-base-palette:
+    - match: \b(base-palette)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_scope: meta.descriptor.font-palette-values.base-palette.css
+        - include: end-value
+        - include: value-css-wide
+        - include: integer
+    - include: stray-paren-or-semicolon
+
+  descriptor-font-palette-values-integer:
+    - match: \b(\d+)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_scope: meta.descriptor.font-palette-values.integer.css
+        - include: end-value
+        - include: value-css-wide
+        - include: color
     - include: stray-paren-or-semicolon
 
   descriptor-viewport-orientation:
@@ -2981,6 +3049,7 @@ contexts:
 
   nestable-at-rules:
     - include: at-font-feature-values
+    - include: at-font-palette-values
     - include: at-counter-style
     - include: at-font-face
     - include: at-keyframes
@@ -3232,6 +3301,9 @@ contexts:
     - include: property-font-feature-settings
     - include: property-font-kerning
     - include: property-font-language-override
+    - include: property-font-optical-sizing
+    - include: property-font-palette
+    - include: property-font-presentation
     - include: property-font-size
     - include: property-font-size-adjust
     - include: property-font-stretch
@@ -3244,6 +3316,7 @@ contexts:
     - include: property-font-variant-ligatures
     - include: property-font-variant-numeric
     - include: property-font-variant-position
+    - include: property-font-variation-settings
     - include: property-font-weight
     - include: property-footnote-display
     - include: property-footnote-policy
@@ -5686,7 +5759,7 @@ contexts:
         - include: identifier
     - include: stray-paren-or-semicolon
 
-  # CSS Fonts Module Level 3
+  # CSS Fonts Module Level 4
   property-font:
     - match: \b(font)\s*(:)
       captures:
@@ -5740,7 +5813,7 @@ contexts:
         - include: number-non-negative
     - include: stray-paren-or-semicolon
 
-  # CSS Fonts Module Level 3
+  # CSS Fonts Module Level 4
   property-font-family:
     - match: \b(font-family)\s*(:)
       captures:
@@ -5798,9 +5871,52 @@ contexts:
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
-  # CSS Fonts Module Level 3
+  # CSS Fonts Module Level 4
+  property-font-optical-sizing:
+    - match: \b(font-optical-sizing)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.font-optical-sizing.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:none|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Fonts Module Level 4
+  property-font-palette:
+    - match: \b(font-palette)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.font-palette.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:normal|light|dark){{b}}'
+          scope: support.constant.property-value.css
+        - include: identifier
+    - include: stray-paren-or-semicolon
+
+  # CSS Fonts Module Level 4
+  property-font-presentation:
+    - match: \b(font-presentation)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.font-presentation.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:text|emoji|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Fonts Module Level 4
   property-font-size:
-    - match: \b(font-size)\s*(:)
+    - match: \b(font-(?:min-|max-)?size)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -5819,7 +5935,8 @@ contexts:
               small|
               medium|
               larger|
-              large
+              large|
+              infinity
             )
             {{b}}'
           scope: support.constant.property-value.css
@@ -5827,7 +5944,7 @@ contexts:
         - include: length-non-negative
     - include: stray-paren-or-semicolon
 
-  # CSS Fonts Module Level 3
+  # CSS Fonts Module Level 4
   property-font-size-adjust:
     - match: \b(font-size-adjust)\s*(:)
       captures:
@@ -5842,7 +5959,7 @@ contexts:
         - include: number-non-negative
     - include: stray-paren-or-semicolon
 
-  # CSS Fonts Module Level 3
+  # CSS Fonts Module Level 4
   property-font-stretch:
     - match: \b(font-stretch)\s*(:)
       captures:
@@ -5867,9 +5984,10 @@ contexts:
             )
             {{b}}'
           scope: support.constant.property-value.css
+        - include: percentage-non-negative
     - include: stray-paren-or-semicolon
 
-  # CSS Fonts Module Level 3
+  # CSS Fonts Module Level 4
   property-font-style:
     - match: \b(font-style)\s*(:)
       captures:
@@ -5881,9 +5999,10 @@ contexts:
         - include: value-css-wide
         - match: '\b(?:oblique|normal|italic){{b}}'
           scope: support.constant.property-value.css
+        - include: angle
     - include: stray-paren-or-semicolon
 
-  # CSS Fonts Module Level 3
+  # CSS Fonts Module Level 4
   property-font-synthesis:
     - match: \b(font-synthesis)\s*(:)
       captures:
@@ -5893,7 +6012,7 @@ contexts:
         - meta_content_scope: meta.property-value.font-synthesis.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:weight|style|none){{b}}'
+        - match: '\b(?:weight|style|small-caps|none){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
@@ -6041,6 +6160,22 @@ contexts:
         - include: value-css-wide
         - match: '\b(?:super|sub|normal){{b}}'
           scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Fonts Level 4
+  property-font-variation-settings:
+    - match: \b(font-variation-settings)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.font-variation-settings.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bnormal{{b}}'
+          scope: support.constant.property-value.css
+        - include: string
+        - include: number
     - include: stray-paren-or-semicolon
 
   # CSS Fonts Module Level 3

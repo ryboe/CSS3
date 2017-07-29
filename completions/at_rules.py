@@ -14,6 +14,7 @@ nestable = [
     ("@counter-style", "@counter-style ${1:name} {\n\t${2}\n}"),
     ("@font-face", "@font-face {\n\t${1}\n}"),
     ("@font-feature-values", "@font-feature-values ${1:font-family} {\n\t${2}\n}"),
+    ("@font-palette-values", "@font-palette-values ${1} {\n\t${2}\n}"),
     ("@keyframes", "@keyframes ${1:name} {\n\t${2}\n}"),
     ("@media", "@media ${1:media-query-list} {\n\t${2}\n}"),
     ("@page", "@page ${1}{\n\t${2}\n}"),
