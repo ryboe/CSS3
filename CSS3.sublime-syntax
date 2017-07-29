@@ -1408,6 +1408,7 @@ contexts:
     - match: '(?x)
         \b
         (?:
+          sides|
           farthest-side|
           farthest-corner|
           closest-side|
@@ -2098,8 +2099,8 @@ contexts:
         - meta_scope: meta.function.path.css
         - include: end-func
         - include: func-var
-        - include: string
         - include: fill-rule
+        - include: string
 
   func-perspective:
     - match: \b(perspective)(\()
@@ -2138,6 +2139,20 @@ contexts:
         - include: size
         - include: position
         - include: color-stop
+
+  func-ray:
+    - match: \b(ray)(\()
+      captures:
+        1: support.function.ray.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_scope: meta.function.ray.css
+        - include: end-func
+        - include: func-var
+        - match: '\bcontain{{b}}'
+          scope: support.constant.property-value.css
+        - include: angle
+        - include: size
 
   func-red-green-blue-alpha-a:
     - match: \b(red|green|blue|alpha|a)(\()
@@ -3299,7 +3314,7 @@ contexts:
     - include: property-offset-distance
     - include: property-offset-path
     - include: property-offset-position
-    - include: property-offset-rotation
+    - include: property-offset-rotate
     - include: property-offset-start-end-before-after
     - include: property-outline-color
     - include: property-outline-offset
@@ -3453,6 +3468,7 @@ contexts:
     - include: property-marks
     - include: property-mask
     - include: property-motion
+    - include: property-offset
     - include: property-opacity
     - include: property-order
     - include: property-outline
@@ -7177,7 +7193,32 @@ contexts:
         - include: position
     - include: stray-paren-or-semicolon
 
+  # Motion Path Level 1
+  property-offset:
+    - match: \b(offset)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.offset.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:reverse|none|auto){{b}}'
+          scope: support.constant.property-value.css
+        - include: func-path
+        - include: func-url
+        - include: func-ray
+        - include: extent-keyword
+        - include: geometry-box
+        - include: basic-shape
+        - include: position
+        - include: angle
+        - include: length
+        - include: percentage
+    - include: stray-paren-or-semicolon
+
   # CSS Round Display Level 1
+  # Motion Path Level 1
   property-offset-anchor:
     - match: \b(offset-anchor)\s*(:)
       captures:
@@ -7187,10 +7228,13 @@ contexts:
         - meta_content_scope: meta.property-value.offset-anchor.css
         - include: end-value
         - include: value-css-wide
+        - match: '\bauto{{b}}'
+          scope: support.constant.property-value.css
         - include: position
     - include: stray-paren-or-semicolon
 
   # CSS Round Display Level 1
+  # Motion Path Level 1
   property-offset-distance:
     - match: \b(offset-distance)\s*(:)
       captures:
@@ -7206,6 +7250,7 @@ contexts:
     - include: stray-paren-or-semicolon
 
   # CSS Round Display Level 1
+  # Motion Path Level 1
   property-offset-path:
     - match: \b(offset-path)\s*(:)
       captures:
@@ -7217,14 +7262,15 @@ contexts:
         - include: value-css-wide
         - include: func-url
         - include: func-path
+        - include: func-ray
         - include: basic-shape
-        - match: '\b(?:none|contain){{b}}'
+        - match: '\bnone{{b}}'
           scope: support.constant.property-value.css
         - include: geometry-box
-        - include: angle
     - include: stray-paren-or-semicolon
 
   # CSS Round Display Level 1
+  # Motion Path Level 1
   property-offset-position:
     - match: \b(offset-position)\s*(:)
       captures:
@@ -7240,13 +7286,14 @@ contexts:
     - include: stray-paren-or-semicolon
 
   # CSS Round Display Level 1
-  property-offset-rotation:
-    - match: \b(offset-rotation)\s*(:)
+  # Motion Path Module Level 1
+  property-offset-rotate:
+    - match: \b(offset-rotate)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_content_scope: meta.property-value.offset-rotation.css
+        - meta_content_scope: meta.property-value.offset-rotate.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:reverse|auto){{b}}'

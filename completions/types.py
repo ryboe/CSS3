@@ -65,6 +65,7 @@ path         = ("path()", "path('${1}')")
 perspective  = ("perspective()", "perspective(${1:length})")
 polygon      = ("polygon()", "polygon(${1})")
 radial_gradient = ("radial-gradient()", "radial-gradient(${1})")
+ray          = ("ray()", "ray(${1})")
 red          = ("red()", "red(${1:0})")
 repeat       = ("repeat()", "repeat(${1})")
 repeating_conic_gradient = ("repeating-conic-gradient()", "repeating-conic-gradient(${1})")
@@ -442,6 +443,7 @@ extent_keyword = [
     ("closest-side",),
     ("farthest-corner",),
     ("farthest-side",),
+    ("sides",),
 ]
 fill_rule = [("evenodd",), ("nonzero",)]
 fixed_repeat = [repeat]

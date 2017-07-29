@@ -117,6 +117,7 @@ func_name_to_completions = {
         ("circle",),
         ("ellipse",),
     ] + t.color_stop + t.position + t.size,
+    "ray": [("contain",)] + t.angle + t.size,
     "red-green-blue-alpha-a": t.number + t.percentage,
     "repeat": [
         ("auto-fill",),
