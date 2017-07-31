@@ -403,7 +403,6 @@ display_inside = [
     ("flow-root",),
     ("grid",),
     ("ruby",),
-    ("subgrid",),
     ("table",),
 ]
 display_internal = [
@@ -424,7 +423,6 @@ display_legacy = [
     ("inline-block",),
     ("inline-flex",),
     ("inline-grid",),
-    ("inline-list-item",),
     ("inline-table",),
 ]
 display_listitem = [("flow",), ("flow-root",), ("list-item",)]

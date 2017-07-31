@@ -1392,7 +1392,6 @@ contexts:
         \b
         (?:
           table|
-          subgrid|
           ruby|
           grid|
           flow-root|
@@ -1427,7 +1426,6 @@ contexts:
         \b
         (?:
           inline-table|
-          inline-list-item|
           inline-grid|
           inline-flex|
           inline-block
@@ -7751,7 +7749,7 @@ contexts:
         - meta_content_scope: meta.property-value.place-items.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:stretch|normal|auto){{b}}'
+        - match: '\b(?:stretch|normal){{b}}'
           scope: support.constant.property-value.css
         - include: baseline-position
         - include: self-position
@@ -7770,6 +7768,7 @@ contexts:
         - match: '\b(?:stretch|normal|auto){{b}}'
           scope: support.constant.property-value.css
         - include: baseline-position
+        - include: overflow-position
         - include: self-position
     - include: stray-paren-or-semicolon
 
