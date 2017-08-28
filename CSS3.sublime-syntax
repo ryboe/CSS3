@@ -6700,7 +6700,7 @@ contexts:
         - meta_content_scope: meta.property-value.line-break.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:strict|normal|loose|auto){{b}}'
+        - match: '\b(?:strict|normal|loose|auto|anywhere){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
@@ -7573,7 +7573,7 @@ contexts:
         - meta_content_scope: meta.property-value.overflow-wrap.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:normal|break-word){{b}}'
+        - match: '\b(?:normal|break-word|break-spaces){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
@@ -8051,8 +8051,8 @@ contexts:
         - meta_content_scope: meta.property-value.scroll-padding.css
         - include: end-value
         - include: value-css-wide
-        - include: percentage
-        - include: length
+        - include: percentage-non-negative
+        - include: length-non-negative
     - include: stray-paren-or-semicolon
 
   # CSS Scroll Snap Module Level 1
@@ -8590,7 +8590,7 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: length-non-negative
-        - include: integer-non-negative
+        - include: number-non-negative
     - include: stray-paren-or-semicolon
 
   # CSS 2.1
@@ -9515,7 +9515,7 @@ contexts:
         - meta_content_scope: meta.property-value.word-break.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:normal|keep-all|break-all){{b}}'
+        - match: '\b(?:normal|keep-all|break-word|break-all){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
@@ -9546,7 +9546,7 @@ contexts:
         - meta_content_scope: meta.property-value.word-wrap.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:normal|break-word){{b}}'
+        - match: '\b(?:normal|break-word|break-spaces){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
