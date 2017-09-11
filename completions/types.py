@@ -375,8 +375,6 @@ content_position = [
     ("end",),
     ("flex-end",),
     ("flex-start",),
-    ("left",),
-    ("right",),
     ("start",),
 ]
 contextual_alt_values = [("contextual",), ("no-contextual",)]
@@ -565,8 +563,6 @@ self_position = [
     ("end",),
     ("flex-end",),
     ("flex-start",),
-    ("left",),
-    ("right",),
     ("self-end",),
     ("self-start",),
     ("start",),

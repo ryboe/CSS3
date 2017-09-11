@@ -859,8 +859,6 @@ contexts:
         \b
         (?:
           start|
-          right|
-          left|
           flex-start|
           flex-end|
           end|
@@ -3263,7 +3261,6 @@ contexts:
     - include: property-color-rendering
     - include: property-column-count
     - include: property-column-fill
-    - include: property-column-gap
     - include: property-column-rule
     - include: property-column-rule-color
     - include: property-column-rule-style
@@ -3321,7 +3318,6 @@ contexts:
     - include: property-grid-auto-flow
     - include: property-grid-auto-rows-columns
     - include: property-grid-row-column-area
-    - include: property-grid-row-column-gap
     - include: property-grid-template-areas
     - include: property-grid-template-rows-columns
     - include: property-grid-template
@@ -3531,6 +3527,7 @@ contexts:
     - include: property-flow
     - include: property-font
     - include: property-grid
+    - include: property-row-column-gap
     - include: property-height
     - include: property-hyphens
     - include: property-isolation
@@ -4797,21 +4794,6 @@ contexts:
     - include: stray-paren-or-semicolon
 
   # CSS Multi-column Layout Module
-  property-column-gap:
-    - match: ((?:-webkit-|-moz-)?\bcolumn-gap)\s*(:)
-      captures:
-        1: support.type.property-name.css
-        2: punctuation.separator.key-value.css
-      push:
-        - meta_content_scope: meta.property-value.column-gap.css
-        - include: end-value
-        - include: value-css-wide
-        - match: '\bnormal{{b}}'
-          scope: support.constant.property-value.css
-        - include: length-non-negative
-    - include: stray-paren-or-semicolon
-
-  # CSS Multi-column Layout Module
   property-column-rule:
     - match: ((?:-webkit-|-moz-)?\bcolumn-rule)\s*(:)
       captures:
@@ -5148,7 +5130,6 @@ contexts:
           scroll-snap-points-x|
           scroll-snap-destination|
           scroll-snap-coordinate|
-          row-gap|
           resolution|
           resizer|
           rendering-intent|
@@ -5210,8 +5191,10 @@ contexts:
           grid-row-span|
           grid-row-sizing|
           grid-row-position|
+          grid-row-gap|
           grid-row-align|
           grid-position|
+          grid-gap|
           grid-flow|
           grid-end|
           grid-definition-rows|
@@ -5220,6 +5203,7 @@ contexts:
           grid-column-span|
           grid-column-sizing|
           grid-column-position|
+          grid-column-gap|
           grid-column-align|
           grid-cell-stacking|
           grid-cell|
@@ -6265,20 +6249,6 @@ contexts:
     - include: stray-paren-or-semicolon
 
   # CSS Grid Layout Module Level 1
-  property-grid-row-column-gap:
-    - match: \b(grid-row-gap|grid-gap|grid-column-gap)\s*(:)
-      captures:
-        1: support.type.property-name.css
-        2: punctuation.separator.key-value.css
-      push:
-        - meta_content_scope: meta.property-value.grid-row-column-gap.css
-        - include: end-value
-        - include: value-css-wide
-        - include: percentage-non-negative
-        - include: length-non-negative
-    - include: stray-paren-or-semicolon
-
-  # CSS Grid Layout Module Level 1
   property-grid-auto-flow:
     - match: \b(grid-auto-flow)\s*(:)
       captures:
@@ -6611,7 +6581,6 @@ contexts:
         - include: value-css-wide
         - match: '\bnormal{{b}}'
           scope: support.constant.property-value.css
-        - include: baseline-position
         - include: content-distribution
         - include: overflow-position
         - include: content-position
@@ -6638,8 +6607,7 @@ contexts:
               normal|
               legacy|
               left|
-              center|
-              auto
+              center
             )
             {{b}}'
           scope: support.constant.property-value.css
@@ -7955,6 +7923,20 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: position
+    - include: stray-paren-or-semicolon
+
+  # CSS Box Alignment Level 3
+  property-row-column-gap:
+    - match: \b(row-gap|gap|column-gap)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.row-column-gap.css
+        - include: end-value
+        - include: value-css-wide
+        - include: percentage-non-negative
+        - include: length-non-negative
     - include: stray-paren-or-semicolon
 
   # CSS Ruby Layout Module Level 1
@@ -10182,8 +10164,6 @@ contexts:
           start|
           self-start|
           self-end|
-          right|
-          left|
           flex-start|
           flex-end|
           end|
