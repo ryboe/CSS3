@@ -9685,6 +9685,19 @@ contexts:
         - include: selector
     - include: stray-brace
 
+  # Match style="" in an HTML tag. This is referenced inside the default HTML
+  # package, not anywhere in this syntax definition. The push and pop matches
+  # are taken from the default CSS package for compatibility.
+  #   https://github.com/sublimehq/Packages/blob/master/CSS/CSS.sublime-syntax#L611
+  rule-list-body:
+    - match: '(?=[-a-z])'
+      push:
+        - meta_scope: meta.declaration-list.css
+        - match: $|(?![-a-z])
+          pop: true
+        - include: property-custom
+        - include: properties
+
   selector:
     # This match applies a single meta.selector.css scope to a comma-separated
     # list of selectors, so that they appear as one entry in the Symbol List.
