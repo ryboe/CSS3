@@ -4789,7 +4789,7 @@ contexts:
         - meta_content_scope: meta.property-value.column-fill.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:balance|auto){{b}}'
+        - match: '\b(?:balance-all|balance|auto){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
@@ -4857,7 +4857,7 @@ contexts:
         - meta_content_scope: meta.property-value.column-span.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:none|auto|all){{b}}'
+        - match: '\b(?:none|all){{b}}'
           scope: support.constant.property-value.css
         - include: integer-non-negative
     - include: stray-paren-or-semicolon
@@ -5515,7 +5515,7 @@ contexts:
         - meta_content_scope: meta.property-value.flex.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:none|content|auto){{b}}'
+        - match: '\b(?:none|initial|content|auto){{b}}'
           scope: support.constant.property-value.css
         - include: percentage-non-negative
         - include: length-non-negative
@@ -7935,6 +7935,8 @@ contexts:
         - meta_content_scope: meta.property-value.row-column-gap.css
         - include: end-value
         - include: value-css-wide
+        - match: '\bnormal{{b}}'
+          scope: support.constant.property-value.css
         - include: percentage-non-negative
         - include: length-non-negative
     - include: stray-paren-or-semicolon
