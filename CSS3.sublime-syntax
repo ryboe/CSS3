@@ -3687,7 +3687,9 @@ contexts:
         - include: single-timing-function
         - include: time
         - include: single-animation-iteration-count
-        - include: single-animation-name
+        - match: \bnone{{b}}
+          scope: support.constant.property-value.css
+        - include: keyframes-name
     - include: stray-paren-or-semicolon
 
   # CSS Animations Level 2
@@ -3778,7 +3780,9 @@ contexts:
         - meta_content_scope: meta.property-value.animation-name.css
         - include: end-value
         - include: value-css-wide
-        - include: single-animation-name
+        - match: \bnone{{b}}
+          scope: support.constant.property-value.css
+        - include: keyframes-name
     - include: stray-paren-or-semicolon
 
   # CSS Animations Level 1
@@ -10250,12 +10254,6 @@ contexts:
     - match: '\binfinite{{b}}'
       scope: support.constant.property-value.css
     - include: number
-
-  single-animation-name:
-    - include: string
-    - match: '\bnone{{b}}'
-      scope: support.constant.property-value.css
-    - include: identifier
 
   single-animation-play-state:
     - match: '\b(?:running|paused){{b}}'
