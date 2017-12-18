@@ -3409,9 +3409,9 @@ contexts:
     - include: property-ruby-merge
     - include: property-ruby-position
     - include: property-scroll-behavior
+    - include: property-scroll-margin
     - include: property-scroll-padding
     - include: property-scroll-snap-align
-    - include: property-scroll-snap-margin
     - include: property-scroll-snap-stop
     - include: property-scroll-snap-type
     - include: property-shape-image-threshold
@@ -8015,6 +8015,34 @@ contexts:
     - include: stray-paren-or-semicolon
 
   # CSS Scroll Snap Module Level 1
+  property-scroll-margin:
+    - match: '(?x)
+        \b
+        (
+          scroll-margin-top|
+          scroll-margin-right|
+          scroll-margin-left|
+          scroll-margin-inline-start|
+          scroll-margin-inline-end|
+          scroll-margin-inline|
+          scroll-margin-bottom|
+          scroll-margin-block-start|
+          scroll-margin-block-end|
+          scroll-margin-block|
+          scroll-margin
+        )
+        \s*(:)'
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.scroll-margin.css
+        - include: end-value
+        - include: value-css-wide
+        - include: length
+    - include: stray-paren-or-semicolon
+
+  # CSS Scroll Snap Module Level 1
   property-scroll-padding:
     - match: '(?x)
         \b
@@ -8055,34 +8083,6 @@ contexts:
         - include: value-css-wide
         - match: '\b(?:start|none|end|center){{b}}'
           scope: support.constant.property-value.css
-    - include: stray-paren-or-semicolon
-
-  # CSS Scroll Snap Module Level 1
-  property-scroll-snap-margin:
-    - match: '(?x)
-        \b
-        (
-          scroll-snap-margin-top|
-          scroll-snap-margin-right|
-          scroll-snap-margin-left|
-          scroll-snap-margin-inline-start|
-          scroll-snap-margin-inline-end|
-          scroll-snap-margin-inline|
-          scroll-snap-margin-bottom|
-          scroll-snap-margin-block-start|
-          scroll-snap-margin-block-end|
-          scroll-snap-margin-block|
-          scroll-snap-margin
-        )
-        \s*(:)'
-      captures:
-        1: support.type.property-name.css
-        2: punctuation.separator.key-value.css
-      push:
-        - meta_content_scope: meta.property-value.scroll-snap-margin.css
-        - include: end-value
-        - include: value-css-wide
-        - include: length
     - include: stray-paren-or-semicolon
 
   # CSS Scroll Snap Module Level 1
