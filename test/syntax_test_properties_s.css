@@ -12,27 +12,27 @@ foo {
 	scroll-snap-align: center none;
 	scroll-snap-align: none start;
 
-	scroll-snap-margin:;
+	scroll-margin:;
 
-	scroll-snap-margin-block:;
+	scroll-margin-block:;
 
-	scroll-snap-margin-block-end:;
+	scroll-margin-block-end:;
 
-	scroll-snap-margin-block-start:;
+	scroll-margin-block-start:;
 
-	scroll-snap-margin-bottom:;
+	scroll-margin-bottom:;
 
-	scroll-snap-margin-inline:;
+	scroll-margin-inline:;
 
-	scroll-snap-margin-inline-end:;
+	scroll-margin-inline-end:;
 
-	scroll-snap-margin-inline-start:;
+	scroll-margin-inline-start:;
 
-	scroll-snap-margin-left:;
+	scroll-margin-left:;
 
-	scroll-snap-margin-right:;
+	scroll-margin-right:;
 
-	scroll-snap-margin-top:;
+	scroll-margin-top:;
 
 	scroll-padding:;
 
