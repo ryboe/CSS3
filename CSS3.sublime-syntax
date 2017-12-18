@@ -4981,9 +4981,8 @@ contexts:
         - include: decibel
     - include: stray-paren-or-semicolon
 
-  # cursor is defined in two specs:
-  #     CSS Basic User Interface Module Level 3
-  #     SVG 2
+  # CSS Basic User Interface Module Level 3
+  # SVG 2
   property-cursor:
     - match: \b(cursor)\s*(:)
       captures:
@@ -7875,6 +7874,7 @@ contexts:
     - include: stray-paren-or-semicolon
 
   # CSS Basic User Interface Module Level 3
+  # CSS Logical Properties and Values Level 1
   property-resize:
     - match: \b(resize)\s*(:)
       captures:
