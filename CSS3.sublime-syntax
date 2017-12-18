@@ -272,7 +272,7 @@ contexts:
             - match: '(?=})'
               pop: true
             - include: descriptors-counter-style
-        - match: '\b(?:unset|revert|none|initial|inherit|decimal){{b}}'
+        - match: '\b(?:unset|revert|none|initial|inherit|disc|decimal){{b}}'
           scope: invalid.illegal.counter-style-name.css
         - include: identifier
     - include: stray-brace
