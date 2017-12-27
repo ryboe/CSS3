@@ -1922,6 +1922,18 @@ contexts:
         - include: shape-radius
         - include: position
 
+  func-fade:
+    - match: \b(fade)(\()
+      captures:
+        1: support.function.fade.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_scope: meta.function.fade.css
+        - include: end-func
+        - include: func-var
+        - include: length-non-negative
+        - include: percentage-non-negative
+
   func-filter:
     - match: \b(sepia|saturate|opacity|invert|grayscale|contrast|brightness)(\()
       captures:
@@ -8940,8 +8952,9 @@ contexts:
         - meta_content_scope: meta.property-value.text-overflow.css
         - include: end-value
         - include: value-css-wide
+        - include: func-fade
         - include: string
-        - match: '\b(?:ellipsis|clip){{b}}'
+        - match: '\b(?:ellipsis|fade|clip){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
