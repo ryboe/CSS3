@@ -10170,8 +10170,11 @@ contexts:
           nobr|
           nextid|
           multicol|
+          menuitem|
+          menu|
           marquee|
           listing|
+          keygen|
           isindex|
           hgroup|
           frameset|

@@ -70,8 +70,6 @@ html_tags = [
     ("main",),
     ("map",),
     ("mark",),
-    ("menu",),
-    ("menuitem",),
     ("meta",),
     ("meter",),
     ("nav",),
