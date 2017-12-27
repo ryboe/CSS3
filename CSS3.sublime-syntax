@@ -9858,6 +9858,7 @@ contexts:
           hover|
           host|
           future|
+          fullscreen|
           focus|
           focus-within|
           first-of-type|
@@ -10053,6 +10054,7 @@ contexts:
           first-letter|
           content|
           before|
+          backdrop|
           after|
           -webkit-input-placeholder|
           -ms-input-placeholder|

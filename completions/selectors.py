@@ -145,6 +145,7 @@ pseudo_classes = [
     ("first-of-type",),
     ("focus",),
     ("focus-within",),
+    ("fullscreen",),
     ("future",),
     ("has()", "has(${1})"),
     ("host",),
@@ -189,6 +190,7 @@ pseudo_classes = [
 pseudo_elements = [
     ("after",),
     ("attr()", "attr(${1})"),
+    ("backdrop",),
     ("before",),
     ("content",),
     ("first-letter",),
