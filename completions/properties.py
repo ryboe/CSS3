@@ -1542,7 +1542,7 @@ name_to_completions = {
         ("none",),
     ],
     "text-orientation": [("mixed",), ("sideways",), ("upright",)],
-    "text-overflow": [("clip",), ("ellipsis",), t.string],
+    "text-overflow": [("clip",), ("ellipsis",), ("fade",), t.fade, t.string],
     "text-rendering": [
         ("auto",),
         ("geometricPrecision",),

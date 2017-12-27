@@ -84,6 +84,7 @@ func_name_to_completions = {
         t.identifier,
     ],
     "ellipse-circle": [("at", "at ")] + t.shape_radius + t.position,
+    "fade": t.length + t.percentage,
     "filter": t.number + t.percentage,
     "fit-content": t.length + t.percentage,
     "format": [t.string],
