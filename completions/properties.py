@@ -18,6 +18,7 @@ names = [
     ("animation-name", "animation-name: ${1};"),
     ("animation-play-state", "animation-play-state: ${1};"),
     ("animation-timing-function", "animation-timing-function: ${1};"),
+    ("appearance", "appearance: ${1};"),
     ("backface-visibility", "backface-visibility: ${1};"),
     ("background", "background: ${1};"),
     ("background-attachment", "background-attachment: ${1};"),
