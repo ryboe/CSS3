@@ -445,10 +445,13 @@ names = [
     ("text-decoration-color", "text-decoration-color: ${1};"),
     ("text-decoration-line", "text-decoration-line: ${1};"),
     ("text-decoration-skip", "text-decoration-skip: ${1};"),
+    ("text-decoration-skip-ink", "text-decoration-skip-ink: ${1};"),
     ("text-decoration-style", "text-decoration-style: ${1};"),
+    ("text-decoration-width", "text-decoration-width: ${1};"),
     ("text-emphasis", "text-emphasis: ${1};"),
     ("text-emphasis-color", "text-emphasis-color: ${1};"),
     ("text-emphasis-position", "text-emphasis-position: ${1};"),
+    ("text-emphasis-skip", "text-emphasis-skip: ${1};"),
     ("text-emphasis-style", "text-emphasis-style: ${1};"),
     ("text-indent", "text-indent: ${1};"),
     ("text-justify", "text-justify: ${1};"),
@@ -461,6 +464,7 @@ names = [
     ("text-space-trim", "text-space-trim: ${1};"),
     ("text-spacing", "text-spacing: ${1};"),
     ("text-transform", "text-transform: ${1};"),
+    ("text-underline-offset", "text-underline-offset: ${1};"),
     ("text-underline-position", "text-underline-position: ${1};"),
     ("text-wrap", "text-wrap: ${1};"),
     ("top", "top: ${1};"),
@@ -1505,10 +1509,15 @@ name_to_completions = {
     "text-decoration-skip": [
         ("box-decoration",),
         ("edges",),
-        ("ink",),
+        ("leading-spaces",),
         ("none",),
         ("objects",),
         ("spaces",),
+        ("trailing-spaces",),
+    ],
+    "text-decoration-skip-ink": [
+        ("auto",),
+        ("none",),
     ],
     "text-decoration-style": [
         ("dashed",),
@@ -1517,6 +1526,9 @@ name_to_completions = {
         ("solid",),
         ("wavy",),
     ],
+    "text-decoration-width": [
+        ("auto",),
+    ] + t.length,
     "text-emphasis": [
         ("circle",),
         ("dot",),
@@ -1530,6 +1542,12 @@ name_to_completions = {
     ] + t.color,
     "text-emphasis-color": t.color,
     "text-emphasis-position": [("left",), ("over",), ("right",), ("under",)],
+    "text-emphasis-skip": [
+        ("narrow",),
+        ("punctuation",),
+        ("spaces",),
+        ("symbols",),
+    ],
     "text-emphasis-style": [
         ("circle",),
         ("dot",),
@@ -1595,6 +1613,7 @@ name_to_completions = {
         ("none",),
         ("uppercase",),
     ],
+    "text-underline-offset": [("auto",)] + t.length,
     "text-underline-position": [("auto",), ("left",), ("right",), ("under",)],
     "text-wrap": [("balance",), ("normal",), ("nowrap",)],
     "top-right-left-bottom": [
