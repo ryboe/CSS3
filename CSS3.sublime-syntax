@@ -9834,6 +9834,7 @@ contexts:
           visited|
           valid|
           user-invalid|
+          target-within|
           target|
           scope|
           root|
@@ -9848,6 +9849,7 @@ contexts:
           optional|
           only-of-type|
           only-child|
+          local-link|
           link|
           last-of-type|
           last-child|
@@ -9859,8 +9861,9 @@ contexts:
           host|
           future|
           fullscreen|
-          focus|
           focus-within|
+          focus-visible|
+          focus|
           first-of-type|
           first-child|
           enabled|
@@ -10010,8 +10013,8 @@ contexts:
         (?:
           nth-of-type|
           nth-last-of-type|
-          nth-last-column|
-          nth-column
+          nth-last-col|
+          nth-col
         )
       )
       (\()'
