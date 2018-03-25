@@ -1390,6 +1390,7 @@ contexts:
         \b
         (?:
           table|
+          subgrid|
           ruby|
           grid|
           flow-root|
@@ -3594,6 +3595,7 @@ contexts:
         - include: content-distribution
         - include: overflow-position
         - include: content-position
+        - include: number
     - include: stray-paren-or-semicolon
 
   # align-items is defined in two specs:
@@ -6230,7 +6232,7 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: string
-        - match: '\b(?:none|dense|auto-flow){{b}}'
+        - match: '\b(?:subgrid|none|dense|auto-flow){{b}}'
           scope: support.constant.property-value.css
         - include: track-list
         - include: auto-track-list
@@ -6303,7 +6305,7 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: string
-        - match: '\bnone{{b}}'
+        - match: '\b(?:subgrid|none){{b}}'
           scope: support.constant.property-value.css
         - include: track-size
         - include: line-names
@@ -6339,7 +6341,7 @@ contexts:
         - meta_content_scope: meta.property-value.grid-template-rows-columns.css
         - include: end-value
         - include: value-css-wide
-        - match: '\bnone{{b}}'
+        - match: '\b(?:subgrid|none){{b}}'
           scope: support.constant.property-value.css
         - include: track-list
         - include: auto-track-list
@@ -6599,6 +6601,7 @@ contexts:
         - include: content-distribution
         - include: overflow-position
         - include: content-position
+        - include: number
     - include: stray-paren-or-semicolon
 
   # CSS Box Alignment Module Level 3

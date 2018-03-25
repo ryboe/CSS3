@@ -541,7 +541,7 @@ media_features = [
 name_to_completions = {
     "align-content": [
         ("normal",),
-    ] + t.baseline_position + t.content_distribution + t.content_position + t.overflow_position,
+    ] + t.baseline_position + t.content_distribution + t.content_position + t.overflow_position + t.number,
     "align-items": [
         ("normal",),
         ("stretch",),
@@ -1021,6 +1021,7 @@ name_to_completions = {
         ("auto-flow",),
         ("dense",),
         ("none",),
+        ("subgrid",),
         t.string,
     ] + t.auto_track_list + t.track_list,
     "grid-row-column-area": t.grid_line,
@@ -1028,9 +1029,13 @@ name_to_completions = {
     "grid-auto-flow": [("column",), ("dense",), ("row",)],
     "grid-auto-rows-columns": t.track_size,
     "grid-template-areas": [("none",), t.string],
-    "grid-template-rows-columns": [("none",)] + t.auto_track_list + t.track_list,
+    "grid-template-rows-columns": [
+        ("none",),
+        ("subgrid",),
+    ] + t.auto_track_list + t.track_list,
     "grid-template": [
         ("none",),
+        ("subgrid",),
         t.line_names,
         t.string,
     ] + t.fixed_size + t.track_size,
@@ -1096,7 +1101,8 @@ name_to_completions = {
     ] + (
         t.content_distribution +
         t.overflow_position +
-        t.content_position
+        t.content_position +
+        t.number
     ),
     "justify-items": [
         ("center",),

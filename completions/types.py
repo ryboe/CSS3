@@ -402,6 +402,7 @@ display_inside = [
     ("flow-root",),
     ("grid",),
     ("ruby",),
+    ("subgrid",),
     ("table",),
 ]
 display_internal = [
