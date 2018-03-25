@@ -3466,10 +3466,13 @@ contexts:
     - include: property-text-decoration-color
     - include: property-text-decoration-line
     - include: property-text-decoration-skip
+    - include: property-text-decoration-skip-ink
     - include: property-text-decoration-style
+    - include: property-text-decoration-width
     - include: property-text-emphasis
     - include: property-text-emphasis-color
     - include: property-text-emphasis-position
+    - include: property-text-emphasis-skip
     - include: property-text-emphasis-style
     - include: property-text-indent
     - include: property-text-justify
@@ -3482,6 +3485,7 @@ contexts:
     - include: property-text-space-trim
     - include: property-text-spacing
     - include: property-text-transform
+    - include: property-text-underline-offset
     - include: property-text-underline-position
     - include: property-text-wrap
     - include: property-transform-box
@@ -5129,7 +5133,6 @@ contexts:
           text-kashida-space|
           text-justify-trim|
           text-first-indent|
-          text-emphasis-skip|
           text-combine-mode|
           text-combine-horizontal|
           text-combine|
@@ -8781,7 +8784,7 @@ contexts:
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
-  # CSS Text Decoration Module Level 3
+  # CSS Text Decoration Module Level 4
   property-text-decoration-skip:
     - match: \b(text-decoration-skip)\s*(:)
       captures:
@@ -8794,14 +8797,29 @@ contexts:
         - match: '(?x)
             \b
             (?:
+              trailing-spaces|
               spaces|
               objects|
               none|
-              ink|
+              leading-spaces|
               edges|
               box-decoration
             )
             {{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Decoration Module Level 4
+  property-text-decoration-skip-ink:
+    - match: \b(text-decoration-skip-ink)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.text-decoration-skip-ink.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:none|auto){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
@@ -8874,6 +8892,20 @@ contexts:
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
+  # CSS Text Decoration Module Level 4
+  property-text-emphasis-skip:
+    - match: \b(text-emphasis-skip)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.text-emphasis-skip.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:symbols|spaces|punctuation|narrow){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
   # CSS Text Decoration Module Level 3
   property-text-emphasis-style:
     - match: ({{webkit}}\btext-emphasis-style)\s*(:)
@@ -8899,6 +8931,21 @@ contexts:
             )
             {{b}}'
           scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Decoration Module Level 4
+  property-text-decoration-width:
+    - match: \b(text-decoration-width)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.text-decoration-width.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bauto{{b}}'
+          scope: support.constant.property-value.css
+        - include: length
     - include: stray-paren-or-semicolon
 
   # CSS Text Module Level 3
@@ -9088,6 +9135,21 @@ contexts:
         - include: value-css-wide
         - match: '\b(?:uppercase|none|lowercase|full-width|capitalize){{b}}'
           scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Decoration Module Level 4
+  property-text-underline-offset:
+    - match: \b(text-underline-offset)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.text-underline-offset.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bauto{{b}}'
+          scope: support.constant.property-value.css
+        - include: length
     - include: stray-paren-or-semicolon
 
   # CSS Text Decoration Module Level 3
