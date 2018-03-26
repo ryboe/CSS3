@@ -958,7 +958,7 @@ contexts:
   descriptors-font-palette-values:
     - include: descriptor-font-palette-values-font-family
     - include: descriptor-font-palette-values-base-palette
-    - include: descriptor-font-palette-values-integer
+    - include: descriptor-font-palette-values-color-integer
 
   descriptors-viewport:
     - include: descriptor-viewport-user-zoom
@@ -1312,8 +1312,8 @@ contexts:
         - include: integer
     - include: stray-paren-or-semicolon
 
-  descriptor-font-palette-values-integer:
-    - match: \b(\d+)\s*(:)
+  descriptor-font-palette-values-color-integer:
+    - match: \b(color\-\d+)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -3321,6 +3321,7 @@ contexts:
     - include: property-font-variant-alternates
     - include: property-font-variant-caps
     - include: property-font-variant-east-asian
+    - include: property-font-variant-emoji
     - include: property-font-variant-ligatures
     - include: property-font-variant-numeric
     - include: property-font-variant-position
@@ -6113,6 +6114,20 @@ contexts:
           scope: support.constant.property-value.css
         - include: east-asian-width-values
         - include: east-asian-variant-values
+    - include: stray-paren-or-semicolon
+
+  # CSS Fonts Module Level 4
+  property-font-variant-emoji:
+    - match: \b(font-variant-emoji)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.font-variant-emoji.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:text|emoji|auto){{b}}'
+          scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
   # CSS Fonts Module Level 3

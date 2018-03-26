@@ -31,6 +31,16 @@ font_face = [
 font_palette_values = [
     ("font-family", "font-family: ${1};"),
     ("base-palette", "base-palette: ${1};"),
+    ("color-0", "color-0: ${1};"),
+    ("color-1", "color-1: ${1};"),
+    ("color-2", "color-2: ${1};"),
+    ("color-3", "color-3: ${1};"),
+    ("color-4", "color-4: ${1};"),
+    ("color-5", "color-5: ${1};"),
+    ("color-6", "color-6: ${1};"),
+    ("color-7", "color-7: ${1};"),
+    ("color-8", "color-8: ${1};"),
+    ("color-9", "color-9: ${1};"),
 ]
 viewport = [
     ("height", "height: ${1:<viewport-length>} ${2:<viewport-length>};"),

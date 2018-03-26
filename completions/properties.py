@@ -192,6 +192,7 @@ names = [
     ("font-variant-alternates", "font-variant-alternates: ${1};"),
     ("font-variant-caps", "font-variant-caps: ${1};"),
     ("font-variant-east-asian", "font-variant-east-asian: ${1};"),
+    ("font-variant-emoji", "font-variant-emoji: ${1};"),
     ("font-variant-ligatures", "font-variant-ligatures: ${1};"),
     ("font-variant-numeric", "font-variant-numeric: ${1};"),
     ("font-variant-position", "font-variant-position: ${1};"),
@@ -988,6 +989,11 @@ name_to_completions = {
         ("normal",),
         ("ruby",),
     ] + t.east_asian_width_values + t.east_asian_variant_values,
+    "font-variant-emoji": [
+        ("auto",),
+        ("emoji",),
+        ("text",),
+    ],
     "font-variant-ligatures": [
         ("none",),
         ("normal",),
