@@ -20,7 +20,7 @@ variables:
   exponent: '[eE][+-]?\d+'
   flex_unit: 'fr'
   frequency_unit: k?Hz
-  generic_font_family: 'serif|sans-serif|monospace|fantasy|cursive'
+  generic_font_family: 'system-ui|serif|sans-serif|monospace|math|fantasy|fangsong|emoji|cursive'
   hex_color: '(#)(?:\h{8}|\h{6}|\h{3,4})\b'
   ident_char: '[-a-zA-Z\d_\\\p{^ASCII}]'
   ident_start: '-?[a-zA-Z_\\\p{^ASCII}]'
@@ -1582,10 +1582,14 @@ contexts:
     - match: '(?x)
         \b
         (?:
+          system-ui|
           serif|
           sans-serif|
           monospace|
+          math|
           fantasy|
+          fangsong|
+          emoji|
           cursive
         )
         {{b}}'
@@ -5830,7 +5834,7 @@ contexts:
         - include: font-family-name
     - include: stray-paren-or-semicolon
 
-  # CSS Fonts Module Level 3
+  # CSS Fonts Module Level 4
   property-font-feature-settings:
     - match: \b(font-feature-settings)\s*(:)
       captures:
@@ -5859,7 +5863,7 @@ contexts:
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
-  # CSS Fonts Module Level 3
+  # CSS Fonts Module Level 4
   property-font-language-override:
     - match: \b(font-language-override)\s*(:)
       captures:
@@ -6060,7 +6064,7 @@ contexts:
         - include: east-asian-width-values
     - include: stray-paren-or-semicolon
 
-  # CSS Fonts Module Level 3
+  # CSS Fonts Module Level 4
   property-font-variant-alternates:
     - match: \b(font-variant-alternates)\s*(:)
       captures:
@@ -6195,7 +6199,7 @@ contexts:
         - include: number
     - include: stray-paren-or-semicolon
 
-  # CSS Fonts Module Level 3
+  # CSS Fonts Module Level 4
   property-font-weight:
     - match: \b(font-weight)\s*(:)
       captures:

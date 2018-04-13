@@ -450,10 +450,14 @@ flex_direction = [("column",), ("column-reverse",), ("row",), ("row-reverse",)]
 flex_wrap = [("nowrap",), ("wrap",), ("wrap-reverse",)]
 font_family_generic = [
     ("cursive",),
+    ("emoji",),
+    ("fangsong",),
     ("fantasy",),
+    ("math",),
     ("monospace",),
     ("sans-serif",),
     ("serif",),
+    ("system-ui",),
 ]
 font_family_name = [identifier, string]
 frames_timing_function = [frames]

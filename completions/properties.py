@@ -943,7 +943,7 @@ name_to_completions = {
         ("ultra-condensed",),
         ("ultra-expanded",),
     ] + t.percentage,
-    "font-style": [("italic",), ("normal",), ("oblique",)],
+    "font-style": [("italic",), ("normal",), ("oblique",)] + t.angle,
     "font-synthesis": [("none",), ("small-caps",), ("style",), ("weight",)],
     "font-variant": [
         ("all-petite-caps",),
