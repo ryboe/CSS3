@@ -11,10 +11,8 @@ Check the list of open issues to see if your issue already exists.
 
 ## Make your changes
 
-Fork the `develop` branch, not `master`. `master` is the release branch that
-gets scanned every hour by the Package Control bot. Clone the repo into your
-`Packages/` folder so you can make changes and see the effect immediately.
-Sometimes you need to restart first.
+Clone the repo into your `Packages/` folder so you can make changes and see the
+effect immediately. Sometimes you need to restart first.
 
 ## Add a missing property
 
