@@ -6618,7 +6618,7 @@ contexts:
         - meta_content_scope: meta.property-value.justify-content.css
         - include: end-value
         - include: value-css-wide
-        - match: '\bnormal{{b}}'
+        - match: '\b(?:right|normal|left){{b}}'
           scope: support.constant.property-value.css
         - include: content-distribution
         - include: overflow-position
@@ -7739,7 +7739,7 @@ contexts:
         - meta_content_scope: meta.property-value.place-content.css
         - include: end-value
         - include: value-css-wide
-        - match: '\bnormal{{b}}'
+        - match: '\b(?:right|normal|left){{b}}'
           scope: support.constant.property-value.css
         - include: baseline-position
         - include: content-distribution
@@ -7757,9 +7757,10 @@ contexts:
         - meta_content_scope: meta.property-value.place-items.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:stretch|normal){{b}}'
+        - match: '\b(?:stretch|right|normal|legacy|left|center){{b}}'
           scope: support.constant.property-value.css
         - include: baseline-position
+        - include: overflow-position
         - include: self-position
     - include: stray-paren-or-semicolon
 

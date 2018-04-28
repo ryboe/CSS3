@@ -1105,7 +1105,9 @@ name_to_completions = {
         ("center",),
         ("flex-end",),
         ("flex-start",),
+        ("left",),
         ("normal",),
+        ("right",),
         ("space-around",),
         ("space-between",),
     ] + (
@@ -1128,7 +1130,9 @@ name_to_completions = {
     ),
     "justify-self": [
         ("auto",),
+        ("left",),
         ("normal",),
+        ("right",),
         ("stretch",),
     ] + t.baseline_position + t.overflow_position + t.self_position,
     "letter-spacing": [("normal",)] + t.length,
@@ -1293,26 +1297,38 @@ name_to_completions = {
     ] + t.time,
     "perspective": [("none",)] + t.length,
     "perspective-origin": t.position,
-    "place-content":
-        [("normal",)] +
+    "place-content": [
+        ("left",),
+        ("normal",),
+        ("right",),
+    ] + (
         t.baseline_position +
         t.content_distribution +
         t.overflow_position +
-        t.content_position,
+        t.content_position
+    ),
     "place-items": [
         ("auto",),
+        ("center",),
+        ("left",),
+        ("legacy",),
         ("normal",),
+        ("right",),
         ("stretch",),
     ] + (
         t.baseline_position +
+        t.overflow_position +
         t.self_position
     ),
     "place-self": [
         ("auto",),
+        ("left",),
         ("normal",),
+        ("right",),
         ("stretch",),
     ] + (
         t.baseline_position +
+        t.overflow_position +
         t.self_position
     ),
     "pointer": [("coarse",), ("fine",), ("none",)],
