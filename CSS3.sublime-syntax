@@ -4886,7 +4886,6 @@ contexts:
         - include: value-css-wide
         - match: '\b(?:none|all){{b}}'
           scope: support.constant.property-value.css
-        - include: integer-non-negative
     - include: stray-paren-or-semicolon
 
   # CSS Multi-column Layout Module

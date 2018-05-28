@@ -731,7 +731,7 @@ name_to_completions = {
     "column-rule-color": t.color,
     "column-rule-style": t.line_style,
     "column-rule-width": t.line_width,
-    "column-span": [("all",), ("none",)] + t.integer,
+    "column-span": [("all",), ("none",)],
     "column-width": [("auto",)] + t.length,
     "composes": [("from",), t.string],
     "contain": [
