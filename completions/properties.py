@@ -1424,7 +1424,7 @@ name_to_completions = {
         ("optimizeSpeed",),
     ],
     "size": [("auto",), ("landscape",), ("portrait",)] + t.page_size + t.length,
-    "speak": [("auto",), ("none",), ("normal",)],
+    "speak": [("always",), ("auto",), ("never",)],
     "speak-as": [
         ("digits",),
         ("literal-punctuation",),

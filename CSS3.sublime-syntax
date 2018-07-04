@@ -8250,7 +8250,7 @@ contexts:
         - meta_content_scope: meta.property-value.speak.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:normal|none|auto){{b}}'
+        - match: '\b(?:never|auto|always){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
