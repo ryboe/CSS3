@@ -130,6 +130,7 @@ urange = ("<urange>", "U+${1}")
 # COMPOSITE TYPES
 angle = [("<angle>", "${1:<angle>}"), calc]
 animateable_feature = [("contents",), ("scroll-position",), identifier]
+aspect_ratio = [("<aspect-ratio>", "${1:1}ar"), calc]
 attachment = [("fixed",), ("local",), ("scroll",)]
 auto_repeat = [repeat]
 baseline_position = [

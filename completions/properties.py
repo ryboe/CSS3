@@ -546,7 +546,7 @@ media_features = [
 name_to_completions = {
     "align-content": [
         ("normal",),
-    ] + t.baseline_position + t.content_distribution + t.content_position + t.overflow_position + t.number,
+    ] + t.baseline_position + t.content_distribution + t.content_position + t.overflow_position + t.aspect_ratio + t.number,
     "align-items": [
         ("normal",),
         ("stretch",),
@@ -1114,6 +1114,7 @@ name_to_completions = {
         t.content_distribution +
         t.overflow_position +
         t.content_position +
+        t.aspect_ratio +
         t.number
     ),
     "justify-items": [

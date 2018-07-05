@@ -196,6 +196,12 @@ contexts:
     - match: '{{arithmetic_operator}}'
       scope: keyword.operator.arithmetic.css
 
+  aspect-ratio:
+    - match: '({{number}})(ar)'
+      captures:
+        1: constant.numeric.css
+        2: keyword.other.unit.css
+
   attr-fallback:
     - include: string
     - include: color
@@ -3604,6 +3610,7 @@ contexts:
         - include: content-distribution
         - include: overflow-position
         - include: content-position
+        - include: aspect-ratio
         - include: number
     - include: stray-paren-or-semicolon
 
@@ -6622,6 +6629,7 @@ contexts:
         - include: content-distribution
         - include: overflow-position
         - include: content-position
+        - include: aspect-ratio
         - include: number
     - include: stray-paren-or-semicolon
 
