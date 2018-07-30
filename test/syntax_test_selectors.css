@@ -391,20 +391,20 @@
 /*               ^ punctuation.section.function.begin.css */
 /*                ^ meta.function.pseudo-class.nth.css */
 /*                 ^ punctuation.section.function.end.css */
-:nth-last-column( ) {}
+:nth-last-col( ) {}
 /* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.pseudo-class.css */
  /* <- entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
-/*              ^ punctuation.section.function.begin.css */
-/*               ^ meta.function.pseudo-class.nth.css */
-/*                ^ punctuation.section.function.end.css */
-:nth-column( ) {}
+/*^^^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*           ^ punctuation.section.function.begin.css */
+/*            ^ meta.function.pseudo-class.nth.css */
+/*             ^ punctuation.section.function.end.css */
+:nth-col( ) {}
 /* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.pseudo-class.css */
  /* <- entity.other.attribute-name.pseudo-class.css */
-/*^^^^^^^^^ entity.other.attribute-name.pseudo-class.css */
-/*         ^ punctuation.section.function.begin.css */
-/*          ^ meta.function.pseudo-class.nth.css */
-/*           ^ punctuation.section.function.end.css */
+/*^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*      ^ punctuation.section.function.begin.css */
+/*       ^ meta.function.pseudo-class.nth.css */
+/*        ^ punctuation.section.function.end.css */
 :scope-context( ) {}
 /* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.pseudo-class.css */
  /* <- entity.other.attribute-name.pseudo-class.css */
