@@ -1,2 +1,3 @@
+.mypy_cache/
 pipe_join.py
 show_scope.py
