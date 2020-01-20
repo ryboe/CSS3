@@ -68,7 +68,9 @@ def supports_nested(view, location):
 
     @media and @supports can have @-rules nested inside.
     """
-    if not view.match_selector(location, "meta.at-rule.media.block.css, meta.at-rule.supports.block.css"):
+    if not view.match_selector(
+        location, "meta.at-rule.media.block.css, meta.at-rule.supports.block.css"
+    ):
         return False
 
     return not view.match_selector(location, scopes_that_forbid_nested_at_rules)

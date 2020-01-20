@@ -19,9 +19,11 @@ class Css3HexConvertCommand(sublime_plugin.TextCommand):
 
         colors = input_string.split(",")
         if len(colors) != 3:
-            sublime.error_message("ERROR: You entered {} colors. Three colors are required (red, "
-                                  "green, blue).\n\nHere's an example of a correct RGB value:\n\t"
-                                  "255, 255, 255".format(len(colors)))
+            sublime.error_message(
+                "ERROR: You entered {} colors. Three colors are required (red, "
+                "green, blue).\n\nHere's an example of a correct RGB value:\n\t"
+                "255, 255, 255".format(len(colors))
+            )
             return
 
         color_values = []
@@ -32,7 +34,9 @@ class Css3HexConvertCommand(sublime_plugin.TextCommand):
                     raise ValueError(color)
                 color_values.append(color_value)
         except ValueError as rgb_err:
-            sublime.error_message("ERROR: {} is outside the range 0-255".format(rgb_err))
+            sublime.error_message(
+                "ERROR: {} is outside the range 0-255".format(rgb_err)
+            )
             return
 
         hex_string = self.convert(color_values)

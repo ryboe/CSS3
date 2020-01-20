@@ -1,4 +1,3 @@
-
 def get_scopes(view, location):
     """Return the scopes at the given location.
 
@@ -13,4 +12,6 @@ def get_scope_that_starts_with(scopes, starts_with):
         if scope.startswith(starts_with):
             return scope
 
-    raise ValueError("No scope starts with {} in scope list:\n\t{}".format(starts_with, scopes))
+    raise ValueError(
+        "No scope starts with {} in scope list:\n\t{}".format(starts_with, scopes)
+    )

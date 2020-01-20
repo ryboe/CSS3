@@ -544,18 +544,21 @@ media_features = [
 ]
 
 name_to_completions = {
-    "align-content": [
-        ("normal",),
-    ] + t.baseline_position + t.content_distribution + t.content_position + t.overflow_position + t.aspect_ratio + t.number,
-    "align-items": [
-        ("normal",),
-        ("stretch",),
-    ] + t.baseline_position + t.overflow_position + t.self_position,
-    "align-self": [
-        ("auto",),
-        ("normal",),
-        ("stretch",),
-    ] + t.baseline_position + t.overflow_position + t.self_position,
+    "align-content": [("normal",),]
+    + t.baseline_position
+    + t.content_distribution
+    + t.content_position
+    + t.overflow_position
+    + t.aspect_ratio
+    + t.number,
+    "align-items": [("normal",), ("stretch",),]
+    + t.baseline_position
+    + t.overflow_position
+    + t.self_position,
+    "align-self": [("auto",), ("normal",), ("stretch",),]
+    + t.baseline_position
+    + t.overflow_position
+    + t.self_position,
     "alignment-baseline": [
         ("after-edge",),
         ("alphabetic",),
@@ -577,13 +580,13 @@ name_to_completions = {
     ],
     # "all": [],  # TODO: write this when the context for any-value is completed
     "animation": (
-        t.single_animation_direction +
-        t.single_animation_fill_mode +
-        t.single_animation_iteration_count +
-        t.single_animation_name +
-        t.single_animation_play_state +
-        t.single_timing_function +
-        t.time
+        t.single_animation_direction
+        + t.single_animation_fill_mode
+        + t.single_animation_iteration_count
+        + t.single_animation_name
+        + t.single_animation_play_state
+        + t.single_timing_function
+        + t.time
     ),
     "animation-composition": t.single_animation_composition,
     "animation-delay": t.time,
@@ -607,13 +610,13 @@ name_to_completions = {
     "background-repeat": t.repeat_style,
     "background-size": t.bg_size,
     "background": (
-        t.attachment +
-        t.bg_image +
-        t.bg_size +
-        t.box +
-        t.color +
-        t.position +
-        t.repeat_style
+        t.attachment
+        + t.bg_image
+        + t.bg_size
+        + t.box
+        + t.color
+        + t.position
+        + t.repeat_style
     ),
     "baseline-shift": t.baseline_shift,
     "bleed": [("auto",)] + t.length,
@@ -629,7 +632,8 @@ name_to_completions = {
         ("padding",),
         ("start",),
         ("up",),
-    ] + t.length,
+    ]
+    + t.length,
     "block-step-align": [("auto",), ("center",), ("end",), ("start",)],
     "block-step-insert": [("margin",), ("padding",)],
     "block-step-round": [("down",), ("nearest",), ("up",)],
@@ -653,7 +657,11 @@ name_to_completions = {
         ("round",),
         ("space",),
         ("stretch",),
-    ] + t.image + t.integer + t.length + t.number,
+    ]
+    + t.image
+    + t.integer
+    + t.length
+    + t.number,
     "border-image-outset": t.length + t.number,
     "border-image-repeat": [("repeat",), ("round",), ("space",), ("stretch",)],
     "border-image-slice": [("fill",)] + t.integer + t.percentage,
@@ -743,14 +751,9 @@ name_to_completions = {
         ("strict",),
         ("style",),
     ],
-    "content": [
-        ("none",),
-        ("normal",),
-        t.attr,
-        t.counter,
-        t.counters,
-        t.string,
-    ] + t.content_list + t.image,
+    "content": [("none",), ("normal",), t.attr, t.counter, t.counters, t.string,]
+    + t.content_list
+    + t.image,
     "continue": [
         ("auto",),
         ("discard",),
@@ -798,15 +801,16 @@ name_to_completions = {
         ("zoom-in",),
         ("zoom-out",),
         t.url,
-    ] + t.number,
+    ]
+    + t.number,
     "direction": [("ltr",), ("rtl",)],
     "display": (
-        t.display_box +
-        t.display_inside +
-        t.display_internal +
-        t.display_legacy +
-        t.display_listitem +
-        t.display_outside
+        t.display_box
+        + t.display_inside
+        + t.display_internal
+        + t.display_legacy
+        + t.display_listitem
+        + t.display_outside
     ),
     "dominant-baseline": [
         ("alphabetic",),
@@ -825,13 +829,23 @@ name_to_completions = {
     "fill-color": t.color,
     "fill-image": t.paint,
     "fill-opacity": t.number,
-    "fill-origin": [("border-box",), ("content-box",), ("fill-box",), ("match-parent",), ("padding-box",), ("stroke-box",)],
+    "fill-origin": [
+        ("border-box",),
+        ("content-box",),
+        ("fill-box",),
+        ("match-parent",),
+        ("padding-box",),
+        ("stroke-box",),
+    ],
     "fill-position": t.position,
     "fill-repeat": t.repeat_style,
     "fill-rule": [("evenodd",), ("nonzero",)],
     "fill-size": t.bg_size,
     "filter": [("none",), t.blur, t.drop_shadow, t.filter_func, t.hue_rotate, t.url],
-    "flex": [("auto",), ("content",), ("initial",), ("none",)] + t.length + t.number + t.percentage,
+    "flex": [("auto",), ("content",), ("initial",), ("none",)]
+    + t.length
+    + t.number
+    + t.percentage,
     "flex-basis": [("auto",), ("content",)] + t.length + t.percentage + t.width,
     "flex-direction": t.flex_direction,
     "flex-flow": t.flex_direction + t.flex_wrap,
@@ -900,24 +914,14 @@ name_to_completions = {
         ("x-small",),
         ("xx-large",),
         ("xx-small",),
-    ] + (
-        t.font_family_generic +
-        t.font_family_name +
-        t.length +
-        t.number +
-        t.percentage
-    ),
+    ]
+    + (t.font_family_generic + t.font_family_name + t.length + t.number + t.percentage),
     "font-family": t.font_family_generic + t.font_family_name,
     "font-feature-settings": [("normal",)] + t.feature_tag_value,
     "font-kerning": [("auto",), ("none",), ("normal",)],
     "font-language-override": [("normal",), t.string],
     "font-optical-sizing": [("auto",), ("none",)],
-    "font-palette": [
-        ("dark",),
-        ("light",),
-        ("normal",),
-        t.identifier,
-    ],
+    "font-palette": [("dark",), ("light",), ("normal",), t.identifier,],
     "font-presentation": [("auto",), ("emoji",), ("text",)],
     "font-size": [
         ("infinity",),
@@ -930,7 +934,9 @@ name_to_completions = {
         ("x-small",),
         ("xx-large",),
         ("xx-small",),
-    ] + t.length + t.percentage,
+    ]
+    + t.length
+    + t.percentage,
     "font-size-adjust": [("none",)] + t.number,
     "font-stretch": [
         ("condensed",),
@@ -942,7 +948,8 @@ name_to_completions = {
         ("semi-expanded",),
         ("ultra-condensed",),
         ("ultra-expanded",),
-    ] + t.percentage,
+    ]
+    + t.percentage,
     "font-style": [("italic",), ("normal",), ("oblique",)] + t.angle,
     "font-synthesis": [("none",), ("small-caps",), ("style",), ("weight",)],
     "font-variant": [
@@ -965,7 +972,8 @@ name_to_completions = {
         t.stylistic,
         t.styleset,
         t.swash,
-    ] + t.font_variant,
+    ]
+    + t.font_variant,
     "font-variant-alternates": [
         ("historical-forms",),
         ("normal",),
@@ -985,29 +993,21 @@ name_to_completions = {
         ("titling-caps",),
         ("unicase",),
     ],
-    "font-variant-east-asian": [
-        ("normal",),
-        ("ruby",),
-    ] + t.east_asian_width_values + t.east_asian_variant_values,
-    "font-variant-emoji": [
-        ("auto",),
-        ("emoji",),
-        ("text",),
-    ],
-    "font-variant-ligatures": [
-        ("none",),
-        ("normal",),
-    ] + (
-        t.common_lig_values +
-        t.contextual_alt_values +
-        t.discretionary_lig_values +
-        t.historical_lig_values
+    "font-variant-east-asian": [("normal",), ("ruby",),]
+    + t.east_asian_width_values
+    + t.east_asian_variant_values,
+    "font-variant-emoji": [("auto",), ("emoji",), ("text",),],
+    "font-variant-ligatures": [("none",), ("normal",),]
+    + (
+        t.common_lig_values
+        + t.contextual_alt_values
+        + t.discretionary_lig_values
+        + t.historical_lig_values
     ),
-    "font-variant-numeric": [
-        ("normal",),
-        ("ordinal",),
-        ("slashed-zero",),
-    ] + t.numeric_figure_values + t.numeric_fraction_values + t.numeric_spacing_values,
+    "font-variant-numeric": [("normal",), ("ordinal",), ("slashed-zero",),]
+    + t.numeric_figure_values
+    + t.numeric_fraction_values
+    + t.numeric_spacing_values,
     "font-variant-position": [("normal",), ("sub",), ("super",)],
     "font-variation-settings": [("normal",), t.string] + t.number,
     "font-weight": [
@@ -1027,28 +1027,20 @@ name_to_completions = {
     ],
     "footnote-display": [("block",), ("compact",), ("inline",)],
     "footnote-policy": [("auto",), ("block",), ("line",)],
-    "grid": [
-        ("auto-flow",),
-        ("dense",),
-        ("none",),
-        ("subgrid",),
-        t.string,
-    ] + t.auto_track_list + t.track_list,
+    "grid": [("auto-flow",), ("dense",), ("none",), ("subgrid",), t.string,]
+    + t.auto_track_list
+    + t.track_list,
     "grid-row-column-area": t.grid_line,
     "grid-row-column-gap": t.length + t.percentage,
     "grid-auto-flow": [("column",), ("dense",), ("row",)],
     "grid-auto-rows-columns": t.track_size,
     "grid-template-areas": [("none",), t.string],
-    "grid-template-rows-columns": [
-        ("none",),
-        ("subgrid",),
-    ] + t.auto_track_list + t.track_list,
-    "grid-template": [
-        ("none",),
-        ("subgrid",),
-        t.line_names,
-        t.string,
-    ] + t.fixed_size + t.track_size,
+    "grid-template-rows-columns": [("none",), ("subgrid",),]
+    + t.auto_track_list
+    + t.track_list,
+    "grid-template": [("none",), ("subgrid",), t.line_names, t.string,]
+    + t.fixed_size
+    + t.track_size,
     "hanging-punctuation": [
         ("allow-end",),
         ("first",),
@@ -1064,12 +1056,11 @@ name_to_completions = {
         ("min-content",),
         ("none",),
         t.fit_content,
-    ] + t.length + t.percentage,
+    ]
+    + t.length
+    + t.percentage,
     "hover": [("hover",), ("none",)],
-    "hyphenate-character": [
-        ("auto",),
-        t.string,
-    ],
+    "hyphenate-character": [("auto",), t.string,],
     "hyphenate-limit-chars": [("auto",)] + t.integer,
     "hyphenate-limit-last": [
         ("always",),
@@ -1092,12 +1083,9 @@ name_to_completions = {
         ("hebrew",),
         ("ideographic",),
     ],
-    "initial-letter-wrap": [
-        ("all",),
-        ("first",),
-        ("grid",),
-        ("none",),
-    ] + t.length + t.percentage,
+    "initial-letter-wrap": [("all",), ("first",), ("grid",), ("none",),]
+    + t.length
+    + t.percentage,
     "inset-block-inline": [("auto",)] + t.length + t.percentage,
     "inverted-colors": [("inverted",), ("none",)],
     "isolation": t.isolation_mode,
@@ -1110,12 +1098,13 @@ name_to_completions = {
         ("right",),
         ("space-around",),
         ("space-between",),
-    ] + (
-        t.content_distribution +
-        t.overflow_position +
-        t.content_position +
-        t.aspect_ratio +
-        t.number
+    ]
+    + (
+        t.content_distribution
+        + t.overflow_position
+        + t.content_position
+        + t.aspect_ratio
+        + t.number
     ),
     "justify-items": [
         ("center",),
@@ -1124,18 +1113,12 @@ name_to_completions = {
         ("normal",),
         ("right",),
         ("stretch",),
-    ] + (
-        t.baseline_position +
-        t.overflow_position +
-        t.self_position
-    ),
-    "justify-self": [
-        ("auto",),
-        ("left",),
-        ("normal",),
-        ("right",),
-        ("stretch",),
-    ] + t.baseline_position + t.overflow_position + t.self_position,
+    ]
+    + (t.baseline_position + t.overflow_position + t.self_position),
+    "justify-self": [("auto",), ("left",), ("normal",), ("right",), ("stretch",),]
+    + t.baseline_position
+    + t.overflow_position
+    + t.self_position,
     "letter-spacing": [("normal",)] + t.length,
     "light-level": [("dim",), ("normal",), ("washed",)],
     "lighting-color": t.color,
@@ -1144,13 +1127,8 @@ name_to_completions = {
     "line-height": [("normal",)] + t.length + t.number + t.percentage,
     "line-height-step": [("none",)] + t.length,
     "line-snap": [("baseline",), ("contain",), ("none",)],
-    "list-style": [
-        ("inside",),
-        ("none",),
-        ("outside",),
-        t.identifier,
-        t.string,
-    ] + t.image,
+    "list-style": [("inside",), ("none",), ("outside",), t.identifier, t.string,]
+    + t.image,
     "list-style-image": [("none",)] + t.image,
     "list-style-position": [("inside",), ("outside",)],
     "list-style-type": [("none",), t.identifier, t.string, t.symbols],
@@ -1172,18 +1150,14 @@ name_to_completions = {
         ("round",),
         ("space",),
         ("stretch",),
-    ] + t.image + t.length + t.number + t.percentage,
-    "mask-border-mode": [
-        ("alpha",),
-        ("luminance",),
-    ],
+    ]
+    + t.image
+    + t.length
+    + t.number
+    + t.percentage,
+    "mask-border-mode": [("alpha",), ("luminance",),],
     "mask-border-outset": t.length + t.percentage,
-    "mask-border-repeat": [
-        ("repeat",),
-        ("round",),
-        ("space",),
-        ("stretch",),
-    ],
+    "mask-border-repeat": [("repeat",), ("round",), ("space",), ("stretch",),],
     "mask-border-slice": [("fill",)] + t.number + t.percentage,
     "mask-border-source": t.image,
     "mask-border-width": [("auto",)] + t.length + t.number + t.percentage,
@@ -1195,70 +1169,37 @@ name_to_completions = {
     "mask-position": t.position,
     "mask-repeat": t.repeat_style,
     "mask-size": t.bg_size,
-    "mask-type": [
-        ("alpha",),
-        ("luminance",),
-    ],
+    "mask-type": [("alpha",), ("luminance",),],
     "max-lines": [("none",)] + t.integer,
     "media-feature-grid": [("0",), ("1",)],
     "mix-blend-mode": t.blend_mode,
     "monochrome-color-index": t.integer,
-    "motion": [
-        ("auto",),
-        ("none",),
-        ("reverse",),
-        t.path,
-        t.url,
-    ] + (
-        t.angle +
-        t.basic_shape +
-        t.geometry_box +
-        t.length +
-        t.percentage
-    ),
+    "motion": [("auto",), ("none",), ("reverse",), t.path, t.url,]
+    + (t.angle + t.basic_shape + t.geometry_box + t.length + t.percentage),
     "motion-offset": t.length + t.percentage,
-    "motion-path": [
-        ("none",),
-        t.path,
-        t.url,
-    ] + t.basic_shape + t.geometry_box,
+    "motion-path": [("none",), t.path, t.url,] + t.basic_shape + t.geometry_box,
     "motion-rotation": [("auto",), ("reverse",)] + t.angle,
     "nav-up-right-left-down": [("auto",), ("current",), ("root",), t.string],
-    "object-fit": [
-        ("contain",),
-        ("cover",),
-        ("fill",),
-        ("none",),
-        ("scale-down",),
-    ],
+    "object-fit": [("contain",), ("cover",), ("fill",), ("none",), ("scale-down",),],
     "object-position": t.position,
-    "offset": [
-        ("auto",),
-        ("none",),
-        ("reverse",),
-        t.path,
-        t.ray,
-        t.url,
-    ] + t.angle + t.basic_shape + t.extent_keyword + t.geometry_box + t.length + t.percentage + t.position,
+    "offset": [("auto",), ("none",), ("reverse",), t.path, t.ray, t.url,]
+    + t.angle
+    + t.basic_shape
+    + t.extent_keyword
+    + t.geometry_box
+    + t.length
+    + t.percentage
+    + t.position,
     "offset-anchor": [("auto",)] + t.position,
     "offset-distance": t.extent_keyword + t.length + t.percentage,
-    "offset-path": [
-        ("none",),
-        t.path,
-        t.ray,
-        t.url,
-    ] + t.basic_shape + t.geometry_box,
+    "offset-path": [("none",), t.path, t.ray, t.url,] + t.basic_shape + t.geometry_box,
     "offset-position": [("auto",)] + t.position,
     "offset-rotate": [("auto",), ("reverse",)] + t.angle,
     "offset-start-end-before-after": [("auto",)] + t.length + t.percentage,
     "opacity": t.number,
     "order": t.integer,
     "orientation": [("landscape",), ("portrait",)],
-    "outline": [("auto",), ("invert",)] + (
-        t.border_style +
-        t.border_width +
-        t.color
-    ),
+    "outline": [("auto",), ("invert",)] + (t.border_style + t.border_width + t.color),
     "outline-color": [("invert",)] + t.color,
     "outline-offset": t.length,
     "outline-style": [("auto",)] + t.border_style,
@@ -1267,13 +1208,7 @@ name_to_completions = {
     "overflow-block": [("none",), ("optional-paged",), ("paged",), ("scroll",)],
     "overflow-inline": [("none",), ("scroll",)],
     "overflow-wrap": [("break-word",), ("normal",)],
-    "overflow-x-y": [
-        ("auto",),
-        ("clip",),
-        ("hidden",),
-        ("scroll",),
-        ("visible",),
-    ],
+    "overflow-x-y": [("auto",), ("clip",), ("hidden",), ("scroll",), ("visible",),],
     "padding": [("logical",)] + t.length + t.percentage,
     "padding-block-inline": t.length + t.percentage,
     "page": [("auto",), t.identifier],
@@ -1295,18 +1230,16 @@ name_to_completions = {
         ("weak",),
         ("x-strong",),
         ("x-weak",),
-    ] + t.time,
+    ]
+    + t.time,
     "perspective": [("none",)] + t.length,
     "perspective-origin": t.position,
-    "place-content": [
-        ("left",),
-        ("normal",),
-        ("right",),
-    ] + (
-        t.baseline_position +
-        t.content_distribution +
-        t.overflow_position +
-        t.content_position
+    "place-content": [("left",), ("normal",), ("right",),]
+    + (
+        t.baseline_position
+        + t.content_distribution
+        + t.overflow_position
+        + t.content_position
     ),
     "place-items": [
         ("auto",),
@@ -1316,22 +1249,10 @@ name_to_completions = {
         ("normal",),
         ("right",),
         ("stretch",),
-    ] + (
-        t.baseline_position +
-        t.overflow_position +
-        t.self_position
-    ),
-    "place-self": [
-        ("auto",),
-        ("left",),
-        ("normal",),
-        ("right",),
-        ("stretch",),
-    ] + (
-        t.baseline_position +
-        t.overflow_position +
-        t.self_position
-    ),
+    ]
+    + (t.baseline_position + t.overflow_position + t.self_position),
+    "place-self": [("auto",), ("left",), ("normal",), ("right",), ("stretch",),]
+    + (t.baseline_position + t.overflow_position + t.self_position),
     "pointer": [("coarse",), ("fine",), ("none",)],
     "pointer-events": [
         ("all",),
@@ -1347,19 +1268,9 @@ name_to_completions = {
     ],
     "polar-anchor": t.position,
     "polar-angle": t.angle,
-    "polar-distance": [("contain",)] + (
-        t.extent_keyword +
-        t.length +
-        t.percentage
-    ),
+    "polar-distance": [("contain",)] + (t.extent_keyword + t.length + t.percentage),
     "polar-origin": [("auto",)] + t.position,
-    "position": [
-        ("absolute",),
-        ("fixed",),
-        ("relative",),
-        ("static",),
-        ("sticky",),
-    ],
+    "position": [("absolute",), ("fixed",), ("relative",), ("static",), ("sticky",),],
     "presentation-level": [("increment",), ("same",)] + t.integer,
     "quotes": [("none",), t.string],
     "region-fragment": [("auto",), ("break",)],
@@ -1379,16 +1290,12 @@ name_to_completions = {
         ("weak",),
         ("x-strong",),
         ("x-weak",),
-    ] + t.time,
+    ]
+    + t.time,
     "rotation": t.angle,
     "rotation-point": t.position,
     "row-column-gap": [("normal",)] + t.length + t.percentage,
-    "ruby-align": [
-        ("center",),
-        ("space-around",),
-        ("space-between",),
-        ("start",),
-    ],
+    "ruby-align": [("center",), ("space-around",), ("space-between",), ("start",),],
     "ruby-merge": [("auto",), ("collapse",), ("separate",)],
     "ruby-position": [("inter-character",), ("over",), ("under",)],
     "running": [t.identifier],
@@ -1410,12 +1317,9 @@ name_to_completions = {
         ("y",),
     ],
     "shape-image-threshold": t.number,
-    "shape-inside": [
-        ("auto",),
-        ("display",),
-        ("outside-shape",),
-        ("shape-box",),
-    ] + t.basic_shape + t.image,
+    "shape-inside": [("auto",), ("display",), ("outside-shape",), ("shape-box",),]
+    + t.basic_shape
+    + t.image,
     "shape-margin": t.length + t.percentage,
     "shape-outside": [("none",)] + t.basic_shape + t.image + t.shape_box,
     "shape-rendering": [
@@ -1435,13 +1339,7 @@ name_to_completions = {
     ],
     "stop-color": t.color,
     "stop-opacity": t.number,
-    "string-set": [
-        ("none",),
-        t.attr,
-        t.content,
-        t.identifier,
-        t.url,
-    ] + t.content_list,
+    "string-set": [("none",), t.attr, t.content, t.identifier, t.url,] + t.content_list,
     "stroke": t.background,
     "stroke-align": [("center",), ("inner",), ("outer",)],
     "stroke-alignment": [("center",), ("inner",), ("outer",)],
@@ -1457,7 +1355,13 @@ name_to_completions = {
     "stroke-dasharray": [("none",)] + t.dasharray,
     "stroke-dash-corner": [("none",)] + t.length,
     "stroke-dashcorner": [("none",)] + t.length,
-    "stroke-dash-justify": [("compress",), ("dashes",), ("gaps",), ("none",), ("stretch",)],
+    "stroke-dash-justify": [
+        ("compress",),
+        ("dashes",),
+        ("gaps",),
+        ("none",),
+        ("stretch",),
+    ],
     "stroke-dashoffset": t.length + t.percentage,
     "stroke-image": t.paint,
     "stroke-linecap": [("butt",), ("round",), ("square",)],
@@ -1473,7 +1377,14 @@ name_to_completions = {
     ],
     "stroke-miterlimit": t.number,
     "stroke-opacity": t.number,
-    "stroke-origin": [("border-box",), ("content-box",), ("fill-box",), ("match-parent",), ("padding-box",), ("stroke-box",)],
+    "stroke-origin": [
+        ("border-box",),
+        ("content-box",),
+        ("fill-box",),
+        ("match-parent",),
+        ("padding-box",),
+        ("stroke-box",),
+    ],
     "stroke-position": t.position,
     "stroke-repeat": t.repeat_style,
     "stroke-width": t.length + t.percentage,
@@ -1520,7 +1431,8 @@ name_to_completions = {
         ("solid",),
         ("underline",),
         ("wavy",),
-    ] + t.color,
+    ]
+    + t.color,
     "text-decoration-color": t.color,
     "text-decoration-line": [
         ("blink",),
@@ -1538,10 +1450,7 @@ name_to_completions = {
         ("spaces",),
         ("trailing-spaces",),
     ],
-    "text-decoration-skip-ink": [
-        ("auto",),
-        ("none",),
-    ],
+    "text-decoration-skip-ink": [("auto",), ("none",),],
     "text-decoration-style": [
         ("dashed",),
         ("dotted",),
@@ -1549,9 +1458,7 @@ name_to_completions = {
         ("solid",),
         ("wavy",),
     ],
-    "text-decoration-width": [
-        ("auto",),
-    ] + t.length,
+    "text-decoration-width": [("auto",),] + t.length,
     "text-emphasis": [
         ("circle",),
         ("dot",),
@@ -1562,15 +1469,11 @@ name_to_completions = {
         ("sesame",),
         ("triangle",),
         t.string,
-    ] + t.color,
+    ]
+    + t.color,
     "text-emphasis-color": t.color,
     "text-emphasis-position": [("left",), ("over",), ("right",), ("under",)],
-    "text-emphasis-skip": [
-        ("narrow",),
-        ("punctuation",),
-        ("spaces",),
-        ("symbols",),
-    ],
+    "text-emphasis-skip": [("narrow",), ("punctuation",), ("spaces",), ("symbols",),],
     "text-emphasis-style": [
         ("circle",),
         ("dot",),
@@ -1583,12 +1486,7 @@ name_to_completions = {
         t.string,
     ],
     "text-indent": [("each-line",), ("hanging",)] + t.length + t.percentage,
-    "text-justify": [
-        ("auto",),
-        ("inter-character",),
-        ("inter-word",),
-        ("none",),
-    ],
+    "text-justify": [("auto",), ("inter-character",), ("inter-word",), ("none",),],
     "text-orientation": [("mixed",), ("sideways",), ("upright",)],
     "text-overflow": [("clip",), ("ellipsis",), ("fade",), t.fade, t.string],
     "text-rendering": [
@@ -1645,7 +1543,9 @@ name_to_completions = {
         ("block-start",),
         ("inline-end",),
         ("inline-start",),
-    ] + t.length + t.percentage,
+    ]
+    + t.length
+    + t.percentage,
     "transform": [("none",)] + t.transform_list,
     "transform-box": [("border-box",), ("fill-box",), ("view-box",)],
     "transform-origin": t.position,
@@ -1678,7 +1578,8 @@ name_to_completions = {
         ("text-bottom",),
         ("text-top",),
         ("top",),
-    ] + t.baseline_shift,
+    ]
+    + t.baseline_shift,
     "visibility": [("collapse",), ("hidden",), ("visible",)],
     "voice-balance": [
         ("center",),
@@ -1686,7 +1587,8 @@ name_to_completions = {
         ("leftwards",),
         ("right",),
         ("rightwards",),
-    ] + t.number,
+    ]
+    + t.number,
     "voice-duration": [("auto",)] + t.time,
     "voice-family": [("preserve",)] + t.generic_voice + t.voice_name,
     "voice-range-pitch": [
@@ -1696,7 +1598,10 @@ name_to_completions = {
         ("medium",),
         ("x-high",),
         ("x-low",),
-    ] + t.frequency + t.percentage + t.semitones,
+    ]
+    + t.frequency
+    + t.percentage
+    + t.semitones,
     "voice-rate": [
         ("fast",),
         ("medium",),
@@ -1704,14 +1609,9 @@ name_to_completions = {
         ("slow",),
         ("x-fast",),
         ("x-slow",),
-    ] + t.percentage,
-    "voice-stress": [
-        ("moderate",),
-        ("none",),
-        ("normal",),
-        ("reduced",),
-        ("strong",),
-    ],
+    ]
+    + t.percentage,
+    "voice-stress": [("moderate",), ("none",), ("normal",), ("reduced",), ("strong",),],
     "voice-volume": [
         ("loud",),
         ("medium",),
@@ -1719,7 +1619,8 @@ name_to_completions = {
         ("soft",),
         ("x-loud",),
         ("x-soft",),
-    ] + t.decibel,
+    ]
+    + t.decibel,
     "white-space": [
         ("normal",),
         ("nowrap",),
@@ -1736,7 +1637,9 @@ name_to_completions = {
         ("max-content",),
         ("min-content",),
         ("none",),
-    ] + t.length + t.percentage,
+    ]
+    + t.length
+    + t.percentage,
     # width-height is a media-feature. Do not confuse it with the width and
     # height properties.
     "width-height": t.length,
@@ -1774,30 +1677,32 @@ name_to_completions = {
 }
 
 
-allow_word_completions = frozenset((
-    "animation",
-    "animation-name",
-    "chains",
-    "composes",
-    "counter-set-reset-increment",
-    "custom",
-    "flow",
-    "flow-from",
-    "flow-into",
-    "font",
-    "font-palette",
-    "grid-row-column-area",
-    "list-style",
-    "list-style-type",
-    "nav-up-right-left-down",
-    "page",
-    "running",
-    "string-set",
-    "transition",
-    "transition-property",
-    "voice-family",
-    "will-change",
-))
+allow_word_completions = frozenset(
+    (
+        "animation",
+        "animation-name",
+        "chains",
+        "composes",
+        "counter-set-reset-increment",
+        "custom",
+        "flow",
+        "flow-from",
+        "flow-into",
+        "font",
+        "font-palette",
+        "grid-row-column-area",
+        "list-style",
+        "list-style-type",
+        "nav-up-right-left-down",
+        "page",
+        "running",
+        "string-set",
+        "transition",
+        "transition-property",
+        "voice-family",
+        "will-change",
+    )
+)
 
 
 def get_values(property_name):
@@ -1813,6 +1718,7 @@ def sort_and_uniq_completions():
     for name in name_to_completions:
         name_to_completions[name] = list(set(name_to_completions[name]))
         name_to_completions[name].sort()
+
 
 sort_and_uniq_completions()
 
@@ -1835,7 +1741,8 @@ def populate_supports_conditions_list():
     for label, completion in names:
         # strip trailing semicolon and replace ${1} with ${0}
         if completion.endswith(old_suffix):
-            completion = completion[:-len(old_suffix)] + new_suffix
+            completion = completion[: -len(old_suffix)] + new_suffix
         supports_conditions.append((label, completion))
+
 
 populate_supports_conditions_list()

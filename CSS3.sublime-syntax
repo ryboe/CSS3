@@ -951,7 +951,9 @@ contexts:
     - include: descriptor-counter-style-speak-as
 
   descriptors-font-face:
+    - include: descriptor-font-face-font-language-override
     - include: descriptor-font-face-font-feature-settings
+    - include: descriptor-font-face-font-named-instance
     - include: descriptor-font-face-unicode-range
     - include: descriptor-font-face-font-variant
     - include: descriptor-font-face-font-stretch
@@ -1137,12 +1139,12 @@ contexts:
     - include: stray-paren-or-semicolon
 
   descriptor-font-face-font-display:
-    - match: \b(font-face-font-display)\s*(:)
+    - match: \b(font-display)\s*(:)
       captures:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_content_scope: meta.property-value.font-face-font-display.css
+        - meta_content_scope: meta.descriptor.font-face.font-display.css
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:swap|optional|fallback|block|auto){{b}}'
@@ -1179,6 +1181,34 @@ contexts:
         - match: '\b(?:on|off|normal){{b}}'
           scope: support.constant.property-value.css
         - include: integer-non-negative
+    - include: stray-paren-or-semicolon
+
+  descriptor-font-face-font-language-override:
+    - match: \b(font-language-override)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_scope: meta.descriptor.font-face.font-language-override.css
+        - include: end-value
+        - include: value-css-wide
+        - include: string
+        - match: '\bnormal{{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  descriptor-font-face-font-named-instance:
+    - match: \b(font-named-instance)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_scope: meta.descriptor.font-face.font-named-instance.css
+        - include: end-value
+        - include: value-css-wide
+        - include: string
+        - match: '\bauto{{b}}'
+          scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
   descriptor-font-face-font-stretch:
