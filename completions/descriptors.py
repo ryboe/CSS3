@@ -90,16 +90,11 @@ counter_style_values = {
         ("numeric",),
         ("symbolic",),
         t.counter_style_name,
-    ] + t.integer,
+    ]
+    + t.integer,
 }
 font_face_values = {
-    "font-display": [
-        ("auto",),
-        ("block",),
-        ("fallback",),
-        ("optional",),
-        ("swap",),
-    ],
+    "font-display": [("auto",), ("block",), ("fallback",), ("optional",), ("swap",),],
     "font-family": [t.family_name],
     "font-feature-settings": [("normal",)] + t.feature_tag_value,
     "font-stretch": [
@@ -112,7 +107,8 @@ font_face_values = {
         ("semi-expanded",),
         ("ultra-condensed",),
         ("ultra-expanded",),
-    ] + t.percentage,
+    ]
+    + t.percentage,
     "font-style": [("italic",), ("normal",), ("oblique",)] + t.angle,
     "font-variant": [
         ("all-petite-caps",),
@@ -135,11 +131,17 @@ font_face_values = {
         t.styleset,
         t.stylistic,
         t.swash,
-    ] + (
-        t.common_lig_values + t.discretionary_lig_values + t.historical_lig_values +
-        t.contextual_alt_values +
-        t.numeric_figure_values + t.numeric_spacing_values + t.numeric_fraction_values +
-        t.east_asian_variant_values + t.east_asian_width_values
+    ]
+    + (
+        t.common_lig_values
+        + t.discretionary_lig_values
+        + t.historical_lig_values
+        + t.contextual_alt_values
+        + t.numeric_figure_values
+        + t.numeric_spacing_values
+        + t.numeric_fraction_values
+        + t.east_asian_variant_values
+        + t.east_asian_width_values
     ),
     "font-weight": [
         ("100",),
@@ -154,12 +156,7 @@ font_face_values = {
         ("bold",),
         ("normal",),
     ],
-    "src": [
-        t.format_func,
-        t.font_face_name,
-        t.local,
-        t.url,
-    ],
+    "src": [t.format_func, t.font_face_name, t.local, t.url,],
     "unicode-range": [t.urange],
 }
 viewport_values = {
@@ -169,19 +166,21 @@ viewport_values = {
     "zoom": [("auto",)] + t.number + t.percentage,
 }
 
-allow_word_completions = frozenset((
-    "additive-symbols",
-    "fallback",
-    "font-family",
-    "name",
-    "negative",
-    "pad",
-    "prefix",
-    "speak-as",
-    "suffix",
-    "symbols",
-    "system",
-))
+allow_word_completions = frozenset(
+    (
+        "additive-symbols",
+        "fallback",
+        "font-family",
+        "name",
+        "negative",
+        "pad",
+        "prefix",
+        "speak-as",
+        "suffix",
+        "symbols",
+        "system",
+    )
+)
 
 # descriptor_to_values maps @-rules to the completions for their descriptors'
 # values.

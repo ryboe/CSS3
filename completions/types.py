@@ -1,118 +1,139 @@
 # FUNCTIONS
 # These completions are here instead of functions.py to avoid a circular import.
-a            = ("a()", "a(${1})")
-alpha        = ("alpha()", "alpha(${1})")
-annotation   = ("annotation()", "annotation(${1})")
-attr         = ("attr()", "attr(${1:name})")
-b            = ("b()", "b(${1}${2:0}%)")
-blackness    = ("blackness()", "blackness(${1}${2:0}%)")
-blend        = ("blend()", "blend(${1:<color>} ${2:0}%${3})")
-blenda       = ("blenda()", "blenda(${1:<color>} ${2:0}%${3})")
-blue         = ("blue()", "blue(${1:0})")
-blur         = ("blur()", "blur(${1:<length>})")
-brightness   = ("brightness()", "brightness(${1})")
-calc         = ("calc()", "calc(${1})")
+a = ("a()", "a(${1})")
+alpha = ("alpha()", "alpha(${1})")
+annotation = ("annotation()", "annotation(${1})")
+attr = ("attr()", "attr(${1:name})")
+b = ("b()", "b(${1}${2:0}%)")
+blackness = ("blackness()", "blackness(${1}${2:0}%)")
+blend = ("blend()", "blend(${1:<color>} ${2:0}%${3})")
+blenda = ("blenda()", "blenda(${1:<color>} ${2:0}%${3})")
+blue = ("blue()", "blue(${1:0})")
+blur = ("blur()", "blur(${1:<length>})")
+brightness = ("brightness()", "brightness(${1})")
+calc = ("calc()", "calc(${1})")
 character_variant = ("character-variant()", "character-variant(${1})")
-child        = ("child()", "child(${1:0})")
-cielab       = ("cielab()", "cielab(${1:<lightness>}, ${2:a}, ${3:b})")
-cielchab     = ("cielchab()", "cielchab(${1:<lightness>}, ${2:<chroma>}, ${3:<hue>})")
-circle       = ("circle()", "circle(${1})")
-color_func   = ("color()", "color(${1})")
+child = ("child()", "child(${1:0})")
+cielab = ("cielab()", "cielab(${1:<lightness>}, ${2:a}, ${3:b})")
+cielchab = ("cielchab()", "cielchab(${1:<lightness>}, ${2:<chroma>}, ${3:<hue>})")
+circle = ("circle()", "circle(${1})")
+color_func = ("color()", "color(${1})")
 conic_gradient = ("conic-gradient()", "conic-gradient(${1})")
-content      = ("content()", "content(${1})")
-contrast     = ("contrast()", "contrast(${1})")
-counter      = ("counter()", "counter(${1:<identifier>})")
-counters     = ("counters()", "counters(${1:<identifier>}, '${2:<string>}'${3})")
-cross_fade   = ("cross-fade()", "cross-fade(${1:<mixing-image>}${2:, ${3:<final-image>}})")
+content = ("content()", "content(${1})")
+contrast = ("contrast()", "contrast(${1})")
+counter = ("counter()", "counter(${1:<identifier>})")
+counters = ("counters()", "counters(${1:<identifier>}, '${2:<string>}'${3})")
+cross_fade = (
+    "cross-fade()",
+    "cross-fade(${1:<mixing-image>}${2:, ${3:<final-image>}})",
+)
 cubic_bezier = ("cubic-bezier()", "cubic-bezier(${1})")
-device_cmyk  = ("device-cmyk()", "device-cmyk(${1:0}, ${2:0}, ${3:0}, ${4:0}${5:, ${6:1.0}}${7:, ${8:<color>}})")
-device_gray  = ("device-gray()", "device-gray(${1:0})")
+device_cmyk = (
+    "device-cmyk()",
+    "device-cmyk(${1:0}, ${2:0}, ${3:0}, ${4:0}${5:, ${6:1.0}}${7:, ${8:<color>}})",
+)
+device_gray = ("device-gray()", "device-gray(${1:0})")
 device_nchannel = ("device-nchannel()", "device-nchannel(${1:0})")
-device_rgb   = ("device-rgb()", "device-rgb(${1:0}, ${2:0}, ${3:0})")
-drop_shadow  = ("drop-shadow()", "drop-shadow(${1:<length>} ${2:<length>})")
-element      = ("element()", "element(#${1:id})")
-ellipse      = ("ellipse()", "ellipse(${1})")
-fade         = ("fade()", "fade(${1})")
-filter_func  = ("filter()", "filter(${1})")
-fit_content  = ("fit-content()", "fit-content(${1})")
-format_func  = ("format()", 'format("${1}")')
-frames       = ("frames()", 'frames(${1})')
-gray         = ("gray()", "gray(${1}${2:, ${3:1.0}}})")
-grayscale    = ("grayscale()", "grayscale(${1})")
-green        = ("green()", "green(${1:0})")
-h            = ("h()", "h(${1}${2:<angle>})")
-hsl          = ("hsl()", "hsl(${1:<hue>}, ${2:0}%, ${3:0}%)")
-hsla         = ("hsla()", "hsla(${1:<hue>}, ${2:0}%, ${3:0}%, ${4:1.0})")
-hue          = ("hue()", "hue(${1}${2:<angle>})")
-hue_rotate   = ("hue-rotate()", "hue-rotate(${1:<angle>})")
-hwb          = ("hwb()", "hwb(${1:<hue>}, ${2:0}%, ${3:0}%${4:, ${5:1.0}})")
+device_rgb = ("device-rgb()", "device-rgb(${1:0}, ${2:0}, ${3:0})")
+drop_shadow = ("drop-shadow()", "drop-shadow(${1:<length>} ${2:<length>})")
+element = ("element()", "element(#${1:id})")
+ellipse = ("ellipse()", "ellipse(${1})")
+fade = ("fade()", "fade(${1})")
+filter_func = ("filter()", "filter(${1})")
+fit_content = ("fit-content()", "fit-content(${1})")
+format_func = ("format()", 'format("${1}")')
+frames = ("frames()", "frames(${1})")
+gray = ("gray()", "gray(${1}${2:, ${3:1.0}}})")
+grayscale = ("grayscale()", "grayscale(${1})")
+green = ("green()", "green(${1:0})")
+h = ("h()", "h(${1}${2:<angle>})")
+hsl = ("hsl()", "hsl(${1:<hue>}, ${2:0}%, ${3:0}%)")
+hsla = ("hsla()", "hsla(${1:<hue>}, ${2:0}%, ${3:0}%, ${4:1.0})")
+hue = ("hue()", "hue(${1}${2:<angle>})")
+hue_rotate = ("hue-rotate()", "hue-rotate(${1:<angle>})")
+hwb = ("hwb()", "hwb(${1:<hue>}, ${2:0}%, ${3:0}%${4:, ${5:1.0}})")
 icc_color_func = ("icc-color()", "icc-color(${1:name}, ${2:0})")
-icc_named_color = ("icc-named-color()", "icc-named-color(${1:name}, ${2:<named-colo>r})")
-image_func   = ("image()", "image(${1})")
-image_set    = ("image-set()", "image-set(${1})")
-inset        = ("inset()", "inset(${1})")
-invert       = ("invert()", "invert(${1})")
-l            = ("l()", "l(${1}${2:0}%)")
-leader       = ("leader()", "leader(${1})")
-lightness    = ("lightness()", "lightness(${1}${2:0}%)")
+icc_named_color = (
+    "icc-named-color()",
+    "icc-named-color(${1:name}, ${2:<named-colo>r})",
+)
+image_func = ("image()", "image(${1})")
+image_set = ("image-set()", "image-set(${1})")
+inset = ("inset()", "inset(${1})")
+invert = ("invert()", "invert(${1})")
+l = ("l()", "l(${1}${2:0}%)")
+leader = ("leader()", "leader(${1})")
+lightness = ("lightness()", "lightness(${1}${2:0}%)")
 linear_gradient = ("linear-gradient()", "linear-gradient(${1})")
-local        = ("local()", "local(${1})")
-matrix       = ("matrix()", "matrix(${1:0}, ${2:0}, ${3:0}, ${4:0}, ${5:0}, ${6:0})")
-matrix3d     = ("matrix3d()", "matrix3d(${1:0}, ${2:0}, ${3:0}, ${4:0}, ${5:0}, ${6:0}, ${7:0}, ${8:0}, ${9:0}, ${10:0}, ${11:0}, ${12:0}, ${13:0}, ${14:0}, ${15:0}, ${16:0})")
-minmax       = ("minmax()", "minmax(${1:<min>}, ${2:<max>})")
-opacity      = ("opacity()", "opacity(${1})")
-ornaments    = ("ornaments()", "ornaments(${1})")
-path         = ("path()", "path('${1}')")
-perspective  = ("perspective()", "perspective(${1:length})")
-polygon      = ("polygon()", "polygon(${1})")
+local = ("local()", "local(${1})")
+matrix = ("matrix()", "matrix(${1:0}, ${2:0}, ${3:0}, ${4:0}, ${5:0}, ${6:0})")
+matrix3d = (
+    "matrix3d()",
+    "matrix3d(${1:0}, ${2:0}, ${3:0}, ${4:0}, ${5:0}, ${6:0}, ${7:0}, ${8:0}, ${9:0}, ${10:0}, ${11:0}, ${12:0}, ${13:0}, ${14:0}, ${15:0}, ${16:0})",
+)
+minmax = ("minmax()", "minmax(${1:<min>}, ${2:<max>})")
+opacity = ("opacity()", "opacity(${1})")
+ornaments = ("ornaments()", "ornaments(${1})")
+path = ("path()", "path('${1}')")
+perspective = ("perspective()", "perspective(${1:length})")
+polygon = ("polygon()", "polygon(${1})")
 radial_gradient = ("radial-gradient()", "radial-gradient(${1})")
-ray          = ("ray()", "ray(${1})")
-red          = ("red()", "red(${1:0})")
-repeat       = ("repeat()", "repeat(${1})")
-repeating_conic_gradient = ("repeating-conic-gradient()", "repeating-conic-gradient(${1})")
-repeating_linear_gradient = ("repeating-linear-gradient()", "repeating-linear-gradient(${1})")
-repeating_radial_gradient = ("repeating-radial-gradient()", "repeating-radial-gradient(${1})")
-rgb          = ("rgb()", "rgb(${1:0}, ${2:0}, ${3:0})")
-rgba         = ("rgba()", "rgba(${1:0}, ${2:0}, ${3:0}, ${4:1.0})")
-rotate       = ("rotate()", "rotate(${1:angle})")
-rotate3d     = ("rotate3d()", "rotate3d(${1:0}, ${2:0}, ${3:0}, ${4:angle})")
-rotateX      = ("rotateX()", "rotateX(${1:angle})")
-rotateY      = ("rotateY()", "rotateY(${1:angle})")
-rotateZ      = ("rotateZ()", "rotateZ(${1:angle})")
-s            = ("s()", "s(${1}${2:0}%)")
-saturate     = ("saturate()", "saturate(${1})")
-saturation   = ("saturation()", "saturation(${1}${2:0}%)")
-scale        = ("scale()", "scale(${1:0}${2:, ${3:0}})")
-scale3d      = ("scale3d()", "scale3d(${1:0}, ${2:0}, ${3:0})")
-scaleX       = ("scaleX()", "scaleX(${1:0})")
-scaleY       = ("scaleY()", "scaleY(${1:0})")
-scaleZ       = ("scaleZ()", "scaleZ(${1:0})")
-select       = ("select()", "select(${1})")
-sepia        = ("sepia()", "sepia(${1})")
-shade        = ("shade()", "shade(${1:0}%)")
-skew         = ("skew()", "skew(${1:angle}${2:, ${3:angle}})")
-skewX        = ("skewX()", "skewX(${1:angle})")
-skewY        = ("skewY()", "skewY(${1:angle})")
-snap_block   = ("snap-block()", "snap-block(${1:<length>})")
-snap_inline  = ("snap-inline()", "snap-inline(${1:<length>})")
-steps        = ("steps()", "steps(${1})")
-styleset     = ("styleset()", "styleset(${1})")
-stylistic    = ("stylistic()", "stylistic(${1})")
-swash        = ("swash()", "swash(${1})")
-symbols      = ("symbols()", "symbols(${1})")
-target_counter  = ("target-counter()", "target-counter(${1})")
+ray = ("ray()", "ray(${1})")
+red = ("red()", "red(${1:0})")
+repeat = ("repeat()", "repeat(${1})")
+repeating_conic_gradient = (
+    "repeating-conic-gradient()",
+    "repeating-conic-gradient(${1})",
+)
+repeating_linear_gradient = (
+    "repeating-linear-gradient()",
+    "repeating-linear-gradient(${1})",
+)
+repeating_radial_gradient = (
+    "repeating-radial-gradient()",
+    "repeating-radial-gradient(${1})",
+)
+rgb = ("rgb()", "rgb(${1:0}, ${2:0}, ${3:0})")
+rgba = ("rgba()", "rgba(${1:0}, ${2:0}, ${3:0}, ${4:1.0})")
+rotate = ("rotate()", "rotate(${1:angle})")
+rotate3d = ("rotate3d()", "rotate3d(${1:0}, ${2:0}, ${3:0}, ${4:angle})")
+rotateX = ("rotateX()", "rotateX(${1:angle})")
+rotateY = ("rotateY()", "rotateY(${1:angle})")
+rotateZ = ("rotateZ()", "rotateZ(${1:angle})")
+s = ("s()", "s(${1}${2:0}%)")
+saturate = ("saturate()", "saturate(${1})")
+saturation = ("saturation()", "saturation(${1}${2:0}%)")
+scale = ("scale()", "scale(${1:0}${2:, ${3:0}})")
+scale3d = ("scale3d()", "scale3d(${1:0}, ${2:0}, ${3:0})")
+scaleX = ("scaleX()", "scaleX(${1:0})")
+scaleY = ("scaleY()", "scaleY(${1:0})")
+scaleZ = ("scaleZ()", "scaleZ(${1:0})")
+select = ("select()", "select(${1})")
+sepia = ("sepia()", "sepia(${1})")
+shade = ("shade()", "shade(${1:0}%)")
+skew = ("skew()", "skew(${1:angle}${2:, ${3:angle}})")
+skewX = ("skewX()", "skewX(${1:angle})")
+skewY = ("skewY()", "skewY(${1:angle})")
+snap_block = ("snap-block()", "snap-block(${1:<length>})")
+snap_inline = ("snap-inline()", "snap-inline(${1:<length>})")
+steps = ("steps()", "steps(${1})")
+styleset = ("styleset()", "styleset(${1})")
+stylistic = ("stylistic()", "stylistic(${1})")
+swash = ("swash()", "swash(${1})")
+symbols = ("symbols()", "symbols(${1})")
+target_counter = ("target-counter()", "target-counter(${1})")
 target_counters = ("target-counters()", "target-counters(${1})")
-target_text  = ("target-text()", "target-text(${1})")
-tint         = ("tint()", "tint(${1:0}%)")
-translate    = ("translate()", "translate(${1:length}${2:, ${3:length}})")
-translate3d  = ("translate3d()", "translate3d(${1:length}, ${2:length}, ${3:length})")
-translateX   = ("translateX()", "translateX(${1:length})")
-translateY   = ("translateY()", "translateY(${1:length})")
-translateZ   = ("translateZ()", "translateZ(${1:length})")
-url          = ("url()", "url('${1}')")
-var          = ("var()", "var(--${1:name})")
-w            = ("w()", "w(${1}${2:0}%)")
-whiteness    = ("whiteness()", "whiteness(${1}${2:0}%)")
+target_text = ("target-text()", "target-text(${1})")
+tint = ("tint()", "tint(${1:0}%)")
+translate = ("translate()", "translate(${1:length}${2:, ${3:length}})")
+translate3d = ("translate3d()", "translate3d(${1:length}, ${2:length}, ${3:length})")
+translateX = ("translateX()", "translateX(${1:length})")
+translateY = ("translateY()", "translateY(${1:length})")
+translateZ = ("translateZ()", "translateZ(${1:length})")
+url = ("url()", "url('${1}')")
+var = ("var()", "var(--${1:name})")
+w = ("w()", "w(${1}${2:0}%)")
+whiteness = ("whiteness()", "whiteness(${1}${2:0}%)")
 
 all_values = [("inherit",), ("initial",), ("revert",), ("unset",), var]
 
@@ -480,13 +501,7 @@ icc_color = [
     device_nchannel,
     icc_color_func,
 ]
-image = [
-    cross_fade,
-    element,
-    image_func,
-    image_set,
-    url,
-] + gradient
+image = [cross_fade, element, image_func, image_set, url,] + gradient
 integer = [("<integer>", "${1:0}"), calc]
 isolation_mode = [("auto",), ("isolate",)]
 length = [("<length>", "${1:<length>}"), calc]
@@ -542,13 +557,9 @@ paint = [
     url,
 ] + color
 percentage = [("<percentage>", "${1:0}%"), calc]
-position = [
-    ("bottom",),
-    ("center",),
-    ("left",),
-    ("right",),
-    ("top",),
-] + length + percentage
+position = (
+    [("bottom",), ("center",), ("left",), ("right",), ("top",),] + length + percentage
+)
 quote = [
     ("close-quote",),
     ("no-close-quote",),
@@ -580,23 +591,31 @@ shape_box = [("margin-box",)] + box
 shape_radius = [("closest-side",), ("farthest-side",)] + length + percentage
 side_or_corner = [("bottom",), ("left",), ("right",), ("top",)]
 single_animation_composition = [("accumulate",), ("add",), ("replace",)]
-single_animation_direction = [("alternate",), ("alternate-reverse",), ("normal",), ("reverse",)]
+single_animation_direction = [
+    ("alternate",),
+    ("alternate-reverse",),
+    ("normal",),
+    ("reverse",),
+]
 single_animation_fill_mode = [("backwards",), ("both",), ("forwards",), ("none",)]
 single_animation_iteration_count = [("infinite",)] + number
 single_animation_name = [("none",), identifier]
 single_animation_play_state = [("paused",), ("running",)]
 steps_timing_function = [("step-end",), ("step-start",), steps]
-single_timing_function = [("linear",)] + cubic_bezier_timing_function + frames_timing_function + steps_timing_function
+single_timing_function = (
+    [("linear",)]
+    + cubic_bezier_timing_function
+    + frames_timing_function
+    + steps_timing_function
+)
 size = extent_keyword + length + percentage
 supports_condition_operator = [("and",), ("not",), ("or",)]
 symbol = [identifier, string] + image
 target = [target_counter, target_counters, target_text]
 time = [("<time>", "${1:0}s"), calc]
-track_breadth = [
-    ("auto",),
-    ("max-content",),
-    ("min-content",),
-] + flex + length + percentage
+track_breadth = (
+    [("auto",), ("max-content",), ("min-content",),] + flex + length + percentage
+)
 track_repeat = [repeat]
 track_size = [fit_content, minmax] + track_breadth
 width = [
@@ -606,35 +625,26 @@ width = [
     ("min-content",),
     fit_content,
 ]
-baseline_shift = [
-    ("baseline",),
-    ("sub",),
-    ("super",)
-] + length + percentage
+baseline_shift = [("baseline",), ("sub",), ("super",)] + length + percentage
 bg_image = [("none",)] + image
-bg_size = [
-    ("auto",),
-    ("contain",),
-    ("cover",),
-] + length + percentage
+bg_size = [("auto",), ("contain",), ("cover",),] + length + percentage
 background = bg_image + position + bg_size + repeat_style + attachment + box + color
 border_width = [("logical",), ("medium",), ("thick",), ("thin",)] + length
 color_stop = angle + color + percentage
-content_list = [
-    ("contents",),
-    ("document-url",),
-    leader,
-    url,
-    string,
-] + quote + target
+content_list = [("contents",), ("document-url",), leader, url, string,] + quote + target
 dasharray = length + number + percentage
 feature_tag_value = [("off",), ("on",), string] + integer
 fixed_breadth = length + percentage
 fixed_size = [minmax] + fixed_breadth
 font_variant = (
-    common_lig_values + discretionary_lig_values + historical_lig_values +
-    east_asian_variant_values + east_asian_width_values +
-    numeric_figure_values + numeric_fraction_values + numeric_spacing_values
+    common_lig_values
+    + discretionary_lig_values
+    + historical_lig_values
+    + east_asian_variant_values
+    + east_asian_width_values
+    + numeric_figure_values
+    + numeric_fraction_values
+    + numeric_spacing_values
 )
 generic_voice = [
     ("child",),
@@ -647,28 +657,23 @@ generic_voice = [
 geometry_box = [("fill-box",), ("stroke-box",), ("view-box",)] + shape_box
 grid_line = [("auto",), ("span",), identifier] + integer
 knockout_offset = length + number + percentage
-knockout_shape = [
-    ("circle",),
-    ("ellipse",),
-    ("inverted",),
-    ("rectangle",),
-    ("triangle",),
-] + length + number + percentage
+knockout_shape = (
+    [("circle",), ("ellipse",), ("inverted",), ("rectangle",), ("triangle",),]
+    + length
+    + number
+    + percentage
+)
 marker_gap = length + number + percentage
 mask_layer = [("no-clip",)] + (
-    bg_size +
-    compositing_operator +
-    geometry_box +
-    mask_reference +
-    masking_mode +
-    position +
-    repeat_style
+    bg_size
+    + compositing_operator
+    + geometry_box
+    + mask_reference
+    + masking_mode
+    + position
+    + repeat_style
 )
-single_transition = [
-    ("all",),
-    ("none",),
-    identifier,
-] + single_timing_function + time
+single_transition = [("all",), ("none",), identifier,] + single_timing_function + time
 track_list = [line_names] + track_repeat + track_size
 auto_track_list = [line_names] + auto_repeat + fixed_repeat + fixed_size
 transform_list = [
