@@ -97,6 +97,8 @@ font_face_values = {
     "font-display": [("auto",), ("block",), ("fallback",), ("optional",), ("swap",),],
     "font-family": [t.family_name],
     "font-feature-settings": [("normal",)] + t.feature_tag_value,
+    "font-language-override": [("normal",), t.string],
+    "font-named-instance": [("auto",), t.string],
     "font-stretch": [
         ("condensed",),
         ("expanded",),
