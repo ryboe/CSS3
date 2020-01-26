@@ -3473,6 +3473,9 @@ contexts:
     - include: property-shape-margin
     - include: property-shape-outside
     - include: property-shape-rendering
+    - include: property-spatial-navigation-action
+    - include: property-spatial-navigation-contain
+    - include: property-spatial-navigation-function
     - include: property-speak-as
     - include: property-stop-color
     - include: property-stop-opacity
@@ -8296,6 +8299,48 @@ contexts:
           scope: support.constant.property-value.css
         - include: page-size
         - include: length-non-negative
+    - include: stray-paren-or-semicolon
+
+  # CSS Spatial Navigation Level 1
+  property-spatial-navigation-action:
+    - match: \b(spatial-navigation-action)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.spatial-navigation-action.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:scroll|focus|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Spatial Navigation Level 1
+  property-spatial-navigation-contain:
+    - match: \b(spatial-navigation-contain)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.spatial-navigation-contain.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:contain|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Spatial Navigation Level 1
+  property-spatial-navigation-function:
+    - match: \b(spatial-navigation-function)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.spatial-navigation-function.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:normal|grid){{b}}'
+          scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
   # CSS Speech Module
