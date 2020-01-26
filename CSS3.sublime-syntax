@@ -3881,7 +3881,27 @@ contexts:
         - meta_content_scope: meta.property-value.appearance.css
         - include: end-value
         - include: value-css-wide
-        - match: \b(?:none|auto){{b}}
+        - match: '(?x)
+          \b
+          (?:
+            textfield|
+            textarea|
+            square-button|
+            slider-horizontal|
+            searchfield|
+            radio|
+            push-button|
+            progress-bar|
+            none|
+            meter|
+            menulist-button|
+            menulist|
+            listbox|
+            checkbox|
+            button|
+            auto
+          )
+          {{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
@@ -5040,7 +5060,7 @@ contexts:
         - include: decibel
     - include: stray-paren-or-semicolon
 
-  # CSS Basic User Interface Module Level 3
+  # CSS Basic User Interface Module Level 4
   # SVG 2
   property-cursor:
     - match: \b(cursor)\s*(:)
@@ -7328,7 +7348,7 @@ contexts:
         - include: angle
     - include: stray-paren-or-semicolon
 
-  # CSS Basic User Interface Module Level 3
+  # CSS Basic User Interface Module Level 4
   property-nav-up-right-left-down:
     - match: \b(nav-up|nav-right|nav-left|nav-down)\s*(:)
       captures:
@@ -7521,7 +7541,7 @@ contexts:
         - include: integer
     - include: stray-paren-or-semicolon
 
-  # CSS Basic User Interface Module Level 3
+  # CSS Basic User Interface Module Level 4
   property-outline:
     - match: \b(outline)\s*(:)
       captures:
@@ -7538,7 +7558,7 @@ contexts:
         - include: color
     - include: stray-paren-or-semicolon
 
-  # CSS Basic User Interface Module Level 3
+  # CSS Basic User Interface Module Level 4
   property-outline-color:
     - match: \b(outline-color)\s*(:)
       captures:
@@ -7553,7 +7573,7 @@ contexts:
         - include: color
     - include: stray-paren-or-semicolon
 
-  # CSS Basic User Interface Module Level 3
+  # CSS Basic User Interface Module Level 4
   property-outline-offset:
     - match: \b(outline-offset)\s*(:)
       captures:
@@ -7566,7 +7586,7 @@ contexts:
         - include: length
     - include: stray-paren-or-semicolon
 
-  # CSS Basic User Interface Module Level 3
+  # CSS Basic User Interface Module Level 4
   property-outline-style:
     - match: \b(outline-style)\s*(:)
       captures:
@@ -7581,7 +7601,7 @@ contexts:
         - include: border-style
     - include: stray-paren-or-semicolon
 
-  # CSS Basic User Interface Module Level 3
+  # CSS Basic User Interface Module Level 4
   property-outline-width:
     - match: \b(outline-width)\s*(:)
       captures:
@@ -7948,7 +7968,7 @@ contexts:
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
-  # CSS Basic User Interface Module Level 3
+  # CSS Basic User Interface Module Level 4
   # CSS Logical Properties and Values Level 1
   property-resize:
     - match: \b(resize)\s*(:)
