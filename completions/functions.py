@@ -110,7 +110,7 @@ func_name_to_completions = {
     + t.size,
     "ray": [("contain",)] + t.angle + t.size,
     "red-green-blue-alpha-a": t.number + t.percentage,
-    "repeat": [("auto-fill",), ("auto-fit",), t.identifier, t.line_names,]
+    "repeat": [("auto-fill",), t.identifier, t.line_names,]
     + t.integer
     + t.track_size,
     "rgba": t.rgb_component,

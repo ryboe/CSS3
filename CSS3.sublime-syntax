@@ -2295,7 +2295,7 @@ contexts:
         - include: func-var
         - include: line-names
         - include: track-size
-        - match: '\b(?:auto-fit|auto-fill){{b}}'
+        - match: '\bauto-fill{{b}}'
           scope: support.constant.property-value.css
         - include: integer-positive
 
