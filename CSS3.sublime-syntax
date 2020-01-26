@@ -8790,7 +8790,7 @@ contexts:
         - meta_content_scope: meta.property-value.text-combine-upright.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:none|digits|all){{b}}'
+        - match: '\b(?:none|all){{b}}'
           scope: support.constant.property-value.css
         # Technically, this should be an integer in the range 2-4.
         - include: integer-positive
@@ -9759,7 +9759,7 @@ contexts:
         - meta_content_scope: meta.property-value.writing-mode.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:vertical-rl|vertical-lr|sideways-rl|sideways-lr|horizontal-tb){{b}}'
+        - match: '\b(?:vertical-rl|vertical-lr|horizontal-tb){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 

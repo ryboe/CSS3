@@ -1436,7 +1436,7 @@ name_to_completions = {
         ("start",),
     ],
     "text-anchor": [("end",), ("middle",), ("start",)],
-    "text-combine-upright": [("all",), ("digits",), ("none",)] + t.integer,
+    "text-combine-upright": [("all",), ("none",)] + t.integer,
     "text-decoration": [
         ("blink",),
         ("dashed",),
@@ -1685,8 +1685,6 @@ name_to_completions = {
     "wrap-through": [("none",), ("wrap",)],
     "writing-mode": [
         ("horizontal-tb",),
-        ("sideways-lr",),
-        ("sideways-rl",),
         ("vertical-lr",),
         ("vertical-rl",),
     ],
