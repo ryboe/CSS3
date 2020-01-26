@@ -769,7 +769,6 @@ name_to_completions = {
         ("paint",),
         ("size",),
         ("strict",),
-        ("style",),
     ],
     "content": [("none",), ("normal",), t.attr, t.counter, t.counters, t.string,]
     + t.content_list
