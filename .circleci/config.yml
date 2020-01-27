@@ -1,0 +1,36 @@
+version: 2.1
+
+jobs:
+  syntax-test:
+    docker:
+      - image: sublimetext/unittesting
+    environment:
+      PACKAGE: CSS3
+      SUBLIME_TEXT_VERSION: '3'
+    steps:
+      - checkout
+      - run:
+          name: Run In-Memory Display Server for Headless Sublime Testing
+          command: sh -e /etc/init.d/xvfb start
+      - run:
+          name: Fetch Sublime's CircleCI script
+          command: curl -LO https://raw.githubusercontent.com/SublimeText/UnitTesting/master/sbin/circleci.sh
+      - run:
+          name: Bootstrap Test Environment
+          command: sh circleci.sh bootstrap
+      - run:
+          name: Test That Patterns Are Compatible With The Modern Sublime Regex Engine
+          command: |
+            export PATH="$HOME/.local/bin:$PATH"
+            sh circleci.sh run_syntax_compatibility
+      - run:
+          name: Test Sublime Syntax Files
+          command: |
+            export PATH="$HOME/.local/bin:$PATH"
+            sh circleci.sh run_syntax_tests
+
+workflows:
+  version: 2
+  test_syntax:
+    jobs:
+      - syntax-test
