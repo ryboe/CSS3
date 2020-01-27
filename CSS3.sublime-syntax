@@ -213,19 +213,6 @@ contexts:
     - include: length
     - include: number
 
-  at-apply:
-    - match: '(@)apply{{b}}'
-      captures:
-        0: keyword.control.at-rule.apply.css
-        1: punctuation.definition.keyword.css
-      push:
-        - match: ';'
-          scope: punctuation.terminator.rule.css
-          pop: true
-        - match: '{{custom_property_name}}'
-          scope: support.type.property-name.custom.css
-    - include: stray-semicolon
-
   at-charset:
     - match: '(@)charset{{b}}'
       captures:
@@ -914,8 +901,6 @@ contexts:
               pop: true
             - include: at-media
             - include: rule
-        - include: at-apply
-        - include: property-custom-declaration
         - include: properties
 
   dasharray:
@@ -5131,26 +5116,6 @@ contexts:
         - include: value-css-wide
         - include: any-value
     - include: stray-paren-or-semicolon
-
-  property-custom-declaration:
-    - match: '({{custom_property_name}})\s*(:)'
-      captures:
-        1: support.type.property-name.css
-        2: punctuation.separator.key-value.css
-      push:
-        - match: ';'
-          scope: punctuation.terminator.custom-property.css
-          pop: true
-        - match: '{'
-          scope: punctuation.section.declaration-list.begin.css
-          push:
-            - meta_scope: meta.declaration-list.css
-            - match: '}'
-              scope: punctuation.section.declaration-list.end.css
-              pop: true
-            - include: properties
-        - include: stray-brace
-    - include: stray-semicolon
 
   property-deprecated:
     - match: '(?x)
