@@ -16,7 +16,6 @@ The most complete CSS and PostCSS-cssnext support for Sublime Text.
   - custom selectors
   - custom properties
   - custom media queries
-  - @apply
   - [CSS Modules](https://github.com/css-modules/css-modules)
   - lots more
 * __Productive__: Offers a full set of completions for properties, descriptors,
