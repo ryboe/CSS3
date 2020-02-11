@@ -3428,6 +3428,7 @@ contexts:
     - include: property-outline-width
     - include: property-overflow-wrap
     - include: property-overflow-x-y
+    - include: property-overscroll-behavior
     - include: property-padding-block-inline
     - include: property-page-break-before-after
     - include: property-page-break-inside
@@ -7621,6 +7622,20 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:visible|scroll|hidden|clip|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Overscroll Behavior Module Level 1
+  property-overscroll-behavior:
+    - match: \b(overscroll-behavior(?:\-(?:inline|block|y|x))?)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.overscroll-behavior.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:none|contain|auto){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
