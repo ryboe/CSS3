@@ -3426,6 +3426,7 @@ contexts:
     - include: property-outline-offset
     - include: property-outline-style
     - include: property-outline-width
+    - include: property-overflow-anchor
     - include: property-overflow-wrap
     - include: property-overflow-x-y
     - include: property-overscroll-behavior
@@ -7594,6 +7595,20 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:visible|scroll|hidden|clip|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Scroll Anchoring Module Level 1
+  property-overflow-anchor:
+    - match: \b(overflow-anchor)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.overflow-anchor.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:none|auto){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
