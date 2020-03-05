@@ -109,7 +109,10 @@ contexts:
     - include: func-cielab
     - include: func-cielchab
     - include: func-color
+    - include: func-color-adjust
+    - include: func-color-contrast
     - include: func-color-adjuster-rgb
+    - include: func-color-mix
     - include: func-conic-gradient
     - include: func-content
     - include: func-contrast
@@ -136,6 +139,8 @@ contexts:
     - include: func-image
     - include: func-image-set
     - include: func-inset
+    - include: func-lab
+    - include: func-lch
     - include: func-leader
     - include: func-linear-gradient
     - include: func-local
@@ -588,9 +593,14 @@ contexts:
   color:
     - include: func-hsla
     - include: func-hwb
+    - include: func-lab
+    - include: func-lch
     - include: func-gray
     - include: func-device-cmyk
     - include: func-color
+    - include: func-color-adjust
+    - include: func-color-contrast
+    - include: func-color-mix
     - include: color-adjuster
     - include: func-rgba
     - include: icc-color
@@ -1748,6 +1758,18 @@ contexts:
         - include: number
         - include: identifier
 
+  # CSS Color Module Level 5
+  func-color-adjust:
+    - match: \b(color-adjust)(\()
+      captures:
+        1: support.function.color-adjust.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_scope: meta.function.color-adjust.css
+        - include: end-func
+        - include: func-var
+        - include: color
+
   func-color-adjuster-rgb:
     - match: \b(rgb)(\()
       captures:
@@ -1757,10 +1779,38 @@ contexts:
         - meta_scope: meta.function.color-adjuster-rgb.css
         - include: end-func
         - include: func-var
+        - match: '\bfrom{{b}}'
+          scope: support.constant.property-value.css
+        - include: color
         - include: percentage
-        - include: hex-color
         - include: number
         - include: color-adjuster-operator
+
+  # CSS Color Module Level 5
+  func-color-contrast:
+    - match: \b(color-contrast)(\()
+      captures:
+        1: support.function.color-contrast.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_scope: meta.function.color-contrast.css
+        - include: end-func
+        - include: func-var
+        - include: color
+
+  # CSS Color Module Level 5
+  func-color-mix:
+    - match: \b(color-mix)(\()
+      captures:
+        1: support.function.color-mix.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_scope: meta.function.color-mix.css
+        - include: end-func
+        - include: func-var
+        - include: color
+        - include: percentage
+        - include: number
 
   func-conic-gradient:
     - match: \b((?:repeating-)?conic-gradient)(\()
@@ -2027,6 +2077,9 @@ contexts:
         - meta_scope: meta.function.hsla.css
         - include: end-func
         - include: func-var
+        - match: '\bfrom{{b}}'
+          scope: support.constant.property-value.css
+        - include: color
         - include: angle
         - include: percentage-zero-to-100
         - include: number  # matches part of <hue> and <alpha-value>
@@ -2054,6 +2107,7 @@ contexts:
         - include: func-var
         - include: angle
 
+  # CSS Color Module Level 5
   func-hwb:
     - match: \b(hwb)(\()
       captures:
@@ -2063,6 +2117,9 @@ contexts:
         - meta_scope: meta.function.hwb.css
         - include: end-func
         - include: func-var
+        - match: '\bfrom{{b}}'
+          scope: support.constant.property-value.css
+        - include: color
         - include: percentage-zero-to-100
         - include: angle
         - include: number  # matches part of <hue> and <alpha-value>
@@ -2125,6 +2182,38 @@ contexts:
         - include: shape-arg
         - match: '\/'
           scope: keyword.operator.arithmetic.css
+
+  # CSS Color Module Level 5
+  func-lab:
+    - match: \b(lab)(\()
+      captures:
+        1: support.function.lab.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_scope: meta.function.lab.css
+        - include: end-func
+        - include: func-var
+        - match: '\bfrom{{b}}'
+          scope: support.constant.property-value.css
+        - include: color
+        - include: percentage-zero-to-100
+        - include: number  # matches part of <hue> and <alpha-value>
+
+  # CSS Color Module Level 5
+  func-lch:
+    - match: \b(lch)(\()
+      captures:
+        1: support.function.lch.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_scope: meta.function.lch.css
+        - include: end-func
+        - include: func-var
+        - match: '\bfrom{{b}}'
+          scope: support.constant.property-value.css
+        - include: color
+        - include: percentage-zero-to-100
+        - include: number  # matches part of <hue> and <alpha-value>
 
   func-leader:
     - match: \b(leader)(\()
@@ -2293,6 +2382,9 @@ contexts:
         - meta_scope: meta.function.rgba.css
         - include: end-func
         - include: func-var
+        - match: '\bfrom{{b}}'
+          scope: support.constant.property-value.css
+        - include: color
         - include: rgb-component
         - include: alpha-value
 
