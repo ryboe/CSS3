@@ -2213,7 +2213,7 @@ contexts:
         - meta_scope: meta.function.perspective.css
         - include: end-func
         - include: func-var
-        - include: length-positive
+        - include: length-non-negative
 
   func-polygon:
     - match: \b(polygon)(\()
@@ -3597,14 +3597,17 @@ contexts:
     - include: property-quotes
     - include: property-resize
     - include: property-rest
+    - include: property-rotate
     - include: property-rotation
     - include: property-running
+    - include: property-scale
     - include: property-size
     - include: property-speak
     - include: property-stroke
     - include: property-top-right-left-bottom
     - include: property-transform
     - include: property-transition
+    - include: property-translate
     - include: property-visibility
     - include: property-widows-orphans
     - include: property-width
@@ -7756,7 +7759,7 @@ contexts:
         - include: time
     - include: stray-paren-or-semicolon
 
-  # CSS Transforms Module Level 1
+  # CSS Transforms Module Level 2
   property-perspective:
     - match: ({{webkit}}\bperspective)\s*(:)
       captures:
@@ -7768,10 +7771,10 @@ contexts:
         - include: value-css-wide
         - match: '\bnone{{b}}'
           scope: support.constant.property-value.css
-        - include: length-positive
+        - include: length-non-negative
     - include: stray-paren-or-semicolon
 
-  # CSS Transforms Module Level 1
+  # CSS Transforms Module Level 2
   property-perspective-origin:
     - match: ({{webkit}}\bperspective-origin)\s*(:)
       captures:
@@ -7996,6 +7999,22 @@ contexts:
         - include: time
     - include: stray-paren-or-semicolon
 
+  # CSS Transforms Module Level 2
+  property-rotate:
+    - match: \b(rotate)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.rotate.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:none|z|y|x){{b}}'
+          scope: support.constant.property-value.css
+        - include: angle
+        - include: number
+    - include: stray-paren-or-semicolon
+
   # CSS basic box model
   property-rotation:
     - match: \b(rotation)\s*(:)
@@ -8091,6 +8110,21 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: identifier
+    - include: stray-paren-or-semicolon
+
+  # CSS Transforms Module Level 2
+  property-scale:
+    - match: \b(scale)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.scale.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
+        - include: number
     - include: stray-paren-or-semicolon
 
   # CSSOM View Module
@@ -9355,7 +9389,7 @@ contexts:
         - include: position
     - include: stray-paren-or-semicolon
 
-  # CSS Transforms Module Level 1
+  # CSS Transforms Module Level 2
   property-transform-style:
     - match: \b(transform-style)\s*(:)
       captures:
@@ -9365,7 +9399,7 @@ contexts:
         - meta_content_scope: meta.property-value.transform-style.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:preserve-3d|flat|auto){{b}}'
+        - match: '\b(?:preserve-3d|flat){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
@@ -9434,6 +9468,22 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: single-timing-function
+    - include: stray-paren-or-semicolon
+
+  # CSS Transforms Module Level 2
+  property-translate:
+    - match: \b(translate)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.translate.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
+        - include: percentage
+        - include: length
     - include: stray-paren-or-semicolon
 
   # CSS Writing Modes Level 3
