@@ -84,10 +84,10 @@ func_name_to_completions = {
     # "has": [],           # TODO: has takes a selector list as an arg. should it have completions?
     # "host": [],          # TODO: host takes a selector list as an arg. should it have completions?
     # "host-context": [],  # TODO: host-context takes a selector list as an arg. should it have completions?
-    "hsla": [("from",)] + t.angle + t.number + t.percentage,
+    "hsla": [("from",)] + t.color + t.angle + t.number + t.percentage,
     "hue": t.angle,
     "hue-rotate": t.angle,
-    "hwb": [("from",)] + t.angle + t.number + t.percentage,
+    "hwb": [("from",)] + t.color + t.angle + t.number + t.percentage,
     "icc-color": [t.identifier] + t.icc_color + t.number,
     "image": [t.string] + t.image + t.color,
     "image-set": [t.string] + t.image + t.resolution,
@@ -118,7 +118,7 @@ func_name_to_completions = {
     "repeat": [("auto-fill",), t.identifier, t.line_names,]
     + t.integer
     + t.track_size,
-    "rgba": [("from",)] + t.rgb_component,
+    "rgba": [("from",)] + t.color + t.rgb_component,
     "rotate": t.angle,
     "running": [t.identifier],
     # "select": [],   # TODO: select takes a selector list as an arg. should it have completions?
