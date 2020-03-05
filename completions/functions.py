@@ -56,6 +56,9 @@ func_name_to_completions = {
     + t.number
     + t.percentage,
     "color-adjuster-rgb": [t.hex_color] + t.number + t.percentage,
+    "color-adjust": t.color,
+    "color-contrast": t.color,
+    "color-mix": t.color + t.number + t.percentage,
     "conic-gradient": [("at", "at "), ("from", "from "),] + t.color_stop + t.position,
     "content": [("after",), ("before",), ("first-letter",), ("marker",), ("text",),],
     "contrast": t.number + t.percentage,
@@ -81,14 +84,16 @@ func_name_to_completions = {
     # "has": [],           # TODO: has takes a selector list as an arg. should it have completions?
     # "host": [],          # TODO: host takes a selector list as an arg. should it have completions?
     # "host-context": [],  # TODO: host-context takes a selector list as an arg. should it have completions?
-    "hsla": t.angle + t.number + t.percentage,
+    "hsla": [("from",)] + t.color + t.angle + t.number + t.percentage,
     "hue": t.angle,
     "hue-rotate": t.angle,
-    "hwb": t.angle + t.number + t.percentage,
+    "hwb": [("from",)] + t.color + t.angle + t.number + t.percentage,
     "icc-color": [t.identifier] + t.icc_color + t.number,
     "image": [t.string] + t.image + t.color,
     "image-set": [t.string] + t.image + t.resolution,
     "inset": [("round",)] + t.shape_arg,
+    "lab": [("from",)] + t.color + t.number + t.percentage,
+    "lch": [("from",)] + t.color + t.number + t.percentage,
     "leader": [("dotted",), ("solid",), ("space",), t.string],
     "linear-gradient": [("to", "to ")] + t.angle + t.color_stop + t.side_or_corner,
     "local": [t.identifier, t.string],
@@ -113,7 +118,7 @@ func_name_to_completions = {
     "repeat": [("auto-fill",), t.identifier, t.line_names,]
     + t.integer
     + t.track_size,
-    "rgba": t.rgb_component,
+    "rgba": [("from",)] + t.color + t.rgb_component,
     "rotate": t.angle,
     "running": [t.identifier],
     # "select": [],   # TODO: select takes a selector list as an arg. should it have completions?

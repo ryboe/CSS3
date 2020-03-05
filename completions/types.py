@@ -18,6 +18,9 @@ cielab = ("cielab()", "cielab(${1:<lightness>}, ${2:a}, ${3:b})")
 cielchab = ("cielchab()", "cielchab(${1:<lightness>}, ${2:<chroma>}, ${3:<hue>})")
 circle = ("circle()", "circle(${1})")
 color_func = ("color()", "color(${1})")
+color_adjust_func = ("color-adjust()", "color-adjust(${1})")
+color_contrast_func = ("color-contrast()", "color-contrast(${1})")
+color_mix_func = ("color-mix()", "color-mix(${1})")
 conic_gradient = ("conic-gradient()", "conic-gradient(${1})")
 content = ("content()", "content(${1})")
 contrast = ("contrast()", "contrast(${1})")
@@ -62,6 +65,8 @@ image_set = ("image-set()", "image-set(${1})")
 inset = ("inset()", "inset(${1})")
 invert = ("invert()", "invert(${1})")
 l = ("l()", "l(${1}${2:0}%)")
+lab_func = ("lab()", "lab(${1})")
+lch_func = ("lch()", "lch(${1})")
 leader = ("leader()", "leader(${1})")
 lightness = ("lightness()", "lightness(${1}${2:0}%)")
 linear_gradient = ("linear-gradient()", "linear-gradient(${1})")
@@ -359,6 +364,9 @@ color = [
     cielab,
     cielchab,
     color_func,
+    color_adjust_func,
+    color_contrast_func,
+    color_mix_func,
     contrast,
     device_cmyk,
     device_gray,
@@ -374,6 +382,8 @@ color = [
     icc_color_func,
     icc_named_color,
     l,
+    lab_func,
+    lch_func,
     lightness,
     red,
     rgb,
