@@ -2889,6 +2889,8 @@ contexts:
         - include: media-feature-custom  # TODO: correct precedence?
         - include: media-feature-aspect-ratio
         - include: media-feature-color-gamut
+        - include: media-feature-environment-blending
+        - include: media-feature-forced-colors
         - include: media-feature-grid
         - include: media-feature-hover
         - include: media-feature-inverted-colors
@@ -2899,6 +2901,10 @@ contexts:
         - include: media-feature-overflow-block
         - include: media-feature-overflow-inline
         - include: media-feature-pointer
+        - include: media-feature-prefers-contrast
+        - include: media-feature-prefers-reduced-data
+        - include: media-feature-prefers-reduced-motion
+        - include: media-feature-prefers-reduced-transparency
         - include: media-feature-resolution
         - include: media-feature-scan
         - include: media-feature-scripting
@@ -2957,6 +2963,30 @@ contexts:
       captures:
         1: support.type.property-name.css invalid.deprecated.css
         2: punctuation.separator.key-value.css
+
+  media-feature-environment-blending:
+    - match: \b(environment-blending)\s*(:)?
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.environment-blending.css
+        - include: end-media-feature
+        - include: value-css-wide
+        - match: '\b(?:subtractive|opaque|additive){{b}}'
+          scope: support.constant.property-value.css
+
+  media-feature-forced-colors:
+    - match: \b(forced-colors)\s*(:)?
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.forced-colors.css
+        - include: end-media-feature
+        - include: value-css-wide
+        - match: '\b(?:none|active){{b}}'
+          scope: support.constant.property-value.css
 
   media-feature-grid:
     - match: \b(grid)\s*(:)?
@@ -3073,6 +3103,66 @@ contexts:
         - include: end-media-feature
         - include: value-css-wide
         - match: '\b(?:none|fine|coarse){{b}}'
+          scope: support.constant.property-value.css
+
+  media-feature-prefers-color-scheme:
+    - match: \b(prefers-color-scheme)\s*(:)?
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.prefers-color-scheme.css
+        - include: end-media-feature
+        - include: value-css-wide
+        - match: '\b(?:no-preference|low|high){{b}}'
+          scope: support.constant.property-value.css
+
+  media-feature-prefers-contrast:
+    - match: \b(prefers-contrast)\s*(:)?
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.prefers-contrast.css
+        - include: end-media-feature
+        - include: value-css-wide
+        - match: '\b(?:no-preference|low|high){{b}}'
+          scope: support.constant.property-value.css
+
+  media-feature-prefers-reduced-data:
+    - match: \b(prefers-reduced-data)\s*(:)?
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.prefers-reduced-data.css
+        - include: end-media-feature
+        - include: value-css-wide
+        - match: '\b(?:reduce|no-preference){{b}}'
+          scope: support.constant.property-value.css
+
+  media-feature-prefers-reduced-motion:
+    - match: \b(prefers-reduced-motion)\s*(:)?
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.prefers-reduced-motion.css
+        - include: end-media-feature
+        - include: value-css-wide
+        - match: '\b(?:reduce|no-preference){{b}}'
+          scope: support.constant.property-value.css
+
+  media-feature-prefers-reduced-transparency:
+    - match: \b(prefers-reduced-transparency)\s*(:)?
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.prefers-reduced-transparency.css
+        - include: end-media-feature
+        - include: value-css-wide
+        - match: '\b(?:reduce|no-preference){{b}}'
           scope: support.constant.property-value.css
 
   media-feature-range-operator:
