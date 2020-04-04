@@ -121,6 +121,7 @@ names = [
     ("color-adjust", "color-adjust: ${1};"),
     ("color-interpolation-filters", "color-interpolation-filters: ${1};"),
     ("color-rendering", "color-rendering: ${1};"),
+    ("color-scheme", "color-scheme: ${1};"),
     ("column-count", "column-count: ${1};"),
     ("column-fill", "column-fill: ${1};"),
     ("column-gap", "column-gap: ${1};"),
@@ -200,6 +201,7 @@ names = [
     ("font-weight", "font-weight: ${1};"),
     ("footnote-display", "footnote-display: ${1};"),
     ("footnote-policy", "footnote-policy: ${1};"),
+    ("forced-color-adjust", "forced-color-adjust: ${1};"),
     ("gap", "gap: ${1};"),
     ("grid", "grid: ${1};"),
     ("grid-area", "grid-area: ${1};"),
@@ -768,6 +770,7 @@ name_to_completions = {
     "color-gamut": [("p3",), ("rec2020",), ("srgb",)],
     "color-interpolation-filters": [("auto",), ("linearRGB",), ("sRGB",)],
     "color-rendering": [("auto",), ("optimizeQuality",), ("optimizeSpeed",)],
+    "color-scheme": [("dark",), ("light",), ("normal",), ("only",), t.identifier],
     "columns": [("auto",)] + t.integer + t.length,
     "column-count": [("auto",)] + t.integer,
     "column-fill": [("auto",), ("balance",), ("balance-all",)],
@@ -1064,6 +1067,7 @@ name_to_completions = {
     "footnote-display": [("block",), ("compact",), ("inline",)],
     "footnote-policy": [("auto",), ("block",), ("line",)],
     "forced-colors": [("active",), ("none",)],
+    "forced-color-adjust": [("auto",), ("none",)],
     "grid": [("auto-flow",), ("dense",), ("none",), ("subgrid",), t.string,]
     + t.auto_track_list
     + t.track_list,

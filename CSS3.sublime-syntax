@@ -3479,6 +3479,7 @@ contexts:
     - include: property-color-adjust
     - include: property-color-interpolation-filters
     - include: property-color-rendering
+    - include: property-color-scheme
     - include: property-column-count
     - include: property-column-fill
     - include: property-column-rule
@@ -3536,6 +3537,7 @@ contexts:
     - include: property-font-weight
     - include: property-footnote-display
     - include: property-footnote-policy
+    - include: property-forced-color-adjust
     - include: property-grid-auto-flow
     - include: property-grid-auto-rows-columns
     - include: property-grid-row-column-area
@@ -4966,6 +4968,7 @@ contexts:
     - include: stray-paren-or-semicolon
 
   # CSS Color Module Level 4
+  # CSS Color Adjustment Module Level 1
   property-color-adjust:
     - match: \b(color-adjust)\s*(:)
       captures:
@@ -5005,6 +5008,21 @@ contexts:
         - include: value-css-wide
         - match: '\b(?:optimizeSpeed|optimizeQuality|auto){{b}}'
           scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Color Adjustment Module Level 1
+  property-color-scheme:
+    - match: \b(color-scheme)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.color-scheme.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:only|normal|light|dark){{b}}'
+          scope: support.constant.property-value.css
+        - include: identifier
     - include: stray-paren-or-semicolon
 
   # CSS Multi-column Layout Module
@@ -6449,6 +6467,20 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:line|block|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Color Adjustment Module Level 1
+  property-forced-color-adjust:
+    - match: \b(forced-color-adjust)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.forced-color-adjust.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:none|auto){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
