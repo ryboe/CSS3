@@ -3572,6 +3572,7 @@ contexts:
     - include: property-list-style-type
     - include: property-list-style
     - include: property-margin-block-inline
+    - include: property-margin-trim
     - include: property-marker-knockout
     - include: property-marker-pattern
     - include: property-marker-side
@@ -7110,6 +7111,20 @@ contexts:
           scope: support.constant.property-value.css
         - include: percentage
         - include: length
+    - include: stray-paren-or-semicolon
+
+  # CSS Box Model Module Level 4
+  property-margin-trim:
+    - match: \b(margin-trim)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.margin-trim.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:none|in-flow|all){{b}}'
+          scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
   # SVG Markers
