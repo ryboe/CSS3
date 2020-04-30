@@ -45,6 +45,7 @@ func_name_to_completions = {
     + t.number
     + t.percentage
     + t.time,
+    "auto": [t.identifier, t.string],
     "blenda": [("hsl",), ("hwb",), ("rgb",)] + t.color + t.percentage,
     "blur": t.length,
     "calc": t.angle + t.frequency + t.length + t.number + t.percentage + t.time,
@@ -162,6 +163,7 @@ allow_word_completions = frozenset(
     (
         "attr",
         "attr-pseudo-element",
+        "auto",
         "color",
         "counter",
         "counters",
