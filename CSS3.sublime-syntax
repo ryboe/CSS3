@@ -1678,6 +1678,18 @@ contexts:
         - include: percentage
         - include: color
 
+  func-auto:
+    - match: \b(auto)(\()
+      captures:
+        1: support.function.auto.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_scope: meta.function.auto.css
+        - include: end-func
+        - include: func-var
+        - include: string
+        - include: identifier
+
   func-blur:
     - match: \b(blur)(\()
       captures:
@@ -3566,6 +3578,7 @@ contexts:
     - include: property-line-grid
     - include: property-line-height
     - include: property-line-height-step
+    - include: property-line-padding
     - include: property-line-snap
     - include: property-list-style-image
     - include: property-list-style-position
@@ -3690,6 +3703,7 @@ contexts:
     - include: property-text-emphasis-position
     - include: property-text-emphasis-skip
     - include: property-text-emphasis-style
+    - include: property-text-group-align
     - include: property-text-indent
     - include: property-text-justify
     - include: property-text-orientation
@@ -3725,6 +3739,8 @@ contexts:
     - include: property-white-space
     - include: property-will-change
     - include: property-word-break
+    - include: property-word-boundary-detection
+    - include: property-word-boundary-expansion
     - include: property-word-spacing
     - include: property-word-wrap
     - include: property-wrap-before-after
@@ -7003,6 +7019,19 @@ contexts:
         - include: length-non-negative
     - include: stray-paren-or-semicolon
 
+  # CSS Text Module Level 4
+  property-line-padding:
+    - match: \b(line-padding)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.line-padding.css
+        - include: end-value
+        - include: value-css-wide
+        - include: length
+    - include: stray-paren-or-semicolon
+
   # CSS Line Grid Module Level 1
   property-line-snap:
     - match: \b(line-snap)\s*(:)
@@ -7854,7 +7883,7 @@ contexts:
         - meta_content_scope: meta.property-value.overflow-wrap.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:normal|break-word|break-spaces){{b}}'
+        - match: '\b(?:normal|break-word|anywhere){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
@@ -9073,6 +9102,7 @@ contexts:
             (?:
               start|
               right|
+              match-parent|
               left|
               justify|
               end|
@@ -9231,6 +9261,21 @@ contexts:
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
+  # CSS Text Decoration Module Level 4
+  property-text-decoration-width:
+    - match: \b(text-decoration-width)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.text-decoration-width.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bauto{{b}}'
+          scope: support.constant.property-value.css
+        - include: length
+    - include: stray-paren-or-semicolon
+
   # CSS Text Decoration Module Level 3
   property-text-emphasis:
     - match: ({{webkit}}\btext-emphasis)\s*(:)
@@ -9327,18 +9372,19 @@ contexts:
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
-  # CSS Text Decoration Module Level 4
-  property-text-decoration-width:
-    - match: \b(text-decoration-width)\s*(:)
+  # CSS Text Module Level 4
+  property-text-group-align:
+    - match: \b(text-group-align)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_content_scope: meta.property-value.text-decoration-width.css
+        - meta_content_scope: meta.property-value.text-group-align.css
         - include: end-value
         - include: value-css-wide
-        - match: '\bauto{{b}}'
+        - match: '\b(?:start|right|none|left|end|center){{b}}'
           scope: support.constant.property-value.css
+        - include: percentage
         - include: length
     - include: stray-paren-or-semicolon
 
@@ -9460,10 +9506,8 @@ contexts:
         - match: '(?x)
             \b
             (?:
-              preserve-trim|
               preserve-spaces|
               preserve-breaks|
-              preserve-auto|
               preserve|
               discard|
               collapse
@@ -9503,6 +9547,7 @@ contexts:
               trim-end|
               trim-adjacent|
               space-start|
+              space-first|
               space-end|
               space-adjacent|
               punctuation|
@@ -9527,7 +9572,7 @@ contexts:
         - meta_content_scope: meta.property-value.text-transform.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:uppercase|none|lowercase|full-width|capitalize){{b}}'
+        - match: '\b(?:uppercase|none|lowercase|full-size-kana|full-width|capitalize){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
@@ -9570,7 +9615,7 @@ contexts:
         - meta_content_scope: meta.property-value.text-wrap.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:nowrap|normal|balance){{b}}'
+        - match: '\b(?:wrap|stable|pretty|nowrap|balance){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
@@ -9932,7 +9977,7 @@ contexts:
         - meta_content_scope: meta.property-value.white-space.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:pre-wrap-auto|pre-wrap|pre-line|pre|nowrap|normal){{b}}'
+        - match: '\b(?:pre-wrap|pre-line|pre|nowrap|normal){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
@@ -9995,6 +10040,36 @@ contexts:
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
+  # CSS Text Module Level 4
+  property-word-boundary-detection:
+    - match: \b(word-boundary-detection)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.word-boundary-detection.css
+        - include: end-value
+        - include: value-css-wide
+        - include: func-auto
+        - match: '\b(?:manual|none){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Text Module Level 4
+  property-word-boundary-expansion:
+    - match: \b(word-boundary-expansion)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.word-boundary-expansion.css
+        - include: end-value
+        - include: value-css-wide
+        - include: func-auto
+        - match: '\b(?:manual|none){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
   # CSS Text Module Level 3
   property-word-spacing:
     - match: \b(word-spacing)\s*(:)
@@ -10007,7 +10082,6 @@ contexts:
         - include: value-css-wide
         - match: '\bnormal{{b}}'
           scope: support.constant.property-value.css
-        - include: percentage
         - include: length
     - include: stray-paren-or-semicolon
 
@@ -10022,7 +10096,7 @@ contexts:
         - meta_content_scope: meta.property-value.word-wrap.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:normal|break-word|break-spaces){{b}}'
+        - match: '\b(?:normal|break-word|anywhere){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
