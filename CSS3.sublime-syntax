@@ -8315,6 +8315,20 @@ contexts:
     - include: stray-paren-or-semicolon
 
   # CSS Ruby Layout Module Level 1
+  property-ruby-overhang:
+    - match: \b(ruby-overhang)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.ruby-overhang.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:none|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Ruby Layout Module Level 1
   property-ruby-position:
     - match: \b(ruby-position)\s*(:)
       captures:
