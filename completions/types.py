@@ -577,6 +577,7 @@ quote = [
     ("no-open-quote",),
     ("open-quote",),
 ]
+ratio = [("<ratio>", "${1}/${2}")]
 repeat_style = [
     ("no-repeat",),
     ("repeat",),
