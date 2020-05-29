@@ -19,6 +19,7 @@ names = [
     ("animation-play-state", "animation-play-state: ${1};"),
     ("animation-timing-function", "animation-timing-function: ${1};"),
     ("appearance", "appearance: ${1};"),
+    ("aspect-ratio", "aspect-ratio: ${1};"),
     ("backface-visibility", "backface-visibility: ${1};"),
     ("background", "background: ${1};"),
     ("background-attachment", "background-attachment: ${1};"),
@@ -134,6 +135,7 @@ names = [
     ("columns", "columns: ${1};"),
     ("composes", "composes: ${1};"),
     ("contain", "contain: ${1};"),
+    ("contain-intrinsic-size", "contain-intrinsic-size: ${1};"),
     ("content", "content: ${1};"),
     ("continue", "continue: ${1};"),
     ("counter-increment", "counter-increment: ${1};"),
@@ -464,6 +466,7 @@ names = [
     ("text-decoration-skip", "text-decoration-skip: ${1};"),
     ("text-decoration-skip-ink", "text-decoration-skip-ink: ${1};"),
     ("text-decoration-style", "text-decoration-style: ${1};"),
+    ("text-decoration-thickness", "text-decoration-thickness: ${1};"),
     ("text-decoration-width", "text-decoration-width: ${1};"),
     ("text-emphasis", "text-emphasis: ${1};"),
     ("text-emphasis-color", "text-emphasis-color: ${1};"),
@@ -642,6 +645,7 @@ name_to_completions = {
         ("textarea",),
         ("textfield",),
     ],
+    "aspect-ratio": [("auto",), t.ratio],
     "backface-visibility": [("hidden",), ("visible",)],
     "background-attachment": t.attachment,
     "background-blend-mode": t.blend_mode,
@@ -664,7 +668,13 @@ name_to_completions = {
     ),
     "baseline-shift": t.baseline_shift,
     "bleed": [("auto",)] + t.length,
-    "block-inline-size": [("auto",)] + t.length + t.percentage,
+    "block-inline-size": [
+        ("auto",),
+        ("contain",),
+        ("fit-content",),
+        ("stretch",),
+        t.fit_content,
+    ] + t.length + t.percentage,
     "block-step": [
         ("auto",),
         ("center",),
@@ -795,6 +805,7 @@ name_to_completions = {
         ("size",),
         ("strict",),
     ],
+    "contain-intrinsic-size": [("none",)] + t.length,
     "content": [("none",), ("normal",), t.attr, t.counter, t.counters, t.string,]
     + t.content_list
     + t.image,
@@ -1097,11 +1108,13 @@ name_to_completions = {
     ],
     "height": [
         ("auto",),
+        ("contain",),
         ("fill",),
         ("fit-content",),
         ("max-content",),
         ("min-content",),
         ("none",),
+        ("stretch",),
         t.fit_content,
     ]
     + t.length
@@ -1500,8 +1513,10 @@ name_to_completions = {
     "text-decoration-line": [
         ("blink",),
         ("line-through",),
+        ("grammar-error",),
         ("none",),
         ("overline",),
+        ("spelling-error",),
         ("underline",),
     ],
     "text-decoration-skip": [
@@ -1521,6 +1536,7 @@ name_to_completions = {
         ("solid",),
         ("wavy",),
     ],
+    "text-decoration-thickness": [("auto",), ("from-font",)] + t.length + t.percentage,
     "text-decoration-width": [("auto",),] + t.length,
     "text-emphasis": [
         ("circle",),
@@ -1598,8 +1614,8 @@ name_to_completions = {
         ("none",),
         ("uppercase",),
     ],
-    "text-underline-offset": [("auto",)] + t.length,
-    "text-underline-position": [("auto",), ("left",), ("right",), ("under",)],
+    "text-underline-offset": [("auto",)] + t.length + t.percentage,
+    "text-underline-position": [("auto",), ("from-font",), ("left",), ("right",), ("under",)],
     "text-wrap": [("balance",), ("nowrap",), ("pretty",), ("stable",), ("wrap",)],
     "top-right-left-bottom": [
         ("auto",),
@@ -1696,11 +1712,14 @@ name_to_completions = {
     "widows-orphans": t.integer,
     "width": [
         ("auto",),
+        ("contain",),
         ("fill",),
         ("fit-content",),
         ("max-content",),
         ("min-content",),
         ("none",),
+        ("stretch",),
+        t.fit_content,
     ]
     + t.length
     + t.percentage,
