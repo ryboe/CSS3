@@ -1,8 +1,8 @@
 CSS3
 ====
 
-[![CircleCI](https://circleci.com/gh/y0ssar1an/CSS3.svg?style=svg)](https://circleci.com/gh/y0ssar1an/CSS3)
-[![Join the chat at https://gitter.im/y0ssar1an/CSS3](https://badges.gitter.im/y0ssar1an/CSS3.svg)](https://gitter.im/y0ssar1an/CSS3?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![CircleCI](https://circleci.com/gh/ryboe/CSS3.svg?style=svg)](https://circleci.com/gh/ryboe/CSS3)
+[![Join the chat at https://gitter.im/ryboe/CSS3](https://badges.gitter.im/ryboe/CSS3.svg)](https://gitter.im/ryboe/CSS3?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 The most complete CSS and PostCSS-cssnext support for Sublime Text.
 
@@ -92,9 +92,9 @@ The most complete CSS and PostCSS-cssnext support for Sublime Text.
 ## Help Me Out!
 
 If you think something's missing, make sure you're not asking for something
-on [this list of bad CSS properties](https://gist.github.com/y0ssar1an/bb95223148e486acbe7a#file-bad_css).
+on [this list of bad CSS properties](https://gist.github.com/ryboe/bb95223148e486acbe7a#file-bad_css).
 If it's not on that list, open an issue and I'll investigate. *Definitely* check
-out the [CONTRIBUTING](https://github.com/y0ssar1an/CSS3/blob/master/CONTRIBUTING.md)
+out the [CONTRIBUTING](https://github.com/ryboe/CSS3/blob/master/CONTRIBUTING.md)
 guidelines before submitting your PR. It could save you a lot of time. I'll be
 monitoring the specs as they're updated on [this W3C feed](https://www.w3.org/Style/CSS/current-work.en.html),
 but I still need your help. Let's keep bad code out of the Web!
