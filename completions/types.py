@@ -42,7 +42,6 @@ device_rgb = ("device-rgb()", "device-rgb(${1:0}, ${2:0}, ${3:0})")
 drop_shadow = ("drop-shadow()", "drop-shadow(${1:<length>} ${2:<length>})")
 element = ("element()", "element(#${1:id})")
 ellipse = ("ellipse()", "ellipse(${1})")
-fade = ("fade()", "fade(${1})")
 filter_func = ("filter()", "filter(${1})")
 fit_content = ("fit-content()", "fit-content(${1})")
 format_func = ("format()", 'format("${1}")')
@@ -155,6 +154,19 @@ string = ("<string>", "'${1}'")
 urange = ("<urange>", "U+${1}")
 
 # COMPOSITE TYPES
+alignment_baseline = [
+    ("alphabetic",),
+    ("baseline",),
+    ("bottom",),
+    ("center",),
+    ("central",),
+    ("ideographic",),
+    ("mathematical",),
+    ("middle",),
+    ("text-bottom",),
+    ("text-top",),
+    ("top",),
+]
 angle = [("<angle>", "${1:<angle>}"), calc]
 animateable_feature = [("contents",), ("scroll-position",), identifier]
 aspect_ratio = [("<aspect-ratio>", "${1:1}ar"), calc]
@@ -164,6 +176,11 @@ baseline_position = [
     ("baseline",),
     ("last-baseline",),
     ("first-baseline",),
+]
+baseline_source = [
+    ("auto",),
+    ("first",),
+    ("last",),
 ]
 basic_shape = [circle, ellipse, inset, polygon]
 blend_mode = [
@@ -184,6 +201,7 @@ blend_mode = [
     ("screen",),
     ("soft-light",),
 ]
+block_ellipsis = [("auto",), ("none",), string]
 border_style = [
     ("dashed",),
     ("dotted",),
@@ -637,7 +655,7 @@ width = [
     ("min-content",),
     fit_content,
 ]
-baseline_shift = [("baseline",), ("sub",), ("super",)] + length + percentage
+baseline_shift = [("sub",), ("super",)] + length + percentage
 bg_image = [("none",)] + image
 bg_size = [("auto",), ("contain",), ("cover",),] + length + percentage
 background = bg_image + position + bg_size + repeat_style + attachment + box + color

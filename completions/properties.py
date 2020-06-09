@@ -34,6 +34,7 @@ names = [
     ("background-size", "background-size: ${1};"),
     ("baseline-shift", "baseline-shift: ${1};"),
     ("bleed", "bleed: ${1};"),
+    ("block-ellipsis", "block-ellipsis: ${1};"),
     ("block-size", "block-size: ${1};"),
     ("block-step", "block-step: ${1};"),
     ("block-step-align", "block-step-align: ${1};"),
@@ -136,6 +137,7 @@ names = [
     ("composes", "composes: ${1};"),
     ("contain", "contain: ${1};"),
     ("contain-intrinsic-size", "contain-intrinsic-size: ${1};"),
+    ("content-visibility", "content-visibility: ${1};"),
     ("content", "content: ${1};"),
     ("continue", "continue: ${1};"),
     ("counter-increment", "counter-increment: ${1};"),
@@ -236,6 +238,7 @@ names = [
     ("initial-letter-align", "initial-letter-align: ${1};"),
     ("initial-letter-wrap", "initial-letter-wrap: ${1};"),
     ("inline-size", "inline-size: ${1};"),
+    ("inline-sizing", "inline-sizing: ${1};"),
     ("inset", "inset: ${1};"),
     ("inset-block", "inset-block: ${1};"),
     ("inset-block-end", "inset-block-end: ${1};"),
@@ -247,9 +250,13 @@ names = [
     ("justify-items", "justify-items: ${1};"),
     ("justify-self", "justify-self: ${1};"),
     ("left", "left: ${1};"),
+    ("leading-trim", "leading-trim: ${1};"),
+    ("leading-trim-over", "leading-trim-over: ${1};"),
+    ("leading-trim-under", "leading-trim-under: ${1};"),
     ("letter-spacing", "letter-spacing: ${1};"),
     ("lighting-color", "lighting-color: ${1};"),
     ("line-break", "line-break: ${1};"),
+    ("line-clamp", "line-clamp: ${1};"),
     ("line-grid", "line-grid: ${1};"),
     ("line-height", "line-height: ${1};"),
     ("line-height-step", "line-height-step: ${1};"),
@@ -338,6 +345,9 @@ names = [
     ("outline-width", "outline-width: ${1};"),
     ("overflow", "overflow: ${1};"),
     ("overflow-anchor", "overflow-anchor: ${1};"),
+    ("overflow-block", "overflow-block: ${1};"),
+    ("overflow-clip-margin", "overflow-clip-margin: ${1};"),
+    ("overflow-inline", "overflow-inline: ${1};"),
     ("overflow-wrap", "overflow-wrap: ${1};"),
     ("overflow-x", "overflow-x: ${1};"),
     ("overflow-y", "overflow-y: ${1};"),
@@ -589,25 +599,7 @@ name_to_completions = {
     + t.baseline_position
     + t.overflow_position
     + t.self_position,
-    "alignment-baseline": [
-        ("after-edge",),
-        ("alphabetic",),
-        ("auto",),
-        ("baseline",),
-        ("before-edge",),
-        ("bottom",),
-        ("center",),
-        ("central",),
-        ("hanging",),
-        ("ideographic",),
-        ("mathematical",),
-        ("middle",),
-        ("text-after-edge",),
-        ("text-before-edge",),
-        ("text-bottom",),
-        ("text-top",),
-        ("top",),
-    ],
+    "alignment-baseline": t.alignment_baseline,
     # "all": [],  # TODO: write this when the context for any-value is completed
     "animation": (
         t.single_animation_direction
@@ -668,6 +660,7 @@ name_to_completions = {
     ),
     "baseline-shift": t.baseline_shift,
     "bleed": [("auto",)] + t.length,
+    "block-ellipsis": t.block_ellipsis,
     "block-inline-size": [
         ("auto",),
         ("contain",),
@@ -804,9 +797,11 @@ name_to_completions = {
         ("paint",),
         ("size",),
         ("strict",),
+        ("style",),
     ],
     "contain-intrinsic-size": [("none",)] + t.length,
-    "content": [("none",), ("normal",), t.attr, t.counter, t.counters, t.string,]
+    "content-visibility": [("auto",), ("hidden",), ("visibile",)],
+    "content": [("none",), ("normal",), t.attr, t.counter, t.counters, t.string]
     + t.content_list
     + t.image,
     "continue": [
@@ -1135,7 +1130,7 @@ name_to_completions = {
     "image-orientation": [("flip",), ("from-image",)] + t.angle,
     "image-rendering": [("auto",), ("crisp-edges",), ("pixelated",)],
     "image-resolution": [("from-image",), ("snap",)] + t.resolution,
-    "initial-letter": [("normal",)] + t.integer + t.number,
+    "initial-letter": [("drop",), ("normal",), ("raise",)] + t.integer + t.number,
     "initial-letter-align": [
         ("alphabetic",),
         ("border-box",),
@@ -1146,6 +1141,7 @@ name_to_completions = {
     "initial-letter-wrap": [("all",), ("first",), ("grid",), ("none",),]
     + t.length
     + t.percentage,
+    "inline-sizing": [("normal",),("stretch",)],
     "inset-block-inline": [("auto",)] + t.length + t.percentage,
     "inverted-colors": [("inverted",), ("none",)],
     "isolation": t.isolation_mode,
@@ -1179,14 +1175,18 @@ name_to_completions = {
     + t.baseline_position
     + t.overflow_position
     + t.self_position,
+    "leading-trim": [("cap",), ("ex",), ("ideographic",), ("ideographic-ink",), ("normal",), ("text",)],
+    "leading-trim-under": [("alphabetic",), ("ideographic",), ("ideographic-ink",), ("normal",), ("text",)],
     "letter-spacing": [("normal",)] + t.length,
     "light-level": [("dim",), ("normal",), ("washed",)],
     "lighting-color": t.color,
     "line-break": [("auto",), ("loose",), ("normal",), ("strict",)],
+    "line-clamp": t.block_ellipsis + t.integer,
     "line-grid": [("create",), ("match-parent",)],
     "line-height": [("normal",)] + t.length + t.number + t.percentage,
     "line-height-step": [("none",)] + t.length,
     "line-padding": t.length,
+    "line-sizing": [("legacy",), ("normal",)],
     "line-snap": [("baseline",), ("contain",), ("none",)],
     "list-style": [("inside",), ("none",), ("outside",), t.identifier, t.string,]
     + t.image,
@@ -1268,7 +1268,9 @@ name_to_completions = {
     "outline-width": t.border_width,
     "overflow": [("auto",), ("clip",), ("hidden",), ("scroll",), ("visible",)],
     "overflow-block": [("none",), ("optional-paged",), ("paged",), ("scroll",)],
+    "overflow-clip-margin": t.length,
     "overflow-inline": [("none",), ("scroll",)],
+    "overflow-inline-block": [("auto",), ("clip",), ("hidden",), ("scroll",), ("visible",)],
     "overflow-anchor": [("auto",), ("none",)],
     "overflow-wrap": [("anywhere",), ("break-word",), ("normal",)],
     "overflow-x-y": [("auto",), ("clip",), ("hidden",), ("scroll",), ("visible",),],
@@ -1568,7 +1570,7 @@ name_to_completions = {
     "text-indent": [("each-line",), ("hanging",)] + t.length + t.percentage,
     "text-justify": [("auto",), ("inter-character",), ("inter-word",), ("none",),],
     "text-orientation": [("mixed",), ("sideways",), ("upright",)],
-    "text-overflow": [("clip",), ("ellipsis",), ("fade",), t.fade, t.string],
+    "text-overflow": [("clip",), ("ellipsis",)],
     "text-rendering": [
         ("auto",),
         ("geometricPrecision",),
@@ -1647,20 +1649,7 @@ name_to_completions = {
     "update": [("fast",), ("none",), ("slow",)],
     "user-select": [("all",), ("auto",), ("contain",), ("none",), ("text",)],
     "vector-effect": [("non-scaling-stroke",), ("none",)],
-    "vertical-align": [
-        ("alphabetic",),
-        ("baseline",),
-        ("bottom",),
-        ("center",),
-        ("central",),
-        ("ideographic",),
-        ("mathematical",),
-        ("middle",),
-        ("text-bottom",),
-        ("text-top",),
-        ("top",),
-    ]
-    + t.baseline_shift,
+    "vertical-align": t.alignment_baseline + t.baseline_shift + t.baseline_source,
     "visibility": [("collapse",), ("hidden",), ("visible",)],
     "voice-balance": [
         ("center",),

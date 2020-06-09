@@ -69,6 +69,25 @@ contexts:
     - include: at-import
     - include: rule
 
+  alignment-baseline:
+    - match: '(?x)
+        \b
+        (?:
+          top|
+          text-top|
+          text-bottom|
+          middle|
+          mathematical|
+          ideographic|
+          central|
+          center|
+          bottom|
+          baseline|
+          alphabetic
+        )
+        {{b}}'
+      scope: support.constant.property-value.css
+
   alpha-value:
     - include: percentage-zero-to-100
     - include: number-zero-to-one
@@ -527,10 +546,14 @@ contexts:
       scope: support.constant.property-value.css
 
   baseline-shift:
-    - match: '\b(?:super|sub|baseline){{b}}'
+    - match: '\b(?:super|sub){{b}}'
       scope: support.constant.property-value.css
     - include: percentage
     - include: length
+
+  baseline-source:
+    - match: '\b(?:last|first|auto){{b}}'
+      scope: support.constant.property-value.css
 
   basic-shape:
     - include: func-inset
@@ -571,6 +594,11 @@ contexts:
       scope: support.constant.property-value.css
     - include: percentage-non-negative
     - include: length-non-negative
+
+  block-ellipsis:
+    - match: '\b(?:none|auto){{b}}'
+      scope: support.constant.property-value.css
+    - include: string
 
   border-style:
     - match: \blogical{{b}}
@@ -3450,6 +3478,7 @@ contexts:
     - include: property-background-repeat
     - include: property-background-size
     - include: property-baseline-shift
+    - include: property-block-ellipsis
     - include: property-block-inline-size
     - include: property-block-step-align
     - include: property-block-step-insert
@@ -3502,6 +3531,7 @@ contexts:
     - include: property-column-span
     - include: property-column-width
     - include: property-contain-intrinsic-size
+    - include: property-content-visibility
     - include: property-counter-set-reset-increment
     - include: property-cue-before-after
     - include: property-dominant-baseline
@@ -3570,17 +3600,22 @@ contexts:
     - include: property-initial-letter-align
     - include: property-initial-letter-wrap
     - include: property-initial-letter
+    - include: property-inline-sizing
     - include: property-inset-block-inline
     - include: property-justify-content
     - include: property-justify-items
     - include: property-justify-self
+    - include: property-leading-trim-under
+    - include: property-leading-trim
     - include: property-letter-spacing
     - include: property-lighting-color
     - include: property-line-break
+    - include: property-line-clamp
     - include: property-line-grid
     - include: property-line-height
     - include: property-line-height-step
     - include: property-line-padding
+    - include: property-line-sizing
     - include: property-line-snap
     - include: property-list-style-image
     - include: property-list-style-position
@@ -3627,6 +3662,8 @@ contexts:
     - include: property-outline-style
     - include: property-outline-width
     - include: property-overflow-anchor
+    - include: property-overflow-clip-margin
+    - include: property-overflow-inline-block
     - include: property-overflow-wrap
     - include: property-overflow-x-y
     - include: property-overscroll-behavior
@@ -3891,28 +3928,7 @@ contexts:
         - meta_content_scope: meta.property-value.alignment-baseline.css
         - include: end-value
         - include: value-css-wide
-        - match: '(?x)
-            \b
-            (?:
-              top|
-              text-top|
-              text-bottom|
-              text-before-edge|
-              text-after-edge|
-              middle|
-              mathematical|
-              ideographic|
-              hanging|
-              central|
-              center|
-              bottom|
-              before-edge|
-              baseline|
-              auto|
-              alphabetic|
-              after-edge
-            )
-            {{b}}'
+        - include: alignment-baseline
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
@@ -4311,6 +4327,20 @@ contexts:
         - match: '\bauto{{b}}'
           scope: support.constant.property-value.css
         - include: length
+    - include: stray-paren-or-semicolon
+
+  # CSS Overflow Module Level 3
+  property-block-ellipsis:
+    - match: '\b(block-ellipsis)\s*(:)'
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.block-ellipsis.css
+        - include: end-value
+        - include: value-css-wide
+        - include: func-fit-content
+        - include: block-ellipsis
     - include: stray-paren-or-semicolon
 
   # CSS Logical Properties and Values Level 1
@@ -5206,7 +5236,7 @@ contexts:
         - include: identifier
     - include: stray-paren-or-semicolon
 
-  # CSS Containment Module Level 1
+  # CSS Containment Module Level 2
   property-contain:
     - match: \b(contain)\s*(:)
       captures:
@@ -5216,7 +5246,7 @@ contexts:
         - meta_content_scope: meta.property-value.contain.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:strict|size|paint|none|layout|content){{b}}'
+        - match: '\b(?:style|strict|size|paint|none|layout|content){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
@@ -5233,6 +5263,20 @@ contexts:
         - match: '\bnone{{b}}'
           scope: support.constant.property-value.css
         - include: length
+    - include: stray-paren-or-semicolon
+
+  # CSS Containment Module Level 2
+  property-content-visibility:
+    - match: \b(content-visibility)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.content-visibility.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:visibile|hidden|auto){{b}}'
+          scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
   # CSS Generated Content Module Level 3
@@ -6835,7 +6879,7 @@ contexts:
         - meta_content_scope: meta.property-value.initial-letter.css
         - include: end-value
         - include: value-css-wide
-        - match: '\bnormal{{b}}'
+        - match: '\b(?:raise|normal|drop){{b}}'
           scope: support.constant.property-value.css
         - include: integer-positive
         - include: number-non-negative
@@ -6869,6 +6913,20 @@ contexts:
           scope: support.constant.property-value.css
         - include: percentage
         - include: length
+    - include: stray-paren-or-semicolon
+
+  # CSS Inline Layout Module Level 3
+  property-inline-sizing:
+    - match: \b(inline-sizing)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.inline-sizing.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:stretch|normal){{b}}'
+          scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
   # CSS Logical Properties and Values Level 1
@@ -6965,6 +7023,34 @@ contexts:
         - include: self-position
     - include: stray-paren-or-semicolon
 
+  # CSS Inline Layout Module Level 3
+  property-leading-trim:
+    - match: \b(leading-trim-over|leading-trim)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.leading-trim.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:text|normal|ideographic-ink|ideographic|ex|cap){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Inline Layout Module Level 3
+  property-leading-trim-under:
+    - match: \b(leading-trim-under)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.leading-trim-under.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:text|normal|ideographic-ink|ideographic|alphabetic){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
   # CSS Text Module Level 3
   property-letter-spacing:
     - match: \b(letter-spacing)\s*(:)
@@ -7005,6 +7091,20 @@ contexts:
         - include: value-css-wide
         - match: '\b(?:strict|normal|loose|auto|anywhere){{b}}'
           scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Overflow Module Level 3
+  property-line-clamp:
+    - match: \b(line-clamp)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.line-clamp.css
+        - include: end-value
+        - include: value-css-wide
+        - include: block-ellipsis
+        - include: integer
     - include: stray-paren-or-semicolon
 
   # CSS Line Grid Module Level 1
@@ -7064,6 +7164,20 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: length
+    - include: stray-paren-or-semicolon
+
+  # CSS Inline Layout Module Level 3
+  property-line-sizing:
+    - match: \b(line-sizing)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.line-sizing.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:normal|legacy){{b}}'
+          scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
   # CSS Line Grid Module Level 1
@@ -7905,6 +8019,33 @@ contexts:
         - include: value-css-wide
         - match: '\b(?:none|auto){{b}}'
           scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Overflow Module Level 3
+  property-overflow-inline-block:
+    - match: \b(overflow-inline|overflow-block)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.overflow-inline-block.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:visible|scroll|hidden|clip|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Overflow Module Level 3
+  property-overflow-clip-margin:
+    - match: \b(overflow-clip-margin)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.overflow-clip-margin.css
+        - include: end-value
+        - include: value-css-wide
+        - include: length-non-negative
     - include: stray-paren-or-semicolon
 
   # CSS Text Module Level 3
@@ -9502,7 +9643,7 @@ contexts:
         - include: value-css-wide
         - include: func-fade
         - include: string
-        - match: '\b(?:ellipsis|fade|clip){{b}}'
+        - match: '\b(?:ellipsis|clip){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
@@ -9885,24 +10026,9 @@ contexts:
         - meta_content_scope: meta.property-value.vertical-align.css
         - include: end-value
         - include: value-css-wide
-        - match: '(?x)
-            \b
-            (?:
-              top|
-              text-top|
-              text-bottom|
-              middle|
-              mathematical|
-              ideographic|
-              central|
-              center|
-              bottom|
-              baseline|
-              alphabetic
-            )
-            {{b}}'
-          scope: support.constant.property-value.css
+        - include: alignment-baseline
         - include: baseline-shift
+        - include: baseline-source
     - include: stray-paren-or-semicolon
 
   # CSS basic box model
