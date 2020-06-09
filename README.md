@@ -2,7 +2,6 @@ CSS3
 ====
 
 [![CircleCI](https://circleci.com/gh/ryboe/CSS3.svg?style=svg)](https://circleci.com/gh/ryboe/CSS3)
-[![Join the chat at https://gitter.im/ryboe/CSS3](https://badges.gitter.im/ryboe/CSS3.svg)](https://gitter.im/ryboe/CSS3?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 The most complete CSS and PostCSS-cssnext support for Sublime Text.
 
