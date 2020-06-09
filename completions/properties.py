@@ -236,6 +236,7 @@ names = [
     ("initial-letter-align", "initial-letter-align: ${1};"),
     ("initial-letter-wrap", "initial-letter-wrap: ${1};"),
     ("inline-size", "inline-size: ${1};"),
+    ("inline-sizing", "inline-sizing: ${1};"),
     ("inset", "inset: ${1};"),
     ("inset-block", "inset-block: ${1};"),
     ("inset-block-end", "inset-block-end: ${1};"),
@@ -247,6 +248,9 @@ names = [
     ("justify-items", "justify-items: ${1};"),
     ("justify-self", "justify-self: ${1};"),
     ("left", "left: ${1};"),
+    ("leading-trim", "leading-trim: ${1};"),
+    ("leading-trim-over", "leading-trim-over: ${1};"),
+    ("leading-trim-under", "leading-trim-under: ${1};"),
     ("letter-spacing", "letter-spacing: ${1};"),
     ("lighting-color", "lighting-color: ${1};"),
     ("line-break", "line-break: ${1};"),
@@ -589,25 +593,7 @@ name_to_completions = {
     + t.baseline_position
     + t.overflow_position
     + t.self_position,
-    "alignment-baseline": [
-        ("after-edge",),
-        ("alphabetic",),
-        ("auto",),
-        ("baseline",),
-        ("before-edge",),
-        ("bottom",),
-        ("center",),
-        ("central",),
-        ("hanging",),
-        ("ideographic",),
-        ("mathematical",),
-        ("middle",),
-        ("text-after-edge",),
-        ("text-before-edge",),
-        ("text-bottom",),
-        ("text-top",),
-        ("top",),
-    ],
+    "alignment-baseline": t.alignment_baseline,
     # "all": [],  # TODO: write this when the context for any-value is completed
     "animation": (
         t.single_animation_direction
@@ -1135,7 +1121,7 @@ name_to_completions = {
     "image-orientation": [("flip",), ("from-image",)] + t.angle,
     "image-rendering": [("auto",), ("crisp-edges",), ("pixelated",)],
     "image-resolution": [("from-image",), ("snap",)] + t.resolution,
-    "initial-letter": [("normal",)] + t.integer + t.number,
+    "initial-letter": [("drop",), ("normal",), ("raise",)] + t.integer + t.number,
     "initial-letter-align": [
         ("alphabetic",),
         ("border-box",),
@@ -1146,6 +1132,7 @@ name_to_completions = {
     "initial-letter-wrap": [("all",), ("first",), ("grid",), ("none",),]
     + t.length
     + t.percentage,
+    "inline-sizing": [("normal",),("stretch",)],
     "inset-block-inline": [("auto",)] + t.length + t.percentage,
     "inverted-colors": [("inverted",), ("none",)],
     "isolation": t.isolation_mode,
@@ -1179,6 +1166,8 @@ name_to_completions = {
     + t.baseline_position
     + t.overflow_position
     + t.self_position,
+    "leading-trim": [("cap",), ("ex",), ("ideographic",), ("ideographic-ink",), ("normal",), ("text",)],
+    "leading-trim-under": [("alphabetic",), ("ideographic",), ("ideographic-ink",), ("normal",), ("text",)],
     "letter-spacing": [("normal",)] + t.length,
     "light-level": [("dim",), ("normal",), ("washed",)],
     "lighting-color": t.color,
@@ -1187,6 +1176,7 @@ name_to_completions = {
     "line-height": [("normal",)] + t.length + t.number + t.percentage,
     "line-height-step": [("none",)] + t.length,
     "line-padding": t.length,
+    "line-sizing": [("legacy",), ("normal",)],
     "line-snap": [("baseline",), ("contain",), ("none",)],
     "list-style": [("inside",), ("none",), ("outside",), t.identifier, t.string,]
     + t.image,
@@ -1647,20 +1637,7 @@ name_to_completions = {
     "update": [("fast",), ("none",), ("slow",)],
     "user-select": [("all",), ("auto",), ("contain",), ("none",), ("text",)],
     "vector-effect": [("non-scaling-stroke",), ("none",)],
-    "vertical-align": [
-        ("alphabetic",),
-        ("baseline",),
-        ("bottom",),
-        ("center",),
-        ("central",),
-        ("ideographic",),
-        ("mathematical",),
-        ("middle",),
-        ("text-bottom",),
-        ("text-top",),
-        ("top",),
-    ]
-    + t.baseline_shift,
+    "vertical-align": t.alignment_baseline + t.baseline_shift + t.baseline_source,
     "visibility": [("collapse",), ("hidden",), ("visible",)],
     "voice-balance": [
         ("center",),

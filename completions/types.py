@@ -155,6 +155,19 @@ string = ("<string>", "'${1}'")
 urange = ("<urange>", "U+${1}")
 
 # COMPOSITE TYPES
+alignment_baseline = [
+    ("alphabetic",),
+    ("baseline",),
+    ("bottom",),
+    ("center",),
+    ("central",),
+    ("ideographic",),
+    ("mathematical",),
+    ("middle",),
+    ("text-bottom",),
+    ("text-top",),
+    ("top",),
+]
 angle = [("<angle>", "${1:<angle>}"), calc]
 animateable_feature = [("contents",), ("scroll-position",), identifier]
 aspect_ratio = [("<aspect-ratio>", "${1:1}ar"), calc]
@@ -164,6 +177,11 @@ baseline_position = [
     ("baseline",),
     ("last-baseline",),
     ("first-baseline",),
+]
+baseline_source = [
+    ("auto",),
+    ("first",),
+    ("last",),
 ]
 basic_shape = [circle, ellipse, inset, polygon]
 blend_mode = [
@@ -637,7 +655,7 @@ width = [
     ("min-content",),
     fit_content,
 ]
-baseline_shift = [("baseline",), ("sub",), ("super",)] + length + percentage
+baseline_shift = [("sub",), ("super",)] + length + percentage
 bg_image = [("none",)] + image
 bg_size = [("auto",), ("contain",), ("cover",),] + length + percentage
 background = bg_image + position + bg_size + repeat_style + attachment + box + color
