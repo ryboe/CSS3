@@ -10448,6 +10448,7 @@ contexts:
         - meta_scope: meta.declaration-list.css
         - match: $|(?![-a-z])
           pop: true
+        - include: properties
 
   selector:
     # This match applies a single meta.selector.css scope to a comma-separated
