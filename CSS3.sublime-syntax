@@ -3531,6 +3531,7 @@ contexts:
     - include: property-column-span
     - include: property-column-width
     - include: property-contain-intrinsic-size
+    - include: property-content-visibility
     - include: property-counter-set-reset-increment
     - include: property-cue-before-after
     - include: property-dominant-baseline
@@ -5235,7 +5236,7 @@ contexts:
         - include: identifier
     - include: stray-paren-or-semicolon
 
-  # CSS Containment Module Level 1
+  # CSS Containment Module Level 2
   property-contain:
     - match: \b(contain)\s*(:)
       captures:
@@ -5245,7 +5246,7 @@ contexts:
         - meta_content_scope: meta.property-value.contain.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:strict|size|paint|none|layout|content){{b}}'
+        - match: '\b(?:style|strict|size|paint|none|layout|content){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
@@ -5262,6 +5263,20 @@ contexts:
         - match: '\bnone{{b}}'
           scope: support.constant.property-value.css
         - include: length
+    - include: stray-paren-or-semicolon
+
+  # CSS Containment Module Level 2
+  property-content-visibility:
+    - match: \b(content-visibility)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.content-visibility.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:visibile|hidden|auto){{b}}'
+          scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
   # CSS Generated Content Module Level 3

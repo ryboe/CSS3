@@ -137,6 +137,7 @@ names = [
     ("composes", "composes: ${1};"),
     ("contain", "contain: ${1};"),
     ("contain-intrinsic-size", "contain-intrinsic-size: ${1};"),
+    ("content-visibility", "content-visibility: ${1};"),
     ("content", "content: ${1};"),
     ("continue", "continue: ${1};"),
     ("counter-increment", "counter-increment: ${1};"),
@@ -796,9 +797,11 @@ name_to_completions = {
         ("paint",),
         ("size",),
         ("strict",),
+        ("style",),
     ],
     "contain-intrinsic-size": [("none",)] + t.length,
-    "content": [("none",), ("normal",), t.attr, t.counter, t.counters, t.string,]
+    "content-visibility": [("auto",), ("hidden",), ("visibile",)],
+    "content": [("none",), ("normal",), t.attr, t.counter, t.counters, t.string]
     + t.content_list
     + t.image,
     "continue": [
