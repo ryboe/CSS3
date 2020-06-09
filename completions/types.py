@@ -42,7 +42,6 @@ device_rgb = ("device-rgb()", "device-rgb(${1:0}, ${2:0}, ${3:0})")
 drop_shadow = ("drop-shadow()", "drop-shadow(${1:<length>} ${2:<length>})")
 element = ("element()", "element(#${1:id})")
 ellipse = ("ellipse()", "ellipse(${1})")
-fade = ("fade()", "fade(${1})")
 filter_func = ("filter()", "filter(${1})")
 fit_content = ("fit-content()", "fit-content(${1})")
 format_func = ("format()", 'format("${1}")')
@@ -202,6 +201,7 @@ blend_mode = [
     ("screen",),
     ("soft-light",),
 ]
+block_ellipsis = [("auto",), ("none",), string]
 border_style = [
     ("dashed",),
     ("dotted",),

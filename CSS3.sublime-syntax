@@ -595,6 +595,11 @@ contexts:
     - include: percentage-non-negative
     - include: length-non-negative
 
+  block-ellipsis:
+    - match: '\b(?:none|auto){{b}}'
+      scope: support.constant.property-value.css
+    - include: string
+
   border-style:
     - match: \blogical{{b}}
       scope: support.constant.property-value.css
@@ -3473,6 +3478,7 @@ contexts:
     - include: property-background-repeat
     - include: property-background-size
     - include: property-baseline-shift
+    - include: property-block-ellipsis
     - include: property-block-inline-size
     - include: property-block-step-align
     - include: property-block-step-insert
@@ -3603,6 +3609,7 @@ contexts:
     - include: property-letter-spacing
     - include: property-lighting-color
     - include: property-line-break
+    - include: property-line-clamp
     - include: property-line-grid
     - include: property-line-height
     - include: property-line-height-step
@@ -3654,6 +3661,8 @@ contexts:
     - include: property-outline-style
     - include: property-outline-width
     - include: property-overflow-anchor
+    - include: property-overflow-clip-margin
+    - include: property-overflow-inline-block
     - include: property-overflow-wrap
     - include: property-overflow-x-y
     - include: property-overscroll-behavior
@@ -4317,6 +4326,20 @@ contexts:
         - match: '\bauto{{b}}'
           scope: support.constant.property-value.css
         - include: length
+    - include: stray-paren-or-semicolon
+
+  # CSS Overflow Module Level 3
+  property-block-ellipsis:
+    - match: '\b(block-ellipsis)\s*(:)'
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.block-ellipsis.css
+        - include: end-value
+        - include: value-css-wide
+        - include: func-fit-content
+        - include: block-ellipsis
     - include: stray-paren-or-semicolon
 
   # CSS Logical Properties and Values Level 1
@@ -7055,6 +7078,20 @@ contexts:
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
+  # CSS Overflow Module Level 3
+  property-line-clamp:
+    - match: \b(line-clamp)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.line-clamp.css
+        - include: end-value
+        - include: value-css-wide
+        - include: block-ellipsis
+        - include: integer
+    - include: stray-paren-or-semicolon
+
   # CSS Line Grid Module Level 1
   property-line-grid:
     - match: \b(line-grid)\s*(:)
@@ -7967,6 +8004,33 @@ contexts:
         - include: value-css-wide
         - match: '\b(?:none|auto){{b}}'
           scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Overflow Module Level 3
+  property-overflow-inline-block:
+    - match: \b(overflow-inline|overflow-block)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.overflow-inline-block.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:visible|scroll|hidden|clip|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Overflow Module Level 3
+  property-overflow-clip-margin:
+    - match: \b(overflow-clip-margin)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.overflow-clip-margin.css
+        - include: end-value
+        - include: value-css-wide
+        - include: length-non-negative
     - include: stray-paren-or-semicolon
 
   # CSS Text Module Level 3
@@ -9564,7 +9628,7 @@ contexts:
         - include: value-css-wide
         - include: func-fade
         - include: string
-        - match: '\b(?:ellipsis|fade|clip){{b}}'
+        - match: '\b(?:ellipsis|clip){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
