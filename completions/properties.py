@@ -478,6 +478,7 @@ names = [
     ("text-decoration-style", "text-decoration-style: ${1};"),
     ("text-decoration-thickness", "text-decoration-thickness: ${1};"),
     ("text-decoration-width", "text-decoration-width: ${1};"),
+    ("text-edge", "text-edge: ${1};"),
     ("text-emphasis", "text-emphasis: ${1};"),
     ("text-emphasis-color", "text-emphasis-color: ${1};"),
     ("text-emphasis-position", "text-emphasis-position: ${1};"),
@@ -1540,6 +1541,15 @@ name_to_completions = {
     ],
     "text-decoration-thickness": [("auto",), ("from-font",)] + t.length + t.percentage,
     "text-decoration-width": [("auto",),] + t.length,
+    "text-edge": [
+        ("alphabetic",),
+        ("cap",),
+        ("ex",),
+        ("ideographic",),
+        ("ideographic-ink",),
+        ("leading",),
+        ("text",),
+    ],
     "text-emphasis": [
         ("circle",),
         ("dot",),

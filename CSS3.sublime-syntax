@@ -3738,6 +3738,7 @@ contexts:
     - include: property-text-decoration-style
     - include: property-text-decoration-thickness
     - include: property-text-decoration-width
+    - include: property-text-edge
     - include: property-text-emphasis
     - include: property-text-emphasis-color
     - include: property-text-emphasis-position
@@ -7121,7 +7122,7 @@ contexts:
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
-  # CSS 2.1
+  # CSS Inline Layout Module Level 3
   property-line-height:
     - match: \b(line-height)\s*(:)
       captures:
@@ -9473,6 +9474,20 @@ contexts:
         - match: '\bauto{{b}}'
           scope: support.constant.property-value.css
         - include: length
+    - include: stray-paren-or-semicolon
+
+  # CSS Inline Layout Module Level 3
+  property-text-edge:
+    - match: \b(text-edge)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.text-edge.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:text|leading|ideographic-ink|ideographic|ex|cap|alphabetic){{b}}'
+          scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
   # CSS Text Decoration Module Level 3
