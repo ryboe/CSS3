@@ -546,7 +546,7 @@ contexts:
       scope: support.constant.property-value.css
 
   baseline-shift:
-    - match: '\b(?:super|sub){{b}}'
+    - match: '\b(?:top|super|sub|center|bottom){{b}}'
       scope: support.constant.property-value.css
     - include: percentage
     - include: length
