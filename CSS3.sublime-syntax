@@ -7365,7 +7365,7 @@ contexts:
         - include: marker-ref
     - include: stray-paren-or-semicolon
 
-  # CSS Lists and Counters Module Level 3
+  # CSS Lists Module Level 3
   property-marker-side:
     - match: \b(marker-side)\s*(:)
       captures:
@@ -7375,7 +7375,7 @@ contexts:
         - meta_content_scope: meta.property-value.marker-side.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:list-item|list-container){{b}}'
+        - match: '\b(?:match-self|match-parent){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 

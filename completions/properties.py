@@ -1201,7 +1201,7 @@ name_to_completions = {
     "marker-knockout": t.knockout_offset + t.knockout_shape,
     "marker-pattern": t.marker_gap + t.marker_ref,
     "marker-start-segment-mid-end": [("none",)] + t.marker_ref,
-    "marker-side": [("list-container",), ("list-item",)],
+    "marker-side": [("match-parent",), ("match-self",)],
     "marks": [("crop",), ("cross",), ("none",)],
     "mask": t.mask_layer,
     "mask-border": [
