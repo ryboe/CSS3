@@ -14,12 +14,10 @@ media features
                 portrait|landscape
             scan
                 interlace|progressive
-            light-level
-                dim | normal | washed
             overflow-block
-                none | scroll | optional-paged | paged
+                none | scroll | paged
             hover
-                none | on-demand | hover
+                none | hover
             scripting
                 none | initial-only | enabled
             overflow-inline
@@ -169,8 +167,6 @@ media features
 @media only all {}
 @media not print {}
 @media only screen {}
-@media not speech {}
-@media only speech {}
 
 @media print {
   body { font-size: 10pt; }
@@ -322,7 +318,6 @@ media features
 @media (update: normal) {}
 @media (overflow-block: none) {}
 @media (overflow-block: scroll) {}
-@media (overflow-block: optional-paged) {}
 @media (overflow-block: paged) {}
 @media (overflow-inline: none) {}
 @media (overflow-inline: scroll) {}
@@ -342,14 +337,9 @@ media features
 @media (any-pointer: coarse) {}
 @media (any-pointer: fine) {}
 @media (hover: none) {}
-@media (hover: on-demand) {}
 @media (hover: hover) {}
 @media (any-hover: none) {}
-@media (any-hover: on-demand) {}
 @media (any-hover: hover) {}
-@media (light-level: dim) {}
-@media (light-level: normal) {}
-@media (light-level: washed) {}
 @media (scripting: none) {}
 @media (scripting: initial-only) {}
 @media (scripting: enabled) {}
@@ -361,8 +351,7 @@ media features
 @media (scripting) {}
 
 
-@media speech and (min-width: 20em),
-  screen and (min-width: 20em) {}
+@media screen and (min-width: 20em) {}
 @media all and (min-width:500px) {}
 @media (min-width:500px) {}
 @media (orientation: portrait) {}
@@ -418,6 +407,7 @@ media features
 @media tv and (min-width: 700px) and (orientation: landscape) {}
 @media handheld and (min-width: 20em),
   screen and (min-width: 20em) {}
+@media speech;
 
 @media example { body { background:red; } }   /* example media type doesn't exist */
 @media (example, all,), speech {}

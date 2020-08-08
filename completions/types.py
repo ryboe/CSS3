@@ -561,7 +561,6 @@ media_types = [
     ("only", "only "),
     ("print", "print "),
     ("screen", "screen "),
-    ("speech", "speech "),
 ]
 number = [("<number>", "${1:0}"), calc]
 numeric_figure_values = [("lining-nums",), ("oldstyle-nums",)]
@@ -655,7 +654,7 @@ width = [
     ("min-content",),
     fit_content,
 ]
-baseline_shift = [("sub",), ("super",)] + length + percentage
+baseline_shift = [("bottom",), ("center",), ("sub",), ("super",), ("top",)] + length + percentage
 bg_image = [("none",)] + image
 bg_size = [("auto",), ("contain",), ("cover",),] + length + percentage
 background = bg_image + position + bg_size + repeat_style + attachment + box + color
