@@ -3476,6 +3476,8 @@ contexts:
     - include: property-background-image
     - include: property-background-image-transform
     - include: property-background-origin
+    - include: property-background-position-x
+    - include: property-background-position-y
     - include: property-background-position
     - include: property-background-repeat
     - include: property-background-size
@@ -4242,7 +4244,7 @@ contexts:
         - include: box
     - include: stray-paren-or-semicolon
 
-  # CSS Backgrounds and Borders Module Level 3
+  # CSS Backgrounds and Borders Module Level 4
   property-background-position:
     - match: \b(background-position)\s*(:)
       captures:
@@ -4253,6 +4255,38 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: position
+    - include: stray-paren-or-semicolon
+
+  # CSS Backgrounds and Borders Module Level 4
+  property-background-position-x:
+    - match: \b(background-position-x)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.background-position-x.css
+        - include: end-value
+        - include: value-css-wide
+        - match: \b(?:x-start|x-end|right|left|center){{b}}
+          scope: support.constant.property-value.css
+        - include: length
+        - include: percentage
+    - include: stray-paren-or-semicolon
+
+  # CSS Backgrounds and Borders Module Level 4
+  property-background-position-y:
+    - match: \b(background-position-y)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.background-position-y.css
+        - include: end-value
+        - include: value-css-wide
+        - match: \b(?:y-start|y-end|top|center|bottom){{b}}
+          scope: support.constant.property-value.css
+        - include: length
+        - include: percentage
     - include: stray-paren-or-semicolon
 
   # CSS Backgrounds and Borders Module Level 3
