@@ -140,32 +140,6 @@
 /*         ^^^^^^ support.constant.media.css */
 /*                ^ punctuation.section.at-media.begin.css */
 /*                 ^ punctuation.section.at-media.end.css */
-@media speech {}
-/* <- keyword.control.at-rule.media.css punctuation.definition.keyword.css */
- /* <- keyword.control.at-rule.media.css */
-/*^^^^keyword.control.at-rule.media.css */
-/*    ^ -keyword.control.at-rule.media.css */
-/*     ^^^^^^ support.constant.media.css */
-/*            ^ punctuation.section.at-media.begin.css */
-/*             ^ punctuation.section.at-media.end.css */
-@media only speech {}
-/* <- keyword.control.at-rule.media.css punctuation.definition.keyword.css */
- /* <- keyword.control.at-rule.media.css */
-/*^^^^keyword.control.at-rule.media.css */
-/*    ^ -keyword.control.at-rule.media.css */
-/*     ^^^^ keyword.operator.logic.media.css */
-/*          ^^^^^^ support.constant.media.css */
-/*                 ^ punctuation.section.at-media.begin.css */
-/*                  ^ punctuation.section.at-media.end.css */
-@media not speech {}
-/* <- keyword.control.at-rule.media.css punctuation.definition.keyword.css */
- /* <- keyword.control.at-rule.media.css */
-/*^^^^keyword.control.at-rule.media.css */
-/*    ^ -keyword.control.at-rule.media.css */
-/*     ^^^ keyword.operator.logic.media.css */
-/*         ^^^^^^ support.constant.media.css */
-/*                ^ punctuation.section.at-media.begin.css */
-/*                 ^ punctuation.section.at-media.end.css */
 
 
 /* TEST DEPRECATED MEDIA TYPES */
@@ -399,20 +373,6 @@
 /*                     ^ punctuation.section.media-feature.begin.css */
 /*                      ^^^^^ support.type.property-name.css */
 /*                           ^ punctuation.section.media-feature.end.css */
-@media speech and (device-aspect-ratio: 16/9) {}
-/* <- keyword.control.at-rule.media.css punctuation.definition.keyword.css */
- /* <- keyword.control.at-rule.media.css */
-/*^^^^ keyword.control.at-rule.media.css */
-/*    ^ -keyword.control.at-rule.media.css */
-/*     ^^^^^^ support.constant.media.css */
-/*            ^^^ keyword.operator.logic.media.css */
-/*                ^ punctuation.section.media-feature.begin.css */
-/*                 ^^^^^^^^^^^^^^^^^^^ support.type.property-name.css invalid.deprecated.css */
-/*                                    ^ punctuation.separator.key-value.css */
-/*                                      ^^ constant.numeric.css */
-/*                                        ^ keyword.operator.arithmetic.css */
-/*                                         ^ constant.numeric.css */
-/*                                          ^ punctuation.section.media-feature.end.css */
 @media (400px < width < 1000px) {}
 /* <- keyword.control.at-rule.media.css punctuation.definition.keyword.css */
  /* <- keyword.control.at-rule.media.css */
@@ -651,36 +611,6 @@
 /*             ^ punctuation.separator.key-value.css */
 /*              ^^^^^^ support.constant.property-value.css */
 /*                    ^ punctuation.section.media-feature.end.css */
-@media (light-level: normal) {}
-/* <- keyword.control.at-rule.media.css punctuation.definition.keyword.css */
- /* <- keyword.control.at-rule.media.css */
-/*^^^^ keyword.control.at-rule.media.css */
-/*    ^ -keyword.control.at-rule.media.css */
-/*     ^ punctuation.section.media-feature.begin.css */
-/*      ^^^^^^^^^^^ support.type.property-name.css */
-/*                 ^ punctuation.separator.key-value.css */
-/*                   ^^^^^^ support.constant.property-value.css */
-/*                         ^ punctuation.section.media-feature.end.css */
-@media (light-level: dim) {}
-/* <- keyword.control.at-rule.media.css punctuation.definition.keyword.css */
- /* <- keyword.control.at-rule.media.css */
-/*^^^^ keyword.control.at-rule.media.css */
-/*    ^ -keyword.control.at-rule.media.css */
-/*     ^ punctuation.section.media-feature.begin.css */
-/*      ^^^^^^^^^^^ support.type.property-name.css */
-/*                 ^ punctuation.separator.key-value.css */
-/*                   ^^^ support.constant.property-value.css */
-/*                      ^ punctuation.section.media-feature.end.css */
-@media (light-level: washed) {}
-/* <- keyword.control.at-rule.media.css punctuation.definition.keyword.css */
- /* <- keyword.control.at-rule.media.css */
-/*^^^^ keyword.control.at-rule.media.css */
-/*    ^ -keyword.control.at-rule.media.css */
-/*     ^ punctuation.section.media-feature.begin.css */
-/*      ^^^^^^^^^^^ support.type.property-name.css */
-/*                 ^ punctuation.separator.key-value.css */
-/*                   ^^^^^^ support.constant.property-value.css */
-/*                         ^ punctuation.section.media-feature.end.css */
 @media (--narrow-window) {}
 /* <- keyword.control.at-rule.media.css punctuation.definition.keyword.css */
  /* <- keyword.control.at-rule.media.css */

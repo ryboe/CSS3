@@ -2929,6 +2929,7 @@ contexts:
         - include: media-feature-custom  # TODO: correct precedence?
         - include: media-feature-aspect-ratio
         - include: media-feature-color-gamut
+        - include: media-feature-dynamic-range
         - include: media-feature-environment-blending
         - include: media-feature-forced-colors
         - include: media-feature-grid
@@ -2936,7 +2937,6 @@ contexts:
         - include: media-feature-inverted-colors
         - include: media-feature-monochrome-color-index
         - include: media-feature-width-height
-        - include: media-feature-light-level
         - include: media-feature-orientation
         - include: media-feature-overflow-block
         - include: media-feature-overflow-inline
@@ -2978,7 +2978,7 @@ contexts:
         - include: media-feature-range-operator
 
   media-feature-color-gamut:
-    - match: \b(color-gamut)\s*(:)
+    - match: \b((?:video-)?color-gamut)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -3003,6 +3003,18 @@ contexts:
       captures:
         1: support.type.property-name.css invalid.deprecated.css
         2: punctuation.separator.key-value.css
+
+  media-feature-dynamic-range:
+    - match: \b((?:video-)?dynamic-range)\s*(:)?
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.dynamic-range.css
+        - include: end-media-feature
+        - include: value-css-wide
+        - match: '\b(?:standard|high){{b}}'
+          scope: support.constant.property-value.css
 
   media-feature-environment-blending:
     - match: \b(environment-blending)\s*(:)?
@@ -3049,7 +3061,7 @@ contexts:
         - meta_content_scope: meta.property-value.hover.css
         - include: end-media-feature
         - include: value-css-wide
-        - match: '\b(?:on-demand|none|hover){{b}}'
+        - match: '\b(?:none|hover){{b}}'
           scope: support.constant.property-value.css
 
   media-feature-inverted-colors:
@@ -3062,18 +3074,6 @@ contexts:
         - include: end-media-feature
         - include: value-css-wide
         - match: '\b(?:none|inverted){{b}}'
-          scope: support.constant.property-value.css
-
-  media-feature-light-level:
-    - match: '\b(light-level)\s*(:)'
-      captures:
-        1: support.type.property-name.css
-        2: punctuation.separator.key-value.css
-      push:
-        - meta_content_scope: meta.property-value.light-level.css
-        - include: end-media-feature
-        - include: value-css-wide
-        - match: '\b(?:washed|normal|dim){{b}}'
           scope: support.constant.property-value.css
 
   media-feature-monochrome-color-index:
@@ -3118,7 +3118,7 @@ contexts:
         - meta_content_scope: meta.property-value.overflow-block.css
         - include: end-media-feature
         - include: value-css-wide
-        - match: '\b(?:scroll|paged|optional-paged|none){{b}}'
+        - match: '\b(?:scroll|paged|none){{b}}'
           scope: support.constant.property-value.css
 
   media-feature-overflow-inline:
@@ -3154,7 +3154,7 @@ contexts:
         - meta_content_scope: meta.property-value.prefers-color-scheme.css
         - include: end-media-feature
         - include: value-css-wide
-        - match: '\b(?:no-preference|low|high){{b}}'
+        - match: '\b(?:light|dark){{b}}'
           scope: support.constant.property-value.css
 
   media-feature-prefers-contrast:
@@ -3166,7 +3166,7 @@ contexts:
         - meta_content_scope: meta.property-value.prefers-contrast.css
         - include: end-media-feature
         - include: value-css-wide
-        - match: '\b(?:no-preference|low|high){{b}}'
+        - match: '\b(?:no-preference|low|high|forced){{b}}'
           scope: support.constant.property-value.css
 
   media-feature-prefers-reduced-data:
@@ -3215,6 +3215,7 @@ contexts:
         \b
         (
           {{optional_min_max_prefix}}
+          (?:video-)?
           resolution
         )\s*(:)?
         {{not_followed_by_dash}}'
@@ -3272,6 +3273,7 @@ contexts:
         \b
         (
           {{optional_min_max_prefix}}
+          (?:video-)?
           (?:width|height)
         )\s*(:)?
         {{not_followed_by_dash}}'
@@ -3294,13 +3296,13 @@ contexts:
 
   media-type:
     - include: media-type-deprecated
-    - match: (?:(only|not)\s+)?(speech|screen|print|all)
+    - match: (?:(only|not)\s+)?(screen|print|all)
       captures:
         1: keyword.operator.logic.media.css
         2: support.constant.media.css
 
   media-type-deprecated:
-    - match: '\b(?:tv|tty|reader|projection|handheld|embossed|braille|aural){{b}}'
+    - match: '\b(?:tv|tty|speech|reader|projection|handheld|embossed|braille|aural){{b}}'
       scope: support.constant.media.css invalid.deprecated.css
 
   nestable-at-rules:

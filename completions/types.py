@@ -561,7 +561,6 @@ media_types = [
     ("only", "only "),
     ("print", "print "),
     ("screen", "screen "),
-    ("speech", "speech "),
 ]
 number = [("<number>", "${1:0}"), calc]
 numeric_figure_values = [("lining-nums",), ("oldstyle-nums",)]
