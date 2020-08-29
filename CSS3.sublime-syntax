@@ -6932,7 +6932,7 @@ contexts:
         - meta_content_scope: meta.property-value.initial-letter-align.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:ideographic|hebrew|hanging|border-box|alphabetic){{b}}'
+        - match: '\b(?:leading|ideographic|hanging|border-box|alphabetic){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
@@ -7070,7 +7070,7 @@ contexts:
         - meta_content_scope: meta.property-value.leading-trim.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:text|normal|ideographic-ink|ideographic|ex|cap){{b}}'
+        - match: '\b(?:start|normal|end|both){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 

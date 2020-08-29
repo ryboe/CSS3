@@ -1153,8 +1153,8 @@ name_to_completions = {
         ("alphabetic",),
         ("border-box",),
         ("hanging",),
-        ("hebrew",),
         ("ideographic",),
+        ("leading",),
     ],
     "initial-letter-wrap": [("all",), ("first",), ("grid",), ("none",),]
     + t.length
@@ -1193,7 +1193,7 @@ name_to_completions = {
     + t.baseline_position
     + t.overflow_position
     + t.self_position,
-    "leading-trim": [("cap",), ("ex",), ("ideographic",), ("ideographic-ink",), ("normal",), ("text",)],
+    "leading-trim": [("both",), ("end",), ("normal",), ("start",)],
     "leading-trim-under": [("alphabetic",), ("ideographic",), ("ideographic-ink",), ("normal",), ("text",)],
     "letter-spacing": [("normal",)] + t.length,
     "lighting-color": t.color,
