@@ -20,7 +20,7 @@ variables:
   exponent: '[eE][+-]?\d+'
   flex_unit: 'fr'
   frequency_unit: k?Hz
-  generic_font_family: 'system-ui|serif|sans-serif|monospace|math|fantasy|fangsong|emoji|cursive'
+  generic_font_family: 'ui-serif|ui-sans-serif|ui-rounded|ui-monospace|system-ui|serif|sans-serif|monospace|math|fantasy|fangsong|emoji|cursive'
   hex_color: '(#)(?:\h{8}|\h{6}|\h{3,4})\b'
   ident_char: '[-a-zA-Z\d_\\\p{^ASCII}]'
   ident_start: '-?[a-zA-Z_\\\p{^ASCII}]'
@@ -129,8 +129,8 @@ contexts:
     - include: func-cielchab
     - include: func-color
     - include: func-color-adjust
-    - include: func-color-contrast
     - include: func-color-adjuster-rgb
+    - include: func-color-contrast
     - include: func-color-mix
     - include: func-conic-gradient
     - include: func-content
@@ -974,22 +974,24 @@ contexts:
     - include: descriptor-counter-style-speak-as
 
   descriptors-font-face:
-    - include: descriptor-font-face-font-language-override
-    - include: descriptor-font-face-font-feature-settings
-    - include: descriptor-font-face-font-named-instance
-    - include: descriptor-font-face-unicode-range
-    - include: descriptor-font-face-font-variant
-    - include: descriptor-font-face-font-stretch
     - include: descriptor-font-face-font-display
     - include: descriptor-font-face-font-family
-    - include: descriptor-font-face-font-weight
+    - include: descriptor-font-face-font-feature-settings
+    - include: descriptor-font-face-font-language-override
+    - include: descriptor-font-face-font-named-instance
+    - include: descriptor-font-face-font-stretch
     - include: descriptor-font-face-font-style
+    - include: descriptor-font-face-font-variant
+    - include: descriptor-font-face-font-variation-settings
+    - include: descriptor-font-face-font-weight
+    - include: descriptor-font-face-override
     - include: descriptor-font-face-src
+    - include: descriptor-font-face-unicode-range
 
   descriptors-font-palette-values:
     - include: descriptor-font-palette-values-font-family
     - include: descriptor-font-palette-values-base-palette
-    - include: descriptor-font-palette-values-color-integer
+    - include: descriptor-font-palette-values-override-color
 
   descriptors-viewport:
     - include: descriptor-viewport-user-zoom
@@ -1254,7 +1256,8 @@ contexts:
               extra-expanded|
               extra-condensed|
               expanded|
-              condensed
+              condensed|
+              auto
             )
             {{b}}'
           scope: support.constant.property-value.css
@@ -1270,7 +1273,7 @@ contexts:
         - meta_scope: meta.descriptor.font-face.font-style.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:oblique|normal|italic){{b}}'
+        - match: '\b(?:oblique|normal|italic|auto){{b}}'
           scope: support.constant.property-value.css
         - include: angle
     - include: stray-paren-or-semicolon
@@ -1316,6 +1319,21 @@ contexts:
         - include: numeric-spacing-values
     - include: stray-paren-or-semicolon
 
+  descriptor-font-face-font-variation-settings:
+    - match: \b(font-variation-settings)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_scope: meta.descriptor.font-face.font-variation-settings.css
+        - include: end-value
+        - include: value-css-wide
+        - include: string
+        - match: '\bnormal{{b}}'
+          scope: support.constant.property-value.css
+        - include: number
+    - include: stray-paren-or-semicolon
+
   descriptor-font-face-font-weight:
     - match: \b(font-weight)\s*(:)
       captures:
@@ -1325,8 +1343,23 @@ contexts:
         - meta_scope: meta.descriptor.font-face.font-weight.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:normal|bold|[1-9]00){{b}}'
+        - match: '\b(?:normal|bold|auto|[1-9]00){{b}}'
           scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Fonts Level 4
+  descriptor-font-face-override:
+    - match: \b((?:line-gap|descent|ascent)-override)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_scope: meta.descriptor.font-face.override.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bnormal{{b}}'
+          scope: support.constant.property-value.css
+        - include: percentage
     - include: stray-paren-or-semicolon
 
   descriptor-font-face-src:
@@ -1371,16 +1404,19 @@ contexts:
         - include: integer
     - include: stray-paren-or-semicolon
 
-  descriptor-font-palette-values-color-integer:
-    - match: \b(color\-\d+)\s*(:)
+  # CSS Fonts Level 4
+  descriptor-font-palette-values-override-color:
+    - match: \b(override-color)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
-        - meta_scope: meta.descriptor.font-palette-values.integer.css
+        - meta_scope: meta.descriptor.font-palette-values.override-color.css
         - include: end-value
         - include: value-css-wide
+        - include: string
         - include: color
+        - include: integer
     - include: stray-paren-or-semicolon
 
   descriptor-viewport-orientation:
@@ -1623,6 +1659,7 @@ contexts:
           stylistic|
           styleset|
           ornaments|
+          historical-forms|
           character-variant|
           annotation
         )
@@ -1791,7 +1828,7 @@ contexts:
         - include: end-func
         - include: func-var
         - include: string
-        - match: '\b(?:srgb|rec2020|dgi-p3){{b}}'
+        - match: '\b(?:xyz|srgb|rec2020|propphoto-rgb|lab|display-p3|a98-rgb){{b}}'
           scope: support.constant.property-value.css
         - include: color
         - include: percentage
@@ -1837,6 +1874,19 @@ contexts:
         - include: end-func
         - include: func-var
         - include: color
+
+  # CSS Fonts Modules Level 4
+  func-color-font:
+    - match: \b(color)(\()
+      captures:
+        1: support.function.color-font.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_scope: meta.function.color-font.css
+        - include: end-func
+        - include: func-var
+        - match: '\b(?:SVG|sbix|COLR|CBDT)'
+          scope: support.constant.property-value.css
 
   # CSS Color Module Level 5
   func-color-mix:
@@ -2083,6 +2133,9 @@ contexts:
         - meta_scope: meta.function.format.css
         - include: end-func
         - include: func-var
+        - include: func-color-font
+        - match: '\b(?:woff2|woff|variations|truetype|svg|supports|palettes|opentype|features|embedded-opentype|collection){{b}}'
+          scope: support.constant.property-value.css
         - include: string
 
   func-frames:
@@ -3573,6 +3626,7 @@ contexts:
     - include: property-font-stretch
     - include: property-font-style
     - include: property-font-synthesis
+    - include: property-font-synthesis-misc
     - include: property-font-variant
     - include: property-font-variant-alternates
     - include: property-font-variant-caps
@@ -6263,7 +6317,7 @@ contexts:
         - meta_content_scope: meta.property-value.font-palette.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:normal|light|dark){{b}}'
+        - match: '\b(?:normal|none|light|dark){{b}}'
           scope: support.constant.property-value.css
         - include: identifier
     - include: stray-paren-or-semicolon
@@ -6284,7 +6338,7 @@ contexts:
 
   # CSS Fonts Module Level 4
   property-font-size:
-    - match: \b(font-(?:min-|max-)?size)\s*(:)
+    - match: \b(font-size)\s*(:)
       captures:
         1: support.type.property-name.css
         2: punctuation.separator.key-value.css
@@ -6384,6 +6438,20 @@ contexts:
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
+  # CSS Fonts Module Level 4
+  property-font-synthesis-misc:
+    - match: \b(font-synthesis-(?:weight|style|small-caps))\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.font-synthesis-misc.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:none|auto){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
   # CSS Fonts Module Level 3
   property-font-variant:
     - match: \b(font-variant)\s*(:)
@@ -6409,6 +6477,7 @@ contexts:
               ordinal|
               normal|
               none|
+              historical-forms|
               all-small-caps|
               all-petite-caps
             )
@@ -6491,7 +6560,7 @@ contexts:
         - meta_content_scope: meta.property-value.font-variant-emoji.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:text|emoji|auto){{b}}'
+        - match: '\b(?:unicode|text|emoji|auto){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
@@ -10213,7 +10282,7 @@ contexts:
         - meta_content_scope: meta.property-value.white-space.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:pre-wrap|pre-line|pre|nowrap|normal){{b}}'
+        - match: '\b(?:pre-wrap|pre-line|pre|nowrap|normal|break-spaces){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
