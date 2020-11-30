@@ -19,28 +19,26 @@ counter_style = [
     ("system", "system: ${1};"),
 ]
 font_face = [
+    ("ascent-override", "ascent-override: ${1};"),
+    ("descent-override", "descent-override: ${1};"),
     ("font-display", "font-display: ${1};"),
     ("font-family", "font-family: ${1:<family-name>};"),
     ("font-feature-settings", "font-feature-settings: ${1};"),
+    ("font-language-override", "font-language-override: ${1};"),
+    ("font-named-instance", "font-named-instance: ${1};"),
     ("font-stretch", "font-stretch: ${1};"),
     ("font-style", "font-style: ${1};"),
     ("font-variant", "font-variant: ${1};"),
+    ("font-variation-settings", "font-variation-settings: ${1};"),
     ("font-weight", "font-weight: ${1};"),
+    ("line-gap-override", "line-gap-override: ${1};"),
     ("src", "src: ${1};"),
+    ("unicode-range", "unicode-range: ${1};"),
 ]
 font_palette_values = [
-    ("font-family", "font-family: ${1};"),
     ("base-palette", "base-palette: ${1};"),
-    ("color-0", "color-0: ${1};"),
-    ("color-1", "color-1: ${1};"),
-    ("color-2", "color-2: ${1};"),
-    ("color-3", "color-3: ${1};"),
-    ("color-4", "color-4: ${1};"),
-    ("color-5", "color-5: ${1};"),
-    ("color-6", "color-6: ${1};"),
-    ("color-7", "color-7: ${1};"),
-    ("color-8", "color-8: ${1};"),
-    ("color-9", "color-9: ${1};"),
+    ("font-family", "font-family: ${1};"),
+    ("override-color", "override-color: ${1};"),
 ]
 viewport = [
     ("height", "height: ${1:<viewport-length>} ${2:<viewport-length>};"),
@@ -145,6 +143,7 @@ font_face_values = {
         + t.east_asian_variant_values
         + t.east_asian_width_values
     ),
+    "font-variation-settings": [("normal",), t.string] + t.number,
     "font-weight": [
         ("100",),
         ("200",),
@@ -158,6 +157,7 @@ font_face_values = {
         ("bold",),
         ("normal",),
     ],
+    "override": [("normal",)] + t.percentage,
     "src": [t.format_func, t.font_face_name, t.local, t.url,],
     "unicode-range": [t.urange],
 }

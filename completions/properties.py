@@ -195,6 +195,7 @@ names = [
     ("font-stretch", "font-stretch: ${1};"),
     ("font-style", "font-style: ${1};"),
     ("font-synthesis", "font-synthesis: ${1};"),
+    ("font-synthesis-weight", "font-synthesis-weight: ${1};"),
     ("font-variant", "font-variant: ${1};"),
     ("font-variant-alternates", "font-variant-alternates: ${1};"),
     ("font-variant-caps", "font-variant-caps: ${1};"),
@@ -1021,6 +1022,7 @@ name_to_completions = {
     + t.percentage,
     "font-style": [("italic",), ("normal",), ("oblique",)] + t.angle,
     "font-synthesis": [("none",), ("small-caps",), ("style",), ("weight",)],
+    "font-synthesis-misc": [("auto",), ("none",)],
     "font-variant": [
         ("all-petite-caps",),
         ("all-small-caps",),
@@ -1718,6 +1720,7 @@ name_to_completions = {
     ]
     + t.decibel,
     "white-space": [
+        ("break-spaces",),
         ("normal",),
         ("nowrap",),
         ("pre",),
