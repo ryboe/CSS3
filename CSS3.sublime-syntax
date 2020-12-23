@@ -6941,7 +6941,7 @@ contexts:
         - meta_content_scope: meta.property-value.image-orientation.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:from-image|flip){{b}}'
+        - match: '\b(?:none|from-image|flip){{b}}'
           scope: support.constant.property-value.css
         - include: angle
     - include: stray-paren-or-semicolon
@@ -6956,7 +6956,7 @@ contexts:
         - meta_content_scope: meta.property-value.image-rendering.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:pixelated|crisp-edges|auto){{b}}'
+        - match: '\b(?:smooth|pixelated|high-quality|crisp-edges|auto){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
