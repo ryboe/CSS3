@@ -1,5 +1,8 @@
 # FUNCTIONS
 # These completions are here instead of functions.py to avoid a circular import.
+min = ("min()", "min(${1})")
+max = ("max()", "max(${1})")
+clamp = ("clamp()", "clamp(${1})")
 a = ("a()", "a(${1})")
 alpha = ("alpha()", "alpha(${1})")
 annotation = ("annotation()", "annotation(${1})")
