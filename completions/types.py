@@ -170,9 +170,9 @@ alignment_baseline = [
     ("text-top",),
     ("top",),
 ]
-angle = [("<angle>", "${1:<angle>}"), calc, min, max]
+angle = [("<angle>", "${1:<angle>}"), calc, min, max, clamp]
 animateable_feature = [("contents",), ("scroll-position",), identifier]
-aspect_ratio = [("<aspect-ratio>", "${1:1}ar"), calc, min, max]
+aspect_ratio = [("<aspect-ratio>", "${1:1}ar"), calc, min, max, clamp]
 attachment = [("fixed",), ("local",), ("scroll",)]
 auto_repeat = [repeat]
 baseline_position = [
@@ -444,7 +444,7 @@ cubic_bezier_timing_function = [
     ("ease-out",),
     cubic_bezier,
 ]
-decibel = [("<decibel>", "${1:0}dB"), calc, min, max]
+decibel = [("<decibel>", "${1:0}dB"), calc, min, max, clamp]
 discretionary_lig_values = [
     ("discretionary-ligatures",),
     ("no-discretionary-ligatures",),
@@ -499,7 +499,7 @@ extent_keyword = [
 ]
 fill_rule = [("evenodd",), ("nonzero",)]
 fixed_repeat = [repeat]
-flex = [("<flex>", "${1:0}fr"), calc, min, max]
+flex = [("<flex>", "${1:0}fr"), calc, min, max, clamp]
 flex_direction = [("column",), ("column-reverse",), ("row",), ("row-reverse",)]
 flex_wrap = [("nowrap",), ("wrap",), ("wrap-reverse",)]
 font_family_generic = [
@@ -515,7 +515,7 @@ font_family_generic = [
 ]
 font_family_name = [identifier, string]
 frames_timing_function = [frames]
-frequency = [("<frequency>", "${1:0}Hz"), calc, min, max]
+frequency = [("<frequency>", "${1:0}Hz"), calc, min, max, clamp]
 gradient = [
     conic_gradient,
     repeating_conic_gradient,
@@ -534,9 +534,9 @@ icc_color = [
     icc_color_func,
 ]
 image = [cross_fade, element, image_func, image_set, url,] + gradient
-integer = [("<integer>", "${1:0}"), calc, min, max]
+integer = [("<integer>", "${1:0}"), calc, min, max, clamp]
 isolation_mode = [("auto",), ("isolate",)]
-length = [("<length>", "${1:<length>}"), calc, min, max]
+length = [("<length>", "${1:<length>}"), calc, min, max, clamp]
 line_style = [
     ("dashed",),
     ("dotted",),
@@ -565,7 +565,7 @@ media_types = [
     ("print", "print "),
     ("screen", "screen "),
 ]
-number = [("<number>", "${1:0}"), calc, min, max]
+number = [("<number>", "${1:0}"), calc, min, max, clamp]
 numeric_figure_values = [("lining-nums",), ("oldstyle-nums",)]
 numeric_fraction_values = [("diagonal-fractions",), ("stacked-fractions",)]
 numeric_spacing_values = [("proportional-nums",), ("tabular-nums",)]
@@ -587,7 +587,7 @@ paint = [
     child,
     url,
 ] + color
-percentage = [("<percentage>", "${1:0}%"), calc, min, max]
+percentage = [("<percentage>", "${1:0}%"), calc, min, max, clamp]
 position = (
     [("bottom",), ("center",), ("left",), ("right",), ("top",),] + length + percentage
 )
@@ -606,7 +606,7 @@ repeat_style = [
     ("round",),
     ("space",),
 ]
-resolution = [("<resolution>", "${1:<resolution>}"), calc, min, max]
+resolution = [("<resolution>", "${1:<resolution>}"), calc, min, max, clamp]
 rgb_component = number + percentage
 self_position = [
     ("center",),
@@ -617,7 +617,7 @@ self_position = [
     ("self-start",),
     ("start",),
 ]
-semitones = [("<semitones>", "${1:0}st"), calc, min, max]
+semitones = [("<semitones>", "${1:0}st"), calc, min, max, clamp]
 shape_arg = length + percentage
 shape_box = [("margin-box",)] + box
 shape_radius = [("closest-side",), ("farthest-side",)] + length + percentage
@@ -644,7 +644,7 @@ size = extent_keyword + length + percentage
 supports_condition_operator = [("and",), ("not",), ("or",)]
 symbol = [identifier, string] + image
 target = [target_counter, target_counters, target_text]
-time = [("<time>", "${1:0}s"), calc, min, max]
+time = [("<time>", "${1:0}s"), calc, min, max, clamp]
 track_breadth = (
     [("auto",), ("max-content",), ("min-content",),] + flex + length + percentage
 )
@@ -656,6 +656,9 @@ width = [
     ("max-content",),
     ("min-content",),
     fit_content,
+    min,
+    max,
+    clamp,
 ]
 baseline_shift = [("bottom",), ("center",), ("sub",), ("super",), ("top",)] + length + percentage
 bg_image = [("none",)] + image
