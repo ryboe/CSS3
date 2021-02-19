@@ -1538,6 +1538,11 @@
     border-radius: 7.5em 5em;
     border-radius: 2em 1em 4em / 0.5em 3em;
 
+    border-start-start-radius: 1ch;
+    border-start-end-radius: 1ch;
+    border-end-start-radius: 1ch;
+    border-end-end-radius: 1ch;
+
     border-spacing: initial;
     border-spacing: inherit;
     border-spacing: unset;
