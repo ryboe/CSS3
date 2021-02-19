@@ -3575,6 +3575,7 @@
     grid-auto-rows: auto;
     grid-auto-rows: min(10ch, 5rem, 50em);
     grid-auto-rows: max(10ch, 5rem, 50em);
+    grid-auto-rows: clamp(10px, 5vmin, 30px);
     -webkit-grid-auto-rows: auto;
 
     grid-column: 1;
@@ -3728,6 +3729,7 @@
     grid-template-rows: 20px;
     grid-template-rows: min(10ch, 5rem, 50em);
     grid-template-rows: max(10ch, 5rem, 50em);
+    grid-template-rows: clamp(10px, 5vmin, 30px);
     -webkit-grid-template-rows: 1fr 1fr;
 
     hanging-punctuation: initial;
@@ -3745,6 +3747,7 @@
     height: 0;
     height: min(10ch, 5rem, 50em);
     height: max(10ch, 5rem, 50em);
+    height: clamp(10px, 5vmin, 30px);
 
     hyphens: initial;
     hyphens: inherit;

@@ -4,16 +4,8 @@ import sublime
 # This dict maps function names to their completions. It includes pseudo-class
 # and pseudo-element functions like :nth-child() and ::attr().
 func_name_to_completions = {
-    "min": [
-        ("length",),
-        ("frequency",),
-        ("angle",),
-        ("time",),
-        ("percentage",),
-        ("number",),
-        ("integer",),
-    ],
-    "max": [
+    "
+    "clamp": [
         ("length",),
         ("frequency",),
         ("angle",),
@@ -118,6 +110,24 @@ func_name_to_completions = {
     "local": [t.identifier, t.string],
     # "matches": [],  # TODO: matches takes a selector list as an arg. should it have completions?
     "matrix": t.number,
+    "max": [
+        ("length",),
+        ("frequency",),
+        ("angle",),
+        ("time",),
+        ("percentage",),
+        ("number",),
+        ("integer",),
+    ]
+    "min": [
+        ("length",),
+        ("frequency",),
+        ("angle",),
+        ("time",),
+        ("percentage",),
+        ("number",),
+        ("integer",),
+    ]
     "minmax": [("auto",), ("min-content",), ("max-content",)]
     + t.flex
     + t.length
