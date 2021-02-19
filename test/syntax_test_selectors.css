@@ -127,6 +127,11 @@
  /* <- entity.other.attribute-name.pseudo-class.css */
 /*^^^^^ entity.other.attribute-name.pseudo-class.css */
 /*     ^ -entity.other.attribute-name.pseudo-class.css */
+:target-within {}
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.pseudo-class.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*     ^ -entity.other.attribute-name.pseudo-class.css */
 :scope {}
 /* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.pseudo-class.css */
  /* <- entity.other.attribute-name.pseudo-class.css */
