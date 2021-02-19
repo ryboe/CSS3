@@ -10833,7 +10833,7 @@ contexts:
     - include: stray-paren
 
   selector-pseudo-class-not-matches-has:
-    - match: '((:)(?:not|matches|has))(\()'
+    - match: '((:)(?:not|matches|has|is|where))(\()'
       captures:
         1: entity.other.attribute-name.pseudo-class.css
         2: punctuation.definition.entity.pseudo-class.css
