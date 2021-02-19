@@ -130,6 +130,7 @@ contexts:
     - include: func-child
     - include: func-cielab
     - include: func-cielchab
+    - include: func-clamp
     - include: func-color
     - include: func-color-adjust
     - include: func-color-adjuster-rgb
@@ -167,8 +168,9 @@ contexts:
     - include: func-linear-gradient
     - include: func-local
     - include: func-matrix
-    - include: func-minmax
+    - include: func-max
     - include: func-min
+    - include: func-minmax
     - include: func-path
     - include: func-perspective
     - include: func-polygon
