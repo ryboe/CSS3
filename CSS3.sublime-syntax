@@ -3560,6 +3560,7 @@ contexts:
     - include: property-border-image-transform
     - include: property-border-image-width
     - include: property-border-radius
+    - include: property-border-start-radius
     - include: property-border-spacing
     - include: property-border-style
     - include: property-border-top-right-left-bottom
@@ -4792,6 +4793,22 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.border-radius.css
+        - include: end-value
+        - include: value-css-wide
+        - include: percentage-non-negative
+        - include: length-non-negative
+        - match: '\/'
+          scope: keyword.operator.arithmetic.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Logical Properties and Values Level 1
+  property-border-start-radius:
+    - match: \b(border-(?:start-start-|start-end-|end-start-|end-end-)?radius)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.border-radius-start.css
         - include: end-value
         - include: value-css-wide
         - include: percentage-non-negative
@@ -7384,7 +7401,7 @@ contexts:
   property-margin-block-inline:
     - match: \b(margin-inline-start|margin-inline-end|margin-inline|margin-block-start|margin-block-end|margin-block)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.margin-block-inline.css
@@ -8216,7 +8233,7 @@ contexts:
   property-padding-block-inline:
     - match: \b(padding-inline-start|padding-inline-end|padding-inline|padding-block-start|padding-block-end|padding-block)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.padding-block-inline.css

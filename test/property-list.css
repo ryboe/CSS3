@@ -4242,6 +4242,14 @@
     margin-left: 50%;
     margin-left: 0;
 
+    margin-inline: 1ch;
+    margin-inline-start: 1ch;
+    margin-inline-end: 1ch;
+
+    margin-block: 1ch;
+    margin-block-start: 1ch;
+    margin-block-end: 1ch;
+
     marker-side: initial;
     marker-side: inherit;
     marker-side: unset;
@@ -4923,6 +4931,14 @@
     padding-left: 0.5em;
     padding-left: 0;
     padding-left: 10%;
+
+    padding-inline: 1ch;
+    padding-inline-start: 1ch;
+    padding-inline-end: 1ch;
+
+    padding-block: 1ch;
+    padding-block-start: 1ch;
+    padding-block-end: 1ch;
 
     page: initial;
     page: inherit;
