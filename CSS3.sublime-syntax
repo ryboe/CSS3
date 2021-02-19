@@ -95,6 +95,7 @@ contexts:
   angle:
     - include: func-calc
     - include: func-min
+    - include: func-max
     - match: '(?x)
         (?:
           ({{number}})({{angle_unit}})\b|
@@ -951,6 +952,7 @@ contexts:
   decibel:
     - include: func-calc
     - include: func-min
+    - include: func-max
     - match: '(?x)
         (?:
           ({{number}})({{decibel_unit}})|
@@ -1604,6 +1606,7 @@ contexts:
   flex:
     - include: func-calc
     - include: func-min
+    - include: func-max
     - match: '(?x)
         (?:
           ({{number}})({{flex_unit}})\b|
@@ -1705,6 +1708,7 @@ contexts:
   frequency:
     - include: func-calc
     - include: func-min
+    - include: func-max
     - match: '(?x)
         (?:
           ({{number}})({{frequency_unit}})\b|
@@ -2364,6 +2368,25 @@ contexts:
         - include: func-var
         - include: number
 
+  func-max:
+    - match: \b(max)(\()
+      captures:
+        1: support.function.max.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_scope: meta.function.max.css
+        - match: '\('
+          push:
+            - match: '\)'
+              pop: true
+            - include: value-max
+        - include: size
+        - include: flex-non-negative
+        - include: percentage-non-negative
+        - include: length-non-negative
+        - include: end-func
+        - include: func-var
+
   func-min:
     - match: \b(min)(\()
       captures:
@@ -2848,18 +2871,21 @@ contexts:
   integer:
     - include: func-calc
     - include: func-min
+    - include: func-max
     - match: '{{integer}}'
       scope: constant.numeric.css
 
   integer-non-negative:
     - include: func-calc
     - include: func-min
+    - include: func-max
     - match: '{{integer_non_neg}}'
       scope: constant.numeric.css
 
   integer-positive:
     - include: func-calc
     - include: func-min
+    - include: func-max
     - match: '{{integer_pos}}'
       scope: constant.numeric.css
 
@@ -2898,6 +2924,7 @@ contexts:
   length:
     - include: func-calc
     - include: func-min
+    - include: func-max
     - match: '(?x)
         (?:
           ({{number}})({{length_unit}})\b|
@@ -2911,6 +2938,7 @@ contexts:
   length-non-negative:
     - include: func-calc
     - include: func-min
+    - include: func-max
     - match: '(?x)
         (?:
           ({{number_non_neg}})({{length_unit}})\b|
@@ -2924,6 +2952,7 @@ contexts:
   length-positive:
     - include: func-calc
     - include: func-min
+    - include: func-max
     - match: '(?x)
         (?:
           ({{number_pos}})({{length_unit}})\b|
@@ -3402,30 +3431,35 @@ contexts:
   number:
     - include: func-calc
     - include: func-min
+    - include: func-max
     - match: '{{number}}'
       scope: constant.numeric.css
 
   number-non-negative:
     - include: func-calc
     - include: func-min
+    - include: func-max
     - match: '{{number_non_neg}}'
       scope: constant.numeric.css
 
   number-positive:
     - include: func-calc
     - include: func-min
+    - include: func-max
     - match: '{{number_pos}}'
       scope: constant.numeric.css
 
   number-zero-to-one:
     - include: func-calc
     - include: func-min
+    - include: func-max
     - match: '{{number_zero_to_one}}'
       scope: constant.numeric.css
 
   number-zero-to-255:
     - include: func-calc
     - include: func-min
+    - include: func-max
     - match: '{{number_zero_to_255}}'
       scope: constant.numeric.css
 
@@ -3498,6 +3532,7 @@ contexts:
   percentage:
     - include: func-calc
     - include: func-min
+    - include: func-max
     - match: '(?x)
         (?:
           ({{number}})({{percentage_unit}})|
@@ -3511,6 +3546,7 @@ contexts:
   percentage-non-negative:
     - include: func-calc
     - include: func-min
+    - include: func-max
     - match: '(?x)
         (?:
           ({{number_non_neg}})({{percentage_unit}})|
@@ -3524,6 +3560,7 @@ contexts:
   percentage-zero-to-100:
     - include: func-calc
     - include: func-min
+    - include: func-max
     - match: '(?x)
         (?:
           ({{number_zero_to_100}})({{percentage_unit}})|
@@ -11269,6 +11306,7 @@ contexts:
   time:
     - include: func-calc
     - include: func-min
+    - include: func-max
     - match: '(?x)
         (?:
           ({{number}})({{time_unit}})\b|

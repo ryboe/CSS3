@@ -3574,6 +3574,7 @@
     grid-auto-rows: 0;
     grid-auto-rows: auto;
     grid-auto-rows: min(10ch, 5rem, 50em);
+    grid-auto-rows: max(10ch, 5rem, 50em);
     -webkit-grid-auto-rows: auto;
 
     grid-column: 1;
@@ -3726,6 +3727,7 @@
     grid-template-rows: [header-top] auto [header-bottom main-top] 1fr [main-bottom];
     grid-template-rows: 20px;
     grid-template-rows: min(10ch, 5rem, 50em);
+    grid-template-rows: max(10ch, 5rem, 50em);
     -webkit-grid-template-rows: 1fr 1fr;
 
     hanging-punctuation: initial;
@@ -3742,6 +3744,7 @@
     height: 100%;
     height: 0;
     height: min(10ch, 5rem, 50em);
+    height: max(10ch, 5rem, 50em);
 
     hyphens: initial;
     hyphens: inherit;
@@ -4204,6 +4207,7 @@
     margin: 2.5em 0;
     margin: calc(1rem - 2px) calc(1rem - 1px);
     margin: min(2ch, 2rem, 2em) min(4ch, 4rem, 4em);
+    margin: max(2ch, 2rem, 2em) max(4ch, 4rem, 4em);
 
     margin-top: initial;
     margin-top: inherit;
