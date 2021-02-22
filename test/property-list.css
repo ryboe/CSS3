@@ -692,6 +692,8 @@
     bleed: -100em;
     bleed: 0;
 
+    block-size: 2ch;
+
     bookmark-label: initial;
     bookmark-label: inherit;
     bookmark-label: unset;
@@ -3780,6 +3782,10 @@
     initial-letter-align: hanging;
     initial-letter-align: alphabetic;
 
+    inline-size: 2ch;
+    inset: 20%;
+    inset: 20% 50%;
+
     isolation: initial;
     isolation: inherit;
     isolation: unset;
@@ -4241,6 +4247,8 @@
     margin-left: 50px;
     margin-left: 50%;
     margin-left: 0;
+
+    margin-inline: 2ch;
 
     marker-side: initial;
     marker-side: inherit;
@@ -4923,6 +4931,8 @@
     padding-left: 0.5em;
     padding-left: 0;
     padding-left: 10%;
+
+    padding-inline: 2ch;
 
     page: initial;
     page: inherit;
