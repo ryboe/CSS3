@@ -3748,6 +3748,7 @@
     height: min(10ch, 5rem, 50em);
     height: max(10ch, 5rem, 50em);
     height: clamp(10px, 5vmin, 30px);
+    height: clamp(10px, clamp(5vmin, 20%), 20vw);
 
     hyphens: initial;
     hyphens: inherit;
