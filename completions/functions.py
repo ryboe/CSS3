@@ -5,15 +5,7 @@ import sublime
 # and pseudo-element functions like :nth-child() and ::attr().
 func_name_to_completions = {
     "
-    "clamp": [
-        ("length",),
-        ("frequency",),
-        ("angle",),
-        ("time",),
-        ("percentage",),
-        ("number",),
-        ("integer",),
-    ],
+    "clamp": t.angle + t.frequency + t.length + t.number + t.percentage + t.time,
     "attr": [
         ("angle",),  # A tuple with only one string means the label is the same
         ("ch",),  # as the completion, i.e. ("foo",) is equivalent to
@@ -110,24 +102,8 @@ func_name_to_completions = {
     "local": [t.identifier, t.string],
     # "matches": [],  # TODO: matches takes a selector list as an arg. should it have completions?
     "matrix": t.number,
-    "max": [
-        ("length",),
-        ("frequency",),
-        ("angle",),
-        ("time",),
-        ("percentage",),
-        ("number",),
-        ("integer",),
-    ]
-    "min": [
-        ("length",),
-        ("frequency",),
-        ("angle",),
-        ("time",),
-        ("percentage",),
-        ("number",),
-        ("integer",),
-    ]
+    "max": t.angle + t.frequency + t.length + t.number + t.percentage + t.time,
+    "min": t.angle + t.frequency + t.length + t.number + t.percentage + t.time,
     "minmax": [("auto",), ("min-content",), ("max-content",)]
     + t.flex
     + t.length
