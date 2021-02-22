@@ -1844,11 +1844,8 @@ contexts:
           push:
             - match: '\)'
               pop: true
-            - include: value-clamp
-        - include: size
-        - include: flex-non-negative
-        - include: percentage-non-negative
-        - include: length-non-negative
+            - include: value-calc
+        - include: value-calc
         - include: end-func
         - include: func-var
 
@@ -2404,11 +2401,8 @@ contexts:
           push:
             - match: '\)'
               pop: true
-            - include: value-max
-        - include: size
-        - include: flex-non-negative
-        - include: percentage-non-negative
-        - include: length-non-negative
+            - include: value-calc
+        - include: value-calc
         - include: end-func
         - include: func-var
 
@@ -2423,11 +2417,8 @@ contexts:
           push:
             - match: '\)'
               pop: true
-            - include: value-min
-        - include: size
-        - include: flex-non-negative
-        - include: percentage-non-negative
-        - include: length-non-negative
+            - include: value-calc
+        - include: value-calc
         - include: end-func
         - include: func-var
 
