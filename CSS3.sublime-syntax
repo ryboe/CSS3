@@ -3665,6 +3665,7 @@ contexts:
     - include: property-border-image-transform
     - include: property-border-image-width
     - include: property-border-radius
+    - include: property-border-start-radius
     - include: property-border-spacing
     - include: property-border-style
     - include: property-border-top-right-left-bottom
@@ -4897,6 +4898,22 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.border-radius.css
+        - include: end-value
+        - include: value-css-wide
+        - include: percentage-non-negative
+        - include: length-non-negative
+        - match: '\/'
+          scope: keyword.operator.arithmetic.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Logical Properties and Values Level 1
+  property-border-start-radius:
+    - match: \b(border-(?:start-start-|start-end-|end-start-|end-end-)?radius)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.border-radius-start.css
         - include: end-value
         - include: value-css-wide
         - include: percentage-non-negative

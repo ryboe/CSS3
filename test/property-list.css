@@ -692,6 +692,8 @@
     bleed: -100em;
     bleed: 0;
 
+    block-size: 50%;
+
     bookmark-label: initial;
     bookmark-label: inherit;
     bookmark-label: unset;
@@ -1537,6 +1539,11 @@
     border-radius: 0;
     border-radius: 7.5em 5em;
     border-radius: 2em 1em 4em / 0.5em 3em;
+
+    border-start-start-radius: 1ch;
+    border-start-end-radius: 1ch;
+    border-end-start-radius: 1ch;
+    border-end-end-radius: 1ch;
 
     border-spacing: initial;
     border-spacing: inherit;
@@ -3791,6 +3798,8 @@
     initial-letter-align: hanging;
     initial-letter-align: alphabetic;
 
+    inline-size: 50%;
+
     isolation: initial;
     isolation: inherit;
     isolation: unset;
@@ -4254,6 +4263,14 @@
     margin-left: 50px;
     margin-left: 50%;
     margin-left: 0;
+
+    margin-inline: 1ch;
+    margin-inline-start: 1ch;
+    margin-inline-end: 1ch;
+
+    margin-block: 1ch;
+    margin-block-start: 1ch;
+    margin-block-end: 1ch;
 
     marker-side: initial;
     marker-side: inherit;
@@ -4936,6 +4953,14 @@
     padding-left: 0.5em;
     padding-left: 0;
     padding-left: 10%;
+
+    padding-inline: 1ch;
+    padding-inline-start: 1ch;
+    padding-inline-end: 1ch;
+
+    padding-block: 1ch;
+    padding-block-start: 1ch;
+    padding-block-end: 1ch;
 
     page: initial;
     page: inherit;
