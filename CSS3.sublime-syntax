@@ -4542,7 +4542,7 @@ contexts:
 
   # CSS Logical Properties and Values Level 1
   property-block-inline-size:
-    - match: '{{optional_min_max_prefix}}(?:block-size|inline-size)\s*(:)'
+    - match: '{{optional_min_max_prefix}}(block-size|inline-size)\s*(:)'
       captures:
         1: support.constant.property-name.css
         2: punctuation.separator.key-value.css
