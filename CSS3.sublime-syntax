@@ -94,6 +94,9 @@ contexts:
 
   angle:
     - include: func-calc
+    - include: func-min
+    - include: func-max
+    - include: func-clamp
     - match: '(?x)
         (?:
           ({{number}})({{angle_unit}})\b|
@@ -127,6 +130,7 @@ contexts:
     - include: func-child
     - include: func-cielab
     - include: func-cielchab
+    - include: func-clamp
     - include: func-color
     - include: func-color-adjust
     - include: func-color-adjuster-rgb
@@ -164,6 +168,8 @@ contexts:
     - include: func-linear-gradient
     - include: func-local
     - include: func-matrix
+    - include: func-max
+    - include: func-min
     - include: func-minmax
     - include: func-path
     - include: func-perspective
@@ -948,6 +954,9 @@ contexts:
 
   decibel:
     - include: func-calc
+    - include: func-min
+    - include: func-max
+    - include: func-clamp
     - match: '(?x)
         (?:
           ({{number}})({{decibel_unit}})|
@@ -1600,6 +1609,9 @@ contexts:
 
   flex:
     - include: func-calc
+    - include: func-min
+    - include: func-max
+    - include: func-clamp
     - match: '(?x)
         (?:
           ({{number}})({{flex_unit}})\b|
@@ -1700,6 +1712,9 @@ contexts:
 
   frequency:
     - include: func-calc
+    - include: func-min
+    - include: func-max
+    - include: func-clamp
     - match: '(?x)
         (?:
           ({{number}})({{frequency_unit}})\b|
@@ -1817,6 +1832,22 @@ contexts:
         - include: end-func
         - include: func-var
         - include: number
+
+  func-clamp:
+    - match: \b(clamp)(\()
+      captures:
+        1: support.function.clamp.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_scope: meta.function.clamp.css
+        - match: '\('
+          push:
+            - match: '\)'
+              pop: true
+            - include: value-calc
+        - include: value-calc
+        - include: end-func
+        - include: func-var
 
   func-color:
     - match: \b(color)(\()
@@ -2359,6 +2390,38 @@ contexts:
         - include: func-var
         - include: number
 
+  func-max:
+    - match: \b(max)(\()
+      captures:
+        1: support.function.max.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_scope: meta.function.max.css
+        - match: '\('
+          push:
+            - match: '\)'
+              pop: true
+            - include: value-calc
+        - include: value-calc
+        - include: end-func
+        - include: func-var
+
+  func-min:
+    - match: \b(min)(\()
+      captures:
+        1: support.function.min.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_scope: meta.function.min.css
+        - match: '\('
+          push:
+            - match: '\)'
+              pop: true
+            - include: value-calc
+        - include: value-calc
+        - include: end-func
+        - include: func-var
+
   func-minmax:
     - match: \b(minmax)(\()
       captures:
@@ -2823,16 +2886,25 @@ contexts:
 
   integer:
     - include: func-calc
+    - include: func-min
+    - include: func-max
+    - include: func-clamp
     - match: '{{integer}}'
       scope: constant.numeric.css
 
   integer-non-negative:
     - include: func-calc
+    - include: func-min
+    - include: func-max
+    - include: func-clamp
     - match: '{{integer_non_neg}}'
       scope: constant.numeric.css
 
   integer-positive:
     - include: func-calc
+    - include: func-min
+    - include: func-max
+    - include: func-clamp
     - match: '{{integer_pos}}'
       scope: constant.numeric.css
 
@@ -2870,6 +2942,9 @@ contexts:
 
   length:
     - include: func-calc
+    - include: func-min
+    - include: func-max
+    - include: func-clamp
     - match: '(?x)
         (?:
           ({{number}})({{length_unit}})\b|
@@ -2882,6 +2957,9 @@ contexts:
 
   length-non-negative:
     - include: func-calc
+    - include: func-min
+    - include: func-max
+    - include: func-clamp
     - match: '(?x)
         (?:
           ({{number_non_neg}})({{length_unit}})\b|
@@ -2894,6 +2972,9 @@ contexts:
 
   length-positive:
     - include: func-calc
+    - include: func-min
+    - include: func-max
+    - include: func-clamp
     - match: '(?x)
         (?:
           ({{number_pos}})({{length_unit}})\b|
@@ -3371,26 +3452,41 @@ contexts:
 
   number:
     - include: func-calc
+    - include: func-min
+    - include: func-max
+    - include: func-clamp
     - match: '{{number}}'
       scope: constant.numeric.css
 
   number-non-negative:
     - include: func-calc
+    - include: func-min
+    - include: func-max
+    - include: func-clamp
     - match: '{{number_non_neg}}'
       scope: constant.numeric.css
 
   number-positive:
     - include: func-calc
+    - include: func-min
+    - include: func-max
+    - include: func-clamp
     - match: '{{number_pos}}'
       scope: constant.numeric.css
 
   number-zero-to-one:
     - include: func-calc
+    - include: func-min
+    - include: func-max
+    - include: func-clamp
     - match: '{{number_zero_to_one}}'
       scope: constant.numeric.css
 
   number-zero-to-255:
     - include: func-calc
+    - include: func-min
+    - include: func-max
+    - include: func-clamp
     - match: '{{number_zero_to_255}}'
       scope: constant.numeric.css
 
@@ -3462,6 +3558,9 @@ contexts:
 
   percentage:
     - include: func-calc
+    - include: func-min
+    - include: func-max
+    - include: func-clamp
     - match: '(?x)
         (?:
           ({{number}})({{percentage_unit}})|
@@ -3474,6 +3573,9 @@ contexts:
 
   percentage-non-negative:
     - include: func-calc
+    - include: func-min
+    - include: func-max
+    - include: func-clamp
     - match: '(?x)
         (?:
           ({{number_non_neg}})({{percentage_unit}})|
@@ -3486,6 +3588,9 @@ contexts:
 
   percentage-zero-to-100:
     - include: func-calc
+    - include: func-min
+    - include: func-max
+    - include: func-clamp
     - match: '(?x)
         (?:
           ({{number_zero_to_100}})({{percentage_unit}})|
@@ -11230,6 +11335,9 @@ contexts:
 
   time:
     - include: func-calc
+    - include: func-min
+    - include: func-max
+    - include: func-clamp
     - match: '(?x)
         (?:
           ({{number}})({{time_unit}})\b|
