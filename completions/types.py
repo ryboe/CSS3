@@ -18,6 +18,7 @@ child = ("child()", "child(${1:0})")
 cielab = ("cielab()", "cielab(${1:<lightness>}, ${2:a}, ${3:b})")
 cielchab = ("cielchab()", "cielchab(${1:<lightness>}, ${2:<chroma>}, ${3:<hue>})")
 circle = ("circle()", "circle(${1})")
+clamp = ("clamp()", "clamp(${1})")
 color_func = ("color()", "color(${1})")
 color_adjust_func = ("color-adjust()", "color-adjust(${1})")
 color_contrast_func = ("color-contrast()", "color-contrast(${1})")
@@ -76,6 +77,8 @@ matrix3d = (
     "matrix3d()",
     "matrix3d(${1:0}, ${2:0}, ${3:0}, ${4:0}, ${5:0}, ${6:0}, ${7:0}, ${8:0}, ${9:0}, ${10:0}, ${11:0}, ${12:0}, ${13:0}, ${14:0}, ${15:0}, ${16:0})",
 )
+max = ("max()", "max(${1})")
+min = ("min()", "min(${1})")
 minmax = ("minmax()", "minmax(${1:<min>}, ${2:<max>})")
 opacity = ("opacity()", "opacity(${1})")
 ornaments = ("ornaments()", "ornaments(${1})")
@@ -167,9 +170,9 @@ alignment_baseline = [
     ("text-top",),
     ("top",),
 ]
-angle = [("<angle>", "${1:<angle>}"), calc]
+angle = [("<angle>", "${1:<angle>}"), calc, min, max, clamp]
 animateable_feature = [("contents",), ("scroll-position",), identifier]
-aspect_ratio = [("<aspect-ratio>", "${1:1}ar"), calc]
+aspect_ratio = [("<aspect-ratio>", "${1:1}ar"), calc, min, max, clamp]
 attachment = [("fixed",), ("local",), ("scroll",)]
 auto_repeat = [repeat]
 baseline_position = [
@@ -441,7 +444,7 @@ cubic_bezier_timing_function = [
     ("ease-out",),
     cubic_bezier,
 ]
-decibel = [("<decibel>", "${1:0}dB"), calc]
+decibel = [("<decibel>", "${1:0}dB"), calc, min, max, clamp]
 discretionary_lig_values = [
     ("discretionary-ligatures",),
     ("no-discretionary-ligatures",),
@@ -496,7 +499,7 @@ extent_keyword = [
 ]
 fill_rule = [("evenodd",), ("nonzero",)]
 fixed_repeat = [repeat]
-flex = [("<flex>", "${1:0}fr"), calc]
+flex = [("<flex>", "${1:0}fr"), calc, min, max, clamp]
 flex_direction = [("column",), ("column-reverse",), ("row",), ("row-reverse",)]
 flex_wrap = [("nowrap",), ("wrap",), ("wrap-reverse",)]
 font_family_generic = [
@@ -512,7 +515,7 @@ font_family_generic = [
 ]
 font_family_name = [identifier, string]
 frames_timing_function = [frames]
-frequency = [("<frequency>", "${1:0}Hz"), calc]
+frequency = [("<frequency>", "${1:0}Hz"), calc, min, max, clamp]
 gradient = [
     conic_gradient,
     repeating_conic_gradient,
@@ -531,9 +534,9 @@ icc_color = [
     icc_color_func,
 ]
 image = [cross_fade, element, image_func, image_set, url,] + gradient
-integer = [("<integer>", "${1:0}"), calc]
+integer = [("<integer>", "${1:0}"), calc, min, max, clamp]
 isolation_mode = [("auto",), ("isolate",)]
-length = [("<length>", "${1:<length>}"), calc]
+length = [("<length>", "${1:<length>}"), calc, min, max, clamp]
 line_style = [
     ("dashed",),
     ("dotted",),
@@ -562,7 +565,7 @@ media_types = [
     ("print", "print "),
     ("screen", "screen "),
 ]
-number = [("<number>", "${1:0}"), calc]
+number = [("<number>", "${1:0}"), calc, min, max, clamp]
 numeric_figure_values = [("lining-nums",), ("oldstyle-nums",)]
 numeric_fraction_values = [("diagonal-fractions",), ("stacked-fractions",)]
 numeric_spacing_values = [("proportional-nums",), ("tabular-nums",)]
@@ -584,7 +587,7 @@ paint = [
     child,
     url,
 ] + color
-percentage = [("<percentage>", "${1:0}%"), calc]
+percentage = [("<percentage>", "${1:0}%"), calc, min, max, clamp]
 position = (
     [("bottom",), ("center",), ("left",), ("right",), ("top",),] + length + percentage
 )
@@ -603,7 +606,7 @@ repeat_style = [
     ("round",),
     ("space",),
 ]
-resolution = [("<resolution>", "${1:<resolution>}"), calc]
+resolution = [("<resolution>", "${1:<resolution>}"), calc, min, max, clamp]
 rgb_component = number + percentage
 self_position = [
     ("center",),
@@ -614,7 +617,7 @@ self_position = [
     ("self-start",),
     ("start",),
 ]
-semitones = [("<semitones>", "${1:0}st"), calc]
+semitones = [("<semitones>", "${1:0}st"), calc, min, max, clamp]
 shape_arg = length + percentage
 shape_box = [("margin-box",)] + box
 shape_radius = [("closest-side",), ("farthest-side",)] + length + percentage
@@ -641,7 +644,7 @@ size = extent_keyword + length + percentage
 supports_condition_operator = [("and",), ("not",), ("or",)]
 symbol = [identifier, string] + image
 target = [target_counter, target_counters, target_text]
-time = [("<time>", "${1:0}s"), calc]
+time = [("<time>", "${1:0}s"), calc, min, max, clamp]
 track_breadth = (
     [("auto",), ("max-content",), ("min-content",),] + flex + length + percentage
 )
@@ -653,6 +656,9 @@ width = [
     ("max-content",),
     ("min-content",),
     fit_content,
+    min,
+    max,
+    clamp,
 ]
 baseline_shift = [("bottom",), ("center",), ("sub",), ("super",), ("top",)] + length + percentage
 bg_image = [("none",)] + image

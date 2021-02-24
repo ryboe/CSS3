@@ -692,7 +692,7 @@
     bleed: -100em;
     bleed: 0;
 
-    block-size: 2ch;
+    block-size: 50%;
 
     bookmark-label: initial;
     bookmark-label: inherit;
@@ -1539,6 +1539,11 @@
     border-radius: 0;
     border-radius: 7.5em 5em;
     border-radius: 2em 1em 4em / 0.5em 3em;
+
+    border-start-start-radius: 1ch;
+    border-start-end-radius: 1ch;
+    border-end-start-radius: 1ch;
+    border-end-end-radius: 1ch;
 
     border-spacing: initial;
     border-spacing: inherit;
@@ -3575,6 +3580,9 @@
     grid-auto-rows: max-content;
     grid-auto-rows: 0;
     grid-auto-rows: auto;
+    grid-auto-rows: min(10ch, 5rem, 50em);
+    grid-auto-rows: max(10ch, 5rem, 50em);
+    grid-auto-rows: clamp(10px, 5vmin, 30px);
     -webkit-grid-auto-rows: auto;
 
     grid-column: 1;
@@ -3726,6 +3734,9 @@
     grid-template-rows: auto 1fr;
     grid-template-rows: [header-top] auto [header-bottom main-top] 1fr [main-bottom];
     grid-template-rows: 20px;
+    grid-template-rows: min(10ch, 5rem, 50em);
+    grid-template-rows: max(10ch, 5rem, 50em);
+    grid-template-rows: clamp(10px, 5vmin, 30px);
     -webkit-grid-template-rows: 1fr 1fr;
 
     hanging-punctuation: initial;
@@ -3741,6 +3752,11 @@
     height: 100em;
     height: 100%;
     height: 0;
+    height: min(10ch, 5rem, 50em);
+    height: max(10ch, 5rem, 50em);
+    height: min(max(100%), fit-content);
+    height: clamp(10px, 5vmin, 30px);
+    height: clamp(10px, clamp(5vmin, 20%), 20vw);
 
     hyphens: initial;
     hyphens: inherit;
@@ -3782,9 +3798,9 @@
     initial-letter-align: hanging;
     initial-letter-align: alphabetic;
 
-    inline-size: 2ch;
     inset: 20%;
     inset: 20% 50%;
+    inline-size: 50%;
 
     isolation: initial;
     isolation: inherit;
@@ -4206,6 +4222,8 @@
     margin: 2em 0 1em 0 ;
     margin: 2.5em 0;
     margin: calc(1rem - 2px) calc(1rem - 1px);
+    margin: min(2ch, 2rem, 2em) min(4ch, 4rem, 4em);
+    margin: max(2ch, 2rem, 2em) max(4ch, 4rem, 4em);
 
     margin-top: initial;
     margin-top: inherit;
@@ -4248,7 +4266,13 @@
     margin-left: 50%;
     margin-left: 0;
 
-    margin-inline: 2ch;
+    margin-inline: 1ch;
+    margin-inline-start: 1ch;
+    margin-inline-end: 1ch;
+
+    margin-block: 1ch;
+    margin-block-start: 1ch;
+    margin-block-end: 1ch;
 
     marker-side: initial;
     marker-side: inherit;
@@ -4932,7 +4956,13 @@
     padding-left: 0;
     padding-left: 10%;
 
-    padding-inline: 2ch;
+    padding-inline: 1ch;
+    padding-inline-start: 1ch;
+    padding-inline-end: 1ch;
+
+    padding-block: 1ch;
+    padding-block-start: 1ch;
+    padding-block-end: 1ch;
 
     page: initial;
     page: inherit;
@@ -6067,6 +6097,7 @@
     width: calc(100%/3 - 2*1em - 2*1px);
     width: calc(5px - 10px);
     width: calc(50% - 2em);
+    width: min(10ch, 5rem, 50em);
 
     widows: initial;
     widows: inherit;
