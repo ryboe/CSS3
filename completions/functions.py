@@ -4,7 +4,6 @@ import sublime
 # This dict maps function names to their completions. It includes pseudo-class
 # and pseudo-element functions like :nth-child() and ::attr().
 func_name_to_completions = {
-    "
     "clamp": t.angle + t.frequency + t.length + t.number + t.percentage + t.time,
     "attr": [
         ("angle",),  # A tuple with only one string means the label is the same
