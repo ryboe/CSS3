@@ -3923,6 +3923,7 @@ contexts:
     - include: property-text-underline-offset
     - include: property-text-underline-position
     - include: property-text-wrap
+    - include: property-touch-action
     - include: property-transform-box
     - include: property-transform-origin
     - include: property-transform-style
@@ -10075,6 +10076,20 @@ contexts:
           scope: support.constant.property-value.css
         - include: percentage
         - include: length
+    - include: stray-paren-or-semicolon
+
+  # CSS Pointer Events Level 2
+  property-touch-action:
+    - match: ({{ms}}\btouch-action)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.touch-action.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:auto|none|pan-x|pan-left|pan-right|pan-y|pan-up|pan-down|pinch-zoom|manipulation){{b}}'
+          scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
   # CSS Transforms Module Level 1
