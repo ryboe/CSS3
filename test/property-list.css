@@ -1518,6 +1518,12 @@
     border-image-width: 10px;
     border-image-width: 10%;
 
+    border-inline: 2px;
+    border-inline-start: 2px solid hotpink;
+    border-inline-end: 2px dashed;
+    border-block-start: 2ch;
+    border-block: 2px;
+
     border-top-right-radius: inherit;
     border-top-right-radius: unset;
     border-top-right-radius:    4em;
