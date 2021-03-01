@@ -494,6 +494,21 @@ contexts:
         - include: selector-page
     - include: stray-brace
 
+  at-property:
+    - match: '(@)property{{b}}'
+      captures:
+        0: keyword.control.at-rule.property.css
+        1: punctuation.definition.keyword.css
+      push:
+        - meta_scope: meta.at-rule.property.css
+        - match: '}'
+          scope: punctuation.terminator.at-property.css
+        - match: '{'
+          scope: punctuation.terminator.at-property.css
+        - match: ';'
+          scope: punctuation.terminator.at-namespace.css
+        - include: string
+
   at-supports:
     - match: '(@)supports{{b}}'
       captures:
@@ -3449,6 +3464,7 @@ contexts:
     - include: at-supports
     - include: at-media
     - include: at-page
+    - include: at-property
 
   number:
     - include: func-calc
