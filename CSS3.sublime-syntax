@@ -501,13 +501,15 @@ contexts:
         1: punctuation.definition.keyword.css
       push:
         - meta_scope: meta.at-rule.property.css
+        - include: any-value
         - match: '}'
           scope: punctuation.terminator.at-property.css
         - match: '{'
           scope: punctuation.terminator.at-property.css
         - match: ';'
-          scope: punctuation.terminator.at-namespace.css
-        - include: string
+          scope: punctuation.terminator.charset.css
+        - match: ':'
+          scope: punctuation.terminator.charset.css
 
   at-supports:
     - match: '(@)supports{{b}}'
@@ -11450,7 +11452,7 @@ contexts:
     # - include: func-toggle
     - match: '!important'
       scope: keyword.other.important.css
-    - match: '\b(?:unset|revert|inherit|initial){{b}}'
+    - match: '\b(?:unset|revert|inherit|initial|true|false){{b}}'
       scope: support.constant.property-value.css
 
   viewport-length:
