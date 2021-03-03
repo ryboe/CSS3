@@ -1175,7 +1175,7 @@ contexts:
   descriptor-font-face-font-display:
     - match: \b(font-display)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.descriptor.font-face.font-display.css
@@ -4381,7 +4381,7 @@ contexts:
   property-background-image-transform:
     - match: \b(background-image-transform)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.background-image-transform.css
@@ -4515,7 +4515,7 @@ contexts:
   property-bleed:
     - match: \b(bleed)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.bleed.css
@@ -4530,7 +4530,7 @@ contexts:
   property-block-ellipsis:
     - match: '\b(block-ellipsis)\s*(:)'
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.block-ellipsis.css
@@ -4544,7 +4544,7 @@ contexts:
   property-block-inline-size:
     - match: '{{optional_min_max_prefix}}(block-size|inline-size)\s*(:)'
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.block-inline-size.css
@@ -4561,7 +4561,7 @@ contexts:
   property-block-step:
     - match: \b(block-step)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.block-step.css
@@ -4576,7 +4576,7 @@ contexts:
   property-block-step-align:
     - match: \b(block-step-align)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.block-step-align.css
@@ -4590,7 +4590,7 @@ contexts:
   property-block-step-insert:
     - match: \b(block-step-insert)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.block-step-insert.css
@@ -4604,7 +4604,7 @@ contexts:
   property-block-step-round:
     - match: \b(block-step-round)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.block-step-round.css
@@ -4618,7 +4618,7 @@ contexts:
   property-block-step-size:
     - match: \b(block-step-size)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.block-step-size.css
@@ -4690,7 +4690,7 @@ contexts:
   property-border-block-inline:
     - match: \b(border-block|border-block-start|border-block-end|border-inline|border-inline-start|border-inline-end)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.border-block-inline.css
@@ -4705,7 +4705,7 @@ contexts:
   property-border-block-inline-color:
     - match: \b(border-inline-start-color|border-inline-end-color|border-inline-color|border-block-start-color|border-block-end-color|border-block-color)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.border-block-inline-color.css
@@ -4718,7 +4718,7 @@ contexts:
   property-border-block-inline-style:
     - match: \b(border-inline-style|border-inline-start-style|border-inline-end-style|border-block-style|border-block-start-style|border-block-end-style)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.border-block-inline-style.css
@@ -4731,7 +4731,7 @@ contexts:
   property-border-block-inline-width:
     - match: \b(border-inline-width|border-inline-start-width|border-inline-end-width|border-block-width|border-block-start-width|border-block-end-width)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.border-block-inline-width.css
@@ -4863,7 +4863,7 @@ contexts:
   property-border-image-transform:
     - match: \b(border-image-transform)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.border-image-transform.css
@@ -4910,7 +4910,7 @@ contexts:
   property-border-start-radius:
     - match: \b(border-(?:start-start-|start-end-|end-start-|end-end-)?radius)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.border-radius-start.css
@@ -5103,7 +5103,7 @@ contexts:
   property-caption-side:
     - match: \b(caption-side)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.caption-side.css
@@ -5251,7 +5251,7 @@ contexts:
   property-color-adjust:
     - match: \b(color-adjust)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.color-adjust.css
@@ -5437,7 +5437,7 @@ contexts:
   property-composes:
     - match: \b(composes)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.composes.css
@@ -5453,7 +5453,7 @@ contexts:
   property-contain:
     - match: \b(contain)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.contain.css
@@ -5467,7 +5467,7 @@ contexts:
   property-contain-intrinsic-size:
     - match: \b(contain-intrinsic-size)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.contain-intrinsic-size.css
@@ -5482,7 +5482,7 @@ contexts:
   property-content-visibility:
     - match: \b(content-visibility)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.content-visibility.css
@@ -5900,7 +5900,7 @@ contexts:
   property-empty-cells:
     - match: \b(empty-cells)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.empty-cells.css
@@ -5933,7 +5933,7 @@ contexts:
   property-fill-break:
     - match: \b(fill-break)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.fill-break.css
@@ -5947,7 +5947,7 @@ contexts:
   property-fill-color:
     - match: \b(fill-color)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.fill-color.css
@@ -5960,7 +5960,7 @@ contexts:
   property-fill-image:
     - match: \b(fill-image)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.fill-image.css
@@ -5986,7 +5986,7 @@ contexts:
   property-fill-origin:
     - match: \b(fill-origin)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.fill-origin.css
@@ -6000,7 +6000,7 @@ contexts:
   property-fill-position:
     - match: \b(fill-position)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.fill-position.css
@@ -6013,7 +6013,7 @@ contexts:
   property-fill-repeat:
     - match: \b(fill-repeat)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.fill-repeat.css
@@ -6039,7 +6039,7 @@ contexts:
   property-fill-size:
     - match: \b(fill-size)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.fill-size.css
@@ -6419,7 +6419,7 @@ contexts:
   property-font-optical-sizing:
     - match: \b(font-optical-sizing)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.font-optical-sizing.css
@@ -6433,7 +6433,7 @@ contexts:
   property-font-palette:
     - match: \b(font-palette)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.font-palette.css
@@ -6448,7 +6448,7 @@ contexts:
   property-font-presentation:
     - match: \b(font-presentation)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.font-presentation.css
@@ -6550,7 +6550,7 @@ contexts:
   property-font-synthesis:
     - match: \b(font-synthesis)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.font-synthesis.css
@@ -6564,7 +6564,7 @@ contexts:
   property-font-synthesis-misc:
     - match: \b(font-synthesis-(?:weight|style|small-caps))\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.font-synthesis-misc.css
@@ -6676,7 +6676,7 @@ contexts:
   property-font-variant-emoji:
     - match: \b(font-variant-emoji)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.font-variant-emoji.css
@@ -6739,7 +6739,7 @@ contexts:
   property-font-variation-settings:
     - match: \b(font-variation-settings)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.font-variation-settings.css
@@ -7161,7 +7161,7 @@ contexts:
   property-inset-block-inline:
     - match: \b(inset-inline-start|inset-inline-end|inset-inline|inset-block-start|inset-block-end|inset-block|inset)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.inset-block-inline.css
@@ -7370,7 +7370,7 @@ contexts:
   property-line-height-step:
     - match: \b(line-height-step)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.line-height-step.css
@@ -7506,7 +7506,7 @@ contexts:
   property-margin-block-inline:
     - match: \b(margin-inline-start|margin-inline-end|margin-inline|margin-block-start|margin-block-end|margin-block)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.margin-block-inline.css
@@ -7522,7 +7522,7 @@ contexts:
   property-margin-trim:
     - match: \b(margin-trim)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.margin-trim.css
@@ -7610,7 +7610,7 @@ contexts:
   property-marks:
     - match: \b(marks)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.marks.css
@@ -7863,7 +7863,7 @@ contexts:
   property-max-lines:
     - match: \b(max-lines)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.max-lines.css
@@ -8002,7 +8002,7 @@ contexts:
   property-offset:
     - match: \b(offset)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.offset.css
@@ -8338,7 +8338,7 @@ contexts:
   property-padding-block-inline:
     - match: \b(padding-inline-start|padding-inline-end|padding-inline|padding-block-start|padding-block-end|padding-block)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.padding-block-inline.css
@@ -8452,7 +8452,7 @@ contexts:
   property-place-content:
     - match: \b(place-content)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.place-content.css
@@ -8470,7 +8470,7 @@ contexts:
   property-place-items:
     - match: \b(place-items)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.place-items.css
@@ -8487,7 +8487,7 @@ contexts:
   property-place-self:
     - match: \b(place-self)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.place-self.css
@@ -9148,7 +9148,7 @@ contexts:
   property-stroke-align:
     - match: \b(stroke-align)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.stroke-align.css
@@ -9176,7 +9176,7 @@ contexts:
   property-stroke-break:
     - match: \b(stroke-break)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.stroke-break.css
@@ -9190,7 +9190,7 @@ contexts:
   property-stroke-color:
     - match: \b(stroke-color)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.stroke-color.css
@@ -9263,7 +9263,7 @@ contexts:
   property-stroke-dash-justify:
     - match: \b(stroke-dash-justify)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.stroke-dash-justify.css
@@ -9291,7 +9291,7 @@ contexts:
   property-stroke-image:
     - match: \b(stroke-image)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.stroke-image.css
@@ -9361,7 +9361,7 @@ contexts:
   property-stroke-origin:
     - match: \b(stroke-origin)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.stroke-origin.css
@@ -9375,7 +9375,7 @@ contexts:
   property-stroke-position:
     - match: \b(stroke-position)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.stroke-position.css
@@ -9388,7 +9388,7 @@ contexts:
   property-stroke-repeat:
     - match: \b(stroke-repeat)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.stroke-repeat.css
@@ -9648,7 +9648,7 @@ contexts:
   property-text-decoration-skip-ink:
     - match: \b(text-decoration-skip-ink)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.text-decoration-skip-ink.css
@@ -9692,7 +9692,7 @@ contexts:
   property-text-decoration-width:
     - match: \b(text-decoration-width)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.text-decoration-width.css
@@ -9707,7 +9707,7 @@ contexts:
   property-text-edge:
     - match: \b(text-edge)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.text-edge.css
@@ -9776,7 +9776,7 @@ contexts:
   property-text-emphasis-skip:
     - match: \b(text-emphasis-skip)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.text-emphasis-skip.css
@@ -9923,7 +9923,7 @@ contexts:
   property-text-size-adjust:
     - match: ({{vendor_prefix}}\btext-size-adjust)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.text-size-adjust.css
@@ -10021,7 +10021,7 @@ contexts:
   property-text-underline-offset:
     - match: \b(text-underline-offset)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.text-underline-offset.css
@@ -10354,7 +10354,7 @@ contexts:
   property-voice-rate:
     - match: \b(voice-rate)\s*(:)
       captures:
-        1: support.constant.property-name.css
+        1: support.type.property-name.css
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.voice-rate.css

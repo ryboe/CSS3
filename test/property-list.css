@@ -3804,6 +3804,8 @@
     initial-letter-align: hanging;
     initial-letter-align: alphabetic;
 
+    inset: 20%;
+    inset: 20% 50%;
     inline-size: 50%;
 
     isolation: initial;
