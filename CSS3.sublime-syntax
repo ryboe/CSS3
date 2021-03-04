@@ -10088,7 +10088,7 @@ contexts:
         - meta_content_scope: meta.property-value.touch-action.css
         - include: end-value
         - include: value-css-wide
-        - match: '\b(?:auto|none|pan-x|pan-left|pan-right|pan-y|pan-up|pan-down|pinch-zoom|manipulation){{b}}'
+        - match: '\b(?:auto|none|manipulation|pinch-zoom|pan-x|pan-y|pan-up|pan-left|pan-right|pan-down){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
