@@ -501,15 +501,20 @@ contexts:
         1: punctuation.definition.keyword.css
       push:
         - meta_scope: meta.at-rule.property.css
-        - include: any-value
         - match: '}'
           scope: punctuation.terminator.at-property.css
+          pop: true
         - match: '{'
           scope: punctuation.terminator.at-property.css
-        - match: ';'
-          scope: punctuation.terminator.charset.css
         - match: ':'
           scope: punctuation.terminator.charset.css
+          push:
+            - meta_scope: punctuation.terminator.charset.css
+            - match: ';'
+              pop: true
+            - include: any-value
+        - include: property-name
+    - include: stray-brace
 
   at-supports:
     - match: '(@)supports{{b}}'
@@ -4038,6 +4043,10 @@ contexts:
 
     # User-defined properties
     - include: property-custom
+
+  property-name:
+    - include: string
+    - include: identifier
 
   # align-content is defined in two specs:
   #     CSS Box Alignment Module Level 3
