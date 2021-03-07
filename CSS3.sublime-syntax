@@ -494,6 +494,28 @@ contexts:
         - include: selector-page
     - include: stray-brace
 
+  at-property:
+    - match: '(@)property{{b}}'
+      captures:
+        0: keyword.control.at-rule.property.css
+        1: punctuation.definition.keyword.css
+      push:
+        - meta_scope: meta.at-rule.property.css
+        - match: '}'
+          scope: punctuation.terminator.at-property.css
+          pop: true
+        - match: '{'
+          scope: punctuation.terminator.at-property.css
+        - match: ':'
+          scope: punctuation.terminator.charset.css
+          push:
+            - meta_scope: punctuation.terminator.charset.css
+            - match: ';'
+              pop: true
+            - include: any-value
+        - include: property-name
+    - include: stray-brace
+
   at-supports:
     - match: '(@)supports{{b}}'
       captures:
@@ -3449,6 +3471,7 @@ contexts:
     - include: at-supports
     - include: at-media
     - include: at-page
+    - include: at-property
 
   number:
     - include: func-calc
@@ -4021,6 +4044,10 @@ contexts:
 
     # User-defined properties
     - include: property-custom
+
+  property-name:
+    - include: string
+    - include: identifier
 
   # align-content is defined in two specs:
   #     CSS Box Alignment Module Level 3

@@ -46,6 +46,7 @@ all_rules = [
     ("@custom-media", "@custom-media --${1:name} ${2:media-query-list};"),
     ("@import", "@import ${1:path} ${2:media-query-list};"),
     ("@namespace", "@namespace ${1};"),
+    ("@property", "@property ${1:name} {\n\t${2}\n}"),
 ] + nestable
 
 all_rules.sort()
