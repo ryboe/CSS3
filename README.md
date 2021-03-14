@@ -71,10 +71,10 @@ The most complete CSS and PostCSS-cssnext support for Sublime Text.
 
     If you have Emmet installed, its completions will drown out the
     carefully researched, standards-based completions offered by this package.
-    You can hide Emmet completions without disabling them by adding this line to
+    You can hide Emmet completions for CSS only by adding this line to
     your Emmet package settings.
     ```json
-    "show_css_completions": false
+    "abbreviation_preview": "markup"
     ```
 
 6. (Recommended) Set CSS3 as the default language for `.css` files
