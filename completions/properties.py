@@ -61,7 +61,7 @@ names = [
     ("border-block-width", "border-block-width: ${1};"),
     ("border-bottom", "border-bottom: ${1};"),
     ("border-bottom-color", "border-bottom-color: ${1};"),
-    ("border-bottom-leftradius", "border-bottom-leftradius: ${1};"),
+    ("border-bottom-left-radius", "border-bottom-left-radius: ${1};"),
     ("border-bottom-right-radius", "border-bottom-right-radius: ${1};"),
     ("border-bottom-style", "border-bottom-style: ${1};"),
     ("border-bottom-width", "border-bottom-width: ${1};"),
