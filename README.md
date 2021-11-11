@@ -1,7 +1,7 @@
 CSS3
 ====
 
-![GitHub Actions Status Badge](https://github.com/ryboe/CSS3/actions/workflows/run-syntax-tests.yaml/badge.svg?branch=master)
+![GitHub Actions Status Badge](https://github.com/ryboe/CSS3/actions/workflows/test-syntax.yaml/badge.svg?branch=master)
 
 The most complete CSS and PostCSS-cssnext support for Sublime Text.
 
