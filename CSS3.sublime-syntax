@@ -401,6 +401,7 @@ contexts:
           scope: punctuation.terminator.at-import.css
           pop: true
         - include: func-url
+        - include: func-supports
         - include: media-query-list
         - include: string
     - include: stray-semicolon
@@ -2687,6 +2688,20 @@ contexts:
         - match: '\b(?:start|last|first-except|first){{b}}'
           scope: support.constant.property-value.css
         - include: identifier
+
+  func-supports:
+    - match: \b(supports)(\()
+      captures:
+        1: support.function.supports.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_scope: meta.function.supports.css
+        - include: end-func
+        - include: properties
+        - include: supports-condition
+        - include: value-css-wide
+        - include: func-var
+        - include: length
 
   func-swash-styleset-stylistic-ornaments-character-variant-annotation:
     - match: '(?x)
@@ -11371,6 +11386,10 @@ contexts:
         - include: escape
 
   supports-condition:
+    - include: supports-condition-operator
+    - include: supports-in-parens
+
+  supports-in-parens:
     - match: '\('
       scope: punctuation.section.supports-condition.begin.css
       push:
@@ -11379,7 +11398,6 @@ contexts:
           scope: punctuation.section.supports-condition.end.css
           pop: true
         - include: supports-condition
-        - include: supports-condition-operator
         - include: properties
     - include: stray-paren
 
@@ -11480,7 +11498,7 @@ contexts:
     # - include: func-toggle
     - match: '!important'
       scope: keyword.other.important.css
-    - match: '\b(?:unset|revert|inherit|initial){{b}}'
+    - match: '\b(?:unset|revert-layer|revert|inherit|initial){{b}}'
       scope: support.constant.property-value.css
 
   viewport-length:
