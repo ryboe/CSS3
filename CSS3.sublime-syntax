@@ -2472,6 +2472,17 @@ contexts:
         - include: fill-rule
         - include: string
 
+  func-paint:
+    - match: \b(paint)(\()
+      captures:
+        1: support.function.paint.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_scope: meta.function.paint.css
+        - include: end-func
+        - include: func-var
+        - include: identifier
+
   func-perspective:
     - match: \b(perspective)(\()
       captures:
@@ -2922,6 +2933,7 @@ contexts:
     - include: func-element
     - include: func-image-set
     - include: func-image
+    - include: func-paint
     - include: func-url
 
   integer:
