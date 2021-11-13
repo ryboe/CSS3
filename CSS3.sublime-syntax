@@ -5362,7 +5362,7 @@ contexts:
         - include: identifier
     - include: stray-paren-or-semicolon
 
-  # CSS Multi-column Layout Module
+  # CSS Multi-column Layout Module Level 1
   property-columns:
     - match: \b(columns)\s*(:)
       captures:
@@ -5378,7 +5378,7 @@ contexts:
         - include: integer-positive
     - include: stray-paren-or-semicolon
 
-  # CSS Multi-column Layout Module
+  # CSS Multi-column Layout Module Level 1
   property-column-count:
     - match: ((?:-webkit-|-moz-)?\bcolumn-count)\s*(:)
       captures:
@@ -5393,7 +5393,7 @@ contexts:
         - include: integer-positive
     - include: stray-paren-or-semicolon
 
-  # CSS Multi-column Layout Module
+  # CSS Multi-column Layout Module Level 1
   property-column-fill:
     - match: ((?:-webkit-|-moz-)?\bcolumn-fill)\s*(:)
       captures:
@@ -5407,7 +5407,7 @@ contexts:
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
-  # CSS Multi-column Layout Module
+  # CSS Multi-column Layout Module Level 1
   property-column-rule:
     - match: ((?:-webkit-|-moz-)?\bcolumn-rule)\s*(:)
       captures:
@@ -5422,7 +5422,7 @@ contexts:
         - include: color
     - include: stray-paren-or-semicolon
 
-  # CSS Multi-column Layout Module
+  # CSS Multi-column Layout Module Level 1
   property-column-rule-color:
     - match: ((?:-webkit-|-moz-)?\bcolumn-rule-color)\s*(:)
       captures:
@@ -5435,7 +5435,7 @@ contexts:
         - include: color
     - include: stray-paren-or-semicolon
 
-  # CSS Multi-column Layout Module
+  # CSS Multi-column Layout Module Level 1
   property-column-rule-style:
     - match: ((?:-webkit-|-moz-)?\bcolumn-rule-style)\s*(:)
       captures:
@@ -5448,7 +5448,7 @@ contexts:
         - include: line-style  # identical to <border-style>
     - include: stray-paren-or-semicolon
 
-  # CSS Multi-column Layout Module
+  # CSS Multi-column Layout Module Level 1
   property-column-rule-width:
     - match: ((?:-webkit-|-moz-)?\bcolumn-rule-width)\s*(:)
       captures:
@@ -5461,7 +5461,7 @@ contexts:
         - include: line-width  # identical to <border-width>
     - include: stray-paren-or-semicolon
 
-  # CSS Multi-column Layout Module
+  # CSS Multi-column Layout Module Level 1
   property-column-span:
     - match: ((?:-webkit-|-moz-)?\bcolumn-span)\s*(:)
       captures:
@@ -5475,7 +5475,7 @@ contexts:
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
-  # CSS Multi-column Layout Module
+  # CSS Multi-column Layout Module Level 1
   property-column-width:
     - match: ((?:-webkit-|-moz-)?\bcolumn-width)\s*(:)
       captures:
@@ -5487,7 +5487,7 @@ contexts:
         - include: value-css-wide
         - match: '\bauto{{b}}'
           scope: support.constant.property-value.css
-        - include: length-positive
+        - include: length-non-negative
     - include: stray-paren-or-semicolon
 
   # Nonstandard CSS Modules Spec
