@@ -2480,6 +2480,8 @@ contexts:
         - meta_scope: meta.function.perspective.css
         - include: end-func
         - include: func-var
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
         - include: length-non-negative
 
   func-polygon:
@@ -2620,6 +2622,7 @@ contexts:
         - meta_scope: meta.function.scale.css
         - include: end-func
         - include: func-var
+        - include: percentage
         - include: number
 
   func-skew:
@@ -8827,6 +8830,7 @@ contexts:
         - include: value-css-wide
         - match: '\bnone{{b}}'
           scope: support.constant.property-value.css
+        - include: percentage
         - include: number
     - include: stray-paren-or-semicolon
 
