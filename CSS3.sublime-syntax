@@ -3903,6 +3903,8 @@ contexts:
     - include: property-ruby-align
     - include: property-ruby-merge
     - include: property-ruby-position
+    - include: property-scrollbar-color
+    - include: property-scrollbar-width
     - include: property-scroll-behavior
     - include: property-scroll-margin
     - include: property-scroll-padding
@@ -8859,6 +8861,35 @@ contexts:
           scope: support.constant.property-value.css
         - include: percentage
         - include: number
+    - include: stray-paren-or-semicolon
+
+  # CSS Scrollbar Styling Module Level 1
+  property-scrollbar-color:
+    - match: \b(scrollbar-color)\s*(:)
+      captures:
+        1: support.constant.property-scrollbar-color.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.scrollbar-color.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\bauto{{b}}'
+          scope: support.constant.property-value.css
+        - include: color
+    - include: stray-paren-or-semicolon
+
+  # CSS Scrollbar Styling Module Level 1
+  property-scrollbar-width:
+    - match: \b(scrollbar-width)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.scrollbar-width.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:thin|none|auto){{b}}'
+          scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
   # CSSOM View Module
