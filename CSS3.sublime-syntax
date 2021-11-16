@@ -961,13 +961,14 @@ contexts:
         - meta_scope: meta.declaration-list.css
         - match: '(?=})'
           pop: true
-        - match: '(?=@nest|@media|&)'
+        - match: '(?=@nest|@media|@supports|&)'
           push:
             - match: '(?=})'
               scope: punctuation.section.declaration-list.end.css
               pop: true
             - include: at-media
             - include: rule
+            - include: at-supports
         - include: properties
 
   dasharray:
