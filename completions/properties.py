@@ -1396,7 +1396,7 @@ name_to_completions = {
     "scale": [("none",)] + t.number,
     "scan": [("interlace",), ("progressive",)],
     "scripting": [("enabled",), ("initial-only",), ("none",)],
-    "scrollbar-color": [("auto",), t.color],
+    "scrollbar-color": [("auto",)] + t.color,
     "scrollbar-width": [("thin",), ("none",), ("auto",)],
     "scroll-behavior": [("auto",), ("smooth",)],
     "scroll-padding": t.length + t.percentage,
