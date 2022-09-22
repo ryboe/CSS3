@@ -1,0 +1,11 @@
+@layer test {
+  foo {
+    color: red;
+  }
+}
+
+@layer test.bar {
+  bar {
+    color: blue;
+  }
+}
