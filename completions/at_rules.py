@@ -20,6 +20,7 @@ nestable = [
     ("@page", "@page ${1}{\n\t${2}\n}"),
     ("@viewport", "@viewport {\n\t${1}\n}"),
     ("@supports", "@supports ${1} {\n\t${2}\n}"),
+    ("@layer", "@layer ${1} {\n\t${2}\n}"),
 ]
 page_margin_boxes = [
     ("@bottom-center", "@bottom-center {\n\t${1}\n}"),
