@@ -459,6 +459,27 @@ contexts:
         - include: media-query-list
     - include: stray-brace
 
+  at-layer:
+    - match: '(@)layer{{b}}'
+      captures:
+        0: keyword.control.at-rule.media.css
+        1: punctuation.definition.keyword.css
+      push:
+        - meta_scope: meta.at-rule.media.css
+        - match: '}'
+          scope: punctuation.section.at-media.end.css
+          pop: true
+        - match: '{'
+          scope: punctuation.section.at-media.begin.css
+          push:
+            - meta_scope: meta.at-rule.media.block.css
+            - match: '(?=})'
+              pop: true
+            - include: nestable-at-rules
+            - include: properties
+            - include: rule
+    - include: stray-brace
+
   at-namespace:
     - match: '(@)namespace{{b}}'
       captures:
@@ -961,7 +982,7 @@ contexts:
         - meta_scope: meta.declaration-list.css
         - match: '(?=})'
           pop: true
-        - match: '(?=@nest|@media|@supports|&)'
+        - match: '(?=@nest|@media|@supports|@layer|&)'
           push:
             - match: '(?=})'
               scope: punctuation.section.declaration-list.end.css
@@ -969,6 +990,7 @@ contexts:
             - include: at-media
             - include: rule
             - include: at-supports
+            - include: at-layer
         - include: properties
 
   dasharray:
@@ -2189,7 +2211,7 @@ contexts:
         - include: end-func
         - include: func-var
         - include: func-color-font
-        - match: '\b(?:woff2|woff|variations|truetype|svg|supports|palettes|opentype|features|embedded-opentype|collection){{b}}'
+        - match: '\b(?:woff2|woff|variations|truetype|svg|supports|palettes|opentype|features|embedded-opentype|collection|layer){{b}}'
           scope: support.constant.property-value.css
         - include: string
 
@@ -3503,6 +3525,7 @@ contexts:
     - include: at-media
     - include: at-page
     - include: at-property
+    - include: at-layer
 
   number:
     - include: func-calc
@@ -10775,7 +10798,7 @@ contexts:
   #     property2: value2;
   # }
   rule:
-    - match: '(?=[\w.:#\[*-&]|@nest)'
+    - match: '(?=[\w.:#\[*-&]|@nest|@layer)'
       push:
         - meta_scope: meta.rule.css
         - match: '}'
@@ -10801,7 +10824,7 @@ contexts:
   selector:
     # This match applies a single meta.selector.css scope to a comma-separated
     # list of selectors, so that they appear as one entry in the Symbol List.
-    - match: '(?=[\w.:#\[*-&]|@nest)'
+    - match: '(?=[\w.:#\[*-&]|@nest|@layer)'
       push:
         - meta_content_scope: meta.selector.css
         - match: '(?={)'
