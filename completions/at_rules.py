@@ -11,6 +11,7 @@ font_feature_types = [
 namespace_values = [t.identifier, t.string, t.url]
 nestable = [
     # @-rules that can appear inside other @-rules.
+    ("@container", "@container ${1} {\n\t${2}\n}"),
     ("@counter-style", "@counter-style ${1:name} {\n\t${2}\n}"),
     ("@font-face", "@font-face {\n\t${1}\n}"),
     ("@font-feature-values", "@font-feature-values ${1:font-family} {\n\t${2}\n}"),
