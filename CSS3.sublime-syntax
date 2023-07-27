@@ -982,7 +982,7 @@ contexts:
         - meta_scope: meta.declaration-list.css
         - match: '(?=})'
           pop: true
-        - match: '(?=@media|@supports|@layer)|(?=[\w.:#\[*-&][^;]*\{)'
+        - match: '(?=@media|@supports|@layer)|(?=[\w.:#\[*-&][^;}]*\{)'
           push:
             - match: '(?=})'
               scope: punctuation.section.declaration-list.end.css
