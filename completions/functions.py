@@ -10,6 +10,12 @@ func_name_to_completions = {
         ("ch",),  # as the completion, i.e. ("foo",) is equivalent to
         ("cm",),  # ("foo", "foo").
         ("color",),
+        ("cqb",),
+        ("cqh",),
+        ("cqi",),
+        ("cqmax",),
+        ("cqmin",),
+        ("cqw",),
         ("dB",),
         ("deg",),
         ("dvb",),
