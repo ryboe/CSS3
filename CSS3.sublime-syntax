@@ -29,7 +29,7 @@ variables:
   integer_non_neg: \+?\d+
   integer_pos: '\+?(?:[1-9]\d+|[1-9])'
   integer_zero_to_255: '\b(?:2[0-5][0-5]|1\d\d|[1-9]\d|\d)\b'
-  length_unit: vw|dvw|svw|lvw|vmin|dvmin|svmin|lvmin|vmax|dvmax|svmax|lvmax|vi|dvi|svi|lvi|vh|dvh|svh|lvh|vb|dvb|svb|lvb|r?em|Q|q|px|pt|pc|mm|in|ic|ex|cm|ch
+  length_unit: vw|dvw|svw|lvw|vmin|dvmin|svmin|lvmin|vmax|dvmax|svmax|lvmax|vi|dvi|svi|lvi|vh|dvh|svh|lvh|vb|dvb|svb|lvb|r?em|Q|q|px|pt|pc|mm|in|ic|ex|cqb|cqh|cqi|cqmax|cqmin|cqw|cm|ch
   moz: '(?:-moz-)?'
   ms: '(?:-ms-)?'
   not_followed_by_dash: '(?!-)'
