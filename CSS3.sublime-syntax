@@ -982,7 +982,7 @@ contexts:
         - meta_scope: meta.declaration-list.css
         - match: '(?=})'
           pop: true
-        - match: '(?=@nest|@media|@supports|@layer|&)'
+        - match: '(?=@media|@supports|@layer)|(?=[\w.:#\[*-&][^;]*\{)'
           push:
             - match: '(?=})'
               scope: punctuation.section.declaration-list.end.css
@@ -10798,7 +10798,7 @@ contexts:
   #     property2: value2;
   # }
   rule:
-    - match: '(?=[\w.:#\[*-&]|@nest|@layer)'
+    - match: '(?=[\w.:#\[*-&]|@layer)'
       push:
         - meta_scope: meta.rule.css
         - match: '}'
@@ -10824,7 +10824,7 @@ contexts:
   selector:
     # This match applies a single meta.selector.css scope to a comma-separated
     # list of selectors, so that they appear as one entry in the Symbol List.
-    - match: '(?=[\w.:#\[*-&]|@nest|@layer)'
+    - match: '(?=[\w.:#\[*-&]|@layer)'
       push:
         - meta_content_scope: meta.selector.css
         - match: '(?={)'
@@ -10832,7 +10832,6 @@ contexts:
         - include: selector-list
 
   selector-list:
-    - include: selector-nesting
     - include: selector-custom
     - include: selector-simple-compound
     - include: selector-combinator
@@ -10902,14 +10901,6 @@ contexts:
     - match: '\b(?:to|from){{b}}'
       scope: entity.other.attribute-name.keyframes-selector.css
     - include: percentage-zero-to-100
-
-  selector-nesting:
-    - match: '&'
-      scope: entity.name.tag.nesting-selector.css
-    - match: '(@)nest{{b}}'
-      captures:
-        0: keyword.control.at-rule.nest.css
-        1: punctuation.definition.keyword.css
 
   selector-page:
     # This rule prevents identifier from matching text after the ':' while you're
