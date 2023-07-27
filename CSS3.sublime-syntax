@@ -6397,8 +6397,6 @@ contexts:
         - meta_content_scope: meta.property-value.font.css
         - include: end-value
         - include: value-css-wide
-        - include: font-family-generic
-        - include: font-family-name
         - match: '(?x)
             \b
             (?:
@@ -6439,6 +6437,8 @@ contexts:
         - include: percentage-non-negative
         - include: length-non-negative
         - include: number-non-negative
+        - include: font-family-generic
+        - include: font-family-name
     - include: stray-paren-or-semicolon
 
   # CSS Fonts Module Level 4
