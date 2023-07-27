@@ -437,6 +437,48 @@ contexts:
   # |-------------------outer scope-----------------------------------|
   #        |---media-features-etc----||--------nested scope----------|
   # @media stuff-before-opening-curly { selector { property: value; } }
+  at-container:
+    - match: '(@)container{{b}}'
+      captures:
+        0: keyword.control.at-rule.container.css
+        1: punctuation.definition.keyword.css
+      push:
+        - meta_scope: meta.at-rule.container.css
+        - match: '}'
+          scope: punctuation.section.at-container.end.css
+          pop: true
+        - match: '{'
+          scope: punctuation.section.at-container.begin.css
+          push:
+            - meta_scope: meta.at-rule.container.block.css
+            - match: '(?=})'
+              pop: true
+            - include: nestable-at-rules
+            - include: properties
+            - include: rule
+        - include: container-query-list
+
+  at-layer:
+    - match: '(@)layer{{b}}'
+      captures:
+        0: keyword.control.at-rule.layer.css
+        1: punctuation.definition.keyword.css
+      push:
+        - meta_scope: meta.at-rule.media.css
+        - match: '}'
+          scope: punctuation.section.at-media.end.css
+          pop: true
+        - match: '{'
+          scope: punctuation.section.at-media.begin.css
+          push:
+            - meta_scope: meta.at-rule.media.block.css
+            - match: '(?=})'
+              pop: true
+            - include: nestable-at-rules
+            - include: properties
+            - include: rule
+    - include: stray-brace
+
   at-media:
     - match: '(@)media{{b}}'
       captures:
@@ -457,27 +499,6 @@ contexts:
             - include: properties
             - include: rule
         - include: media-query-list
-    - include: stray-brace
-
-  at-layer:
-    - match: '(@)layer{{b}}'
-      captures:
-        0: keyword.control.at-rule.media.css
-        1: punctuation.definition.keyword.css
-      push:
-        - meta_scope: meta.at-rule.media.css
-        - match: '}'
-          scope: punctuation.section.at-media.end.css
-          pop: true
-        - match: '{'
-          scope: punctuation.section.at-media.begin.css
-          push:
-            - meta_scope: meta.at-rule.media.block.css
-            - match: '(?=})'
-              pop: true
-            - include: nestable-at-rules
-            - include: properties
-            - include: rule
     - include: stray-brace
 
   at-namespace:
@@ -982,7 +1003,11 @@ contexts:
         - meta_scope: meta.declaration-list.css
         - match: '(?=})'
           pop: true
+<<<<<<< HEAD
         - match: '(?=@media|@supports|@layer)|(?=[\w.:#\[*-&][^;}]*\{)'
+=======
+        - match: '(?=@nest|@media|@supports|@layer|@container|&)'
+>>>>>>> 7765fa8 (Add syntax definitions for @container at-rule)
           push:
             - match: '(?=})'
               scope: punctuation.section.declaration-list.end.css
@@ -3496,6 +3521,12 @@ contexts:
         - include: length-non-negative
         - include: media-feature-range-operator
 
+  container-query-list:
+    - match: '\band{{b}}'
+      scope: keyword.operator.logic.media.css
+    - include: media-feature
+    - include: identifier
+
   # This is used by the at-media and at-import contexts.
   media-query-list:
     - match: '\band{{b}}'
@@ -3515,6 +3546,7 @@ contexts:
       scope: support.constant.media.css invalid.deprecated.css
 
   nestable-at-rules:
+    - include: at-container
     - include: at-font-feature-values
     - include: at-font-palette-values
     - include: at-counter-style
