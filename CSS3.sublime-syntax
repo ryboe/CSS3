@@ -3771,6 +3771,8 @@ contexts:
     - include: property-column-rule-width
     - include: property-column-span
     - include: property-column-width
+    - include: property-container-name
+    - include: property-container-type
     - include: property-contain-intrinsic-size
     - include: property-content-visibility
     - include: property-counter-set-reset-increment
@@ -4050,6 +4052,7 @@ contexts:
     - include: property-columns
     - include: property-composes
     - include: property-contain
+    - include: property-container
     - include: property-content
     - include: property-continue
     - include: property-cursor
@@ -5564,6 +5567,52 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - match: '\b(?:style|strict|size|paint|none|layout|content){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Containment Module Level 3
+  property-container:
+    - match: \b(container)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.container.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:size|normal|inline-size){{b}}'
+          scope: support.constant.property-value.css
+        - match: '\/'
+          scope: keyword.operator.arithmetic.css
+        - include: identifier
+    - include: stray-paren-or-semicolon
+
+  # CSS Containment Module Level 3
+  property-container-name:
+    - match: \b(container-name)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.container-name.css
+        - include: end-value
+        - include: value-css-wide
+        - match: \bnone{{b}}
+          scope: support.constant.property-value.css
+        - include: identifier
+    - include: stray-paren-or-semicolon
+
+  # CSS Containment Module Level 3
+  property-container-type:
+    - match: \b(container-type)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.container-type.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:size|normal|inline-size){{b}}'
           scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
