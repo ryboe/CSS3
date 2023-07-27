@@ -3703,6 +3703,7 @@ contexts:
     - include: property-animation-play-state
     - include: property-animation-timing-function
     - include: property-aspect-ratio
+    - include: property-backdrop-filter
     - include: property-backface-visibility
     - include: property-background-attachment
     - include: property-background-blend-mode
@@ -4380,6 +4381,25 @@ contexts:
         - match: '\bauto{{b}}'
           scope: support.constant.property-value.css
         - include: ratio
+    - include: stray-paren-or-semicolon
+
+  # CSS Filter Effects Module Level 2
+  property-backdrop-filter:
+    - match: \b(backdrop-filter)\s*(:)
+      captures:
+        1: support.constant.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.backdrop-filter.css
+        - include: end-value
+        - include: value-css-wide
+        - include: func-drop-shadow
+        - include: func-hue-rotate
+        - include: func-filter
+        - include: func-blur
+        - include: func-url
+        - match: '\bnone{{b}}'
+          scope: support.constant.property-value.css
     - include: stray-paren-or-semicolon
 
   # CSS Transforms Module Level 2
