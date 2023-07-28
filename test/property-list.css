@@ -3539,6 +3539,7 @@
     grid: inherit;
     grid: unset;
     grid: 10rem 10rem 10rem 10rem / 1fr 1fr 1fr 1fr;
+    grid: repeat(4, 10rem) / repeat(4, 1fr);
     grid: 12rem 12rem 12rem 12rem / 10rem 10rem 10rem 10rem;
     -webkit-grid: 12rem 12rem 12rem 12rem / 10rem 10rem 10rem 10rem;
 
@@ -3657,6 +3658,7 @@
     grid-template: unset;
     grid-template: none;
     grid-template: auto 1fr auto / auto 1fr;
+    grid-template: auto 1fr auto / auto repeat(3, 1fr);
     grid-template: auto 1fr auto /
     [header-top] "a   a   a"     [header-bottom]
       [main-top] "b   b   b" 1fr [main-bottom];
