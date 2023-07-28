@@ -5580,6 +5580,8 @@ contexts:
         - meta_content_scope: meta.property-value.container.css
         - include: end-value
         - include: value-css-wide
+        - match: \bnone{{b}}
+          scope: support.constant.property-value.css
         - match: '\b(?:size|normal|inline-size){{b}}'
           scope: support.constant.property-value.css
         - match: '\/'
