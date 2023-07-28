@@ -7002,6 +7002,9 @@ contexts:
         - include: track-size
         - include: line-names
         - include: fixed-size
+        - include: fixed-repeat
+        - match: '\/'
+          scope: keyword.operator.arithmetic.css
     - include: stray-paren-or-semicolon
 
   # grid-template-areas is defined in two specs:
