@@ -110,6 +110,7 @@ func_name_to_completions = {
     # "not": [],      # TODO: not takes a selector list as an arg. should it have completions?
     "nth-child": [("of", "of ")],
     "nth-last-child": [("of", "of ")],
+    "part": t.identifier,
     "path": [t.string] + t.fill_rule,
     "perspective": t.length,
     "polygon": t.fill_rule + t.shape_arg,

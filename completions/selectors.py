@@ -201,6 +201,7 @@ pseudo_elements = [
     ("inactive-selection",),
     ("input-placeholder",),
     ("marker",),
+    ("part", "part(${1})"),
     ("placeholder",),
     ("region",),
     ("selection",),

@@ -11188,6 +11188,7 @@ contexts:
       captures:
         0: entity.other.attribute-name.pseudo-element.css
         1: punctuation.definition.entity.pseudo-element.css
+    - include: selector-pseudo-element-part
     - include: selector-pseudo-element-slotted
     - include: selector-pseudo-element-slot-blank
     - include: selector-pseudo-element-attr
@@ -11237,6 +11238,18 @@ contexts:
         - include: end-func
         - match: '[a-z*.]'
           scope: string.unquoted.identifier.css
+    - include: stray-paren
+
+  selector-pseudo-element-part:
+    - match: '((::)part)(\()'
+      captures:
+        1: entity.other.attribute-name.pseudo-element.css
+        2: punctuation.definition.entity.pseudo-element.css
+        3: punctuation.section.function.begin.css
+      push:
+        - meta_scope: meta.function.pseudo-element.part.css
+        - include: end-func
+        - include: identifier
     - include: stray-paren
 
   selector-pseudo-element-slotted:
