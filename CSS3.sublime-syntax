@@ -6437,6 +6437,8 @@ contexts:
         - include: percentage-non-negative
         - include: length-non-negative
         - include: number-non-negative
+        - match: '\/'
+          scope: keyword.operator.arithmetic.css
         - include: font-family-generic
         - include: font-family-name
     - include: stray-paren-or-semicolon
