@@ -6924,6 +6924,8 @@ contexts:
         - include: end-value
         - include: value-css-wide
         - include: string
+        - match: '\/'
+          scope: keyword.operator.arithmetic.css
         - match: '\b(?:subgrid|none|dense|auto-flow){{b}}'
           scope: support.constant.property-value.css
         - include: track-list
