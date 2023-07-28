@@ -42,6 +42,13 @@
  /* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.pseudo-element.css */
 /*^^^^^^ entity.other.attribute-name.pseudo-element.css */
 /*      ^ -entity.other.attribute-name.pseudo-element.css */
+::part( ) {}
+/* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.pseudo-element.css */
+ /* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.pseudo-element.css */
+/*^^^^^^^ entity.other.attribute-name.pseudo-element.css */
+/*       ^ punctuation.section.function.begin.css */
+/*        ^ meta.function.pseudo-element.part.css */
+/*         ^ punctuation.section.function.end.css */
 ::placeholder {}
 /* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.pseudo-element.css */
  /* <- entity.other.attribute-name.pseudo-element.css punctuation.definition.entity.pseudo-element.css */
