@@ -1003,11 +1003,7 @@ contexts:
         - meta_scope: meta.declaration-list.css
         - match: '(?=})'
           pop: true
-<<<<<<< HEAD
-        - match: '(?=@media|@supports|@layer)|(?=[\w.:#\[*-&][^;}]*\{)'
-=======
-        - match: '(?=@nest|@media|@supports|@layer|@container|&)'
->>>>>>> 7765fa8 (Add syntax definitions for @container at-rule)
+        - match: '(?=@media|@supports|@layer|@container)|(?=[\w.:#\[*-&][^;}]*\{)'
           push:
             - match: '(?=})'
               scope: punctuation.section.declaration-list.end.css
