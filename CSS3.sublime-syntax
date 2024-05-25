@@ -4037,6 +4037,7 @@ contexts:
     - include: property-transform-box
     - include: property-transform-origin
     - include: property-transform-style
+    - include: property-transition-behavior
     - include: property-transition-delay
     - include: property-transition-duration
     - include: property-transition-property
