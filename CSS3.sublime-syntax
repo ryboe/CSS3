@@ -11664,6 +11664,11 @@ contexts:
     - include: percentage
     - include: number
     - include: arithmetic-operator
+    - match: '\('
+      push:
+        - match: '\)'
+          pop: true
+        - include: value-calc
 
   # This context matches CSS-wide keywords and functions, like "inherit",
   # "var()", and "!important". It should be included in all property contexts.
