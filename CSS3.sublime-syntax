@@ -4045,6 +4045,7 @@ contexts:
     - include: property-user-select
     - include: property-vector-effect
     - include: property-vertical-align
+    - include: property-view-transition-name
     - include: property-voice-balance
     - include: property-voice-duration
     - include: property-voice-family
@@ -10507,6 +10508,20 @@ contexts:
         - include: baseline-source
     - include: stray-paren-or-semicolon
 
+  # CSS View Transitions Module Level 1
+  property-view-transition-name:
+    - match: \b(view-transition-name)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.view-transition-name.css
+        - include: end-value
+        - match: \bnone{{b}}
+          scope: support.constant.property-value.css
+        - include: identifier
+    - include: stray-paren-or-semicolon
+
   # CSS basic box model
   property-visibility:
     - match: \b(visibility)\s*(:)
@@ -11260,6 +11275,7 @@ contexts:
           before|
           backdrop|
           after|
+          view-transition|
           -webkit-input-placeholder|
           -ms-input-placeholder|
           -moz-selection|
@@ -11273,6 +11289,10 @@ contexts:
     - include: selector-pseudo-element-slotted
     - include: selector-pseudo-element-slot-blank
     - include: selector-pseudo-element-attr
+    - include: selector-pseudo-element-view-transition-group
+    - include: selector-pseudo-element-view-transition-old
+    - include: selector-pseudo-element-view-transition-new
+    - include: selector-pseudo-element-view-transition-image-pair
     - include: selector-pseudo-element-invalid
 
   selector-pseudo-element-attr:
@@ -11333,6 +11353,54 @@ contexts:
         - include: identifier
     - include: stray-paren
 
+  selector-pseudo-element-view-transition-group:
+    - match: '((::)view-transition-group)(\()'
+      captures:
+        1: entity.other.attribute-name.pseudo-element.css
+        2: punctuation.definition.entity.pseudo-element.css
+        3: punctuation.section.function.begin.css
+      push:
+        - meta_scope: meta.function.pseudo-element.view-transition-group.css
+        - include: end-func
+        - include: selector-pt-name
+    - include: stray-paren
+
+  selector-pseudo-element-view-transition-old:
+    - match: '((::)view-transition-old)(\()'
+      captures:
+        1: entity.other.attribute-name.pseudo-element.css
+        2: punctuation.definition.entity.pseudo-element.css
+        3: punctuation.section.function.begin.css
+      push:
+        - meta_scope: meta.function.pseudo-element.view-transition-old.css
+        - include: end-func
+        - include: selector-pt-name
+    - include: stray-paren
+
+  selector-pseudo-element-view-transition-new:
+    - match: '((::)view-transition-new)(\()'
+      captures:
+        1: entity.other.attribute-name.pseudo-element.css
+        2: punctuation.definition.entity.pseudo-element.css
+        3: punctuation.section.function.begin.css
+      push:
+        - meta_scope: meta.function.pseudo-element.view-transition-new.css
+        - include: end-func
+        - include: selector-pt-name
+    - include: stray-paren
+
+  selector-pseudo-element-view-transition-image-pair:
+    - match: '((::)view-transition-image-pair)(\()'
+      captures:
+        1: entity.other.attribute-name.pseudo-element.css
+        2: punctuation.definition.entity.pseudo-element.css
+        3: punctuation.section.function.begin.css
+      push:
+        - meta_scope: meta.function.pseudo-element.view-transition-image-pair.css
+        - include: end-func
+        - include: selector-pt-name
+    - include: stray-paren
+
   selector-pseudo-element-slotted:
     - match: '((::)slotted)(\()'
       captures:
@@ -11356,6 +11424,11 @@ contexts:
     # Match selector-type last because this includes custom elements, which
     # match nonspecific identifiers.
     - include: selector-type
+
+  selector-pt-name:
+    - match: '\*'
+      scope: entity.name.tag.wildcard.css
+    - include: identifier
 
   selector-type:
     - include: selector-type-deprecated

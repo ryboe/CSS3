@@ -55,6 +55,20 @@ div:first-line {}
 ::selection {}
 ::shadow {}
 ::spelling-error {}
+::view-transition {}
+
+::view-transition-group(*) {}
+::view-transition-group(root) {}
+::view-transition-group(ident) {}
+::view-transition-old(*) {}
+::view-transition-old(root) {}
+::view-transition-old(ident) {}
+::view-transition-new(*) {}
+::view-transition-new(root) {}
+::view-transition-new(ident) {}
+::view-transition-image-pair(*) {}
+::view-transition-image-pair(root) {}
+::view-transition-image-pair(ident) {}
 
 /* -moz- prefixed pseudo-classes */
 

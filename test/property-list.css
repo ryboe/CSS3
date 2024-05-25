@@ -6364,6 +6364,9 @@
     vertical-align: 4px;
     vertical-align: 20% ;
 
+    view-transition-name: none;
+    view-transition-name: ident;
+
     visibility: initial;
     visibility: inherit;
     visibility: unset;
