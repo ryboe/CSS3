@@ -1012,6 +1012,7 @@ contexts:
             - include: rule
             - include: at-supports
             - include: at-layer
+            - include: at-container
         - include: properties
 
   dasharray:
