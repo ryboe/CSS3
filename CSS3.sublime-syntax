@@ -10381,6 +10381,20 @@ contexts:
     - include: stray-paren-or-semicolon
 
   # CSS Transitions
+  property-transition-behavior:
+    - match: \b(transition-behavior)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.transition-behavior.css
+        - include: end-value
+        - include: value-css-wide
+        - match: '\b(?:allow-discrete|normal){{b}}'
+          scope: support.constant.property-value.css
+    - include: stray-paren-or-semicolon
+
+  # CSS Transitions
   property-transition-delay:
     - match: \b(transition-delay)\s*(:)
       captures:
