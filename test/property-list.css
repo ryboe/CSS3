@@ -6214,6 +6214,12 @@
     -webkit-transition: background-color linear 1s;
     -webkit-transition: unset;
 
+    transition-behavior: initial;
+    transition-behavior: inherit;
+    transition-behavior: unset;
+    transition-behavior: allow-discrete;
+    transition-behavior: normal;
+
     transition-delay: initial;
     transition-delay: inherit;
     transition-delay: unset;
