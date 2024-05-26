@@ -153,7 +153,6 @@ contexts:
     - include: func-filter
     - include: func-fit-content
     - include: func-format
-    - include: func-gray
     - include: func-hsla
     - include: func-hue
     - include: func-hue-rotate
@@ -694,7 +693,6 @@ contexts:
     - include: func-hwb
     - include: func-lab
     - include: func-lch
-    - include: func-gray
     - include: func-device-cmyk
     - include: func-color
     - include: func-color-adjust
@@ -2108,8 +2106,7 @@ contexts:
         - include: number-zero-to-one
         - include: color
 
-  # Additions to CSS Color 4
-  # TODO: This function currently isn't clearly defined by the spec.
+  # Not in the CSS spec, but part of SVG2
   func-device-gray:
     - match: \b(device-gray)(\()
       captures:
@@ -2121,8 +2118,7 @@ contexts:
         - include: func-var
         - include: number
 
-  # Additions to CSS Color 4
-  # TODO: This function currently isn't clearly defined by the spec.
+  # Not in the CSS spec, but part of SVG2
   func-device-nchannel:
     - match: \b(device-nchannel)(\()
       captures:
@@ -2134,8 +2130,7 @@ contexts:
         - include: func-var
         - include: number
 
-  # Additions to CSS Color 4
-  # TODO: This function currently isn't clearly defined by the spec.
+  # Not in the CSS spec, but part of SVG2
   func-device-rgb:
     - match: \b(device-rgb)(\()
       captures:
@@ -2246,18 +2241,6 @@ contexts:
         - include: end-func
         - include: func-var
         - include: integer-positive
-
-  func-gray:
-    - match: \b(gray)(\()
-      captures:
-        1: support.function.gray.css
-        2: punctuation.section.function.begin.css
-      push:
-        - meta_scope: meta.function.gray.css
-        - include: end-func
-        - include: func-var
-        - include: percentage-zero-to-100
-        - include: number
 
   func-hsla:
     - match: \b(hsla?)(\()
