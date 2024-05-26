@@ -38,8 +38,6 @@ variables:
   number_non_neg: '\+?(?:\d+\.\d+|\.\d+|\d+)(?:{{exponent}})?'
   number_pos: '\+?(?:\d+\.\d*[1-9]\d*|\.\d*[1-9]\d*|[1-9]\d*)(?:{{exponent}})?'
   number_zero_to_100: '(?:\b100(?:\.0+)?|\b[1-9]\d(?:\.\d+)?|\b\d(?:\.\d+)?|\.\d+)'
-  number_zero_to_255: '\b(?:2[0-4]\d(?:\.0+)?|25[0-5](?:\.0+)?|1\d\d(?:\.\d+)?|[1-9]\d(?:\.\d+)?|\d(?:\.\d+)?)'
-  number_zero_to_one: '\+?(?:0(?:\.\d+)?|1(?:\.0+)?|\.\d+)\b(?!\.)'
   optional_min_max_prefix: '\b(?:min-|max-)?'
   optional_top_right_left_bottom: '(?:top-|right-|left-|bottom-)?'
   percentage_unit: '%'
@@ -89,8 +87,8 @@ contexts:
       scope: support.constant.property-value.css
 
   alpha-value:
-    - include: percentage-zero-to-100
-    - include: number-zero-to-one
+    - include: percentage
+    - include: number
 
   angle:
     - include: func-calc
@@ -2091,7 +2089,7 @@ contexts:
         - meta_scope: meta.function.cubic-bezier.css
         - include: end-func
         - include: func-var
-        - include: number-zero-to-one
+        - include: number
 
   func-device-cmyk:
     - match: \b(device-cmyk)(\()
@@ -2102,8 +2100,8 @@ contexts:
         - meta_scope: meta.function.device-cmyk.css
         - include: end-func
         - include: func-var
-        - include: percentage-zero-to-100
-        - include: number-zero-to-one
+        - include: percentage
+        - include: number
         - include: color
 
   # Not in the CSS spec, but part of SVG2
@@ -2255,7 +2253,7 @@ contexts:
           scope: support.constant.property-value.css
         - include: color
         - include: angle
-        - include: percentage-zero-to-100
+        - include: percentage
         - include: number  # matches part of <hue> and <alpha-value>
 
   func-hue:
@@ -2294,7 +2292,7 @@ contexts:
         - match: '\bfrom{{b}}'
           scope: support.constant.property-value.css
         - include: color
-        - include: percentage-zero-to-100
+        - include: percentage
         - include: angle
         - include: number  # matches part of <hue> and <alpha-value>
 
@@ -2370,7 +2368,7 @@ contexts:
         - match: '\bfrom{{b}}'
           scope: support.constant.property-value.css
         - include: color
-        - include: percentage-zero-to-100
+        - include: percentage
         - include: number  # matches part of <hue> and <alpha-value>
 
   # CSS Color Module Level 5
@@ -2386,7 +2384,7 @@ contexts:
         - match: '\bfrom{{b}}'
           scope: support.constant.property-value.css
         - include: color
-        - include: percentage-zero-to-100
+        - include: percentage
         - include: number  # matches part of <hue> and <alpha-value>
 
   func-leader:
@@ -3560,22 +3558,6 @@ contexts:
     - include: func-max
     - include: func-clamp
     - match: '{{number_pos}}'
-      scope: constant.numeric.css
-
-  number-zero-to-one:
-    - include: func-calc
-    - include: func-min
-    - include: func-max
-    - include: func-clamp
-    - match: '{{number_zero_to_one}}'
-      scope: constant.numeric.css
-
-  number-zero-to-255:
-    - include: func-calc
-    - include: func-min
-    - include: func-max
-    - include: func-clamp
-    - match: '{{number_zero_to_255}}'
       scope: constant.numeric.css
 
   numeric-figure-values:
@@ -6145,7 +6127,7 @@ contexts:
         - meta_content_scope: meta.property-value.fill-opacity.css
         - include: end-value
         - include: value-css-wide
-        - include: number-zero-to-one
+        - include: number
     - include: stray-paren-or-semicolon
 
   # CSS Fill and Stroke Module Level 3
@@ -8305,7 +8287,7 @@ contexts:
         - meta_content_scope: meta.property-value.opacity.css
         - include: end-value
         - include: value-css-wide
-        - include: number-zero-to-one
+        - include: number
     - include: stray-paren-or-semicolon
 
   # CSS Flexible Box Layout Module Level 1
@@ -9128,7 +9110,7 @@ contexts:
         - meta_content_scope: meta.property-value.shape-image-threshold.css
         - include: end-value
         - include: value-css-wide
-        - include: number-zero-to-one
+        - include: number
     - include: stray-paren-or-semicolon
 
   # CSS Round Display Level 1
@@ -9301,7 +9283,7 @@ contexts:
         - meta_content_scope: meta.property-value.stop-opacity.css
         - include: end-value
         - include: value-css-wide
-        - include: number-zero-to-one
+        - include: number
     - include: stray-paren-or-semicolon
 
   # string-set is defined in two specs:
@@ -9557,7 +9539,7 @@ contexts:
         - meta_content_scope: meta.property-value.stroke-opacity.css
         - include: end-value
         - include: value-css-wide
-        - include: number-zero-to-one
+        - include: number
     - include: stray-paren-or-semicolon
 
   # CSS Fill and Stroke Module Level 3
@@ -10878,8 +10860,8 @@ contexts:
   # Since <alpha-value> is used along with <rgb-component>, there's no point
   # creating a separate context.
   rgb-component:
-    - include: percentage-zero-to-100
-    - include: number-zero-to-255
+    - include: percentage
+    - include: number
 
   # A rule is a selector and a declaration list.
   # selector {
