@@ -380,9 +380,6 @@
     backdrop-filter: drop-shadow(0 0 0 hsl(0deg, 0, 100%, 0.5), yellow);
     backdrop-filter: drop-shadow(0 0 0 hsl(10deg, 10%, 10%, 0.5), yellow);
     backdrop-filter: drop-shadow(0 0 0 hsl(1, 10%, 10%, 0.5), yellow);
-    backdrop-filter: drop-shadow(0 0 0 gray(1, 1.0), yellow);
-    backdrop-filter: drop-shadow(0 0 0 gray(100%, 1.0), yellow);
-    backdrop-filter: drop-shadow(0 0 0 gray(100%, 0.0), yellow);
     backdrop-filter: drop-shadow(0 0 0 device-cmyk(0, 81%, 81%, 30%), yellow);
     backdrop-filter: drop-shadow(0 0 0 device-cmyk(0, 81%, 81%, 30%, red), yellow);
     backdrop-filter: drop-shadow(0 0 0 device-cmyk(0, 81%, 81%, 30%, 1.0, red), yellow);
@@ -486,9 +483,6 @@
     color: color(prophoto 233 150 122);
     color: color(p3 97 253 36);
 
-    background: gray(1, 1.0);
-    background: gray(100%, 1.0);
-    background: gray(100%, 0.0);
     background: device-cmyk(0, 81%, 81%, 30%);
     background: device-cmyk(0, 81%, 81%, 30%, red);
     background: device-cmyk(0, 81%, 81%, 30%, 1.0, red);
@@ -649,9 +643,6 @@
     background-color: hsl(0deg, 0, 100%, 0.5);
     background-color: hsl(10deg, 10%, 10%, 0.5);
     background-color: hsl(1, 10%, 10%, 0.5);
-    background-color: gray(1, 1.0);
-    background-color: gray(100%, 1.0);
-    background-color: gray(100%, 0.0);
     background-color: device-cmyk(0, 81%, 81%, 30%);
     background-color: device-cmyk(0, 81%, 81%, 30%, red);
     background-color: device-cmyk(0, 81%, 81%, 30%, 1.0, red);
@@ -1026,9 +1017,6 @@
     border: hsl(0deg, 0, 100%, 0.5);
     border: hsl(10deg, 10%, 10%, 0.5);
     border: hsl(1, 10%, 10%, 0.5);
-    border: gray(1, 1.0);
-    border: gray(100%, 1.0);
-    border: gray(100%, 0.0);
     border: device-cmyk(0, 81%, 81%, 30%);
     border: device-cmyk(0, 81%, 81%, 30%, red);
     border: device-cmyk(0, 81%, 81%, 30%, 1.0, red);
@@ -1107,9 +1095,6 @@
     border-bottom: hsl(0deg, 0, 100%, 0.5);
     border-bottom: hsl(10deg, 10%, 10%, 0.5);
     border-bottom: hsl(1, 10%, 10%, 0.5);
-    border-bottom: gray(1, 1.0);
-    border-bottom: gray(100%, 1.0);
-    border-bottom: gray(100%, 0.0);
     border-bottom: device-cmyk(0, 81%, 81%, 30%);
     border-bottom: device-cmyk(0, 81%, 81%, 30%, red);
     border-bottom: device-cmyk(0, 81%, 81%, 30%, 1.0, red);
@@ -1188,9 +1173,6 @@
     border-left: hsl(0deg, 0, 100%, 0.5);
     border-left: hsl(10deg, 10%, 10%, 0.5);
     border-left: hsl(1, 10%, 10%, 0.5);
-    border-left: gray(1, 1.0);
-    border-left: gray(100%, 1.0);
-    border-left: gray(100%, 0.0);
     border-left: device-cmyk(0, 81%, 81%, 30%);
     border-left: device-cmyk(0, 81%, 81%, 30%, red);
     border-left: device-cmyk(0, 81%, 81%, 30%, 1.0, red);
@@ -1269,9 +1251,6 @@
     border-right: hsl(0deg, 0, 100%, 0.5);
     border-right: hsl(10deg, 10%, 10%, 0.5);
     border-right: hsl(1, 10%, 10%, 0.5);
-    border-right: gray(1, 1.0);
-    border-right: gray(100%, 1.0);
-    border-right: gray(100%, 0.0);
     border-right: device-cmyk(0, 81%, 81%, 30%);
     border-right: device-cmyk(0, 81%, 81%, 30%, red);
     border-right: device-cmyk(0, 81%, 81%, 30%, 1.0, red);
@@ -1350,9 +1329,6 @@
     border-top: hsl(0deg, 0, 100%, 0.5);
     border-top: hsl(10deg, 10%, 10%, 0.5);
     border-top: hsl(1, 10%, 10%, 0.5);
-    border-top: gray(1, 1.0);
-    border-top: gray(100%, 1.0);
-    border-top: gray(100%, 0.0);
     border-top: device-cmyk(0, 81%, 81%, 30%);
     border-top: device-cmyk(0, 81%, 81%, 30%, red);
     border-top: device-cmyk(0, 81%, 81%, 30%, 1.0, red);
@@ -1439,9 +1415,6 @@
     border-color: hsl(0deg, 0, 100%, 0.5);
     border-color: hsl(10deg, 10%, 10%, 0.5);
     border-color: hsl(1, 10%, 10%, 0.5);
-    border-color: gray(1, 1.0);
-    border-color: gray(100%, 1.0);
-    border-color: gray(100%, 0.0);
     border-color: device-cmyk(0, 81%, 81%, 30%);
     border-color: device-cmyk(0, 81%, 81%, 30%, red);
     border-color: device-cmyk(0, 81%, 81%, 30%, 1.0, red);
@@ -1569,9 +1542,6 @@
     border-bottom-color: hsl(0deg, 0, 100%, 0.5);
     border-bottom-color: hsl(10deg, 10%, 10%, 0.5);
     border-bottom-color: hsl(1, 10%, 10%, 0.5);
-    border-bottom-color: gray(1, 1.0);
-    border-bottom-color: gray(100%, 1.0);
-    border-bottom-color: gray(100%, 0.0);
     border-bottom-color: device-cmyk(0, 81%, 81%, 30%);
     border-bottom-color: device-cmyk(0, 81%, 81%, 30%, red);
     border-bottom-color: device-cmyk(0, 81%, 81%, 30%, 1.0, red);
@@ -1952,9 +1922,6 @@
     box-shadow: hsl(0deg, 0, 100%, 0.5);
     box-shadow: hsl(10deg, 10%, 10%, 0.5);
     box-shadow: hsl(1, 10%, 10%, 0.5);
-    box-shadow: gray(1, 1.0);
-    box-shadow: gray(100%, 1.0);
-    box-shadow: gray(100%, 0.0);
     box-shadow: device-cmyk(0, 81%, 81%, 30%);
     box-shadow: device-cmyk(0, 81%, 81%, 30%, red);
     box-shadow: device-cmyk(0, 81%, 81%, 30%, 1.0, red);
@@ -2123,9 +2090,6 @@
     color: hsl(0deg, 0, 100%, 0.5);
     color: hsl(10deg, 10%, 10%, 0.5);
     color: hsl(1, 10%, 10%, 0.5);
-    color: gray(1, 1.0);
-    color: gray(100%, 1.0);
-    color: gray(100%, 0.0);
     color: device-cmyk(0, 81%, 81%, 30%);
     color: device-cmyk(0, 81%, 81%, 30%, red);
     color: device-cmyk(0, 81%, 81%, 30%, 1.0, red);
@@ -2445,9 +2409,6 @@
     column-rule: hsl(0deg, 0, 100%, 0.5);
     column-rule: hsl(10deg, 10%, 10%, 0.5);
     column-rule: hsl(1, 10%, 10%, 0.5);
-    column-rule: gray(1, 1.0);
-    column-rule: gray(100%, 1.0);
-    column-rule: gray(100%, 0.0);
     column-rule: device-cmyk(0, 81%, 81%, 30%);
     column-rule: device-cmyk(0, 81%, 81%, 30%, red);
     column-rule: device-cmyk(0, 81%, 81%, 30%, 1.0, red);
@@ -2527,9 +2488,6 @@
     -webkit-column-rule: hsl(0deg, 0, 100%, 0.5);
     -webkit-column-rule: hsl(10deg, 10%, 10%, 0.5);
     -webkit-column-rule: hsl(1, 10%, 10%, 0.5);
-    -webkit-column-rule: gray(1, 1.0);
-    -webkit-column-rule: gray(100%, 1.0);
-    -webkit-column-rule: gray(100%, 0.0);
     -webkit-column-rule: device-cmyk(0, 81%, 81%, 30%);
     -webkit-column-rule: device-cmyk(0, 81%, 81%, 30%, red);
     -webkit-column-rule: device-cmyk(0, 81%, 81%, 30%, 1.0, red);
@@ -2792,9 +2750,6 @@
     column-rule-color: hsl(0deg, 0, 100%, 0.5);
     column-rule-color: hsl(10deg, 10%, 10%, 0.5);
     column-rule-color: hsl(1, 10%, 10%, 0.5);
-    column-rule-color: gray(1, 1.0);
-    column-rule-color: gray(100%, 1.0);
-    column-rule-color: gray(100%, 0.0);
     column-rule-color: device-cmyk(0, 81%, 81%, 30%);
     column-rule-color: device-cmyk(0, 81%, 81%, 30%, red);
     column-rule-color: device-cmyk(0, 81%, 81%, 30%, 1.0, red);
@@ -3341,9 +3296,6 @@
     filter: drop-shadow(0 0 0 hsl(0deg, 0, 100%, 0.5), yellow);
     filter: drop-shadow(0 0 0 hsl(10deg, 10%, 10%, 0.5), yellow);
     filter: drop-shadow(0 0 0 hsl(1, 10%, 10%, 0.5), yellow);
-    filter: drop-shadow(0 0 0 gray(1, 1.0), yellow);
-    filter: drop-shadow(0 0 0 gray(100%, 1.0), yellow);
-    filter: drop-shadow(0 0 0 gray(100%, 0.0), yellow);
     filter: drop-shadow(0 0 0 device-cmyk(0, 81%, 81%, 30%), yellow);
     filter: drop-shadow(0 0 0 device-cmyk(0, 81%, 81%, 30%, red), yellow);
     filter: drop-shadow(0 0 0 device-cmyk(0, 81%, 81%, 30%, 1.0, red), yellow);
@@ -3531,9 +3483,6 @@
     flood-color: hsl(0deg, 0, 100%, 0.5);
     flood-color: hsl(10deg, 10%, 10%, 0.5);
     flood-color: hsl(1, 10%, 10%, 0.5);
-    flood-color: gray(1, 1.0);
-    flood-color: gray(100%, 1.0);
-    flood-color: gray(100%, 0.0);
     flood-color: device-cmyk(0, 81%, 81%, 30%);
     flood-color: device-cmyk(0, 81%, 81%, 30%, red);
     flood-color: device-cmyk(0, 81%, 81%, 30%, 1.0, red);
@@ -4251,9 +4200,6 @@
     lighting-color: hsl(0deg, 0, 100%, 0.5);
     lighting-color: hsl(10deg, 10%, 10%, 0.5);
     lighting-color: hsl(1, 10%, 10%, 0.5);
-    lighting-color: gray(1, 1.0);
-    lighting-color: gray(100%, 1.0);
-    lighting-color: gray(100%, 0.0);
     lighting-color: device-cmyk(0, 81%, 81%, 30%);
     lighting-color: device-cmyk(0, 81%, 81%, 30%, red);
     lighting-color: device-cmyk(0, 81%, 81%, 30%, 1.0, red);
@@ -4384,9 +4330,6 @@
     list-style-image: linear-gradient(to top, hsl(0deg, 0, 100%, 0.5), yellow);
     list-style-image: linear-gradient(to top, hsl(10deg, 10%, 10%, 0.5), yellow);
     list-style-image: linear-gradient(to top, hsl(1, 10%, 10%, 0.5), yellow);
-    list-style-image: linear-gradient(to top, gray(1, 1.0), yellow);
-    list-style-image: linear-gradient(to top, gray(100%, 1.0), yellow);
-    list-style-image: linear-gradient(to top, gray(100%, 0.0), yellow);
     list-style-image: linear-gradient(to top, device-cmyk(0, 81%, 81%, 30%), yellow);
     list-style-image: linear-gradient(to top, device-cmyk(0, 81%, 81%, 30%, red), yellow);
     list-style-image: linear-gradient(to top, device-cmyk(0, 81%, 81%, 30%, 1.0, red), yellow);
@@ -4468,9 +4411,6 @@
     list-style-image: radial-gradient(at top, hsl(0deg, 0, 100%, 0.5), yellow);
     list-style-image: radial-gradient(at top, hsl(10deg, 10%, 10%, 0.5), yellow);
     list-style-image: radial-gradient(at top, hsl(1, 10%, 10%, 0.5), yellow);
-    list-style-image: radial-gradient(at top, gray(1, 1.0), yellow);
-    list-style-image: radial-gradient(at top, gray(100%, 1.0), yellow);
-    list-style-image: radial-gradient(at top, gray(100%, 0.0), yellow);
     list-style-image: radial-gradient(at top, device-cmyk(0, 81%, 81%, 30%), yellow);
     list-style-image: radial-gradient(at top, device-cmyk(0, 81%, 81%, 30%, red), yellow);
     list-style-image: radial-gradient(at top, device-cmyk(0, 81%, 81%, 30%, 1.0, red), yellow);
@@ -5084,9 +5024,6 @@
     outline: hsl(0deg, 0, 100%, 0.5);
     outline: hsl(10deg, 10%, 10%, 0.5);
     outline: hsl(1, 10%, 10%, 0.5);
-    outline: gray(1, 1.0);
-    outline: gray(100%, 1.0);
-    outline: gray(100%, 0.0);
     outline: device-cmyk(0, 81%, 81%, 30%);
     outline: device-cmyk(0, 81%, 81%, 30%, red);
     outline: device-cmyk(0, 81%, 81%, 30%, 1.0, red);
@@ -5178,9 +5115,6 @@
     outline-color: hsl(0deg, 0, 100%, 0.5);
     outline-color: hsl(10deg, 10%, 10%, 0.5);
     outline-color: hsl(1, 10%, 10%, 0.5);
-    outline-color: gray(1, 1.0);
-    outline-color: gray(100%, 1.0);
-    outline-color: gray(100%, 0.0);
     outline-color: device-cmyk(0, 81%, 81%, 30%);
     outline-color: device-cmyk(0, 81%, 81%, 30%, red);
     outline-color: device-cmyk(0, 81%, 81%, 30%, 1.0, red);
