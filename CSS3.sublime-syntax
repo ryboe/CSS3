@@ -4011,8 +4011,8 @@ contexts:
     - include: property-user-select
     - include: property-vector-effect
     - include: property-vertical-align
-    - include: property-view-transition-name
     - include: property-view-transition-class
+    - include: property-view-transition-name
     - include: property-voice-balance
     - include: property-voice-duration
     - include: property-voice-family
@@ -10476,20 +10476,6 @@ contexts:
     - include: stray-paren-or-semicolon
 
   # CSS View Transitions Module Level 1
-  property-view-transition-name:
-    - match: \b(view-transition-name)\s*(:)
-      captures:
-        1: support.type.property-name.css
-        2: punctuation.separator.key-value.css
-      push:
-        - meta_content_scope: meta.property-value.view-transition-name.css
-        - include: end-value
-        - match: \bnone{{b}}
-          scope: support.constant.property-value.css
-        - include: identifier
-    - include: stray-paren-or-semicolon
-
-  # CSS View Transitions Module Level 1
   property-view-transition-class:
     - match: \b(view-transition-class)\s*(:)
       captures:
@@ -10497,6 +10483,20 @@ contexts:
         2: punctuation.separator.key-value.css
       push:
         - meta_content_scope: meta.property-value.view-transition-class.css
+        - include: end-value
+        - match: \bnone{{b}}
+          scope: support.constant.property-value.css
+        - include: identifier
+    - include: stray-paren-or-semicolon
+
+  # CSS View Transitions Module Level 1
+  property-view-transition-name:
+    - match: \b(view-transition-name)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.view-transition-name.css
         - include: end-value
         - match: \bnone{{b}}
           scope: support.constant.property-value.css
