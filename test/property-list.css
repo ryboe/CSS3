@@ -6364,6 +6364,8 @@
     vertical-align: 4px;
     vertical-align: 20% ;
 
+    view-transition-class: none;
+    view-transition-class: ident;
     view-transition-name: none;
     view-transition-name: ident;
 
