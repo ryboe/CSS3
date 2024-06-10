@@ -2639,15 +2639,6 @@ contexts:
         - include: percentage
         - include: number
 
-  func-sin:
-    - match: \b(sin)(\()
-      captures:
-        1: support.function.sin.css
-        2: punctuation.section.function.begin.css
-      push:
-        - meta_scope: meta.function.sin.css
-        - include: value-calc
-
   func-skew:
     - match: \b(skew[XY]?)(\()
       captures:
