@@ -4,7 +4,6 @@ import sublime
 # This dict maps function names to their completions. It includes pseudo-class
 # and pseudo-element functions like :nth-child() and ::attr().
 func_name_to_completions = {
-    "clamp": t.angle + t.frequency + t.length + t.number + t.percentage + t.time,
     "attr": [
         ("angle",),  # A tuple with only one string means the label is the same
         ("ch",),  # as the completion, i.e. ("foo",) is equivalent to
@@ -76,12 +75,18 @@ func_name_to_completions = {
     + t.percentage
     + t.time,
     "auto": [t.identifier, t.string],
+    "abs": t.angle + t.frequency + t.length + t.number + t.percentage + t.time,
+    "acos": t.number,
+    "asin": t.number,
+    "atan": t.number,
+    "atan2": t.angle + t.frequency + t.length + t.number + t.percentage + t.time,
     "blenda": [("hsl",), ("hwb",), ("rgb",)] + t.color + t.percentage,
     "blur": t.length,
     "calc": t.angle + t.frequency + t.length + t.number + t.percentage + t.time,
     "child": t.integer,
     "cielab": t.number,
     "cielchab": t.number,
+    "clamp": t.angle + t.frequency + t.length + t.number + t.percentage + t.time,
     "color": [("dgi-p3",), ("rec2020",), ("srgb",), t.identifier, t.string]
     + t.color
     + t.number
@@ -93,6 +98,7 @@ func_name_to_completions = {
     "conic-gradient": [("at", "at "), ("from", "from "),] + t.color_stop + t.position,
     "content": [("after",), ("before",), ("first-letter",), ("marker",), ("text",),],
     "contrast": t.number + t.percentage,
+    "cos": t.number,
     "counter": [("none",), t.identifier, t.symbols] + t.image,
     "counters": [("none",), t.identifier, t.string, t.symbols] + t.image,
     "cross-fade": t.color + t.image + t.percentage,
@@ -106,6 +112,7 @@ func_name_to_completions = {
     "drop-shadow": t.color + t.length,
     "element": [("first",), ("first-except",), ("last",), ("start",), t.identifier,],
     "ellipse-circle": [("at", "at ")] + t.shape_radius + t.position,
+    "exp": t.number,
     "fade": t.length + t.percentage,
     "filter": t.number + t.percentage,
     "fit-content": t.length + t.percentage,
@@ -119,6 +126,7 @@ func_name_to_completions = {
     "hue": t.angle,
     "hue-rotate": t.angle,
     "hwb": [("from",)] + t.color + t.angle + t.number + t.percentage,
+    "hypot": t.angle + t.frequency + t.length + t.number + t.percentage + t.time,
     "icc-color": [t.identifier] + t.icc_color + t.number,
     "image": [t.string] + t.image + t.color,
     "image-set": [t.string] + t.image + t.resolution,
@@ -128,6 +136,7 @@ func_name_to_completions = {
     "leader": [("dotted",), ("solid",), ("space",), t.string],
     "linear-gradient": [("to", "to ")] + t.angle + t.color_stop + t.side_or_corner,
     "local": [t.identifier, t.string],
+    "log": t.number,
     # "matches": [],  # TODO: matches takes a selector list as an arg. should it have completions?
     "matrix": t.number,
     "max": t.angle + t.frequency + t.length + t.number + t.percentage + t.time,
@@ -136,6 +145,7 @@ func_name_to_completions = {
     + t.flex
     + t.length
     + t.percentage,
+    "mod": t.angle + t.frequency + t.length + t.number + t.percentage + t.time,
     # "not": [],      # TODO: not takes a selector list as an arg. should it have completions?
     "nth-child": [("of", "of ")],
     "nth-last-child": [("of", "of ")],
@@ -143,12 +153,14 @@ func_name_to_completions = {
     "path": [t.string] + t.fill_rule,
     "perspective": t.length,
     "polygon": t.fill_rule + t.shape_arg,
+    "pow": t.number,
     "radial-gradient": [("at", "at "), ("circle",), ("ellipse",),]
     + t.color_stop
     + t.position
     + t.size,
     "ray": [("contain",)] + t.angle + t.size,
     "red-green-blue-alpha-a": t.number + t.percentage,
+    "rem": t.angle + t.frequency + t.length + t.number + t.percentage + t.time,
     "repeat": [("auto-fill",), t.identifier, t.line_names,]
     + t.integer
     + t.track_size,
@@ -157,10 +169,13 @@ func_name_to_completions = {
     "running": [t.identifier],
     # "select": [],   # TODO: select takes a selector list as an arg. should it have completions?
     "scale": t.number,
+    "sign": t.number,
+    "sin": t.number,
     "skew": t.angle,
     # "slotted": [],  # TODO: slotted takes a selector list as an arg. should it have completions?
     "snap-block": [("end",), ("near",), ("start",)] + t.length,
     "snap-inline": [("left",), ("near",), ("right",)] + t.length,
+    "sqrt": t.number,
     "steps": [("start",), ("end",)] + t.integer,
     "string": [("first",), ("first-except",), ("last",), ("start",), t.identifier],
     "swash-styleset-stylistic-ornaments-character-variant-annotation": [t.identifier]
@@ -174,6 +189,7 @@ func_name_to_completions = {
         t.string,
     ]
     + t.image,
+    "tan": t.number,
     "target-counters": [t.string, t.url] + t.counter_style,
     "target-text": [
         ("after",),
