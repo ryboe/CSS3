@@ -163,6 +163,9 @@ contexts:
     - include: func-linear-gradient
     - include: func-local
     - include: func-matrix
+    - include: func-math-return-angle
+    - include: func-math-return-any
+    - include: func-math-return-number
     - include: func-minmax
     - include: func-path
     - include: func-perspective
