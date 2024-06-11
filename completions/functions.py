@@ -111,7 +111,6 @@ func_name_to_completions = {
     "fit-content": t.length + t.percentage,
     "format": [t.string],
     "frames": t.integer,
-    "gray": t.number + t.percentage,
     # "has": [],           # TODO: has takes a selector list as an arg. should it have completions?
     # "host": [],          # TODO: host takes a selector list as an arg. should it have completions?
     # "host-context": [],  # TODO: host-context takes a selector list as an arg. should it have completions?
