@@ -393,7 +393,6 @@ color = [
     device_gray,
     device_nchannel,
     device_rgb,
-    gray,
     green,
     h,
     hsl,
