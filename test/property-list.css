@@ -4092,6 +4092,7 @@
     height: hypot(10px, 5vmin, 30px);
     height: mod(50px, 15rem);
     height: rem(50px, 15rem);
+    height: min(e, pi, infinity, NaN);
 
     hyphens: initial;
     hyphens: inherit;
