@@ -681,6 +681,10 @@ contexts:
     - match: '\b(?:padding-box|content-box|border-box){{b}}'
       scope: support.constant.property-value.css
 
+  calc-keyword:
+    - match: '\b(?:NaN|infinity|pi|e){{b}}'
+      scope: support.constant.property-value.css
+
   caret-shape:
     - match: '\b(?:underscore|block|bar|auto){{b}}'
       scope: support.constant.property-value.css
@@ -11698,6 +11702,7 @@ contexts:
     - include: func-math-return-any
     - include: func-math-return-number
     - include: func-var
+    - include: calc-keyword
     - include: length
     - include: frequency
     - include: angle
