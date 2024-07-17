@@ -4302,6 +4302,11 @@
     line-height: sin(5deg);
     line-height: sqrt(1.2 + .1);
     line-height: tan(5deg + 10deg);
+    line-height: round(1.2);
+    line-height: round(nearest, 125%, 10%);
+    line-height: round(up, 5rem / 2, 1rem);
+    line-height: round(down, pi, 1);
+    line-height: round(to-zero, 5rem / 2, 1rem);
 
     line-snap: initial;
     line-snap: inherit;
