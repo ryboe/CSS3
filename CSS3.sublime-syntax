@@ -2436,6 +2436,15 @@ contexts:
         - meta_scope: meta.function.math-return-any.css
         - include: value-calc
         - include: end-func
+    - match: \b(round)(\()
+      captures:
+        1: support.function.math-return-any.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_scope: meta.function.math-return-any.css
+        - include: rounding-strategy
+        - include: value-calc
+        - include: end-func
 
   func-math-return-number:
     - match: \b(cos|exp|log|pow|sign|sin|sqrt|tan)(\()
@@ -10866,6 +10875,10 @@ contexts:
   rgb-component:
     - include: percentage
     - include: number
+
+  rounding-strategy:
+    - match: '\b(nearest|up|down|to-zero){{b}}'
+      scope: support.constant.property-value.css
 
   # A rule is a selector and a declaration list.
   # selector {
