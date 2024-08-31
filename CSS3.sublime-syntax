@@ -486,6 +486,9 @@ contexts:
         - match: '}'
           scope: punctuation.section.at-media.end.css
           pop: true
+        - match: ';'
+          scope: punctuation.terminator.layer.css
+          pop: true
         - match: '{'
           scope: punctuation.section.at-media.begin.css
           push:
@@ -495,6 +498,8 @@ contexts:
             - include: nestable-at-rules
             - include: properties
             - include: rule
+        - include: identifier
+    - include: stray-semicolon
     - include: stray-brace
 
   at-namespace:

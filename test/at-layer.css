@@ -1,3 +1,5 @@
+@layer test.bar, test;
+
 @layer test {
   foo {
     color: red;
