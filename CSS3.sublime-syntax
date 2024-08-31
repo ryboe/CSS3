@@ -3659,6 +3659,7 @@ contexts:
 
     # Properties with names that are two or more words are given a higher
     # precedence because they are less likely to mismatch.
+    - include: property-accent-color
     - include: property-align-content
     - include: property-align-items
     - include: property-align-self
@@ -4083,7 +4084,7 @@ contexts:
     - include: identifier
 
   # CSS Basic User Interface Module Level 4
-  property-color:
+  property-accent-color:
     - match: \b(accent-color)\s*(:)
       captures:
         1: support.type.property-name.css
