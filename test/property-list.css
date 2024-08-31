@@ -1,4 +1,27 @@
 * {
+    accent-color: initial;
+    accent-color: inherit;
+    accent-color: unset;
+    accent-color: currentcolor;
+    accent-color: rgb(178, 34, 34);
+    accent-color: rgb(10%, 0%, 20%);
+    accent-color: rgba(255, 255, 255, 1.0);
+    accent-color: rgba(255, 255, 255, 0.12124);
+    accent-color: #aaaaaa;
+    accent-color: #aaa;
+    accent-color: #111111;
+    accent-color: #fff;
+    accent-color: hsl(360, 100%, 25%);
+    accent-color: hsl(1, 0%, 25%);
+    accent-color: hsl(120deg, 44%, 50%);
+    accent-color: hsla(1, 0%, 25%, 1.0);
+    accent-color: firebrick;
+    accent-color: rebeccapurple;
+    accent-color: hwb(120deg, 44%, 50%);
+    accent-color: color(red s(- 10%) s(- 10%));
+    accent-color: color(contrast(25%));
+    accent-color: device-cmyk(0, 81%, 81%, 30%);
+
     align-content: initial;
     align-content: inherit;
     align-content: unset;
