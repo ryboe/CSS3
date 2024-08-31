@@ -4082,6 +4082,19 @@ contexts:
     - include: string
     - include: identifier
 
+  # CSS Basic User Interface Module Level 4
+  property-color:
+    - match: \b(accent-color)\s*(:)
+      captures:
+        1: support.type.property-name.css
+        2: punctuation.separator.key-value.css
+      push:
+        - meta_content_scope: meta.property-value.accent-color.css
+        - include: end-value
+        - include: value-css-wide
+        - include: color
+    - include: stray-paren-or-semicolon
+
   # align-content is defined in two specs:
   #     CSS Box Alignment Module Level 3
   #     CSS Flexible Box Layout Module Level 1 (subset of Box Alignment Level 3)
