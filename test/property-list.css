@@ -2086,13 +2086,13 @@
                   122px 57px, 184px 73px, 198px 105px, 199px 150px,
                   145px 159px, 155px 139px, 126px 120px, 112px 138px,
                   80px 128px, 39px 126px, 24px 104px);
-
+    clip-path: path("M0 0L1 1Q1,2-3-3Zm5 5.6.6.6Z");
+    clip-path: rect(5px 5px 160px 20% 145px round 20%);
     clip-rule: initial;
     clip-rule: inherit;
     clip-rule: unset;
     clip-rule: nonzero;
     clip-rule:evenodd  ;
-
 
     /* out of range 0-100% */
 

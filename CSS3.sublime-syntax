@@ -631,6 +631,9 @@ contexts:
     - include: func-inset
     - include: func-ellipse-circle
     - include: func-polygon
+    - include: func-path
+    - include: func-rect
+    - include: func-xywh
 
   blend-mode:
     - match: '(?x)
@@ -2557,6 +2560,22 @@ contexts:
         - include: angle
         - include: size
 
+  func-rect:
+    - match: \b(rect)(\()
+      captures:
+        1: support.function.rect.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_scope: meta.function.rect.css
+        - include: end-func
+        - include: func-var
+        - match: '\bround{{b}}'
+          scope: support.constant.property-value.css
+        - include: shape-arg
+        - match: '\/'
+          scope: keyword.operator.arithmetic.css
+
+
   func-red-green-blue-alpha-a:
     - match: \b(red|green|blue|alpha|a)(\()
       captures:
@@ -2901,6 +2920,21 @@ contexts:
         - include: func-var
         - include: percentage
         - include: color-adjuster-operator
+
+  func-xywh:
+    - match: \b(xywh)(\()
+      captures:
+        1: support.function.xywh.css
+        2: punctuation.section.function.begin.css
+      push:
+        - meta_scope: meta.function.xywh.css
+        - include: end-func
+        - include: func-var
+        - match: '\bround{{b}}'
+          scope: support.constant.property-value.css
+        - include: shape-arg
+        - match: '\/'
+          scope: keyword.operator.arithmetic.css
 
   generic-voice:
     - match: '\b(?:young|old|neutral|male|female|child){{b}}'
