@@ -11065,6 +11065,7 @@ contexts:
           in-range|
           hover|
           host|
+          defined|
           future|
           fullscreen|
           focus-within|

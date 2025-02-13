@@ -239,6 +239,11 @@
  /* <- entity.other.attribute-name.pseudo-class.css */
 /*^^^ entity.other.attribute-name.pseudo-class.css */
 /*   ^ -entity.other.attribute-name.pseudo-class.css */
+:defined {}
+/* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.pseudo-class.css */
+ /* <- entity.other.attribute-name.pseudo-class.css */
+/*^^^^^^ entity.other.attribute-name.pseudo-class.css */
+/*      ^ -entity.other.attribute-name.pseudo-class.css */
 :future {}
 /* <- entity.other.attribute-name.pseudo-class.css punctuation.definition.entity.pseudo-class.css */
  /* <- entity.other.attribute-name.pseudo-class.css */
